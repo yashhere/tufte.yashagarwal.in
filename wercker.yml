@@ -6,13 +6,9 @@ build:
         theme: liquorice
 
 deploy:
-    steps:
-       - script:
-          name: install git
-          code: |
-            apt-get update && apt-get install git -y
-       - leipert/git-push@0.7.6:
-            gh_oauth: $GIT_TOKEN
-            gh_pages: true
-            basedir: public
-            branch: master
+  steps:
+    - install-packages:
+        packages: git ssh-client
+    - lukevivier/gh-pages@0.2.1:
+        token: $GIT_TOKEN
+        basedir: public
