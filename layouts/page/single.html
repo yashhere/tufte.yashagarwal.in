@@ -1,0 +1,24 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+{{ $baseurl := .Site.BaseURL }}
+{{ $categories := .Params.categories }}
+{{ $tags := .Params.tags }}
+
+    <div class="container">
+        <div class="row">
+            <div class="sixteen columns">
+                <article class="li-article">
+                    <header class="li-article-header">
+                        <h1 class="li-article-title">{{ .Title }}</h1>
+                    </header>
+                    <section>
+                        {{ .Content }}
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+
+{{ partial "footer.html" . }}
+{{ partial "tail.html" . }}
