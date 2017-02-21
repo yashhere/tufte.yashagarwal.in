@@ -4,13 +4,15 @@ build:
     - arjen/hugo-build:
         version: "0.17"
         theme: liquorice
-        
+
 deploy:
-  steps:
-    - install-packages:
-        packages: git ssh-client liberror-perl
-    - leipert/git-push@0.7.6:
-        gh_oauth: $GIT_TOKEN
-        gh_pages: true
-        branch: master
-        basedir: public
+    steps:
+       - script:
+          name: install git
+          code: |
+            apt-get update && apt-get install git -y
+       - leipert/git-push@0.7.6:
+            gh_oauth: $GIT_TOKEN
+            gh_pages: true
+            basedir: public
+            branch: master

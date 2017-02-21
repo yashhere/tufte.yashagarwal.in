@@ -1,1 +1,1 @@
-[![wercker status](https://app.wercker.com/status/c3cbebc446112e11e4a5acb95cf64c9e/m/master "wercker status")](https://app.wercker.com/project/byKey/c3cbebc446112e11e4a5acb95cf64c9e)
+[![wercker status](https://app.wercker.com/status/e366f41b30a0a9d1bde03bc4971668c1/m/master "wercker status")](https://app.wercker.com/project/byKey/e366f41b30a0a9d1bde03bc4971668c1)
