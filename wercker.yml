@@ -9,8 +9,8 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client
-    - pheres/git-push@0.4.10:
-        gh_token: $GIT_TOKEN
+    - uetchy/gh-pages:
+        token: $GIT_TOKEN
         repo: yash2696/yash2696.github.io
-        basedir: public
+        path: public
         branch: master
