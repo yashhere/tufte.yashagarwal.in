@@ -8,21 +8,21 @@ pygmentsStyle = "native"
 [Params]
 	Author = "Yash Agarwal"
 	copyright = "Copyright © 2016-2017 Yash Agarwal."
-  	gaCode = "UA-75475356-1"
-  	disqusShortname = "theyashagarwal"
+	gaCode = "UA-75475356-1"
+	disqusShortname = "theyashagarwal"
 
 [indexes]
-    category = "categories"
-    tag = "tags"
+  category = "categories"
+  tag = "tags"
 
 [permalinks]
   posts = "/posts/:year/:month/:slug/"
   page = "/:title/"
   
 [[menu.main]]
-    name = "Posts"
-    url = "/posts"
+  name = "Posts"
+  url = "/posts"
 [[menu.main]]
-    name = "About"
-    url = "/about"
-    weight = 100
+  name = "About"
+  url = "/about"
+  weight = 100
