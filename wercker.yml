@@ -9,9 +9,8 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client
-    - ysqi/git-push:
-        Gh_oauth: $GIT_TOKEN
-        Clean_removed_files: true
+    - pheres/git-push@0.4.10:
+        gh_token: $GIT_TOKEN
         repo: yash2696/yash2696.github.io
         basedir: public
         branch: master
