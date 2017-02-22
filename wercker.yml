@@ -9,8 +9,9 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client
-    - leipert/git-push@0.7.6:
-        gh_oauth: $GIT_TOKEN
+    - ysqi/git-push:
+        Gh_oauth: $GIT_TOKEN
+        Clean_removed_files: true
         repo: yash2696/yash2696.github.io
         basedir: public
         branch: master
