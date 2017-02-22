@@ -9,7 +9,8 @@ deploy:
   steps:
     - install-packages:
         packages: git ssh-client
-    - lukevivier/gh-pages@0.2.1:
-        token: $GIT_TOKEN
+    - leipert/git-push@0.7.6:
+        gh_oauth: $GIT_TOKEN
+        repo: yash2696/yash2696.github.io
         basedir: public
         branch: master
