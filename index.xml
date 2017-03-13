@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Yash&#39;s Blog</title>
+    <title>/dev/yash/notes</title>
     <link>https://yash2696.github.io/index.xml</link>
-    <description>Recent content on Yash&#39;s Blog</description>
+    <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2016-2017 Yash Agarwal.</copyright>
-    <lastBuildDate>Wed, 22 Feb 2017 13:37:56 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 13 Mar 2017 21:03:16 +0000</lastBuildDate>
     <atom:link href="https://yash2696.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>FOSSMeet&#39;17</title>
+      <link>https://yash2696.github.io/posts/2017/03/fossmeet17/</link>
+      <pubDate>Mon, 13 Mar 2017 21:03:16 +0000</pubDate>
+      
+      <guid>https://yash2696.github.io/posts/2017/03/fossmeet17/</guid>
+      <description>
+
+&lt;p&gt;One more edition of FOSSMeet&amp;rsquo;17 was successfully organized in NIT Calicut recently. As an active member of the organizing team of this year&amp;rsquo;s edition (though I sidelined myself at the end) and a keen but salient observer, I want to share my experience, ideas and some observations through this post.&lt;/p&gt;
+
+&lt;h3 id=&#34;marketing-website&#34;&gt;Marketing Website&lt;/h3&gt;
+
+&lt;p&gt;We started planning about next edition of FOSSMeet sometime around September. Not many people were really interested in the planning. Anyway Shrimadhav and me started working on the marketing website. The first design was straightaway rejected by Piyush and Simsar, which I feel, was fruitful. In the process, I learned some key insights about planning, team management and design of a user friendly website. So I again started working on the website. The end product was clean, good looking and simple (at least I was happy with it :P).&lt;/p&gt;
+
+&lt;p&gt;In the meanwhile, Amal and I started thinking about ideas, how can we restructure the FOSSCell, which had not seen a single activity (except those trademark events which were conducted just for formality) in years. I now understand that was a mistake. It is a very popular prerequisite about open source contribution that you should contribute to the products which you use in day to day life. When we started thinking about the FOSSCell, we didn&amp;rsquo;t think about any of these points. We conducted a formal test(more of a filtering process), then we had a small meeting with the selected 2nd years about the FOSSCell and we discussed the plan for next semester. Then everyone left for winter vacations.&lt;/p&gt;
+
+&lt;h3 id=&#34;a-period-of-self-evaluation&#34;&gt;A period of self evaluation&lt;/h3&gt;
+
+&lt;p&gt;In the winter vacations, we tried to have some IRC discussions, which again was somewhat successful because of the efforts from Shrimadhav and Simsar. It was a new experience for me also, but still I tried to attend as much as I could. I also took one session on Git and Vim, which again was a completely new experience for me.&lt;/p&gt;
+
+&lt;p&gt;In the winter vacation, I found some time to think about the purpose of FOSSMeet and FOSSCell and in what direction, we were heading. I somehow understood that I was not qualified enough to guide someone about open source contribution or in general FOSS ideology, because I, myself was not contributing anything to open source community(though I was trying), and I had no characteristic of a FOSS enthusiast. So I somehow lost my interest in FOSSCell and even in Linux. Shrimadhav asked me my ideas about FOSSCell activities but I had no clue what to say. So that&amp;rsquo;s how the FOSSCell again died without achieving anything significant. I feel it was my mistake. I still feel very sad about this..:(&lt;/p&gt;
+
+&lt;h3 id=&#34;fossmeet-time&#34;&gt;FOSSMeet time&lt;/h3&gt;
+
+&lt;p&gt;So as the FOSSMeet&amp;rsquo;s dates came near, people started coming for &lt;em&gt;&amp;ldquo;volunteering&amp;rdquo;&lt;/em&gt;. It was good for the event, though. Funnel was already up last semester and we were getting some good proposals also. FOSSMeet also went very good. All the participants gave very good reviews. There were some hiccups also, The Campus Internet Connectivity being the most significant one. There were some issues in SSL also, again somewhere I hold an important responsibility. All in all, everybody praised the event and organization of the event. This year, we tried to reduce the use of plastics, and I feel that we were quite successful.&lt;/p&gt;
+
+&lt;h3 id=&#34;my-observations&#34;&gt;My Observations&lt;/h3&gt;
+
+&lt;p&gt;There were some issues about the event, which I didn&amp;rsquo;t like at a personal level. I sometime think that what is the motive of conducting some events in colleges. An event like FOSSMeet which attract the attention of all FOSS enthusiasts from all over Kerala, has very large potential of inspiring the young folks of NIT Calicut. We somehow succeed in that motive but what about the situation after FOSSMeet. The enthusiasm about FOSS should not last just for two days, but we cannot blame others about the condition. I don&amp;rsquo;t have proper idea about the FOSS because there was no proper guidance from my senior batches. I learned many things in the workshops organized by CSEA, in fact I first learned proper use of Linux Shell in the Linux workshop conducted by CSEA (and FOSSCell, at least for formality). But you can&amp;rsquo;t ask them to do everything. I think they are already overloaded. But there were no such workshops by FOSSCell.&lt;/p&gt;
+
+&lt;p&gt;Second, the curriculum of NITC CSE department focuses more on theoretical side of Computer Science, which in fact is good. But it negatively affects the student activities outside classroom. That is one of the major reason why we cannot produce more GSoC participants or why don&amp;rsquo;t we have more open source enthusiasts.&lt;/p&gt;
+
+&lt;p&gt;Third, one of the speakers in FOSSMeet mentioned one basic flow in the structure of organizing team of FOSSMeet. It doesn&amp;rsquo;t have any representation from other branches. FOSSMeet has become an event for CSE folks where people from other branches do not take interest. I think publicity was a major issue here. I don&amp;rsquo;t think that there was any publicity done to explain FOSSMeet to the students of other branches.(If I am wrong here, please correct me).&lt;/p&gt;
+
+&lt;p&gt;Fourth, people are ready to &lt;em&gt;volunteer&lt;/em&gt; for organizing an event, but they do not want to come and attend the workshops. FOSSMeet is basically organized by people who have no previous experience of FOSS and have no intention to dive into open source community anytime in near future. FOSSMeet has become a tradition which is continued every year because it happened previous year also. I do not feel that enthusiasm to promote FOSS in FOSSMeet because we are organizing it to continue the legacy. I am not saying that whatever effort organizers put in conducting FOSSMeet&amp;rsquo;17 was not significant. I am not a right person to blame them because I was also the part of the same team. But still I feel that FOSSMeet has lost its original motive to promote FOSS culture in NITC. It encourages more people from outside NITC but inside NITC, it is just one of those many events organized by random clubs.&lt;/p&gt;
+
+&lt;h3 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s been an interesting one year for me after becoming SS Lab Admin because I started taking part in department activities that I always wanted to do. Being an member of organizing team of FOSSMeet&amp;rsquo;17 was again a learning experience for me. I learned many new things, in SSL and outside SSL too. I committed some mistakes also in taking right decisions at right moment, but that&amp;rsquo;s how I learn. So no regrets..:) I hope that I will find time next year for FOSSMeet, although I would prefer to attend FOSSMeet as a participant observing everything silently rather than being a part of organizing team.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Setting up Hugo automatic deployment to Github with Wercker</title>
@@ -559,7 +601,9 @@ To start pcmanfm is desktop mode, add the following to the autostart file&lt;/p&
       <pubDate>Sat, 18 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>https://yash2696.github.io/about/</guid>
-      <description></description>
+      <description>&lt;p&gt;Hi there,&lt;br&gt;
+I am Yash,&lt;/p&gt;
+</description>
     </item>
     
   </channel>
