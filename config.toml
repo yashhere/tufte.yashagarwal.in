@@ -1,5 +1,5 @@
 languageCode = "en-us"
-title = "Yash's Blog"
+title = "/dev/yash/notes"
 baseurl = "https://yash2696.github.io"
 theme = "liquorice"
 canonifyurls = true
