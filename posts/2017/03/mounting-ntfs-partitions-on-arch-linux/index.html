@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+    <head>
+        
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+        <title>Mounting NTFS partitions on Arch Linux &middot; /dev/yash/notes</title>
+        <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' type='text/css'>
+        <link rel="stylesheet" href="https://yash2696.github.io/libraries/normalize.3.0.1.css" />
+        <link rel="stylesheet" href="https://yash2696.github.io/css/liquorice.css" />
+        <link rel="shortcut icon" href="https://yash2696.github.io/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="https://yash2696.github.io/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="alternate" href="" type="application/rss+xml" title="/dev/yash/notes" />
+        <script type="text/javascript" href="https://yash2696.github.io/js/lunr.min.js"></script>
+        <script type="text/javascript" href="https://yash2696.github.io/js/search.js"></script>
+    </head>
+    <body class="li-body">
+
+<header class="li-page-header">
+    <div class="container">
+        <div class="row">
+            <div class="sixteen columns">
+                <div class="li-brand li-left">
+                <a href="https://yash2696.github.io">/dev/yash/notes</a></div>
+                <div class="li-menu li-right">
+                    <span class="li-menu-icon" onclick="javascript:toggle('menu');">&#9776;</span>
+                    <ul id="menu2" class="li-menu-items">
+                        
+                            <li><a href="https://yash2696.github.io/posts"> Posts </a></li>
+                        
+                            <li><a href="https://yash2696.github.io/about"> About </a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen columns">
+                <ul id="menu" class="li-menu-items li-menu-mobile">
+                    
+                        <li><a href="https://yash2696.github.io/posts"> Posts </a></li>
+                    
+                        <li><a href="https://yash2696.github.io/about"> About </a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="sixteen columns">
+                <article class="li-article">
+                    <header class="li-article-header">
+                        <h1 class="li-article-title">Mounting NTFS partitions on Arch Linux</h1>
+                        <span class="li-article-taxonomies">
+                            
+                                Posted in
+                                
+                                    <a href="https://yash2696.github.io/categories/linux">Linux</a>
+                                
+                                    <a href="https://yash2696.github.io/categories/hacks">Hacks</a>
+                                
+                                    <a href="https://yash2696.github.io/categories/configuration">Configuration</a>
+                                
+                                    <a href="https://yash2696.github.io/categories/arch-linux">Arch Linux</a>
+                                
+                                    <a href="https://yash2696.github.io/categories/polkit">Polkit</a>
+                                
+                                    <a href="https://yash2696.github.io/categories/ntfs">NTFS</a>
+                                
+                            
+
+                            
+                        </span>
+                         - 
+                        <time class="li-article-date">Tuesday, March 14, 2017</time>
+                    </header>
+                    <section>
+                        <p>Yesterday I installed Arch Linux once again. A clean, bloat free desktop with Budgie Desktop environment with some must have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don&rsquo;t know whether it is a bug in Budgie or just a wrong setting). I also faced problem of mounting Windows NTFS volumes on user&rsquo;s wish. Arch Linux wiki has details about how to auto mount partitions on start up, but I had tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu like distribution on mounting of NTFS drives. I got a hint from Arch Linux Wiki about Polkit configuration setting which can be used to allow standard user to mount partitions. Here is a solution which I searched on various Arch Linux Community pages.</p>
+
+<p>You will need to install <code>ntfs-3g</code>, <code>polkit</code> and <code>udisks2</code> to use this code. Please refer to <a href="https://wiki.archlinux.org/index.php/Udisks">Arch Wiki</a>.</p>
+
+<p>I think when using Gentoo, you will also need to compile the support for NTFS file system in Kernel also. Please see <a href="https://wiki.gentoo.org/wiki/NTFS">here</a>.</p>
+
+<p>Add the following code to <code>/etc/polkit-1/rules.d/10-udisks2.rules</code></p>
+
+<pre>
+// Allow udisks2 to mount devices without authentication for users in the "wheel" group.
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
+        action.id == "org.freedesktop.udisks2.filesystem-mount") &&
+        subject.isInGroup("wheel")) {
+            return polkit.Result.YES;
+        }
+    }
+);
+
+polkit.addRule(function(action, subject) {
+   if ((action.id == "org.freedesktop.udisks.filesystem-mount-system-internal") && 
+        subject.isInGroup("wheel")) {
+            return polkit.Result.YES;
+        }
+    }
+);
+</pre>
+
+<p>Now you will be able to mount NTFS partition without any problem. :)</p>
+
+                    </section>
+                </article>
+            </div>
+        </div>
+
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+  (function() {
+     
+     
+     
+       
+
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     var disqus_shortname = 'theyashagarwal';
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+   })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        <div class="row li-pagination">
+            <div class="eight columns">
+                <div class="li-pagination-previous">
+                    
+                        &nbsp;
+                    
+                </div>
+            </div>
+            <div class="eight columns">
+                <div class="li-pagination-next">
+                    
+                        Older article<br />
+                        <a href="https://yash2696.github.io/posts/2017/03/fossmeet17/"> FOSSMeet&#39;17</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer class="li-page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="sixteen columns">
+                <div class="li-page-footer-legal">
+                    Copyright © 2016-2017 Yash Agarwal.
+                </div>
+                <div class="li-page-footer-theme">
+                    <span class=""><a href="https://github.com/eliasson/liquorice/">liquorice</a> is a theme for <a href="http://hugo.spf13.com">hugo</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script type="text/javascript">
+    <!--
+    function toggle(id) {
+        var e = document.getElementById(id);
+        e.style.display == 'block' ? e.style.display = 'none' : e.style.display = 'block';
+    }
+    
+    </script>
+    <script type="text/javascript">
+    <!--
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', "UA-75475356-1"]);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    -->
+    </script>
+    </body>
+</html>
+
