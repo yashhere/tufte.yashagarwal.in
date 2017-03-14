@@ -4,6 +4,7 @@ baseurl = "https://yash2696.github.io"
 theme = "liquorice"
 canonifyurls = true
 pygmentsStyle = "native"
+enableEmoji=true
 
 [Params]
 	Author = "Yash Agarwal"
