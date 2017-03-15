@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>/dev/yash/notes</title>
-    <link>https://yash2696.github.io/tags/easter-egg/index.xml</link>
+    <link>http://yashagarwal.me/tags/easter-egg/index.xml</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2016-2017 Yash Agarwal.</copyright>
-    <atom:link href="https://yash2696.github.io/tags/easter-egg/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://yashagarwal.me/tags/easter-egg/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Wanna get insulted by sudo</title>
-      <link>https://yash2696.github.io/posts/2016/04/wanna-get-insulted-by-sudo/</link>
+      <link>http://yashagarwal.me/posts/2016/04/wanna-get-insulted-by-sudo/</link>
       <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
       
-      <guid>https://yash2696.github.io/posts/2016/04/wanna-get-insulted-by-sudo/</guid>
+      <guid>http://yashagarwal.me/posts/2016/04/wanna-get-insulted-by-sudo/</guid>
       <description>
 
 &lt;p style=&#34;text-align: left;&#34;&gt;
@@ -25,7 +25,7 @@
   Confused what I am talking about? Here, take a look at this gif to get a idea of how sudo can insult you for typing in the incorrect password.
 &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://yash2696.github.io/images/insult.gif&#34; alt=&#34;Terminal Shot&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://yashagarwal.me/images/insult.gif&#34; alt=&#34;Terminal Shot&#34; /&gt;&lt;/p&gt;
 
 &lt;p style=&#34;text-align: left;&#34;&gt;
   Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with linux, and anyway this is way better than the plain &amp;#8220;You entered a wrong password&amp;#8221; error message. So let&amp;#8217;s learn how to do this.
@@ -47,7 +47,7 @@
 
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://yash2696.github.io/images/sudoers.png&#34; alt=&#34;Sample Sudoers File&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://yashagarwal.me/images/sudoers.png&#34; alt=&#34;Sample Sudoers File&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Once you have saved the file, go to terminal and type the following command to clear the old password from sudo memory&lt;/p&gt;
 

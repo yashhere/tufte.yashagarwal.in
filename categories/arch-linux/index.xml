@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>/dev/yash/notes</title>
-    <link>https://yash2696.github.io/categories/arch-linux/index.xml</link>
+    <link>http://yashagarwal.me/categories/arch-linux/index.xml</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2016-2017 Yash Agarwal.</copyright>
-    <atom:link href="https://yash2696.github.io/categories/arch-linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://yashagarwal.me/categories/arch-linux/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Mounting NTFS partitions on Arch Linux</title>
-      <link>https://yash2696.github.io/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</link>
+      <link>http://yashagarwal.me/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</link>
       <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
       
-      <guid>https://yash2696.github.io/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</guid>
+      <guid>http://yashagarwal.me/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</guid>
       <description>&lt;p&gt;Yesterday I installed Arch Linux once again. A clean, bloat free desktop with Budgie Desktop environment with some must have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don&amp;rsquo;t know whether it is a bug in Budgie or just a wrong setting). I also faced problem of mounting Windows NTFS volumes on user&amp;rsquo;s wish. Arch Linux wiki has details about how to auto mount partitions on start up, but I had tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu like distribution on mounting of NTFS drives. I got a hint from Arch Linux Wiki about Polkit configuration setting which can be used to allow standard user to mount partitions. Here is a solution which I searched on various Arch Linux Community pages.&lt;/p&gt;
 
 &lt;p&gt;You will need to install &lt;code&gt;ntfs-3g&lt;/code&gt;, &lt;code&gt;polkit&lt;/code&gt; and &lt;code&gt;udisks2&lt;/code&gt; to use this code. Please refer to &lt;a href=&#34;https://wiki.archlinux.org/index.php/Udisks&#34;&gt;Arch Wiki&lt;/a&gt;.&lt;/p&gt;
@@ -49,10 +49,10 @@ polkit.addRule(function(action, subject) {
     
     <item>
       <title>Custom Arch Linux setup with Openbox</title>
-      <link>https://yash2696.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
+      <link>http://yashagarwal.me/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
       <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://yash2696.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
+      <guid>http://yashagarwal.me/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
       <description>
 
 &lt;p&gt;After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and  when you put them together you get something amazing.&lt;/p&gt;
@@ -61,7 +61,7 @@ polkit.addRule(function(action, subject) {
 
 &lt;p&gt;So I end up going the route of building something up from scratch using Openbox as a base. At this point I have a fast, lightweight desktop that is extremely stable and is truly my desktop as I have built it from the ground up choosing every application.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://yash2696.github.io/images/desktop.jpg&#34; alt=&#34;Arch Linux Desktop&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://yashagarwal.me/images/desktop.jpg&#34; alt=&#34;Arch Linux Desktop&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 

@@ -7,10 +7,10 @@
 
         <title>Setting up Hugo automatic deployment to Github with Wercker &middot; /dev/yash/notes</title>
         <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600' type='text/css'>
-        <link rel="stylesheet" href="https://yash2696.github.io/libraries/normalize.3.0.1.css" />
-        <link rel="stylesheet" href="https://yash2696.github.io/css/liquorice.css" />
-        <link rel="shortcut icon" href="https://yash2696.github.io/favicon.ico" />
-        <link rel="apple-touch-icon-precomposed" href="https://yash2696.github.io/apple-touch-icon-144-precomposed.png" sizes="144x144" />
+        <link rel="stylesheet" href="http://yashagarwal.me/libraries/normalize.3.0.1.css" />
+        <link rel="stylesheet" href="http://yashagarwal.me/css/liquorice.css" />
+        <link rel="shortcut icon" href="http://yashagarwal.me/favicon.ico" />
+        <link rel="apple-touch-icon-precomposed" href="http://yashagarwal.me/apple-touch-icon-144-precomposed.png" sizes="144x144" />
         <link rel="alternate" href="" type="application/rss+xml" title="/dev/yash/notes" />
         <script type="text/javascript">
         <!--
@@ -25,8 +25,8 @@
             })();
         -->
         </script>
-        <script type="text/javascript" href="https://yash2696.github.io/js/lunr.min.js"></script>
-        <script type="text/javascript" href="https://yash2696.github.io/js/search.js"></script>
+        <script type="text/javascript" href="http://yashagarwal.me/js/lunr.min.js"></script>
+        <script type="text/javascript" href="http://yashagarwal.me/js/search.js"></script>
     </head>
     <body class="li-body">
 
@@ -35,14 +35,14 @@
         <div class="row">
             <div class="sixteen columns">
                 <div class="li-brand li-left">
-                <a href="https://yash2696.github.io">/dev/yash/notes</a></div>
+                <a href="http://yashagarwal.me">/dev/yash/notes</a></div>
                 <div class="li-menu li-right">
                     <span class="li-menu-icon" onclick="javascript:toggle('menu');">&#9776;</span>
                     <ul id="menu2" class="li-menu-items">
                         
-                            <li><a href="https://yash2696.github.io/posts"> Posts </a></li>
+                            <li><a href="http://yashagarwal.me/posts"> Posts </a></li>
                         
-                            <li><a href="https://yash2696.github.io/about"> About </a></li>
+                            <li><a href="http://yashagarwal.me/about"> About </a></li>
                         
                     </ul>
                 </div>
@@ -52,9 +52,9 @@
             <div class="sixteen columns">
                 <ul id="menu" class="li-menu-items li-menu-mobile">
                     
-                        <li><a href="https://yash2696.github.io/posts"> Posts </a></li>
+                        <li><a href="http://yashagarwal.me/posts"> Posts </a></li>
                     
-                        <li><a href="https://yash2696.github.io/about"> About </a></li>
+                        <li><a href="http://yashagarwal.me/about"> About </a></li>
                     
                 </ul>
             </div>
@@ -77,20 +77,20 @@
                             
                                 Posted in
                                 
-                                    <a href="https://yash2696.github.io/categories/development">Development</a>
+                                    <a href="http://yashagarwal.me/categories/development">Development</a>
                                 
                             
 
                             
                                 with tags
                                 
-                                    <a href="https://yash2696.github.io/tags/gh-pages">gh-pages</a>
+                                    <a href="http://yashagarwal.me/tags/gh-pages">gh-pages</a>
                                 
-                                    <a href="https://yash2696.github.io/tags/hugo">hugo</a>
+                                    <a href="http://yashagarwal.me/tags/hugo">hugo</a>
                                 
-                                    <a href="https://yash2696.github.io/tags/github">github</a>
+                                    <a href="http://yashagarwal.me/tags/github">github</a>
                                 
-                                    <a href="https://yash2696.github.io/tags/wercker">wercker</a>
+                                    <a href="http://yashagarwal.me/tags/wercker">wercker</a>
                                 
                             
                         </span>
@@ -140,7 +140,7 @@ git push origin master
 
 <p>What if a single push to <code>source</code> branch can trigger all the process for you automatically. Here the magic of continuous integration(CI) comes into picture. A free Wercker account can be easily created and hooked to Github account and new application from a chosen repository. After setting up everything, a push to the development branch will automatically trigger the Wercker. One of the biggest advantages of using Wercker is its large collection of user made and well documented &ldquo;steps&rdquo;. In this post, I will use two steps, <em>build hugo</em> and <em>deploy to Github</em>.</p>
 
-<p><img src="https://yash2696.github.io/images/wercker-steps.png" alt="Wercker Steps" />
+<p><img src="http://yashagarwal.me/images/wercker-steps.png" alt="Wercker Steps" />
 <strong>Wercker -&gt; Registry -&gt; steps </strong></p>
 
 <p>The first task is to create a <code>wercker.yml</code> file. It will tell Wercker which all actions are needed to be performed. Here is my <a href="https://raw.githubusercontent.com/yash2696/yash2696.github.io/source/wercker.yml">wercker.yml</a> for reference. In this, I have used two pipelines, <em>build</em> and <em>deploy</em>. Please follow the official docs for the more detailed steps. I will list all the problems which I faces while setting up things properly.</p>
@@ -168,17 +168,17 @@ git push origin master
 
 <p>In <code>deploy</code> stage, I used this <a href="https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/">step</a> to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to setup the environment variable $GIT_TOKEN to each pipeline, acquired from Github setting.</p>
 
-<p><img src="https://yash2696.github.io/images/wercker-pipeline.png" alt="Wercker Pipeline" />
+<p><img src="http://yashagarwal.me/images/wercker-pipeline.png" alt="Wercker Pipeline" />
 <br>
 <br></p>
 
 <p>You need to generate a new access token for your deploy stage from Github settings.
-<img src="https://yash2696.github.io/images/wercker-access-token.png" alt="Github Access Token" />
+<img src="http://yashagarwal.me/images/wercker-access-token.png" alt="Github Access Token" />
 <br>
 <br></p>
 
 <p>After adding deploy stage, add the token you acquired from the Github to Environmental Variables in deploy pipeline.
-<img src="https://yash2696.github.io/images/wercker-token.png" alt="Wercker Token" />
+<img src="http://yashagarwal.me/images/wercker-token.png" alt="Wercker Token" />
 <br>
 <br></p>
 
@@ -212,7 +212,7 @@ git push origin master
                 <div class="li-pagination-previous">
                     
                         Later article<br />
-                        <a href="https://yash2696.github.io/posts/2017/03/fossmeet17/"> FOSSMeet&#39;17</a>
+                        <a href="http://yashagarwal.me/posts/2017/03/fossmeet17/"> FOSSMeet&#39;17</a>
                     
                 </div>
             </div>
@@ -220,7 +220,7 @@ git push origin master
                 <div class="li-pagination-next">
                     
                         Older article<br />
-                        <a href="https://yash2696.github.io/posts/2016/10/setting-up-pyhton-development-environments/"> Setting up Pyhton Development Environments</a>
+                        <a href="http://yashagarwal.me/posts/2016/10/setting-up-pyhton-development-environments/"> Setting up Pyhton Development Environments</a>
                     
                 </div>
             </div>

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>/dev/yash/notes</title>
-    <link>https://yash2696.github.io/categories/python/index.xml</link>
+    <link>http://yashagarwal.me/categories/python/index.xml</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2016-2017 Yash Agarwal.</copyright>
-    <atom:link href="https://yash2696.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://yashagarwal.me/categories/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setting up Pyhton Development Environments</title>
-      <link>https://yash2696.github.io/posts/2016/10/setting-up-pyhton-development-environments/</link>
+      <link>http://yashagarwal.me/posts/2016/10/setting-up-pyhton-development-environments/</link>
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://yash2696.github.io/posts/2016/10/setting-up-pyhton-development-environments/</guid>
+      <guid>http://yashagarwal.me/posts/2016/10/setting-up-pyhton-development-environments/</guid>
       <description>
 
 &lt;p&gt;Recently I was searching for python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to setup the virtual environment for project. What the hack is this virtual environment and how does it work?&lt;/p&gt;
