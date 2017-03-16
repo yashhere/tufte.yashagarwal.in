@@ -5,9 +5,10 @@ categories = ["python", "development"]
 tags = ["pip","python", "development"]
 type = "posts"
 +++
-Recently I was searching for python projects on Github for contribution. Every single project I found, had a thing common among them. In every project's contribution guide, it was asked to setup the virtual environment for project. What the hack is this virtual environment and how does it work?
 
-As a beginner to open source projects, the problem I faced in the beginning was how to set up the development environments for the projects I was looking at. I searched internet, I found some articles but they were not complete. So I decided to write my own guide, which will be useful for me in future also.
+Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project's contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?
+
+As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.
 
 Python uses <code>pip</code> for package management.
 
@@ -62,7 +63,7 @@ If you are using python3, then don't forget to use <code>pip3</code>.
 </pre>
 
 #### Creating list of all packages with pip
-This is one of most used and most useful feature of <code>pip</code>. It allows you to make a list of all the dependencies of your project.
+It is one of most used and most useful feature of <code>pip</code>. It allows you to make a list of all the dependencies of your project.
 <pre>
     #it will output the file to current directory
     pip freeze > [file_name.txt]
@@ -71,9 +72,9 @@ This is one of most used and most useful feature of <code>pip</code>. It allows 
 All these commands above will install the packages globally. But that's not what is desired. <code>virtualenv</code> comes to our rescue here.
 
 #### Virtualenv
-<code>virtualenv</code> solves a very specific problem; it allows multiple python projects that have different and often conflicting dependencies, to coexist on same system.
+<code>virtualenv</code> solves a very particular problem; it allows multiple python projects that have different and often conflicting dependencies, to coexist on the same system.
 
-<code>virtualenv</code> solves this problem by creating differet isolated development environments for your projects. An environment is a folder which contain everything, your project needs to work properly.
+<code>virtualenv</code> solves this problem by creating different isolated development environments for your projects. An environment is a folder which contains everything; your project needs to work properly.
 
 #### Installing virtualenv
 By default, if you install <code>virtualenv</code> using <code>pip</code>, it will use system's default python to create virtual environments. To overcome this problem, we will install <code>virtualenv</code> using ubuntu package manager.
@@ -82,7 +83,7 @@ By default, if you install <code>virtualenv</code> using <code>pip</code>, it wi
 </pre>
 
 #### Installing virtualenvwrapper
-<code>virtualenvwrapper</code> provides some set of commands which makes working with virtual environments much more easy.
+<code>virtualenvwrapper</code> provides some set of commands which makes working with virtual environments much easier.
 
 To install it,
 <pre>
@@ -91,7 +92,7 @@ To install it,
 
 <code>pip</code>, <code>virtualenv</code> and <code>virtualenvwrapper</code> are the only packages which you will need to install globally. All other per project packages will be installed in respective virtual environments.
 
-<code>virtualenvwrapper</code> also places all your virtual environments in one place. This makes working with projects very easy.
+<code>virtualenvwrapper</code> also places all your virtual environments in one place. It makes working with projects very easy.
 
 Now open your <code>.bashrc</code> and add these two lines to the end.
 <pre>
@@ -116,12 +117,12 @@ Create a virtual environment
     mkvirtualenv myproject
 </pre>
 
-This will create myproject folder in the python-dev directory. To activate a project
+It will create myproject folder in the python-dev directory. To activate a project
 <pre>
     workon myproject
 </pre>
 
-Alternatively you can create project using <code>mkproject</code> command. It will create virtual environment as well as a project directory in the <code>$PROJECT_HOME</code>, which is cd -ed into when you workon myproject.
+Alternatively you can create project using <code>mkproject</code> command. It will create a virtual environment as well as a project directory in the <code>$PROJECT_HOME</code>, which is cd -ed into when you workon myproject.
 
 Don't forget to deactivate current project when you switch between different projects.
 
@@ -147,7 +148,7 @@ it will also list all virtual environments:
 
 [Full List of virtualenvwrapper commands](https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html)
 
-<code>virtualenvwrapper</code> also provides tab-completion feature which is very handy when you have a lot of projects to work with.
+<code>virtualenvwrapper</code> also provides the tab-completion feature which is very handy when you have a lot of projects to work with.
 
-That's it. Hope you liked the post...:)
+That's it. Hope you liked the post.:)
 
