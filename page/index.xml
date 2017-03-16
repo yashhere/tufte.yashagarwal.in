@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Page-rsses on /dev/yash/notes</title>
-    <link>http://yashagarwal.me/page/index.xml</link>
+    <link>https://yashagarwal.me/page/index.xml</link>
     <description>Recent content in Page-rsses on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2016-2017 Yash Agarwal.</copyright>
     <lastBuildDate>Sat, 18 Jul 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://yashagarwal.me/page/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://yashagarwal.me/page/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About</title>
-      <link>http://yashagarwal.me/about/</link>
+      <link>https://yashagarwal.me/about/</link>
       <pubDate>Sat, 18 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://yashagarwal.me/about/</guid>
+      <guid>https://yashagarwal.me/about/</guid>
       <description>&lt;p&gt;Hi there,&lt;br&gt;
 I am Yash Agarwal. I am currently studying Computer Science and Engineering at NIT Calicut, India. I love trying new operating systems, new tech and new programming languages. Well, pretty much everything remotely related to the tech.&lt;/p&gt;
 

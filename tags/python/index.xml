@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>/dev/yash/notes</title>
-    <link>http://yashagarwal.me/tags/python/index.xml</link>
+    <link>https://yashagarwal.me/tags/python/index.xml</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2016-2017 Yash Agarwal.</copyright>
-    <atom:link href="http://yashagarwal.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://yashagarwal.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setting up Pyhton Development Environments</title>
-      <link>http://yashagarwal.me/posts/2016/10/setting-up-pyhton-development-environments/</link>
+      <link>https://yashagarwal.me/posts/2016/10/setting-up-pyhton-development-environments/</link>
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://yashagarwal.me/posts/2016/10/setting-up-pyhton-development-environments/</guid>
+      <guid>https://yashagarwal.me/posts/2016/10/setting-up-pyhton-development-environments/</guid>
       <description>
 
-&lt;p&gt;Recently I was searching for python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to setup the virtual environment for project. What the hack is this virtual environment and how does it work?&lt;/p&gt;
+&lt;p&gt;Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?&lt;/p&gt;
 
-&lt;p&gt;As a beginner to open source projects, the problem I faced in the beginning was how to set up the development environments for the projects I was looking at. I searched internet, I found some articles but they were not complete. So I decided to write my own guide, which will be useful for me in future also.&lt;/p&gt;
+&lt;p&gt;As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.&lt;/p&gt;
 
 &lt;p&gt;Python uses &lt;code&gt;pip&lt;/code&gt; for package management.&lt;/p&gt;
 
@@ -79,7 +79,7 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
 
 &lt;h4 id=&#34;creating-list-of-all-packages-with-pip&#34;&gt;Creating list of all packages with pip&lt;/h4&gt;
 
-&lt;p&gt;This is one of most used and most useful feature of &lt;code&gt;pip&lt;/code&gt;. It allows you to make a list of all the dependencies of your project.
+&lt;p&gt;It is one of most used and most useful feature of &lt;code&gt;pip&lt;/code&gt;. It allows you to make a list of all the dependencies of your project.
 &lt;pre&gt;
     #it will output the file to current directory
     pip freeze &amp;gt; [file_name.txt]
@@ -89,9 +89,9 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
 
 &lt;h4 id=&#34;virtualenv&#34;&gt;Virtualenv&lt;/h4&gt;
 
-&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves a very specific problem; it allows multiple python projects that have different and often conflicting dependencies, to coexist on same system.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves a very particular problem; it allows multiple python projects that have different and often conflicting dependencies, to coexist on the same system.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves this problem by creating differet isolated development environments for your projects. An environment is a folder which contain everything, your project needs to work properly.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves this problem by creating different isolated development environments for your projects. An environment is a folder which contains everything; your project needs to work properly.&lt;/p&gt;
 
 &lt;h4 id=&#34;installing-virtualenv&#34;&gt;Installing virtualenv&lt;/h4&gt;
 
@@ -102,7 +102,7 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
 
 &lt;h4 id=&#34;installing-virtualenvwrapper&#34;&gt;Installing virtualenvwrapper&lt;/h4&gt;
 
-&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; provides some set of commands which makes working with virtual environments much more easy.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; provides some set of commands which makes working with virtual environments much easier.&lt;/p&gt;
 
 &lt;p&gt;To install it,
 &lt;pre&gt;
@@ -111,7 +111,7 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
 
 &lt;p&gt;&lt;code&gt;pip&lt;/code&gt;, &lt;code&gt;virtualenv&lt;/code&gt; and &lt;code&gt;virtualenvwrapper&lt;/code&gt; are the only packages which you will need to install globally. All other per project packages will be installed in respective virtual environments.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also places all your virtual environments in one place. This makes working with projects very easy.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also places all your virtual environments in one place. It makes working with projects very easy.&lt;/p&gt;
 
 &lt;p&gt;Now open your &lt;code&gt;.bashrc&lt;/code&gt; and add these two lines to the end.
 &lt;pre&gt;
@@ -136,12 +136,12 @@ Create a virtual environment
     mkvirtualenv myproject
 &lt;/pre&gt;&lt;/p&gt;
 
-&lt;p&gt;This will create myproject folder in the python-dev directory. To activate a project
+&lt;p&gt;It will create myproject folder in the python-dev directory. To activate a project
 &lt;pre&gt;
     workon myproject
 &lt;/pre&gt;&lt;/p&gt;
 
-&lt;p&gt;Alternatively you can create project using &lt;code&gt;mkproject&lt;/code&gt; command. It will create virtual environment as well as a project directory in the &lt;code&gt;$PROJECT_HOME&lt;/code&gt;, which is cd -ed into when you workon myproject.&lt;/p&gt;
+&lt;p&gt;Alternatively you can create project using &lt;code&gt;mkproject&lt;/code&gt; command. It will create a virtual environment as well as a project directory in the &lt;code&gt;$PROJECT_HOME&lt;/code&gt;, which is cd -ed into when you workon myproject.&lt;/p&gt;
 
 &lt;p&gt;Don&amp;rsquo;t forget to deactivate current project when you switch between different projects.&lt;/p&gt;
 
@@ -167,9 +167,9 @@ Create a virtual environment
 
 &lt;p&gt;&lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html&#34;&gt;Full List of virtualenvwrapper commands&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also provides tab-completion feature which is very handy when you have a lot of projects to work with.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also provides the tab-completion feature which is very handy when you have a lot of projects to work with.&lt;/p&gt;
 
-&lt;p&gt;That&amp;rsquo;s it. Hope you liked the post&amp;hellip;:)&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it. Hope you liked the post.:)&lt;/p&gt;
 </description>
     </item>
     
