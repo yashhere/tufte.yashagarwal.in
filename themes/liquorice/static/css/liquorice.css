@@ -22,6 +22,17 @@
     float: left;
 }
 
+blockquote {
+    padding: 10px 20px;
+    font-weight: 300;
+    font-size: 1.1em;
+    background-color: rgba(128, 128, 128, 0.05);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 8px solid rgba(128, 128, 128, 0.075);
+    border-left-width: 10px;
+}
+
 code {
     background: #fafafa;
     padding: 0px 5px;
