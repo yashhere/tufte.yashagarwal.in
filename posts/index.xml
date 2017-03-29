@@ -185,16 +185,16 @@ git push origin master
     </item>
     
     <item>
-      <title>Setting up Pyhton Development Environments</title>
-      <link>https://yashagarwal.me/posts/2016/10/setting-up-pyhton-development-environments/</link>
+      <title>Setting up Python Development Environments</title>
+      <link>https://yashagarwal.me/posts/2016/10/setting-up-python-development-environments/</link>
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://yashagarwal.me/posts/2016/10/setting-up-pyhton-development-environments/</guid>
+      <guid>https://yashagarwal.me/posts/2016/10/setting-up-python-development-environments/</guid>
       <description>
 
 &lt;p&gt;Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?&lt;/p&gt;
 
-&lt;p&gt;As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.&lt;/p&gt;
+&lt;p&gt;As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the Internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.&lt;/p&gt;
 
 &lt;p&gt;Python uses &lt;code&gt;pip&lt;/code&gt; for package management.&lt;/p&gt;
 
@@ -305,8 +305,9 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
     source .bashrc
 &lt;/pre&gt;&lt;/p&gt;
 
-&lt;p&gt;####Basic Usage
-Create a virtual environment
+&lt;h4 id=&#34;basic-usage&#34;&gt;Basic Usage&lt;/h4&gt;
+
+&lt;p&gt;Create a virtual environment
 &lt;pre&gt;
     mkvirtualenv myproject
 &lt;/pre&gt;&lt;/p&gt;
