@@ -1,5 +1,5 @@
 +++
-title = "Setting up Pyhton Development Environments"
+title = "Setting up Python Development Environments"
 date = "2016-10-09"
 categories = ["python", "development"]
 tags = ["pip","python", "development"]
@@ -8,7 +8,7 @@ type = "posts"
 
 Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project's contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?
 
-As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.
+As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the Internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.
 
 Python uses <code>pip</code> for package management.
 
@@ -111,7 +111,7 @@ Now restart your terminal to source the <code>.bashrc</code> or use
     source .bashrc
 </pre>
 
-####Basic Usage
+#### Basic Usage
 Create a virtual environment
 <pre>
     mkvirtualenv myproject
