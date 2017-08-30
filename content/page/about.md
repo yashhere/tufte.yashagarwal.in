@@ -32,6 +32,6 @@ You can find me at:
 
 5. [Quora](https://www.quora.com/profile/Yash-Agarwal-140)
 
-6. [GitHub](https://www.github.com/yash2696)
+6. [GitHub](https://www.github.com/yashhere)
 
 Recently I started using [GoodReads](https://www.goodreads.com/user/show/63354397-yash-agarwal) also as I am trying to get started with the amazing world of books. Hope I will be able to get good results by this.
