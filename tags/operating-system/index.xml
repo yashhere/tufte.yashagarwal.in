@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>/dev/yash/notes</title>
-    <link>https://yashagarwal.me/tags/operating-system/index.xml</link>
+    <link>https://yashhere.github.io/tags/operating-system/index.xml</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Yash Agarwal 2017 - Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
-    <atom:link href="https://yashagarwal.me/tags/operating-system/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://yashhere.github.io/tags/operating-system/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Custom Arch Linux setup with Openbox</title>
-      <link>https://yashagarwal.me/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
+      <link>https://yashhere.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
       <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://yashagarwal.me/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
+      <guid>https://yashhere.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
       <description>
 
 &lt;p&gt;After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and  when you put them together you get something amazing.&lt;/p&gt;
@@ -23,7 +23,7 @@
 
 &lt;p&gt;So I end up going the route of building something up from scratch using Openbox as a base. At this point I have a fast, lightweight desktop that is extremely stable and is truly my desktop as I have built it from the ground up choosing every application.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://yashagarwal.me/images/desktop.jpg&#34; alt=&#34;Arch Linux Desktop&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yashhere.github.io/images/desktop.jpg&#34; alt=&#34;Arch Linux Desktop&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Page-rsses on /dev/yash/notes</title>
-    <link>https://yashagarwal.me/page/index.xml</link>
+    <link>https://yashhere.github.io/page/index.xml</link>
     <description>Recent content in Page-rsses on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Yash Agarwal 2017 - Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
     <lastBuildDate>Sat, 18 Jul 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://yashagarwal.me/page/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://yashhere.github.io/page/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>About</title>
-      <link>https://yashagarwal.me/about/</link>
+      <link>https://yashhere.github.io/about/</link>
       <pubDate>Sat, 18 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://yashagarwal.me/about/</guid>
+      <guid>https://yashhere.github.io/about/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;Speak less than you know; have more than you show.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -23,7 +23,7 @@
 &lt;p&gt;Hi there,&lt;br&gt;
 I am Yash Agarwal(यश अग्रवाल, &lt;a href=&#34;https://www.youtube.com/watch?v=mzJVVcVVbA4&#34; target=&#34;_blank&#34;&gt;y-uh-sh&lt;/a&gt;). I am currently studying Computer Science and Engineering at NIT Calicut, India. I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything remotely related to the tech.&lt;/p&gt;
 
-&lt;p&gt;&lt;img style=&#34;width: 200px; height: 200px; border-radius: 2%; float: right;&#34; src=&#34;https://yashagarwal.me/images/yash.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img style=&#34;width: 200px; height: 200px; border-radius: 2%; float: right;&#34; src=&#34;https://yashhere.github.io/images/yash.jpg&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;People say that I don&amp;rsquo;t smile much. That&amp;rsquo;s somewhat true. I am not a camera friendly person. I have very few photos where I am smiling. So I chose that picture to display here.&lt;/p&gt;
 

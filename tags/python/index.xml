@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>/dev/yash/notes</title>
-    <link>https://yashagarwal.me/tags/python/index.xml</link>
+    <link>https://yashhere.github.io/tags/python/index.xml</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© Yash Agarwal 2017 - Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
-    <atom:link href="https://yashagarwal.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://yashhere.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setting up Python Development Environments</title>
-      <link>https://yashagarwal.me/posts/2016/10/setting-up-python-development-environments/</link>
+      <link>https://yashhere.github.io/posts/2016/10/setting-up-python-development-environments/</link>
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://yashagarwal.me/posts/2016/10/setting-up-python-development-environments/</guid>
+      <guid>https://yashhere.github.io/posts/2016/10/setting-up-python-development-environments/</guid>
       <description>
 
 &lt;p&gt;Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?&lt;/p&gt;
