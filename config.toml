@@ -1,6 +1,6 @@
 languageCode = "en-us"
 title = "/dev/yash/notes"
-baseurl = "https://yashagarwal.me"
+baseurl = "https://yashhere.github.io"
 theme = "liquorice"
 canonifyurls = true
 pygmentsStyle = "native"
