@@ -11,4 +11,4 @@ deploy:
         token: $GIT_TOKEN
         repo: yashhere/yashhere.github.io
         path: public
-        domain: yashagarwal.me
+        #        domain: yashagarwal.me
