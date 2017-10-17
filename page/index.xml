@@ -5,8 +5,6 @@
     <link>https://yashhere.github.io/page/index.xml</link>
     <description>Recent content in Page-rsses on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© Yash Agarwal 2017 - Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
     <lastBuildDate>Sat, 18 Jul 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://yashhere.github.io/page/index.xml" rel="self" type="application/rss+xml" />
     
@@ -23,32 +21,32 @@
 &lt;p&gt;Hi there,&lt;br&gt;
 I am Yash Agarwal(यश अग्रवाल, &lt;a href=&#34;https://www.youtube.com/watch?v=mzJVVcVVbA4&#34; target=&#34;_blank&#34;&gt;y-uh-sh&lt;/a&gt;). I am currently studying Computer Science and Engineering at NIT Calicut, India. I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything remotely related to the tech.&lt;/p&gt;
 
-&lt;p&gt;&lt;img style=&#34;width: 200px; height: 200px; border-radius: 2%; float: right;&#34; src=&#34;https://yashhere.github.io/images/yash.jpg&#34;&gt;&lt;/p&gt;
+&lt;!-- &lt;img style=&#34;width: 200px; height: 200px; border-radius: 2%; float: right;&#34; src=&#34;https://yashhere.github.io/images/yash.jpg&#34;&gt;
 
-&lt;p&gt;People say that I don&amp;rsquo;t smile much. That&amp;rsquo;s somewhat true. I am not a camera friendly person. I have very few photos where I am smiling. So I chose that picture to display here.&lt;/p&gt;
+People say that I don&#39;t smile much. That&#39;s somewhat true. I am not a camera friendly person. I have very few photos where I am smiling. So I chose that picture to display here. --&gt;
 
 &lt;p&gt;In my &amp;ldquo;spare time&amp;rdquo;, I like walking alone, in random thoughts and reading Quora. I don&amp;rsquo;t have many friends cause I believe that I am very bad in judging people (for me, Prevention is better than Cure).&lt;/p&gt;
 
-&lt;p&gt;My current operating system is Arch Linux on with Budgie Desktop and some custom scripts to manage various aspects that Budgie Desktop doesn&amp;rsquo;t offer yet, e.g. a lock screen.&lt;/p&gt;
+&lt;p&gt;My current operating system is Arch Linux with Gnome Desktop.&lt;/p&gt;
 
 &lt;p&gt;&lt;br&gt;
 You can find me at:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Email: &lt;a href=&#34;mailto:&#34; title=&#34;&amp;amp;#121;&amp;amp;#097;&amp;amp;#115;&amp;amp;#104;&amp;amp;#097;&amp;amp;#103;&amp;amp;#097;&amp;amp;#114;&amp;amp;#119;&amp;amp;#097;&amp;amp;#108;&amp;amp;#106;&amp;amp;#112;&amp;amp;#114;&amp;amp;#064;&amp;amp;#103;&amp;amp;#109;&amp;amp;#097;&amp;amp;#105;&amp;amp;#108;&amp;amp;#046;&amp;amp;#099;&amp;amp;#111;&amp;amp;#109;&#34;&gt;&amp;#121;&amp;#097;&amp;#115;&amp;#104;&amp;#097;&amp;#103;&amp;#097;&amp;#114;&amp;#119;&amp;#097;&amp;#108;&amp;#106;&amp;#112;&amp;#114;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Email: yashagarwaljpr [at] gmail [dot] com&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/theyashagarwal&#34;&gt;Facebook&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/theyashagarwal&#34; target=&#34;_blank&#34;&gt;Facebook&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.twitter.com/theyashagarwal&#34;&gt;Twitter&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.twitter.com/yash__here&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/in/theyashagarwal&#34;&gt;Linkedin&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/in/theyashagarwal&#34; target=&#34;_blank&#34;&gt;Linkedin&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.quora.com/profile/Yash-Agarwal-140&#34;&gt;Quora&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.quora.com/profile/Yash-Agarwal-140&#34; target=&#34;_blank&#34;&gt;Quora&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.github.com/yashhere&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.github.com/yashhere&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Recently I started using &lt;a href=&#34;https://www.goodreads.com/user/show/63354397-yash-agarwal&#34;&gt;GoodReads&lt;/a&gt; also as I am trying to get started with the amazing world of books. Hope I will be able to get good results by this.&lt;/p&gt;
+&lt;p&gt;Recently I started using &lt;a href=&#34;https://www.goodreads.com/user/show/63354397-yash-agarwal&#34; target=&#34;_blank&#34;&gt;GoodReads&lt;/a&gt; also as I am trying to get started with the amazing world of books. Hope I will be able to get good results by this.&lt;/p&gt;
 </description>
     </item>
     

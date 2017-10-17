@@ -5,8 +5,6 @@
     <link>https://yashhere.github.io/tags/github/index.xml</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© Yash Agarwal 2017 - Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
     <atom:link href="https://yashhere.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -21,9 +19,9 @@
 
 &lt;p&gt;In this post, I will list all the process which I used to setup automatic deployment of Hugo generated site to Github user pages using Wercker. In the beginning, I was trying to use Travis-CI, but then I read about Wercker somewhere. I was impressed with the integration of Wercker with Hugo and availability of many its community-generated &amp;ldquo;steps&amp;rdquo; for the build and deploy process.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;Hugo Docs&lt;/a&gt; already has a fantastic &lt;a href=&#34;https://gohugo.io/tutorials/automated-deployments/&#34;&gt;documentation&lt;/a&gt; for setting up Hugo with Wercker, but it is outdated. Many other documentations available on-line are also outdated. Wercker has changed many functionalities in its platform, which made it difficult for me to setup things correctly. But after hours of continuous trial and error, I was able to build and deploy my static files successfully.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34; target=&#34;_blank&#34;&gt;Hugo Docs&lt;/a&gt; already has a fantastic &lt;a href=&#34;https://gohugo.io/tutorials/automated-deployments/&#34; target=&#34;_blank&#34;&gt;documentation&lt;/a&gt; for setting up Hugo with Wercker, but it is outdated. Many other documentations available on-line are also outdated. Wercker has changed many functionalities in its platform, which made it difficult for me to setup things correctly. But after hours of continuous trial and error, I was able to build and deploy my static files successfully.&lt;/p&gt;
 
-&lt;p&gt;Here I would like to share the issues I encountered and the tweaks I’ve made. The source codes of this site can be found &lt;a href=&#34;https://github.com/yash2696/yash2696.github.io&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here I would like to share the issues I encountered and the tweaks I’ve made. The source codes of this site can be found &lt;a href=&#34;https://github.com/yash2696/yash2696.github.io&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;project-pages-or-user-pages&#34;&gt;Project Pages or User Pages&lt;/h3&gt;
 
@@ -60,11 +58,11 @@ git push origin master
 &lt;p&gt;&lt;img src=&#34;https://yashhere.github.io/images/wercker-steps.png&#34; alt=&#34;Wercker Steps&#34; /&gt;
 &lt;strong&gt;Wercker -&amp;gt; Registry -&amp;gt; steps &lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;The first task is to create a &lt;code&gt;wercker.yml&lt;/code&gt; file. It will tell Wercker which all actions, it should perform. Here is my &lt;a href=&#34;https://raw.githubusercontent.com/yash2696/yash2696.github.io/source/wercker.yml&#34;&gt;wercker.yml&lt;/a&gt; for reference. In this, I have used two pipelines, &lt;em&gt;build&lt;/em&gt; and &lt;em&gt;deploy&lt;/em&gt;. Please follow the official docs for the more detailed steps. I will list all the problems which I face while setting up things properly.&lt;/p&gt;
+&lt;p&gt;The first task is to create a &lt;code&gt;wercker.yml&lt;/code&gt; file. It will tell Wercker which all actions, it should perform. Here is my &lt;a href=&#34;https://raw.githubusercontent.com/yash2696/yash2696.github.io/source/wercker.yml&#34; target=&#34;_blank&#34;&gt;wercker.yml&lt;/a&gt; for reference. In this, I have used two pipelines, &lt;em&gt;build&lt;/em&gt; and &lt;em&gt;deploy&lt;/em&gt;. Please follow the official docs for the more detailed steps. I will list all the problems which I face while setting up things properly.&lt;/p&gt;
 
 &lt;h4 id=&#34;build&#34;&gt;Build&lt;/h4&gt;
 
-&lt;p&gt;Following the official guide, I used this &lt;a href=&#34;https://github.com/ArjenSchwarz/wercker-step-hugo-build&#34;&gt;step&lt;/a&gt; to trigger Hugo to build HTML pages. I had already removed git repository information from the theme folder, so this step finished successfully. If you haven&amp;rsquo;t, you may add the following piece of code in your build step.
+&lt;p&gt;Following the official guide, I used this &lt;a href=&#34;https://github.com/ArjenSchwarz/wercker-step-hugo-build&#34; target=&#34;_blank&#34;&gt;step&lt;/a&gt; to trigger Hugo to build HTML pages. I had already removed git repository information from the theme folder, so this step finished successfully. If you haven&amp;rsquo;t, you may add the following piece of code in your build step.
 &lt;pre&gt;
 - script:
         name: install git
@@ -83,7 +81,7 @@ git push origin master
 
 &lt;p&gt;For new interface, even if you add a deploy stage in the &lt;code&gt;wercker.yml&lt;/code&gt;, you will have to create a new pipeline &lt;code&gt;deploy&lt;/code&gt; under the Workflows tab. After creating the pipeline, the &amp;ldquo;YML Pipeline name&amp;rdquo; must be set to the deploy stage name, which in this case is &lt;code&gt;deploy&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;In &lt;code&gt;deploy&lt;/code&gt; stage, I used this &lt;a href=&#34;https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/&#34;&gt;step&lt;/a&gt; to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to set up the environment variable $GIT_TOKEN to each pipeline, acquired from Github setting.&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;deploy&lt;/code&gt; stage, I used this &lt;a href=&#34;https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/&#34; target=&#34;_blank&#34;&gt;step&lt;/a&gt; to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to set up the environment variable $GIT_TOKEN to each pipeline, acquired from Github setting.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://yashhere.github.io/images/wercker-pipeline.png&#34; alt=&#34;Wercker Pipeline&#34; /&gt;
 &lt;br&gt;

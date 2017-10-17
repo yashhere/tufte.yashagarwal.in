@@ -5,8 +5,6 @@
     <link>https://yashhere.github.io/tags/python/index.xml</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© Yash Agarwal 2017 - Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
     <atom:link href="https://yashhere.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -166,7 +164,7 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
     workon
 &lt;/pre&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html&#34;&gt;Full List of virtualenvwrapper commands&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html&#34; target=&#34;_blank&#34;&gt;Full List of virtualenvwrapper commands&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also provides the tab-completion feature which is very handy when you have a lot of projects to work with.&lt;/p&gt;
 

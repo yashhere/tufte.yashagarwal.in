@@ -5,8 +5,6 @@
     <link>https://yashhere.github.io/index.xml</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© Yash Agarwal 2017 - Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
     <lastBuildDate>Tue, 14 Mar 2017 10:30:36 +0000</lastBuildDate>
     <atom:link href="https://yashhere.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -18,9 +16,9 @@
       <guid>https://yashhere.github.io/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</guid>
       <description>&lt;p&gt;Yesterday I installed Arch Linux once again. A clean, bloat free desktop with Budgie Desktop environment with some must have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don&amp;rsquo;t know whether it is a bug in Budgie or just a wrong setting). I also faced the problem of mounting Windows NTFS volumes on user&amp;rsquo;s wish. Arch Linux wiki has details about how to auto mount partitions on start-up, but I had a tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu-like distribution on the mounting of NTFS drives. I got a hint from Arch Linux Wiki about Polkit configuration setting which can be used to allow a standard user to mount partitions. Here is a solution which I searched on various Arch Linux Community pages.&lt;/p&gt;
 
-&lt;p&gt;You will need to install &lt;code&gt;ntfs-3g&lt;/code&gt;, &lt;code&gt;polkit&lt;/code&gt; and &lt;code&gt;udisks2&lt;/code&gt; to use this code. Please refer to &lt;a href=&#34;https://wiki.archlinux.org/index.php/Udisks&#34;&gt;Arch Wiki&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;You will need to install &lt;code&gt;ntfs-3g&lt;/code&gt;, &lt;code&gt;polkit&lt;/code&gt; and &lt;code&gt;udisks2&lt;/code&gt; to use this code. Please refer to &lt;a href=&#34;https://wiki.archlinux.org/index.php/Udisks&#34; target=&#34;_blank&#34;&gt;Arch Wiki&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I think when using Gentoo, you will also need to compile the support for NTFS file system in Kernel also. Please see &lt;a href=&#34;https://wiki.gentoo.org/wiki/NTFS&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I think when using Gentoo, you will also need to compile the support for NTFS file system in Kernel also. Please see &lt;a href=&#34;https://wiki.gentoo.org/wiki/NTFS&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Add the following code to &lt;code&gt;/etc/polkit-1/rules.d/10-udisks2.rules&lt;/code&gt;&lt;/p&gt;
 
@@ -102,9 +100,9 @@ polkit.addRule(function(action, subject) {
 
 &lt;p&gt;In this post, I will list all the process which I used to setup automatic deployment of Hugo generated site to Github user pages using Wercker. In the beginning, I was trying to use Travis-CI, but then I read about Wercker somewhere. I was impressed with the integration of Wercker with Hugo and availability of many its community-generated &amp;ldquo;steps&amp;rdquo; for the build and deploy process.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;Hugo Docs&lt;/a&gt; already has a fantastic &lt;a href=&#34;https://gohugo.io/tutorials/automated-deployments/&#34;&gt;documentation&lt;/a&gt; for setting up Hugo with Wercker, but it is outdated. Many other documentations available on-line are also outdated. Wercker has changed many functionalities in its platform, which made it difficult for me to setup things correctly. But after hours of continuous trial and error, I was able to build and deploy my static files successfully.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34; target=&#34;_blank&#34;&gt;Hugo Docs&lt;/a&gt; already has a fantastic &lt;a href=&#34;https://gohugo.io/tutorials/automated-deployments/&#34; target=&#34;_blank&#34;&gt;documentation&lt;/a&gt; for setting up Hugo with Wercker, but it is outdated. Many other documentations available on-line are also outdated. Wercker has changed many functionalities in its platform, which made it difficult for me to setup things correctly. But after hours of continuous trial and error, I was able to build and deploy my static files successfully.&lt;/p&gt;
 
-&lt;p&gt;Here I would like to share the issues I encountered and the tweaks I’ve made. The source codes of this site can be found &lt;a href=&#34;https://github.com/yash2696/yash2696.github.io&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here I would like to share the issues I encountered and the tweaks I’ve made. The source codes of this site can be found &lt;a href=&#34;https://github.com/yash2696/yash2696.github.io&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;project-pages-or-user-pages&#34;&gt;Project Pages or User Pages&lt;/h3&gt;
 
@@ -141,11 +139,11 @@ git push origin master
 &lt;p&gt;&lt;img src=&#34;https://yashhere.github.io/images/wercker-steps.png&#34; alt=&#34;Wercker Steps&#34; /&gt;
 &lt;strong&gt;Wercker -&amp;gt; Registry -&amp;gt; steps &lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;The first task is to create a &lt;code&gt;wercker.yml&lt;/code&gt; file. It will tell Wercker which all actions, it should perform. Here is my &lt;a href=&#34;https://raw.githubusercontent.com/yash2696/yash2696.github.io/source/wercker.yml&#34;&gt;wercker.yml&lt;/a&gt; for reference. In this, I have used two pipelines, &lt;em&gt;build&lt;/em&gt; and &lt;em&gt;deploy&lt;/em&gt;. Please follow the official docs for the more detailed steps. I will list all the problems which I face while setting up things properly.&lt;/p&gt;
+&lt;p&gt;The first task is to create a &lt;code&gt;wercker.yml&lt;/code&gt; file. It will tell Wercker which all actions, it should perform. Here is my &lt;a href=&#34;https://raw.githubusercontent.com/yash2696/yash2696.github.io/source/wercker.yml&#34; target=&#34;_blank&#34;&gt;wercker.yml&lt;/a&gt; for reference. In this, I have used two pipelines, &lt;em&gt;build&lt;/em&gt; and &lt;em&gt;deploy&lt;/em&gt;. Please follow the official docs for the more detailed steps. I will list all the problems which I face while setting up things properly.&lt;/p&gt;
 
 &lt;h4 id=&#34;build&#34;&gt;Build&lt;/h4&gt;
 
-&lt;p&gt;Following the official guide, I used this &lt;a href=&#34;https://github.com/ArjenSchwarz/wercker-step-hugo-build&#34;&gt;step&lt;/a&gt; to trigger Hugo to build HTML pages. I had already removed git repository information from the theme folder, so this step finished successfully. If you haven&amp;rsquo;t, you may add the following piece of code in your build step.
+&lt;p&gt;Following the official guide, I used this &lt;a href=&#34;https://github.com/ArjenSchwarz/wercker-step-hugo-build&#34; target=&#34;_blank&#34;&gt;step&lt;/a&gt; to trigger Hugo to build HTML pages. I had already removed git repository information from the theme folder, so this step finished successfully. If you haven&amp;rsquo;t, you may add the following piece of code in your build step.
 &lt;pre&gt;
 - script:
         name: install git
@@ -164,7 +162,7 @@ git push origin master
 
 &lt;p&gt;For new interface, even if you add a deploy stage in the &lt;code&gt;wercker.yml&lt;/code&gt;, you will have to create a new pipeline &lt;code&gt;deploy&lt;/code&gt; under the Workflows tab. After creating the pipeline, the &amp;ldquo;YML Pipeline name&amp;rdquo; must be set to the deploy stage name, which in this case is &lt;code&gt;deploy&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;In &lt;code&gt;deploy&lt;/code&gt; stage, I used this &lt;a href=&#34;https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/&#34;&gt;step&lt;/a&gt; to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to set up the environment variable $GIT_TOKEN to each pipeline, acquired from Github setting.&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;deploy&lt;/code&gt; stage, I used this &lt;a href=&#34;https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/&#34; target=&#34;_blank&#34;&gt;step&lt;/a&gt; to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to set up the environment variable $GIT_TOKEN to each pipeline, acquired from Github setting.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://yashhere.github.io/images/wercker-pipeline.png&#34; alt=&#34;Wercker Pipeline&#34; /&gt;
 &lt;br&gt;
@@ -341,7 +339,7 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
     workon
 &lt;/pre&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html&#34;&gt;Full List of virtualenvwrapper commands&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html&#34; target=&#34;_blank&#34;&gt;Full List of virtualenvwrapper commands&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also provides the tab-completion feature which is very handy when you have a lot of projects to work with.&lt;/p&gt;
 
@@ -404,7 +402,7 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
 
 &lt;h3 id=&#34;themes-and-appearance&#34;&gt;Themes and Appearance&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/obconf&#34;&gt;&lt;code&gt;obconf&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/lxappearance-obconf/&#34;&gt;&lt;code&gt;lxappearance-obconf&lt;/code&gt;&lt;/a&gt; can be used to configure appearance and theme of openbox session. There are quite a few themes available in &lt;a href=&#34;https://www.archlinux.org/packages/community/any/openbox-themes/&#34;&gt;&lt;code&gt;openbox-themes&lt;/code&gt;&lt;/a&gt; package. My personal favorite is &lt;a href=&#34;https://www.archlinux.org/packages/community/any/numix-themes/&#34;&gt;&lt;code&gt;Numix-themes&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://aur.archlinux.org/packages/numix-icon-theme-git/&#34;&gt;&lt;code&gt;Numix-icon-theme-git (AUR)&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/obconf&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obconf&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/lxappearance-obconf/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;lxappearance-obconf&lt;/code&gt;&lt;/a&gt; can be used to configure appearance and theme of openbox session. There are quite a few themes available in &lt;a href=&#34;https://www.archlinux.org/packages/community/any/openbox-themes/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;openbox-themes&lt;/code&gt;&lt;/a&gt; package. My personal favorite is &lt;a href=&#34;https://www.archlinux.org/packages/community/any/numix-themes/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;Numix-themes&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://aur.archlinux.org/packages/numix-icon-theme-git/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;Numix-icon-theme-git (AUR)&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;In order to see changes after editing a configuration file, open box needs to be refreshed. This can be done with the reconfigure command.&lt;/p&gt;
 
@@ -418,19 +416,19 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
 
 &lt;p&gt;Static menus are hard code in XML and is stored in menu.xml file. Whenever you install a new application, you will have to manually update the XML file to update the menu. This is a viable solution if the applications are bot installed on a day to day basis.&lt;/p&gt;
 
-&lt;p&gt;Pipe menus are the sections of openbox menu which openbox creates on the fly, by running a generic script and using its plain text output as menu entries. This scheme can used in different ways like adding a mail checker in the menu, or adding a weather forecast menu. You can check &lt;a href=&#34;http://openbox.org/wiki/Openbox:Pipemenus&#34;&gt;openbox pipe menu page&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;p&gt;Pipe menus are the sections of openbox menu which openbox creates on the fly, by running a generic script and using its plain text output as menu entries. This scheme can used in different ways like adding a mail checker in the menu, or adding a weather forecast menu. You can check &lt;a href=&#34;http://openbox.org/wiki/Openbox:Pipemenus&#34; target=&#34;_blank&#34;&gt;openbox pipe menu page&lt;/a&gt; for more information.&lt;/p&gt;
 
 &lt;p&gt;Generators are the most convenient type of menus. These can be found in most desktop environments where applications show up in the menu automatically. If applications are being installed on a regular basis, then this will probably be the preferred choice.&lt;/p&gt;
 
 &lt;h5 id=&#34;static-menus&#34;&gt;Static Menus&lt;/h5&gt;
 
-&lt;p&gt;The process of making these menus can be automated by static menu generator like &lt;a href=&#34;https://www.archlinux.org/packages/?name=obmenu&#34;&gt;&lt;code&gt;obmenu&lt;/code&gt;&lt;/a&gt;. It will generate static menus from installed applications by looking into certain directories. Others available tools are &lt;a href=&#34;https://www.archlinux.org/packages/?name=menumaker&#34;&gt;&lt;code&gt;menumaker&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;https://www.archlinux.org/packages/?name=obmenu&#34;&gt;&lt;code&gt;obmenu&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/?name=archlinux-xdg-menu&#34;&gt;&lt;code&gt;xdg-menu&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The process of making these menus can be automated by static menu generator like &lt;a href=&#34;https://www.archlinux.org/packages/?name=obmenu&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obmenu&lt;/code&gt;&lt;/a&gt;. It will generate static menus from installed applications by looking into certain directories. Others available tools are &lt;a href=&#34;https://www.archlinux.org/packages/?name=menumaker&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;menumaker&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;https://www.archlinux.org/packages/?name=obmenu&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obmenu&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/?name=archlinux-xdg-menu&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;xdg-menu&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h5 id=&#34;dynamic-menus&#34;&gt;Dynamic Menus&lt;/h5&gt;
 
-&lt;p&gt;Dynamic menus give the same kind of functionality most people are used to. So it was my preferred choice. They can be used to generate full, complex menus on the fly. One of the most popular application for generating dynamic menus is &lt;a href=&#34;https://aur.archlinux.org/packages/obmenu-generator/&#34;&gt;&lt;code&gt;obmenu-generator (AUR)&lt;/code&gt;&lt;/a&gt;. Though it is not officially connected to openbox but it is widely used.&lt;/p&gt;
+&lt;p&gt;Dynamic menus give the same kind of functionality most people are used to. So it was my preferred choice. They can be used to generate full, complex menus on the fly. One of the most popular application for generating dynamic menus is &lt;a href=&#34;https://aur.archlinux.org/packages/obmenu-generator/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obmenu-generator (AUR)&lt;/code&gt;&lt;/a&gt;. Though it is not officially connected to openbox but it is widely used.&lt;/p&gt;
 
-&lt;p&gt;In order to have &lt;a href=&#34;https://aur.archlinux.org/packages/obmenu-generator/&#34;&gt;&lt;code&gt;obmenu-generator (AUR)&lt;/code&gt;&lt;/a&gt; make a menu on demand, the &lt;code&gt;menu.xml&lt;/code&gt; file should contain the following code as the only entry.&lt;/p&gt;
+&lt;p&gt;In order to have &lt;a href=&#34;https://aur.archlinux.org/packages/obmenu-generator/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obmenu-generator (AUR)&lt;/code&gt;&lt;/a&gt; make a menu on demand, the &lt;code&gt;menu.xml&lt;/code&gt; file should contain the following code as the only entry.&lt;/p&gt;
 
 &lt;pre&gt;&amp;lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&amp;gt;
 &amp;lt;openbox_menu&amp;gt;
@@ -443,13 +441,13 @@ If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code
 
 &lt;h3 id=&#34;panels-and-taskbars&#34;&gt;Panels and Taskbars&lt;/h3&gt;
 
-&lt;p&gt;You can get any panel like &lt;a href=&#34;https://www.archlinux.org/packages/extra/i686/xfce4-panel/&#34;&gt;&lt;code&gt;xfce4-panel&lt;/code&gt;&lt;/a&gt; or the simple and customizable &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt;. I chose &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; because it very closely follows the openbox spirit of having easy customization with plain configuration files. &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; package also containg a graphical tool &lt;code&gt;tint2conf&lt;/code&gt; for customizing panel and you can obviously go right to the tint2 configuration file and edit it there. This also means it is easy to pick up your configuration file and move it to another computer, or restore an old configuration since it is as simple as pasting a text document in the right place. &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; can also have sections for each individual desktop and has various small widget like programs that can be used with it such as a calendar, &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/gsimplecal/&#34;&gt;&lt;code&gt;gsimplecal&lt;/code&gt;&lt;/a&gt;, a volume application, &lt;a href=&#34;https://www.archlinux.org/packages/?name=volumeicon&#34;&gt;&lt;code&gt;volumeicon&lt;/code&gt;&lt;/a&gt;, a battery indicator, &lt;a href=&#34;https://www.archlinux.org/packages/?name=cbatticon&#34;&gt;&lt;code&gt;cbatticon&lt;/code&gt;&lt;/a&gt;, a network indicator like &lt;a href=&#34;https://www.archlinux.org/packages/extra/any/wicd/&#34;&gt;&lt;code&gt;wicd&lt;/code&gt;&lt;/a&gt; which also have a system tray icon and a mini task tray. To start &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; with openbox, you need to add &lt;code&gt;tint2 &amp;amp;&lt;/code&gt; to the &lt;code&gt;autostart&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;You can get any panel like &lt;a href=&#34;https://www.archlinux.org/packages/extra/i686/xfce4-panel/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;xfce4-panel&lt;/code&gt;&lt;/a&gt; or the simple and customizable &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt;. I chose &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; because it very closely follows the openbox spirit of having easy customization with plain configuration files. &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; package also containg a graphical tool &lt;code&gt;tint2conf&lt;/code&gt; for customizing panel and you can obviously go right to the tint2 configuration file and edit it there. This also means it is easy to pick up your configuration file and move it to another computer, or restore an old configuration since it is as simple as pasting a text document in the right place. &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; can also have sections for each individual desktop and has various small widget like programs that can be used with it such as a calendar, &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/gsimplecal/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;gsimplecal&lt;/code&gt;&lt;/a&gt;, a volume application, &lt;a href=&#34;https://www.archlinux.org/packages/?name=volumeicon&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;volumeicon&lt;/code&gt;&lt;/a&gt;, a battery indicator, &lt;a href=&#34;https://www.archlinux.org/packages/?name=cbatticon&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;cbatticon&lt;/code&gt;&lt;/a&gt;, a network indicator like &lt;a href=&#34;https://www.archlinux.org/packages/extra/any/wicd/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;wicd&lt;/code&gt;&lt;/a&gt; which also have a system tray icon and a mini task tray. To start &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; with openbox, you need to add &lt;code&gt;tint2 &amp;amp;&lt;/code&gt; to the &lt;code&gt;autostart&lt;/code&gt; file.&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h3 id=&#34;file-manager&#34;&gt;File Manager&lt;/h3&gt;
 
-&lt;p&gt;Some file managers deeply integrate into desktop environments and when installed with openbox, they end up pulling multiple dependencies which is certainly not desired. Our aim behind building openbox setup was to have minimum dependencies so that we can get lightweight desktop. However, there are several file managers available which fit into openbox very well. In my choice, &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; is the best choice here. &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; is a lightweight and fast file manager with network and thrash support. &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; can also manage desktop icons and wallpaper setting, although if you plan to use conky in your system, then you may not want &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; to manage desktop for you. The reason is that &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; treats desktop as a window, so when you switch to desktop, the conky hides behind the desktop window. To get the icons and wallpaper, you can use other standalone tools such as &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/idesk/&#34;&gt;&lt;code&gt;idesk&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/extra/x86_64/feh/&#34;&gt;&lt;code&gt;feh&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://www.archlinux.org/packages/extra/x86_64/nitrogen/&#34;&gt;&lt;code&gt;nitrogen&lt;/code&gt;&lt;/a&gt;.
+&lt;p&gt;Some file managers deeply integrate into desktop environments and when installed with openbox, they end up pulling multiple dependencies which is certainly not desired. Our aim behind building openbox setup was to have minimum dependencies so that we can get lightweight desktop. However, there are several file managers available which fit into openbox very well. In my choice, &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; is the best choice here. &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; is a lightweight and fast file manager with network and thrash support. &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; can also manage desktop icons and wallpaper setting, although if you plan to use conky in your system, then you may not want &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; to manage desktop for you. The reason is that &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; treats desktop as a window, so when you switch to desktop, the conky hides behind the desktop window. To get the icons and wallpaper, you can use other standalone tools such as &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/idesk/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;idesk&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/extra/x86_64/feh/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;feh&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://www.archlinux.org/packages/extra/x86_64/nitrogen/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;nitrogen&lt;/code&gt;&lt;/a&gt;.
 To start pcmanfm is desktop mode, add the following to the autostart file&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;pcmanfm &amp;ndash;desktop &amp;amp;&lt;/code&gt;&lt;/p&gt;
@@ -458,13 +456,13 @@ To start pcmanfm is desktop mode, add the following to the autostart file&lt;/p&
 
 &lt;p&gt;&lt;code&gt;pcmanfm &amp;ndash;desktop-off &amp;amp;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;In order to use many of the functions that are in file managers it is necessary to have a a few additional programs. &lt;a href=&#34;https://www.archlinux.org/packages/?name=gvfs&#34;&gt;&lt;code&gt;gvfs&lt;/code&gt;&lt;/a&gt; gives you the ability to mount volumes and have trash control. It is not mandatory to have, but it allows on demand mounting to be done completely within the file manager, as opposed to having to drop down to the command line. A volume manager such as &lt;a href=&#34;https://www.archlinux.org/packages/?name=udisks2&#34;&gt;&lt;code&gt;udisks2&lt;/code&gt;&lt;/a&gt; will also be wanted, and for auto-mounting removable disks, &lt;a href=&#34;https://www.archlinux.org/packages/community/any/udiskie/&#34;&gt;&lt;code&gt;udiskie&lt;/code&gt;&lt;/a&gt; works well with openbox. &lt;a href=&#34;https://www.archlinux.org/packages/community/any/udiskie/&#34;&gt;&lt;code&gt;udiskie&lt;/code&gt;&lt;/a&gt; can be added to openbox’s autostart file like any other application.&lt;/p&gt;
+&lt;p&gt;In order to use many of the functions that are in file managers it is necessary to have a a few additional programs. &lt;a href=&#34;https://www.archlinux.org/packages/?name=gvfs&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;gvfs&lt;/code&gt;&lt;/a&gt; gives you the ability to mount volumes and have trash control. It is not mandatory to have, but it allows on demand mounting to be done completely within the file manager, as opposed to having to drop down to the command line. A volume manager such as &lt;a href=&#34;https://www.archlinux.org/packages/?name=udisks2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;udisks2&lt;/code&gt;&lt;/a&gt; will also be wanted, and for auto-mounting removable disks, &lt;a href=&#34;https://www.archlinux.org/packages/community/any/udiskie/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;udiskie&lt;/code&gt;&lt;/a&gt; works well with openbox. &lt;a href=&#34;https://www.archlinux.org/packages/community/any/udiskie/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;udiskie&lt;/code&gt;&lt;/a&gt; can be added to openbox’s autostart file like any other application.&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;h3 id=&#34;composition&#34;&gt;Composition&lt;/h3&gt;
 
-&lt;p&gt;Openbox does not provide native support for composition, although having a compositor may prevent screen flickering and other distorting with applications like &lt;a href=&#34;https://www.archlinux.org/packages/community/any/oblogout/&#34;&gt;&lt;code&gt;oblogout&lt;/code&gt;&lt;/a&gt;. There are some options which work great with openbox. The one which I am using and quite happy with, is &lt;a href=&#34;https://wiki.archlinux.org/index.php/Compton&#34;&gt;&lt;code&gt;compton&lt;/code&gt;&lt;/a&gt;. It can be used with or without any initial configuration, although there are lot of different configuration options if you decide to customize the setup. To start &lt;a href=&#34;https://wiki.archlinux.org/index.php/Compton&#34;&gt;&lt;code&gt;compton&lt;/code&gt;&lt;/a&gt; in background with shadows, use this in &lt;code&gt;autostart&lt;/code&gt; file.
+&lt;p&gt;Openbox does not provide native support for composition, although having a compositor may prevent screen flickering and other distorting with applications like &lt;a href=&#34;https://www.archlinux.org/packages/community/any/oblogout/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;oblogout&lt;/code&gt;&lt;/a&gt;. There are some options which work great with openbox. The one which I am using and quite happy with, is &lt;a href=&#34;https://wiki.archlinux.org/index.php/Compton&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;compton&lt;/code&gt;&lt;/a&gt;. It can be used with or without any initial configuration, although there are lot of different configuration options if you decide to customize the setup. To start &lt;a href=&#34;https://wiki.archlinux.org/index.php/Compton&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;compton&lt;/code&gt;&lt;/a&gt; in background with shadows, use this in &lt;code&gt;autostart&lt;/code&gt; file.
 &lt;code&gt;compton -b -c &amp;amp;&lt;/code&gt;.&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -480,7 +478,7 @@ To start pcmanfm is desktop mode, add the following to the autostart file&lt;/p&
 &lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/&#34;&gt;Arch Linux Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/&#34; target=&#34;_blank&#34;&gt;Arch Linux Wiki&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -517,8 +515,7 @@ To start pcmanfm is desktop mode, add the following to the autostart file&lt;/p&
 
 &lt;p&gt;Here is my Settings &amp;#8211; User file. Feel free to take insiparation from it, and make your Sublime Text Experience unmatchable. I have commented every setting which is self-understandable.&lt;/p&gt;
 
-&lt;script src=&#34;https://gist.github.com/dea6728f88865666c20ff1c35e90bd0e.js&#34;&gt;&lt;/script&gt;
-
+&lt;script src=&#34;//gist.github.com/dea6728f88865666c20ff1c35e90bd0e/.js&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;
 
@@ -647,32 +644,47 @@ To start pcmanfm is desktop mode, add the following to the autostart file&lt;/p&
 &lt;p&gt;Hi there,&lt;br&gt;
 I am Yash Agarwal(यश अग्रवाल, &lt;a href=&#34;https://www.youtube.com/watch?v=mzJVVcVVbA4&#34; target=&#34;_blank&#34;&gt;y-uh-sh&lt;/a&gt;). I am currently studying Computer Science and Engineering at NIT Calicut, India. I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything remotely related to the tech.&lt;/p&gt;
 
-&lt;p&gt;&lt;img style=&#34;width: 200px; height: 200px; border-radius: 2%; float: right;&#34; src=&#34;https://yashhere.github.io/images/yash.jpg&#34;&gt;&lt;/p&gt;
+&lt;!-- &lt;img style=&#34;width: 200px; height: 200px; border-radius: 2%; float: right;&#34; src=&#34;https://yashhere.github.io/images/yash.jpg&#34;&gt;
 
-&lt;p&gt;People say that I don&amp;rsquo;t smile much. That&amp;rsquo;s somewhat true. I am not a camera friendly person. I have very few photos where I am smiling. So I chose that picture to display here.&lt;/p&gt;
+People say that I don&#39;t smile much. That&#39;s somewhat true. I am not a camera friendly person. I have very few photos where I am smiling. So I chose that picture to display here. --&gt;
 
 &lt;p&gt;In my &amp;ldquo;spare time&amp;rdquo;, I like walking alone, in random thoughts and reading Quora. I don&amp;rsquo;t have many friends cause I believe that I am very bad in judging people (for me, Prevention is better than Cure).&lt;/p&gt;
 
-&lt;p&gt;My current operating system is Arch Linux on with Budgie Desktop and some custom scripts to manage various aspects that Budgie Desktop doesn&amp;rsquo;t offer yet, e.g. a lock screen.&lt;/p&gt;
+&lt;p&gt;My current operating system is Arch Linux with Gnome Desktop.&lt;/p&gt;
 
 &lt;p&gt;&lt;br&gt;
 You can find me at:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Email: &lt;a href=&#34;mailto:&#34; title=&#34;&amp;amp;#121;&amp;amp;#097;&amp;amp;#115;&amp;amp;#104;&amp;amp;#097;&amp;amp;#103;&amp;amp;#097;&amp;amp;#114;&amp;amp;#119;&amp;amp;#097;&amp;amp;#108;&amp;amp;#106;&amp;amp;#112;&amp;amp;#114;&amp;amp;#064;&amp;amp;#103;&amp;amp;#109;&amp;amp;#097;&amp;amp;#105;&amp;amp;#108;&amp;amp;#046;&amp;amp;#099;&amp;amp;#111;&amp;amp;#109;&#34;&gt;&amp;#121;&amp;#097;&amp;#115;&amp;#104;&amp;#097;&amp;#103;&amp;#097;&amp;#114;&amp;#119;&amp;#097;&amp;#108;&amp;#106;&amp;#112;&amp;#114;&amp;#064;&amp;#103;&amp;#109;&amp;#097;&amp;#105;&amp;#108;&amp;#046;&amp;#099;&amp;#111;&amp;#109;&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Email: yashagarwaljpr [at] gmail [dot] com&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/theyashagarwal&#34;&gt;Facebook&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/theyashagarwal&#34; target=&#34;_blank&#34;&gt;Facebook&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.twitter.com/theyashagarwal&#34;&gt;Twitter&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.twitter.com/yash__here&#34; target=&#34;_blank&#34;&gt;Twitter&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/in/theyashagarwal&#34;&gt;Linkedin&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.linkedin.com/in/theyashagarwal&#34; target=&#34;_blank&#34;&gt;Linkedin&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.quora.com/profile/Yash-Agarwal-140&#34;&gt;Quora&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.quora.com/profile/Yash-Agarwal-140&#34; target=&#34;_blank&#34;&gt;Quora&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.github.com/yashhere&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.github.com/yashhere&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Recently I started using &lt;a href=&#34;https://www.goodreads.com/user/show/63354397-yash-agarwal&#34;&gt;GoodReads&lt;/a&gt; also as I am trying to get started with the amazing world of books. Hope I will be able to get good results by this.&lt;/p&gt;
+&lt;p&gt;Recently I started using &lt;a href=&#34;https://www.goodreads.com/user/show/63354397-yash-agarwal&#34; target=&#34;_blank&#34;&gt;GoodReads&lt;/a&gt; also as I am trying to get started with the amazing world of books. Hope I will be able to get good results by this.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://yashhere.github.io/_index/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/_index/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;श्रूयतां धर्मसर्वस्वं श्रुत्वा चाप्यवधार्यताम्।&lt;br&gt;
+आत्मनः प्रतिकूलानि परेषां न समाचरेत्।।&lt;br/&gt;
+If the entire Dharma can be said in a few words, then it is — that which is unfavorable to us, do not do that to others.&lt;br&gt;
+—  Padmapuraana, shrushti 19/357–358&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
