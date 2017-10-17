@@ -4,18 +4,22 @@
 <head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='You might have tried many linux easters eggs for fun, but you are going to love this hack which makes sudo insult you. Confused what I am talking about? Here, take a look at this gif to get a idea of how sudo can insult you for typing in the incorrect password. Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with linux, and anyway this is way better than the plain &#8220;You entered a wrong password&#8221; error message.'>
+<meta name='description' content='When viewing Hindi content any browser in Arch Linux, the rendering looks weird.
+Doesn&rsquo;t look good right! I&rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix. The appropriate package for installing Indic Language support is ttf-indic-otf.
+Now go to /usr/share/fonts/TTF and and take the backup of two fonts FreeSans.ttf and FreeSerif.ttf. Now delete these two fonts from the directory.'>
 
-<meta property='og:title' content='Wanna get insulted by sudo • /dev/yash/notes'>
-<meta property='og:description' content='You might have tried many linux easters eggs for fun, but you are going to love this hack which makes sudo insult you. Confused what I am talking about? Here, take a look at this gif to get a idea of how sudo can insult you for typing in the incorrect password. Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with linux, and anyway this is way better than the plain &#8220;You entered a wrong password&#8221; error message.'>
-<meta property='og:url' content='https://yashhere.github.io/posts/2016/04/wanna-get-insulted-by-sudo/'>
+<meta property='og:title' content='Fixing Hindi Fonts in Arch Linux • /dev/yash/notes'>
+<meta property='og:description' content='When viewing Hindi content any browser in Arch Linux, the rendering looks weird.
+Doesn&rsquo;t look good right! I&rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix. The appropriate package for installing Indic Language support is ttf-indic-otf.
+Now go to /usr/share/fonts/TTF and and take the backup of two fonts FreeSans.ttf and FreeSerif.ttf. Now delete these two fonts from the directory.'>
+<meta property='og:url' content='https://yashhere.github.io/posts/2017/10/fixing-hindi-fonts-in-arch-linux/'>
 <meta property='og:site_name' content='/dev/yash/notes'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Linux'><meta property='article:tag' content='sudo'><meta property='article:tag' content='easter-egg'><meta property='article:tag' content='fun'><meta property='article:published_time' content='2016-04-03T12:20:36Z'/><meta property='article:modified_time' content='2016-04-03T12:20:36Z'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2017-10-17T21:55:53&#43;05:30'/><meta property='article:modified_time' content='2017-10-17T21:55:53&#43;05:30'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.31-DEV" />
 
-  <title>Wanna get insulted by sudo • /dev/yash/notes</title>
-  <link rel='canonical' href='https://yashhere.github.io/posts/2016/04/wanna-get-insulted-by-sudo/'>
+  <title>Fixing Hindi Fonts in Arch Linux • /dev/yash/notes</title>
+  <link rel='canonical' href='https://yashhere.github.io/posts/2017/10/fixing-hindi-fonts-in-arch-linux/'>
   
   
   <link rel='icon' href='https://yashhere.github.io/favicon.ico'>
@@ -61,7 +65,7 @@
     <header class='header-container'>
   <div class='header entry-header'>
     <div class='header-info'>
-      <h1 class='title'>Wanna get insulted by sudo</h1>
+      <h1 class='title'>Fixing Hindi Fonts in Arch Linux</h1>
       
 
     </div>
@@ -76,7 +80,7 @@
   
 </svg>
 <span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2016-04-03T12:20:36Z'>Apr 03, 2016</time>
+  <time class='date' datetime='2017-10-17T21:55:53&#43;05:30'>Oct 17, 2017</time>
 </span>
 
   
@@ -87,7 +91,7 @@
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-2 mins read
+One min read
 </span>
 
 
@@ -101,45 +105,19 @@
     
 
     <div class='entry-content'>
-  
+  <p>When viewing Hindi content any browser in Arch Linux, the rendering looks weird.</p>
 
-<p style="text-align: left;">
-  You might have tried many linux easters eggs for fun, but you are going to love this hack which makes sudo insult you.
-</p>
+<p><img src="https://yashhere.github.io/images/before.png" alt="https://hi.wikipedia.org/s/2lu5" /></p>
 
-<p style="text-align: left;">
-  Confused what I am talking about? Here, take a look at this gif to get a idea of how sudo can insult you for typing in the incorrect password.
-</p>
+<p>Doesn&rsquo;t look good right! I&rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix. The appropriate package for installing Indic Language support is <code>ttf-indic-otf</code>.</p>
 
-<p><img src="https://yashhere.github.io/images/insult.gif" alt="Terminal Shot" /></p>
+<p>Now go to <code>/usr/share/fonts/TTF</code> and and take the backup of two fonts <code>FreeSans.ttf</code> and <code>FreeSerif.ttf</code>. Now delete these two fonts from the directory. Restart the browser and see the difference.</p>
 
-<p style="text-align: left;">
-  Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with linux, and anyway this is way better than the plain &#8220;You entered a wrong password&#8221; error message. So let&#8217;s learn how to do this.
-</p>
+<p><img src="https://yashhere.github.io/images/after.png" alt="https://hi.wikipedia.org/s/2lu5" /></p>
 
-<h3 id="enable-insults-in-sudo-strong">Enable insults in sudo</strong></h3>
+<p>This bug is reported in <a href="https://bugs.launchpad.net/ubuntu/+source/chromium-browser/+bug/856736" target="_blank">this</a> bug report in 2011. I don&rsquo;t know why nobody has fixed it yet. Or maybe I was not able to find the proper solution. This workaround is also given in same bug report.</p>
 
-<p>You can enable the insults feature in sudo by modifying the sudo configuration file. To open the sudo configuration file, launch a terminal and type the following command</p>
-
-<p><code>sudo visudo</code></p>
-
-<p>It will open /etc/sudoers configuration file in the terminal, in vim text editor if you have configured it as your default editor. In ubuntu like distros, it will be opened in nano. Now you will have to find the section where the defaults are listed. Most probably you will find it at the top. Now find the line that starts with <strong><em>Defaults</em></strong> and append <strong><em>insults</em></strong> to the end of the line (any addition to the line is comma seperated). If this line is not present then add following line to the section</p>
-
-<p><code>Defaults insults</code></p>
-
-<p>(Always use visudo as it has a self-check system which will save you from messing up things)</p>
-
-<p>Now save the file. If you are using vim then use Ctrl+X to save the file and quit the editor and if you are using nano then use Ctrl+X to quit the editor. At the time of quitting, it will ask you if you want to save the changes. To save the changes, press Y.</p>
-
-<p>&nbsp;</p>
-
-<p><img src="https://yashhere.github.io/images/sudoers.png" alt="Sample Sudoers File" /></p>
-
-<p>Once you have saved the file, go to terminal and type the following command to clear the old password from sudo memory</p>
-
-<p><code>sudo -k</code></p>
-
-<p>That&#8217;s all. Use any command with sudo. Deliberately type wrong password and enjoy abusing&#8230;</p>
+<p>Hope this helps. :)</p>
 
 </div>
 
@@ -153,16 +131,7 @@
   
 </svg>
 </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashhere.github.io/categories/linux'>Linux</a>, <a class='category' href='https://yashhere.github.io/categories/hacks'>Hacks</a></div>
-<div class='tags'>
-  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
-  <line x1="7" y1="7" x2="7" y2="7"/>
-  
-</svg>
-</span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashhere.github.io/tags/linux'>Linux</a>, <a class='tag' href='https://yashhere.github.io/tags/sudo'>Sudo</a>, <a class='tag' href='https://yashhere.github.io/tags/easter-egg'>Easter-egg</a>, <a class='tag' href='https://yashhere.github.io/tags/fun'>Fun</a></div>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashhere.github.io/categories/arch-linux'>Arch Linux</a></div>
 
   </div>
 </footer>
@@ -171,16 +140,16 @@
   </article>
   
 <nav class='entry-nav-container'>
-  <div class='entry-nav'><div class='next-entry'>
-      <a href='https://yashhere.github.io/posts/2016/04/searching-the-goal/'>
-        <span class='screen-reader'>Next post: </span>Searching the goal<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='https://yashhere.github.io/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
-  <line x1="4" y1="12" x2="20" y2="12"/>
-  <polyline points="14 6 20 12 14 18"/>
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
   
 </svg>
-</span>
-      </a>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Mounting NTFS partitions on Arch Linux</a>
     </div></div>
 </nav>
 

@@ -5,10 +5,21 @@
     <link>https://yashhere.github.io/posts/</link>
     <description>Recent content in Posts on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 14 Mar 2017 10:30:36 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Oct 2017 21:55:53 +0530</lastBuildDate>
     
 	<atom:link href="https://yashhere.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fixing Hindi Fonts in Arch Linux</title>
+      <link>https://yashhere.github.io/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</link>
+      <pubDate>Tue, 17 Oct 2017 21:55:53 +0530</pubDate>
+      
+      <guid>https://yashhere.github.io/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</guid>
+      <description>When viewing Hindi content any browser in Arch Linux, the rendering looks weird.
+Doesn&amp;rsquo;t look good right! I&amp;rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix. The appropriate package for installing Indic Language support is ttf-indic-otf.
+Now go to /usr/share/fonts/TTF and and take the backup of two fonts FreeSans.ttf and FreeSerif.ttf. Now delete these two fonts from the directory.</description>
+    </item>
     
     <item>
       <title>Mounting NTFS partitions on Arch Linux</title>
