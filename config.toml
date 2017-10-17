@@ -1,29 +1,90 @@
-languageCode = "en-us"
+baseURL = "https://yashhere.github.io"
 title = "/dev/yash/notes"
-baseurl = "https://yashhere.github.io"
-theme = "liquorice"
+theme = "minimo"
+copyright = "Creative Commons Attribution-ShareAlike 4.0 International License"
+disqusShortname = "theyashagarwal"
 canonifyurls = true
-pygmentsStyle = "native"
 enableEmoji=true
 
-[Params]
-	Author = "Yash Agarwal"
-	copyright = "© Yash Agarwal 2017 - Creative Commons Attribution-ShareAlike 4.0 International License"
-	gaCode = "UA-75475356-2"
-	disqusShortname = "theyashagarwal"
+Paginate = 7
+preserveTaxonomyNames = true
 
-[indexes]
-  category = "categories"
-  tag = "tags"
+enableRobotsTXT = true
+
+# Syntax Highlighting ( https://gohugo.io/content-management/syntax-highlighting/ )
+pygmentsCodefences = true
+
+# Missing translations will default to this content language
+defaultContentLanguage = "en"
+
+[params.info]
+description = "Minimalist theme for Hugo"
+title404 = "Nothing's here!"
+
+[params.assets]
+favicon = "favicon.ico"
+customCSS = ["css/custom.css"]
+customJS = ["js/custom.js"]
+gopher = "" # used in 404 template ( Generator: https://gopherize.me )
+
+[params.copyright]
+# prefix = "© Yash Agarwal 2017 - Creative Commons Attribution-ShareAlike 4.0 International License"
+holder = "Yash Agarwal"
+startYear = "2015"
+suffix = " - Creative Commons Attribution-ShareAlike 4.0 International License"
+
+[params.settings]
+# date & time format: https://golang.org/pkg/time/
+dateFormat = "Jan 02, 2006"
+listDateFormat = "Jan 02, 2006"
+# hideEntryNavigation = ["page"] # boolean / array of sections
+hideSocialMenu = false
+showReadingTime = true
+
+[params.seo]
+# Title Separator: - – — · • * ⋆ | ~ « » < >
+titleSeparator = "•"
+
+[params.social]
+email = "yashagarwaljpr@gmail.com"
+facebook = "profile.php?id=100001324105675"
+github = "yashhere"
+instagram = "yum_yash"
+linkedin = "theyashagarwal"
+twitter = "yash__here"
+
+[params.social.config]
+platforms = ["github","facebook","twitter","instagram","email","codepen","linkedin"]
+
+[taxonomies]
+author = "authors"
+category = "categories"
+tag = "tags"
+
+[[menu.main]]
+  name = "Home"
+  identifier = "home"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  name = "Posts"
+  identifier = "posts"
+  url = "/posts"
+
+[[menu.main]]
+  name = "About"
+  url = "/about"
+
+[blackfriday]
+hrefTargetBlank = true
 
 [permalinks]
   posts = "/posts/:year/:month/:slug/"
   page = "/:title/"
-  
-[[menu.main]]
-  name = "Posts"
-  url = "/posts"
-[[menu.main]]
-  name = "About"
-  url = "/about"
-  weight = 100
+
+[languages]
+[languages.en]
+lang = "en"
+languageName = "English"
+weight = 1
