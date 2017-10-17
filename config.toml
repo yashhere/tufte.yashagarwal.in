@@ -18,7 +18,7 @@ pygmentsCodefences = true
 defaultContentLanguage = "en"
 
 [params.info]
-description = "Minimalist theme for Hugo"
+description = "The directory of my thoughts"
 title404 = "Nothing's here!"
 
 [params.assets]
