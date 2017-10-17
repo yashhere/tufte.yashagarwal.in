@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on /dev/yash/notes</title>
+    <link>https://yashhere.github.io/tags/</link>
+    <description>Recent content in Tags on /dev/yash/notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 11 Jun 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://yashhere.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Desktop-environment</title>
+      <link>https://yashhere.github.io/tags/desktop-environment/</link>
+      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/desktop-environment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development</title>
+      <link>https://yashhere.github.io/tags/development/</link>
+      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Easter-egg</title>
+      <link>https://yashhere.github.io/tags/easter-egg/</link>
+      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/easter-egg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fun</title>
+      <link>https://yashhere.github.io/tags/fun/</link>
+      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/fun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gh-pages</title>
+      <link>https://yashhere.github.io/tags/gh-pages/</link>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/gh-pages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Github</title>
+      <link>https://yashhere.github.io/tags/github/</link>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://yashhere.github.io/tags/hugo/</link>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://yashhere.github.io/tags/linux/</link>
+      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Operating system</title>
+      <link>https://yashhere.github.io/tags/operating-system/</link>
+      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/operating-system/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pip</title>
+      <link>https://yashhere.github.io/tags/pip/</link>
+      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/pip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://yashhere.github.io/tags/python/</link>
+      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sudo</title>
+      <link>https://yashhere.github.io/tags/sudo/</link>
+      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/sudo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wercker</title>
+      <link>https://yashhere.github.io/tags/wercker/</link>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/wercker/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

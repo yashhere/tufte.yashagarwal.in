@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>/dev/yash/notes</title>
-    <link>https://yashhere.github.io/categories/python/index.xml</link>
-    <description>Recent content on /dev/yash/notes</description>
+    <title>Python on /dev/yash/notes</title>
+    <link>https://yashhere.github.io/categories/python/</link>
+    <description>Recent content in Python on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <atom:link href="https://yashhere.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Oct 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://yashhere.github.io/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Setting up Python Development Environments</title>
@@ -13,163 +16,8 @@
       <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>https://yashhere.github.io/posts/2016/10/setting-up-python-development-environments/</guid>
-      <description>
-
-&lt;p&gt;Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?&lt;/p&gt;
-
-&lt;p&gt;As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the Internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.&lt;/p&gt;
-
-&lt;p&gt;Python uses &lt;code&gt;pip&lt;/code&gt; for package management.&lt;/p&gt;
-
-&lt;h3 id=&#34;installing-pip&#34;&gt;Installing pip&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;pip&lt;/code&gt; depends on setuptools library, which is in official Ubuntu repositories. To install it for python2:
-&lt;pre&gt;
-    sudo apt-get install python-setuptools
-&lt;/pre&gt;
-Then install &lt;code&gt;pip&lt;/code&gt; using
-&lt;pre&gt;
-    sudo apt-get install python-pip
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;and for python3
-&lt;pre&gt;
-    sudo apt-get install python3-setuptools
-&lt;/pre&gt;
-Then install &lt;code&gt;pip&lt;/code&gt; using
-&lt;pre&gt;
-    sudo apt-get install python3-pip
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;It should install &lt;code&gt;pip&lt;/code&gt; on your system for both python versions. &lt;code&gt;pip&lt;/code&gt; is very easy to use. It will take care of every single package you may require for your project.&lt;/p&gt;
-
-&lt;h4 id=&#34;installing-a-package-using-pip&#34;&gt;Installing a package using pip&lt;/h4&gt;
-
-&lt;pre&gt;
-    #it will search and install [package]
-    pip install [package]
-    pip install django
-&lt;/pre&gt;
-If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code&gt;.
-
-&lt;code&gt;pip&lt;/code&gt; can be used to install a specific version of package also.
-&lt;pre&gt;
-    #it will search and install [package] with [version]
-    pip install [package]==[version]
-    pip install django==1.6.5
-&lt;/pre&gt;
-
-&lt;h4 id=&#34;uninstalling-a-package-using-pip&#34;&gt;Uninstalling a package using pip&lt;/h4&gt;
-
-&lt;pre&gt;
-    #it will search and uninstall [package]
-    pip uninstall [package]
-    pip uninstall django
-&lt;/pre&gt;
-
-&lt;h4 id=&#34;upgrading-a-package-using-pip&#34;&gt;upgrading a package using pip&lt;/h4&gt;
-
-&lt;pre&gt;
-    #it will upgrade [package] to latest version
-    pip install --upgrade [package]
-    pip install --upgrade django
-&lt;/pre&gt;
-
-&lt;h4 id=&#34;creating-list-of-all-packages-with-pip&#34;&gt;Creating list of all packages with pip&lt;/h4&gt;
-
-&lt;p&gt;It is one of most used and most useful feature of &lt;code&gt;pip&lt;/code&gt;. It allows you to make a list of all the dependencies of your project.
-&lt;pre&gt;
-    #it will output the file to current directory
-    pip freeze &amp;gt; [file_name.txt]
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;All these commands above will install the packages globally. But that&amp;rsquo;s not what is desired. &lt;code&gt;virtualenv&lt;/code&gt; comes to our rescue here.&lt;/p&gt;
-
-&lt;h4 id=&#34;virtualenv&#34;&gt;Virtualenv&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves a very particular problem; it allows multiple python projects that have different and often conflicting dependencies, to coexist on the same system.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves this problem by creating different isolated development environments for your projects. An environment is a folder which contains everything; your project needs to work properly.&lt;/p&gt;
-
-&lt;h4 id=&#34;installing-virtualenv&#34;&gt;Installing virtualenv&lt;/h4&gt;
-
-&lt;p&gt;By default, if you install &lt;code&gt;virtualenv&lt;/code&gt; using &lt;code&gt;pip&lt;/code&gt;, it will use system&amp;rsquo;s default python to create virtual environments. To overcome this problem, we will install &lt;code&gt;virtualenv&lt;/code&gt; using ubuntu package manager.
-&lt;pre&gt;
-    sudo apt-get install python-virtualenv
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;installing-virtualenvwrapper&#34;&gt;Installing virtualenvwrapper&lt;/h4&gt;
-
-&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; provides some set of commands which makes working with virtual environments much easier.&lt;/p&gt;
-
-&lt;p&gt;To install it,
-&lt;pre&gt;
-    sudo pip install virtualenvwrapper
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pip&lt;/code&gt;, &lt;code&gt;virtualenv&lt;/code&gt; and &lt;code&gt;virtualenvwrapper&lt;/code&gt; are the only packages which you will need to install globally. All other per project packages will be installed in respective virtual environments.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also places all your virtual environments in one place. It makes working with projects very easy.&lt;/p&gt;
-
-&lt;p&gt;Now open your &lt;code&gt;.bashrc&lt;/code&gt; and add these two lines to the end.
-&lt;pre&gt;
-    # All your projects will be saved in python-dev folder
-    export PROJECT_HOME=~/python-dev
-    # ~/python-dev/virtualenvs will contains python interpreters for each project.
-    export WORKON_HOME=~/python-dev/virtualenvs
-    # source the virtualenvwrapper script
-    source /usr/local/bin/virtualenvwrapper.sh
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;You can change &amp;ldquo;python-dev&amp;rdquo; to any name you wish. Your virtual environments will be created at that location.&lt;/p&gt;
-
-&lt;p&gt;Now restart your terminal to source the &lt;code&gt;.bashrc&lt;/code&gt; or use
-&lt;pre&gt;
-    source .bashrc
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;basic-usage&#34;&gt;Basic Usage&lt;/h4&gt;
-
-&lt;p&gt;Create a virtual environment
-&lt;pre&gt;
-    mkvirtualenv myproject
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;It will create myproject folder in the python-dev directory. To activate a project
-&lt;pre&gt;
-    workon myproject
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;Alternatively you can create project using &lt;code&gt;mkproject&lt;/code&gt; command. It will create a virtual environment as well as a project directory in the &lt;code&gt;$PROJECT_HOME&lt;/code&gt;, which is cd -ed into when you workon myproject.&lt;/p&gt;
-
-&lt;p&gt;Don&amp;rsquo;t forget to deactivate current project when you switch between different projects.&lt;/p&gt;
-
-&lt;p&gt;To deactivate a project:
-&lt;pre&gt;
-    deactivate
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;To delete a virtual environment:
-&lt;pre&gt;
-    rmvirtualenv myproject
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;List all environments
-&lt;pre&gt;
-    lsvirtualenv
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;it will also list all virtual environments:
-&lt;pre&gt;
-    workon
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html&#34; target=&#34;_blank&#34;&gt;Full List of virtualenvwrapper commands&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also provides the tab-completion feature which is very handy when you have a lot of projects to work with.&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s it. Hope you liked the post.:)&lt;/p&gt;
-</description>
+      <description>Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?
+As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at.</description>
     </item>
     
   </channel>

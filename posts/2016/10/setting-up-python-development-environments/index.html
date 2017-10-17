@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?
+As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at.'>
+
+<meta property='og:title' content='Setting up Python Development Environments • /dev/yash/notes'>
+<meta property='og:description' content='Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?
+As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at.'>
+<meta property='og:url' content='https://yashhere.github.io/posts/2016/10/setting-up-python-development-environments/'>
+<meta property='og:site_name' content='/dev/yash/notes'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='pip'><meta property='article:tag' content='python'><meta property='article:tag' content='development'><meta property='article:published_time' content='2016-10-09T00:00:00Z'/><meta property='article:modified_time' content='2016-10-09T00:00:00Z'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.31-DEV" />
+
+  <title>Setting up Python Development Environments • /dev/yash/notes</title>
+  <link rel='canonical' href='https://yashhere.github.io/posts/2016/10/setting-up-python-development-environments/'>
+  
+  
+  <link rel='icon' href='https://yashhere.github.io/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='https://yashhere.github.io/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashhere.github.io/css/custom.css'>
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='https://yashhere.github.io/'>Home</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/about'>About</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/posts'>Posts</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>/dev/yash/notes</p>
+          
+          <p class='site-description subtitle'>Minimalist theme for Hugo</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Setting up Python Development Environments</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2016-10-09T00:00:00Z'>Oct 09, 2016</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+4 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p>Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?</p>
+
+<p>As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the Internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.</p>
+
+<p>Python uses <code>pip</code> for package management.</p>
+
+<h3 id="installing-pip">Installing pip</h3>
+
+<p><code>pip</code> depends on setuptools library, which is in official Ubuntu repositories. To install it for python2:
+<pre>
+    sudo apt-get install python-setuptools
+</pre>
+Then install <code>pip</code> using
+<pre>
+    sudo apt-get install python-pip
+</pre></p>
+
+<p>and for python3
+<pre>
+    sudo apt-get install python3-setuptools
+</pre>
+Then install <code>pip</code> using
+<pre>
+    sudo apt-get install python3-pip
+</pre></p>
+
+<p>It should install <code>pip</code> on your system for both python versions. <code>pip</code> is very easy to use. It will take care of every single package you may require for your project.</p>
+
+<h4 id="installing-a-package-using-pip">Installing a package using pip</h4>
+
+<pre>
+    #it will search and install [package]
+    pip install [package]
+    pip install django
+</pre>
+If you are using python3, then don't forget to use <code>pip3</code>.
+
+<code>pip</code> can be used to install a specific version of package also.
+<pre>
+    #it will search and install [package] with [version]
+    pip install [package]==[version]
+    pip install django==1.6.5
+</pre>
+
+<h4 id="uninstalling-a-package-using-pip">Uninstalling a package using pip</h4>
+
+<pre>
+    #it will search and uninstall [package]
+    pip uninstall [package]
+    pip uninstall django
+</pre>
+
+<h4 id="upgrading-a-package-using-pip">upgrading a package using pip</h4>
+
+<pre>
+    #it will upgrade [package] to latest version
+    pip install --upgrade [package]
+    pip install --upgrade django
+</pre>
+
+<h4 id="creating-list-of-all-packages-with-pip">Creating list of all packages with pip</h4>
+
+<p>It is one of most used and most useful feature of <code>pip</code>. It allows you to make a list of all the dependencies of your project.
+<pre>
+    #it will output the file to current directory
+    pip freeze &gt; [file_name.txt]
+</pre></p>
+
+<p>All these commands above will install the packages globally. But that&rsquo;s not what is desired. <code>virtualenv</code> comes to our rescue here.</p>
+
+<h4 id="virtualenv">Virtualenv</h4>
+
+<p><code>virtualenv</code> solves a very particular problem; it allows multiple python projects that have different and often conflicting dependencies, to coexist on the same system.</p>
+
+<p><code>virtualenv</code> solves this problem by creating different isolated development environments for your projects. An environment is a folder which contains everything; your project needs to work properly.</p>
+
+<h4 id="installing-virtualenv">Installing virtualenv</h4>
+
+<p>By default, if you install <code>virtualenv</code> using <code>pip</code>, it will use system&rsquo;s default python to create virtual environments. To overcome this problem, we will install <code>virtualenv</code> using ubuntu package manager.
+<pre>
+    sudo apt-get install python-virtualenv
+</pre></p>
+
+<h4 id="installing-virtualenvwrapper">Installing virtualenvwrapper</h4>
+
+<p><code>virtualenvwrapper</code> provides some set of commands which makes working with virtual environments much easier.</p>
+
+<p>To install it,
+<pre>
+    sudo pip install virtualenvwrapper
+</pre></p>
+
+<p><code>pip</code>, <code>virtualenv</code> and <code>virtualenvwrapper</code> are the only packages which you will need to install globally. All other per project packages will be installed in respective virtual environments.</p>
+
+<p><code>virtualenvwrapper</code> also places all your virtual environments in one place. It makes working with projects very easy.</p>
+
+<p>Now open your <code>.bashrc</code> and add these two lines to the end.
+<pre>
+    # All your projects will be saved in python-dev folder
+    export PROJECT_HOME=~/python-dev
+    # ~/python-dev/virtualenvs will contains python interpreters for each project.
+    export WORKON_HOME=~/python-dev/virtualenvs
+    # source the virtualenvwrapper script
+    source /usr/local/bin/virtualenvwrapper.sh
+</pre></p>
+
+<p>You can change &ldquo;python-dev&rdquo; to any name you wish. Your virtual environments will be created at that location.</p>
+
+<p>Now restart your terminal to source the <code>.bashrc</code> or use
+<pre>
+    source .bashrc
+</pre></p>
+
+<h4 id="basic-usage">Basic Usage</h4>
+
+<p>Create a virtual environment
+<pre>
+    mkvirtualenv myproject
+</pre></p>
+
+<p>It will create myproject folder in the python-dev directory. To activate a project
+<pre>
+    workon myproject
+</pre></p>
+
+<p>Alternatively you can create project using <code>mkproject</code> command. It will create a virtual environment as well as a project directory in the <code>$PROJECT_HOME</code>, which is cd -ed into when you workon myproject.</p>
+
+<p>Don&rsquo;t forget to deactivate current project when you switch between different projects.</p>
+
+<p>To deactivate a project:
+<pre>
+    deactivate
+</pre></p>
+
+<p>To delete a virtual environment:
+<pre>
+    rmvirtualenv myproject
+</pre></p>
+
+<p>List all environments
+<pre>
+    lsvirtualenv
+</pre></p>
+
+<p>it will also list all virtual environments:
+<pre>
+    workon
+</pre></p>
+
+<p><a href="https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html" target="_blank">Full List of virtualenvwrapper commands</a></p>
+
+<p><code>virtualenvwrapper</code> also provides the tab-completion feature which is very handy when you have a lot of projects to work with.</p>
+
+<p>That&rsquo;s it. Hope you liked the post.:)</p>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashhere.github.io/categories/python'>Python</a>, <a class='category' href='https://yashhere.github.io/categories/development'>Development</a></div>
+<div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashhere.github.io/tags/pip'>Pip</a>, <a class='tag' href='https://yashhere.github.io/tags/python'>Python</a>, <a class='tag' href='https://yashhere.github.io/tags/development'>Development</a></div>
+
+  </div>
+</footer>
+
+
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='https://yashhere.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Custom Arch Linux setup with Openbox</a>
+    </div><div class='next-entry'>
+      <a href='https://yashhere.github.io/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/'>
+        <span class='screen-reader'>Next post: </span>Setting up Hugo automatic deployment to Github with Wercker<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+  
+<div class='comments-container'>
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "theyashagarwal" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/profile.php?id=100001324105675' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/yum_yash' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:yashagarwaljpr@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2015-2017 Yash Agarwal  - Creative Commons Attribution-ShareAlike 4.0 International License
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='https://yashhere.github.io/assets/js/main.f29c93b9.js'></script><script src='https://yashhere.github.io/js/custom.js'></script></body>
+
+</html>
+
