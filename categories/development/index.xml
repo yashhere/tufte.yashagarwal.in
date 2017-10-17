@@ -8,351 +8,96 @@
     <atom:link href="https://yashhere.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Setting up Python Development Environments</title>
-      <link>https://yashhere.github.io/posts/2016/10/setting-up-python-development-environments/</link>
-      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      <title>Setting up Hugo automatic deployment to Github with Wercker</title>
+      <link>https://yashhere.github.io/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</link>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2016/10/setting-up-python-development-environments/</guid>
+      <guid>https://yashhere.github.io/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
       <description>
 
-&lt;p&gt;Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?&lt;/p&gt;
+&lt;p&gt;Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.&lt;/p&gt;
 
-&lt;p&gt;As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the Internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.&lt;/p&gt;
+&lt;p&gt;In this post, I will list all the process which I used to setup automatic deployment of Hugo generated site to Github user pages using Wercker. In the beginning, I was trying to use Travis-CI, but then I read about Wercker somewhere. I was impressed with the integration of Wercker with Hugo and availability of many its community-generated &amp;ldquo;steps&amp;rdquo; for the build and deploy process.&lt;/p&gt;
 
-&lt;p&gt;Python uses &lt;code&gt;pip&lt;/code&gt; for package management.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34; target=&#34;_blank&#34;&gt;Hugo Docs&lt;/a&gt; already has a fantastic &lt;a href=&#34;https://gohugo.io/tutorials/automated-deployments/&#34; target=&#34;_blank&#34;&gt;documentation&lt;/a&gt; for setting up Hugo with Wercker, but it is outdated. Many other documentations available on-line are also outdated. Wercker has changed many functionalities in its platform, which made it difficult for me to setup things correctly. But after hours of continuous trial and error, I was able to build and deploy my static files successfully.&lt;/p&gt;
 
-&lt;h3 id=&#34;installing-pip&#34;&gt;Installing pip&lt;/h3&gt;
+&lt;p&gt;Here I would like to share the issues I encountered and the tweaks I’ve made. The source codes of this site can be found &lt;a href=&#34;https://github.com/yash2696/yash2696.github.io&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;pip&lt;/code&gt; depends on setuptools library, which is in official Ubuntu repositories. To install it for python2:
-&lt;pre&gt;
-    sudo apt-get install python-setuptools
-&lt;/pre&gt;
-Then install &lt;code&gt;pip&lt;/code&gt; using
-&lt;pre&gt;
-    sudo apt-get install python-pip
-&lt;/pre&gt;&lt;/p&gt;
+&lt;h3 id=&#34;project-pages-or-user-pages&#34;&gt;Project Pages or User Pages&lt;/h3&gt;
 
-&lt;p&gt;and for python3
-&lt;pre&gt;
-    sudo apt-get install python3-setuptools
-&lt;/pre&gt;
-Then install &lt;code&gt;pip&lt;/code&gt; using
-&lt;pre&gt;
-    sudo apt-get install python3-pip
-&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;Two types of sites are supported on Github Pages, User Site, and Project Site. User Sites will serve the files stored in the master branch of the repository &lt;code&gt;https://github.com/user_name/user_name.github.io&lt;/code&gt; at the address &lt;code&gt;https://user_name.github.io&lt;/code&gt;. For the Project sites, everything under the gh-pages will be served at the address &lt;code&gt;https://repo_name.github.io&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;It should install &lt;code&gt;pip&lt;/code&gt; on your system for both python versions. &lt;code&gt;pip&lt;/code&gt; is very easy to use. It will take care of every single package you may require for your project.&lt;/p&gt;
-
-&lt;h4 id=&#34;installing-a-package-using-pip&#34;&gt;Installing a package using pip&lt;/h4&gt;
+&lt;p&gt;My site is a User site, so I wanted all the static files to be saved in the master branch. As Hugo generates all the static files under &lt;code&gt;public&lt;/code&gt; directory, I needed another branch to store my source files. So my made a new branch &lt;code&gt;source&lt;/code&gt; which will save all the source files for my blog. Don&amp;rsquo;t forget to remove the .git folder from the theme folder. Otherwise, the build will fail at later stage. You can try using git submodule feature to avoid this issue. I created a repository &lt;code&gt;yash2696.github.io&lt;/code&gt; in Github also.&lt;/p&gt;
 
 &lt;pre&gt;
-    #it will search and install [package]
-    pip install [package]
-    pip install django
-&lt;/pre&gt;
-If you are using python3, then don&#39;t forget to use &lt;code&gt;pip3&lt;/code&gt;.
-
-&lt;code&gt;pip&lt;/code&gt; can be used to install a specific version of package also.
-&lt;pre&gt;
-    #it will search and install [package] with [version]
-    pip install [package]==[version]
-    pip install django==1.6.5
+git init                     #initialized git repository in site root
+git checkout -b source         #created new branch source
+git remote add origin https&lt;nolink&gt;://github.com/yash2696/yash2696.github.io
+git add .
+git commit -m &amp;#34;Initial Commit&amp;#34;
+git push origin source
 &lt;/pre&gt;
 
-&lt;h4 id=&#34;uninstalling-a-package-using-pip&#34;&gt;Uninstalling a package using pip&lt;/h4&gt;
-
+&lt;p&gt;Then I initialized my master branch as a orphan branch.
 &lt;pre&gt;
-    #it will search and uninstall [package]
-    pip uninstall [package]
-    pip uninstall django
-&lt;/pre&gt;
-
-&lt;h4 id=&#34;upgrading-a-package-using-pip&#34;&gt;upgrading a package using pip&lt;/h4&gt;
-
-&lt;pre&gt;
-    #it will upgrade [package] to latest version
-    pip install --upgrade [package]
-    pip install --upgrade django
-&lt;/pre&gt;
-
-&lt;h4 id=&#34;creating-list-of-all-packages-with-pip&#34;&gt;Creating list of all packages with pip&lt;/h4&gt;
-
-&lt;p&gt;It is one of most used and most useful feature of &lt;code&gt;pip&lt;/code&gt;. It allows you to make a list of all the dependencies of your project.
-&lt;pre&gt;
-    #it will output the file to current directory
-    pip freeze &amp;gt; [file_name.txt]
+git checkout --orphan master
+git rm -rf .
+rm &amp;#39;.gitignore&amp;#39;
+echo &amp;#34;#Your repository name&amp;#34; &amp;gt; README.md
+git add README.md
+git commit -a -m &amp;#34;Initial Commit&amp;#34;
+git push origin master
 &lt;/pre&gt;&lt;/p&gt;
 
-&lt;p&gt;All these commands above will install the packages globally. But that&amp;rsquo;s not what is desired. &lt;code&gt;virtualenv&lt;/code&gt; comes to our rescue here.&lt;/p&gt;
+&lt;h3 id=&#34;automatic-deployment-using-wrecker&#34;&gt;Automatic deployment using Wrecker&lt;/h3&gt;
 
-&lt;h4 id=&#34;virtualenv&#34;&gt;Virtualenv&lt;/h4&gt;
+&lt;p&gt;It is very simple to build a Hugo site. Invoke &lt;code&gt;hugo&lt;/code&gt; command under your root directory, Hugo will create a public directory which will contain all your content, static files, etc. Then push this directory to Github, and voila, your site is up!&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves a very particular problem; it allows multiple python projects that have different and often conflicting dependencies, to coexist on the same system.&lt;/p&gt;
+&lt;p&gt;What if a single push to &lt;code&gt;source&lt;/code&gt; branch can trigger all the process for you automatically. Here the magic of continuous integration(CI) comes into picture. A free Wercker account can be easily created and hooked to Github account and a new application from a chosen repository. After setting up everything, a push to the development branch will automatically trigger the Wercker. One of the biggest advantages of using Wercker is its extensive collection of user made and well documented &amp;ldquo;steps.&amp;rdquo; In this post, I will use two steps, &lt;em&gt;build hugo&lt;/em&gt; and &lt;em&gt;deploy to Github&lt;/em&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves this problem by creating different isolated development environments for your projects. An environment is a folder which contains everything; your project needs to work properly.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yashhere.github.io/images/wercker-steps.png&#34; alt=&#34;Wercker Steps&#34; /&gt;
+&lt;strong&gt;Wercker -&amp;gt; Registry -&amp;gt; steps &lt;/strong&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;installing-virtualenv&#34;&gt;Installing virtualenv&lt;/h4&gt;
+&lt;p&gt;The first task is to create a &lt;code&gt;wercker.yml&lt;/code&gt; file. It will tell Wercker which all actions, it should perform. Here is my &lt;a href=&#34;https://raw.githubusercontent.com/yash2696/yash2696.github.io/source/wercker.yml&#34; target=&#34;_blank&#34;&gt;wercker.yml&lt;/a&gt; for reference. In this, I have used two pipelines, &lt;em&gt;build&lt;/em&gt; and &lt;em&gt;deploy&lt;/em&gt;. Please follow the official docs for the more detailed steps. I will list all the problems which I face while setting up things properly.&lt;/p&gt;
 
-&lt;p&gt;By default, if you install &lt;code&gt;virtualenv&lt;/code&gt; using &lt;code&gt;pip&lt;/code&gt;, it will use system&amp;rsquo;s default python to create virtual environments. To overcome this problem, we will install &lt;code&gt;virtualenv&lt;/code&gt; using ubuntu package manager.
+&lt;h4 id=&#34;build&#34;&gt;Build&lt;/h4&gt;
+
+&lt;p&gt;Following the official guide, I used this &lt;a href=&#34;https://github.com/ArjenSchwarz/wercker-step-hugo-build&#34; target=&#34;_blank&#34;&gt;step&lt;/a&gt; to trigger Hugo to build HTML pages. I had already removed git repository information from the theme folder, so this step finished successfully. If you haven&amp;rsquo;t, you may add the following piece of code in your build step.
 &lt;pre&gt;
-    sudo apt-get install python-virtualenv
+- script:
+        name: install git
+        code: |
+            apt-get update
+            apt-get install git -y
+    - script:
+        name: initialize git submodules
+        code: |
+            git submodule update &amp;ndash;init &amp;ndash;recursive
 &lt;/pre&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;installing-virtualenvwrapper&#34;&gt;Installing virtualenvwrapper&lt;/h4&gt;
+&lt;h4 id=&#34;deploy&#34;&gt;Deploy&lt;/h4&gt;
 
-&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; provides some set of commands which makes working with virtual environments much easier.&lt;/p&gt;
+&lt;p&gt;There is no concept named &amp;ldquo;Add Deploy Target&amp;rdquo; in Wercker as of now. Most of the on-line tutorials follow this process which is outdated. Now Wercker uses a concept called &amp;ldquo;Workflows in Pipelines.&amp;rdquo;&lt;/p&gt;
 
-&lt;p&gt;To install it,
-&lt;pre&gt;
-    sudo pip install virtualenvwrapper
-&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;For new interface, even if you add a deploy stage in the &lt;code&gt;wercker.yml&lt;/code&gt;, you will have to create a new pipeline &lt;code&gt;deploy&lt;/code&gt; under the Workflows tab. After creating the pipeline, the &amp;ldquo;YML Pipeline name&amp;rdquo; must be set to the deploy stage name, which in this case is &lt;code&gt;deploy&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;pip&lt;/code&gt;, &lt;code&gt;virtualenv&lt;/code&gt; and &lt;code&gt;virtualenvwrapper&lt;/code&gt; are the only packages which you will need to install globally. All other per project packages will be installed in respective virtual environments.&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;deploy&lt;/code&gt; stage, I used this &lt;a href=&#34;https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/&#34; target=&#34;_blank&#34;&gt;step&lt;/a&gt; to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to set up the environment variable $GIT_TOKEN to each pipeline, acquired from Github setting.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also places all your virtual environments in one place. It makes working with projects very easy.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://yashhere.github.io/images/wercker-pipeline.png&#34; alt=&#34;Wercker Pipeline&#34; /&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
 
-&lt;p&gt;Now open your &lt;code&gt;.bashrc&lt;/code&gt; and add these two lines to the end.
-&lt;pre&gt;
-    # All your projects will be saved in python-dev folder
-    export PROJECT_HOME=~/python-dev
-    # ~/python-dev/virtualenvs will contains python interpreters for each project.
-    export WORKON_HOME=~/python-dev/virtualenvs
-    # source the virtualenvwrapper script
-    source /usr/local/bin/virtualenvwrapper.sh
-&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;You need to generate a new access token for your deploy stage from Github settings.
+&lt;img src=&#34;https://yashhere.github.io/images/wercker-access-token.png&#34; alt=&#34;Github Access Token&#34; /&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
 
-&lt;p&gt;You can change &amp;ldquo;python-dev&amp;rdquo; to any name you wish. Your virtual environments will be created at that location.&lt;/p&gt;
+&lt;p&gt;After adding deploy stage, add the token you obtained from the Github to Environmental Variables in deploy pipeline.
+&lt;img src=&#34;https://yashhere.github.io/images/wercker-token.png&#34; alt=&#34;Wercker Token&#34; /&gt;
+&lt;br&gt;
+&lt;br&gt;&lt;/p&gt;
 
-&lt;p&gt;Now restart your terminal to source the &lt;code&gt;.bashrc&lt;/code&gt; or use
-&lt;pre&gt;
-    source .bashrc
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;basic-usage&#34;&gt;Basic Usage&lt;/h4&gt;
-
-&lt;p&gt;Create a virtual environment
-&lt;pre&gt;
-    mkvirtualenv myproject
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;It will create myproject folder in the python-dev directory. To activate a project
-&lt;pre&gt;
-    workon myproject
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;Alternatively you can create project using &lt;code&gt;mkproject&lt;/code&gt; command. It will create a virtual environment as well as a project directory in the &lt;code&gt;$PROJECT_HOME&lt;/code&gt;, which is cd -ed into when you workon myproject.&lt;/p&gt;
-
-&lt;p&gt;Don&amp;rsquo;t forget to deactivate current project when you switch between different projects.&lt;/p&gt;
-
-&lt;p&gt;To deactivate a project:
-&lt;pre&gt;
-    deactivate
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;To delete a virtual environment:
-&lt;pre&gt;
-    rmvirtualenv myproject
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;List all environments
-&lt;pre&gt;
-    lsvirtualenv
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;it will also list all virtual environments:
-&lt;pre&gt;
-    workon
-&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html&#34; target=&#34;_blank&#34;&gt;Full List of virtualenvwrapper commands&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also provides the tab-completion feature which is very handy when you have a lot of projects to work with.&lt;/p&gt;
-
-&lt;p&gt;That&amp;rsquo;s it. Hope you liked the post.:)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Custom Arch Linux setup with Openbox</title>
-      <link>https://yashhere.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
-      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://yashhere.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
-      <description>
-
-&lt;p&gt;After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and  when you put them together you get something amazing.&lt;/p&gt;
-
-&lt;p&gt;When I first installed Arch, I had several choices. I tried xfce and gnome as my desktop environments. While both of them have their own pros and cons, I ended up liking none. The sole reason was the dependencies, these two softwares bring with them. My sole intention of installing Arch was to have something, which I control, not like Ubuntu, where you are forced to use the preinstalled softwares and when you try to uninstall something, you fear of breaking some other program.&lt;/p&gt;
-
-&lt;p&gt;So I end up going the route of building something up from scratch using Openbox as a base. At this point I have a fast, lightweight desktop that is extremely stable and is truly my desktop as I have built it from the ground up choosing every application.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://yashhere.github.io/images/desktop.jpg&#34; alt=&#34;Arch Linux Desktop&#34; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;window-manager&#34;&gt;Window Manager&lt;/h3&gt;
-
-&lt;p&gt;After the installation of Arch, the first thing I did was to install Openbox, a Tiling Window Manager. You may also try other window managers like awesome, i3 and fluxbox etc. but I chose Openbox because it is used everywhere and thus there is a plethora of information out there about customizing it.&lt;/p&gt;
-
-&lt;p&gt;For our window manager to show up, it needs to be added either in a login manager or user&amp;rsquo;s &lt;code&gt;~/.xinitrx&lt;/code&gt; file. There is a default version of this file which contain some code which we may want to retain, so rather than making this file from scratch, copy the default version of file to user&amp;rsquo;s home directory.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;cp /etc/X11/xinit/xinitrc ~/.xinitrc&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Now add the command &lt;code&gt;exec Openbox-session&lt;/code&gt; to the end of the file. Remember that the lines following this command will be ignored by the system. An openbox session should be able to be started by entering the command &lt;code&gt;startx&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;An openbox session can be started automatically upon login using shell&amp;rsquo;s startup script. Add following to the shell&amp;rsquo;s startup script, &lt;code&gt;~/.bash_profile&lt;/code&gt; for bash and &lt;code&gt;~/.zprofile&lt;/code&gt; for zsh.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;[[ -z $DISPLAY &amp;amp;&amp;amp; $XDG_VTNR -eq 1 ]] &amp;amp;&amp;amp; exec startx&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;configuring-openbox&#34;&gt;Configuring Openbox&lt;/h3&gt;
-
-&lt;p&gt;Setting up openbox is quite simple. Four files make the basis of openbox configuration. They are &lt;code&gt;rc.xml&lt;/code&gt;, &lt;code&gt;autostart&lt;/code&gt;,  &lt;code&gt;menu.xml&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. These files controls everything about the window manager.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;rc.xml: Determine the behavior and settings of overall openbox session&lt;/li&gt;
-&lt;li&gt;autostart: Contains a list of applications to be launched with window manager&lt;/li&gt;
-&lt;li&gt;menu.xml: It makes the right click context menu of Desktop&lt;/li&gt;
-&lt;li&gt;environment: Can be used to export and set relevant environmental variables&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;To configure openbox, it is necessary to create a local openbox profile in user&amp;rsquo;s home directory. A global configuration can be found in &lt;code&gt;/etc/xdg/openbox&lt;/code&gt; which is well documented and copying the global configuration to the user&amp;rsquo;s directory will give a good starting point to customizing from.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;cp -R /etc/xdg/openbox ~/.config/&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;These files can be edited by hand, although some graphical tools are also available, use of these may be desired.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;themes-and-appearance&#34;&gt;Themes and Appearance&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/obconf&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obconf&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/lxappearance-obconf/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;lxappearance-obconf&lt;/code&gt;&lt;/a&gt; can be used to configure appearance and theme of openbox session. There are quite a few themes available in &lt;a href=&#34;https://www.archlinux.org/packages/community/any/openbox-themes/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;openbox-themes&lt;/code&gt;&lt;/a&gt; package. My personal favorite is &lt;a href=&#34;https://www.archlinux.org/packages/community/any/numix-themes/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;Numix-themes&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://aur.archlinux.org/packages/numix-icon-theme-git/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;Numix-icon-theme-git (AUR)&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In order to see changes after editing a configuration file, open box needs to be refreshed. This can be done with the reconfigure command.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;openbox &amp;ndash;reconfigure&lt;/code&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;menus&#34;&gt;Menus&lt;/h3&gt;
-
-&lt;p&gt;The type and behavior of Openbox menus, accessible by right-clicking the background, can be changed using &lt;code&gt;~/.config/openbox/menu.xml&lt;/code&gt; file. Openbox provides two kinds of menus, &lt;code&gt;Static&lt;/code&gt;, and &lt;code&gt;Dynamic&lt;/code&gt; menus (Piped and Generators)&lt;/p&gt;
-
-&lt;p&gt;Static menus are hard code in XML and is stored in menu.xml file. Whenever you install a new application, you will have to manually update the XML file to update the menu. This is a viable solution if the applications are bot installed on a day to day basis.&lt;/p&gt;
-
-&lt;p&gt;Pipe menus are the sections of openbox menu which openbox creates on the fly, by running a generic script and using its plain text output as menu entries. This scheme can used in different ways like adding a mail checker in the menu, or adding a weather forecast menu. You can check &lt;a href=&#34;http://openbox.org/wiki/Openbox:Pipemenus&#34; target=&#34;_blank&#34;&gt;openbox pipe menu page&lt;/a&gt; for more information.&lt;/p&gt;
-
-&lt;p&gt;Generators are the most convenient type of menus. These can be found in most desktop environments where applications show up in the menu automatically. If applications are being installed on a regular basis, then this will probably be the preferred choice.&lt;/p&gt;
-
-&lt;h5 id=&#34;static-menus&#34;&gt;Static Menus&lt;/h5&gt;
-
-&lt;p&gt;The process of making these menus can be automated by static menu generator like &lt;a href=&#34;https://www.archlinux.org/packages/?name=obmenu&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obmenu&lt;/code&gt;&lt;/a&gt;. It will generate static menus from installed applications by looking into certain directories. Others available tools are &lt;a href=&#34;https://www.archlinux.org/packages/?name=menumaker&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;menumaker&lt;/code&gt;&lt;/a&gt;, &lt;a href=&#34;https://www.archlinux.org/packages/?name=obmenu&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obmenu&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/?name=archlinux-xdg-menu&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;xdg-menu&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h5 id=&#34;dynamic-menus&#34;&gt;Dynamic Menus&lt;/h5&gt;
-
-&lt;p&gt;Dynamic menus give the same kind of functionality most people are used to. So it was my preferred choice. They can be used to generate full, complex menus on the fly. One of the most popular application for generating dynamic menus is &lt;a href=&#34;https://aur.archlinux.org/packages/obmenu-generator/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obmenu-generator (AUR)&lt;/code&gt;&lt;/a&gt;. Though it is not officially connected to openbox but it is widely used.&lt;/p&gt;
-
-&lt;p&gt;In order to have &lt;a href=&#34;https://aur.archlinux.org/packages/obmenu-generator/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;obmenu-generator (AUR)&lt;/code&gt;&lt;/a&gt; make a menu on demand, the &lt;code&gt;menu.xml&lt;/code&gt; file should contain the following code as the only entry.&lt;/p&gt;
-
-&lt;pre&gt;&amp;lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&amp;gt;
-&amp;lt;openbox_menu&amp;gt;
-    &amp;lt;menu id=&#34;root-menu&#34; label=&#34;OpenBox 3&#34; execute=&#34;/usr/bin/obmenu-generator&#34;&amp;gt;
-    &amp;lt;/menu&amp;gt;
-&amp;lt;/openbox_menu&amp;gt;
-&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;panels-and-taskbars&#34;&gt;Panels and Taskbars&lt;/h3&gt;
-
-&lt;p&gt;You can get any panel like &lt;a href=&#34;https://www.archlinux.org/packages/extra/i686/xfce4-panel/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;xfce4-panel&lt;/code&gt;&lt;/a&gt; or the simple and customizable &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt;. I chose &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; because it very closely follows the openbox spirit of having easy customization with plain configuration files. &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; package also containg a graphical tool &lt;code&gt;tint2conf&lt;/code&gt; for customizing panel and you can obviously go right to the tint2 configuration file and edit it there. This also means it is easy to pick up your configuration file and move it to another computer, or restore an old configuration since it is as simple as pasting a text document in the right place. &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; can also have sections for each individual desktop and has various small widget like programs that can be used with it such as a calendar, &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/gsimplecal/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;gsimplecal&lt;/code&gt;&lt;/a&gt;, a volume application, &lt;a href=&#34;https://www.archlinux.org/packages/?name=volumeicon&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;volumeicon&lt;/code&gt;&lt;/a&gt;, a battery indicator, &lt;a href=&#34;https://www.archlinux.org/packages/?name=cbatticon&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;cbatticon&lt;/code&gt;&lt;/a&gt;, a network indicator like &lt;a href=&#34;https://www.archlinux.org/packages/extra/any/wicd/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;wicd&lt;/code&gt;&lt;/a&gt; which also have a system tray icon and a mini task tray. To start &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;tint2&lt;/code&gt;&lt;/a&gt; with openbox, you need to add &lt;code&gt;tint2 &amp;amp;&lt;/code&gt; to the &lt;code&gt;autostart&lt;/code&gt; file.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;file-manager&#34;&gt;File Manager&lt;/h3&gt;
-
-&lt;p&gt;Some file managers deeply integrate into desktop environments and when installed with openbox, they end up pulling multiple dependencies which is certainly not desired. Our aim behind building openbox setup was to have minimum dependencies so that we can get lightweight desktop. However, there are several file managers available which fit into openbox very well. In my choice, &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; is the best choice here. &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; is a lightweight and fast file manager with network and thrash support. &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; can also manage desktop icons and wallpaper setting, although if you plan to use conky in your system, then you may not want &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; to manage desktop for you. The reason is that &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;pcmanfm&lt;/code&gt;&lt;/a&gt; treats desktop as a window, so when you switch to desktop, the conky hides behind the desktop window. To get the icons and wallpaper, you can use other standalone tools such as &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/idesk/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;idesk&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/extra/x86_64/feh/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;feh&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://www.archlinux.org/packages/extra/x86_64/nitrogen/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;nitrogen&lt;/code&gt;&lt;/a&gt;.
-To start pcmanfm is desktop mode, add the following to the autostart file&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pcmanfm &amp;ndash;desktop &amp;amp;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;and to stop it for managing desktop&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;pcmanfm &amp;ndash;desktop-off &amp;amp;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;In order to use many of the functions that are in file managers it is necessary to have a a few additional programs. &lt;a href=&#34;https://www.archlinux.org/packages/?name=gvfs&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;gvfs&lt;/code&gt;&lt;/a&gt; gives you the ability to mount volumes and have trash control. It is not mandatory to have, but it allows on demand mounting to be done completely within the file manager, as opposed to having to drop down to the command line. A volume manager such as &lt;a href=&#34;https://www.archlinux.org/packages/?name=udisks2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;udisks2&lt;/code&gt;&lt;/a&gt; will also be wanted, and for auto-mounting removable disks, &lt;a href=&#34;https://www.archlinux.org/packages/community/any/udiskie/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;udiskie&lt;/code&gt;&lt;/a&gt; works well with openbox. &lt;a href=&#34;https://www.archlinux.org/packages/community/any/udiskie/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;udiskie&lt;/code&gt;&lt;/a&gt; can be added to openbox’s autostart file like any other application.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;composition&#34;&gt;Composition&lt;/h3&gt;
-
-&lt;p&gt;Openbox does not provide native support for composition, although having a compositor may prevent screen flickering and other distorting with applications like &lt;a href=&#34;https://www.archlinux.org/packages/community/any/oblogout/&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;oblogout&lt;/code&gt;&lt;/a&gt;. There are some options which work great with openbox. The one which I am using and quite happy with, is &lt;a href=&#34;https://wiki.archlinux.org/index.php/Compton&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;compton&lt;/code&gt;&lt;/a&gt;. It can be used with or without any initial configuration, although there are lot of different configuration options if you decide to customize the setup. To start &lt;a href=&#34;https://wiki.archlinux.org/index.php/Compton&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;compton&lt;/code&gt;&lt;/a&gt; in background with shadows, use this in &lt;code&gt;autostart&lt;/code&gt; file.
-&lt;code&gt;compton -b -c &amp;amp;&lt;/code&gt;.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;wrapping-up&#34;&gt;Wrapping up&lt;/h3&gt;
-
-&lt;p&gt;While setting up my desktop using openbox ended up being much more work than I could have with normal desktop environments. But now I have much more stable desktop, about which I know, what is running in my system, and that my system is not cluttered with any software that I never use.&lt;/p&gt;
-
-&lt;p&gt;While it might not be for everybody having to configure every little bit of the desktop, I truly feel I have ended up with a great user experience, and a system that is customized exactly to fit my needs.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/&#34; target=&#34;_blank&#34;&gt;Arch Linux Wiki&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A good Sublime Text Setup</title>
-      <link>https://yashhere.github.io/posts/2016/04/a-good-sublime-text-setup/</link>
-      <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
-      
-      <guid>https://yashhere.github.io/posts/2016/04/a-good-sublime-text-setup/</guid>
-      <description>
-
-&lt;p&gt;So, after a hactic day, a good news finally came. I have been selected as a Lab Administrator for the &lt;a href=&#34;https://www.facebook.com/sslnitc/&#34; target=&#34;_blank&#34;&gt;Software Systems Lab&lt;/a&gt; of my college. Cheers!!!&lt;/p&gt;
-
-&lt;p&gt;Let&amp;#8217;s come to our today&amp;#8217;s topic on configuring Sublime Text Settings.&lt;/p&gt;
-
-&lt;p&gt;There is just one rule you must follow while designing your own editor preference configuration.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Don&amp;#8217;t put any lines in your configuration that you don&amp;#8217;t understand.&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;You will find tons of online tutorials that contains all kinds of awesome hacks to make your sublime text experience better but the worst way to make your development environment better is to just borrow the configuration from someone else.&lt;/p&gt;
-
-&lt;p&gt;Spending your time in actually understand what is happening behind the scenes in the construction of your editor is immensly invaluable. It is similar to the increased information retention that you experience when you copy something from the board.&lt;/p&gt;
-
-&lt;p&gt;So first, take some background of what we are going to do today. I am using Sublime Text 3 &amp;#8211; dev version, but most of the instructions are similar for Sublime Text 2 also.&lt;/p&gt;
-
-&lt;p&gt;Okay, first open the sublime text, then go to Preference &amp;#8211;&amp;gt; Settings &amp;#8211;&amp;gt; User.&lt;/p&gt;
-
-&lt;p&gt;So this is your configuration file where you can put all your custom preferences. There are other configuration files also, which can be found in Preferences.&lt;/p&gt;
-
-&lt;p&gt;You can also find all settings for reference in Settings &amp;#8211; Default file.&lt;/p&gt;
-
-&lt;p&gt;Here is my Settings &amp;#8211; User file. Feel free to take insiparation from it, and make your Sublime Text Experience unmatchable. I have commented every setting which is self-understandable.&lt;/p&gt;
-
-&lt;script src=&#34;//gist.github.com/dea6728f88865666c20ff1c35e90bd0e/.js&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;&amp;nbsp;&lt;/p&gt;
-
-&lt;h2 id=&#34;wrapping-it-up&#34;&gt;Wrapping It Up&lt;/h2&gt;
-
-&lt;p&gt;I still stand by my platitude that&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Don&amp;#8217;t put anything in your configuration file you don&amp;#8217;t understand!&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;That&amp;#8217;s all for today. Thanks for reading&amp;#8230;&lt;/p&gt;
+&lt;p&gt;On the next push to your development branch, Wercker will automatically build the site and deploy it on Github Pages.&lt;/p&gt;
 </description>
     </item>
     
