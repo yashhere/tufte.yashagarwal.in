@@ -11,7 +11,7 @@ build:
         code: |
           git submodule update --init --recursive
     - arjen/hugo-build:
-        version: "HEAD"
+        version: "0.31.1"
         theme: minimo
 
 deploy:
