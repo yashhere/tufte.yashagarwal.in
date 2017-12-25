@@ -26,7 +26,8 @@ You can also find all settings for reference in Settings &#8211; Default file.
 
 Here is my Settings &#8211; User file. Feel free to take insiparation from it, and make your Sublime Text Experience unmatchable. I have commented every setting which is self-understandable.
 
-{{% gist dea6728f88865666c20ff1c35e90bd0e %}}
+<script src="https://gist.github.com/yashhere/dea6728f88865666c20ff1c35e90bd0e.js"></script>
+<!--{{% gist dea6728f88865666c20ff1c35e90bd0e %}}-->
 
 &nbsp;
 
