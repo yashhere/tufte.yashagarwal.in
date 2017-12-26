@@ -1,0 +1,81 @@
+Paginate: 7
+baseURL: https://yashhere.github.io
+blackfriday:
+  hrefTargetBlank: true
+canonifyurls: true
+MetaDataFormat: "yaml"
+archetypeDir: "archetypes"
+config: "config.toml"
+enableGitInfo:              false
+copyright: Creative Commons Attribution-ShareAlike 4.0 International License
+defaultContentLanguage: en
+disqusShortname: theyashagarwal
+enableEmoji: true
+enableRobotsTXT: true
+languages:
+  en:
+    lang: en
+    languageName: English
+    weight: 1
+menu:
+  main:
+  - identifier: home
+    name: Home
+    url: /
+    weight: 10
+  - identifier: posts
+    name: Posts
+    url: /posts
+  - name: About
+    url: /about
+params:
+  assets:
+    customCSS:
+    - css/custom.css
+    customJS:
+    - js/custom.js
+    favicon: favicon.ico
+    gopher: ''
+  copyright:
+    holder: Yash Agarwal
+    startYear: '2015'
+    suffix: ' - Creative Commons Attribution-ShareAlike 4.0 International License'
+  info:
+    description: The directory of my thoughts
+    title404: Nothing's here!
+  seo:
+    titleSeparator: •
+  settings:
+    dateFormat: Jan 02, 2006
+    hideSocialMenu: false
+    listDateFormat: Jan 02, 2006
+    showReadingTime: true
+  social:
+    config:
+      platforms:
+      - github
+      - facebook
+      - twitter
+      - instagram
+      - email
+      - codepen
+      - linkedin
+    email: yashagarwaljpr@gmail.com
+    facebook: profile.php?id=100001324105675
+    github: yashhere
+    instagram: yum_yash
+    linkedin: theyashagarwal
+    twitter: yash__here
+permalinks:
+  page: /:title/
+  posts: /posts/:year/:month/:slug/
+preserveTaxonomyNames: true
+pygmentsCodefences: true
+pygmentsCodeFencesGuessSyntax: true
+pygmentsStyle:              "monokai"
+taxonomies:
+  author: authors
+  category: categories
+  tag: tags
+theme: minimo
+title: /dev/yash/notes

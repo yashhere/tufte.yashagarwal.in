@@ -1,10 +1,15 @@
-+++
-date = "2017-02-22T13:37:56+05:30"
-title = "Setting up Hugo automatic deployment to Github with Wercker"
-Categories = ["Development"]
-Tags = ["gh-pages", "hugo", "github", "wercker"]
-type = "posts"
-+++
+---
+Categories:
+- Development
+Tags:
+- gh-pages
+- hugo
+- github
+- wercker
+date: '2017-02-22T13:37:56+05:30'
+title: Setting up Hugo automatic deployment to Github with Wercker
+type: posts
+---
 
 Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.
 

@@ -1,9 +1,15 @@
-+++
-title = "Mounting NTFS partitions on Arch Linux"
-date = "2017-03-14T10:30:36+00:00"
-categories = ["Linux", "Hacks", "Configuration", "Arch Linux", "Polkit", "NTFS"]
-type = "posts"
-+++
+---
+categories:
+- Linux
+- Hacks
+- Configuration
+- Arch Linux
+- Polkit
+- NTFS
+date: '2017-03-14T10:30:36+00:00'
+title: Mounting NTFS partitions on Arch Linux
+type: posts
+---
 
 Yesterday I installed Arch Linux once again. A clean, bloat free desktop with Budgie Desktop environment with some must have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don't know whether it is a bug in Budgie or just a wrong setting). I also faced the problem of mounting Windows NTFS volumes on user's wish. Arch Linux wiki has details about how to auto mount partitions on start-up, but I had a tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu-like distribution on the mounting of NTFS drives. I got a hint from Arch Linux Wiki about Polkit configuration setting which can be used to allow a standard user to mount partitions. Here is a solution which I searched on various Arch Linux Community pages.
 

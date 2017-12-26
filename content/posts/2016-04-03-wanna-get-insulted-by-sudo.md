@@ -1,10 +1,16 @@
-+++
-title = "Wanna get insulted by sudo"
-date = "2016-04-03T12:20:36+00:00"
-categories = ["Linux", "Hacks"]
-tags = ["Linux","sudo", "easter-egg", "fun"]
-type = "posts"
-+++
+---
+categories:
+- Linux
+- Hacks
+date: '2016-04-03T12:20:36+00:00'
+tags:
+- Linux
+- sudo
+- easter-egg
+- fun
+title: Wanna get insulted by sudo
+type: posts
+---
 <p style="text-align: left;">
   You might have tried many linux easters eggs for fun, but you are going to love this hack which makes sudo insult you.
 </p>

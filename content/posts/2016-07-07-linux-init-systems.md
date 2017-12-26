@@ -1,11 +1,16 @@
-+++
-title = "Linux init Systems"
-date = "2016-07-07"
-draft = true
-categories = ["Linux", "Init"]
-tags = ["Linux","init", "operating systems"]
-type = "posts"
-+++
+---
+categories:
+- Linux
+- Init
+date: '2016-07-07'
+draft: true
+tags:
+- Linux
+- init
+- operating systems
+title: Linux init Systems
+type: posts
+---
 The first thing, the Kernel do after getting control from the boot-loader, is to start the <kbd>init</kbd> process. Hence <kbd>init</kbd> is the direct or indirect ancestor of all the processes running on your linux system. <kbd>init</kbd> process is the last step in the boot process. It runs as a daemon and typically identified by the process id "1".
 
 

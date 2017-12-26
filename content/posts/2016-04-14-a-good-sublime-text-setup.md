@@ -1,9 +1,11 @@
-+++
-title = "A good Sublime Text Setup"
-date = "2016-04-14T10:55:35+00:00"
-categories = ["development", "Sublime text"]
-type = "posts"
-+++
+---
+categories:
+- development
+- Sublime text
+date: '2016-04-14T10:55:35+00:00'
+title: A good Sublime Text Setup
+type: posts
+---
 So, after a hactic day, a good news finally came. I have been selected as a Lab Administrator for the <a href="https://www.facebook.com/sslnitc/" target="_blank">Software Systems Lab</a> of my college. Cheers!!!
 
 Let&#8217;s come to our today&#8217;s topic on configuring Sublime Text Settings.

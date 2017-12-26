@@ -1,10 +1,10 @@
-+++
-title = "About"
-date = "2015-07-18"
-comments = false
-type = "page"
-slug = "about"
-+++
+---
+comments: false
+date: '2015-07-18'
+slug: about
+title: About
+type: page
+---
 
 > Speak less than you know; have more than you show.
 

@@ -1,10 +1,18 @@
-+++
-title = "Custom Arch Linux setup with Openbox"
-date = "2016-06-11"
-categories = ["Linux", "Arch-linux", "development"]
-tags = ["Linux","desktop-environment", "operating system", "development", "fun"]
-type = "posts"
-+++
+---
+categories:
+- Linux
+- Arch-linux
+- development
+date: '2016-06-11'
+tags:
+- Linux
+- desktop-environment
+- operating system
+- development
+- fun
+title: Custom Arch Linux setup with Openbox
+type: posts
+---
 
 After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and  when you put them together you get something amazing.
 

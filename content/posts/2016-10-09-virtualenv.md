@@ -1,10 +1,15 @@
-+++
-title = "Setting up Python Development Environments"
-date = "2016-10-09"
-categories = ["python", "development"]
-tags = ["pip","python", "development"]
-type = "posts"
-+++
+---
+categories:
+- python
+- development
+date: '2016-10-09'
+tags:
+- pip
+- python
+- development
+title: Setting up Python Development Environments
+type: posts
+---
 
 Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project's contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?
 
