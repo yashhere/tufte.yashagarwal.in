@@ -98,20 +98,20 @@
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/tags/development/</loc>
-    <lastmod>2016-10-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashhere.github.io/categories/development/</loc>
-    <lastmod>2016-10-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashhere.github.io/categories/development/</loc>
     <lastmod>2017-02-22T13:37:56+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashhere.github.io/categories/development/</loc>
+    <lastmod>2016-10-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashhere.github.io/tags/development/</loc>
+    <lastmod>2016-10-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -164,14 +164,14 @@
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/tags/hacks/</loc>
-    <lastmod>2017-10-17T21:55:53+05:30</lastmod>
+    <loc>https://yashhere.github.io/categories/hacks/</loc>
+    <lastmod>2016-04-03T12:20:36+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/categories/hacks/</loc>
-    <lastmod>2016-04-03T12:20:36+00:00</lastmod>
+    <loc>https://yashhere.github.io/tags/hacks/</loc>
+    <lastmod>2017-10-17T21:55:53+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -188,14 +188,14 @@
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/tags/linux/</loc>
-    <lastmod>2017-12-26T20:53:35+05:30</lastmod>
+    <loc>https://yashhere.github.io/categories/linux/</loc>
+    <lastmod>2016-06-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/categories/linux/</loc>
-    <lastmod>2016-06-11T00:00:00+00:00</lastmod>
+    <loc>https://yashhere.github.io/tags/linux/</loc>
+    <lastmod>2017-12-26T20:53:35+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -254,13 +254,13 @@
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/tags/python/</loc>
+    <loc>https://yashhere.github.io/categories/python/</loc>
     <lastmod>2016-10-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/categories/python/</loc>
+    <loc>https://yashhere.github.io/tags/python/</loc>
     <lastmod>2016-10-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

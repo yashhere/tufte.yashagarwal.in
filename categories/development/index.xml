@@ -5,22 +5,19 @@
     <link>https://yashhere.github.io/categories/development/</link>
     <description>Recent content in Development on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 22 Feb 2017 13:37:56 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 09 Oct 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://yashhere.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Setting up Hugo automatic deployment to Github with Wercker</title>
-      <link>https://yashhere.github.io/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</link>
-      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      <title>Setting up Python Development Environments</title>
+      <link>https://yashhere.github.io/posts/2016/10/setting-up-python-development-environments/</link>
+      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
-      <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.</description>
-    </item>
-    
-  </channel>
-</rss>iption>
+      <guid>https://yashhere.github.io/posts/2016/10/setting-up-python-development-environments/</guid>
+      <description>Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?
+As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at.</description>
     </item>
     
     <item>
