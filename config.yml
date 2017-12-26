@@ -4,10 +4,10 @@ canonifyurls: true
 MetaDataFormat: "yaml"
 archetypeDir: "archetypes"
 config: "config.toml"
-enableGitInfo:              false
+enableGitInfo: false
 copyright: Creative Commons Attribution-ShareAlike 4.0 International License
 defaultContentLanguage: en
-disqusShortname: theyashagarwal
+disqusShortname: yashhere
 enableEmoji: true
 enableRobotsTXT: true
 languages:
