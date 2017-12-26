@@ -1,7 +1,5 @@
 Paginate: 7
 baseURL: https://yashhere.github.io
-blackfriday:
-  hrefTargetBlank: true
 canonifyurls: true
 MetaDataFormat: "yaml"
 archetypeDir: "archetypes"
@@ -79,3 +77,28 @@ taxonomies:
   tag: tags
 theme: minimo
 title: /dev/yash/notes
+
+blackfriday:
+  hrefTargetBlank: true
+  taskLists: true
+  fractions: true
+  smartDashes: true
+
+related:
+  threshold: 80
+  includeNewer: false
+  toLower: false
+  indices:
+    - name: "keywords"
+    - weight: 150
+  indices:
+    - name : "author"
+    - toLower: true
+    - weight: 30
+  indices:
+    - name : "tags"
+    - weight: 100
+  indices:
+    - name : "date"
+    - weight: 10
+    - pattern: "2006"

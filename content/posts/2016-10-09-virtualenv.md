@@ -4,9 +4,9 @@ categories:
 - development
 date: '2016-10-09'
 tags:
-- pip
-- python
-- development
+- Pip
+- Python
+- Development
 title: Setting up Python Development Environments
 type: posts
 ---

@@ -1,5 +1,5 @@
 ---
-categories:
+tags:
 - Linux
 - Hacks
 - Configuration
@@ -31,7 +31,7 @@ polkit.addRule(function(action, subject) {
 );
 
 polkit.addRule(function(action, subject) {
-   if ((action.id == "org.freedesktop.udisks.filesystem-mount-system-internal") && 
+   if ((action.id == "org.freedesktop.udisks.filesystem-mount-system-internal") &&
         subject.isInGroup("wheel")) {
             return polkit.Result.YES;
         }

@@ -1,0 +1,8 @@
+<ul>
+  {{ range first 3 ( where ( where .Site.Pages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags ) "Permalink" "!=" .Permalink ) }}
+    <li class="relatedPost">
+      <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a><br />
+      {{ .Description | markdownify }}
+    </li>
+  {{ end }}
+</ul>

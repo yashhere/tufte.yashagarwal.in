@@ -6,10 +6,9 @@ categories:
 date: '2016-06-11'
 tags:
 - Linux
-- desktop-environment
-- operating system
-- development
-- fun
+- Desktop Environment
+- Operating System
+- Development
 title: Custom Arch Linux setup with Openbox
 type: posts
 ---

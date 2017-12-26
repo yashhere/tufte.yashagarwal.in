@@ -3,9 +3,9 @@ Categories:
 - Development
 Tags:
 - gh-pages
-- hugo
-- github
-- wercker
+- Hugo
+- Github
+- Wercker
 date: '2017-02-22T13:37:56+05:30'
 title: Setting up Hugo automatic deployment to Github with Wercker
 type: posts
@@ -20,7 +20,7 @@ In this post, I will list all the process which I used to setup automatic deploy
 Here I would like to share the issues I encountered and the tweaks I’ve made. The source codes of this site can be found [here](https://github.com/yash2696/yash2696.github.io).
 
 ### Project Pages or User Pages
-Two types of sites are supported on Github Pages, User Site, and Project Site. User Sites will serve the files stored in the master branch of the repository `https://github.com/user_name/user_name.github.io` at the address `https://user_name.github.io`. For the Project sites, everything under the gh-pages will be served at the address `https://repo_name.github.io`. 
+Two types of sites are supported on Github Pages, User Site, and Project Site. User Sites will serve the files stored in the master branch of the repository `https://github.com/user_name/user_name.github.io` at the address `https://user_name.github.io`. For the Project sites, everything under the gh-pages will be served at the address `https://repo_name.github.io`.
 
 My site is a User site, so I wanted all the static files to be saved in the master branch. As Hugo generates all the static files under <code>public</code> directory, I needed another branch to store my source files. So my made a new branch <code>source</code> which will save all the source files for my blog. Don't forget to remove the .git folder from the theme folder. Otherwise, the build will fail at later stage. You can try using git submodule feature to avoid this issue. I created a repository <code>yash2696.github.io</code> in Github also.
 
@@ -48,7 +48,7 @@ git push origin master
 ### Automatic deployment using Wrecker
 It is very simple to build a Hugo site. Invoke <code>hugo</code> command under your root directory, Hugo will create a public directory which will contain all your content, static files, etc. Then push this directory to Github, and voila, your site is up!
 
-What if a single push to <code>source</code> branch can trigger all the process for you automatically. Here the magic of continuous integration(CI) comes into picture. A free Wercker account can be easily created and hooked to Github account and a new application from a chosen repository. After setting up everything, a push to the development branch will automatically trigger the Wercker. One of the biggest advantages of using Wercker is its extensive collection of user made and well documented "steps." In this post, I will use two steps, *build hugo* and *deploy to Github*. 
+What if a single push to <code>source</code> branch can trigger all the process for you automatically. Here the magic of continuous integration(CI) comes into picture. A free Wercker account can be easily created and hooked to Github account and a new application from a chosen repository. After setting up everything, a push to the development branch will automatically trigger the Wercker. One of the biggest advantages of using Wercker is its extensive collection of user made and well documented "steps." In this post, I will use two steps, *build hugo* and *deploy to Github*.
 
 ![Wercker Steps](/images/wercker-steps.png)
 <strong>Wercker -> Registry -> steps </strong>
