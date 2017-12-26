@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Recently, I got a chance to setup ALM Octane on one of my university server for a course project. From the support page of ALM Octane:
+ ALM Octane is a web-based application lifecycle management platform that enables teams to collaborate easily, manage the product delivery pipeline, and visualise the impact of changes.
+ Precursor My department insists on using open source software (a plus point, indeed !). But ALM Octane has Oracle DB/MSSQL as a dependency.'>
+
+<meta property='og:title' content='Setting up ALM Octane with Docker Compose. • /dev/yash/notes'>
+<meta property='og:description' content='Recently, I got a chance to setup ALM Octane on one of my university server for a course project. From the support page of ALM Octane:
+ ALM Octane is a web-based application lifecycle management platform that enables teams to collaborate easily, manage the product delivery pipeline, and visualise the impact of changes.
+ Precursor My department insists on using open source software (a plus point, indeed !). But ALM Octane has Oracle DB/MSSQL as a dependency.'>
+<meta property='og:url' content='https://yashhere.github.io/posts/2017/12/setting-up-alm-octane-with-docker-compose./'>
+<meta property='og:site_name' content='/dev/yash/notes'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Linux'><meta property='article:tag' content='Configuration'><meta property='article:tag' content='Docker'><meta property='article:tag' content='Octane'><meta property='article:published_time' content='2017-12-26T20:53:35&#43;05:30'/><meta property='article:modified_time' content='2017-12-26T20:53:35&#43;05:30'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Setting up ALM Octane with Docker Compose. • /dev/yash/notes</title>
+  <link rel='canonical' href='https://yashhere.github.io/posts/2017/12/setting-up-alm-octane-with-docker-compose./'>
+  
+  
+  <link rel='icon' href='https://yashhere.github.io/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='https://yashhere.github.io/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashhere.github.io/css/custom.css'>
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='https://yashhere.github.io/'>Home</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/about'>About</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/posts'>Posts</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>/dev/yash/notes</p>
+          
+          <p class='site-description subtitle'>The directory of my thoughts</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Setting up ALM Octane with Docker Compose.</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2017-12-26T20:53:35&#43;05:30'>Dec 26, 2017</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+4 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p>Recently, I got a chance to setup ALM Octane on one of my university server for a course project. From the support page of ALM Octane:</p>
+
+<blockquote>
+<p>ALM Octane is a web-based application lifecycle management platform that enables teams to collaborate easily, manage the product delivery pipeline, and visualise the impact of changes.</p>
+</blockquote>
+
+<h2 id="precursor">Precursor</h2>
+
+<p>My <a href="http://cse.nitc.ac.in" target="_blank">department</a> insists on using open source software (a plus point, indeed !). But ALM Octane has Oracle DB/MSSQL as a dependency. My professor was not very enthusiastic about installing a proprietary database on the server. So I came up with a different approach. I set up this database (<a href="http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html" target="_blank">free version</a> of Oracle DB, the Oracle Database 11g Express Edition) in a Docker container. ALM Octane has three components &ndash; Oracle DB, Elastic Search, and the Octane Server itself. The problem was to handle the condition that these three components should be installed on different machines. I decided to use three separate Docker containers for this isolation and then configured them to communicate with each other with docker-compose.</p>
+
+<h2 id="wait-docker-compose">Wait&hellip; Docker Compose?</h2>
+
+<p>(Skip this if already know about Docker and Compose)</p>
+
+<blockquote>
+<p>Docker-compose is a tool to define and run multi-container Docker applications. Compose uses a compose file to configure the services used by the applications. Then all the services and the application can be run by using a single command.</p>
+</blockquote>
+
+<p>So before reading this article any further, if you do not know about docker-compose, go and read about it.</p>
+
+<h2 id="the-problem">The Problem</h2>
+
+<p>There are three primary services which are required for proper functioning of the Octane Server &ndash; Octane, Oracle DB and Elastic Search. The difficulty was to set up adequate configuration options for these services and the appropriate setup for communication between them. I tried searching on Docker Hub for any prebuilt images. Fortunately, I found some pre-built Docker images for my purpose. So I started writing my config file.</p>
+
+<h2 id="the-solution">The Solution</h2>
+
+<p>Here is my config file for easy reference.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version: <span style="color:#e6db74">&#39;2&#39;</span>
+services:
+  octane_oracle:
+    image: alexeiled/docker-oracle-xe-11g
+    shm_size: 2g
+    mem_limit: 4g
+  octane_es:
+    image: elasticsearch:<span style="color:#ae81ff">2.4</span>
+    environment:
+      - ES_HEAP_SIZE=4G
+    mem_limit: 4g
+  octane:
+    image: hpsoftware/almoctane
+    ports:
+      - <span style="color:#e6db74">&#34;8080:8080&#34;</span>
+    volumes:
+      - /opt/octane/conf:/opt/octane/conf
+      - /opt/octane/log:/opt/octane/log
+      - /opt/octane/repo:/opt/octane/repo
+    links:
+      - octane_oracle
+      - octane_es
+    mem_limit: 4g
+    env_file:
+      - ./octane.env</code></pre></div>
+<p>The configuration options in the code are for a system with RAM of 8GB. The options must be tuned for best performance before deploying on the production server.</p>
+
+<p>In the code, I have exposed port 8080 of the Octane Docker container to the port 8080 of the host machine. It will make sure that we can access the Octane application on localhost:8080. The <code>octane.env</code> file contains three variables for easy site management.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">SERVER_DOMAIN=<span style="color:#e6db74">&#34;your domain name&#34;</span>
+ADMIN_PASSWORD=<span style="color:#e6db74">&#34;your password&#34;</span>
+<span style="color:#75715e">#This disables the minimum memory check to enable to run on smaller machines.</span>
+DISABLE_VALIDATOR_MEMORY=<span style="color:#66d9ef">true</span></code></pre></div>
+<p>Now if you try to run the container with <code>docker-compose up</code>, you will encounter various validation errors. It is because, before starting the server, you need to adjust some settings. If you noticed in the config file, there is a section to define volumes. These volumes are persistent volumes and are used to keep changes saved between two docker-compose runs. I have mapped three volumes from Docker container to the host machine. So you can now edit the files in <code>/opt/octane/</code> folder on the host machine, and changes will reflect in the Docker container. The file where you will have to make changes is <code>/opt/octane/conf/setup.xml</code>.</p>
+
+<p>You can read the documentation of ALM Octane to find out which settings to be changed. Once you do the necessary changes, fire up the command <code>docker-compose up</code> and wait for some time. Docker Compose will finish processing, and the server can be accessed on <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> on the host machine. While deploying it on the production server, make sure that your network administrator has opened the port 8080 for your server. Otherwise, the site will not be accessible. Also the docker-compose can be run in background by issuing command <code>docker-compose up -d</code>.</p>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashhere.github.io/tags/linux'>Linux</a>, <a class='tag' href='https://yashhere.github.io/tags/configuration'>Configuration</a>, <a class='tag' href='https://yashhere.github.io/tags/docker'>Docker</a>, <a class='tag' href='https://yashhere.github.io/tags/octane'>Octane</a></div>
+
+  </div>
+</footer>
+
+
+    
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='https://yashhere.github.io/posts/2017/10/fixing-hindi-fonts-in-arch-linux/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Fixing Hindi Fonts in Arch Linux</a>
+    </div></div>
+</nav>
+
+  
+<div class='comments-container'>
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "theyashagarwal" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/profile.php?id=100001324105675' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/yum_yash' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:yashagarwaljpr@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2015-2017 Yash Agarwal  - Creative Commons Attribution-ShareAlike 4.0 International License
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='https://yashhere.github.io/assets/js/main.f29c93b9.js'></script><script src='https://yashhere.github.io/js/custom.js'></script></body>
+
+</html>
+
