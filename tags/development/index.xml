@@ -29,5 +29,18 @@ As a beginner to open source projects, the problem I faced, in the beginning, wa
       <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and when you put them together you get something amazing.</description>
     </item>
     
+    <item>
+      <title>A good Sublime Text Setup</title>
+      <link>https://yashhere.github.io/posts/2016/04/a-good-sublime-text-setup/</link>
+      <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
+      
+      <guid>https://yashhere.github.io/posts/2016/04/a-good-sublime-text-setup/</guid>
+      <description>So, after a hactic day, a good news finally came. I have been selected as a Lab Administrator for the Software Systems Lab of my college. Cheers!!!
+Let&amp;#8217;s come to our today&amp;#8217;s topic on configuring Sublime Text Settings.
+There is just one rule you must follow while designing your own editor preference configuration.
+ Don&amp;#8217;t put any lines in your configuration that you don&amp;#8217;t understand.
+ You will find tons of online tutorials that contains all kinds of awesome hacks to make your sublime text experience better but the worst way to make your development environment better is to just borrow the configuration from someone else.</description>
+    </item>
+    
   </channel>
 </rss>

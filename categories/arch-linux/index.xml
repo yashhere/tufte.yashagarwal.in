@@ -1,33 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Arch Linux on /dev/yash/notes</title>
+    <title>Arch-linux on /dev/yash/notes</title>
     <link>https://yashhere.github.io/categories/arch-linux/</link>
-    <description>Recent content in Arch Linux on /dev/yash/notes</description>
+    <description>Recent content in Arch-linux on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 17 Oct 2017 21:55:53 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jun 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://yashhere.github.io/categories/arch-linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Fixing Hindi Fonts in Arch Linux</title>
-      <link>https://yashhere.github.io/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</link>
-      <pubDate>Tue, 17 Oct 2017 21:55:53 +0530</pubDate>
+      <title>Custom Arch Linux setup with Openbox</title>
+      <link>https://yashhere.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
+      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</guid>
-      <description>When viewing Hindi content in any browser in Arch Linux, the rendering looks weird.
-Doesn&amp;rsquo;t look good right! I&amp;rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix. The appropriate package for installing Indic Language support is ttf-indic-otf.
-Now go to /usr/share/fonts/TTF and take the backup of two fonts FreeSans.ttf and FreeSerif.ttf. Now delete these two fonts from the directory.</description>
-    </item>
-    
-    <item>
-      <title>Mounting NTFS partitions on Arch Linux</title>
-      <link>https://yashhere.github.io/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</link>
-      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
-      
-      <guid>https://yashhere.github.io/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</guid>
-      <description>Yesterday I installed Arch Linux once again. A clean, bloat free desktop with Budgie Desktop environment with some must have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don&amp;rsquo;t know whether it is a bug in Budgie or just a wrong setting). I also faced the problem of mounting Windows NTFS volumes on user&amp;rsquo;s wish. Arch Linux wiki has details about how to auto mount partitions on start-up, but I had a tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu-like distribution on the mounting of NTFS drives.</description>
+      <guid>https://yashhere.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
+      <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and when you put them together you get something amazing.</description>
     </item>
     
   </channel>

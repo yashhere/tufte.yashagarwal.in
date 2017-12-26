@@ -64,6 +64,12 @@
   </url>
   
   <url>
+    <loc>https://yashhere.github.io/tags/arch-linux/</loc>
+    <lastmod>2017-10-17T21:55:53+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashhere.github.io/categories/arch-linux/</loc>
     <lastmod>2016-06-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -81,8 +87,8 @@
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/categories/configuration/</loc>
-    <lastmod>2017-03-14T10:30:36+00:00</lastmod>
+    <loc>https://yashhere.github.io/tags/configuration/</loc>
+    <lastmod>2017-10-17T21:55:53+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -117,6 +123,12 @@
   </url>
   
   <url>
+    <loc>https://yashhere.github.io/tags/experience/</loc>
+    <lastmod>2017-03-13T21:03:16+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashhere.github.io/categories/foss/</loc>
     <lastmod>2017-03-13T21:03:16+00:00</lastmod>
     <priority>0</priority>
@@ -130,7 +142,7 @@
   
   <url>
     <loc>https://yashhere.github.io/tags/fun/</loc>
-    <lastmod>2016-06-11T00:00:00+00:00</lastmod>
+    <lastmod>2016-04-03T12:20:36+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -148,7 +160,13 @@
   
   <url>
     <loc>https://yashhere.github.io/categories/hacks/</loc>
-    <lastmod>2017-03-14T10:30:36+00:00</lastmod>
+    <lastmod>2016-04-03T12:20:36+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashhere.github.io/tags/hacks/</loc>
+    <lastmod>2017-10-17T21:55:53+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -166,13 +184,13 @@
   
   <url>
     <loc>https://yashhere.github.io/categories/linux/</loc>
-    <lastmod>2017-03-14T10:30:36+00:00</lastmod>
+    <lastmod>2016-06-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashhere.github.io/tags/linux/</loc>
-    <lastmod>2016-06-11T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-17T21:55:53+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -183,7 +201,7 @@
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/categories/ntfs/</loc>
+    <loc>https://yashhere.github.io/tags/ntfs/</loc>
     <lastmod>2017-03-14T10:30:36+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -213,7 +231,7 @@
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/categories/polkit/</loc>
+    <loc>https://yashhere.github.io/tags/polkit/</loc>
     <lastmod>2017-03-14T10:30:36+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -250,7 +268,13 @@
   
   <url>
     <loc>https://yashhere.github.io/tags/</loc>
-    <lastmod>2016-06-11T00:00:00+00:00</lastmod>
+    <lastmod>2017-10-17T21:55:53+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashhere.github.io/tags/thoughts/</loc>
+    <lastmod>2017-03-13T21:03:16+00:00</lastmod>
     <priority>0</priority>
   </url>
   

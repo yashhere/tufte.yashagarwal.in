@@ -29,15 +29,6 @@
     </item>
     
     <item>
-      <title>Configuration</title>
-      <link>https://yashhere.github.io/categories/configuration/</link>
-      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
-      
-      <guid>https://yashhere.github.io/categories/configuration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Development</title>
       <link>https://yashhere.github.io/categories/development/</link>
       <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
@@ -76,7 +67,7 @@
     <item>
       <title>Hacks</title>
       <link>https://yashhere.github.io/categories/hacks/</link>
-      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
+      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
       
       <guid>https://yashhere.github.io/categories/hacks/</guid>
       <description></description>
@@ -94,7 +85,7 @@
     <item>
       <title>Linux</title>
       <link>https://yashhere.github.io/categories/linux/</link>
-      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
+      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://yashhere.github.io/categories/linux/</guid>
       <description></description>
@@ -110,29 +101,11 @@
     </item>
     
     <item>
-      <title>NTFS</title>
-      <link>https://yashhere.github.io/categories/ntfs/</link>
-      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
-      
-      <guid>https://yashhere.github.io/categories/ntfs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Philosophy</title>
       <link>https://yashhere.github.io/categories/philosophy/</link>
       <pubDate>Sun, 10 Apr 2016 00:33:16 +0000</pubDate>
       
       <guid>https://yashhere.github.io/categories/philosophy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Polkit</title>
-      <link>https://yashhere.github.io/categories/polkit/</link>
-      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
-      
-      <guid>https://yashhere.github.io/categories/polkit/</guid>
       <description></description>
     </item>
     
