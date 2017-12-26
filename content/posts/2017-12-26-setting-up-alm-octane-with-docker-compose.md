@@ -1,7 +1,6 @@
 ---
 title: "Setting up ALM Octane with Docker Compose."
 date: 2017-12-26T20:53:35+05:30
-draft: true
 type: posts
 tags:
 - Linux
