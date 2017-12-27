@@ -1,5 +1,5 @@
 ---
-date: "2017-12-28T12:39:20+05:30"
+date: "2017-12-27T20:21:09+05:30"
 title: "Setting Up SSH Agent in i3"
 type: posts
 tags:
@@ -7,7 +7,6 @@ tags:
   - SSH
   - Configuration
   - Hacks
-draft: true
 ---
 
 In this post, I will write about the procedure to correctly setup SSH and GPG agents in the i3 window manager. To follow this post, you need to have ssh-keys and your private GPG keys ready. If you do not already have these keys with you, I will describe the process of creating the keys.
