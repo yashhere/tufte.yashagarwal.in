@@ -17,14 +17,14 @@ People say that I don't smile much. That's somewhat true. I am not a camera frie
 
 In my "spare time", I like walking alone, in random thoughts and reading Quora. I don't have many friends cause I believe that I am very bad in judging people (for me, Prevention is better than Cure).
 
-My current operating system is Arch Linux with Gnome Desktop.
+My current operating system is ~~Arch Linux with Gnome Desktop~~ Linux Mint with i3.
 
 <br>
 You can find me at:
 
 1. Email: yashagarwaljpr [at] gmail [dot] com
 
-2. [Facebook](https://www.facebook.com/theyashagarwal)
+2. [Facebook](https://www.facebook.com/profile.php?id=100001324105675)
 
 3. [Twitter](https://www.twitter.com/yash__here)
 
@@ -33,5 +33,3 @@ You can find me at:
 5. [Quora](https://www.quora.com/profile/Yash-Agarwal-140)
 
 6. [GitHub](https://www.github.com/yashhere)
-
-Recently I started using [GoodReads](https://www.goodreads.com/user/show/63354397-yash-agarwal) also as I am trying to get started with the amazing world of books. Hope I will be able to get good results by this.
