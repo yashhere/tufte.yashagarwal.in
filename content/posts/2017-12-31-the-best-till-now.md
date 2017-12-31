@@ -1,5 +1,5 @@
 ---
-date: "2017-12-31T23:59:00+05:30"
+date: "2017-12-31T23:19:00+05:30"
 title: "2017 - The Best Till Now."
 tags:
   - Experience, Life, 2017
@@ -13,7 +13,7 @@ If I have to define 2017 in one word, that would be *amazing*. This year has bee
 
 ## Grades
 
-Although I cared very little for grades for the most part of my college life, this year changed my perception of grades. I finally understood that the grades are also equally important. I started *2017* with only one goal --- getting good grades. I studied a lot in first half of the year, and it is because of that time, I hold an excellent command over Computer Networks. If I have to choose any one semester for my placement, It would be *6<sup>th</sup> semester*.
+Although I cared very little for grades for the most of my college life, this year changed my perception of grades. I finally understood that the grades are also equally important. I started *2017* with only one goal --- getting good grades. I studied a lot in first half of the year, and it is because of that time, I hold an excellent command over Computer Networks. If I have to choose any one semester for my placement, It would be *6<sup>th</sup> semester*.
 
 
 
