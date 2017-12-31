@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i');
 
 body {
     text-rendering: optimizeLegibility;
@@ -40,7 +40,7 @@ input,
 select,
 textarea {
     font-family: Lato, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, Siyam Rupali, sans-serif;
-    font-size: 1em;
+    font-size: 1.04em;
     line-height: 1.5;
     color: #37474f;
     word-wrap: break-word
