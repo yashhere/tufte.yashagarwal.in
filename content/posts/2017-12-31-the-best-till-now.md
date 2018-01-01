@@ -7,21 +7,21 @@ tags:
 
 
 
-If I have to define 2017 in one word, that would be *amazing*. This year has been a life-changing year for me. I learned a lot of new things, had some excellent experience in the company of amazing people, had a great time in my academic life and [SSL](http://athena.nitc.ac.in). 2017 has been a very significant year for me, and I want to record this memory by documenting some of the most amazing things that I learned and experienced this year.
+If I have to define 2017 in one word, that would be amazing. This year has been a life-changing year for me. I learned a lot of new things, had some excellent experience in the company of amazing people, had a great time in my academic life and SSL. 2017 has been a very significant year for me, and I want to record this memory by documenting some of the most amazing things that I learned and experienced this year.
 
 
 
 ## Grades
 
-Although I cared very little for grades for the most of my college life, this year changed my perception of grades. I finally understood that the grades are also equally important. I started *2017* with only one goal --- getting good grades. I studied a lot in first half of the year, and it is because of that time, I hold an excellent command over Computer Networks. If I have to choose any one semester for my placement, It would be *6<sup>th</sup> semester*.
+Although I cared very little for grades for the most of my college life, this year changed my perception of grades. I finally understood that the grades are also equally important. I started *2017* with only one goal --- getting good grades. I studied a lot in the first half of the year, and it is because of that time, I hold an excellent command over Computer Networks. If I have to choose any one semester for my placement, It would be *6<sup>th</sup> semester*.
 
 
 
-I invested most of my time for preparation of campus placements in the mid of the year. Reading Data Structures and Algorithm has proven to be very beneficial for me. However, the way I studied Data Structures, hasn't improved me a lot in real-world problem-solving skills.
+I invested most of my time for preparation of campus placements in the mid of the year. Reading Data Structures and Algorithms have proven to be very beneficial for me. However, the way I studied Data Structures, hasn't improved me a lot in real-world problem-solving skills.
 
 
 
-I did not do exceptionally good in academics in the late half of the year. Partly because of the *after placement* and *"Dude, it is fourth year"* type of environment around me. My final year project did not go in the right direction, and it is one of the very few disappointments for me in *2017*.
+I did not do exceptionally well in academics in the late half of the year. Partly because of the *after placement* and *"Dude, it is fourth year"* type of environment around me. My final year project did not go in the right direction, and it is one of the very few disappointments for me in *2017*.
 
 
 
@@ -35,7 +35,7 @@ It is one thing which I could never excel in my undergrad life. People say that 
 
 
 
-Recently I started working on Debian Packaging. [Praveen](http://civic.gnu.org.in/author/praveen) Sir has always been very supportive of me and answered all my ludicrous questions very patiently. My conversation with him about free software philosophy has been very enlightening. Debian Packaging was a very satisfactory experience to be able to give something back to the community. Now, I hold [one]((https://qa.debian.org/developer.php?login=yashagarwaljpr@gmail.com)) package in unstable Debian repository and [two](https://qa.debian.org/developer.php?login=bansaly26@gmail.com) more packages in the pipeline for approval.
+Recently I started working on Debian Packaging. [Praveen](http://civic.gnu.org.in/author/praveen) sir has always been very supportive of me and answered all my ludicrous questions very patiently. My conversation with him about free software philosophy has been very enlightening. Debian Packaging was a very satisfying experience to be able to give something back to the community. Now, I hold [one]((https://qa.debian.org/developer.php?login=yashagarwaljpr@gmail.com)) package in the unstable Debian repository and [two](https://qa.debian.org/developer.php?login=bansaly26@gmail.com) more packages in the pipeline for approval.
 
 
 
@@ -71,7 +71,7 @@ It is one issue where I do not put enough stress. I can divide my year into two 
 
 
 
-However, the second half of the year was disastrous. Due to weather and other unavoidable circumstances, I could not keep up my routine; once I came back to college. I started sleeping late again, and that resulted in me going to Docter very often in last two months.
+However, the second half of the year was disastrous. Due to weather and other unavoidable circumstances, I could not keep up my routine; once I came back to college. I started sleeping late again, and that resulted in me going to docter very often in the last two months.
 
 
 
@@ -85,4 +85,4 @@ I built good relations with some faculties in the [Department](http://cse.nitc.a
 
 
 
-__*Looking forward to 2018 for full of new experiences!*__
+__*Looking forward to 2018 for, full of new experiences!*__
