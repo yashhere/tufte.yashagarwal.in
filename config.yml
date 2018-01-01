@@ -26,6 +26,9 @@ menu:
     url: /posts
   - name: About
     url: /about
+  - identifier: RSS
+    name: RSS
+    url: /index.xml
 params:
   assets:
     customCSS:
@@ -55,10 +58,8 @@ params:
       - facebook
       - twitter
       - instagram
-      - email
       - codepen
       - linkedin
-    email: yashagarwaljpr@gmail.com
     facebook: profile.php?id=100001324105675
     github: yashhere
     instagram: yum_yash
