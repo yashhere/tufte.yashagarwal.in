@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400,400i');
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i|Lato');
 
 body {
     text-rendering: optimizeLegibility;
@@ -13,17 +13,20 @@ body {
     text-transform: none;
 }
 
-pre {
+
+
+code {
     font-family: Monaco, monospace, monospace;
-    font-size: 1em
+    font-size: 1em;
+    background-color: #f0f0f0;
+    padding: 1px 2px 1px 2px;
+    border-radius: 4px;
 }
 
-code,
-kbd,
-samp {
+pre > code {
     font-family: Monaco, monospace, monospace;
-    font-size: 1em
-    background-color: #bdbdbd;
+    font-size: 1em;
+    background-color: #272822;
 }
 
 textarea {
@@ -39,13 +42,23 @@ button,
 input,
 select,
 textarea {
-    font-family: Lato, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, Siyam Rupali, sans-serif;
-    font-size: 1.04em;
+    font-family: Lato, 'Quattrocento Sans', 'Helvetica Neue', 'Siyam Rupali', sans-serif;
+    font-size: 1.1em;
     line-height: 1.5;
     color: #37474f;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
+.entry-content {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+blockquote {
+    font-size: 1em;
+    line-height: 1.5;
+    font-weight: 400;
+}
 @media screen and (min-width: 480px) {
     .title,
     h1,
@@ -54,10 +67,10 @@ textarea {
     h4,
     h5,
     h6 {
-        font-family: Lato, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, Siyam Rupali, sans-serif;
-        font-weight: 700;
-        line-height: 1.2;
-        color: #263238;
+        font-family: Lato, 'Quattrocento Sans', Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, Siyam Rupali, sans-serif;
+        /* font-weight: 700; */
+        line-height: 1.5;
+        color: #37474f;
         margin: 0 0 .625em
     }
 

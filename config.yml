@@ -33,8 +33,9 @@ params:
   assets:
     customCSS:
     - css/custom.css
-    customJS:
-    - js/custom.js
+    - css/syntax.css
+    # customJS:
+    # - js/custom.js
     favicon: favicon.ico
     gopher: ''
   copyright:
@@ -71,7 +72,12 @@ permalinks:
 preserveTaxonomyNames: true
 pygmentsCodefences: true
 pygmentsCodeFencesGuessSyntax: true
-pygmentsStyle:              "monokai"
+# pygmentsStyle: "monokai"
+pygmentsUseClasses: true
+pygmentsOptions:
+  noclasses: true
+  linenostart: 1
+  linenos: table
 taxonomies:
   author: authors
   category: categories
