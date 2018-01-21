@@ -20,7 +20,7 @@
   
   <link rel='icon' href='https://yashhere.github.io/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashhere.github.io/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashhere.github.io/css/custom.css'>
+<link rel='stylesheet' href='https://yashhere.github.io/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashhere.github.io/css/custom.css'><link rel='stylesheet' href='https://yashhere.github.io/css/syntax.css'>
 </head>
 
 
@@ -111,27 +111,23 @@
 <p>I think when using Gentoo, you will also need to compile the support for NTFS file system in Kernel also. Please see <a href="https://wiki.gentoo.org/wiki/NTFS" target="_blank">here</a>.</p>
 
 <p>Add the following code to <code>/etc/polkit-1/rules.d/10-udisks2.rules</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Allow udisks2 to mount devices without authentication for users in the &#34;wheel&#34; group.
+</span><span class="c1"></span><span class="nx">polkit</span><span class="p">.</span><span class="nx">addRule</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="nx">subject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">((</span><span class="nx">action</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s2">&#34;org.freedesktop.udisks2.filesystem-mount-system&#34;</span> <span class="o">||</span>
+        <span class="nx">action</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s2">&#34;org.freedesktop.udisks2.filesystem-mount&#34;</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="nx">subject</span><span class="p">.</span><span class="nx">isInGroup</span><span class="p">(</span><span class="s2">&#34;wheel&#34;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">polkit</span><span class="p">.</span><span class="nx">Result</span><span class="p">.</span><span class="nx">YES</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
 
-<pre>
-// Allow udisks2 to mount devices without authentication for users in the "wheel" group.
-polkit.addRule(function(action, subject) {
-    if ((action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
-        action.id == "org.freedesktop.udisks2.filesystem-mount") &&
-        subject.isInGroup("wheel")) {
-            return polkit.Result.YES;
-        }
-    }
-);
-
-polkit.addRule(function(action, subject) {
-   if ((action.id == "org.freedesktop.udisks.filesystem-mount-system-internal") &&
-        subject.isInGroup("wheel")) {
-            return polkit.Result.YES;
-        }
-    }
-);
-</pre>
-
+<span class="nx">polkit</span><span class="p">.</span><span class="nx">addRule</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="nx">subject</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">((</span><span class="nx">action</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s2">&#34;org.freedesktop.udisks.filesystem-mount-system-internal&#34;</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="nx">subject</span><span class="p">.</span><span class="nx">isInGroup</span><span class="p">(</span><span class="s2">&#34;wheel&#34;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">polkit</span><span class="p">.</span><span class="nx">Result</span><span class="p">.</span><span class="nx">YES</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span></code></pre></div>
 <p>Now you will be able to mount NTFS partition without any problem. :)</p>
 
 </div>
@@ -269,7 +265,7 @@ polkit.addRule(function(action, subject) {
       </div>
     </footer>
 
-  </div><script src='https://yashhere.github.io/assets/js/main.f29c93b9.js'></script><script src='https://yashhere.github.io/js/custom.js'></script></body>
+  </div><script src='https://yashhere.github.io/assets/js/main.f29c93b9.js'></script></body>
 
 </html>
 

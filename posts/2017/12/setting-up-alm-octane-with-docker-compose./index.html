@@ -24,7 +24,7 @@
   
   <link rel='icon' href='https://yashhere.github.io/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashhere.github.io/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashhere.github.io/css/custom.css'>
+<link rel='stylesheet' href='https://yashhere.github.io/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashhere.github.io/css/custom.css'><link rel='stylesheet' href='https://yashhere.github.io/css/syntax.css'>
 </head>
 
 
@@ -94,7 +94,7 @@
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-4 mins read
+3 mins read
 </span>
 
 
@@ -137,38 +137,38 @@
 <h2 id="the-solution">The Solution</h2>
 
 <p>Here is my config file for easy reference.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">version: <span style="color:#e6db74">&#39;2&#39;</span>
-services:
-  octane_oracle:
-    image: alexeiled/docker-oracle-xe-11g
-    shm_size: 2g
-    mem_limit: 4g
-  octane_es:
-    image: elasticsearch:<span style="color:#ae81ff">2.4</span>
-    environment:
-      - ES_HEAP_SIZE=4G
-    mem_limit: 4g
-  octane:
-    image: hpsoftware/almoctane
-    ports:
-      - <span style="color:#e6db74">&#34;8080:8080&#34;</span>
-    volumes:
-      - /opt/octane/conf:/opt/octane/conf
-      - /opt/octane/log:/opt/octane/log
-      - /opt/octane/repo:/opt/octane/repo
-    links:
-      - octane_oracle
-      - octane_es
-    mem_limit: 4g
-    env_file:
-      - ./octane.env</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">version<span class="p">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="w">
+</span><span class="w"></span>services<span class="p">:</span><span class="w">
+</span><span class="w">  </span>octane_oracle<span class="p">:</span><span class="w">
+</span><span class="w">    </span>image<span class="p">:</span><span class="w"> </span>alexeiled/docker-oracle-xe-11g<span class="w">
+</span><span class="w">    </span>shm_size<span class="p">:</span><span class="w"> </span>2g<span class="w">
+</span><span class="w">    </span>mem_limit<span class="p">:</span><span class="w"> </span>4g<span class="w">
+</span><span class="w">  </span>octane_es<span class="p">:</span><span class="w">
+</span><span class="w">    </span>image<span class="p">:</span><span class="w"> </span>elasticsearch<span class="p">:</span><span class="m">2.4</span><span class="w">
+</span><span class="w">    </span>environment<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>ES_HEAP_SIZE=4G<span class="w">
+</span><span class="w">    </span>mem_limit<span class="p">:</span><span class="w"> </span>4g<span class="w">
+</span><span class="w">  </span>octane<span class="p">:</span><span class="w">
+</span><span class="w">    </span>image<span class="p">:</span><span class="w"> </span>hpsoftware/almoctane<span class="w">
+</span><span class="w">    </span>ports<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span><span class="s2">&#34;8080:8080&#34;</span><span class="w">
+</span><span class="w">    </span>volumes<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>/opt/octane/conf<span class="p">:</span>/opt/octane/conf<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>/opt/octane/log<span class="p">:</span>/opt/octane/log<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>/opt/octane/repo<span class="p">:</span>/opt/octane/repo<span class="w">
+</span><span class="w">    </span>links<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>octane_oracle<span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>octane_es<span class="w">
+</span><span class="w">    </span>mem_limit<span class="p">:</span><span class="w"> </span>4g<span class="w">
+</span><span class="w">    </span>env_file<span class="p">:</span><span class="w">
+</span><span class="w">      </span>-<span class="w"> </span>./octane.env</code></pre></div>
 <p>The configuration options in the code are for a system with RAM of 8GB. The options must be tuned for best performance before deploying on the production server.</p>
 
 <p>In the code, I have exposed port 8080 of the Octane Docker container to the port 8080 of the host machine. It will make sure that we can access the Octane application on localhost:8080. The <code>octane.env</code> file contains three variables for easy site management.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">SERVER_DOMAIN=<span style="color:#e6db74">&#34;your domain name&#34;</span>
-ADMIN_PASSWORD=<span style="color:#e6db74">&#34;your password&#34;</span>
-<span style="color:#75715e">#This disables the minimum memory check to enable to run on smaller machines.</span>
-DISABLE_VALIDATOR_MEMORY=<span style="color:#66d9ef">true</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">SERVER_DOMAIN=<span class="s2">&#34;your domain name&#34;</span><span class="w">
+</span><span class="w"></span>ADMIN_PASSWORD=<span class="s2">&#34;your password&#34;</span><span class="w">
+</span><span class="w"></span><span class="c">#This disables the minimum memory check to enable to run on smaller machines.</span><span class="w">
+</span><span class="w"></span>DISABLE_VALIDATOR_MEMORY=<span class="kc">true</span></code></pre></div>
 <p>Now if you try to run the container with <code>docker-compose up</code>, you will encounter various validation errors. It is because, before starting the server, you need to adjust some settings. If you noticed in the config file, there is a section to define volumes. These volumes are persistent volumes and are used to keep changes saved between two docker-compose runs. I have mapped three volumes from Docker container to the host machine. So you can now edit the files in <code>/opt/octane/</code> folder on the host machine, and changes will reflect in the Docker container. The file where you will have to make changes is <code>/opt/octane/conf/setup.xml</code>.</p>
 
 <p>You can read the documentation of ALM Octane to find out which settings to be changed. Once you do the necessary changes, fire up the command <code>docker-compose up</code> and wait for some time. Docker Compose will finish processing, and the server can be accessed on <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> on the host machine. While deploying it on the production server, make sure that your network administrator has opened the port 8080 for your server. Otherwise, the site will not be accessible. Also the docker-compose can be run in background by issuing command <code>docker-compose up -d</code>.</p>
@@ -308,7 +308,7 @@ DISABLE_VALIDATOR_MEMORY=<span style="color:#66d9ef">true</span></code></pre></d
       </div>
     </footer>
 
-  </div><script src='https://yashhere.github.io/assets/js/main.f29c93b9.js'></script><script src='https://yashhere.github.io/js/custom.js'></script></body>
+  </div><script src='https://yashhere.github.io/assets/js/main.f29c93b9.js'></script></body>
 
 </html>
 
