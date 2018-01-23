@@ -1,8 +1,8 @@
 ---
 comments: false
 date: '2015-07-18'
-slug: about
-title: About
+slug: whoami
+title: whoami
 type: page
 ---
 
