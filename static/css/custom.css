@@ -29,6 +29,10 @@ pre > code {
     background-color: #272822;
 }
 
+/* https://github.com/github/markup/issues/168 */
+pre {
+  white-space: pre-wrap;
+}
 textarea {
     font-family: sans-serif;
     font-size: 100%;
@@ -80,6 +84,7 @@ blockquote {
     tt,
     var {
         font-size: 0.96em;
-        font-family: Monaco, Ubuntu Mono, Consolas, Andale Mono, monospace
+        font-family: Monaco, Ubuntu Mono, Consolas, Andale Mono, monospace;
+        white-space: pre-wrap
     }
 }
