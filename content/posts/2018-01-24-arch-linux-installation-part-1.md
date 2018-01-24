@@ -28,7 +28,7 @@ This guide is written primarily for my reference, as someone who has installed A
 
 ###   0. Check your network connection
 
-If you are behind a captive portal, use `links` to open browser and login into your network. For WiFi connections, use `wifi-menu`. LAN connections should not require any setup. The boot environment should automatically detect any wired network. After connecting, test your connection by pinging any website:
+If you are behind a captive portal, use `links` to open browser and login into your network. For WiFi connections, use `wifi-menu`. LAN connections should not require any setup. The boot environment should automatically detect any wired connections. After connecting, test your connection by pinging any website:
 ```bash
 ping -c 5 google.com
 ```
@@ -148,8 +148,8 @@ hostnamectl set-hostname your-host-name
 To allow other machines to address the host by name, it is necessary to edit the `/etc/hosts` file to look like this:
 ```bash
 127.0.0.1    localhost.localdomain          localhost
-::1            localhost.localdomain          localhost
-127.0.1.1     your-host-name.localdomain    your-host-name
+::1          localhost.localdomain          localhost
+127.0.1.1    your-host-name.localdomain     your-host-name
 ```
 
 ###   8. Create user account
