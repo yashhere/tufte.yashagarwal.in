@@ -5,10 +5,20 @@
     <link>https://yashhere.github.io/</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 21 Jan 2018 11:23:23 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jan 2018 21:49:05 +0530</lastBuildDate>
     
 	<atom:link href="https://yashhere.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Arch Linux Installation Guide Part 1</title>
+      <link>https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/</link>
+      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      
+      <guid>https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/</guid>
+      <description>Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.
+This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&amp;rsquo;t remember all the installation steps perfectly.</description>
+    </item>
     
     <item>
       <title>My Own Configuration Manager</title>
@@ -139,11 +149,11 @@ There is just one rule you must follow while designing your own editor preferenc
     </item>
     
     <item>
-      <title>About</title>
-      <link>https://yashhere.github.io/about/</link>
+      <title>whoami</title>
+      <link>https://yashhere.github.io/whoami/</link>
       <pubDate>Sat, 18 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>https://yashhere.github.io/about/</guid>
+      <guid>https://yashhere.github.io/whoami/</guid>
       <description>Speak less than you know; have more than you show.
  Hi there,
 I am Yash Agarwal(यश अग्रवाल, y-uh-sh). I am currently studying Computer Science and Engineering at NIT Calicut, India. I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything remotely related to the tech.

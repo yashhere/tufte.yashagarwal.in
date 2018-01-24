@@ -5,10 +5,20 @@
     <link>https://yashhere.github.io/tags/github/</link>
     <description>Recent content in Github on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 22 Feb 2017 13:37:56 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jan 2018 21:49:05 +0530</lastBuildDate>
     
 	<atom:link href="https://yashhere.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Arch Linux Installation Guide Part 1</title>
+      <link>https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/</link>
+      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      
+      <guid>https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/</guid>
+      <description>Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.
+This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&amp;rsquo;t remember all the installation steps perfectly.</description>
+    </item>
     
     <item>
       <title>Setting up Hugo automatic deployment to Github with Wercker</title>

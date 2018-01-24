@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.
+This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&rsquo;t remember all the installation steps perfectly.'>
+
+<meta property='og:title' content='Arch Linux Installation Guide Part 1 • /dev/yash/notes'>
+<meta property='og:description' content='Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.
+This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&rsquo;t remember all the installation steps perfectly.'>
+<meta property='og:url' content='https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/'>
+<meta property='og:site_name' content='/dev/yash/notes'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Configuration'><meta property='article:tag' content='Github'><meta property='article:tag' content='Fun'><meta property='article:tag' content='Desktop Environment'><meta property='article:tag' content='Arch Linux'><meta property='article:tag' content='i3'><meta property='article:tag' content='Hacks'><meta property='article:published_time' content='2018-01-24T21:49:05&#43;05:30'/><meta property='article:modified_time' content='2018-01-24T21:49:05&#43;05:30'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Arch Linux Installation Guide Part 1 • /dev/yash/notes</title>
+  <link rel='canonical' href='https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/'>
+  
+  
+  <link rel='icon' href='https://yashhere.github.io/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='https://yashhere.github.io/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashhere.github.io/css/custom.css'><link rel='stylesheet' href='https://yashhere.github.io/css/syntax.css'>
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='https://yashhere.github.io/'>Home</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/posts'>Posts</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/index.xml'>RSS</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/whoami'>whoami</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>/dev/yash/notes</p>
+          
+          <p class='site-description subtitle'>The directory of my thoughts</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Arch Linux Installation Guide Part 1</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2018-01-24T21:49:05&#43;05:30'>Jan 24, 2018</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+7 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p>Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.</p>
+
+<p>This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&rsquo;t remember all the installation steps perfectly. Most of the steps have been taken from <a href="https://wiki.archlinux.org/index.php/installation_guide" target="_blank">Arch wiki</a> and should work on other setups also.</p>
+
+<p><strong>Note</strong>: All the commands are run in root shell unless otherwise specified.</p>
+
+<h3 id="0-check-your-network-connection">0. Check your network connection</h3>
+
+<p>If you are behind a captive portal, use <code>links</code> to open browser and login into your network. For WiFi connections, use <code>wifi-menu</code>. LAN connections should not require any setup. The boot environment should automatically detect any wired connections. After connecting, test your connection by pinging any website:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ping -c <span class="m">5</span> google.com</code></pre></div>
+<h3 id="1-setup-ssh">1. Setup SSH</h3>
+
+<p>This step is not mandatory, though I prefer to use this method to install Arch Linux, as it provides me the convenience of copying and pasting the commands directly from Arch wiki.</p>
+
+<p>By default the Arch Linux <code>root</code> account password is empty. We need to set up a password for <code>root</code> account, which is needed for an SSH connection.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div>
+<p>Now we need to change the setting to permit <code>root</code> login via SSH in <code>/etc/ssh/sshd_config</code>. Check that <code>PermitRootLogin yes</code> is uncommented in this file. If this line is not present there, add this to the end. Now start the <code>sshd.service</code> by issuing the command</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start sshd.service</code></pre></div>
+<p>Also, note the IP address of the target machine by inspecting the output of the following command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip addr</code></pre></div>
+<p><strong>Pro tip:</strong> One liner to get only the IP address</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip -o -4 addr show <span class="p">|</span> awk -F <span class="s1">&#39;[ /]+&#39;</span> <span class="s1">&#39;/global/ {print $4}&#39;</span></code></pre></div>
+<p>Now on your host machine, connect to the target machine via SSH using the following command</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh root@ip-address-of-target</code></pre></div>
+<h3 id="2-partition-the-disks">2. Partition the disks</h3>
+
+<p>If Windows 8 or above is already installed on your machine, then your hard disk is probably using <code>GPT</code> partitioning scheme. In that case, use <code>gdisk</code> to partition your hard disk. <del>If you use <code>fdisk</code> on a GPT partitioned HDD, there is a possibility of data loss.</del> <code>fdisk</code> now understands <code>GPT</code> partitioning scheme also.<sup><a href="#ref1">[1]</a></sup></p>
+
+<p>My preferred setup is to have one root partition and one home partition and use <code>EFI</code> partition created by Windows to install boot-loader. The root and home partition will be formatted using <code>ext4</code> file-system and the <code>EFI</code> partition should be formatted using <code>FAT32</code> file-system.</p>
+
+<p>For this guide, I am assuming that the <code>EFI</code> partition is <code>sda1</code>, root partition is <code>sda9</code> and home partition is <code>sda10</code>.</p>
+
+<p>Now to format the partitions with <code>ext4</code> file-system:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/sda9
+mkfs.ext4 /dev/sda10</code></pre></div>
+<h3 id="3-mount-the-partitions">3. Mount the partitions</h3>
+
+<p>Now mount the root partition (<code>sda9</code> in this case) to <code>/mnt</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mount /dev/sda9 /mnt</code></pre></div>
+<p>If you have created any other partitions in previous steps, mount them at appropriate locations.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir /mnt/home
+mount /dev/sda10 /mnt/home
+
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot</code></pre></div>
+<h3 id="4-install-the-base-file-system">4. Install the base file-system</h3>
+
+<p>To install the base system and some development tools, issue the following command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacstrap /mnt base base-devel</code></pre></div>
+<p>This will take a while to download and install. After it finishes, it will give you a bare-bone Arch Linux system with just the tools required to run a Linux distribution, no other software is installed.</p>
+
+<h3 id="5-generate-etc-fstab">5. Generate <code>/etc/fstab</code></h3>
+
+<p>The <code>/etc/fstab</code> file stores the information about file systems of partitions and how to mount the partitions on system boot up. To generate this file, issue the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></pre></div>
+<p>If you prefer to use partition labels(<code>sda1</code>, <code>sda9</code> etc.) instead of UUID, then use <code>-L</code> flag in place of <code>-U</code>.</p>
+
+<h3 id="6-chroot-into-the-system">6. <code>chroot</code> into the system</h3>
+
+<p>From the <a href="https://wiki.archlinux.org/index.php/Change_root" target="_blank">Arch wiki</a>:</p>
+
+<blockquote>
+<p>Chroot is an operation that changes the apparent root directory for the current running process and their children. A program that is run in such a modified environment cannot access files and commands outside that environmental directory tree. This modified environment is called a chroot jail.</p>
+</blockquote>
+
+<p>At this step, we will go to the root of the newly installed system at <code>/mnt</code> and pretend as if we are logged into this system.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">arch-chroot /mnt</code></pre></div>
+<h3 id="7-setup-the-time-zone-locale-and-hostname">7. Setup the time zone, locale, and hostname</h3>
+
+<p>Browse the <code>/use/share/zoneinfo</code> directory to find your location entries. My location is India, so I will use this command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime</code></pre></div>
+<p>To set the hardware clock:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hwclock --systohc</code></pre></div>
+<p>To set the locale for your system, open the <code>/etc/locale.gen</code> file and uncomment your language. or run the following command for the default <code>en_US.UTF-8 UTF-8</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LANG</span><span class="o">=</span>C perl -i -pe <span class="s1">&#39;s/#(en_US.UTF)/$1/&#39;</span> /etc/locale.gen</code></pre></div>
+<p>Now generate the localization with</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">locale-gen</code></pre></div>
+<p>Then set the <code>LANG</code> variable in <code>/etc/locale.conf</code> accordingly, or run the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">localectl set-locale <span class="nv">LANG</span><span class="o">=</span><span class="s2">&#34;en_US.UTF-8&#34;</span></code></pre></div>
+<p>To set the hostname for your machine:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hostnamectl set-hostname your-host-name</code></pre></div>
+<p>To allow other machines to address the host by name, it is necessary to edit the <code>/etc/hosts</code> file to look like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="m">127</span>.0.0.1    localhost.localdomain          localhost
+::1          localhost.localdomain          localhost
+<span class="m">127</span>.0.1.1    your-host-name.localdomain     your-host-name</code></pre></div>
+<h3 id="8-create-user-account">8. Create user account</h3>
+
+<p>Before creating user account, set password for <code>root</code> account</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div>
+<p>Now create a local account for your user</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">useradd -m -G wheel -s /bin/bash your-user-name</code></pre></div>
+<p>This will set up your user account, create a home directory for your user, set the default shell to <code>bash</code> and add your user to <code>wheel</code> group, which is necessary to gain <code>sudo</code> access in later steps.</p>
+
+<p>Set password for your user.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd your-user-name</code></pre></div>
+<h3 id="9-enable-sudo-access">9. Enable <code>sudo</code> access</h3>
+
+<p>This allows you to use root privileges without using the root account. To enable this, first open <code>/etc/sudoers</code> file</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">nano /etc/sudoers</code></pre></div>
+<p>Now uncomment the following line to enable <code>root</code> privilege for all the users inside <code>wheel</code> group:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"># %wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL</code></pre></div>
+<p>Now you can safely disable root account</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd -l root
+
+<span class="c1"># login into your user account
+</span><span class="c1"></span>su your-user-name</code></pre></div>
+<p>From this point onwards, it is necessary to append <code>sudo</code> to any command that requires <code>root</code> privileges.</p>
+
+<h3 id="10-install-bootloader">10. Install bootloader</h3>
+
+<p>My preferred bootloader of choice is <code>grub</code>. To install <code>grub</code>, we need to install following packages.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S grub efibootmgr</code></pre></div>
+<p>Now install <code>grub</code> with the following command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-install --target<span class="o">=</span>x86_64-efi --efi-directory<span class="o">=</span>/boot --bootloader-id<span class="o">=</span>arch</code></pre></div>
+<p>Here <code>--efi-directory</code> is the folder where the <code>EFI</code> partition is mounted <a href="#">step 3</a> and <code>--bootloader-id</code> is the label that will appear in your UEFI boot menu entry.</p>
+
+<p>This particular step is specific to my machine&rsquo;s hardware, you might not need to run this step. I need to add <code>pci=nommconf</code> to my kernel boot parameters in <code>/etc/default/grub</code>, otherwise <code>tty</code> prints error messages continuously.</p>
+
+<p>Now run to generate grub configuration file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></div>
+<p>If you encounter any errors related to <code>lvm</code> during installation of grub, then follow these steps.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># come out of chroot
+</span><span class="c1"></span><span class="nb">exit</span>
+mkdir /mnt/hostrun
+mount --bind /run /mnt/hostrun
+
+<span class="c1"># back to chroot
+</span><span class="c1"></span>arch-chroot /mnt
+mkdir /run/lvm
+mount --bind /hostrun/lvm /run/lvm</code></pre></div>
+<p>Now you can install <code>grub</code> without any errors.</p>
+
+<h3 id="11-configure-the-network">11. Configure the network</h3>
+
+<p>By default, your current system cannot connect to the network in the current state. I prefer to use <a href="https://wiki.archlinux.org/index.php/NetworkManager" target="_blank"><code>NetworkManager</code></a> for my network management, even when I am not using GNOME. For wireless networking, install the following additional packages.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S iw wpa_supplicant dialog networkmanager network-manager-applet dhclient</code></pre></div>
+<p><code>NetworkManager</code> supports basic DHCP configuration. For full support, I have installed <code>dhclient</code>. <code>NetworkManager</code> also supports automatic wired connection detection and comes with curses based tool <code>nmtui</code> to setup wireless connection.</p>
+
+<p>To enable NetworkManager to start at system startup</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> NetworkManager.service</code></pre></div>
+<h3 id="12-reboot-now">12. Reboot now</h3>
+
+<p>If you had performed the <code>lvm</code> troubleshooting steps during <code>grub</code> install, then</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">umount /run/lvm</code></pre></div>
+<p>Now exit from <code>chroot</code> by typing <code>exit</code> in the shell. Unmount all the mounted partitions with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">umount -R /mnt</code></pre></div>
+<p>Finally, reboot your machine by typing <code>reboot</code> and remove the installation USB drive. If you are not able to boot into your system at this point, boot from the installation media again and attempt to fix the installation.</p>
+
+<p>If you can see a terminal with a prompt for your username, congratulations! You have completed the first step towards building your own system.</p>
+
+<p>I will be writing about making your system usable and stable in the second part of this guide.</p>
+
+<p>Hope you enjoyed the post. Stay tuned :)</p>
+
+<hr />
+
+<ol>
+<li><a href="https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html" target="_blank">https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html</a></li>
+</ol>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashhere.github.io/categories/linux'>Linux</a>, <a class='category' href='https://yashhere.github.io/categories/arch-linux'>Arch-linux</a></div>
+<div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashhere.github.io/tags/configuration'>Configuration</a>, <a class='tag' href='https://yashhere.github.io/tags/github'>Github</a>, <a class='tag' href='https://yashhere.github.io/tags/fun'>Fun</a>, <a class='tag' href='https://yashhere.github.io/tags/desktop-environment'>Desktop Environment</a>, <a class='tag' href='https://yashhere.github.io/tags/arch-linux'>Arch Linux</a>, <a class='tag' href='https://yashhere.github.io/tags/i3'>I3</a>, <a class='tag' href='https://yashhere.github.io/tags/hacks'>Hacks</a></div>
+
+  </div>
+</footer>
+
+
+    
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>My Own Configuration Manager</a>
+    </div></div>
+</nav>
+
+  
+<div class='comments-container'>
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yashhere" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/profile.php?id=100001324105675' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/yum_yash' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2015-2018 Yash Agarwal  - Creative Commons Attribution-ShareAlike 4.0 International License
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='https://yashhere.github.io/assets/js/main.f29c93b9.js'></script></body>
+
+</html>
+
