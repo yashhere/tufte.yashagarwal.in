@@ -14,7 +14,7 @@ tags:
   - Hacks
 ---
 
-Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to setup a system in my desired state in shortest possible time with least effort. This is why, I keep coming back to Arch Linux even after some of its annoyances.
+Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.
 
 
 This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can't remember all the installation steps perfectly. Most of the steps have been taken from [Arch wiki](https://wiki.archlinux.org/index.php/installation_guide) and should work on other setups also.
@@ -37,7 +37,7 @@ ping -c 5 google.com
 
 This step is not mandatory, though I prefer to use this method to install Arch Linux, as it provides me the convenience of copying and pasting the commands directly from Arch wiki.
 
-By default the Arch Linux `root` account password is empty. We need to set up a password for `root` account, which is needed for a SSH connection.
+By default the Arch Linux `root` account password is empty. We need to set up a password for `root` account, which is needed for an SSH connection.
 ```bash
 passwd
 ```
@@ -46,7 +46,7 @@ Now we need to change the setting to permit `root` login via SSH in `/etc/ssh/ss
 ```bash
 sudo systemctl start sshd.service
 ```
-Also note the IP address of the target machine by inspecting the output of following command.
+Also, note the IP address of the target machine by inspecting the output of the following command.
 ```bash
 ip addr
 ```
@@ -56,16 +56,16 @@ ip addr
 ip -o -4 addr show | awk -F '[ /]+' '/global/ {print $4}'
 ```
 
-Now on your host machine, connect to the target machine via SSH using following command
+Now on your host machine, connect to the target machine via SSH using the following command
 ```bash
 ssh root@ip-address-of-target
 ```
 
 ###   2. Partition the disks
 
-If Windows 8 or above is already installed on your machine, then your hard disk is probably using `GPT` partitioning scheme. In that case, use `gdisk` to partition your hard disk. ~~If you use `fdisk` on a GPT partitioned HDD, there is a possibility of data loss.~~ `fdisk` now understands `GPT` partitioning scheme also. 
+If Windows 8 or above is already installed on your machine, then your hard disk is probably using `GPT` partitioning scheme. In that case, use `gdisk` to partition your hard disk. ~~If you use `fdisk` on a GPT partitioned HDD, there is a possibility of data loss.~~ `fdisk` now understands `GPT` partitioning scheme also.<sup>[\[1\]](#ref1)</sup>
 
-My preferred setup is to have one root partition and one home partition, and use `EFI` partition created by Windows to install boot-loader. The root and home partition will be formatted using `ext4` file-system and the `EFI` partition should be formatted using `FAT32` file-system.
+My preferred setup is to have one root partition and one home partition and use `EFI` partition created by Windows to install boot-loader. The root and home partition will be formatted using `ext4` file-system and the `EFI` partition should be formatted using `FAT32` file-system.
 
 For this guide, I am assuming that the `EFI` partition is `sda1`, root partition is `sda9` and home partition is `sda10`.
 
@@ -111,12 +111,12 @@ From the [Arch wiki](https://wiki.archlinux.org/index.php/Change_root):
 
   > Chroot is an operation that changes the apparent root directory for the current running process and their children. A program that is run in such a modified environment cannot access files and commands outside that environmental directory tree. This modified environment is called a chroot jail.
 
-At this step, we will go into the root of the newly installed system at `/mnt` and pretend as if we are logged into this system.
+At this step, we will go to the root of the newly installed system at `/mnt` and pretend as if we are logged into this system.
 ```bash
 arch-chroot /mnt
 ```
 
-###   7. Setup the time zone, locale and hostname
+###   7. Setup the time zone, locale, and hostname
 Browse the `/use/share/zoneinfo` directory to find your location entries. My location is India, so I will use this command.
 ```bash
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
@@ -147,9 +147,9 @@ hostnamectl set-hostname your-host-name
 
 To allow other machines to address the host by name, it is necessary to edit the `/etc/hosts` file to look like this:
 ```bash
-127.0.0.1	localhost.localdomain	      localhost
-::1	        localhost.localdomain	      localhost
-127.0.1.1 	your-host-name.localdomain    your-host-name
+127.0.0.1    localhost.localdomain          localhost
+::1            localhost.localdomain          localhost
+127.0.1.1     your-host-name.localdomain    your-host-name
 ```
 
 ###   8. Create user account
@@ -163,7 +163,7 @@ Now create a local account for your user
 ```bash
 useradd -m -G wheel -s /bin/bash your-user-name
 ```
-This will setup your user account, create a home directory for your user, set the default shell to `bash` and add your user to `wheel` group, which is necessary to do to gain `sudo` access in later steps.
+This will set up your user account, create a home directory for your user, set the default shell to `bash` and add your user to `wheel` group, which is necessary to gain `sudo` access in later steps.
 
 Set password for your user.
 ```bash
@@ -171,7 +171,7 @@ passwd your-user-name
 ```
 
 ###   9. Enable `sudo` access
-This allows you to use root privileges without using root account. To enable this, first open `/etc/sudoers` file
+This allows you to use root privileges without using the root account. To enable this, first open `/etc/sudoers` file
 ```bash
 nano /etc/sudoers
 ```
@@ -193,12 +193,12 @@ From this point onwards, it is necessary to append `sudo` to any command that re
 ###   10. Install bootloader
 My preferred bootloader of choice is `grub`. To install `grub`, we need to install following packages.
 ```bash
-pacman -S grub efibootmgr
+sudo pacman -S grub efibootmgr
 ```
 
-Now install `grub` with following command.
+Now install `grub` with the following command.
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch
+sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch
 ```
 Here `--efi-directory` is the folder where the `EFI` partition is mounted [step 3](#) and `--bootloader-id` is the label that will appear in your UEFI boot menu entry.
 
@@ -206,7 +206,7 @@ This particular step is specific to my machine's hardware, you might not need to
 
 Now run to generate grub configuration file.
 ```bash
-grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 If you encounter any errors related to `lvm` during installation of grub, then follow these steps.
@@ -225,12 +225,12 @@ mount --bind /hostrun/lvm /run/lvm
 Now you can install `grub` without any errors.
 
 ###   11. Configure the network
-By default, your current system cannot connect to network in current state. I prefer to use [`NetworkManager`](https://wiki.archlinux.org/index.php/NetworkManager) for my network management, even when I am not using GNOME. For wireless networking, install the following additional packages.
+By default, your current system cannot connect to the network in the current state. I prefer to use [`NetworkManager`](https://wiki.archlinux.org/index.php/NetworkManager) for my network management, even when I am not using GNOME. For wireless networking, install the following additional packages.
 ```bash
 sudo pacman -S iw wpa_supplicant dialog networkmanager network-manager-applet dhclient
 ```
 
-`NetworkManager` supports basic DHCP configuration. For full support, I have installed `dhclient`. `NetworkManager` also supports automatic wired connection detection and comes with a curses based tool `nmtui` to setup wireless connection.
+`NetworkManager` supports basic DHCP configuration. For full support, I have installed `dhclient`. `NetworkManager` also supports automatic wired connection detection and comes with curses based tool `nmtui` to setup wireless connection.
 
 To enable NetworkManager to start at system startup
 ```bash
@@ -238,19 +238,23 @@ sudo systemctl enable NetworkManager.service
 ```
 
 ###   12. Reboot now
-If you had performed the `lvm` troubleshooting steps during grub install, then
+If you had performed the `lvm` troubleshooting steps during `grub` install, then
 ```bash
 umount /run/lvm
 ```
 
-Now exit from chroot by typing exit in shell. Unmount all the mounted partitions with:
+Now exit from `chroot` by typing `exit` in the shell. Unmount all the mounted partitions with:
 ```bash
 umount -R /mnt
 ```
-Finally reboot your machine by typing `reboot` and remove the installation USB drive. If you are not able to boot into your system at this point, boot from the installation media again and attempt to fix the installation.
+Finally, reboot your machine by typing `reboot` and remove the installation USB drive. If you are not able to boot into your system at this point, boot from the installation media again and attempt to fix the installation.
 
-If you can see a terminal with prompt for your username, congratulations! You have completed first step towards building your own system.
+If you can see a terminal with a prompt for your username, congratulations! You have completed the first step towards building your own system.
 
-I will be writing about making your system usable and stable in second part of this guide.
+I will be writing about making your system usable and stable in the second part of this guide.
 
 Hope you enjoyed the post. Stay tuned :)
+
+*****
+
+1. [https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html](https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html)
