@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-2/</loc>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/</loc>
     <lastmod>2018-01-24T21:49:05+05:30</lastmod>
   </url>
@@ -79,18 +84,24 @@
   
   <url>
     <loc>https://yashhere.github.io/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashhere.github.io/tags/2017/</loc>
+    <lastmod>2017-12-31T23:19:00+05:30</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashhere.github.io/tags/arch-linux/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashhere.github.io/categories/arch-linux/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -101,13 +112,13 @@
   
   <url>
     <loc>https://yashhere.github.io/categories/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashhere.github.io/tags/configuration/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -119,19 +130,19 @@
   
   <url>
     <loc>https://yashhere.github.io/tags/desktop-environment/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashhere.github.io/categories/development/</loc>
-    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashhere.github.io/categories/development/</loc>
     <lastmod>2017-02-22T13:37:56+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashhere.github.io/categories/development/</loc>
+    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -155,12 +166,6 @@
   
   <url>
     <loc>https://yashhere.github.io/tags/experience/</loc>
-    <lastmod>2017-03-13T21:03:16+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashhere.github.io/tags/experience-life-2017/</loc>
     <lastmod>2017-12-31T23:19:00+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -179,13 +184,13 @@
   
   <url>
     <loc>https://yashhere.github.io/tags/fun/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2016-04-03T12:20:36+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashhere.github.io/tags/fun/</loc>
-    <lastmod>2016-04-03T12:20:36+00:00</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -197,13 +202,13 @@
   
   <url>
     <loc>https://yashhere.github.io/tags/github/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashhere.github.io/tags/github/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -215,7 +220,7 @@
   
   <url>
     <loc>https://yashhere.github.io/tags/hacks/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -227,7 +232,7 @@
   
   <url>
     <loc>https://yashhere.github.io/tags/i3/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -238,14 +243,20 @@
   </url>
   
   <url>
-    <loc>https://yashhere.github.io/categories/linux/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <loc>https://yashhere.github.io/tags/life/</loc>
+    <lastmod>2017-12-31T23:19:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashhere.github.io/categories/linux/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashhere.github.io/categories/linux/</loc>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -305,7 +316,7 @@
   
   <url>
     <loc>https://yashhere.github.io/posts/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -353,7 +364,7 @@
   
   <url>
     <loc>https://yashhere.github.io/tags/</loc>
-    <lastmod>2018-01-24T21:49:05+05:30</lastmod>
+    <lastmod>2017-12-31T23:19:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   

@@ -5,15 +5,24 @@
     <link>https://yashhere.github.io/tags/</link>
     <description>Recent content in Tags on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 24 Jan 2018 21:49:05 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 31 Dec 2017 23:19:00 +0530</lastBuildDate>
     
 	<atom:link href="https://yashhere.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>2017</title>
+      <link>https://yashhere.github.io/tags/2017/</link>
+      <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Arch Linux</title>
       <link>https://yashhere.github.io/tags/arch-linux/</link>
-      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>https://yashhere.github.io/tags/arch-linux/</guid>
       <description></description>
@@ -22,7 +31,7 @@
     <item>
       <title>Configuration</title>
       <link>https://yashhere.github.io/tags/configuration/</link>
-      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>https://yashhere.github.io/tags/configuration/</guid>
       <description></description>
@@ -40,7 +49,7 @@
     <item>
       <title>Desktop Environment</title>
       <link>https://yashhere.github.io/tags/desktop-environment/</link>
-      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>https://yashhere.github.io/tags/desktop-environment/</guid>
       <description></description>
@@ -76,25 +85,16 @@
     <item>
       <title>Experience</title>
       <link>https://yashhere.github.io/tags/experience/</link>
-      <pubDate>Mon, 13 Mar 2017 21:03:16 +0000</pubDate>
+      <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
       
       <guid>https://yashhere.github.io/tags/experience/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Experience, Life, 2017</title>
-      <link>https://yashhere.github.io/tags/experience-life-2017/</link>
-      <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
-      
-      <guid>https://yashhere.github.io/tags/experience-life-2017/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Fun</title>
       <link>https://yashhere.github.io/tags/fun/</link>
-      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
       
       <guid>https://yashhere.github.io/tags/fun/</guid>
       <description></description>
@@ -103,7 +103,7 @@
     <item>
       <title>Fun</title>
       <link>https://yashhere.github.io/tags/fun/</link>
-      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>https://yashhere.github.io/tags/fun/</guid>
       <description></description>
@@ -121,7 +121,7 @@
     <item>
       <title>Github</title>
       <link>https://yashhere.github.io/tags/github/</link>
-      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>https://yashhere.github.io/tags/github/</guid>
       <description></description>
@@ -130,7 +130,7 @@
     <item>
       <title>Github</title>
       <link>https://yashhere.github.io/tags/github/</link>
-      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>https://yashhere.github.io/tags/github/</guid>
       <description></description>
@@ -139,7 +139,7 @@
     <item>
       <title>Hacks</title>
       <link>https://yashhere.github.io/tags/hacks/</link>
-      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>https://yashhere.github.io/tags/hacks/</guid>
       <description></description>
@@ -157,9 +157,18 @@
     <item>
       <title>I3</title>
       <link>https://yashhere.github.io/tags/i3/</link>
-      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>https://yashhere.github.io/tags/i3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>https://yashhere.github.io/tags/life/</link>
+      <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
+      
+      <guid>https://yashhere.github.io/tags/life/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='In this post, I will continue from my last post and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current configuration setup to work properly. The choice of applications is highly opinionated and your preferences might be different.
+Note: If you had gone for installation via SSH option, then I would suggest you to edit your sshd_config file and disable root login.'>
+
+<meta property='og:title' content='Arch Linux Installation Guide Part 2 • /dev/yash/notes'>
+<meta property='og:description' content='In this post, I will continue from my last post and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current configuration setup to work properly. The choice of applications is highly opinionated and your preferences might be different.
+Note: If you had gone for installation via SSH option, then I would suggest you to edit your sshd_config file and disable root login.'>
+<meta property='og:url' content='https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-2/'>
+<meta property='og:site_name' content='/dev/yash/notes'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Configuration'><meta property='article:tag' content='Github'><meta property='article:tag' content='Fun'><meta property='article:tag' content='Desktop Environment'><meta property='article:tag' content='Arch Linux'><meta property='article:tag' content='i3'><meta property='article:tag' content='Hacks'><meta property='article:published_time' content='2018-01-26T15:45:27&#43;05:30'/><meta property='article:modified_time' content='2018-01-26T15:45:27&#43;05:30'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Arch Linux Installation Guide Part 2 • /dev/yash/notes</title>
+  <link rel='canonical' href='https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-2/'>
+  
+  
+  <link rel='icon' href='https://yashhere.github.io/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='https://yashhere.github.io/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashhere.github.io/css/custom.css'><link rel='stylesheet' href='https://yashhere.github.io/css/syntax.css'>
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='https://yashhere.github.io/'>Home</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/posts'>Posts</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/index.xml'>RSS</a>
+    </li>
+  <li>
+      <a href='https://yashhere.github.io/whoami'>whoami</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>/dev/yash/notes</p>
+          
+          <p class='site-description subtitle'>The directory of my thoughts</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Arch Linux Installation Guide Part 2</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2018-01-26T15:45:27&#43;05:30'>Jan 26, 2018</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+4 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p>In this post, I will continue from my last <a href="https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/" target="_blank">post</a> and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current <a href="https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/" target="_blank">configuration</a> setup to work properly. The choice of applications is highly opinionated and your preferences might be different.</p>
+
+<p><strong>Note:</strong> If you had gone for installation via SSH option, then I would suggest you to edit your <code>sshd_config</code> file and disable <code>root</code> login. It can be a security risk otherwise.</p>
+
+<h5 id="install-a-terminal-based-browser">Install a terminal based browser</h5>
+
+<p>Terminal-based browsers are very handy in cases when you are required to login into a captive portal and you don&rsquo;t have access to a graphical browser. We will install two different browsers, <code>elinks</code> and <code>w3m</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S elinks w3m</code></pre></div>
+<h5 id="install-x-server">Install X server.</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S xorg</code></pre></div>
+<p>This will install minimal X desktop environment with fonts, in case, you want to test your system before installing any desktop environment.</p>
+
+<h5 id="enable-multilib-repository-for-32-bit-package-support">Enable multilib repository for 32-bit package support</h5>
+
+<p>To enable multilib repository, uncomment the <code>[multilib]</code> section in <code>/etc/pacman.conf</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>multilib<span class="o">]</span>
+<span class="nv">Include</span> <span class="o">=</span> /etc/pacman.d/mirrorlist</code></pre></div>
+<p>Now upgrade your system.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -Syyu</code></pre></div>
+<h5 id="install-video-and-touchpad-drivers">Install video and touchpad drivers</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S xf86-video-intel xf86-input-synaptics</code></pre></div>
+<h5 id="install-pacaur-to-fetch-and-install-packages-from-aur">Install <code>pacaur</code> to fetch and install packages from AUR</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S expac yajl --noconfirm
+<span class="nb">cd</span> /tmp
+gpg --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h<span class="o">=</span>cower
+makepkg -i PKGBUILD --noconfirm
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h<span class="o">=</span>pacaur
+makepkg -i PKGBUILD --noconfirm
+cd</code></pre></div>
+<h5 id="install-graphical-browsers">Install graphical browsers</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S firefox chromium</code></pre></div>
+<h5 id="install-code-editors">Install code editors</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S sublime-text-dev atom-editor-git visual-studio-code-bin neovim neovim-drop-in leafpad</code></pre></div>
+<h5 id="setup-lamp-stack">Setup LAMP stack</h5>
+
+<ol>
+<li><p>Install Apache server</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S apache</code></pre></div>
+<ul>
+<li><p>Make your user-directory available to apache server</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir ~/public_html
+chmod o+x ~
+chmod o+x ~/public_html
+chmod -R o+r ~/public_html</code></pre></div></li>
+
+<li><p>To enable virtualhosts, uncomment the following line in <code>/etc/httpd/conf/httpd.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Include conf/extra/httpd-vhosts.conf</code></pre></div>
+<p>and add your virtualhost configuration in following file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo vim /etc/httpd/conf/extra/httpd-vhosts.conf</code></pre></div>
+<p>To test the virtual hosts on you local machine, add the virtual names to your <code>/etc/hosts</code> file.</p></li>
+</ul></li>
+
+<li><p>Install PHP:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S php php-apache</code></pre></div>
+<ul>
+<li><p>Use PHP with apache:</p>
+
+<p>Open <code>/etc/httpd/conf/httpd.conf</code> and uncomment following line.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">LoadModule mpm_prefork_module modules/mod_mpm_prefork.so</code></pre></div>
+<p>and comment the following installation_guide</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">#LoadModule mpm_event_module modules/mod_mpm_event.so</code></pre></div>
+<p>Now add these lines to <code>/etc/httpd/conf/httpd.conf</code>:</p>
+
+<ul>
+<li><p>Add these at the end of <code>LoadModule</code> section.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">LoadModule php7_module modules/libphp7.so
+AddHandler php7-script .php</code></pre></div></li>
+
+<li><p>Place this at the end of the <code>Include</code> section:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Include conf/extra/php7_module.conf</code></pre></div></li>
+</ul></li>
+</ul></li>
+
+<li><p>Install MySQL server</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S mariadb</code></pre></div>
+<ul>
+<li><p>Initialize the MariaDB data directory prior to starting the service. To do so, run:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  sudo mysql_install_db --user<span class="o">=</span>mysql --basedir<span class="o">=</span>/usr --datadir<span class="o">=</span>/var/lib/mysql</code></pre></div></li>
+
+<li><p>Then issue the commands to start the database server</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  sudo systemctl <span class="nb">enable</span> mariadb.service
+  sudo systemctl start mariadb.service</code></pre></div></li>
+
+<li><p>To apply recommended security settings to your database, run</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  sudo mysql_secure_installation</code></pre></div></li>
+</ul></li>
+
+<li><p>Install PHPMyAdmin</p>
+<div class="highlight"><pre class="chroma">sudo pacman -S phpmyadmin php-mcrypt</pre></div>
+<ul>
+<li>Enable <code>mysqli</code>, <code>mcrypt</code>, <code>zip</code> and <code>bz2</code> extensions in <code>/etc/php/php.ini</code>.</li>
+
+<li><p>Create the apache configuration file <code>/etc/httpd/conf/extra/phpmyadmin.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  Alias /phpmyadmin <span class="s2">&#34;/usr/share/webapps/phpMyAdmin&#34;</span>
+  &lt;Directory <span class="s2">&#34;/usr/share/webapps/phpMyAdmin&#34;</span>&gt;
+      DirectoryIndex index.php
+      AllowOverride All
+      Options FollowSymlinks
+      Require all granted
+  &lt;/Directory&gt;</code></pre></div>
+<p>Then include following in <code>/etc/httpd/conf/httpd.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># phpMyAdmin configuration
+</span><span class="c1"></span>Include conf/extra/phpmyadmin.conf</code></pre></div></li>
+</ul></li>
+</ol>
+
+<p>Now restart <code>httpd</code> service to apply settings.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart httpd</code></pre></div>
+<p>Once all these steps are done, your LAMP stack should be working.</p>
+
+<h5 id="setup-power-management">Setup power management</h5>
+
+<p>Install <code>tlp</code> and some of its optional dependencies</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S tlp tlp-rdw bash-completion ethtool lsb-release smartmontools</code></pre></div>
+<p>Then enable <code>tlp</code> services</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> tlp.service
+sudo systemctl <span class="nb">enable</span> tlp-sleep.service
+
+<span class="c1"># mask some services for tlp to work properly
+</span><span class="c1"></span>sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket</code></pre></div>
+<h5 id="install-i3-and-other-tools">Install i3 and other tools</h5>
+
+<p>All these tools are part of my <code>i3</code> config with exception of the theme related packages. So installing them here will help me later while setting up the <code>i3</code> window manager.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S i3 rofi polybar xautolock powerline-fonts-git i3lock-fancy-git compton scrot feh dunst unclutter xfce4-power-manager numlockx lxappearance adapta-gtk-theme gtk-engine-murrine gnome-themes-standard termite</code></pre></div>
+<p><a name="fonts"></a></p>
+
+<h5 id="fix-ugly-fonts-sup-2-refs-sup">Fix ugly fonts<sup><a href="#refs">[2]</a></sup></h5>
+
+<p>Fonts rendering is one area where Linux still lags behind Windows and OSX. It can be a nightmare for users to setup fonts properly in Linux. In Arch Linux, this is even worse. I found some tricks to improve the quality of font rendering on Arch Linux. Though this is far from perfect, it is manageable. Follow these <a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/" target="_blank">steps</a> on Reddit to fix font rendering. I use Noto Sans, Adobe Source Code Pro, and Microsoft fonts. My apologies, but I can&rsquo;t help here. Some websites still use Microsoft fonts.</p>
+
+<h5 id="setup-python-environment">Setup Python Environment</h5>
+
+<p>I use Python extensively and virtual environments are a must for my development setup. I use <code>pipenv</code> to manage my virtual environments. To install <code>pipenv</code>, you need to install <code>virtualenv</code> first. To install it, run the following command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S python-virtualenv</code></pre></div>
+<p>Now you are ready to install <code>pipenv</code>. Follow <a href="http://pipenv.readthedocs.io/en/latest/install/#fancy-installation-of-pipenv" target="_blank">these</a> instructions to install the tool.</p>
+
+<h5 id="install-some-other-common-tools">Install some other common tools</h5>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S vlc openssh npm imagemagick git la-capitaine-icon-theme-git</code></pre></div>
+<p>Do not forget to <a href="https://stackoverflow.com/a/13021677" target="_blank">setup</a> <code>npm</code> to install packages globally without requiring <code>sudo</code>.</p>
+
+<p>That&rsquo;s all! Your system should be in working condition now. Do check out my <a href="https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/" target="_blank">dotfiles</a> if you want to set up your system like mine.</p>
+
+<p>Hope you enjoyed the article. Cheers 😄</p>
+
+<hr />
+
+<p><a name="refs"></a></p>
+
+<ol>
+<li><a href="https://wiki.archlinux.org/" target="_blank">Arch Wiki</a></li>
+<li><a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/" target="_blank">Make your Arch fonts beautiful easily!</a><sup><a href="#fonts">Return</a></sup></li>
+</ol>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashhere.github.io/categories/linux'>Linux</a>, <a class='category' href='https://yashhere.github.io/categories/arch-linux'>Arch-linux</a></div>
+<div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashhere.github.io/tags/configuration'>Configuration</a>, <a class='tag' href='https://yashhere.github.io/tags/github'>Github</a>, <a class='tag' href='https://yashhere.github.io/tags/fun'>Fun</a>, <a class='tag' href='https://yashhere.github.io/tags/desktop-environment'>Desktop Environment</a>, <a class='tag' href='https://yashhere.github.io/tags/arch-linux'>Arch Linux</a>, <a class='tag' href='https://yashhere.github.io/tags/i3'>I3</a>, <a class='tag' href='https://yashhere.github.io/tags/hacks'>Hacks</a></div>
+
+  </div>
+</footer>
+
+
+    
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Arch Linux Installation Guide Part 1</a>
+    </div></div>
+</nav>
+
+  
+<div class='comments-container'>
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yashhere" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/profile.php?id=100001324105675' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/yum_yash' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2015-2018 Yash Agarwal  - Creative Commons Attribution-ShareAlike 4.0 International License
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='https://yashhere.github.io/assets/js/main.f29c93b9.js'></script></body>
+
+</html>
+

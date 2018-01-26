@@ -132,6 +132,8 @@ This guide is written primarily for my reference, as someone who has installed A
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip -o -4 addr show <span class="p">|</span> awk -F <span class="s1">&#39;[ /]+&#39;</span> <span class="s1">&#39;/global/ {print $4}&#39;</span></code></pre></div>
 <p>Now on your host machine, connect to the target machine via SSH using the following command</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh root@ip-address-of-target</code></pre></div>
+<p><a name="ret1"></a></p>
+
 <h3 id="2-partition-the-disks">2. Partition the disks</h3>
 
 <p>If Windows 8 or above is already installed on your machine, then your hard disk is probably using <code>GPT</code> partitioning scheme. In that case, use <code>gdisk</code> to partition your hard disk. <del>If you use <code>fdisk</code> on a GPT partitioned HDD, there is a possibility of data loss.</del> <code>fdisk</code> now understands <code>GPT</code> partitioning scheme also.<sup><a href="#ref1">[1]</a></sup></p>
@@ -143,6 +145,8 @@ This guide is written primarily for my reference, as someone who has installed A
 <p>Now to format the partitions with <code>ext4</code> file-system:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/sda9
 mkfs.ext4 /dev/sda10</code></pre></div>
+<p><a name="step3"></a></p>
+
 <h3 id="3-mount-the-partitions">3. Mount the partitions</h3>
 
 <p>Now mount the root partition (<code>sda9</code> in this case) to <code>/mnt</code></p>
@@ -222,7 +226,7 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S grub efibootmgr</code></pre></div>
 <p>Now install <code>grub</code> with the following command.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-install --target<span class="o">=</span>x86_64-efi --efi-directory<span class="o">=</span>/boot --bootloader-id<span class="o">=</span>arch</code></pre></div>
-<p>Here <code>--efi-directory</code> is the folder where the <code>EFI</code> partition is mounted <a href="#">step 3</a> and <code>--bootloader-id</code> is the label that will appear in your UEFI boot menu entry.</p>
+<p>Here <code>--efi-directory</code> is the folder where the <code>EFI</code> partition is mounted <a href="#step3">step 3</a> and <code>--bootloader-id</code> is the label that will appear in your UEFI boot menu entry.</p>
 
 <p>This particular step is specific to my machine&rsquo;s hardware, you might not need to run this step. I need to add <code>pci=nommconf</code> to my kernel boot parameters in <code>/etc/default/grub</code>, otherwise <code>tty</code> prints error messages continuously.</p>
 
@@ -265,7 +269,7 @@ mount --bind /hostrun/lvm /run/lvm</code></pre></div>
 <hr />
 
 <ol>
-<li><a href="https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html" target="_blank">https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html</a></li>
+<li><a name="ref1"></a> <a href="https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html" target="_blank">https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html</a><sup><a href="#ret1">Return</a></sup></li>
 </ol>
 
 </div>
@@ -309,6 +313,16 @@ mount --bind /hostrun/lvm /run/lvm</code></pre></div>
 </svg>
  Previous</span>
         <span class='screen-reader'>Previous post: </span>My Own Configuration Manager</a>
+    </div><div class='next-entry'>
+      <a href='https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-2/'>
+        <span class='screen-reader'>Next post: </span>Arch Linux Installation Guide Part 2<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
     </div></div>
 </nav>
 
