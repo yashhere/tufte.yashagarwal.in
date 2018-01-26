@@ -12,7 +12,6 @@ tags:
   - Arch Linux
   - i3
   - Hacks
-draft: true
 ---
 
 In this post, I will continue from my last [post](https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/) and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current [configuration](https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/) setup to work properly. The choice of applications is highly opinionated and your preferences might be different.
