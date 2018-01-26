@@ -60,8 +60,9 @@ Now on your host machine, connect to the target machine via SSH using the follow
 ```bash
 ssh root@ip-address-of-target
 ```
-
+<a name="ret1"></a>
 ###   2. Partition the disks
+
 
 If Windows 8 or above is already installed on your machine, then your hard disk is probably using `GPT` partitioning scheme. In that case, use `gdisk` to partition your hard disk. ~~If you use `fdisk` on a GPT partitioned HDD, there is a possibility of data loss.~~ `fdisk` now understands `GPT` partitioning scheme also.<sup>[\[1\]](#ref1)</sup>
 
@@ -74,7 +75,7 @@ Now to format the partitions with `ext4` file-system:
 mkfs.ext4 /dev/sda9
 mkfs.ext4 /dev/sda10
 ```
-
+<a name="step3"></a>
 ###   3. Mount the partitions
 Now mount the root partition (`sda9` in this case) to `/mnt`
 ```bash
@@ -200,7 +201,7 @@ Now install `grub` with the following command.
 ```bash
 sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch
 ```
-Here `--efi-directory` is the folder where the `EFI` partition is mounted [step 3](#) and `--bootloader-id` is the label that will appear in your UEFI boot menu entry.
+Here `--efi-directory` is the folder where the `EFI` partition is mounted [step 3](#step3) and `--bootloader-id` is the label that will appear in your UEFI boot menu entry.
 
 This particular step is specific to my machine's hardware, you might not need to run this step. I need to add `pci=nommconf` to my kernel boot parameters in `/etc/default/grub`, otherwise `tty` prints error messages continuously.
 
@@ -257,4 +258,4 @@ Hope you enjoyed the post. Stay tuned :)
 
 *****
 
-1. [https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html](https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html)
+1. <a name="ref1"></a> [https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html](https://manpages.debian.org/stretch/util-linux/fdisk.8.en.html)<sup>[Return](#ret1)</sup>
