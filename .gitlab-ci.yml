@@ -6,4 +6,4 @@ artifacts:
     paths:
       - public
 only:
-    - master
+    - source
