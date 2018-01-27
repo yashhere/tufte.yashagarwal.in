@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on /dev/yash/notes</title>
-    <link>https://yashhere.github.io/tags/linux/</link>
+    <link>/tags/linux/</link>
     <description>Recent content in Linux on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 26 Dec 2017 20:53:35 +0530</lastBuildDate>
     
-	<atom:link href="https://yashhere.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Setting up ALM Octane with Docker Compose.</title>
-      <link>https://yashhere.github.io/posts/2017/12/setting-up-alm-octane-with-docker-compose./</link>
+      <link>/posts/2017/12/setting-up-alm-octane-with-docker-compose./</link>
       <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2017/12/setting-up-alm-octane-with-docker-compose./</guid>
+      <guid>/posts/2017/12/setting-up-alm-octane-with-docker-compose./</guid>
       <description>Recently, I got a chance to setup ALM Octane on one of my university server for a course project. From the support page of ALM Octane:
  ALM Octane is a web-based application lifecycle management platform that enables teams to collaborate easily, manage the product delivery pipeline, and visualise the impact of changes.
  Precursor My department insists on using open source software (a plus point, indeed !). But ALM Octane has Oracle DB/MSSQL as a dependency.</description>
@@ -23,10 +23,10 @@
     
     <item>
       <title>Fixing Hindi Fonts in Arch Linux</title>
-      <link>https://yashhere.github.io/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</link>
+      <link>/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</link>
       <pubDate>Tue, 17 Oct 2017 21:55:53 +0530</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</guid>
+      <guid>/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</guid>
       <description>When viewing Hindi content in any browser in Arch Linux, the rendering looks weird.
 Doesn&amp;rsquo;t look good right! I&amp;rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix. The appropriate package for installing Indic Language support is ttf-indic-otf.
 Now go to /usr/share/fonts/TTF and take the backup of two fonts FreeSans.ttf and FreeSerif.ttf. Now delete these two fonts from the directory.</description>
@@ -34,28 +34,28 @@ Now go to /usr/share/fonts/TTF and take the backup of two fonts FreeSans.ttf and
     
     <item>
       <title>Mounting NTFS partitions on Arch Linux</title>
-      <link>https://yashhere.github.io/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</link>
+      <link>/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</link>
       <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</guid>
+      <guid>/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</guid>
       <description>Yesterday I installed Arch Linux once again. A clean, bloat free desktop with Budgie Desktop environment with some must have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don&amp;rsquo;t know whether it is a bug in Budgie or just a wrong setting). I also faced the problem of mounting Windows NTFS volumes on user&amp;rsquo;s wish. Arch Linux wiki has details about how to auto mount partitions on start-up, but I had a tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu-like distribution on the mounting of NTFS drives.</description>
     </item>
     
     <item>
       <title>Custom Arch Linux setup with Openbox</title>
-      <link>https://yashhere.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
+      <link>/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
       <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
+      <guid>/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
       <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and when you put them together you get something amazing.</description>
     </item>
     
     <item>
       <title>A good Sublime Text Setup</title>
-      <link>https://yashhere.github.io/posts/2016/04/a-good-sublime-text-setup/</link>
+      <link>/posts/2016/04/a-good-sublime-text-setup/</link>
       <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2016/04/a-good-sublime-text-setup/</guid>
+      <guid>/posts/2016/04/a-good-sublime-text-setup/</guid>
       <description>So, after a hactic day, a good news finally came. I have been selected as a Lab Administrator for the Software Systems Lab of my college. Cheers!!!
 Let&amp;#8217;s come to our today&amp;#8217;s topic on configuring Sublime Text Settings.
 There is just one rule you must follow while designing your own editor preference configuration.
@@ -65,10 +65,10 @@ There is just one rule you must follow while designing your own editor preferenc
     
     <item>
       <title>Wanna get insulted by sudo</title>
-      <link>https://yashhere.github.io/posts/2016/04/wanna-get-insulted-by-sudo/</link>
+      <link>/posts/2016/04/wanna-get-insulted-by-sudo/</link>
       <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2016/04/wanna-get-insulted-by-sudo/</guid>
+      <guid>/posts/2016/04/wanna-get-insulted-by-sudo/</guid>
       <description>You might have tried many linux easters eggs for fun, but you are going to love this hack which makes sudo insult you. Confused what I am talking about? Here, take a look at this gif to get a idea of how sudo can insult you for typing in the incorrect password. Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with linux, and anyway this is way better than the plain &amp;#8220;You entered a wrong password&amp;#8221; error message.</description>
     </item>
     

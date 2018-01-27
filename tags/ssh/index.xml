@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SSH on /dev/yash/notes</title>
-    <link>https://yashhere.github.io/tags/ssh/</link>
+    <link>/tags/ssh/</link>
     <description>Recent content in SSH on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 27 Dec 2017 20:21:09 +0530</lastBuildDate>
     
-	<atom:link href="https://yashhere.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Setting Up SSH Agent in i3</title>
-      <link>https://yashhere.github.io/posts/2017/12/setting-up-ssh-agent-in-i3/</link>
+      <link>/posts/2017/12/setting-up-ssh-agent-in-i3/</link>
       <pubDate>Wed, 27 Dec 2017 20:21:09 +0530</pubDate>
       
-      <guid>https://yashhere.github.io/posts/2017/12/setting-up-ssh-agent-in-i3/</guid>
+      <guid>/posts/2017/12/setting-up-ssh-agent-in-i3/</guid>
       <description>In this post, I will write about the procedure to correctly setup SSH and GPG agents in the i3 window manager. To follow this post, you need to have ssh-keys and your private GPG keys ready. If you do not already have these keys with you, I will describe the process of creating the keys.
 SSH Generating an SSH key pair provides you with a public key and a private key.</description>
     </item>
