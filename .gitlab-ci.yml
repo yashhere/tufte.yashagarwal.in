@@ -1,11 +1,16 @@
 # All available Hugo versions are listed here: https://gitlab.com/pages/hugo/container_registry
 image: registry.gitlab.com/pages/hugo:latest
 
-# test:
-#   script:
-#   - hugo
-#   except:
-#   - master
+before_script:
+  - git submodule init
+  - git submodule update --force
+
+
+test:
+  script:
+  - hugo
+  except:
+  - source
 
 pages:
   script:
