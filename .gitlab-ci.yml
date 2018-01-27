@@ -1,0 +1,9 @@
+pages:
+image: fundor333/hugo
+script:
+    - hugo
+artifacts:
+    paths:
+      - public
+only:
+    - master

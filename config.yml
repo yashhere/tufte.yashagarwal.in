@@ -1,5 +1,5 @@
 Paginate: 7
-baseURL: https://yashhere.github.io
+baseURL: /
 canonifyurls: true
 MetaDataFormat: "yaml"
 archetypeDir: "archetypes"
