@@ -5,18 +5,29 @@
     <link>/tags/fun/</link>
     <description>Recent content in Fun on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 03 Apr 2016 12:20:36 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jan 2018 15:45:27 +0530</lastBuildDate>
     
 	<atom:link href="/tags/fun/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Wanna get insulted by sudo</title>
-      <link>/posts/2016/04/wanna-get-insulted-by-sudo/</link>
-      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
+      <title>Arch Linux Installation Guide Part 2</title>
+      <link>/posts/2018/01/arch-linux-installation-guide-part-2/</link>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
-      <guid>/posts/2016/04/wanna-get-insulted-by-sudo/</guid>
-      <description>You might have tried many linux easters eggs for fun, but you are going to love this hack which makes sudo insult you. Confused what I am talking about? Here, take a look at this gif to get a idea of how sudo can insult you for typing in the incorrect password. Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with linux, and anyway this is way better than the plain &amp;#8220;You entered a wrong password&amp;#8221; error message.</description>
+      <guid>/posts/2018/01/arch-linux-installation-guide-part-2/</guid>
+      <description>In this post, I will continue from my last post and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current configuration setup to work properly. The choice of applications is highly opinionated and your preferences might be different.
+Note: If you had gone for installation via SSH option, then I would suggest you to edit your sshd_config file and disable root login.</description>
+    </item>
+    
+    <item>
+      <title>Arch Linux Installation Guide Part 1</title>
+      <link>/posts/2018/01/arch-linux-installation-guide-part-1/</link>
+      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+      
+      <guid>/posts/2018/01/arch-linux-installation-guide-part-1/</guid>
+      <description>Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.
+This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&amp;rsquo;t remember all the installation steps perfectly.</description>
     </item>
     
   </channel>
