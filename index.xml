@@ -161,13 +161,10 @@ There is just one rule you must follow while designing your own editor preferenc
     <item>
       <title>whoami</title>
       <link>/whoami/</link>
-      <pubDate>Sat, 18 Jul 2015 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/whoami/</guid>
-      <description>Speak less than you know; have more than you show.
- Hi there,
-I am Yash Agarwal(यश अग्रवाल, y-uh-sh). I am currently studying Computer Science and Engineering at NIT Calicut, India. I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything remotely related to the tech.
-People say that I don&#39;t smile much. That&#39;s somewhat true. I am not a camera friendly person. I have very few photos where I am smiling.</description>
+      <description>None of my writings started out as a book project. I wrote my first book – Seeking Wisdom – as a memorandum for myself with the expectation that I could transfer some of its essentials to my children. I learn and write because I want to be a little wiser day by day. I don’t want to be a great-problem-solver. I want to avoid problems – prevent them from happening and doing right from the beginning.</description>
     </item>
     
   </channel>
