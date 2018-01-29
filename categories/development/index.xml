@@ -5,18 +5,50 @@
     <link>/categories/development/</link>
     <description>Recent content in Development on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 22 Feb 2017 13:37:56 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jan 2018 11:23:23 +0530</lastBuildDate>
     
 	<atom:link href="/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Setting up Hugo automatic deployment to Github with Wercker</title>
-      <link>/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</link>
-      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      <title>My Own Configuration Manager</title>
+      <link>/posts/2018/01/my-own-configuration-manager/</link>
+      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
       
-      <guid>/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
-      <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.</description>
+      <guid>/posts/2018/01/my-own-configuration-manager/</guid>
+      <description>I have been using Linux since I was in my second year of undergraduate. My experiments with the dotfiles (configuration files) also started at the same time. For the uninformed, in Linux, it is common to configure a lot of settings and configurations within dotfiles. Dotfiles are files in a Linux user&amp;rsquo;s home directory that begin with a dot or a full-stop character. This dot indicates to the operating system, that these files are used to store the settings of programs like vim or shells like bash or fish to name a few.</description>
+    </item>
+    
+    <item>
+      <title>Setting up Python Development Environments</title>
+      <link>/posts/2016/10/setting-up-python-development-environments/</link>
+      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2016/10/setting-up-python-development-environments/</guid>
+      <description>Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?
+As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at.</description>
+    </item>
+    
+    <item>
+      <title>Custom Arch Linux setup with Openbox</title>
+      <link>/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
+      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
+      <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and when you put them together you get something amazing.</description>
+    </item>
+    
+    <item>
+      <title>A good Sublime Text Setup</title>
+      <link>/posts/2016/04/a-good-sublime-text-setup/</link>
+      <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
+      
+      <guid>/posts/2016/04/a-good-sublime-text-setup/</guid>
+      <description>So, after a hactic day, a good news finally came. I have been selected as a Lab Administrator for the Software Systems Lab of my college. Cheers!!!
+Let&amp;#8217;s come to our today&amp;#8217;s topic on configuring Sublime Text Settings.
+There is just one rule you must follow while designing your own editor preference configuration.
+ Don&amp;#8217;t put any lines in your configuration that you don&amp;#8217;t understand.
+ You will find tons of online tutorials that contains all kinds of awesome hacks to make your sublime text experience better but the worst way to make your development environment better is to just borrow the configuration from someone else.</description>
     </item>
     
   </channel>
