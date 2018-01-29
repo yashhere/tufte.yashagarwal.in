@@ -16,18 +16,17 @@ To paraphrase Buffett and Munger – decision-making is not about making brillia
 
 <div style="width:50%; margin: 30px auto"><img style=" width: 200px; height: 200px; border-radius: 2%; margin-left: auto; margin-right: auto; display: block;" src="/images/yash.jpg"></div>
 Hi there,<br>
-I am Yash Agarwal(यश अग्रवाल, <a href="https://www.youtube.com/watch?v=mzJVVcVVbA4" target="_blank">y-uh-sh</a>). A final year undergrad at Department of Computer Science and Engineering at NIT Calicut, India. I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything remotely related to the tech.
+I am Yash Agarwal(यश अग्रवाल, <a href="https://www.youtube.com/watch?v=mzJVVcVVbA4" target="_blank">y-uh-sh</a>). A final year undergrad at Department of Computer Science and Engineering at NIT Calicut, India. 
 
-
-I used to be a super studious guy till my 10<sup>th</sup> standard, so I followed the _herd_ and started preparing for IIT JEE. Those two years during coaching taught me a lot of life lessons, which came handy later in my life. Anyhow, two years of slogging and hard work landed me in NIT Calicut, a decision I'll never regret. For someone who never wrote a single line of code before coming to college, to a person who can code in anyone language you throw, NIT Calicut has given me a lot.
+I used to be a super studious guy till my 10<sup>th</sup> standard, so I followed the _herd_ and started preparing for IIT JEE. Those two years of coaching taught me a lot of life lessons, which came handy later in my life. Anyhow, two years of slogging and hard work landed me in NIT Calicut, a decision I'll never regret. For someone who never wrote a single line of code before coming to college, to a person who can code in any language you throw, NIT Calicut has given me a lot.
 
 Now, I am a changed guy. There's much more to me rather than just studying. I tend to invest my time watching movies, reading blogs, hanging out on Twitter and enjoying my life in general. 
 
-I love coding and Linux, anything about it. My first interaction with Linux was in second year of under-graduation during Scheme (yeah, you read it right!). I immediately fall in love with it. Unlike most of my classmates, I started using Linux for my daily work, not just for assignments. I learned a lot in the process. I did have to spend a lot of time just hacking around in Linux, to reach this level. That reflects in my CGPA too :innocent:.
+I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything related to the tech. I am a big fan of Linux and can talk anything about it. My first interaction with Linux was in the second year of under-graduation during Scheme (yeah, you read it right!). I immediately fall in love with it. Unlike most of my classmates, I started using Linux for my daily use, not just for assignments. I learned a lot in the process. I did have to spend a lot of time just hacking around in Linux, to reach this level. That reflects in my CGPA too :innocent:.
 
-As for writing, I started following some of the alumni of NIT Calicut. One [person](http://kartik.in.net), especially caught my attention. You should read his blog. It is amazing. I credit him for my inspiration to start blogging. Other motivation was to document some of my life experiences, so that somebody else can take benefit, just like I got benefit from Kartik's blog.
+As for writing, writing helps me vent out my ideas and other thoughts that otherwise would be lost. I believe that when you read something, you simply convince yourself that you understand it properly. But when you write down the same thing, you have to prove it that you understand it properly by putting it into meaningful sentences. In that way, writing has helped me put together my knowledge in a systematic manner. One other motivation was to document some of my life experiences so that somebody else can take benefit from it.
 
-Now that you know a lot about me, go ahead, and read some of the stuff on this blog and write a comment for me.
+Now that you know a lot about me, go ahead, and read some of the stuff on this blog.
 
 And add me to your [RSS](/index.xml) reader.
 
@@ -42,13 +41,11 @@ And add me to your [RSS](/index.xml) reader.
 2. This blog is built using [Hugo](https://gohugo.io/), a static site generator. The theme used is [minimo](https://themes.gohugo.io/minimo). The source code of this blog can be found on [Gitlab](https://gitlab.com/yashhere/yashhere.gitlab.io). A mirror exists at [GitHub](https://github.com/yashhere/yashhere.github.io) also. This site is automatically built using GitLab CI for GitLab and Wercker for GitHub. So this site is accessible at both [`yashhere.gitlab.io`](https://yashhere.gitlab.io) and [`yashhere.github.io`](https://yashhere.github.io).
 
 
-Ping me on Matrix where I hangout as `@im_y:matrix.org`.
+Ping me on Matrix where I hang out as `@im_y:matrix.org`.
 
 You can also find me at:
 
-1. Email: yashagarwaljpr [at] gmail [dot] com
-
+1. **Email:** yashagarwaljpr [at] gmail [dot] com
 2. [Twitter](https://www.twitter.com/yash__here)
-
 3. [GitHub](https://www.github.com/yashhere)
 4. [GitLab](https://www.gitLab.com/yashhere)
