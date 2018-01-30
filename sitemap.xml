@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/posts/2018/01/why-a-sanskrit-shloka/</loc>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>/posts/2018/01/arch-linux-installation-guide-part-2/</loc>
     <lastmod>2018-01-26T15:45:27+05:30</lastmod>
   </url>
@@ -79,7 +84,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
   </url>
   
   <url>
@@ -106,13 +111,13 @@
   
   <url>
     <loc>/tags/configuration/</loc>
-    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/configuration/</loc>
-    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -148,7 +153,7 @@
   
   <url>
     <loc>/categories/experience/</loc>
-    <lastmod>2017-12-31T23:19:00+05:30</lastmod>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -202,7 +207,7 @@
   
   <url>
     <loc>/categories/life/</loc>
-    <lastmod>2017-12-31T23:19:00+05:30</lastmod>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -220,7 +225,7 @@
   
   <url>
     <loc>/tags/nitc/</loc>
-    <lastmod>2017-03-13T21:03:16+00:00</lastmod>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -261,7 +266,7 @@
   
   <url>
     <loc>/posts/</loc>
-    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -321,7 +326,7 @@
   
   <url>
     <loc>/categories/thoughts/</loc>
-    <lastmod>2017-03-13T21:03:16+00:00</lastmod>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
