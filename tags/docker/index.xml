@@ -11,11 +11,11 @@
     
     
     <item>
-      <title>Setting up ALM Octane with Docker Compose.</title>
-      <link>/posts/2017/12/setting-up-alm-octane-with-docker-compose./</link>
+      <title>Setting up ALM Octane with Docker Compose</title>
+      <link>/posts/2017/12/setting-up-alm-octane-with-docker-compose/</link>
       <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
       
-      <guid>/posts/2017/12/setting-up-alm-octane-with-docker-compose./</guid>
+      <guid>/posts/2017/12/setting-up-alm-octane-with-docker-compose/</guid>
       <description>Recently, I got a chance to setup ALM Octane on one of my university server for a course project. From the support page of ALM Octane:
  ALM Octane is a web-based application lifecycle management platform that enables teams to collaborate easily, manage the product delivery pipeline, and visualise the impact of changes.
  Precursor My department insists on using open source software (a plus point, indeed !). But ALM Octane has Oracle DB/MSSQL as a dependency.</description>

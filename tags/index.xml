@@ -5,19 +5,10 @@
     <link>/tags/</link>
     <description>Recent content in Tags on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 31 Dec 2017 23:19:00 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jan 2018 15:45:27 +0530</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>2017</title>
-      <link>/tags/2017/</link>
-      <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
-      
-      <guid>/tags/2017/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Arch Linux</title>
@@ -25,6 +16,24 @@
       <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>/tags/arch-linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSE</title>
+      <link>/tags/cse/</link>
+      <pubDate>Sun, 10 Apr 2016 00:33:16 +0000</pubDate>
+      
+      <guid>/tags/cse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Configuration</title>
+      <link>/tags/configuration/</link>
+      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
+      
+      <guid>/tags/configuration/</guid>
       <description></description>
     </item>
     
@@ -38,33 +47,6 @@
     </item>
     
     <item>
-      <title>Configurations</title>
-      <link>/tags/configurations/</link>
-      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
-      
-      <guid>/tags/configurations/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Desktop Environment</title>
-      <link>/tags/desktop-environment/</link>
-      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
-      
-      <guid>/tags/desktop-environment/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Development</title>
-      <link>/tags/development/</link>
-      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Docker</title>
       <link>/tags/docker/</link>
       <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
@@ -74,38 +56,20 @@
     </item>
     
     <item>
-      <title>Easter-egg</title>
-      <link>/tags/easter-egg/</link>
-      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
+      <title>FOSS</title>
+      <link>/tags/foss/</link>
+      <pubDate>Mon, 13 Mar 2017 21:03:16 +0000</pubDate>
       
-      <guid>/tags/easter-egg/</guid>
+      <guid>/tags/foss/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Experience</title>
-      <link>/tags/experience/</link>
-      <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
+      <title>FOSSMeet</title>
+      <link>/tags/fossmeet/</link>
+      <pubDate>Mon, 13 Mar 2017 21:03:16 +0000</pubDate>
       
-      <guid>/tags/experience/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Fun</title>
-      <link>/tags/fun/</link>
-      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
-      
-      <guid>/tags/fun/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Fun</title>
-      <link>/tags/fun/</link>
-      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
-      
-      <guid>/tags/fun/</guid>
+      <guid>/tags/fossmeet/</guid>
       <description></description>
     </item>
     
@@ -121,7 +85,7 @@
     <item>
       <title>Github</title>
       <link>/tags/github/</link>
-      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
       <guid>/tags/github/</guid>
       <description></description>
@@ -130,18 +94,9 @@
     <item>
       <title>Github</title>
       <link>/tags/github/</link>
-      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
       <guid>/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hacks</title>
-      <link>/tags/hacks/</link>
-      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
-      
-      <guid>/tags/hacks/</guid>
       <description></description>
     </item>
     
@@ -164,20 +119,11 @@
     </item>
     
     <item>
-      <title>Life</title>
-      <link>/tags/life/</link>
-      <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
+      <title>NITC</title>
+      <link>/tags/nitc/</link>
+      <pubDate>Mon, 13 Mar 2017 21:03:16 +0000</pubDate>
       
-      <guid>/tags/life/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>/tags/linux/</link>
-      <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
-      
-      <guid>/tags/linux/</guid>
+      <guid>/tags/nitc/</guid>
       <description></description>
     </item>
     
@@ -200,11 +146,11 @@
     </item>
     
     <item>
-      <title>Operating System</title>
-      <link>/tags/operating-system/</link>
+      <title>Openbox</title>
+      <link>/tags/openbox/</link>
       <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>/tags/operating-system/</guid>
+      <guid>/tags/openbox/</guid>
       <description></description>
     </item>
     
@@ -245,11 +191,29 @@
     </item>
     
     <item>
+      <title>Review</title>
+      <link>/tags/review/</link>
+      <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
+      
+      <guid>/tags/review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>SSH</title>
       <link>/tags/ssh/</link>
       <pubDate>Wed, 27 Dec 2017 20:21:09 +0530</pubDate>
       
       <guid>/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sublime text</title>
+      <link>/tags/sublime-text/</link>
+      <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
+      
+      <guid>/tags/sublime-text/</guid>
       <description></description>
     </item>
     
@@ -263,11 +227,11 @@
     </item>
     
     <item>
-      <title>Thoughts</title>
-      <link>/tags/thoughts/</link>
-      <pubDate>Mon, 13 Mar 2017 21:03:16 +0000</pubDate>
+      <title>Virtual Environments</title>
+      <link>/tags/virtual-environments/</link>
+      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/tags/thoughts/</guid>
+      <guid>/tags/virtual-environments/</guid>
       <description></description>
     </item>
     
