@@ -1,11 +1,12 @@
 ---
+categories:
+    - Linux
+    - customization
+    - System Administration
 tags:
-- Linux
-- Hacks
-- Configuration
-- Arch Linux
-- Polkit
-- NTFS
+    - Arch Linux
+    - Polkit
+    - NTFS
 date: '2017-03-14T10:30:36+00:00'
 title: Mounting NTFS partitions on Arch Linux
 type: posts

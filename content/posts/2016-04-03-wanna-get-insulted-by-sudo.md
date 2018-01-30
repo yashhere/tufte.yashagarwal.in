@@ -1,13 +1,9 @@
 ---
-categories:
-- Linux
-- Hacks
 date: '2016-04-03T12:20:36+00:00'
+categories:
+    - Linux
 tags:
-- Linux
-- sudo
-- easter-egg
-- fun
+    - sudo
 title: Wanna get insulted by sudo
 type: posts
 ---

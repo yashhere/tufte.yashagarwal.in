@@ -2,13 +2,13 @@
 date: "2018-01-21T11:23:23+05:30"
 title: "My Own Configuration Manager"
 categories:
-  - linux
-  - programming
-  - development
+    - linux
+    - programming
+    - development
 tags:
-  - configurations
-  - python
-  - github
+    - configuration
+    - python
+    - github
 ---
 
 I have been using Linux since I was in my second year of undergraduate. My experiments with the dotfiles (configuration files) also started at the same time. For the uninformed, in Linux, it is common to configure a lot of settings and configurations within dotfiles. Dotfiles are files in a Linux user's home directory that begin with a dot or a full-stop character. This dot indicates to the operating system, that these files are used to store the settings of programs like `vim` or shells like `bash` or `fish` to name a few.

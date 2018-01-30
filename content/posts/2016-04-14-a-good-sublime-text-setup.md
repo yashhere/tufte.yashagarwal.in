@@ -1,13 +1,12 @@
 ---
 categories:
-- development
-- Sublime text
+    - Development
+    - Customization
 date: '2016-04-14T10:55:35+00:00'
 title: A good Sublime Text Setup
 type: posts
 tags:
-- Linux
-- Development
+    - Sublime text
 ---
 So, after a hactic day, a good news finally came. I have been selected as a Lab Administrator for the <a href="https://www.facebook.com/sslnitc/" target="_blank">Software Systems Lab</a> of my college. Cheers!!!
 

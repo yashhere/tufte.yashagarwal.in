@@ -1,13 +1,11 @@
 ---
-categories:
-- Linux
-- Init
 date: '2016-07-07'
 draft: true
+categories:
+    - Linux
+    - System Administration
 tags:
-- Linux
-- init
-- operating systems
+    - init
 title: Linux init Systems
 type: posts
 ---

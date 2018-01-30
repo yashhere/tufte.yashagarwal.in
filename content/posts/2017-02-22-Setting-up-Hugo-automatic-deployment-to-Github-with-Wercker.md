@@ -1,11 +1,13 @@
 ---
 Categories:
-- Development
+    - Git
+    - Development
+    - System Administration
 Tags:
-- gh-pages
-- Hugo
-- Github
-- Wercker
+    - gh-pages
+    - Hugo
+    - Github
+    - Wercker
 date: '2017-02-22T13:37:56+05:30'
 title: Setting up Hugo automatic deployment to Github with Wercker
 type: posts

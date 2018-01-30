@@ -1,14 +1,11 @@
 ---
 categories:
-- Linux
-- Arch-linux
-- development
+    - Linux
+    - customization
 date: '2016-06-11'
 tags:
-- Linux
-- Desktop Environment
-- Operating System
-- Development
+    - openbox
+    - Arch Linux
 title: Custom Arch Linux setup with Openbox
 type: posts
 ---

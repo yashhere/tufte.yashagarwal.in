@@ -2,16 +2,13 @@
 date: "2018-01-24T21:49:05+05:30"
 title: "Arch Linux Installation Guide Part 1"
 categories:
-  - Linux
-  - Arch-linux
+    - Linux
+    - customization
+    - System Administration
 tags:
-  - Configuration
-  - Github
-  - Fun
-  - Desktop Environment
-  - Arch Linux
-  - i3
-  - Hacks
+    - Configuration
+    - Arch Linux
+    - i3
 ---
 
 Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.
@@ -252,7 +249,7 @@ Finally, reboot your machine by typing `reboot` and remove the installation USB 
 
 If you can see a terminal with a prompt for your username, congratulations! You have completed the first step towards building your own system.
 
-I will be writing about making your system usable and stable in the second part of this guide.
+I will be writing about making your system usable and stable in the [second](/posts/2018/01/arch-linux-installation-guide-part-2/) part of this guide.
 
 Hope you enjoyed the post. Stay tuned :)
 

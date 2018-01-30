@@ -1,12 +1,14 @@
 ---
-title: "Setting up ALM Octane with Docker Compose."
+title: "Setting up ALM Octane with Docker Compose"
 date: 2017-12-26T20:53:35+05:30
 type: posts
+categories:
+  - Linux
+  - System Administration
 tags:
-- Linux
-- Configuration
-- Docker
-- Octane
+  - Arch Linux
+  - Docker
+  - Octane
 ---
 
 Recently, I got a chance to setup ALM Octane on one of my university server for a course project. From the support page of ALM Octane:

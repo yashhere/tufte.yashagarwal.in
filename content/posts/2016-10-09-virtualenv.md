@@ -1,12 +1,12 @@
 ---
 categories:
-- python
-- development
+    - linux
+    - development
 date: '2016-10-09'
 tags:
-- Pip
-- Python
-- Development
+    - Pip
+    - Python
+    - Virtual Environments
 title: Setting up Python Development Environments
 type: posts
 ---

@@ -2,11 +2,11 @@
 date: '2017-10-17T21:55:53+05:30'
 title: Fixing Hindi Fonts in Arch Linux
 type: posts
+categories:
+    - Linux
+    - customization
 tags:
-- Linux
-- Hacks
-- Configuration
-- Arch Linux
+    - Arch Linux
 ---
 
 When viewing Hindi content in any browser in Arch Linux, the rendering looks weird.
