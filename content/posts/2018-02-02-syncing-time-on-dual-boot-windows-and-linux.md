@@ -1,5 +1,5 @@
 ---
-date: "2018-02-02T00:32:51+05:30"
+date: "2018-02-01T12:54:34+05:30"
 title: "Syncing Time on Windows & GNU/Linux Dual Boot Setups"
 categories:
     - linux
@@ -7,7 +7,6 @@ categories:
 tags:
     - configuration
     - Arch Linux
-draft: true
 ---
 
 This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
@@ -28,7 +27,7 @@ Windows Time Service which keeps the clock in Windows OS accurate will still wri
 sc config w32time start= disabled
 ```
 
-Now you might need to change the time in your BIOS to UTC time. Although that depends whether your Windows OS was showing correct time before applying the above modifications. If yes, then changing BIOS time to UTC will make sure that both Windows and GNU/Linux convert hardware clock to localtime.
+Now you may need to change the time in your BIOS to UTC time. Although that depends on whether your Windows OS was showing correct time before applying the above modifications. If yes, then changing BIOS time to UTC will make sure that both Windows and GNU/Linux convert hardware clock to localtime.
 
 *****
 ##### References
