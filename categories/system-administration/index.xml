@@ -5,10 +5,30 @@
     <link>/categories/system-administration/</link>
     <description>Recent content in System Administration on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 26 Jan 2018 15:45:27 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 01 Feb 2018 12:54:34 +0530</lastBuildDate>
     
 	<atom:link href="/categories/system-administration/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>
+      <link>/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</link>
+      <pubDate>Thu, 01 Feb 2018 12:54:34 +0530</pubDate>
+      
+      <guid>/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</guid>
+      <description>This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
+So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems.</description>
+    </item>
+    
+    <item>
+      <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>
+      <link>/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</link>
+      <pubDate>Thu, 01 Feb 2018 12:54:34 +0530</pubDate>
+      
+      <guid>/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</guid>
+      <description>This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
+So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems.</description>
+    </item>
     
     <item>
       <title>Arch Linux Installation Guide Part 2</title>
