@@ -26,9 +26,9 @@ menu:
     url: /posts
   - name: whoami
     url: /whoami
-  - identifier: RSS
-    name: RSS
-    url: /index.xml
+  - identifier: Readings
+    name: Readings
+    url: /readingsT
 params:
   assets:
     customCSS:
