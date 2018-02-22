@@ -34,8 +34,8 @@ params:
     customCSS:
     - css/custom.css
     - css/syntax.css
-    # customJS:
-    # - js/custom.js
+    customJS:
+    - js/redirection.js
     favicon: favicon.ico
     gopher: ''
   copyright:
