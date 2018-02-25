@@ -41,7 +41,7 @@ And add me to your [RSS](/index.xml) reader.
 2. This blog is built using [Hugo](https://gohugo.io/), a static site generator. The theme used is [minimo](https://themes.gohugo.io/minimo). The source code of this blog can be found on [GitLab](https://gitlab.com/yashhere/yashhere.gitlab.io). A mirror exists at [GitHub](https://github.com/yashhere/yashhere.github.io) also. This site is automatically built using GitLab CI for GitLab and [Wercker](http://www.wercker.com) for GitHub. So this site is accessible at both [`yashhere.gitlab.io`](https://yashhere.gitlab.io) and [`yashhere.github.io`](https://yashhere.github.io).
 
 
-Ping me on Matrix where I hang out as `@im_y:matrix.org` `@yashhere:matrix.org`.
+Ping me on Matrix where I hang out as `@im_y:matrix.org` and `@yashhere:matrix.org`.
 
 You can also find me at:
 
