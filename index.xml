@@ -5,10 +5,19 @@
     <link>/</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Feb 2018 12:54:34 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 25 Feb 2018 10:10:04 +0530</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My New Domain</title>
+      <link>/posts/2018/02/my-new-domain/</link>
+      <pubDate>Sun, 25 Feb 2018 10:10:04 +0530</pubDate>
+      
+      <guid>/posts/2018/02/my-new-domain/</guid>
+      <description>I bought a new domain a few days back - yashagarwal.in. I was trying to buy this domain for last two years, but it was already taken. My previous domain, yashagarwal.me that I got for free via GitHub education pack was good enough for me, but the thought that I own a domain which is a top-level domain of some other country was in itself something which I was not comfortable with.</description>
+    </item>
     
     <item>
       <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>

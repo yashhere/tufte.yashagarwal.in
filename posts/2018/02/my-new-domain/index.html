@@ -4,20 +4,18 @@
 <head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
-So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems.'>
+<meta name='description' content='I bought a new domain a few days back - yashagarwal.in. I was trying to buy this domain for last two years, but it was already taken. My previous domain, yashagarwal.me that I got for free via GitHub education pack was good enough for me, but the thought that I own a domain which is a top-level domain of some other country was in itself something which I was not comfortable with.'>
 
-<meta property='og:title' content='Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups • /dev/yash/notes'>
-<meta property='og:description' content='This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
-So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems.'>
-<meta property='og:url' content='/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/'>
+<meta property='og:title' content='My New Domain • /dev/yash/notes'>
+<meta property='og:description' content='I bought a new domain a few days back - yashagarwal.in. I was trying to buy this domain for last two years, but it was already taken. My previous domain, yashagarwal.me that I got for free via GitHub education pack was good enough for me, but the thought that I own a domain which is a top-level domain of some other country was in itself something which I was not comfortable with.'>
+<meta property='og:url' content='/posts/2018/02/my-new-domain/'>
 <meta property='og:site_name' content='/dev/yash/notes'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='configuration'><meta property='article:tag' content='Arch Linux'><meta property='article:published_time' content='2018-02-01T12:54:34&#43;05:30'/><meta property='article:modified_time' content='2018-02-01T12:54:34&#43;05:30'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2018-02-25T10:10:04&#43;05:30'/><meta property='article:modified_time' content='2018-02-25T10:10:04&#43;05:30'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.31.1" />
 
-  <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups • /dev/yash/notes</title>
-  <link rel='canonical' href='/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/'>
+  <title>My New Domain • /dev/yash/notes</title>
+  <link rel='canonical' href='/posts/2018/02/my-new-domain/'>
   <script src='/js/redirection.js'></script>
   <link rel='icon' href='/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
@@ -65,7 +63,7 @@ So I will start with explaining the problem. When you try to dual boot your mach
     <header class='header-container'>
   <div class='header entry-header'>
     <div class='header-info'>
-      <h1 class='title'>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</h1>
+      <h1 class='title'>My New Domain</h1>
       
 
     </div>
@@ -80,7 +78,7 @@ So I will start with explaining the problem. When you try to dual boot your mach
   
 </svg>
 <span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2018-02-01T12:54:34&#43;05:30'>Feb 01, 2018</time>
+  <time class='date' datetime='2018-02-25T10:10:04&#43;05:30'>Feb 25, 2018</time>
 </span>
 
   
@@ -91,7 +89,7 @@ So I will start with explaining the problem. When you try to dual boot your mach
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-3 mins read
+2 mins read
 </span>
 
 
@@ -105,30 +103,11 @@ So I will start with explaining the problem. When you try to dual boot your mach
     
 
     <div class='entry-content'>
-  
+  <p>I bought a new domain a few days back - <a href="http://yashagarwal.in" target="_blank"><em>yashagarwal.in</em></a>. I was trying to buy this domain for last two years, but it was already taken. My previous domain, <em>yashagarwal.me</em> that I got for free via GitHub education pack was good enough for me, but the thought that I own a domain which is a top-level domain of some other country was in itself something which I was not comfortable with. So when I got the chance to buy this domain, I didn&rsquo;t delay. Hope this domain will remain my personal home on the web for years to come.</p>
 
-<p>This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.</p>
+<p>The domain is mapped with GitLab, and the SSL certificates are provided by <a href="https://letsencrypt.org" target="_blank">Let’s Encrypt</a>. Let’s Encrypt requires you to renew the SSL certificates every 90 days. That seems like a manual work to me. Moreover, my new registrar, GoDaddy, provides a very complete API for their domain services. So I am planning to write a script which utilizes the APIs of <a href="https://gitlab.com/help/api/README.md" target="_blank">GitLab</a> and <a href="https://developer.godaddy.com/" target="_blank">GoDaddy</a> to deploy the SSL certificates automatically. I will probably use the DNS based authentication to verify the ownership of my domain, as that seems the only method which does not require any modification on the host side. I will write a post with all the details about the script, once I finish implementing it.</p>
 
-<p>So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems. It is generally one operating system showing the correct time, and other one showing wrong time. It happens because Microsoft Windows thinks that the hardware clock (CMOS clock or BIOS clock) of the machine is using localtime (depends on your current time zone) and hence it doesn&rsquo;t do anything and shows you the same time. But most GNU/Linux operating systems (Ubuntu, Arch Linux, etc.) thinks that the hardware clock is set to track UTC time. Hence the mismatch in the time happens. For example, assume that the current real time is <code>10:22:51</code> and the hardware clock time is set to <code>10:22:51</code>. Windows will interpret this time as local time and show <code>10:22:51</code> but *nix based systems will show <code>15:52:51</code> because they will interpret this time as UTC time. Of course, the above example is true if we assume time zone as India, which is <code>+05:30</code> from UTC.</p>
-
-<p>This issue can be fixed either from Windows or from GNU/Linux OS. I prefer to adjust the behavior of Windows to use UTC time. It is much more convenient to use when traveling between different time zones. Please note that this method might not work or cause instability with older versions of Windows OS. I have tried this fix on Windows 10, and it works without any issues.</p>
-
-<p>Open an Administrator Command Prompt by pressing <code>⊞ + x</code>, then type <code>a</code>. This method of opening Administrator Command Prompt does not work on Windows 7.</p>
-
-<p>Now execute the following command:</p>
-<div class="highlight"><pre class="chroma">reg add &#34;HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation&#34; /v RealTimeIsUniversal /d 1 /t REG_DWORD /f</pre></div>
-<p>Windows Time Service which keeps the clock in Windows OS accurate will still write the localtime to the Real-time clock (RTC) regardless of the registry settings on shutdown. So I prefer to disable the Windows Time Service.</p>
-<div class="highlight"><pre class="chroma">sc config w32time start= disabled</pre></div>
-<p>Now you may need to change the time in your BIOS to UTC time. Although that depends on whether your Windows OS was showing correct time before applying the above modifications. If yes, then changing BIOS time to UTC will make sure that both Windows and GNU/Linux convert hardware clock to localtime.</p>
-
-<hr />
-
-<h5 id="references">References</h5>
-
-<ol>
-<li><a href="https://help.ubuntu.com/community/UbuntuTime#Multiple_Boot_Systems_Time_Conflicts" target="_blank">Multiple Boot Systems Time Conflicts</a></li>
-<li><a href="https://wiki.archlinux.org/index.php/Time#UTC_in_Windows" target="_blank">UTC in Windows</a></li>
-</ol>
+<p>That&rsquo;s all for this post. See you next time&hellip; :)</p>
 
 </div>
 
@@ -142,16 +121,7 @@ So I will start with explaining the problem. When you try to dual boot your mach
   
 </svg>
 </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='/categories/linux'>Linux</a>, <a class='category' href='/categories/system-administration'>System Administration</a></div>
-<div class='tags'>
-  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
-  <line x1="7" y1="7" x2="7" y2="7"/>
-  
-</svg>
-</span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='/tags/configuration'>Configuration</a>, <a class='tag' href='/tags/arch-linux'>Arch Linux</a></div>
+  <span class='screen-reader'>Categories: </span><a class='category' href='/categories/updates'>Updates</a></div>
 
   </div>
 </footer>
@@ -162,7 +132,7 @@ So I will start with explaining the problem. When you try to dual boot your mach
   
 <nav class='entry-nav-container'>
   <div class='entry-nav'><div class='prev-entry'>
-      <a href='/posts/2018/01/why-a-sanskrit-shloka/'>
+      <a href='/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="20" y1="12" x2="4" y2="12"/>
@@ -170,17 +140,7 @@ So I will start with explaining the problem. When you try to dual boot your mach
   
 </svg>
  Previous</span>
-        <span class='screen-reader'>Previous post: </span>Why a Sanskrit Shloka?</a>
-    </div><div class='next-entry'>
-      <a href='/posts/2018/02/my-new-domain/'>
-        <span class='screen-reader'>Next post: </span>My New Domain<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="4" y1="12" x2="20" y2="12"/>
-  <polyline points="14 6 20 12 14 18"/>
-  
-</svg>
-</span>
-      </a>
+        <span class='screen-reader'>Previous post: </span>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</a>
     </div></div>
 </nav>
 
