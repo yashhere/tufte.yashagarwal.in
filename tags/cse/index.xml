@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CSE on /dev/yash/notes</title>
-    <link>/tags/cse/</link>
+    <link>https://yashagarwal.in/tags/cse/</link>
     <description>Recent content in CSE on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 10 Apr 2016 00:33:16 +0000</lastBuildDate>
     
-	<atom:link href="/tags/cse/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yashagarwal.in/tags/cse/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Searching the goal</title>
-      <link>/posts/2016/04/searching-the-goal/</link>
+      <link>https://yashagarwal.in/posts/2016/04/searching-the-goal/</link>
       <pubDate>Sun, 10 Apr 2016 00:33:16 +0000</pubDate>
       
-      <guid>/posts/2016/04/searching-the-goal/</guid>
+      <guid>https://yashagarwal.in/posts/2016/04/searching-the-goal/</guid>
       <description>A boy, probably of age 16, just cleared his 10th board exam. He saw people working on computers and that fascinated him. So he had only one ambition. You got it, right? One fine day, suddenly his friend&amp;#8217;s mother asked, &amp;#8220;So what about the future? You are going to enter in class 11th. It is the right time to decide about your future. What do you want to become, a doctor or an engineer?</description>
     </item>
     

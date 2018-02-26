@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on /dev/yash/notes</title>
-    <link>/categories/development/</link>
+    <link>https://yashagarwal.in/categories/development/</link>
     <description>Recent content in Development on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 22 Feb 2017 13:37:56 +0530</lastBuildDate>
     
-	<atom:link href="/categories/development/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yashagarwal.in/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Setting up Hugo automatic deployment to Github with Wercker</title>
-      <link>/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</link>
+      <link>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</link>
       <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
-      <guid>/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
+      <guid>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
       <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.</description>
     </item>
     
     <item>
       <title>A good Sublime Text Setup</title>
-      <link>/posts/2016/04/a-good-sublime-text-setup/</link>
+      <link>https://yashagarwal.in/posts/2016/04/a-good-sublime-text-setup/</link>
       <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
       
-      <guid>/posts/2016/04/a-good-sublime-text-setup/</guid>
+      <guid>https://yashagarwal.in/posts/2016/04/a-good-sublime-text-setup/</guid>
       <description>So, after a hactic day, a good news finally came. I have been selected as a Lab Administrator for the Software Systems Lab of my college. Cheers!!!
 Let&amp;#8217;s come to our today&amp;#8217;s topic on configuring Sublime Text Settings.
 There is just one rule you must follow while designing your own editor preference configuration.

@@ -2,127 +2,127 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on /dev/yash/notes</title>
-    <link>/categories/</link>
+    <link>https://yashagarwal.in/categories/</link>
     <description>Recent content in Categories on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yashagarwal.in/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Customization</title>
-      <link>/categories/customization/</link>
+      <link>https://yashagarwal.in/categories/customization/</link>
       <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
       
-      <guid>/categories/customization/</guid>
+      <guid>https://yashagarwal.in/categories/customization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Customization</title>
-      <link>/categories/customization/</link>
+      <link>https://yashagarwal.in/categories/customization/</link>
       <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
       
-      <guid>/categories/customization/</guid>
+      <guid>https://yashagarwal.in/categories/customization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Development</title>
-      <link>/categories/development/</link>
+      <link>https://yashagarwal.in/categories/development/</link>
       <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
-      <guid>/categories/development/</guid>
+      <guid>https://yashagarwal.in/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Development</title>
-      <link>/categories/development/</link>
+      <link>https://yashagarwal.in/categories/development/</link>
       <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
-      <guid>/categories/development/</guid>
+      <guid>https://yashagarwal.in/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Experience</title>
-      <link>/categories/experience/</link>
+      <link>https://yashagarwal.in/categories/experience/</link>
       <pubDate>Tue, 30 Jan 2018 20:29:00 +0530</pubDate>
       
-      <guid>/categories/experience/</guid>
+      <guid>https://yashagarwal.in/categories/experience/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Git</title>
-      <link>/categories/git/</link>
+      <link>https://yashagarwal.in/categories/git/</link>
       <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
-      <guid>/categories/git/</guid>
+      <guid>https://yashagarwal.in/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Life</title>
-      <link>/categories/life/</link>
+      <link>https://yashagarwal.in/categories/life/</link>
       <pubDate>Tue, 30 Jan 2018 20:29:00 +0530</pubDate>
       
-      <guid>/categories/life/</guid>
+      <guid>https://yashagarwal.in/categories/life/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>/categories/linux/</link>
+      <link>https://yashagarwal.in/categories/linux/</link>
       <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
-      <guid>/categories/linux/</guid>
+      <guid>https://yashagarwal.in/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>/categories/linux/</link>
+      <link>https://yashagarwal.in/categories/linux/</link>
       <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
-      <guid>/categories/linux/</guid>
+      <guid>https://yashagarwal.in/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programming</title>
-      <link>/categories/programming/</link>
+      <link>https://yashagarwal.in/categories/programming/</link>
       <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
       
-      <guid>/categories/programming/</guid>
+      <guid>https://yashagarwal.in/categories/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>System Administration</title>
-      <link>/categories/system-administration/</link>
+      <link>https://yashagarwal.in/categories/system-administration/</link>
       <pubDate>Thu, 01 Feb 2018 12:54:34 +0530</pubDate>
       
-      <guid>/categories/system-administration/</guid>
+      <guid>https://yashagarwal.in/categories/system-administration/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Thoughts</title>
-      <link>/categories/thoughts/</link>
+      <link>https://yashagarwal.in/categories/thoughts/</link>
       <pubDate>Tue, 30 Jan 2018 20:29:00 +0530</pubDate>
       
-      <guid>/categories/thoughts/</guid>
+      <guid>https://yashagarwal.in/categories/thoughts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Updates</title>
-      <link>/categories/updates/</link>
+      <link>https://yashagarwal.in/categories/updates/</link>
       <pubDate>Sun, 25 Feb 2018 10:10:04 +0530</pubDate>
       
-      <guid>/categories/updates/</guid>
+      <guid>https://yashagarwal.in/categories/updates/</guid>
       <description></description>
     </item>
     

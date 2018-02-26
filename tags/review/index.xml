@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Review on /dev/yash/notes</title>
-    <link>/tags/review/</link>
+    <link>https://yashagarwal.in/tags/review/</link>
     <description>Recent content in Review on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 31 Dec 2017 23:19:00 +0530</lastBuildDate>
     
-	<atom:link href="/tags/review/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yashagarwal.in/tags/review/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2017 - The Best Till Now</title>
-      <link>/posts/2017/12/2017---the-best-till-now/</link>
+      <link>https://yashagarwal.in/posts/2017/12/2017---the-best-till-now/</link>
       <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
       
-      <guid>/posts/2017/12/2017---the-best-till-now/</guid>
+      <guid>https://yashagarwal.in/posts/2017/12/2017---the-best-till-now/</guid>
       <description>If I have to define 2017 in one word, that would be amazing. This year has been a life-changing year for me. I learned a lot of new things, had some excellent experience in the company of amazing people, had a great time in my academic life and SSL. 2017 has been a very significant year for me, and I want to record this memory by documenting some of the most amazing things that I learned and experienced this year.</description>
     </item>
     

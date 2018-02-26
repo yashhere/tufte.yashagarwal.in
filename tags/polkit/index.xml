@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Polkit on /dev/yash/notes</title>
-    <link>/tags/polkit/</link>
+    <link>https://yashagarwal.in/tags/polkit/</link>
     <description>Recent content in Polkit on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 14 Mar 2017 10:30:36 +0000</lastBuildDate>
     
-	<atom:link href="/tags/polkit/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yashagarwal.in/tags/polkit/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mounting NTFS partitions on Arch Linux</title>
-      <link>/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</link>
+      <link>https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</link>
       <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
       
-      <guid>/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</guid>
+      <guid>https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</guid>
       <description>Yesterday I installed Arch Linux once again. A clean, bloat free desktop with Budgie Desktop environment with some must have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don&amp;rsquo;t know whether it is a bug in Budgie or just a wrong setting). I also faced the problem of mounting Windows NTFS volumes on user&amp;rsquo;s wish. Arch Linux wiki has details about how to auto mount partitions on start-up, but I had a tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu-like distribution on the mounting of NTFS drives.</description>
     </item>
     

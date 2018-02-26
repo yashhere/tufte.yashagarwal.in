@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on /dev/yash/notes</title>
-    <link>/tags/github/</link>
+    <link>https://yashagarwal.in/tags/github/</link>
     <description>Recent content in Github on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 22 Feb 2017 13:37:56 +0530</lastBuildDate>
     
-	<atom:link href="/tags/github/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yashagarwal.in/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Setting up Hugo automatic deployment to Github with Wercker</title>
-      <link>/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</link>
+      <link>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</link>
       <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
-      <guid>/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
+      <guid>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
       <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.</description>
     </item>
     
