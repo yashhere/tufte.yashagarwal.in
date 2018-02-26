@@ -1,5 +1,5 @@
 Paginate: 7
-baseURL: /
+baseURL: https://yashagarwal.in
 canonifyurls: true
 MetaDataFormat: "yaml"
 archetypeDir: "archetypes"
@@ -8,6 +8,7 @@ enableGitInfo: false
 copyright: Creative Commons Attribution-ShareAlike 4.0 International License
 defaultContentLanguage: en
 disqusShortname: yashhere
+googleAnalytics: "UA-75475356-3"
 enableEmoji: true
 enableRobotsTXT: true
 languages:
