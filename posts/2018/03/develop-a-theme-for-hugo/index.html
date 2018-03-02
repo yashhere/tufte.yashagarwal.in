@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='This article was originally published on zeolearn.
+Introduction In this tutorial, I will show you how to create a basic Hugo theme. I assume that you are familiar with basic HTML, and how to write content in markdown. I will be explaining the working of Hugo and how it uses Go templating language and how you can use these templates to organize your content. As this post will be focusing mainly on Hugo&rsquo;s working, I will not be covering CSS here.'>
+
+<meta property='og:title' content='Develop a Theme for Hugo • /dev/yash/notes'>
+<meta property='og:description' content='This article was originally published on zeolearn.
+Introduction In this tutorial, I will show you how to create a basic Hugo theme. I assume that you are familiar with basic HTML, and how to write content in markdown. I will be explaining the working of Hugo and how it uses Go templating language and how you can use these templates to organize your content. As this post will be focusing mainly on Hugo&rsquo;s working, I will not be covering CSS here.'>
+<meta property='og:url' content='https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/'>
+<meta property='og:site_name' content='/dev/yash/notes'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Hugo'><meta property='article:published_time' content='2018-03-02T11:27:05&#43;05:30'/><meta property='article:modified_time' content='2018-03-02T11:27:05&#43;05:30'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Develop a Theme for Hugo • /dev/yash/notes</title>
+  <link rel='canonical' href='https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/'>
+  <script src='https://yashagarwal.in/js/redirection.js'></script>
+  <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-75475356-3', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='https://yashagarwal.in/'>Home</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/posts'>Posts</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/readingst'>Readings</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/whoami'>whoami</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>/dev/yash/notes</p>
+          
+          <p class='site-description subtitle'>The directory of my thoughts</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Develop a Theme for Hugo</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2018-03-02T11:27:05&#43;05:30'>Mar 02, 2018</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+20 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p><em>This article was originally published on <a href="https://www.zeolearn.com/magazine/develop-a-theme-for-hugo" target="_blank">zeolearn</a>.</em></p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>In this tutorial, I will show you how to create a basic Hugo theme. I assume that you are familiar with basic HTML, and how to write content in markdown. I will be explaining the working of Hugo and how it uses Go templating language and how you can use these templates to organize your content. As this post will be focusing mainly on Hugo&rsquo;s working, I will not be covering CSS here.</p>
+
+<p>We will be starting with some necessary information about the terminology used in Hugo. Then we will create a Hugo site with a very basic template. Then we will add new templates and posts to our site as we delve further into Hugo. With very slight variations to what you will learn here, you will be able to create different types of real-world websites.</p>
+
+<p>Now, a short tutorial about the flow of this post. The commands that start with <code>$</code> are meant to be run in the terminal or command line. The output of the command will follow immediately. Comments will begin with <code>#</code>.</p>
+
+<h1 id="some-terminology">Some Terminology</h1>
+
+<h3 id="configuration-file">Configuration File</h3>
+
+<p>Hugo uses a configuration file to identify common settings for your site. It is located in the root of your site. This file can be written in TOML, YAML or JSON formats. Hugo identifies this file using the extension.</p>
+
+<p>By default, Hugo expects to find Markdown files in your <code>content/</code> directory and template files in your <code>themes/</code> directory. It will create HTML files in your <code>public/</code> directory. You can change this by specifying alternate locations in the configuration file.</p>
+
+<h3 id="content">Content</h3>
+
+<p>The content files will contain the metadata and text about your posts. A content file can be divided into two sections, the top section being frontmatter and the next section is the markdown that will be converted to HTML by Hugo. The content files reside in <code>/content</code> directory.</p>
+
+<h6 id="frontmatter">Frontmatter</h6>
+
+<p>The frontmatter section contains information about your post. It can be written in JSON, TOML or YAML. Hugo identifies the type of frontmatter used with the help of identifying tokens(markers). TOML is surrounded by <code>+++</code>, YAML is by <code>---</code> and JSON is enclosed in curly braces <code>{</code> and <code>}</code>. The information in the front matter of a content type will be parsed to be used in the template for that specific content type while converting to HTML.</p>
+
+<p>I prefer to use YAML, so you might need to translate your configurations if you are using JSON or TOML.</p>
+
+<p>This is an example of frontmatter written in YAML.</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span>date<span class="p">:</span><span class="w"> </span><span class="s2">&#34;2018-02-11T11:45:05+05:30&#34;</span><span class="w">
+</span><span class="w"></span>title<span class="p">:</span><span class="w"> </span><span class="s2">&#34;Basic Hugo Theming Tutorial.&#34;</span><span class="w">
+</span><span class="w"></span>description<span class="p">:</span><span class="w"> </span><span class="s2">&#34;A primer about theme development for Hugo, a static site generator written in Golang.&#34;</span><span class="w">
+</span><span class="w"></span>categories<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>Hugo<span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>Customization<span class="w">
+</span><span class="w"></span>tags<span class="p">:</span><span class="w">
+</span><span class="w">    </span>-<span class="w"> </span>Theme<span class="w">
+</span><span class="w"></span>---</code></pre></div>
+<p>You can read more about different configuration options available for frontmatter <a href="https://gohugo.io/content-management/front-matter/#readout" target="_blank">here</a>.</p>
+
+<h6 id="markdown">Markdown</h6>
+
+<p>The markdown section is where you will write your actual post. The content written here will automatically be converted to HTML by Hugo with the help of a Markdown engine.</p>
+
+<h3 id="templates">Templates</h3>
+
+<p>In Hugo, templates govern the way; your content will be rendered to HTML. Each template provides a consistent layout when rendering the markdown content. The templates reside in the <code>/layouts</code> directory.</p>
+
+<p>There are three types of templates: <em>single</em>, <em>list</em> and <em>partial</em>. Each kind of template take some content as input and transform it according to the way defined in the template.</p>
+
+<h6 id="single-template">Single Template</h6>
+
+<p>A single template is used to render a single page. The best example of this is <em>about</em> page.</p>
+
+<h6 id="list-template">List Template</h6>
+
+<p>A list template renders a group of related content. It can be all recent posts or all posts belonging to a particular category.</p>
+
+<p>The homepage template is a specific type of list template. Hugo assumes that the homepage will serve as a bridge to all the other content on your website.</p>
+
+<h6 id="partials">Partials</h6>
+
+<p>Partials are short code snippets that can be injected in any other template type. They are instrumental when you want to repeat some content on every page of your website. The header and footer content are good candidates to be included in separate partials. It is a good practice to use partials liberally in your Hugo site as it adheres to <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a> principle.</p>
+
+<h1 id="okay-let-s-start">Okay, Let&rsquo;s Start</h1>
+
+<p>So now that you have a basic understanding of Hugo, we will create a new site using Hugo. Hugo provides a command to generate new sites. We will use that command to scaffold our site. It will create a basic skeleton of your site and will give you a basic configuration file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo new site ~/zeo
+$ <span class="nb">cd</span> ~/zeo
+$ ls -l
+total <span class="m">28</span>
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 archetypes
+-rw-r--r-- <span class="m">1</span> yash hogwarts   <span class="m">82</span> Feb <span class="m">11</span> <span class="m">11</span>:13 config.toml
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 content
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 data
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 layouts
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 static
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 themes</code></pre></div>
+<p><strong>Note:</strong> I will use YAML format for the config file. Hugo, By default, uses TOML format.</p>
+
+<p>A small description of this directory structure:</p>
+
+<ul>
+<li><strong>archetypes</strong>: The archetypes contains predefined frontmatter format for your website&rsquo;s content types. It facilitates consistent metadata format across all the content of your site.</li>
+<li><strong>content</strong>: The content directory contains the markdown files that will be converted to HTML and served to the user.</li>
+
+<li><p><strong>data</strong>: From Hugo documentation</p>
+
+<blockquote>
+<p>The data folder is where you can store additional data for Hugo to use when generating your site. Data files are not used to generate standalone pages; rather, they are meant to be supplemental to content files. This feature can extend the content in case your front matter fields grow out of control. Or perhaps you want to show a larger dataset in a template (see example below). In both cases, it is a good idea to outsource the data in their files.</p>
+</blockquote></li>
+
+<li><p><strong>layouts</strong>: The layouts folder stores all the templates files which form the presentation of the content files.</p></li>
+
+<li><p><strong>static</strong>: The static folder will contain all the static assets such as <code>CSS</code>, <code>JS</code> and <code>image</code> files.</p></li>
+
+<li><p><strong>themes</strong>: The themes folder is where we will be storing our theme.</p></li>
+</ul>
+
+<p>We will edit the <code>config.yaml</code> file to edit some basic configuration of the site.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vim config.yaml
+baseURL: /
+title: <span class="s2">&#34;My First Blog&#34;</span>
+defaultContentLanguage: en
+languages:
+  en:
+    lang: en
+    languageName: English
+    weight: <span class="m">1</span>
+MetaDataFormat: <span class="s2">&#34;yaml&#34;</span></code></pre></div>
+<p>Now when you run your site, Hugo will show some errors. It is normal because our layouts and themes directories are still empty.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose
+INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 Using config file: /home/yash/zeo/config.yaml
+Building sites … INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 syncing static files to /home/yash/zeo/public/
+WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 No translation bundle found <span class="k">for</span> default language <span class="s2">&#34;en&#34;</span>
+WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 Translation func <span class="k">for</span> language en not found, use default.
+WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 i18n not initialized, check that you have language file <span class="o">(</span>in i18n<span class="o">)</span> that matches the site language or the default language.
+WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 <span class="o">[</span>en<span class="o">]</span> Unable to locate layout <span class="k">for</span> <span class="s2">&#34;taxonomyTerm&#34;</span>:
+...
+...</code></pre></div>
+<p>This command will also create a new directory called <code>public/</code>. This is the directory where Hugo will save all the generated HTML files related to your site. It also stores all static data in this folder.</p>
+
+<p>Let&rsquo;s have a look at the <code>public</code> folder.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ls -l public/
+total <span class="m">16</span>
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb  <span class="m">11</span> <span class="m">11</span>:22 categories
+-rw-r--r-- <span class="m">1</span> yash hogwarts  <span class="m">400</span> Feb  <span class="m">11</span> <span class="m">11</span>:25 index.xml
+-rw-r--r-- <span class="m">1</span> yash hogwarts  <span class="m">383</span> Feb  <span class="m">11</span> <span class="m">11</span>:25 sitemap.xml
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb  <span class="m">11</span> <span class="m">11</span>:22 tags</code></pre></div>
+<p>Hugo generated some XML files, but there are no HTML files. It is because we have not created any content in our content directory yet.</p>
+
+<p>At this point, you have a working site with you. All that is left is to add some content and a theme to your site.</p>
+
+<h3 id="create-a-new-theme">Create a new theme</h3>
+
+<p>Hugo doesn&rsquo;t ship with a default theme. There are a lot of themes available on Hugo website. Hugo also ships with a command to create new themes.</p>
+
+<p>In this tutorial, we will be creating a theme called <code>zeo</code>. As mentioned earlier, my aim is to show you how to use Hugo&rsquo;s features to fill out your HTML files from the markdown content, I will not be focusing on CSS. So the theme will be ugly but functional.</p>
+
+<p>Let&rsquo;s create a basic skeleton of the theme. It will create the directory structure of the theme and place empty files for you to fill in.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># run it from the root of your site
+</span><span class="c1"></span>$ hugo new theme zeo
+$ ls -l themes/zeo/
+total <span class="m">20</span>
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:30 archetypes
+drwxr-xr-x <span class="m">4</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:30 layouts
+-rw-r--r-- <span class="m">1</span> yash hogwarts <span class="m">1081</span> Feb <span class="m">11</span> <span class="m">11</span>:30 LICENSE.md
+drwxr-xr-x <span class="m">4</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:30 static
+-rw-r--r-- <span class="m">1</span> yash hogwarts  <span class="m">432</span> Feb <span class="m">11</span> <span class="m">11</span>:30 theme.toml</code></pre></div>
+<p>Fill out <code>LICENSE.md</code> and <code>theme.toml</code> file if you plan to distribute your theme to outside world.</p>
+
+<p>Now we will edit our <code>config.yaml</code> file to use this theme.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vim config.yaml
+theme: <span class="s2">&#34;zeo&#34;</span></code></pre></div>
+<p>Now that we have an empty theme, let&rsquo;s build the site.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose
+INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 Using config file: /home/yash/zeo/config.yaml
+Building sites … INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 syncing static files to /home/yash/zeo/public/
+WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 No translation bundle found <span class="k">for</span> default language <span class="s2">&#34;en&#34;</span>
+WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 Translation func <span class="k">for</span> language en not found, use default.
+WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 i18n not initialized, check that you have language file <span class="o">(</span>in i18n<span class="o">)</span> that matches the site language or the default language.
+
+                   <span class="p">|</span> EN
++------------------+----+
+  Pages            <span class="p">|</span>  <span class="m">3</span>
+  Paginator pages  <span class="p">|</span>  <span class="m">0</span>
+  Non-page files   <span class="p">|</span>  <span class="m">0</span>
+  Static files     <span class="p">|</span>  <span class="m">0</span>
+  Processed images <span class="p">|</span>  <span class="m">0</span>
+  Aliases          <span class="p">|</span>  <span class="m">0</span>
+  Sitemaps         <span class="p">|</span>  <span class="m">1</span>
+  Cleaned          <span class="p">|</span>  <span class="m">0</span>
+
+Total in <span class="m">12</span> ms</code></pre></div>
+<p>These warnings are harmless in our case, as we are developing our site in English only.</p>
+
+<p>Hugo does two things while generating your website. It transforms all the content files to HTML using the defined templates, and its copies static files into the site. Static files are not transformed by Hugo. They are copied exactly as they are.</p>
+
+<h1 id="the-cycle">The Cycle</h1>
+
+<p>The usual development cycle when developing themes for Hugo is:</p>
+
+<ul>
+<li>Delete the <code>/public</code> folder</li>
+<li>Run the built-in web server and open your site in the browser</li>
+<li>Make changes to your theme files</li>
+<li>View your changes in browser</li>
+<li>Repeat step 3</li>
+</ul>
+
+<p>It is necessary to delete the <code>public</code> directory because Hugo does not try to remove any outdated files from this folder. So the old data might interfere with your workflow.</p>
+
+<p>It is also a good idea to track changes in your theme with the help of a version control software. I prefer Git for this. You can use others according to your preference.</p>
+
+<h3 id="run-your-site-in-the-browser">Run your site in the browser</h3>
+
+<p>Hugo has a built-in web server which helps considerably while developing themes for Hugo. It also has a <em>live reload</em> and <em>watch</em> feature which watches for changes in your files and reloads the web page accordingly.</p>
+
+<p>Run it with <code>hugo server</code> command.</p>
+
+<p>Now open <a href="http://localhost:1313" target="_blank">http://localhost:1313</a> in your browser. By default, Hugo will not show anything, because it cannot find any HTML file in the public directory.</p>
+
+<p>The command to load web server with <code>--watch</code> option is:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo server --watch --verbose
+...
+...
+                   <span class="p">|</span> EN
++------------------+----+
+  Pages            <span class="p">|</span>  <span class="m">4</span>
+  Paginator pages  <span class="p">|</span>  <span class="m">0</span>
+  Non-page files   <span class="p">|</span>  <span class="m">0</span>
+  Static files     <span class="p">|</span>  <span class="m">0</span>
+  Processed images <span class="p">|</span>  <span class="m">0</span>
+  Aliases          <span class="p">|</span>  <span class="m">0</span>
+  Sitemaps         <span class="p">|</span>  <span class="m">1</span>
+  Cleaned          <span class="p">|</span>  <span class="m">0</span>
+
+Total in <span class="m">11</span> ms
+...
+...</code></pre></div>
+<h3 id="update-the-home-page-template">Update the Home page template</h3>
+
+<p>Hugo looks for following directories in theme&rsquo;s <code>/layout</code> folder to search for <code>index.html</code> page.</p>
+
+<ul>
+<li>index.html</li>
+<li>_default/list.html</li>
+<li>_default/single.html</li>
+</ul>
+
+<p>It is always desirable to update the most specific template related to the content type. It is not a hard and fast rule, but a good generalization to follow.</p>
+
+<p>We will first make a static page to see if our <code>index.html</code> page is rendered correctly.</p>
+<div class="highlight"><pre class="chroma"><code class="language-htmk" data-lang="htmk">$ vim themes/zeo/layouts/index.html
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;p&gt;Hello World!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+<p>Build the site and verify the results. You should see <em>Hello World!</em> when you open <a href="http://localhost:1313" target="_blank">http://localhost:1313</a>.</p>
+
+<h3 id="building-a-functional-home-page">Building a functional Home Page</h3>
+
+<p>Now we will create a home page which will reflect the content of our site every time we build it.</p>
+
+<p>For that, we will first create some new posts. We will display these posts as a list on the home page and on their pages, too.</p>
+
+<p>Hugo has a command for generating skeleton of posts, just like it did for sites and themes.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose new post/first.md
+INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:40:58 Using config file: /home/yash/zeo/config.yaml
+INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:40:58 attempting to create <span class="s2">&#34;post/first.md&#34;</span> of <span class="s2">&#34;post&#34;</span> of ext <span class="s2">&#34;.md&#34;</span>
+INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:40:58 curpath: /home/yash/zeo/archetypes/default.md
+...
+...
+/home/yash/zeo/content/post/first.md created</code></pre></div>
+<p>The <code>new</code> command uses an archetype to generate the frontmatter for new posts. When we created our site, hugo created a default archetype in the <code>/archetype</code> folder.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cat archetypes/default.md
+---
+title: <span class="s2">&#34;{{ replace .Name &#34;</span>-<span class="s2">&#34; &#34;</span> <span class="s2">&#34; | title }}&#34;</span>
+date: <span class="o">{{</span> .Date <span class="o">}}</span>
+
+---</code></pre></div>
+<p>It is a good idea to create a default archetype in the themes folder also so that users can override the theme&rsquo;s archetype with their archetype whenever they want.</p>
+
+<p>We will create a new archetype for our posts&rsquo; frontmatter and delete the default <code>archetype/default.md</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rm -rf archetype/default.md
+$ vim themes/zeo/archetypes/post.md
+---
+title: <span class="s2">&#34;{{ replace .Name &#34;</span>-<span class="s2">&#34; &#34;</span> <span class="s2">&#34; | title }}&#34;</span>
+date: <span class="o">{{</span> .Date <span class="o">}}</span>
+Description: <span class="s2">&#34;&#34;</span>
+Tags: <span class="o">[]</span>
+Categories: <span class="o">[]</span>
+
+---</code></pre></div>
+<p>Create one more post in <code>content/post</code> directory.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose new post/second.md
+INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 Using config file: /home/yash/zeo/config.yaml
+INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 attempting to create <span class="s2">&#34;post/second.md&#34;</span> of <span class="s2">&#34;post&#34;</span> of ext <span class="s2">&#34;.md&#34;</span>
+INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 curpath: /home/yash/zeo/themes/zeo/archetypes/post.md
+...
+...
+/home/yash/zeo/content/post/second.md created</code></pre></div>
+<p>See the difference. Hugo used the theme&rsquo;s archetype for generating the frontmatter this time.</p>
+
+<p>By default, Hugo does not generate posts with an empty content section. So you will need to add some content before you try to build the site.</p>
+
+<p>Let&rsquo;s look at the <code>content/post/first.md</code> file, after adding content to it.</p>
+<div class="highlight"><pre class="chroma"><code class="language-markdown" data-lang="markdown">$ cat content/post/first.md<span class="err">
+</span><span class="err"></span>---<span class="err">
+</span><span class="err"></span>title: &#34;First&#34;<span class="err">
+</span><span class="err"></span>date: 2018-02-11T11:35:58+05:30<span class="err">
+</span><span class="err"></span>draft: true<span class="err">
+</span><span class="err"></span>Tags: [&#34;first&#34;]<span class="err">
+</span><span class="err"></span>Categories: [&#34;Hugo&#34;]<span class="err">
+</span><span class="err">
+</span><span class="err"></span>---<span class="err">
+</span><span class="err">
+</span><span class="err"></span>Hi there. My first Hugo post</code></pre></div>
+<p>Now that our posts are ready, we need to create templates to show them in a list on the home page and to show their content on separate pages for each post.</p>
+
+<p>We will first edit the template for the home page that we created previously. We will then modify &ldquo;single&rdquo; templates which are used to generate output for a single content file. We also have &ldquo;list&rdquo; templates which are used to group similar type of content and render them as a list.
+The home page will show a list of last ten posts that we have created. Let&rsquo;s update its template to add this logic.</p>
+
+<h3 id="update-your-home-page-to-show-your-content">Update your home page to show your content</h3>
+
+<p>Now add your template code to <code>themes/zeo/layouts/index.html</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/index.html
+$ cat !$
+cat themes/zeo/layouts/index.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+  {{ range first 10 .Data.Pages }}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  {{ end }}
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<p>Hugo uses Go Template Engine. This engine scans the templates for commands that are enclosed between <code>{{</code> and <code>}}</code>. In this template, the commands are <code>range</code>, <code>first</code>, <code>.Data.Pages</code>, <code>.Title</code> and <code>end</code>.</p>
+
+<p>The template implies that we are going to get first 10 latest pages from our content folder and render their title as <code>h1</code> heading.</p>
+
+<p><code>range</code> is an iterator function. Hugo treats every HTML file created as a page, so <code>range</code> will loop through all the pages created. Here we are instructing <code>range</code> to stop after first ten pages.</p>
+
+<p>The <code>end</code> command signals the end of the <em>range</em> iterator. The engine loops back to the next iteration as soon as it encounters the <em>end</em> command. Everything between <em>range</em> and <em>end</em> will be evaluated for each iteration of the loop.</p>
+
+<p>Build the website and see the changes. The homepage now shows our two posts. However, you cannot click on the posts and read their content. Let&rsquo;s change that too.</p>
+
+<h3 id="linking-your-posts-on-home-page">Linking your posts on Home Page</h3>
+
+<p>Let&rsquo;s add a link to the post&rsquo;s page from home page.</p>
+<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/index.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+  {{ range first 10 .Data.Pages }}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">{{</span> <span class="err">.</span><span class="na">Permalink</span> <span class="err">}}</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  {{ end }}
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<p>Build your site and see the result. The titles are now links, but when you click on them, it takes you to a page which says <code>404 page not found</code>. That is expected because we have not created any template for the single pages where the content can be rendered. So Hugo could not find any template, and it did not output any HTML file. We will change that in a minute.</p>
+
+<p>We want to render the posts, which are in <code>content/post</code> directory. That means that their section is post and their type is also post.</p>
+
+<p>Hugo uses section and type information to identify the template file for each piece of content. It will first look for a template file which matches the section or type of the content. If it could not find it, then it will use <code>_default/single.html</code> file.</p>
+
+<p>Since we do not have any other content type yet, we will just start by updating the <code>_default/single.html</code> file.</p>
+
+<p>Remember that Hugo will use this file for every content type for which we have not created a template. However, for now, we will accept that cost as we do not have any other content type with us. We will refactor our templates to accommodate more content types, as we add more content.</p>
+
+<p>Update the template file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/_default/single.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  {{ .Content }}
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<p>Build the site and verify the results. You will see that on clicking on <code>first</code>, you get the usual result, but clicking on <code>second</code> still produces the <code>404 page not found</code> error. It is because Hugo does not generate pages with empty content. Remember I mentioned it earlier.</p>
+
+<p>Now that we have our home page and posts page ready, we will build a page to list all the posts, not just the recent ten posts. This page will be accessible at <a href="http://localhost:1313/post" target="_blank">http://localhost:1313/post</a>. Currently, this page is blank because there is no template defined for it.</p>
+
+<p>This page will show the listings of all the posts, so the type of this page will be a list. We will again use the default <code>_default/list.html</code> as we do not have any other content type with us.</p>
+
+<p>Update the list file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/_default/list.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+  {{ range .Data.Pages }}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">{{</span> <span class="err">.</span><span class="na">Permalink</span> <span class="err">}}</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  {{ end }}
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<h3 id="add-date-published-to-the-posts">Add &ldquo;Date Published&rdquo; to the posts</h3>
+
+<p>It is a standard practice to add the date on which the post was published on the blog. The front matter of our posts has a variable named <code>date</code>. We will use that variable to fetch the date. Our posts are using the default <em>single</em> template, so we will edit that file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/_default/single.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p"></span><span class="p">&gt;</span>{{ .Date.Format &#34;Sun, Feb 11, 2018&#34; }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h2</span><span class="p">&gt;</span>
+  {{ .Content }}
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<hr />
+
+<h1 id="adding-top-level-pages">Adding top-level Pages</h1>
+
+<p>Okay, so now that we have our homepage, post-list page and post content pages in place, we will add a new <em>about</em> page at the top level of our blog, not at a sublevel like we did for posts.</p>
+
+<p>Hugo uses the directory structure of the content directory to identify the structure of the blog. Let&rsquo;s verify that and create a new <code>about</code> page in the content directory.</p>
+<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim content/about.md
+---
+title: &#34;about&#34;
+description: &#34;about this blog&#34;
+date: &#34;2018-02-11&#34;
+---
+
+## about me
+
+Hi there, you just reached my blog.</code></pre></div>
+<p>Let&rsquo;s generate the site and view the results.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose
+$ ls -l public/
+total <span class="m">36</span>
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">12</span>:43 about
+drwxr-xr-x <span class="m">3</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">12</span>:43 categories
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:20 css
+-rw-r--r-- <span class="m">1</span> yash hogwarts  <span class="m">187</span> Feb <span class="m">11</span> <span class="m">12</span>:43 index.html
+-rw-r--r-- <span class="m">1</span> yash hogwarts <span class="m">1183</span> Feb <span class="m">11</span> <span class="m">12</span>:43 index.xml
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:20 js
+drwxr-xr-x <span class="m">4</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">12</span>:43 post
+-rw-r--r-- <span class="m">1</span> yash hogwarts <span class="m">1139</span> Feb <span class="m">11</span> <span class="m">12</span>:43 sitemap.xml
+drwxr-xr-x <span class="m">3</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">12</span>:43 tags</code></pre></div>
+<p>Notice that Hugo created a new directory <code>about</code>. This directory contains only one file <code>index.html</code>. The about page will be rendered from <code>about/index.html</code>.</p>
+
+<p>If you look carefully, the <code>about</code> page is listed with the posts on the homepage. It is not desirable, so let&rsquo;s change that first.</p>
+<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/index.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>posts<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  {{ range first 10 .Data.Pages }}
+    {{ if eq .Type &#34;post&#34;}}
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    {{ end }}
+  {{ end }}
+
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>pages<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  {{ range .Data.Pages }}
+    {{ if eq .Type &#34;page&#34; }}
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    {{ end }}
+  {{ end }}
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<p>Now build the site and verify the results. The homepage now has two sections, one for posts and other for the pages. Click on the <em>about</em> page. You will see the page for <em>about</em>. Remember, I mentioned that Hugo would use the <em>single</em> template for each page, for which it cannot find a template file. There is still one issue. The <em>about</em> page shows the date also. We do not want to show the date on the <em>about</em> page.</p>
+
+<p>There are a couple of ways to fix this. We can add an if-else statement to detect the type of the content and display date only if it is a post. However, let&rsquo;s use the feature provided by Hugo and create a new template type for the posts. Before we do that, let&rsquo;s learn to use one more template type which is <em>partials</em>.</p>
+
+<h3 id="partials-1">Partials</h3>
+
+<p>In Hugo, partials are used to store the shared piece of code which repeats in more than one templates. Partials are kept in <code>themes/zeo/layouts/partials</code> directory. Partials can be used to override the themes presentation. End users can use them to change the default behavior of a theme. It is always a good idea to use partials as much as possible.</p>
+
+<h5 id="header-and-footer-partials">Header and Footer partials</h5>
+
+<p>Header and footer of most of the posts and pages will follow a similar pattern. So they form an excellent example to be defined as a partial.</p>
+<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/partials/header.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+
+$ vim themes/zeo/layouts/partials/footer.html
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<p>We can call a partial by including this path in the template</p>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="p">{{</span> <span class="nx">partial</span> <span class="s">&#34;header.html&#34;</span> <span class="p">.</span> <span class="p">}}</span></code></pre></div>
+<h5 id="update-the-homepage-template">Update the Homepage template</h5>
+
+<p>Let&rsquo;s update our homepage template to use these partials.</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/index.html
+{{ partial &#34;header.html&#34; . }}
+
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>posts<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  {{ range first 10 .Data.Pages }}
+    {{ if eq .Type &#34;post&#34;}}
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    {{ end }}
+  {{ end }}
+
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>pages<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  {{ range .Data.Pages }}
+    {{ if or (eq .Type &#34;page&#34;) (eq .Type &#34;about&#34;) }}
+      <span class="p">&lt;</span><span class="nt">h2</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ .Type }} - {{ .Title }} - {{ .RelPermalink }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    {{ end }}
+  {{ end }}
+
+{{ partial &#34;footer.html&#34; . }}</code></pre></div>
+<h5 id="update-the-single-template">Update the single template</h5>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/_default/single.html
+{{ partial &#34;header.html&#34; . }}
+
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p"></span><span class="p">&gt;</span>{{ .Date.Format &#34;Sun, Feb 11, 2018&#34; }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h2</span><span class="p">&gt;</span>
+  {{ .Content }}
+
+{{ partial &#34;footer.html&#34; . }}</code></pre></div>
+<p>Build the website and verify the results. The title on the posts and the about page should both reflect the value from the markdown file.</p>
+
+<h4 id="fixing-the-date-shown-on-about-page">Fixing the date shown on About page</h4>
+
+<p>Remember, we had the issue that the date was showing on the <em>about</em> page also. We discussed one method to solve this issue. Now I will discuss a more <em>hugoic</em> way of solving this issue.</p>
+
+<p>We will create a new section template to fix this issue.</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ mkdir themes/zeo/layouts/post
+$ vim themes/zeo/layouts/post/single.html
+{{ partial &#34;header.html&#34; . }}
+
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h2</span><span class="p"></span><span class="p">&gt;</span>{{ .Date.Format &#34;Mon, Jan 2, 2006&#34; }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h2</span><span class="p">&gt;</span>
+  {{ .Content }}
+
+{{ partial &#34;footer.html&#34; . }}
+
+
+$ vim themes/zeo/layouts/_default/single.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  {{ .Content }}
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<p>Note that we have changed the default <em>single</em> template and added that logic in post&rsquo;s <em>single</em> template.</p>
+
+<p>Build the website and verify the results. The <em>about</em> page does not show the date now, but the posts page still show the date. We can also move the list template&rsquo;s logic to the <code>index.html</code> file of post section template.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>We have learnt, how Hugo harnesses the powerful yet simple Go template engine to create the static site generator. We also learnt about partials and their excellent utilization by Hugo in the spirit of <em>Don&rsquo;t Repeat Yourself</em> principle. Now that you know how to make themes in Hugo, go ahead and start creating new beautiful themes. Best of luck for your endaevour.</p>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/development'>Development</a>, <a class='category' href='https://yashagarwal.in/categories/customization'>Customization</a></div>
+<div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/hugo'>Hugo</a></div>
+
+  </div>
+</footer>
+
+
+    
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='https://yashagarwal.in/posts/2018/02/my-new-domain/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>My New Domain</a>
+    </div></div>
+</nav>
+
+  
+<div class='comments-container'>
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yashhere" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/profile.php?id=100001324105675' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/yum_yash' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2015-2018 Yash Agarwal  - Creative Commons Attribution-ShareAlike 4.0 International License
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='https://yashagarwal.in/assets/js/main.f29c93b9.js'></script>
+
+</body>
+
+</html>
+

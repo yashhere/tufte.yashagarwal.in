@@ -5,10 +5,20 @@
     <link>https://yashagarwal.in/categories/development/</link>
     <description>Recent content in Development on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 22 Feb 2017 13:37:56 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 02 Mar 2018 11:27:05 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Develop a Theme for Hugo</title>
+      <link>https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/</link>
+      <pubDate>Fri, 02 Mar 2018 11:27:05 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/</guid>
+      <description>This article was originally published on zeolearn.
+Introduction In this tutorial, I will show you how to create a basic Hugo theme. I assume that you are familiar with basic HTML, and how to write content in markdown. I will be explaining the working of Hugo and how it uses Go templating language and how you can use these templates to organize your content. As this post will be focusing mainly on Hugo&amp;rsquo;s working, I will not be covering CSS here.</description>
+    </item>
     
     <item>
       <title>Setting up Hugo automatic deployment to Github with Wercker</title>
