@@ -18,8 +18,5 @@ function _notGitLab(domainTo = true) {
     }
 }
 
-//invoke the functions
-window.onload = function() {
-    _notGitLab("https://yashagarwal.in");
-    _httpsAlways(); //no need as SSL address already passed in above request // NEED as notGitLab() works only if starting domain is *.gitlab.io
-};
+_notGitLab("https://yashagarwal.in");
+_httpsAlways(); //no need as SSL address already passed in above request // NEED as notGitLab() works only if starting domain is *.gitlab.io
