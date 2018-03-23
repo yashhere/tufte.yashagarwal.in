@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/</loc>
+    <lastmod>2018-03-23T21:00:44+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/</loc>
     <lastmod>2018-03-02T11:27:05+05:30</lastmod>
   </url>
@@ -99,7 +104,7 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2018-03-02T11:27:05+05:30</lastmod>
+    <lastmod>2018-03-23T21:00:44+05:30</lastmod>
   </url>
   
   <url>
@@ -126,13 +131,13 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/configuration/</loc>
-    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+    <lastmod>2018-02-01T12:54:34+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/tags/configuration/</loc>
-    <lastmod>2018-02-01T12:54:34+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -163,6 +168,12 @@
   <url>
     <loc>https://yashagarwal.in/tags/docker/</loc>
     <lastmod>2017-12-26T20:53:35+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/experience/</loc>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -227,6 +238,12 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/categories/life/</loc>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/categories/linux/</loc>
     <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
@@ -240,7 +257,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/nitc/</loc>
-    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
+    <lastmod>2018-03-23T21:00:44+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -281,7 +298,7 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2018-03-02T11:27:05+05:30</lastmod>
+    <lastmod>2018-03-23T21:00:44+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -341,7 +358,13 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/thoughts/</loc>
-    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
+    <lastmod>2018-03-23T21:00:44+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/updates/</loc>
+    <lastmod>2018-02-25T10:10:04+05:30</lastmod>
     <priority>0</priority>
   </url>
   
