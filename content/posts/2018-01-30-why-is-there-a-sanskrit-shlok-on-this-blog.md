@@ -11,7 +11,7 @@ tags:
 
 >   श्रूयतां धर्मसर्वस्वं श्रुत्वा चाप्यवधार्यताम्।<br>
     आत्मनः प्रतिकूलानि परेषां न समाचरेत्।।<br/>
-    If the entire Dharma can be said in a few words, then it is — that which is unfavorable to us, do not do that to others.<br> 
+    If the entire Dharma can be said in a few words, then it is — that which is unfavorable to us, do not do that to others.<br>
     —  Padmapuraana, shrushti 19/357–358
 
 
@@ -22,3 +22,5 @@ There is no one answer to this question. There have been several incidents in my
 It was my first time away from home and family when I got admission in NIT Calicut. I was very naive in judging people. I got to know many new people in NITC. That is when I learned that not everyone is helping you. People are here to exploit you, and they will do anything to achieve their goals and to get success, whether it comes at the price of someone else's loss. It is the harsh truth of life, and the sooner one understands this, the better. I realized this in my second year, and that is when my life changed. Thankfully, I did not find other such people after my first year. However, life is very long, and I am bound to find such people at some point in my life again. I hope, the experience that I earned in NITC, will help me face that time.
 
 Now, to the second part of the question, why Sanskrit? A quick Google search reveals that this shloka represents the concept of [Golden Rule](https://en.wikipedia.org/wiki/Golden_Rule) which is common to most world religions and Hinduism is no exception here. There is even a [question](https://hinduism.stackexchange.com/questions/21431/what-all-hindu-scriptures-advocate-the-golden-rule-and-what-is-the-oldest-hindu) about the relation of this shloka with Hinduism. I studied Sanskrit for six years till my 10<sup>th</sup> standard and feel a connection to it. Besides, Hindi is my mother tongue, so Sanskrit was the obvious choice given that there is not much Hinduism related literature available in Hindi.
+
+**Edit(23/03/2018)**: I have removed the shloka from front page now. Keeping this post for historic purpose.
