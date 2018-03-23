@@ -29,7 +29,7 @@ menu:
     url: /whoami
   - identifier: Readings
     name: Readings
-    url: /readingsT
+    url: /readings
 params:
   assets:
     customCSS:
