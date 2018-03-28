@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CSE on /dev/yash/notes</title>
-    <link>https://yashagarwal.in/tags/cse/</link>
-    <description>Recent content in CSE on /dev/yash/notes</description>
+    <title>GSoC on /dev/yash/notes</title>
+    <link>https://yashagarwal.in/categories/gsoc/</link>
+    <description>Recent content in GSoC on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 27 Mar 2018 23:58:26 +0530</lastBuildDate>
     
-	<atom:link href="https://yashagarwal.in/tags/cse/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yashagarwal.in/categories/gsoc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -17,15 +17,6 @@
       
       <guid>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</guid>
       <description>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities. Then last year (2017) again, I decided that I should try for GSoC one more time.</description>
-    </item>
-    
-    <item>
-      <title>Searching the goal</title>
-      <link>https://yashagarwal.in/posts/2016/04/searching-the-goal/</link>
-      <pubDate>Sun, 10 Apr 2016 00:33:16 +0000</pubDate>
-      
-      <guid>https://yashagarwal.in/posts/2016/04/searching-the-goal/</guid>
-      <description>A boy, probably of age 16, just cleared his 10th board exam. He saw people working on computers and that fascinated him. So he had only one ambition. You got it, right? One fine day, suddenly his friend&amp;#8217;s mother asked, &amp;#8220;So what about the future? You are going to enter in class 11th. It is the right time to decide about your future. What do you want to become, a doctor or an engineer?</description>
     </item>
     
   </channel>

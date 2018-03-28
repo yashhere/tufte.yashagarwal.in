@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</loc>
+    <lastmod>2018-03-27T23:58:26+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/03/fossmeet18/</loc>
     <lastmod>2018-03-26T11:57:14+05:30</lastmod>
   </url>
@@ -109,7 +114,7 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2018-03-26T11:57:14+05:30</lastmod>
+    <lastmod>2018-03-27T23:58:26+05:30</lastmod>
   </url>
   
   <url>
@@ -125,7 +130,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/cse/</loc>
-    <lastmod>2016-04-10T00:33:16+00:00</lastmod>
+    <lastmod>2018-03-27T23:58:26+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -160,13 +165,13 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/development/</loc>
-    <lastmod>2018-03-02T11:27:05+05:30</lastmod>
+    <lastmod>2018-03-27T23:58:26+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/development/</loc>
-    <lastmod>2018-03-02T11:27:05+05:30</lastmod>
+    <lastmod>2018-03-27T23:58:26+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -190,13 +195,19 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/foss/</loc>
-    <lastmod>2018-03-26T11:57:14+05:30</lastmod>
+    <lastmod>2018-03-27T23:58:26+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/tags/fossmeet/</loc>
     <lastmod>2018-03-26T11:57:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/gsoc/</loc>
+    <lastmod>2018-03-27T23:58:26+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -303,13 +314,13 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2018-03-26T11:57:14+05:30</lastmod>
+    <lastmod>2018-03-27T23:58:26+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/programming/</loc>
-    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
+    <lastmod>2018-03-27T23:58:26+05:30</lastmod>
     <priority>0</priority>
   </url>
   
