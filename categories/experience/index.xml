@@ -5,10 +5,19 @@
     <link>https://yashagarwal.in/categories/experience/</link>
     <description>Recent content in Experience on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 30 Jan 2018 20:29:00 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 27 Mar 2018 23:58:26 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/categories/experience/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>So I Applied for GSoC</title>
+      <link>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</link>
+      <pubDate>Tue, 27 Mar 2018 23:58:26 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</guid>
+      <description>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities. Then last year (2017) again, I decided that I should try for GSoC one more time.</description>
+    </item>
     
     <item>
       <title>Why a Sanskrit Shloka?</title>
