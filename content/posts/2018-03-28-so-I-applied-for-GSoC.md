@@ -10,7 +10,6 @@ categories:
 tags:
   - CSE
   - FOSS
-draft: true
 ---
 
 I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities. Then last year (2017) again, I decided that I should try for GSoC one more time. I looked for the projects, started reading codebase of one project, but due to my lack of determination, I again did not apply.
