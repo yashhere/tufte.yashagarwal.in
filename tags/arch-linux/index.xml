@@ -5,10 +5,19 @@
     <link>https://yashagarwal.in/tags/arch-linux/</link>
     <description>Recent content in Arch Linux on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Feb 2018 12:54:34 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 26 Mar 2018 20:03:28 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/tags/arch-linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>i3 — Two Months &amp; Still Going On</title>
+      <link>https://yashagarwal.in/posts/2018/03/i3--two-months--still-going-on/</link>
+      <pubDate>Mon, 26 Mar 2018 20:03:28 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/03/i3--two-months--still-going-on/</guid>
+      <description>Hi</description>
+    </item>
     
     <item>
       <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>

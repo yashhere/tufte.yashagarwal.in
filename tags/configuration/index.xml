@@ -5,10 +5,19 @@
     <link>https://yashagarwal.in/tags/configuration/</link>
     <description>Recent content in Configuration on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Feb 2018 12:54:34 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 26 Mar 2018 20:03:28 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/tags/configuration/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>i3 — Two Months &amp; Still Going On</title>
+      <link>https://yashagarwal.in/posts/2018/03/i3--two-months--still-going-on/</link>
+      <pubDate>Mon, 26 Mar 2018 20:03:28 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/03/i3--two-months--still-going-on/</guid>
+      <description>Hi</description>
+    </item>
     
     <item>
       <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>
@@ -27,10 +36,6 @@ So I will start with explaining the problem. When you try to dual boot your mach
       
       <guid>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</guid>
       <description>I have been using Linux since I was in my second year of undergraduate. My experiments with the dotfiles (configuration files) also started at the same time. For the uninformed, in Linux, it is common to configure a lot of settings and configurations within dotfiles. Dotfiles are files in a Linux user&amp;rsquo;s home directory that begin with a dot or a full-stop character. This dot indicates to the operating system, that these files are used to store the settings of programs like vim or shells like bash or fish to name a few.</description>
-    </item>
-    
-  </channel>
-</rss>ctly.</description>
     </item>
     
   </channel>
