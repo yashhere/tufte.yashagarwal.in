@@ -6,10 +6,10 @@
     <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
   {{ end }}
 
-  {{- range .Site.Params.assets.customJS -}}
+<!--   {{- range .Site.Params.assets.customJS -}}
     <script src='{{ . | relURL }}'></script>
-  {{- end -}}
-  
+  {{- end -}} -->
+
   {{ partial "head/hreflang" . }}
   {{ partial "head/includes" . }}
 </head>
