@@ -5,28 +5,29 @@
     <link>https://yashagarwal.in/tags/configuration/</link>
     <description>Recent content in Configuration on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Feb 2018 12:54:34 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jan 2018 15:45:27 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/tags/configuration/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>
-      <link>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</link>
-      <pubDate>Thu, 01 Feb 2018 12:54:34 +0530</pubDate>
+      <title>Arch Linux Installation Guide Part 2</title>
+      <link>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/</link>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</guid>
-      <description>This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
-So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems.</description>
+      <guid>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/</guid>
+      <description>In this post, I will continue from my last post and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current configuration setup to work properly. The choice of applications is highly opinionated and your preferences might be different.
+Note: If you had gone for installation via SSH option, then I would suggest you to edit your sshd_config file and disable root login.</description>
     </item>
     
     <item>
-      <title>My Own Configuration Manager</title>
-      <link>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</link>
-      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
+      <title>Arch Linux Installation Guide Part 1</title>
+      <link>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/</link>
+      <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</guid>
-      <description>I have been using Linux since I was in my second year of undergraduate. My experiments with the dotfiles (configuration files) also started at the same time. For the uninformed, in Linux, it is common to configure a lot of settings and configurations within dotfiles. Dotfiles are files in a Linux user&amp;rsquo;s home directory that begin with a dot or a full-stop character. This dot indicates to the operating system, that these files are used to store the settings of programs like vim or shells like bash or fish to name a few.</description>
+      <guid>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/</guid>
+      <description>Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.
+This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&amp;rsquo;t remember all the installation steps perfectly.</description>
     </item>
     
   </channel>
