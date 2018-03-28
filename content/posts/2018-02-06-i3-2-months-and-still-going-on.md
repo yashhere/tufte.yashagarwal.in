@@ -10,6 +10,7 @@ tags:
     - configuration
     - i3
     - review
+draft: true
 ---
 
 Hi

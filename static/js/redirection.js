@@ -5,7 +5,7 @@
 
 //check if http && NOT localhost or 127.0.0.1
 function _httpsAlways() {
-    if (location.protocol == 'http:' && (location.hostname != "127.0.0.1" || location.hostname == "localhost"))
+    if (location.protocol == 'http:' && (location.hostname != "127.0.0.1" && location.hostname != "localhost"))
         location.href = location.href.replace("http", "https");
 }
 
@@ -18,5 +18,13 @@ function _notGitLab(domainTo = true) {
     }
 }
 
+function _notGitHub(domainTo = true) {
+    var x = location.hostname.search("github.io") != -1 ? true : false; // true if *.github.io
+    if (x) {
+        location.href = domainTo;
+    }
+}
+
 _notGitLab("https://yashagarwal.in");
+_notGitHub("https://yashagarwal.in");
 _httpsAlways(); //no need as SSL address already passed in above request // NEED as notGitLab() works only if starting domain is *.gitlab.io
