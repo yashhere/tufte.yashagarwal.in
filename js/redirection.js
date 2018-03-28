@@ -4,10 +4,10 @@
 // }
 
 //check if http && NOT localhost or 127.0.0.1
-// function _httpsAlways() {
-//     if (location.protocol == 'http:' && (location.hostname != "127.0.0.1" || location.hostname == "localhost"))
-//         location.href = location.href.replace("http", "https");
-// }
+function _httpsAlways() {
+    if (location.protocol == 'http:' && (location.hostname != "127.0.0.1" || location.hostname == "localhost"))
+        location.href = location.href.replace("http", "https");
+}
 
 //auto redirect from current *.gitlab.io to custom domain
 //send destination domain as domainTo (FQDN)
