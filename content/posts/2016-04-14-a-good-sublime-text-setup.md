@@ -8,7 +8,7 @@ type: posts
 tags:
     - Sublime text
 ---
-So, after a hactic day, a good news finally came. I have been selected as a Lab Administrator for the <a href="https://www.facebook.com/sslnitc/" target="_blank">Software Systems Lab</a> of my college. Cheers!!!
+So, after a hectic day, good news finally came. I have been selected as a Lab Administrator for the <a href="https://www.facebook.com/sslnitc/" target="_blank">Software Systems Lab</a> of my college. Cheers!!!
 
 Let&#8217;s come to our today&#8217;s topic on configuring Sublime Text Settings.
 
@@ -16,9 +16,9 @@ There is just one rule you must follow while designing your own editor preferenc
 
 > **Don&#8217;t put any lines in your configuration that you don&#8217;t understand.**
 
-You will find tons of online tutorials that contains all kinds of awesome hacks to make your sublime text experience better but the worst way to make your development environment better is to just borrow the configuration from someone else.
+You will find tons of online tutorials that contains all kinds of awesome hacks to make your sublime text experience better but the worst way to make your development environment better is just to borrow the configuration from someone else.
 
-Spending your time in actually understand what is happening behind the scenes in the construction of your editor is immensly invaluable. It is similar to the increased information retention that you experience when you copy something from the board.
+Spending your time in actually understand what is happening behind the scenes in the construction of your editor is immensely invaluable. It is similar to the increased information retention that you experience when you copy something from the board.
 
 So first, take some background of what we are going to do today. I am using Sublime Text 3 &#8211; dev version, but most of the instructions are similar for Sublime Text 2 also.
 
