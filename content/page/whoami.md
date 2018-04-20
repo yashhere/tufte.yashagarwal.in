@@ -14,7 +14,9 @@ To paraphrase Buffett and Munger – decision-making is not about making brillia
 
 > — Peter Bevelin
 
-<div style="width:50%; margin: 30px auto"><img style=" width: 200px; height: 200px; border-radius: 2%; margin-left: auto; margin-right: auto; display: block;" src="/images/yash.jpg"></div>
+![Arch Linux Desktop](/images/cover.png)
+
+<!-- <div style="width:50%; margin: 30px auto"><img style=" width: 200px; height: 200px; border-radius: 2%; margin-left: auto; margin-right: auto; display: block;" src="/images/yash.jpg"></div> -->
 Hi there,<br>
 I am Yash Agarwal(यश अग्रवाल, [y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)). A final year undergrad at Department of Computer Science and Engineering at NIT Calicut, India.
 
