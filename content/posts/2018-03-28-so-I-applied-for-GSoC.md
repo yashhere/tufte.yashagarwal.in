@@ -27,3 +27,5 @@ Read my project proposal on [Google Drive](https://docs.google.com/document/d/1N
 ![GSoC Timeline](/images/gsoc-timeline.png)
 
 Eagerly waiting for the results... :smile:
+
+**Update(24/04/2018)**: Finally, I did not get into GSoC this time too. No worries. I anticipated the results and prepared backup plans. Looking forward to a productive summer... :) 
