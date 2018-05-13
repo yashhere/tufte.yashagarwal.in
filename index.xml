@@ -5,10 +5,20 @@
     <link>https://yashagarwal.in/</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 28 Mar 2018 20:58:26 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 13 May 2018 17:10:13 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Writing Drozer Modules</title>
+      <link>https://yashagarwal.in/posts/2018/05/writing-drozer-modules/</link>
+      <pubDate>Sun, 13 May 2018 17:10:13 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/05/writing-drozer-modules/</guid>
+      <description>This post is a result of my experimentation with Drozer. Drozer is a security testing framework for Android, developed by MWR Labs. According the Drozer&amp;rsquo;s official documentation:
+ Drozer allows you to assume the role of an Android app and interact with other apps. It can do anything that an installed application can do, such as make use of Android’s Inter-Process Communication (IPC) mechanism and interact with the underlying operating system.</description>
+    </item>
     
     <item>
       <title>So I Applied for GSoC</title>

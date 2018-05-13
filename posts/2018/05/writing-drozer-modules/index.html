@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='This post is a result of my experimentation with Drozer. Drozer is a security testing framework for Android, developed by MWR Labs. According the Drozer&rsquo;s official documentation:
+ Drozer allows you to assume the role of an Android app and interact with other apps. It can do anything that an installed application can do, such as make use of Android’s Inter-Process Communication (IPC) mechanism and interact with the underlying operating system.'>
+
+<meta property='og:title' content='Writing Drozer Modules • /dev/yash/notes'>
+<meta property='og:description' content='This post is a result of my experimentation with Drozer. Drozer is a security testing framework for Android, developed by MWR Labs. According the Drozer&rsquo;s official documentation:
+ Drozer allows you to assume the role of an Android app and interact with other apps. It can do anything that an installed application can do, such as make use of Android’s Inter-Process Communication (IPC) mechanism and interact with the underlying operating system.'>
+<meta property='og:url' content='https://yashagarwal.in/posts/2018/05/writing-drozer-modules/'>
+<meta property='og:site_name' content='/dev/yash/notes'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Drozer'><meta property='article:tag' content='android'><meta property='article:published_time' content='2018-05-13T17:10:13&#43;05:30'/><meta property='article:modified_time' content='2018-05-13T17:10:13&#43;05:30'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.31.1" />
+
+  <title>Writing Drozer Modules • /dev/yash/notes</title>
+  <link rel='canonical' href='https://yashagarwal.in/posts/2018/05/writing-drozer-modules/'>
+  <script src='https://yashagarwal.in/js/redirection.js'></script>
+  <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-75475356-3', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='https://yashagarwal.in/'>Home</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/posts'>Posts</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/readings'>Readings</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/whoami'>whoami</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>/dev/yash/notes</p>
+          
+          <p class='site-description subtitle'>The directory of my thoughts</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Writing Drozer Modules</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2018-05-13T17:10:13&#43;05:30'>May 13, 2018</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+6 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  <p>This post is a result of my experimentation with Drozer. Drozer is a security testing framework for Android, developed by MWR Labs. According the Drozer&rsquo;s official <a href="https://labs.mwrinfosecurity.com/assets/BlogFiles/mwri-drozer-user-guide-2015-03-23.pdf" target="_blank">documentation</a>:</p>
+
+<blockquote>
+<p>Drozer allows you to assume the role of an Android app and interact with other apps. It can do anything that an
+installed application can do, such as make use of Android’s Inter-Process Communication (IPC) mechanism and
+interact with the underlying operating system.</p>
+</blockquote>
+
+<p>Drozer modules are written in Python. The module performs operations on an Android device with the help of an agent app installed on the device. The agent app, by default, has permission to use the internet connection only. This permission is required so that the agent can open a ServerSocket on port 31415 (default). The agent will listen for the incoming connections on this port. The console will connect to the agent on this port.</p>
+
+<p>Drozer modules are basically inherited Python classes. The parent class is defined in <a href="https://github.com/mwrlabs/drozer/blob/develop/src/drozer/modules/base.py" target="_blank">drozer.modules.Module</a>. Drozer console provides commands to create a custom module repository which is very useful for the local development of modules.</p>
+
+<p>You can read more about the structure of a Drozer module <a href="https://github.com/mwrlabs/drozer/wiki/Writing-a-Module" target="_blank">here</a>.</p>
+
+<p>I will explain all the critical parts of a Drozer module with the help of a sample module. I will be implementing a module to record and save the sound from the inbuilt mic of an Android device.</p>
+
+<p>I initialized a new module repository using Drozer console using the following command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dz&gt; module repository create custom
+Initialised repository at custom.</code></pre></div>
+<p>You will see a new directory <code>custom</code> in your current directory after executing above command. Navigate to this directory and create a new folder with any name. I prefer to name this folder same as my module name. In this folder, create a file <code>__init__.py</code>. Drozer identifies the folder as a module directory if <code>__init__.py</code> is present in the directory. Now you can implement your module in this directory.</p>
+
+<p>To begin implementing our module, create a new file <code>record.py</code> in the module directory. Drozer has many different utility classes, which we can use to simplify our implementation. To use these utility classes (<a href="https://github.com/mwrlabs/drozer/wiki/Using-mixins" target="_blank">mixins</a>), our module class must extend <em>mixins</em> using Python&rsquo;s multiple inheritance feature.</p>
+
+<p>We first need to import all the required mixins. The mixins are stored in <code>modules.common</code> package in the Drozer source tree. After importing mixins and extending our class, the code will look like this. You can also import any other standard Python module here.</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">from</span> <span class="nn">drozer.modules</span> <span class="kn">import</span> <span class="n">common</span><span class="p">,</span> <span class="n">Module</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">time</span>
+
+<span class="k">class</span> <span class="nc">Record</span><span class="p">(</span><span class="n">Module</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">Shell</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">FileSystem</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">ClassLoader</span><span class="p">):</span></code></pre></div>
+<p>Now we will set up the metadata for our module. This information will help Drozer to organize and list our module correctly. We can define name, description, author, date, license, path, permissions, and examples. Most of the available options are self-explanatory. But <em>path</em> and <em>permissions</em> require some explanation.</p>
+
+<p>The <em>path</em> variable defined here is an array which contains the values for the namespace of the module. Drozer supports separate namespaces for each module. We can combine similar modules in the same namespace using this feature.</p>
+
+<p>The <em>permissions</em> array variable contains all the permissions that this module will require for proper functioning. For example, our module will need permission to record audio on the device to work correctly. So we define this permission in the permissions array. The agent app on the device is required to  have this permission. Otherwise, our module will throw an error.</p>
+
+<p>The following snippet shows the metadata section of our module.</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="n">name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;Record sound from the inbuilt mic of an Android device.&#34;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;Record sound from the inbuilt mic of an Android device. The default save format is 3GPP. Relies on the agent having the RECORD_AUDIO permission.&#34;</span>
+<span class="n">examples</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;&#34;&#34;
+</span><span class="s2">dz&gt; run custom.record.record
+</span><span class="s2">Setting up recorder configuration...
+</span><span class="s2">Recording started
+</span><span class="s2">Press any key to stop recording
+</span><span class="s2">
+</span><span class="s2">Recording stopped...downloading recording
+</span><span class="s2">Screenshot captured. Saved at location /home/yash/work/drozer/1524201166.3gp
+</span><span class="s2">&#34;&#34;&#34;</span>
+<span class="n">author</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;Yash Agarwal&#34;</span>
+<span class="n">date</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;2018-04-14&#34;</span>
+<span class="n">license</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;BSD (3 clause)&#34;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s2">&#34;custom&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;record&#34;</span><span class="p">]</span>
+<span class="n">permissions</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s2">&#34;android.permission.RECORD_AUDIO&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;com.mwr.dz.permissions.GET_CONTEXT&#34;</span><span class="p">]</span></code></pre></div>
+<p>Now we can start implementing the heart of our module, the <code>execute()</code> function. This function will be invoked by Drozer when the module is run. Every action that the module is expected to perform should be implemented in this method.</p>
+
+<p>The implementation of <code>execute()</code> method is slightly tricky and requires an understanding of different classes and methods provided by the Android API. As we are writing a module to record sound, we will look into the documentation of <a href="https://developer.android.com/guide/topics/media/mediarecorder.html" target="_blank">MediaRecorder</a> class. Before reading further, go through the documentation about the use of reflection API in Drozer <a href="https://github.com/mwrlabs/drozer/wiki/Using-Reflection" target="_blank">here</a>.</p>
+
+<p>The <code>execute()</code> function is given below.</p>
+<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arguments</span><span class="p">):</span>
+    <span class="c1"># unique file names</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;.3gp&#34;</span>
+
+    <span class="c1"># current working directory of Drozer console</span>
+    <span class="n">cwd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workingDir</span><span class="p">()</span>
+
+    <span class="c1"># Magic of Reflection API !!!</span>
+    <span class="n">recorder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;android.media.MediaRecorder&#34;</span><span class="p">)</span>
+    <span class="n">AudioSource</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">klass</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;android.media.MediaRecorder$AudioSource&#34;</span><span class="p">)</span>
+    <span class="n">OutputFormat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">klass</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;android.media.MediaRecorder$OutputFormat&#34;</span><span class="p">)</span>
+    <span class="n">AudioEncoder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">klass</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;android.media.MediaRecorder$AudioEncoder&#34;</span><span class="p">)</span>
+
+    <span class="n">recorder</span><span class="o">.</span><span class="n">setAudioSource</span><span class="p">(</span><span class="n">AudioSource</span><span class="o">.</span><span class="n">MIC</span><span class="p">)</span>
+    <span class="n">recorder</span><span class="o">.</span><span class="n">setOutputFormat</span><span class="p">(</span><span class="n">OutputFormat</span><span class="o">.</span><span class="n">THREE_GPP</span><span class="p">)</span>
+    <span class="n">recorder</span><span class="o">.</span><span class="n">setAudioEncoder</span><span class="p">(</span><span class="n">AudioEncoder</span><span class="o">.</span><span class="n">AMR_NB</span><span class="p">)</span>
+    <span class="n">recorder</span><span class="o">.</span><span class="n">setOutputFile</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="si">%s</span><span class="s2">/recording.3gp&#34;</span> <span class="o">%</span> <span class="n">cwd</span><span class="p">)</span>
+    <span class="n">recorder</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Recording started</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">recorder</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="nb">raw_input</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Press any key to stop recording</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">recorder</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Recording stopped...</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="n">recorder</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="n">recorder</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+    <span class="c1"># Download file from device to PC</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">downloadFile</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;</span><span class="si">%s</span><span class="s2">/recording.3gp&#34;</span> <span class="o">%</span> <span class="n">cwd</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">length</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Recording saved</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Recording could not be fetched from the device.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span></code></pre></div>
+<p>I followed the sample use case given on <a href="https://developer.android.com/reference/android/media/MediaRecorder.html" target="_blank">this</a> page, to instantiate and use the <em>MediaRecorder</em> object.</p>
+
+<p>After the recording is finished, we want to save this recorded media file to our computer. Drozer provides a method, <a href="https://github.com/mwrlabs/drozer/blob/c92d74024c653b6dc7de3378a24e51d276ae2c62/src/drozer/modules/common/file_system.py" target="_blank">downloadFile</a> exactly for this purpose. This method returns the length of the data downloaded on success and <code>None</code> otherwise. We can use this information to test the success or failure of the fetching of the recording.</p>
+
+<p>That&rsquo;s all. We have successfully implemented a Drozer module which can record the sound on an Android device without the knowledge of the user. Do you smell something fishy here? The whole idea here depends on that particular <code>android.permission.RECORD_AUDIO</code> permission, that our agent app had. This allowed our module to record without <em>user consent</em> (the user actually gave her consent unknowingly, while installing agent app). Many apps nowadays ask for arbitrarily random permissions. Those permissions might not be related to the functionality of the app in any way, but because there is no method to install apps without granting these permissions, the users grant all permissions to these apps. That can be exploited very easily. This tutorial tried to show one of such exploitations.</p>
+
+<p>Here are some exercises that you should try if you want to learn more about Drozer module development.</p>
+
+<ul>
+<li>A module to initiate a call on a device.</li>
+<li>A module to get the clipboard values on a device</li>
+<li>Try finding a public exploit on Android forums such as XDA and implement that exploit as a Drozer module.</li>
+</ul>
+
+<p>Slightly tougher one.</p>
+
+<ul>
+<li>A module to terminate a call without user intervention (I do not know if it is possible to do this programmatically. If you implement this successfully, do let me know in comments section.)</li>
+</ul>
+
+<p>Thanks for reading. Cheers :)</p>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/security'>Security</a>, <a class='category' href='https://yashagarwal.in/categories/cse'>CSE</a></div>
+<div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/drozer'>Drozer</a>, <a class='tag' href='https://yashagarwal.in/tags/android'>Android</a></div>
+
+  </div>
+</footer>
+
+
+    
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>So I Applied for GSoC</a>
+    </div></div>
+</nav>
+
+  
+<div class='comments-container'>
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yashhere" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://facebook.com/profile.php?id=100001324105675' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Facebook account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://instagram.com/yum_yash' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Instagram account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2015-2018 Yash Agarwal  - Creative Commons Attribution-ShareAlike 4.0 International License
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='https://yashagarwal.in/assets/js/main.f29c93b9.js'></script>
+
+</body>
+
+</html>
+

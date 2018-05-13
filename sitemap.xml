@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashagarwal.in/posts/2018/05/writing-drozer-modules/</loc>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</loc>
     <lastmod>2018-03-28T20:58:26+05:30</lastmod>
   </url>
@@ -114,7 +119,13 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/android/</loc>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -135,7 +146,14 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/categories/cse/</loc>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/categories/</loc>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -178,6 +196,12 @@
   <url>
     <loc>https://yashagarwal.in/tags/docker/</loc>
     <lastmod>2017-12-26T20:53:35+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/drozer/</loc>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -314,7 +338,7 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -353,6 +377,12 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/categories/security/</loc>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/tags/sublime-text/</loc>
     <lastmod>2016-04-14T10:55:35+00:00</lastmod>
     <priority>0</priority>
@@ -372,7 +402,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/</loc>
-    <lastmod>2018-02-01T12:54:34+05:30</lastmod>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   

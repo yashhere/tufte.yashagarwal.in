@@ -5,10 +5,19 @@
     <link>https://yashagarwal.in/tags/</link>
     <description>Recent content in Tags on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Feb 2018 12:54:34 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 13 May 2018 17:10:13 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android</title>
+      <link>https://yashagarwal.in/tags/android/</link>
+      <pubDate>Sun, 13 May 2018 17:10:13 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/android/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Arch Linux</title>
@@ -52,6 +61,15 @@
       <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
       
       <guid>https://yashagarwal.in/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Drozer</title>
+      <link>https://yashagarwal.in/tags/drozer/</link>
+      <pubDate>Sun, 13 May 2018 17:10:13 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/drozer/</guid>
       <description></description>
     </item>
     
