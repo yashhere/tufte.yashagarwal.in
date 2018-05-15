@@ -1,12 +1,11 @@
 ---
-date: "2018-03-02T12:14:13+05:30"
+date: "2018-05-15T17:14:13+05:30"
 title: "Proxy Your Requests to the Backend Server With Grunt."
 categories:
   - Development
   - programming
 tags:
   - configuration
-draft: true
 ---
 
 If you are working on large projects, it is undoubtedly a good idea to have a build script or some task scripts to help to automate some of the repetitive parts of the development process.
