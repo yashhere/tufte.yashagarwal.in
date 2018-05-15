@@ -8,6 +8,9 @@ tags:
   - configuration
 ---
 
+_This article was originally published on [zeolearn](https://www.zeolearn.com/magazine/proxy-your-requests-to-the-backend-server-with-grunt)._
+
+
 If you are working on large projects, it is undoubtedly a good idea to have a build script or some task scripts to help to automate some of the repetitive parts of the development process.
 For JavaScript projects, `Grunt` serves the similar purpose. It is a JavaScript task/build runner that is written on top of NodeJS. Grunt can help you with automatically minifying your JavaScript or CSS files, reload your browser on every file change, can show you a comprehensive list of JavaScript errors, compile your `SASS/LESS` files into CSS files automatically and many other things.
 
