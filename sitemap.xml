@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt./</loc>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/05/writing-drozer-modules/</loc>
     <lastmod>2018-05-13T17:10:13+05:30</lastmod>
   </url>
@@ -119,7 +124,7 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
   </url>
   
   <url>
@@ -140,14 +145,14 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/tags/cse/</loc>
-    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
+    <loc>https://yashagarwal.in/categories/cse/</loc>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/cse/</loc>
-    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+    <loc>https://yashagarwal.in/tags/cse/</loc>
+    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -159,7 +164,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/configuration/</loc>
-    <lastmod>2018-02-01T12:54:34+05:30</lastmod>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -183,13 +188,13 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/development/</loc>
-    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/development/</loc>
-    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -338,13 +343,13 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/programming/</loc>
-    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   

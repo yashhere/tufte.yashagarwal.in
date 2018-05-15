@@ -5,10 +5,20 @@
     <link>https://yashagarwal.in/posts/</link>
     <description>Recent content in Posts on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 13 May 2018 17:10:13 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 15 May 2018 17:14:13 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Proxy Your Requests to the Backend Server With Grunt.</title>
+      <link>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt./</link>
+      <pubDate>Tue, 15 May 2018 17:14:13 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt./</guid>
+      <description>This article was originally published on zeolearn.
+If you are working on large projects, it is undoubtedly a good idea to have a build script or some task scripts to help to automate some of the repetitive parts of the development process. For JavaScript projects, Grunt serves the similar purpose. It is a JavaScript task/build runner that is written on top of NodeJS. Grunt can help you with automatically minifying your JavaScript or CSS files, reload your browser on every file change, can show you a comprehensive list of JavaScript errors, compile your SASS/LESS files into CSS files automatically and many other things.</description>
+    </item>
     
     <item>
       <title>Writing Drozer Modules</title>
