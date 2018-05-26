@@ -161,6 +161,8 @@ Your selection?</code></pre></div>
 
 <h3 id="configuring-i3">Configuring i3</h3>
 
+<p><strong>Update (26/05/2018):</strong> <em>As pointed out by <a href="https://sakshamsharma.com/" target="_blank">Saksham</a> in comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored.</em></p>
+
 <p>Open i3 configuration file and add an <code>exec_always</code> statement</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">exec_always ~/.config/i3/scripts/gnome-keyring.sh</code></pre></div>
 <p>Obviously, you will need to change the path according to your OS. Now make a new file in <code>~/.config/i3/scripts</code> with name <code>gnome-keyring.sh</code> and paste the below text in it.</p>
@@ -171,6 +173,8 @@ Your selection?</code></pre></div>
 <p>Now, reload the i3.</p>
 
 <h3 id="configuring-ssh">Configuring SSH</h3>
+
+<p><strong>Update (26/05/2018):</strong> <em>This step is also optional. Thanks to <a href="https://sakshamsharma.com/" target="_blank">Saksham</a> for pointing it out.</em></p>
 
 <p>Open <code>~/.ssh/config</code> file and add following content to it.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Host *
