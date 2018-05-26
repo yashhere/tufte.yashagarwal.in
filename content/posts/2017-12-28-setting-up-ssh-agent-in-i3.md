@@ -69,6 +69,8 @@ You can now use the key (until it expires) to encrypt your data.
 ## Setting up SSH Agent
 ### Configuring i3
 
+**Update (26/05/2018):** _As pointed out by [Saksham](https://sakshamsharma.com/) in comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored._
+
 Open i3 configuration file and add an `exec_always` statement
 ```bash
 exec_always ~/.config/i3/scripts/gnome-keyring.sh
@@ -84,6 +86,8 @@ export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
 Now, reload the i3.
 
 ### Configuring SSH
+**Update (26/05/2018):** _This step is also optional. Thanks to [Saksham](https://sakshamsharma.com/) for pointing it out._
+
 Open `~/.ssh/config` file and add following content to it.
 ```bash
 Host *
