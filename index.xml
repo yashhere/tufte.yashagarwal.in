@@ -5,10 +5,19 @@
     <link>https://yashagarwal.in/</link>
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 15 May 2018 17:14:13 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jun 2018 10:21:45 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mistakes That I Made in NITC</title>
+      <link>https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/</link>
+      <pubDate>Fri, 01 Jun 2018 10:21:45 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/</guid>
+      <description>Now that I am graduated from NIT Calicut, one more chapter of my life is over. It is time to move on to the next page, but before I begin that phase, I thought it would be nice, to sum up, the experience that I gathered in NIT Calicut. The last four years have been great for me. I learned a lot of new life lessons, but there were some decisions which I could have avoided.</description>
+    </item>
     
     <item>
       <title>Proxy Your Requests to the Backend Server With Grunt</title>

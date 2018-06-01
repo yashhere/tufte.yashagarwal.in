@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/</loc>
+    <lastmod>2018-06-01T10:21:45+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</loc>
     <lastmod>2018-05-15T17:14:13+05:30</lastmod>
   </url>
@@ -124,7 +129,7 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <lastmod>2018-06-01T10:21:45+05:30</lastmod>
   </url>
   
   <url>
@@ -152,7 +157,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/cse/</loc>
-    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
+    <lastmod>2018-06-01T10:21:45+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -164,13 +169,13 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/configuration/</loc>
-    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/tags/configuration/</loc>
-    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -302,7 +307,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/nitc/</loc>
-    <lastmod>2018-03-26T11:57:14+05:30</lastmod>
+    <lastmod>2018-06-01T10:21:45+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -343,7 +348,7 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <lastmod>2018-06-01T10:21:45+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -408,6 +413,12 @@
   <url>
     <loc>https://yashagarwal.in/tags/</loc>
     <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/thoughts/</loc>
+    <lastmod>2018-03-26T11:57:14+05:30</lastmod>
     <priority>0</priority>
   </url>
   
