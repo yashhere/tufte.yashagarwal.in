@@ -14,21 +14,17 @@ To paraphrase Buffett and Munger – decision-making is not about making brillia
 
 > — Peter Bevelin
 
-![Arch Linux Desktop](/images/cover.png)
+<!-- ![Arch Linux Desktop](/images/cover.png) -->
 
 <!-- <div style="width:50%; margin: 30px auto"><img style=" width: 200px; height: 200px; border-radius: 2%; margin-left: auto; margin-right: auto; display: block;" src="/images/yash.jpg"></div> -->
 Hi there,<br>
-I am Yash Agarwal(यश अग्रवाल, [y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)). A final year undergrad at Department of Computer Science and Engineering at NIT Calicut, India.
-
-I used to be a super studious guy till my 10<sup>th</sup> standard, so I followed the _herd_ and started preparing for IIT JEE. Those two years of coaching taught me a lot of life lessons, which came handy later in my life. Anyhow, two years of slogging and hard work landed me in NIT Calicut, a decision I'll never regret.
-
-Now, I am a changed guy. There's much more to me rather than just studying. I tend to invest my time watching movies, reading blogs, hanging out on Twitter and enjoying my life in general.
+I am Yash Agarwal(यश अग्रवाल, [y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)). I graduated from Department of Computer Science and Engineering at NIT Calicut, India.
 
 I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything related to the tech. I am a big fan of Linux and can talk anything about it. My first interaction with Linux was in the second year of under-graduation during Scheme programming lab (yeah, you read it right!). I immediately fall in love with it. Unlike most of my classmates, I started using Linux for my daily use, not just for assignments. I learned a lot in the process. I did have to spend a lot of time just hacking around in Linux, to reach this level. That reflects in my CGPA too :innocent:.
 
  _Why do I write a blog?_ The answer is that it helps me vent out my ideas and other thoughts that otherwise would be lost. I believe that when you read something, you simply convince yourself that you understand it properly. But when you write down the same thing, you have to prove that you understand it properly by putting it into meaningful sentences. In that way, writing has helped me put together my knowledge in a systematic manner. One other motivation was to document some of my life experiences so that somebody else can take benefit from it.
 
-Now that you know a lot about me, go ahead, and read some of the stuff on this blog.
+Now that you know some facts about me, go ahead, and read some of the stuff on this blog.
 
 And add me to your [RSS](/index.xml) reader.
 
