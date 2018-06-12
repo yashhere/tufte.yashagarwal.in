@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashagarwal.in/posts/2018/06/battery-notifications-in-i3/</loc>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/</loc>
     <lastmod>2018-06-01T10:21:45+05:30</lastmod>
   </url>
@@ -129,7 +134,7 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2018-06-01T10:21:45+05:30</lastmod>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
   </url>
   
   <url>
@@ -140,7 +145,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/arch-linux/</loc>
-    <lastmod>2018-02-01T12:54:34+05:30</lastmod>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -169,17 +174,17 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/configuration/</loc>
-    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/tags/configuration/</loc>
     <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/configuration/</loc>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/categories/customization/</loc>
     <lastmod>2016-04-14T10:55:35+00:00</lastmod>
     <priority>0</priority>
@@ -193,13 +198,13 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/development/</loc>
-    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/development/</loc>
-    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -277,7 +282,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/i3/</loc>
-    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -348,13 +353,13 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2018-06-01T10:21:45+05:30</lastmod>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/programming/</loc>
-    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -406,7 +411,7 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/system-administration/</loc>
-    <lastmod>2018-02-01T12:54:34+05:30</lastmod>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
   

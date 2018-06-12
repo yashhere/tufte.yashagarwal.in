@@ -5,10 +5,19 @@
     <link>https://yashagarwal.in/tags/arch-linux/</link>
     <description>Recent content in Arch Linux on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 01 Feb 2018 12:54:34 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 12 Jun 2018 09:45:46 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/tags/arch-linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Battery Notifications in i3</title>
+      <link>https://yashagarwal.in/posts/2018/06/battery-notifications-in-i3/</link>
+      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/06/battery-notifications-in-i3/</guid>
+      <description>I am using i3 window manager for last seven months, and it has been a pleasant and productive experience so far. There were a few hiccups here and there, but that is expected with such minimalistic setups. One thing that I never noticed was the lack of notifications on critical battery levels. For last few months, my laptop battery was discharging to 0% all the time. Probably this proved to be too fatal for my battery.</description>
+    </item>
     
     <item>
       <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>
