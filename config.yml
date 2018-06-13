@@ -71,12 +71,9 @@ permalinks:
   page: /:title/
   posts: /posts/:year/:month/:slug/
 preserveTaxonomyNames: true
-pygmentsCodefences: true
 pygmentsCodeFencesGuessSyntax: true
-# pygmentsStyle: "monokai"
-pygmentsUseClasses: true
+pygmentsuseclasses: true
 pygmentsOptions:
-  noclasses: true
   linenostart: 1
   linenos: table
 taxonomies:

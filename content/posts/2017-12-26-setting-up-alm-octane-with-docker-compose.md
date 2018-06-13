@@ -30,7 +30,7 @@ There are three primary services which are required for proper functioning of th
 
 ## The Solution
 Here is my config file for easy reference.
-```yaml
+{{< highlight yaml >}}
 version: '2'
 services:
   octane_oracle:
@@ -56,18 +56,18 @@ services:
     mem_limit: 4g
     env_file:
       - ./octane.env
-```
+{{< /highlight >}}
 
 The configuration options in the code are for a system with RAM of 8GB. The options must be tuned for best performance before deploying on the production server.
 
 In the code, I have exposed port 8080 of the Octane Docker container to the port 8080 of the host machine. It will make sure that we can access the Octane application on localhost:8080. The `octane.env` file contains three variables for easy site management.
 
-```yaml
+{{< highlight yaml >}}
 SERVER_DOMAIN="your domain name"
 ADMIN_PASSWORD="your password"
 #This disables the minimum memory check to enable to run on smaller machines.
 DISABLE_VALIDATOR_MEMORY=true
-```
+{{< /highlight >}}
 
 Now if you try to run the container with `docker-compose up`, you will encounter various validation errors. It is because, before starting the server, you need to adjust some settings. If you noticed in the config file, there is a section to define volumes. These volumes are persistent volumes and are used to keep changes saved between two docker-compose runs. I have mapped three volumes from Docker container to the host machine. So you can now edit the files in `/opt/octane/` folder on the host machine, and changes will reflect in the Docker container. The file where you will have to make changes is `/opt/octane/conf/setup.xml`.
 

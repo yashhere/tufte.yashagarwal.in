@@ -21,15 +21,15 @@ type: posts
   Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with Linux, and anyway, this is way better than the plain &#8220; You entered a wrong password&#8221; error message. So let&#8217;s learn how to do this.
 </p>
 
-### Enable insults in sudo</strong>
+##### Enable insults in sudo
 
 You can enable the insults feature in `sudo` by modifying the `sudo` configuration file. To open the `sudo` configuration file, launch a terminal and type the following command.
 
-<code>sudo visudo</code>
+{{< highlight bash >}}sudo visudo{{< /highlight >}}
 
 It will open /etc/sudoers configuration file in the terminal, in vim text editor if you have configured it as your default editor. In ubuntu like distros, it will be opened in nano. Now you will have to find the section where the defaults are listed. Most probably you will find it at the top. Now find the line that starts with **_Defaults_** and append **_insults_** to the end of the line (any addition to the line is comma separated). If this line is not present then add the following line to the section
 
-<code>Defaults insults</code>
+{{< highlight bash >}}Defaults insults{{< /highlight >}}
 
 (Always use `visudo` as it has a self-check system which will save you from messing up things)
 
@@ -41,6 +41,6 @@ Now save the file. If you are using vim, then use Ctrl+X to save the file and qu
 
 Once you have saved the file, go to terminal and type the following command to clear the old password from `sudo`'s memory.
 
-<code>sudo -k</code>
+{{< highlight bash >}}sudo -k{{< /highlight >}}
 
 That&#8217;s all. Use any command with `sudo`. Deliberately type a wrong password and enjoy abusing&#8230;

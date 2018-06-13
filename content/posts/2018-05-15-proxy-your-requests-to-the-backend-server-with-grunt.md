@@ -22,7 +22,7 @@ Grunt has a module [grunt-connect-proxy](https://github.com/drewzboto/grunt-conn
 
 The procedure to setup the proxy is simple. First, you will have to add the proxy configuration to your `Gruntfile.js`. In this example, I am assuming that the backend server is running on the port 8000 and the Grunt server is running on the port 8080. This configuration will delegate all requests to [http://localhost:8080/api](http://localhost:8080/api) to [http://localhost:8000/backend](http://localhost:8000/backend).
 
-```js
+{{< highlight js >}}
 connect: {
   server: {
     options: {
@@ -48,18 +48,18 @@ connect: {
     ]
   }
 }
-```
+{{< /highlight >}}
 
 Now register your Grunt server task to run the proxy on Grunt execution.
 
-```js
+{{< highlight js >}}
 grunt.registerTask('server', function (target) {
    grunt.task.run([
        'configureProxies:server',
        'connect:server',
    ]);
 });
-```
+{{< /highlight >}}
 
 Let me explain, the above two scripts line by line. In the connect section of your `Gruntfile`, we add a new section called `proxies`. The options defined in the proxies section are explained below.
 
@@ -73,20 +73,20 @@ More options can be found in the [documentation](https://github.com/drewzboto/gr
 
 You will also need to setup the proxy's middleware in the `options` section of the `connect`. The relevant code is as follows.
 
-```js
+{{< highlight js >}}
 ...
 middleware: function (connect, options, middlewares) {
   middlewares.unshift(require('grunt-connect-proxy/lib/utils').proxyRequest);
   return middlewares;
 }
 ...
-```
+{{< /highlight >}}
 
 Finally, include your proxy task in the server task. It is necessary to append the proxy task before the connect task. Also, make sure to specify the connect target in the `configureProxies` section. In our case, the connect target is `server`.
 
 Now you can start your Grunt server via this configured proxy by typing `Grunt server` in the command line. You should see something like this in the console.
 
-```bash
+{{< highlight bash >}}
 $ grunt server
 ...
 Running "configureProxies:server" (configureProxies) task
@@ -96,7 +96,7 @@ Proxy created for: /api to localhost:8000
 Running "connect:server" (connect) task
 Started connect web server on http://localhost:8080
 ...
-```
+{{< /highlight >}}
 
 The above output confirms that the proxy is working fine.
 Some of the example URLs are:

@@ -16,34 +16,35 @@ In this post, I will continue from my last [post](https://yashhere.github.io/pos
 **Note:** If you had gone for installation via SSH option, then I would suggest you to edit your `sshd_config` file and disable `root` login. It can be a security risk otherwise.
 ##### Install a terminal based browser
 Terminal-based browsers are very handy in cases when you are required to login into a captive portal and you don't have access to a graphical browser. We will install two different browsers, `elinks` and `w3m`.
-```bash
+{{< highlight bash >}}
 sudo pacman -S elinks w3m
-```
+{{< /highlight >}}
 
 ##### Install X server.
-```bash
+{{< highlight bash >}}
 sudo pacman -S xorg
-```
+{{< /highlight >}}
+
 This will install minimal X desktop environment with fonts, in case, you want to test your system before installing any desktop environment.
 
 ##### Enable multilib repository for 32-bit package support
 To enable multilib repository, uncomment the `[multilib]` section in `/etc/pacman.conf`.
-```bash
+{{< highlight bash >}}
 [multilib]
 Include = /etc/pacman.d/mirrorlist
-```
+{{< /highlight >}}
 
 Now upgrade your system.
-```bash
+{{< highlight bash >}}
 sudo pacman -Syyu
-```
+{{< /highlight >}}
 ##### Install video and touchpad drivers
-```bash
+{{< highlight bash >}}
 sudo pacman -S xf86-video-intel xf86-input-synaptics
-```
+{{< /highlight >}}
 
 ##### Install `pacaur` to fetch and install packages from AUR
-```bash
+{{< highlight bash >}}
 sudo pacman -S expac yajl --noconfirm
 cd /tmp
 gpg --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53
@@ -52,147 +53,145 @@ makepkg -i PKGBUILD --noconfirm
 curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur
 makepkg -i PKGBUILD --noconfirm
 cd
-```
+{{< /highlight >}}
 
 ##### Install graphical browsers
-```bash
+{{< highlight bash >}}
 pacaur -S firefox chromium
-```
+{{< /highlight >}}
 
 ##### Install code editors
-```bash
+{{< highlight bash >}}
 pacaur -S sublime-text-dev atom-editor-git visual-studio-code-bin neovim neovim-drop-in leafpad
-```
+{{< /highlight >}}
 
 ##### Setup LAMP stack
 1. Install Apache server
-```bash
+{{< highlight bash >}}
 sudo pacman -S apache
-```
+{{< /highlight >}}
 
   * Make your user-directory available to apache server
-  ```bash
-  mkdir ~/public_html
-  chmod o+x ~
-  chmod o+x ~/public_html
-  chmod -R o+r ~/public_html
-  ```
+{{< highlight bash >}}
+mkdir ~/public_html
+chmod o+x ~
+chmod o+x ~/public_html
+chmod -R o+r ~/public_html
+{{< /highlight >}}
 
   * To enable virtualhosts, uncomment the following line in `/etc/httpd/conf/httpd.conf`
-        ```bash
-        Include conf/extra/httpd-vhosts.conf
-        ```
-        and add your virtualhost configuration in following file.
-        ```bash
-        sudo vim /etc/httpd/conf/extra/httpd-vhosts.conf
-        ```
-        To test the virtual hosts on you local machine, add the virtual names to your `/etc/hosts` file.
+{{< highlight bash >}}
+Include conf/extra/httpd-vhosts.conf
+{{< /highlight >}}
+and add your virtualhost configuration in following file.
+{{< highlight bash >}}
+sudo vim /etc/httpd/conf/extra/httpd-vhosts.conf
+{{< /highlight >}}
+      To test the virtual hosts on you local machine, add the virtual names to your `/etc/hosts` file.
 
 
 2. Install PHP:
-```bash
+{{< highlight bash >}}
 sudo pacman -S php php-apache
-```
+{{< /highlight >}}
   * Use PHP with apache:
 
         Open `/etc/httpd/conf/httpd.conf` and uncomment following line.
-        ```bash
-        LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
-        ```
-        and comment the following installation_guide
-        ```bash
-        #LoadModule mpm_event_module modules/mod_mpm_event.so
-        ```
+{{< highlight bash >}}
+LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+{{< /highlight >}}
+and comment the following installation_guide
+{{< highlight bash >}}
+#LoadModule mpm_event_module modules/mod_mpm_event.so
+{{< /highlight >}}
 
         Now add these lines to `/etc/httpd/conf/httpd.conf`:
 
         * Add these at the end of `LoadModule` section.
-        ```bash
-        LoadModule php7_module modules/libphp7.so
-        AddHandler php7-script .php
-        ```
+{{< highlight bash >}}
+LoadModule php7_module modules/libphp7.so
+AddHandler php7-script .php
+{{< /highlight >}}
 
         * Place this at the end of the `Include` section:
-        ```bash
-        Include conf/extra/php7_module.conf
-        ```
+{{< highlight bash >}}
+Include conf/extra/php7_module.conf
+{{< /highlight >}}
 
 3. Install MySQL server
-```bash
+{{< highlight bash >}}
 sudo pacman -S mariadb
-```
+{{< /highlight >}}
 
       * Initialize the MariaDB data directory prior to starting the service. To do so, run:
-
-          ```bash
-          sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
-          ```
+{{< highlight bash >}}
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+{{< /highlight >}}
 
       * Then issue the commands to start the database server
-
-          ```bash
-          sudo systemctl enable mariadb.service
-          sudo systemctl start mariadb.service
-          ```
+{{< highlight bash >}}
+sudo systemctl enable mariadb.service
+sudo systemctl start mariadb.service
+{{< /highlight >}}
 
       * To apply recommended security settings to your database, run
-
-          ```bash
-          sudo mysql_secure_installation
-          ```
+{{< highlight bash >}}
+sudo mysql_secure_installation
+{{< /highlight >}}
 
 4. Install PHPMyAdmin
-```
+{{< highlight bash >}}
 sudo pacman -S phpmyadmin php-mcrypt
-```
+{{< /highlight >}}
   * Enable `mysqli`, `mcrypt`, `zip` and `bz2` extensions in `/etc/php/php.ini`.
   * Create the apache configuration file `/etc/httpd/conf/extra/phpmyadmin.conf`
-
-          ```bash
-          Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
-          <Directory "/usr/share/webapps/phpMyAdmin">
-              DirectoryIndex index.php
-              AllowOverride All
-              Options FollowSymlinks
-              Require all granted
-          </Directory>
-          ```
+{{< highlight ApacheConf >}}
+Alias /phpmyadmin "/usr/share/webapps/phpMyAdmin"
+<Directory "/usr/share/webapps/phpMyAdmin">
+    DirectoryIndex index.php
+    AllowOverride All
+    Options FollowSymlinks
+    Require all granted
+</Directory>
+{{< /highlight >}}
     Then include following in `/etc/httpd/conf/httpd.conf`
-    ```bash
-      # phpMyAdmin configuration
-      Include conf/extra/phpmyadmin.conf
-    ```
+{{< highlight ApacheConf >}}
+# phpMyAdmin configuration
+Include conf/extra/phpmyadmin.conf
+{{< /highlight >}}
 
 
 
 Now restart `httpd` service to apply settings.
-```bash
+{{< highlight bash >}}
 sudo systemctl restart httpd
-```
+{{< /highlight >}}
 Once all these steps are done, your LAMP stack should be working.
 
 
 ##### Setup power management
 Install `tlp` and some of its optional dependencies
-```bash
+{{< highlight bash >}}
 sudo pacman -S tlp tlp-rdw bash-completion ethtool lsb-release smartmontools
-```
+{{< /highlight >}}
 
 Then enable `tlp` services
-```bash
+{{< highlight bash >}}
 sudo systemctl enable tlp.service
 sudo systemctl enable tlp-sleep.service
 
 # mask some services for tlp to work properly
 sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket
-```
+{{< /highlight >}}
+
 ##### Install i3 and other tools
 
 All these tools are part of my `i3` config with exception of the theme related packages. So installing them here will help me later while setting up the `i3` window manager.
-```bash
+{{< highlight bash >}}
 pacaur -S i3 rofi polybar xautolock powerline-fonts-git i3lock-fancy-git compton scrot feh dunst unclutter xfce4-power-manager numlockx lxappearance adapta-gtk-theme gtk-engine-murrine gnome-themes-standard termite
-```
+{{< /highlight >}}
+
 <a name="fonts"></a>
 ##### Fix ugly fonts<sup>[\[2\]](#refs)</sup>
 Fonts rendering is one area where Linux still lags behind Windows and OSX. It can be a nightmare for users to setup fonts properly in Linux. In Arch Linux, this is even worse. I found some tricks to improve the quality of font rendering on Arch Linux. Though this is far from perfect, it is manageable. Follow these [steps](https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/) on Reddit to fix font rendering. I use Noto Sans, Adobe Source Code Pro, and Microsoft fonts. My apologies, but I can't help here. Some websites still use Microsoft fonts.
@@ -200,16 +199,16 @@ Fonts rendering is one area where Linux still lags behind Windows and OSX. It ca
 
 ##### Setup Python Environment
 I use Python extensively and virtual environments are a must for my development setup. I use `pipenv` to manage my virtual environments. To install `pipenv`, you need to install `virtualenv` first. To install it, run the following command.
-```bash
+{{< highlight bash >}}
 sudo pacman -S python-virtualenv
-```
+{{< /highlight >}}
 
 Now you are ready to install `pipenv`. Follow [these](http://pipenv.readthedocs.io/en/latest/install/#fancy-installation-of-pipenv) instructions to install the tool.
 
 ##### Install some other common tools
-```bash
+{{< highlight bash >}}
 sudo pacman -S vlc openssh npm imagemagick git la-capitaine-icon-theme-git
-```
+{{< /highlight >}}
 
 Do not forget to [setup](https://stackoverflow.com/a/13021677) `npm` to install packages globally without requiring `sudo`.
 

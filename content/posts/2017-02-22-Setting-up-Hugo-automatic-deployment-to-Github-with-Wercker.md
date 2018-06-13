@@ -26,25 +26,25 @@ Two types of sites are supported on Github Pages, User Site, and Project Site. U
 
 My site is a User site, so I wanted all the static files to be saved in the master branch. As Hugo generates all the static files under <code>public</code> directory, I needed another branch to store my source files. So my made a new branch <code>source</code> which will save all the source files for my blog. Don't forget to remove the .git folder from the theme folder. Otherwise, the build will fail at later stage. You can try using git submodule feature to avoid this issue. I created a repository <code>yash2696.github.io</code> in Github also.
 
-<pre>
-git init                     #initialized git repository in site root
+{{< highlight bash >}}
+git init                       #initialized git repository in site root
 git checkout -b source         #created new branch source
-git remote add origin https<nolink>://github.com/yash2696/yash2696.github.io
+git remote add origin https://github.com/yash2696/yash2696.github.io
 git add .
-git commit -m &#34;Initial Commit&#34;
+git commit -m "Initial Commit"
 git push origin source
-</pre>
+{{< /highlight >}}
 
 Then I initialized my master branch as a orphan branch.
-<pre>
-git checkout \-\-orphan master
+{{< highlight bash >}}
+git checkout --orphan master
 git rm -rf .
-rm &#39;.gitignore&#39;
-echo &#34;#Your repository name&#34; > README.md
+rm -f '.gitignore'
+echo "#Your repository name" > README.md
 git add README.md
-git commit -a -m &#34;Initial Commit&#34;
+git commit -a -m "Initial Commit"
 git push origin master
-</pre>
+{{< /highlight >}}
 
 
 ### Automatic deployment using Wrecker
@@ -59,17 +59,17 @@ The first task is to create a <code>wercker.yml</code> file. It will tell Wercke
 
 #### Build
 Following the official guide, I used this [step](https://github.com/ArjenSchwarz/wercker-step-hugo-build) to trigger Hugo to build HTML pages. I had already removed git repository information from the theme folder, so this step finished successfully. If you haven't, you may add the following piece of code in your build step.
-<pre>
+{{< highlight bash >}}
 - script:
-        name: install git
-        code: |
-            apt-get update
-            apt-get install git -y
+    name: install git
+    code: |
+        apt-get update
+        apt-get install git -y
     - script:
         name: initialize git submodules
         code: |
             git submodule update --init --recursive
-</pre>
+{{< /highlight >}}
 
 #### Deploy
 There is no concept named "Add Deploy Target" in Wercker as of now. Most of the on-line tutorials follow this process which is outdated. Now Wercker uses a concept called "Workflows in Pipelines."

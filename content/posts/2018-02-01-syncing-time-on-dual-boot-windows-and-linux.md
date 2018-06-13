@@ -18,14 +18,14 @@ This issue can be fixed either from Windows or from GNU/Linux OS. I prefer to ad
 Open an Administrator Command Prompt by pressing `⊞ + x`, then type `a`. This method of opening Administrator Command Prompt does not work on Windows 7.
 
 Now execute the following command:
-```
+{{< highlight batch >}}
 reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
-```
+{{< /highlight >}}
 
 Windows Time Service which keeps the clock in Windows OS accurate will still write the localtime to the Real-time clock (RTC) regardless of the registry settings on shutdown. So I prefer to disable the Windows Time Service.
-```
+{{< highlight batch >}}
 sc config w32time start= disabled
-```
+{{< /highlight >}}
 
 Now you may need to change the time in your BIOS to UTC time. Although that depends on whether your Windows OS was showing correct time before applying the above modifications. If yes, then changing BIOS time to UTC will make sure that both Windows and GNU/Linux convert hardware clock to localtime.
 

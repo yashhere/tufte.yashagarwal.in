@@ -25,13 +25,13 @@ After the installation of Arch, the first thing I did was to install Openbox, a 
 
 For our window manager to show up, it needs to be added either in a login manager or user's <code>~/.xinitrx</code> file. There is a default version of this file which contain some code which we may want to retain, so rather than making this file from scratch, copy the default version of file to user's home directory.
 
-<code>cp /etc/X11/xinit/xinitrc ~/.xinitrc</code>
+{{< highlight bash >}}cp /etc/X11/xinit/xinitrc ~/.xinitrc{{< /highlight >}}
 
 Now add the command <code>exec Openbox-session</code> to the end of the file. Remember that the lines following this command will be ignored by the system. An openbox session should be able to be started by entering the command <code>startx</code>.
 
 An openbox session can be started automatically upon login using shell's startup script. Add following to the shell's startup script, <code>~/.bash_profile</code> for bash and <code>~/.zprofile</code> for zsh.
 
-<code>[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx</code>
+{{< highlight bash >}}[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx{{< /highlight >}}
 
 ----
 
@@ -46,7 +46,7 @@ Setting up openbox is quite simple. Four files make the basis of openbox configu
 
 To configure openbox, it is necessary to create a local openbox profile in user's home directory. A global configuration can be found in <code>/etc/xdg/openbox</code> which is well documented and copying the global configuration to the user's directory will give a good starting point to customizing from.
 
-<code>cp -R /etc/xdg/openbox ~/.config/</code>
+{{< highlight bash >}}cp -R /etc/xdg/openbox ~/.config/{{< /highlight >}}
 
 These files can be edited by hand, although some graphical tools are also available, use of these may be desired.
 
@@ -57,7 +57,7 @@ These files can be edited by hand, although some graphical tools are also availa
 
 In order to see changes after editing a configuration file, open box needs to be refreshed. This can be done with the reconfigure command.
 
-<code>openbox --reconfigure</code>
+{{< highlight bash >}}openbox --reconfigure{{< /highlight >}}
 
 ----
 
@@ -81,12 +81,12 @@ Dynamic menus give the same kind of functionality most people are used to. So it
 
 In order to have [<code>obmenu-generator (AUR)</code>](https://aur.archlinux.org/packages/obmenu-generator/) make a menu on demand, the <code>menu.xml</code> file should contain the following code as the only entry.
 
-<pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;openbox_menu&gt;
-    &lt;menu id="root-menu" label="OpenBox 3" execute="/usr/bin/obmenu-generator"&gt;
-    &lt;/menu&gt;
-&lt;/openbox_menu&gt;
-</pre>
+{{< highlight bash >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+    <menu id="root-menu" label="OpenBox 3" execute="/usr/bin/obmenu-generator"></menu>
+</openbox_menu>
+{{< /highlight >}}
 
 ----
 
@@ -101,11 +101,11 @@ You can get any panel like [<code>xfce4-panel</code>](https://www.archlinux.org/
 Some file managers deeply integrate into desktop environments and when installed with openbox, they end up pulling multiple dependencies which is certainly not desired. Our aim behind building openbox setup was to have minimum dependencies so that we can get lightweight desktop. However, there are several file managers available which fit into openbox very well. In my choice, [<code>pcmanfm</code>](https://www.archlinux.org/packages/?name=pcmanfm) is the best choice here. [<code>pcmanfm</code>](https://www.archlinux.org/packages/?name=pcmanfm) is a lightweight and fast file manager with network and thrash support. [<code>pcmanfm</code>](https://www.archlinux.org/packages/?name=pcmanfm) can also manage desktop icons and wallpaper setting, although if you plan to use conky in your system, then you may not want [<code>pcmanfm</code>](https://www.archlinux.org/packages/?name=pcmanfm) to manage desktop for you. The reason is that [<code>pcmanfm</code>](https://www.archlinux.org/packages/?name=pcmanfm) treats desktop as a window, so when you switch to desktop, the conky hides behind the desktop window. To get the icons and wallpaper, you can use other standalone tools such as [<code>idesk</code>](https://www.archlinux.org/packages/community/x86_64/idesk/) and [<code>feh</code>](https://www.archlinux.org/packages/extra/x86_64/feh/) or [<code>nitrogen</code>](https://www.archlinux.org/packages/extra/x86_64/nitrogen/).
 To start pcmanfm is desktop mode, add the following to the autostart file
 
-<code>pcmanfm --desktop &</code>
+{{< highlight bash >}}pcmanfm --desktop &{{< /highlight >}}
 
 and to stop it for managing desktop
 
-<code>pcmanfm --desktop-off &</code>
+{{< highlight bash >}}pcmanfm --desktop-off &{{< /highlight >}}
 
 In order to use many of the functions that are in file managers it is necessary to have a a few additional programs. [<code>gvfs</code>](https://www.archlinux.org/packages/?name=gvfs) gives you the ability to mount volumes and have trash control. It is not mandatory to have, but it allows on demand mounting to be done completely within the file manager, as opposed to having to drop down to the command line. A volume manager such as [<code>udisks2</code>](https://www.archlinux.org/packages/?name=udisks2) will also be wanted, and for auto-mounting removable disks, [<code>udiskie</code>](https://www.archlinux.org/packages/community/any/udiskie/) works well with openbox. [<code>udiskie</code>](https://www.archlinux.org/packages/community/any/udiskie/) can be added to openbox’s autostart file like any other application.
 
@@ -114,7 +114,7 @@ In order to use many of the functions that are in file managers it is necessary 
 ### Composition
 
 Openbox does not provide native support for composition, although having a compositor may prevent screen flickering and other distorting with applications like [<code>oblogout</code>](https://www.archlinux.org/packages/community/any/oblogout/). There are some options which work great with openbox. The one which I am using and quite happy with, is [<code>compton</code>](https://wiki.archlinux.org/index.php/Compton). It can be used with or without any initial configuration, although there are lot of different configuration options if you decide to customize the setup. To start [<code>compton</code>](https://wiki.archlinux.org/index.php/Compton) in background with shadows, use this in <code>autostart</code> file.
-<code>compton -b -c &</code>.
+{{< highlight bash >}}compton -b -c &{{< /highlight >}}.
 
 ----
 

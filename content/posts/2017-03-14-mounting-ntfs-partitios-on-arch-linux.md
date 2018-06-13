@@ -20,7 +20,7 @@ I think when using Gentoo, you will also need to compile the support for NTFS fi
 
 Add the following code to <code>/etc/polkit-1/rules.d/10-udisks2.rules</code>
 
-```javascript
+{{< highlight javascript >}}
 // Allow udisks2 to mount devices without authentication for users in the "wheel" group.
 polkit.addRule(function(action, subject) {
     if ((action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
@@ -38,6 +38,6 @@ polkit.addRule(function(action, subject) {
         }
     }
 );
-```
+{{< /highlight >}}
 
 Now you will be able to mount NTFS partition without any problem. :)

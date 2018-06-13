@@ -26,37 +26,37 @@ This guide is written primarily for my reference, as someone who has installed A
 ###   0. Check your network connection
 
 If you are behind a captive portal, use `links` to open browser and login into your network. For WiFi connections, use `wifi-menu`. LAN connections should not require any setup. The boot environment should automatically detect any wired connections. After connecting, test your connection by pinging any website:
-```bash
+{{< highlight bash >}}
 ping -c 5 google.com
-```
+{{< /highlight >}}
 
 ###   1. Setup SSH
 
 This step is not mandatory, though I prefer to use this method to install Arch Linux, as it provides me the convenience of copying and pasting the commands directly from Arch wiki.
 
 By default the Arch Linux `root` account password is empty. We need to set up a password for `root` account, which is needed for an SSH connection.
-```bash
+{{< highlight bash >}}
 passwd
-```
+{{< /highlight >}}
 
 Now we need to change the setting to permit `root` login via SSH in `/etc/ssh/sshd_config`. Check that `PermitRootLogin yes` is uncommented in this file. If this line is not present there, add this to the end. Now start the `sshd.service` by issuing the command
-```bash
+{{< highlight bash >}}
 sudo systemctl start sshd.service
-```
+{{< /highlight >}}
 Also, note the IP address of the target machine by inspecting the output of the following command.
-```bash
+{{< highlight bash >}}
 ip addr
-```
+{{< /highlight >}}
 
 **Pro tip:** One liner to get only the IP address
-```bash
+{{< highlight bash >}}
 ip -o -4 addr show | awk -F '[ /]+' '/global/ {print $4}'
-```
+{{< /highlight >}}
 
 Now on your host machine, connect to the target machine via SSH using the following command
-```bash
+{{< highlight bash >}}
 ssh root@ip-address-of-target
-```
+{{< /highlight >}}
 <a name="ret1"></a>
 ###   2. Partition the disks
 
@@ -68,39 +68,39 @@ My preferred setup is to have one root partition and one home partition and use 
 For this guide, I am assuming that the `EFI` partition is `sda1`, root partition is `sda9` and home partition is `sda10`.
 
 Now to format the partitions with `ext4` file-system:
-```bash
+{{< highlight bash >}}
 mkfs.ext4 /dev/sda9
 mkfs.ext4 /dev/sda10
-```
+{{< /highlight >}}
 <a name="step3"></a>
 ###   3. Mount the partitions
 Now mount the root partition (`sda9` in this case) to `/mnt`
-```bash
+{{< highlight bash >}}
 mount /dev/sda9 /mnt
-```
+{{< /highlight >}}
 
 If you have created any other partitions in previous steps, mount them at appropriate locations.
-```bash
+{{< highlight bash >}}
 mkdir /mnt/home
 mount /dev/sda10 /mnt/home
 
 mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
-```
+{{< /highlight >}}
 
 ###   4. Install the base file-system
 To install the base system and some development tools, issue the following command.
-```bash
+{{< highlight bash >}}
 pacstrap /mnt base base-devel
-```
+{{< /highlight >}}
 
 This will take a while to download and install. After it finishes, it will give you a bare-bone Arch Linux system with just the tools required to run a Linux distribution, no other software is installed.
 
 ###   5. Generate `/etc/fstab`
 The `/etc/fstab` file stores the information about file systems of partitions and how to mount the partitions on system boot up. To generate this file, issue the following command:
-```bash
+{{< highlight bash >}}
 genfstab -U /mnt >> /mnt/etc/fstab
-```
+{{< /highlight >}}
 If you prefer to use partition labels(`sda1`, `sda9` etc.) instead of UUID, then use `-L` flag in place of `-U`.
 
 ###   6. `chroot` into the system
@@ -110,105 +110,105 @@ From the [Arch wiki](https://wiki.archlinux.org/index.php/Change_root):
   > Chroot is an operation that changes the apparent root directory for the current running process and their children. A program that is run in such a modified environment cannot access files and commands outside that environmental directory tree. This modified environment is called a chroot jail.
 
 At this step, we will go to the root of the newly installed system at `/mnt` and pretend as if we are logged into this system.
-```bash
+{{< highlight bash >}}
 arch-chroot /mnt
-```
+{{< /highlight >}}
 
 ###   7. Setup the time zone, locale, and hostname
 Browse the `/use/share/zoneinfo` directory to find your location entries. My location is India, so I will use this command.
-```bash
+{{< highlight bash >}}
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
-```
+{{< /highlight >}}
 
 To set the hardware clock:
-```bash
+{{< highlight bash >}}
 hwclock --systohc
-```
+{{< /highlight >}}
 
 To set the locale for your system, open the `/etc/locale.gen` file and uncomment your language. or run the following command for the default `en_US.UTF-8 UTF-8`.
-```bash
+{{< highlight bash >}}
 LANG=C perl -i -pe 's/#(en_US.UTF)/$1/' /etc/locale.gen
-```
+{{< /highlight >}}
 Now generate the localization with
-```bash
+{{< highlight bash >}}
 locale-gen
-```
+{{< /highlight >}}
 Then set the `LANG` variable in `/etc/locale.conf` accordingly, or run the following command:
-```bash
+{{< highlight bash >}}
 localectl set-locale LANG="en_US.UTF-8"
-```
+{{< /highlight >}}
 
 To set the hostname for your machine:
-```bash
+{{< highlight bash >}}
 hostnamectl set-hostname your-host-name
-```
+{{< /highlight >}}
 
 To allow other machines to address the host by name, it is necessary to edit the `/etc/hosts` file to look like this:
-```bash
+{{< highlight bash >}}
 127.0.0.1    localhost.localdomain          localhost
 ::1          localhost.localdomain          localhost
 127.0.1.1    your-host-name.localdomain     your-host-name
-```
+{{< /highlight >}}
 
 ###   8. Create user account
 
 Before creating user account, set password for `root` account
-```bash
+{{< highlight bash >}}
 passwd
-```
+{{< /highlight >}}
 
 Now create a local account for your user
-```bash
+{{< highlight bash >}}
 useradd -m -G wheel -s /bin/bash your-user-name
-```
+{{< /highlight >}}
 This will set up your user account, create a home directory for your user, set the default shell to `bash` and add your user to `wheel` group, which is necessary to gain `sudo` access in later steps.
 
 Set password for your user.
-```bash
+{{< highlight bash >}}
 passwd your-user-name
-```
+{{< /highlight >}}
 
 ###   9. Enable `sudo` access
 This allows you to use root privileges without using the root account. To enable this, first open `/etc/sudoers` file
-```bash
+{{< highlight bash >}}
 nano /etc/sudoers
-```
+{{< /highlight >}}
 
 Now uncomment the following line to enable `root` privilege for all the users inside `wheel` group:
-```bash
+{{< highlight bash >}}
 # %wheel ALL=(ALL) ALL
-```
+{{< /highlight >}}
 
 Now you can safely disable root account
-```bash
+{{< highlight bash >}}
 passwd -l root
 
 # login into your user account
 su your-user-name
-```
+{{< /highlight >}}
 From this point onwards, it is necessary to append `sudo` to any command that requires `root` privileges.
 
 ###   10. Install bootloader
 My preferred bootloader of choice is `grub`. To install `grub`, we need to install following packages.
-```bash
+{{< highlight bash >}}
 sudo pacman -S grub efibootmgr
-```
+{{< /highlight >}}
 
 Now install `grub` with the following command.
-```bash
+{{< highlight bash >}}
 sudo grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch
-```
+{{< /highlight >}}
 Here `--efi-directory` is the folder where the `EFI` partition is mounted [step 3](#step3) and `--bootloader-id` is the label that will appear in your UEFI boot menu entry.
 
 This particular step is specific to my machine's hardware, you might not need to run this step. I need to add `pci=nommconf` to my kernel boot parameters in `/etc/default/grub`, otherwise `tty` prints error messages continuously.
 
 Now run to generate grub configuration file.
-```bash
+{{< highlight bash >}}
 sudo grub-mkconfig -o /boot/grub/grub.cfg
-```
+{{< /highlight >}}
 
 If you encounter any errors related to `lvm` during installation of grub, then follow these steps.
-```bash
+{{< highlight bash >}}
 # come out of chroot
 exit
 mkdir /mnt/hostrun
@@ -218,33 +218,33 @@ mount --bind /run /mnt/hostrun
 arch-chroot /mnt
 mkdir /run/lvm
 mount --bind /hostrun/lvm /run/lvm
-```
+{{< /highlight >}}
 
 Now you can install `grub` without any errors.
 
 ###   11. Configure the network
 By default, your current system cannot connect to the network in the current state. I prefer to use [`NetworkManager`](https://wiki.archlinux.org/index.php/NetworkManager) for my network management, even when I am not using GNOME. For wireless networking, install the following additional packages.
-```bash
+{{< highlight bash >}}
 sudo pacman -S iw wpa_supplicant dialog networkmanager network-manager-applet dhclient
-```
+{{< /highlight >}}
 
 `NetworkManager` supports basic DHCP configuration. For full support, I have installed `dhclient`. `NetworkManager` also supports automatic wired connection detection and comes with curses based tool `nmtui` to setup wireless connection.
 
 To enable NetworkManager to start at system startup
-```bash
+{{< highlight bash >}}
 sudo systemctl enable NetworkManager.service
-```
+{{< /highlight >}}
 
 ###   12. Reboot now
 If you had performed the `lvm` troubleshooting steps during `grub` install, then
-```bash
+{{< highlight bash >}}
 umount /run/lvm
-```
+{{< /highlight >}}
 
 Now exit from `chroot` by typing `exit` in the shell. Unmount all the mounted partitions with:
-```bash
+{{< highlight bash >}}
 umount -R /mnt
-```
+{{< /highlight >}}
 Finally, reboot your machine by typing `reboot` and remove the installation USB drive. If you are not able to boot into your system at this point, boot from the installation media again and attempt to fix the installation.
 
 If you can see a terminal with a prompt for your username, congratulations! You have completed the first step towards building your own system.

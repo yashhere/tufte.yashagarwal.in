@@ -18,9 +18,9 @@ In this post, I will write about the procedure to correctly setup SSH and GPG ag
 Generating an SSH key pair provides you with a public key and a private key. The private key should never be given to anyone and public key, well the name itself is self-explanatory.
 
 To create a new key pair, open a terminal and paste the text below.
-```bash
+{{< highlight bash >}}
 ssh-keygen -t rsa -b 4096 -C "your_email_address"
-```
+{{< /highlight >}}
 
 This command will create a new ssh key pair with the given email address as the label. Press Enter for any question asked. When it asks for the passphrase, type a strong passphrase, otherwise leave it blank to have no password.
 
@@ -29,12 +29,12 @@ This command will create a new ssh key pair with the given email address as the 
 You might need to download the GPG command line tools before following the below steps. Follow your distribution's documentation for more help.
 
 Once you have downloaded the tools, open a terminal and type the following command.
-```bash
+{{< highlight bash >}}
 gpg --gen-key
-```
+{{< /highlight >}}
 You will see something like this. Enter 1 to select default key choice.
 
-```bash
+{{< highlight text >}}
 gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -50,19 +50,19 @@ Please select what kind of key you want:
    (3) DSA (sign only)
    (4) RSA (sign only)
 Your selection?
-```
+{{< /highlight >}}
 
 At the next prompt, enter the key size. It is recommanded to use the maximum key size of 4096 bits.
 
 Enter the time duration for which the key should remain valid. Press Enter to specify the default selection, indicating that the key does not expire.
 
 After verifying the information, enter your user information and a strong passphrase. Afterwards, GPG will start generating your key. You will see:
-```
+{{< highlight text >}}
  We need to generate a lot of random bytes. It is a good idea to
  perform some other action (type on the keyboard, move the mouse,
  utilize the disks) during the prime generation; this gives the
  random number generator a better chance to gain enough entropy.
-```
+{{< /highlight >}}
 
 You can now use the key (until it expires) to encrypt your data.
 
@@ -72,15 +72,15 @@ You can now use the key (until it expires) to encrypt your data.
 **Update (26/05/2018):** _As pointed out by [Saksham](https://sakshamsharma.com/) in comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored._
 
 Open i3 configuration file and add an `exec_always` statement
-```bash
+{{< highlight bash >}}
 exec_always ~/.config/i3/scripts/gnome-keyring.sh
-```
+{{< /highlight >}}
 
 Obviously, you will need to change the path according to your OS. Now make a new file in `~/.config/i3/scripts` with name `gnome-keyring.sh` and paste the below text in it.
-```bash
+{{< highlight bash >}}
 eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
 export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
-```
+{{< /highlight >}}
 (Assuming that you already have installed gnome-keyring)
 
 Now, reload the i3.
@@ -89,18 +89,18 @@ Now, reload the i3.
 **Update (26/05/2018):** _This step is also optional. Thanks to [Saksham](https://sakshamsharma.com/) for pointing it out._
 
 Open `~/.ssh/config` file and add following content to it.
-```bash
+{{< highlight bash >}}
 Host *
   AddKeysToAgent yes
   IdentityFile /home/<your username>/.ssh/id_rsa
-```
+{{< /highlight >}}
 Replace \<your username\> accordingly.
 
 ### Setting up .bashrc
 I am not using a login shell, and I could not find any suitable method to source `~/.profile` or `~/.bash_profile` on login in i3. So I added my configuration to `~/.bashrc` file. I know, it is a hack, but it works well for me without much headache.
 
 Open `~/.bashrc` file and add following lines to the end of the file.
-```bash
+{{< highlight bash >}}
 if [ -f ~/.ssh/agent.env ] ; then
     . ~/.ssh/agent.env > /dev/null
     if ! kill -0 $SSH_AGENT_PID > /dev/null 2>&1; then
@@ -113,7 +113,7 @@ else
     eval `ssh-agent | tee ~/.ssh/agent.env`
     ssh-add
 fi
-```
+{{< /highlight >}}
 
 It will automatically start an ssh-agent if it is not already running. Otherwise, it uses the previously running agent.
 

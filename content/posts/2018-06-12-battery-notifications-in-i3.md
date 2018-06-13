@@ -18,13 +18,13 @@ I [found](https://agorf.gr/2016/06/29/low-battery-notification-in-i3wm/) a bash 
 
 The first issue was the *lockfile* program which was not installed in my system. I installed it using following command.
 
-```bash
+{{< highlight bash >}}
 sudo apt install procmail
-```
+{{< /highlight >}}
 
 The second issue was more difficult to solve. I planned to set up the script to run every minute using *cron*. However, it turns out that cron operates in a very [minimalistic](http://askubuntu.com/a/23438/173003) environment and notify-send requires the presence of some special variables in the environment. These variables are **DBUS_SESSION_BUS_ADDRESS**, **XAUTHORITY** and **DISPLAY**. To provide the values of these variables to the cron environment, I modified the script and sourced a new file `.bat_envs`.
 
-```bash
+{{< highlight bash >}}
 #!/usr/bin/env bash
 
 . /home/yash/.bat_envs
@@ -52,7 +52,7 @@ SHOLD ]]; then
 fi
 
 rm -f $lock_path
-```  
+{{< /highlight >}}
 
 Read this blog [post](https://agorf.gr/2016/06/29/low-battery-notification-in-i3wm/) to understand how this script works.
 
@@ -60,7 +60,7 @@ As the notify-send requires some special X session environmental variables, we w
 
 <!--https://unix.stackexchange.com/a/111194 -->
 
-```bash
+{{< highlight bash >}}
 #!/usr/bin/env bash
 
 env_path="$HOME/.bat_envs"
@@ -77,27 +77,27 @@ do
 done
 
 chmod 600 "${env_path}"
-```
+{{< /highlight >}}
 
 To run this script at startup, I added this file to the i3 config file with the following command.
 
-```bash
+{{< highlight bash >}}
 exec --no-startup-id "path to your script"
-```
+{{< /highlight >}}
 
 Then at the end of cron file, I added a new entry for the battery monitoring script.
 
 To open cron file:
 
-```bash
+{{< highlight bash >}}
 crontab -e
-```
+{{< /highlight >}}
 
 Now add the following line to the end of the file and save the file.
 
-```bash
+{{< highlight bash >}}
 * * * * * bash "path to your script" >> "path to your log file"
-```
+{{< /highlight >}}
 
 Replace the *path to your script* (with double quotes) with your script path and the *path to your log file* with a path where you want to save your log file.
 
