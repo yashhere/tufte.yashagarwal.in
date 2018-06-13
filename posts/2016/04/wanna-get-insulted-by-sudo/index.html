@@ -19,7 +19,7 @@
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -126,15 +126,15 @@ ga('send', 'pageview');
   Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with Linux, and anyway, this is way better than the plain &#8220; You entered a wrong password&#8221; error message. So let&#8217;s learn how to do this.
 </p>
 
-<h3 id="enable-insults-in-sudo-strong">Enable insults in sudo</strong></h3>
+<h5 id="enable-insults-in-sudo">Enable insults in sudo</h5>
 
 <p>You can enable the insults feature in <code>sudo</code> by modifying the <code>sudo</code> configuration file. To open the <code>sudo</code> configuration file, launch a terminal and type the following command.</p>
 
-<p><code>sudo visudo</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo visudo</code></pre></div>
 
 <p>It will open /etc/sudoers configuration file in the terminal, in vim text editor if you have configured it as your default editor. In ubuntu like distros, it will be opened in nano. Now you will have to find the section where the defaults are listed. Most probably you will find it at the top. Now find the line that starts with <strong><em>Defaults</em></strong> and append <strong><em>insults</em></strong> to the end of the line (any addition to the line is comma separated). If this line is not present then add the following line to the section</p>
 
-<p><code>Defaults insults</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Defaults insults</code></pre></div>
 
 <p>(Always use <code>visudo</code> as it has a self-check system which will save you from messing up things)</p>
 
@@ -146,7 +146,7 @@ ga('send', 'pageview');
 
 <p>Once you have saved the file, go to terminal and type the following command to clear the old password from <code>sudo</code>&rsquo;s memory.</p>
 
-<p><code>sudo -k</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo -k</code></pre></div>
 
 <p>That&#8217;s all. Use any command with <code>sudo</code>. Deliberately type a wrong password and enjoy abusing&#8230;</p>
 

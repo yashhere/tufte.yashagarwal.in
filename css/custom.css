@@ -2,6 +2,8 @@
 
 body {
     text-rendering: optimizeLegibility;
+    background-color: #fafafa;
+    font-family: Lato, 'Quattrocento Sans', 'Helvetica Neue', 'Siyam Rupali', sans-serif;
 }
 
 .copyright {
@@ -13,26 +15,39 @@ body {
     text-transform: none;
 }
 
+p>code {
+    background-color: #e8e8e8;
+    border-radius: 4px;
+    padding: 0 5.591px;
+    padding: 0 0.28rem;
+}
 
+.chroma {
+    border: 2px solid #d2d2d2;
+    border-radius: 4px;
 
-code {
+}
+.chroma > code {
     font-family: Monaco, monospace, monospace;
-    font-size: 1em;
-    background-color: #f0f0f0;
+    font-size: 0.90em;
     padding: 1px 2px 1px 2px;
     border-radius: 4px;
+    color: #444;
+    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: block;
 }
 
-pre > code {
-    font-family: Monaco, monospace, monospace;
-    font-size: 1em;
-    background-color: #272822;
+kbd,
+pre,
+tt,
+var {
+    font-size: 0.90em;
+    font-family: Monaco, Ubuntu Mono, Consolas, Andale Mono, monospace;
+    white-space: pre-wrap
 }
 
-/* https://github.com/github/markup/issues/168 */
-pre {
-  white-space: pre-wrap;
-}
 textarea {
     font-family: sans-serif;
     font-size: 100%;
@@ -40,8 +55,6 @@ textarea {
     margin: 0
 }
 
-
-body,
 button,
 input,
 select,
@@ -63,6 +76,8 @@ blockquote {
     line-height: 1.5;
     font-weight: 400;
 }
+
+
 @media screen and (min-width: 480px) {
     .title,
     h1,
@@ -76,16 +91,6 @@ blockquote {
         line-height: 1.5;
         color: #37474f;
         margin: 0 0 .625em
-    }
-
-    code,
-    kbd,
-    pre,
-    tt,
-    var {
-        font-size: 0.96em;
-        font-family: Monaco, Ubuntu Mono, Consolas, Andale Mono, monospace;
-        white-space: pre-wrap
     }
 
     .main-menu-container {

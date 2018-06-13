@@ -21,7 +21,7 @@ Introduction In this tutorial, I will show you how to create a basic Hugo theme.
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -142,7 +142,7 @@ ga('send', 'pageview');
 
 <p>I prefer to use YAML, so you might need to translate your configurations if you are using JSON or TOML.</p>
 
-<p>This is an example of frontmatter written in YAML.</p>
+<p>This is an example of frontmatter written in YAML.
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
 </span><span class="w"></span>date<span class="p">:</span><span class="w"> </span><span class="s2">&#34;2018-02-11T11:45:05+05:30&#34;</span><span class="w">
 </span><span class="w"></span>title<span class="p">:</span><span class="w"> </span><span class="s2">&#34;Basic Hugo Theming Tutorial.&#34;</span><span class="w">
@@ -152,7 +152,8 @@ ga('send', 'pageview');
 </span><span class="w">    </span>-<span class="w"> </span>Customization<span class="w">
 </span><span class="w"></span>tags<span class="p">:</span><span class="w">
 </span><span class="w">    </span>-<span class="w"> </span>Theme<span class="w">
-</span><span class="w"></span>---</code></pre></div>
+</span><span class="w"></span>---</code></pre></div></p>
+
 <p>You can read more about different configuration options available for frontmatter <a href="https://gohugo.io/content-management/front-matter/#readout" target="_blank">here</a>.</p>
 
 <h6 id="markdown">Markdown</h6>
@@ -181,7 +182,7 @@ ga('send', 'pageview');
 
 <h1 id="okay-let-s-start">Okay, Let&rsquo;s Start</h1>
 
-<p>So now that you have a basic understanding of Hugo, we will create a new site using Hugo. Hugo provides a command to generate new sites. We will use that command to scaffold our site. It will create a basic skeleton of your site and will give you a basic configuration file.</p>
+<p>So now that you have a basic understanding of Hugo, we will create a new site using Hugo. Hugo provides a command to generate new sites. We will use that command to scaffold our site. It will create a basic skeleton of your site and will give you a basic configuration file.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo new site ~/zeo
 $ <span class="nb">cd</span> ~/zeo
 $ ls -l
@@ -192,7 +193,8 @@ drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Fe
 drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 data
 drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 layouts
 drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 static
-drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 themes</code></pre></div>
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:13 themes</code></pre></div></p>
+
 <p><strong>Note:</strong> I will use YAML format for the config file. Hugo, By default, uses TOML format.</p>
 
 <p>A small description of this directory structure:</p>
@@ -214,7 +216,7 @@ drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Fe
 <li><p><strong>themes</strong>: The themes folder is where we will be storing our theme.</p></li>
 </ul>
 
-<p>We will edit the <code>config.yaml</code> file to edit some basic configuration of the site.</p>
+<p>We will edit the <code>config.yaml</code> file to edit some basic configuration of the site.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vim config.yaml
 baseURL: /
 title: <span class="s2">&#34;My First Blog&#34;</span>
@@ -224,8 +226,9 @@ languages:
     lang: en
     languageName: English
     weight: <span class="m">1</span>
-MetaDataFormat: <span class="s2">&#34;yaml&#34;</span></code></pre></div>
-<p>Now when you run your site, Hugo will show some errors. It is normal because our layouts and themes directories are still empty.</p>
+MetaDataFormat: <span class="s2">&#34;yaml&#34;</span></code></pre></div></p>
+
+<p>Now when you run your site, Hugo will show some errors. It is normal because our layouts and themes directories are still empty.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose
 INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 Using config file: /home/yash/zeo/config.yaml
 Building sites … INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 syncing static files to /home/yash/zeo/public/
@@ -234,16 +237,18 @@ WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 Translati
 WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 i18n not initialized, check that you have language file <span class="o">(</span>in i18n<span class="o">)</span> that matches the site language or the default language.
 WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 <span class="o">[</span>en<span class="o">]</span> Unable to locate layout <span class="k">for</span> <span class="s2">&#34;taxonomyTerm&#34;</span>:
 ...
-...</code></pre></div>
+...</code></pre></div></p>
+
 <p>This command will also create a new directory called <code>public/</code>. This is the directory where Hugo will save all the generated HTML files related to your site. It also stores all static data in this folder.</p>
 
-<p>Let&rsquo;s have a look at the <code>public</code> folder.</p>
+<p>Let&rsquo;s have a look at the <code>public</code> folder.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ls -l public/
 total <span class="m">16</span>
 drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb  <span class="m">11</span> <span class="m">11</span>:22 categories
 -rw-r--r-- <span class="m">1</span> yash hogwarts  <span class="m">400</span> Feb  <span class="m">11</span> <span class="m">11</span>:25 index.xml
 -rw-r--r-- <span class="m">1</span> yash hogwarts  <span class="m">383</span> Feb  <span class="m">11</span> <span class="m">11</span>:25 sitemap.xml
-drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb  <span class="m">11</span> <span class="m">11</span>:22 tags</code></pre></div>
+drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb  <span class="m">11</span> <span class="m">11</span>:22 tags</code></pre></div></p>
+
 <p>Hugo generated some XML files, but there are no HTML files. It is because we have not created any content in our content directory yet.</p>
 
 <p>At this point, you have a working site with you. All that is left is to add some content and a theme to your site.</p>
@@ -254,7 +259,7 @@ drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Fe
 
 <p>In this tutorial, we will be creating a theme called <code>zeo</code>. As mentioned earlier, my aim is to show you how to use Hugo&rsquo;s features to fill out your HTML files from the markdown content, I will not be focusing on CSS. So the theme will be ugly but functional.</p>
 
-<p>Let&rsquo;s create a basic skeleton of the theme. It will create the directory structure of the theme and place empty files for you to fill in.</p>
+<p>Let&rsquo;s create a basic skeleton of the theme. It will create the directory structure of the theme and place empty files for you to fill in.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># run it from the root of your site
 </span><span class="c1"></span>$ hugo new theme zeo
 $ ls -l themes/zeo/
@@ -264,12 +269,13 @@ drwxr-xr-x <span class="m">4</span> yash hogwarts <span class="m">4096</span> Fe
 -rw-r--r-- <span class="m">1</span> yash hogwarts <span class="m">1081</span> Feb <span class="m">11</span> <span class="m">11</span>:30 LICENSE.md
 drwxr-xr-x <span class="m">4</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:30 static
 -rw-r--r-- <span class="m">1</span> yash hogwarts  <span class="m">432</span> Feb <span class="m">11</span> <span class="m">11</span>:30 theme.toml</code></pre></div>
-<p>Fill out <code>LICENSE.md</code> and <code>theme.toml</code> file if you plan to distribute your theme to outside world.</p>
+Fill out <code>LICENSE.md</code> and <code>theme.toml</code> file if you plan to distribute your theme to outside world.</p>
 
-<p>Now we will edit our <code>config.yaml</code> file to use this theme.</p>
+<p>Now we will edit our <code>config.yaml</code> file to use this theme.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vim config.yaml
-theme: <span class="s2">&#34;zeo&#34;</span></code></pre></div>
-<p>Now that we have an empty theme, let&rsquo;s build the site.</p>
+theme: <span class="s2">&#34;zeo&#34;</span></code></pre></div></p>
+
+<p>Now that we have an empty theme, let&rsquo;s build the site.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose
 INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 Using config file: /home/yash/zeo/config.yaml
 Building sites … INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 syncing static files to /home/yash/zeo/public/
@@ -289,7 +295,7 @@ WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 i18n not 
   Cleaned          <span class="p">|</span>  <span class="m">0</span>
 
 Total in <span class="m">12</span> ms</code></pre></div>
-<p>These warnings are harmless in our case, as we are developing our site in English only.</p>
+These warnings are harmless in our case, as we are developing our site in English only.</p>
 
 <p>Hugo does two things while generating your website. It transforms all the content files to HTML using the defined templates, and its copies static files into the site. Static files are not transformed by Hugo. They are copied exactly as they are.</p>
 
@@ -317,7 +323,7 @@ Total in <span class="m">12</span> ms</code></pre></div>
 
 <p>Now open <a href="http://localhost:1313" target="_blank">http://localhost:1313</a> in your browser. By default, Hugo will not show anything, because it cannot find any HTML file in the public directory.</p>
 
-<p>The command to load web server with <code>--watch</code> option is:</p>
+<p>The command to load web server with <code>--watch</code> option is:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo server --watch --verbose
 ...
 ...
@@ -334,7 +340,8 @@ Total in <span class="m">12</span> ms</code></pre></div>
 
 Total in <span class="m">11</span> ms
 ...
-...</code></pre></div>
+...</code></pre></div></p>
+
 <h3 id="update-the-home-page-template">Update the Home page template</h3>
 
 <p>Hugo looks for following directories in theme&rsquo;s <code>/layout</code> folder to search for <code>index.html</code> page.</p>
@@ -348,13 +355,15 @@ Total in <span class="m">11</span> ms
 <p>It is always desirable to update the most specific template related to the content type. It is not a hard and fast rule, but a good generalization to follow.</p>
 
 <p>We will first make a static page to see if our <code>index.html</code> page is rendered correctly.</p>
-<div class="highlight"><pre class="chroma"><code class="language-htmk" data-lang="htmk">$ vim themes/zeo/layouts/index.html
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;body&gt;
-  &lt;p&gt;Hello World!&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre></div>
+
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/index.html
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">p</span><span class="p"></span><span class="p">&gt;</span>Hello World!<span class="p">&lt;</span><span class="p">/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+
 <p>Build the site and verify the results. You should see <em>Hello World!</em> when you open <a href="http://localhost:1313" target="_blank">http://localhost:1313</a>.</p>
 
 <h3 id="building-a-functional-home-page">Building a functional Home Page</h3>
@@ -363,24 +372,26 @@ Total in <span class="m">11</span> ms
 
 <p>For that, we will first create some new posts. We will display these posts as a list on the home page and on their pages, too.</p>
 
-<p>Hugo has a command for generating skeleton of posts, just like it did for sites and themes.</p>
+<p>Hugo has a command for generating skeleton of posts, just like it did for sites and themes.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose new post/first.md
 INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:40:58 Using config file: /home/yash/zeo/config.yaml
 INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:40:58 attempting to create <span class="s2">&#34;post/first.md&#34;</span> of <span class="s2">&#34;post&#34;</span> of ext <span class="s2">&#34;.md&#34;</span>
 INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:40:58 curpath: /home/yash/zeo/archetypes/default.md
 ...
 ...
-/home/yash/zeo/content/post/first.md created</code></pre></div>
-<p>The <code>new</code> command uses an archetype to generate the frontmatter for new posts. When we created our site, hugo created a default archetype in the <code>/archetype</code> folder.</p>
+/home/yash/zeo/content/post/first.md created</code></pre></div></p>
+
+<p>The <code>new</code> command uses an archetype to generate the frontmatter for new posts. When we created our site, hugo created a default archetype in the <code>/archetype</code> folder.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cat archetypes/default.md
 ---
 title: <span class="s2">&#34;{{ replace .Name &#34;</span>-<span class="s2">&#34; &#34;</span> <span class="s2">&#34; | title }}&#34;</span>
 date: <span class="o">{{</span> .Date <span class="o">}}</span>
 
----</code></pre></div>
+---</code></pre></div></p>
+
 <p>It is a good idea to create a default archetype in the themes folder also so that users can override the theme&rsquo;s archetype with their archetype whenever they want.</p>
 
-<p>We will create a new archetype for our posts&rsquo; frontmatter and delete the default <code>archetype/default.md</code>.</p>
+<p>We will create a new archetype for our posts&rsquo; frontmatter and delete the default <code>archetype/default.md</code>.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rm -rf archetype/default.md
 $ vim themes/zeo/archetypes/post.md
 ---
@@ -390,20 +401,22 @@ Description: <span class="s2">&#34;&#34;</span>
 Tags: <span class="o">[]</span>
 Categories: <span class="o">[]</span>
 
----</code></pre></div>
-<p>Create one more post in <code>content/post</code> directory.</p>
+---</code></pre></div></p>
+
+<p>Create one more post in <code>content/post</code> directory.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose new post/second.md
 INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 Using config file: /home/yash/zeo/config.yaml
 INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 attempting to create <span class="s2">&#34;post/second.md&#34;</span> of <span class="s2">&#34;post&#34;</span> of ext <span class="s2">&#34;.md&#34;</span>
 INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 curpath: /home/yash/zeo/themes/zeo/archetypes/post.md
 ...
 ...
-/home/yash/zeo/content/post/second.md created</code></pre></div>
+/home/yash/zeo/content/post/second.md created</code></pre></div></p>
+
 <p>See the difference. Hugo used the theme&rsquo;s archetype for generating the frontmatter this time.</p>
 
 <p>By default, Hugo does not generate posts with an empty content section. So you will need to add some content before you try to build the site.</p>
 
-<p>Let&rsquo;s look at the <code>content/post/first.md</code> file, after adding content to it.</p>
+<p>Let&rsquo;s look at the <code>content/post/first.md</code> file, after adding content to it.
 <div class="highlight"><pre class="chroma"><code class="language-markdown" data-lang="markdown">$ cat content/post/first.md<span class="err">
 </span><span class="err"></span>---<span class="err">
 </span><span class="err"></span>title: &#34;First&#34;<span class="err">
@@ -414,7 +427,8 @@ INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 curpath: 
 </span><span class="err">
 </span><span class="err"></span>---<span class="err">
 </span><span class="err">
-</span><span class="err"></span>Hi there. My first Hugo post</code></pre></div>
+</span><span class="err"></span>Hi there. My first Hugo post</code></pre></div></p>
+
 <p>Now that our posts are ready, we need to create templates to show them in a list on the home page and to show their content on separate pages for each post.</p>
 
 <p>We will first edit the template for the home page that we created previously. We will then modify &ldquo;single&rdquo; templates which are used to generate output for a single content file. We also have &ldquo;list&rdquo; templates which are used to group similar type of content and render them as a list.
@@ -422,8 +436,8 @@ The home page will show a list of last ten posts that we have created. Let&rsquo
 
 <h3 id="update-your-home-page-to-show-your-content">Update your home page to show your content</h3>
 
-<p>Now add your template code to <code>themes/zeo/layouts/index.html</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/index.html
+<p>Now add your template code to <code>themes/zeo/layouts/index.html</code>.
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/index.html
 $ cat !$
 cat themes/zeo/layouts/index.html
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -433,7 +447,8 @@ cat themes/zeo/layouts/index.html
     <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
   {{ end }}
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></p>
+
 <p>Hugo uses Go Template Engine. This engine scans the templates for commands that are enclosed between <code>{{</code> and <code>}}</code>. In this template, the commands are <code>range</code>, <code>first</code>, <code>.Data.Pages</code>, <code>.Title</code> and <code>end</code>.</p>
 
 <p>The template implies that we are going to get first 10 latest pages from our content folder and render their title as <code>h1</code> heading.</p>
@@ -446,16 +461,19 @@ cat themes/zeo/layouts/index.html
 
 <h3 id="linking-your-posts-on-home-page">Linking your posts on Home Page</h3>
 
-<p>Let&rsquo;s add a link to the post&rsquo;s page from home page.</p>
-<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/index.html
+<p>Let&rsquo;s add a link to the post&rsquo;s page from home page.
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/index.html
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
   {{ range first 10 .Data.Pages }}
-    <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">{{</span> <span class="err">.</span><span class="na">Permalink</span> <span class="err">}}</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
   {{ end }}
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></p>
+
 <p>Build your site and see the result. The titles are now links, but when you click on them, it takes you to a page which says <code>404 page not found</code>. That is expected because we have not created any template for the single pages where the content can be rendered. So Hugo could not find any template, and it did not output any HTML file. We will change that in a minute.</p>
 
 <p>We want to render the posts, which are in <code>content/post</code> directory. That means that their section is post and their type is also post.</p>
@@ -466,8 +484,8 @@ cat themes/zeo/layouts/index.html
 
 <p>Remember that Hugo will use this file for every content type for which we have not created a template. However, for now, we will accept that cost as we do not have any other content type with us. We will refactor our templates to accommodate more content types, as we add more content.</p>
 
-<p>Update the template file.</p>
-<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/_default/single.html
+<p>Update the template file.
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/_default/single.html
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
@@ -477,7 +495,8 @@ cat themes/zeo/layouts/index.html
   <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
   {{ .Content }}
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></p>
+
 <p>Build the site and verify the results. You will see that on clicking on <code>first</code>, you get the usual result, but clicking on <code>second</code> still produces the <code>404 page not found</code> error. It is because Hugo does not generate pages with empty content. Remember I mentioned it earlier.</p>
 
 <p>Now that we have our home page and posts page ready, we will build a page to list all the posts, not just the recent ten posts. This page will be accessible at <a href="http://localhost:1313/post" target="_blank">http://localhost:1313/post</a>. Currently, this page is blank because there is no template defined for it.</p>
@@ -485,19 +504,22 @@ cat themes/zeo/layouts/index.html
 <p>This page will show the listings of all the posts, so the type of this page will be a list. We will again use the default <code>_default/list.html</code> as we do not have any other content type with us.</p>
 
 <p>Update the list file.</p>
-<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/_default/list.html
+
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/_default/list.html
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
   {{ range .Data.Pages }}
-    <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">{{</span> <span class="err">.</span><span class="na">Permalink</span> <span class="err">}}</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p"></span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink }}&#34;</span><span class="p"></span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;&lt;</span><span class="p">/</span><span class="nt">h1</span><span class="p">&gt;</span>
   {{ end }}
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+
 <h3 id="add-date-published-to-the-posts">Add &ldquo;Date Published&rdquo; to the posts</h3>
 
 <p>It is a standard practice to add the date on which the post was published on the blog. The front matter of our posts has a variable named <code>date</code>. We will use that variable to fetch the date. Our posts are using the default <em>single</em> template, so we will edit that file.</p>
-<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/_default/single.html
+
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/_default/single.html
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
@@ -509,6 +531,7 @@ cat themes/zeo/layouts/index.html
   {{ .Content }}
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+
 <hr />
 
 <h1 id="adding-top-level-pages">Adding top-level Pages</h1>
@@ -516,7 +539,8 @@ cat themes/zeo/layouts/index.html
 <p>Okay, so now that we have our homepage, post-list page and post content pages in place, we will add a new <em>about</em> page at the top level of our blog, not at a sublevel like we did for posts.</p>
 
 <p>Hugo uses the directory structure of the content directory to identify the structure of the blog. Let&rsquo;s verify that and create a new <code>about</code> page in the content directory.</p>
-<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim content/about.md
+
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim content/about.md
 ---
 title: &#34;about&#34;
 description: &#34;about this blog&#34;
@@ -526,7 +550,9 @@ date: &#34;2018-02-11&#34;
 ## about me
 
 Hi there, you just reached my blog.</code></pre></div>
+
 <p>Let&rsquo;s generate the site and view the results.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose
 $ ls -l public/
 total <span class="m">36</span>
@@ -539,10 +565,12 @@ drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Fe
 drwxr-xr-x <span class="m">4</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">12</span>:43 post
 -rw-r--r-- <span class="m">1</span> yash hogwarts <span class="m">1139</span> Feb <span class="m">11</span> <span class="m">12</span>:43 sitemap.xml
 drwxr-xr-x <span class="m">3</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">12</span>:43 tags</code></pre></div>
+
 <p>Notice that Hugo created a new directory <code>about</code>. This directory contains only one file <code>index.html</code>. The about page will be rendered from <code>about/index.html</code>.</p>
 
 <p>If you look carefully, the <code>about</code> page is listed with the posts on the homepage. It is not desirable, so let&rsquo;s change that first.</p>
-<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/index.html
+
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/index.html
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">body</span><span class="p"></span><span class="p">&gt;</span>
@@ -561,6 +589,7 @@ drwxr-xr-x <span class="m">3</span> yash hogwarts <span class="m">4096</span> Fe
   {{ end }}
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+
 <p>Now build the site and verify the results. The homepage now has two sections, one for posts and other for the pages. Click on the <em>about</em> page. You will see the page for <em>about</em>. Remember, I mentioned that Hugo would use the <em>single</em> template for each page, for which it cannot find a template file. There is still one issue. The <em>about</em> page shows the date also. We do not want to show the date on the <em>about</em> page.</p>
 
 <p>There are a couple of ways to fix this. We can add an if-else statement to detect the type of the content and display date only if it is a post. However, let&rsquo;s use the feature provided by Hugo and create a new template type for the posts. Before we do that, let&rsquo;s learn to use one more template type which is <em>partials</em>.</p>
@@ -571,8 +600,8 @@ drwxr-xr-x <span class="m">3</span> yash hogwarts <span class="m">4096</span> Fe
 
 <h5 id="header-and-footer-partials">Header and Footer partials</h5>
 
-<p>Header and footer of most of the posts and pages will follow a similar pattern. So they form an excellent example to be defined as a partial.</p>
-<div class="highlight"><pre class="chroma"><code class="language-HTML" data-lang="HTML">$ vim themes/zeo/layouts/partials/header.html
+<p>Header and footer of most of the posts and pages will follow a similar pattern. So they form an excellent example to be defined as a partial.
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/partials/header.html
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p"></span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">head</span><span class="p"></span><span class="p">&gt;</span>
@@ -582,12 +611,14 @@ drwxr-xr-x <span class="m">3</span> yash hogwarts <span class="m">4096</span> Fe
 
 $ vim themes/zeo/layouts/partials/footer.html
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
-<p>We can call a partial by including this path in the template</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="p">{{</span> <span class="nx">partial</span> <span class="s">&#34;header.html&#34;</span> <span class="p">.</span> <span class="p">}}</span></code></pre></div>
+<span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div></p>
+
+<p>We can call a partial by including this path in the template
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="p">{{</span> <span class="nx">partial</span> <span class="s">&#34;header.html&#34;</span> <span class="p">.</span> <span class="p">}}</span></code></pre></div></p>
+
 <h5 id="update-the-homepage-template">Update the Homepage template</h5>
 
-<p>Let&rsquo;s update our homepage template to use these partials.</p>
+<p>Let&rsquo;s update our homepage template to use these partials.
 <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/index.html
 {{ partial &#34;header.html&#34; . }}
 
@@ -605,8 +636,10 @@ $ vim themes/zeo/layouts/partials/footer.html
     {{ end }}
   {{ end }}
 
-{{ partial &#34;footer.html&#34; . }}</code></pre></div>
+{{ partial &#34;footer.html&#34; . }}</code></pre></div></p>
+
 <h5 id="update-the-single-template">Update the single template</h5>
+
 <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ vim themes/zeo/layouts/_default/single.html
 {{ partial &#34;header.html&#34; . }}
 
@@ -615,6 +648,7 @@ $ vim themes/zeo/layouts/partials/footer.html
   {{ .Content }}
 
 {{ partial &#34;footer.html&#34; . }}</code></pre></div>
+
 <p>Build the website and verify the results. The title on the posts and the about page should both reflect the value from the markdown file.</p>
 
 <h4 id="fixing-the-date-shown-on-about-page">Fixing the date shown on About page</h4>
@@ -622,6 +656,7 @@ $ vim themes/zeo/layouts/partials/footer.html
 <p>Remember, we had the issue that the date was showing on the <em>about</em> page also. We discussed one method to solve this issue. Now I will discuss a more <em>hugoic</em> way of solving this issue.</p>
 
 <p>We will create a new section template to fix this issue.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html">$ mkdir themes/zeo/layouts/post
 $ vim themes/zeo/layouts/post/single.html
 {{ partial &#34;header.html&#34; . }}
@@ -644,6 +679,7 @@ $ vim themes/zeo/layouts/_default/single.html
   {{ .Content }}
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="p">/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+
 <p>Note that we have changed the default <em>single</em> template and added that logic in post&rsquo;s <em>single</em> template.</p>
 
 <p>Build the website and verify the results. The <em>about</em> page does not show the date now, but the posts page still show the date. We can also move the list template&rsquo;s logic to the <code>index.html</code> file of post section template.</p>

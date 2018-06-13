@@ -21,7 +21,7 @@
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -128,26 +128,28 @@ interact with the underlying operating system.</p>
 
 <p>I will explain all the critical parts of a Drozer module with the help of a sample module. I will be implementing a module to record and save the sound from the inbuilt mic of an Android device.</p>
 
-<p>I initialized a new module repository using Drozer console using the following command.</p>
+<p>I initialized a new module repository using Drozer console using the following command.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dz&gt; module repository create custom
-Initialised repository at custom.</code></pre></div>
+Initialised repository at custom.</code></pre></div></p>
+
 <p>You will see a new directory <code>custom</code> in your current directory after executing above command. Navigate to this directory and create a new folder with any name. I prefer to name this folder same as my module name. In this folder, create a file <code>__init__.py</code>. Drozer identifies the folder as a module directory if <code>__init__.py</code> is present in the directory. Now you can implement your module in this directory.</p>
 
 <p>To begin implementing our module, create a new file <code>record.py</code> in the module directory. Drozer has many different utility classes, which we can use to simplify our implementation. To use these utility classes (<a href="https://github.com/mwrlabs/drozer/wiki/Using-mixins" target="_blank">mixins</a>), our module class must extend <em>mixins</em> using Python&rsquo;s multiple inheritance feature.</p>
 
-<p>We first need to import all the required mixins. The mixins are stored in <code>modules.common</code> package in the Drozer source tree. After importing mixins and extending our class, the code will look like this. You can also import any other standard Python module here.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="kn">from</span> <span class="nn">drozer.modules</span> <span class="kn">import</span> <span class="n">common</span><span class="p">,</span> <span class="n">Module</span>
+<p>We first need to import all the required mixins. The mixins are stored in <code>modules.common</code> package in the Drozer source tree. After importing mixins and extending our class, the code will look like this. You can also import any other standard Python module here.
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">drozer.modules</span> <span class="kn">import</span> <span class="n">common</span><span class="p">,</span> <span class="n">Module</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">time</span>
 
-<span class="k">class</span> <span class="nc">Record</span><span class="p">(</span><span class="n">Module</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">Shell</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">FileSystem</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">ClassLoader</span><span class="p">):</span></code></pre></div>
+<span class="k">class</span> <span class="nc">Record</span><span class="p">(</span><span class="n">Module</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">Shell</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">FileSystem</span><span class="p">,</span> <span class="n">common</span><span class="o">.</span><span class="n">ClassLoader</span><span class="p">):</span></code></pre></div></p>
+
 <p>Now we will set up the metadata for our module. This information will help Drozer to organize and list our module correctly. We can define name, description, author, date, license, path, permissions, and examples. Most of the available options are self-explanatory. But <em>path</em> and <em>permissions</em> require some explanation.</p>
 
 <p>The <em>path</em> variable defined here is an array which contains the values for the namespace of the module. Drozer supports separate namespaces for each module. We can combine similar modules in the same namespace using this feature.</p>
 
 <p>The <em>permissions</em> array variable contains all the permissions that this module will require for proper functioning. For example, our module will need permission to record audio on the device to work correctly. So we define this permission in the permissions array. The agent app on the device is required to  have this permission. Otherwise, our module will throw an error.</p>
 
-<p>The following snippet shows the metadata section of our module.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="n">name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;Record sound from the inbuilt mic of an Android device.&#34;</span>
+<p>The following snippet shows the metadata section of our module.
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">name</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;Record sound from the inbuilt mic of an Android device.&#34;</span>
 <span class="n">description</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;Record sound from the inbuilt mic of an Android device. The default save format is 3GPP. Relies on the agent having the RECORD_AUDIO permission.&#34;</span>
 <span class="n">examples</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;&#34;&#34;
 </span><span class="s2">dz&gt; run custom.record.record
@@ -162,13 +164,14 @@ Initialised repository at custom.</code></pre></div>
 <span class="n">date</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;2018-04-14&#34;</span>
 <span class="n">license</span> <span class="o">=</span> <span class="sa"></span><span class="s2">&#34;BSD (3 clause)&#34;</span>
 <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s2">&#34;custom&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;record&#34;</span><span class="p">]</span>
-<span class="n">permissions</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s2">&#34;android.permission.RECORD_AUDIO&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;com.mwr.dz.permissions.GET_CONTEXT&#34;</span><span class="p">]</span></code></pre></div>
+<span class="n">permissions</span> <span class="o">=</span> <span class="p">[</span><span class="sa"></span><span class="s2">&#34;android.permission.RECORD_AUDIO&#34;</span><span class="p">,</span> <span class="sa"></span><span class="s2">&#34;com.mwr.dz.permissions.GET_CONTEXT&#34;</span><span class="p">]</span></code></pre></div></p>
+
 <p>Now we can start implementing the heart of our module, the <code>execute()</code> function. This function will be invoked by Drozer when the module is run. Every action that the module is expected to perform should be implemented in this method.</p>
 
 <p>The implementation of <code>execute()</code> method is slightly tricky and requires an understanding of different classes and methods provided by the Android API. As we are writing a module to record sound, we will look into the documentation of <a href="https://developer.android.com/guide/topics/media/mediarecorder.html" target="_blank">MediaRecorder</a> class. Before reading further, go through the documentation about the use of reflection API in Drozer <a href="https://github.com/mwrlabs/drozer/wiki/Using-Reflection" target="_blank">here</a>.</p>
 
-<p>The <code>execute()</code> function is given below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Python" data-lang="Python"><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arguments</span><span class="p">):</span>
+<p>The <code>execute()</code> function is given below.
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arguments</span><span class="p">):</span>
     <span class="c1"># unique file names</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()))</span> <span class="o">+</span> <span class="sa"></span><span class="s2">&#34;.3gp&#34;</span>
 
@@ -202,7 +205,8 @@ Initialised repository at custom.</code></pre></div>
         <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Recording saved</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Recording could not be fetched from the device.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span></code></pre></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa"></span><span class="s2">&#34;Recording could not be fetched from the device.</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span></code></pre></div></p>
+
 <p>I followed the sample use case given on <a href="https://developer.android.com/reference/android/media/MediaRecorder.html" target="_blank">this</a> page, to instantiate and use the <em>MediaRecorder</em> object.</p>
 
 <p>After the recording is finished, we want to save this recorded media file to our computer. Drozer provides a method, <a href="https://github.com/mwrlabs/drozer/blob/c92d74024c653b6dc7de3378a24e51d276ae2c62/src/drozer/modules/common/file_system.py" target="_blank">downloadFile</a> exactly for this purpose. This method returns the length of the data downloaded on success and <code>None</code> otherwise. We can use this information to test the success or failure of the fetching of the recording.</p>

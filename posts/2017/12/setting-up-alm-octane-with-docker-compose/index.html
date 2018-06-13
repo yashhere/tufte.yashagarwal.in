@@ -23,7 +23,7 @@
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -142,7 +142,7 @@ ga('send', 'pageview');
 
 <h2 id="the-solution">The Solution</h2>
 
-<p>Here is my config file for easy reference.</p>
+<p>Here is my config file for easy reference.
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">version<span class="p">:</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="w">
 </span><span class="w"></span>services<span class="p">:</span><span class="w">
 </span><span class="w">  </span>octane_oracle<span class="p">:</span><span class="w">
@@ -167,14 +167,17 @@ ga('send', 'pageview');
 </span><span class="w">      </span>-<span class="w"> </span>octane_es<span class="w">
 </span><span class="w">    </span>mem_limit<span class="p">:</span><span class="w"> </span>4g<span class="w">
 </span><span class="w">    </span>env_file<span class="p">:</span><span class="w">
-</span><span class="w">      </span>-<span class="w"> </span>./octane.env</code></pre></div>
+</span><span class="w">      </span>-<span class="w"> </span>./octane.env</code></pre></div></p>
+
 <p>The configuration options in the code are for a system with RAM of 8GB. The options must be tuned for best performance before deploying on the production server.</p>
 
 <p>In the code, I have exposed port 8080 of the Octane Docker container to the port 8080 of the host machine. It will make sure that we can access the Octane application on localhost:8080. The <code>octane.env</code> file contains three variables for easy site management.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">SERVER_DOMAIN=<span class="s2">&#34;your domain name&#34;</span><span class="w">
 </span><span class="w"></span>ADMIN_PASSWORD=<span class="s2">&#34;your password&#34;</span><span class="w">
 </span><span class="w"></span><span class="c">#This disables the minimum memory check to enable to run on smaller machines.</span><span class="w">
 </span><span class="w"></span>DISABLE_VALIDATOR_MEMORY=<span class="kc">true</span></code></pre></div>
+
 <p>Now if you try to run the container with <code>docker-compose up</code>, you will encounter various validation errors. It is because, before starting the server, you need to adjust some settings. If you noticed in the config file, there is a section to define volumes. These volumes are persistent volumes and are used to keep changes saved between two docker-compose runs. I have mapped three volumes from Docker container to the host machine. So you can now edit the files in <code>/opt/octane/</code> folder on the host machine, and changes will reflect in the Docker container. The file where you will have to make changes is <code>/opt/octane/conf/setup.xml</code>.</p>
 
 <p>You can read the documentation of ALM Octane to find out which settings to be changed. Once you do the necessary changes, fire up the command <code>docker-compose up</code> and wait for some time. Docker Compose will finish processing, and the server can be accessed on <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> on the host machine. While deploying it on the production server, make sure that your network administrator has opened the port 8080 for your server. Otherwise, the site will not be accessible. Also the docker-compose can be run in background by issuing command <code>docker-compose up -d</code>.</p>

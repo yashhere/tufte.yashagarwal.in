@@ -21,7 +21,7 @@ This guide is written primarily for my reference, as someone who has installed A
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -122,23 +122,27 @@ ga('send', 'pageview');
 
 <h3 id="0-check-your-network-connection">0. Check your network connection</h3>
 
-<p>If you are behind a captive portal, use <code>links</code> to open browser and login into your network. For WiFi connections, use <code>wifi-menu</code>. LAN connections should not require any setup. The boot environment should automatically detect any wired connections. After connecting, test your connection by pinging any website:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ping -c <span class="m">5</span> google.com</code></pre></div>
+<p>If you are behind a captive portal, use <code>links</code> to open browser and login into your network. For WiFi connections, use <code>wifi-menu</code>. LAN connections should not require any setup. The boot environment should automatically detect any wired connections. After connecting, test your connection by pinging any website:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ping -c <span class="m">5</span> google.com</code></pre></div></p>
+
 <h3 id="1-setup-ssh">1. Setup SSH</h3>
 
 <p>This step is not mandatory, though I prefer to use this method to install Arch Linux, as it provides me the convenience of copying and pasting the commands directly from Arch wiki.</p>
 
-<p>By default the Arch Linux <code>root</code> account password is empty. We need to set up a password for <code>root</code> account, which is needed for an SSH connection.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div>
-<p>Now we need to change the setting to permit <code>root</code> login via SSH in <code>/etc/ssh/sshd_config</code>. Check that <code>PermitRootLogin yes</code> is uncommented in this file. If this line is not present there, add this to the end. Now start the <code>sshd.service</code> by issuing the command</p>
+<p>By default the Arch Linux <code>root</code> account password is empty. We need to set up a password for <code>root</code> account, which is needed for an SSH connection.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div></p>
+
+<p>Now we need to change the setting to permit <code>root</code> login via SSH in <code>/etc/ssh/sshd_config</code>. Check that <code>PermitRootLogin yes</code> is uncommented in this file. If this line is not present there, add this to the end. Now start the <code>sshd.service</code> by issuing the command
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start sshd.service</code></pre></div>
-<p>Also, note the IP address of the target machine by inspecting the output of the following command.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip addr</code></pre></div>
-<p><strong>Pro tip:</strong> One liner to get only the IP address</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip -o -4 addr show <span class="p">|</span> awk -F <span class="s1">&#39;[ /]+&#39;</span> <span class="s1">&#39;/global/ {print $4}&#39;</span></code></pre></div>
-<p>Now on your host machine, connect to the target machine via SSH using the following command</p>
+Also, note the IP address of the target machine by inspecting the output of the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip addr</code></pre></div></p>
+
+<p><strong>Pro tip:</strong> One liner to get only the IP address
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip -o -4 addr show <span class="p">|</span> awk -F <span class="s1">&#39;[ /]+&#39;</span> <span class="s1">&#39;/global/ {print $4}&#39;</span></code></pre></div></p>
+
+<p>Now on your host machine, connect to the target machine via SSH using the following command
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh root@ip-address-of-target</code></pre></div>
-<p><a name="ret1"></a></p>
+<a name="ret1"></a></p>
 
 <h3 id="2-partition-the-disks">2. Partition the disks</h3>
 
@@ -148,32 +152,35 @@ ga('send', 'pageview');
 
 <p>For this guide, I am assuming that the <code>EFI</code> partition is <code>sda1</code>, root partition is <code>sda9</code> and home partition is <code>sda10</code>.</p>
 
-<p>Now to format the partitions with <code>ext4</code> file-system:</p>
+<p>Now to format the partitions with <code>ext4</code> file-system:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/sda9
 mkfs.ext4 /dev/sda10</code></pre></div>
-<p><a name="step3"></a></p>
+<a name="step3"></a></p>
 
 <h3 id="3-mount-the-partitions">3. Mount the partitions</h3>
 
-<p>Now mount the root partition (<code>sda9</code> in this case) to <code>/mnt</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mount /dev/sda9 /mnt</code></pre></div>
-<p>If you have created any other partitions in previous steps, mount them at appropriate locations.</p>
+<p>Now mount the root partition (<code>sda9</code> in this case) to <code>/mnt</code>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mount /dev/sda9 /mnt</code></pre></div></p>
+
+<p>If you have created any other partitions in previous steps, mount them at appropriate locations.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir /mnt/home
 mount /dev/sda10 /mnt/home
 
 mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot</code></pre></div>
+mount /dev/sda1 /mnt/boot</code></pre></div></p>
+
 <h3 id="4-install-the-base-file-system">4. Install the base file-system</h3>
 
-<p>To install the base system and some development tools, issue the following command.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacstrap /mnt base base-devel</code></pre></div>
+<p>To install the base system and some development tools, issue the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacstrap /mnt base base-devel</code></pre></div></p>
+
 <p>This will take a while to download and install. After it finishes, it will give you a bare-bone Arch Linux system with just the tools required to run a Linux distribution, no other software is installed.</p>
 
 <h3 id="5-generate-etc-fstab">5. Generate <code>/etc/fstab</code></h3>
 
-<p>The <code>/etc/fstab</code> file stores the information about file systems of partitions and how to mount the partitions on system boot up. To generate this file, issue the following command:</p>
+<p>The <code>/etc/fstab</code> file stores the information about file systems of partitions and how to mount the partitions on system boot up. To generate this file, issue the following command:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></pre></div>
-<p>If you prefer to use partition labels(<code>sda1</code>, <code>sda9</code> etc.) instead of UUID, then use <code>-L</code> flag in place of <code>-U</code>.</p>
+If you prefer to use partition labels(<code>sda1</code>, <code>sda9</code> etc.) instead of UUID, then use <code>-L</code> flag in place of <code>-U</code>.</p>
 
 <h3 id="6-chroot-into-the-system">6. <code>chroot</code> into the system</h3>
 
@@ -183,62 +190,74 @@ mount /dev/sda1 /mnt/boot</code></pre></div>
 <p>Chroot is an operation that changes the apparent root directory for the current running process and their children. A program that is run in such a modified environment cannot access files and commands outside that environmental directory tree. This modified environment is called a chroot jail.</p>
 </blockquote>
 
-<p>At this step, we will go to the root of the newly installed system at <code>/mnt</code> and pretend as if we are logged into this system.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">arch-chroot /mnt</code></pre></div>
+<p>At this step, we will go to the root of the newly installed system at <code>/mnt</code> and pretend as if we are logged into this system.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">arch-chroot /mnt</code></pre></div></p>
+
 <h3 id="7-setup-the-time-zone-locale-and-hostname">7. Setup the time zone, locale, and hostname</h3>
 
-<p>Browse the <code>/use/share/zoneinfo</code> directory to find your location entries. My location is India, so I will use this command.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime</code></pre></div>
-<p>To set the hardware clock:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hwclock --systohc</code></pre></div>
-<p>To set the locale for your system, open the <code>/etc/locale.gen</code> file and uncomment your language. or run the following command for the default <code>en_US.UTF-8 UTF-8</code>.</p>
+<p>Browse the <code>/use/share/zoneinfo</code> directory to find your location entries. My location is India, so I will use this command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime</code></pre></div></p>
+
+<p>To set the hardware clock:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hwclock --systohc</code></pre></div></p>
+
+<p>To set the locale for your system, open the <code>/etc/locale.gen</code> file and uncomment your language. or run the following command for the default <code>en_US.UTF-8 UTF-8</code>.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LANG</span><span class="o">=</span>C perl -i -pe <span class="s1">&#39;s/#(en_US.UTF)/$1/&#39;</span> /etc/locale.gen</code></pre></div>
-<p>Now generate the localization with</p>
+Now generate the localization with
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">locale-gen</code></pre></div>
-<p>Then set the <code>LANG</code> variable in <code>/etc/locale.conf</code> accordingly, or run the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">localectl set-locale <span class="nv">LANG</span><span class="o">=</span><span class="s2">&#34;en_US.UTF-8&#34;</span></code></pre></div>
-<p>To set the hostname for your machine:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hostnamectl set-hostname your-host-name</code></pre></div>
-<p>To allow other machines to address the host by name, it is necessary to edit the <code>/etc/hosts</code> file to look like this:</p>
+Then set the <code>LANG</code> variable in <code>/etc/locale.conf</code> accordingly, or run the following command:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">localectl set-locale <span class="nv">LANG</span><span class="o">=</span><span class="s2">&#34;en_US.UTF-8&#34;</span></code></pre></div></p>
+
+<p>To set the hostname for your machine:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hostnamectl set-hostname your-host-name</code></pre></div></p>
+
+<p>To allow other machines to address the host by name, it is necessary to edit the <code>/etc/hosts</code> file to look like this:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="m">127</span>.0.0.1    localhost.localdomain          localhost
 ::1          localhost.localdomain          localhost
-<span class="m">127</span>.0.1.1    your-host-name.localdomain     your-host-name</code></pre></div>
+<span class="m">127</span>.0.1.1    your-host-name.localdomain     your-host-name</code></pre></div></p>
+
 <h3 id="8-create-user-account">8. Create user account</h3>
 
-<p>Before creating user account, set password for <code>root</code> account</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div>
-<p>Now create a local account for your user</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">useradd -m -G wheel -s /bin/bash your-user-name</code></pre></div>
-<p>This will set up your user account, create a home directory for your user, set the default shell to <code>bash</code> and add your user to <code>wheel</code> group, which is necessary to gain <code>sudo</code> access in later steps.</p>
+<p>Before creating user account, set password for <code>root</code> account
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div></p>
 
-<p>Set password for your user.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd your-user-name</code></pre></div>
+<p>Now create a local account for your user
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">useradd -m -G wheel -s /bin/bash your-user-name</code></pre></div>
+This will set up your user account, create a home directory for your user, set the default shell to <code>bash</code> and add your user to <code>wheel</code> group, which is necessary to gain <code>sudo</code> access in later steps.</p>
+
+<p>Set password for your user.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd your-user-name</code></pre></div></p>
+
 <h3 id="9-enable-sudo-access">9. Enable <code>sudo</code> access</h3>
 
-<p>This allows you to use root privileges without using the root account. To enable this, first open <code>/etc/sudoers</code> file</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">nano /etc/sudoers</code></pre></div>
-<p>Now uncomment the following line to enable <code>root</code> privilege for all the users inside <code>wheel</code> group:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"># %wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL</code></pre></div>
-<p>Now you can safely disable root account</p>
+<p>This allows you to use root privileges without using the root account. To enable this, first open <code>/etc/sudoers</code> file
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">nano /etc/sudoers</code></pre></div></p>
+
+<p>Now uncomment the following line to enable <code>root</code> privilege for all the users inside <code>wheel</code> group:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"># %wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL</code></pre></div></p>
+
+<p>Now you can safely disable root account
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd -l root
 
 <span class="c1"># login into your user account
 </span><span class="c1"></span>su your-user-name</code></pre></div>
-<p>From this point onwards, it is necessary to append <code>sudo</code> to any command that requires <code>root</code> privileges.</p>
+From this point onwards, it is necessary to append <code>sudo</code> to any command that requires <code>root</code> privileges.</p>
 
 <h3 id="10-install-bootloader">10. Install bootloader</h3>
 
-<p>My preferred bootloader of choice is <code>grub</code>. To install <code>grub</code>, we need to install following packages.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S grub efibootmgr</code></pre></div>
-<p>Now install <code>grub</code> with the following command.</p>
+<p>My preferred bootloader of choice is <code>grub</code>. To install <code>grub</code>, we need to install following packages.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S grub efibootmgr</code></pre></div></p>
+
+<p>Now install <code>grub</code> with the following command.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-install --target<span class="o">=</span>x86_64-efi --efi-directory<span class="o">=</span>/boot --bootloader-id<span class="o">=</span>arch</code></pre></div>
-<p>Here <code>--efi-directory</code> is the folder where the <code>EFI</code> partition is mounted <a href="#step3">step 3</a> and <code>--bootloader-id</code> is the label that will appear in your UEFI boot menu entry.</p>
+Here <code>--efi-directory</code> is the folder where the <code>EFI</code> partition is mounted <a href="#step3">step 3</a> and <code>--bootloader-id</code> is the label that will appear in your UEFI boot menu entry.</p>
 
 <p>This particular step is specific to my machine&rsquo;s hardware, you might not need to run this step. I need to add <code>pci=nommconf</code> to my kernel boot parameters in <code>/etc/default/grub</code>, otherwise <code>tty</code> prints error messages continuously.</p>
 
-<p>Now run to generate grub configuration file.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></div>
-<p>If you encounter any errors related to <code>lvm</code> during installation of grub, then follow these steps.</p>
+<p>Now run to generate grub configuration file.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></div></p>
+
+<p>If you encounter any errors related to <code>lvm</code> during installation of grub, then follow these steps.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># come out of chroot
 </span><span class="c1"></span><span class="nb">exit</span>
 mkdir /mnt/hostrun
@@ -247,24 +266,28 @@ mount --bind /run /mnt/hostrun
 <span class="c1"># back to chroot
 </span><span class="c1"></span>arch-chroot /mnt
 mkdir /run/lvm
-mount --bind /hostrun/lvm /run/lvm</code></pre></div>
+mount --bind /hostrun/lvm /run/lvm</code></pre></div></p>
+
 <p>Now you can install <code>grub</code> without any errors.</p>
 
 <h3 id="11-configure-the-network">11. Configure the network</h3>
 
-<p>By default, your current system cannot connect to the network in the current state. I prefer to use <a href="https://wiki.archlinux.org/index.php/NetworkManager" target="_blank"><code>NetworkManager</code></a> for my network management, even when I am not using GNOME. For wireless networking, install the following additional packages.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S iw wpa_supplicant dialog networkmanager network-manager-applet dhclient</code></pre></div>
+<p>By default, your current system cannot connect to the network in the current state. I prefer to use <a href="https://wiki.archlinux.org/index.php/NetworkManager" target="_blank"><code>NetworkManager</code></a> for my network management, even when I am not using GNOME. For wireless networking, install the following additional packages.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S iw wpa_supplicant dialog networkmanager network-manager-applet dhclient</code></pre></div></p>
+
 <p><code>NetworkManager</code> supports basic DHCP configuration. For full support, I have installed <code>dhclient</code>. <code>NetworkManager</code> also supports automatic wired connection detection and comes with curses based tool <code>nmtui</code> to setup wireless connection.</p>
 
-<p>To enable NetworkManager to start at system startup</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> NetworkManager.service</code></pre></div>
+<p>To enable NetworkManager to start at system startup
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> NetworkManager.service</code></pre></div></p>
+
 <h3 id="12-reboot-now">12. Reboot now</h3>
 
-<p>If you had performed the <code>lvm</code> troubleshooting steps during <code>grub</code> install, then</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">umount /run/lvm</code></pre></div>
-<p>Now exit from <code>chroot</code> by typing <code>exit</code> in the shell. Unmount all the mounted partitions with:</p>
+<p>If you had performed the <code>lvm</code> troubleshooting steps during <code>grub</code> install, then
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">umount /run/lvm</code></pre></div></p>
+
+<p>Now exit from <code>chroot</code> by typing <code>exit</code> in the shell. Unmount all the mounted partitions with:
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">umount -R /mnt</code></pre></div>
-<p>Finally, reboot your machine by typing <code>reboot</code> and remove the installation USB drive. If you are not able to boot into your system at this point, boot from the installation media again and attempt to fix the installation.</p>
+Finally, reboot your machine by typing <code>reboot</code> and remove the installation USB drive. If you are not able to boot into your system at this point, boot from the installation media again and attempt to fix the installation.</p>
 
 <p>If you can see a terminal with a prompt for your username, congratulations! You have completed the first step towards building your own system.</p>
 

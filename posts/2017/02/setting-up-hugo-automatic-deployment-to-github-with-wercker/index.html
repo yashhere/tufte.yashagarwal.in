@@ -19,7 +19,7 @@
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -126,25 +126,21 @@ ga('send', 'pageview');
 
 <p>My site is a User site, so I wanted all the static files to be saved in the master branch. As Hugo generates all the static files under <code>public</code> directory, I needed another branch to store my source files. So my made a new branch <code>source</code> which will save all the source files for my blog. Don&rsquo;t forget to remove the .git folder from the theme folder. Otherwise, the build will fail at later stage. You can try using git submodule feature to avoid this issue. I created a repository <code>yash2696.github.io</code> in Github also.</p>
 
-<pre>
-git init                     #initialized git repository in site root
-git checkout -b source         #created new branch source
-git remote add origin https<nolink>://github.com/yash2696/yash2696.github.io
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git init                       <span class="c1">#initialized git repository in site root
+</span><span class="c1"></span>git checkout -b <span class="nb">source</span>         <span class="c1">#created new branch source
+</span><span class="c1"></span>git remote add origin https://github.com/yash2696/yash2696.github.io
 git add .
-git commit -m &#34;Initial Commit&#34;
-git push origin source
-</pre>
+git commit -m <span class="s2">&#34;Initial Commit&#34;</span>
+git push origin source</code></pre></div>
 
 <p>Then I initialized my master branch as a orphan branch.
-<pre>
-git checkout --orphan master
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git checkout --orphan master
 git rm -rf .
-rm &#39;.gitignore&#39;
-echo &#34;#Your repository name&#34; &gt; README.md
+rm -f <span class="s1">&#39;.gitignore&#39;</span>
+<span class="nb">echo</span> <span class="s2">&#34;#Your repository name&#34;</span> &gt; README.md
 git add README.md
-git commit -a -m &#34;Initial Commit&#34;
-git push origin master
-</pre></p>
+git commit -a -m <span class="s2">&#34;Initial Commit&#34;</span>
+git push origin master</code></pre></div></p>
 
 <h3 id="automatic-deployment-using-wrecker">Automatic deployment using Wrecker</h3>
 
@@ -160,17 +156,15 @@ git push origin master
 <h4 id="build">Build</h4>
 
 <p>Following the official guide, I used this <a href="https://github.com/ArjenSchwarz/wercker-step-hugo-build" target="_blank">step</a> to trigger Hugo to build HTML pages. I had already removed git repository information from the theme folder, so this step finished successfully. If you haven&rsquo;t, you may add the following piece of code in your build step.
-<pre>
-- script:
-        name: install git
-        code: |
-            apt-get update
-            apt-get install git -y
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">- script:
+    name: install git
+    code: <span class="p">|</span>
+        apt-get update
+        apt-get install git -y
     - script:
         name: initialize git submodules
-        code: |
-            git submodule update &ndash;init &ndash;recursive
-</pre></p>
+        code: <span class="p">|</span>
+            git submodule update --init --recursive</code></pre></div></p>
 
 <h4 id="deploy">Deploy</h4>
 

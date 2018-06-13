@@ -21,7 +21,7 @@ SSH Generating an SSH key pair provides you with a public key and a private key.
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -120,41 +120,45 @@ ga('send', 'pageview');
 
 <p>Generating an SSH key pair provides you with a public key and a private key. The private key should never be given to anyone and public key, well the name itself is self-explanatory.</p>
 
-<p>To create a new key pair, open a terminal and paste the text below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;your_email_address&#34;</span></code></pre></div>
+<p>To create a new key pair, open a terminal and paste the text below.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;your_email_address&#34;</span></code></pre></div></p>
+
 <p>This command will create a new ssh key pair with the given email address as the label. Press Enter for any question asked. When it asks for the passphrase, type a strong passphrase, otherwise leave it blank to have no password.</p>
 
 <h2 id="gpg">GPG</h2>
 
 <p>You might need to download the GPG command line tools before following the below steps. Follow your distribution&rsquo;s documentation for more help.</p>
 
-<p>Once you have downloaded the tools, open a terminal and type the following command.</p>
+<p>Once you have downloaded the tools, open a terminal and type the following command.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gpg --gen-key</code></pre></div>
-<p>You will see something like this. Enter 1 to select default key choice.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gpg <span class="o">(</span>GnuPG<span class="o">)</span> <span class="m">1</span>.4.20<span class="p">;</span> Copyright <span class="o">(</span>C<span class="o">)</span> <span class="m">2015</span> Free Software Foundation, Inc.
+You will see something like this. Enter 1 to select default key choice.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
-gpg: directory <span class="sb">`</span>/home/yash/.gnupg<span class="s1">&#39; created
-</span><span class="s1">gpg: new configuration file `/home/yash/.gnupg/gpg.conf&#39;</span> created
-gpg: WARNING: options in <span class="sb">`</span>/home/yash/.gnupg/gpg.conf<span class="s1">&#39; are not yet active during this run
-</span><span class="s1">gpg: keyring `/home/yash/.gnupg/secring.gpg&#39;</span> created
-gpg: keyring <span class="sb">`</span>/home/yash/.gnupg/pubring.gpg<span class="err">&#39;</span> created
-Please <span class="k">select</span> what kind of key you want:
-   <span class="o">(</span><span class="m">1</span><span class="o">)</span> RSA and RSA <span class="o">(</span>default<span class="o">)</span>
-   <span class="o">(</span><span class="m">2</span><span class="o">)</span> DSA and Elgamal
-   <span class="o">(</span><span class="m">3</span><span class="o">)</span> DSA <span class="o">(</span>sign only<span class="o">)</span>
-   <span class="o">(</span><span class="m">4</span><span class="o">)</span> RSA <span class="o">(</span>sign only<span class="o">)</span>
+gpg: directory `/home/yash/.gnupg&#39; created
+gpg: new configuration file `/home/yash/.gnupg/gpg.conf&#39; created
+gpg: WARNING: options in `/home/yash/.gnupg/gpg.conf&#39; are not yet active during this run
+gpg: keyring `/home/yash/.gnupg/secring.gpg&#39; created
+gpg: keyring `/home/yash/.gnupg/pubring.gpg&#39; created
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
 Your selection?</code></pre></div>
+
 <p>At the next prompt, enter the key size. It is recommanded to use the maximum key size of 4096 bits.</p>
 
 <p>Enter the time duration for which the key should remain valid. Press Enter to specify the default selection, indicating that the key does not expire.</p>
 
-<p>After verifying the information, enter your user information and a strong passphrase. Afterwards, GPG will start generating your key. You will see:</p>
-<div class="highlight"><pre class="chroma"> We need to generate a lot of random bytes. It is a good idea to
+<p>After verifying the information, enter your user information and a strong passphrase. Afterwards, GPG will start generating your key. You will see:
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> We need to generate a lot of random bytes. It is a good idea to
  perform some other action (type on the keyboard, move the mouse,
  utilize the disks) during the prime generation; this gives the
- random number generator a better chance to gain enough entropy.</pre></div>
+ random number generator a better chance to gain enough entropy.</code></pre></div></p>
+
 <p>You can now use the key (until it expires) to encrypt your data.</p>
 
 <h2 id="setting-up-ssh-agent">Setting up SSH Agent</h2>
@@ -163,12 +167,13 @@ Your selection?</code></pre></div>
 
 <p><strong>Update (26/05/2018):</strong> <em>As pointed out by <a href="https://sakshamsharma.com/" target="_blank">Saksham</a> in comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored.</em></p>
 
-<p>Open i3 configuration file and add an <code>exec_always</code> statement</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">exec_always ~/.config/i3/scripts/gnome-keyring.sh</code></pre></div>
-<p>Obviously, you will need to change the path according to your OS. Now make a new file in <code>~/.config/i3/scripts</code> with name <code>gnome-keyring.sh</code> and paste the below text in it.</p>
+<p>Open i3 configuration file and add an <code>exec_always</code> statement
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">exec_always ~/.config/i3/scripts/gnome-keyring.sh</code></pre></div></p>
+
+<p>Obviously, you will need to change the path according to your OS. Now make a new file in <code>~/.config/i3/scripts</code> with name <code>gnome-keyring.sh</code> and paste the below text in it.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>/usr/bin/gnome-keyring-daemon --start --components<span class="o">=</span>gpg,pkcs11,secrets,ssh<span class="k">)</span>
 <span class="nb">export</span> GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK</code></pre></div>
-<p>(Assuming that you already have installed gnome-keyring)</p>
+(Assuming that you already have installed gnome-keyring)</p>
 
 <p>Now, reload the i3.</p>
 
@@ -176,17 +181,17 @@ Your selection?</code></pre></div>
 
 <p><strong>Update (26/05/2018):</strong> <em>This step is also optional. Thanks to <a href="https://sakshamsharma.com/" target="_blank">Saksham</a> for pointing it out.</em></p>
 
-<p>Open <code>~/.ssh/config</code> file and add following content to it.</p>
+<p>Open <code>~/.ssh/config</code> file and add following content to it.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Host *
   AddKeysToAgent yes
   IdentityFile /home/&lt;your username&gt;/.ssh/id_rsa</code></pre></div>
-<p>Replace &lt;your username&gt; accordingly.</p>
+Replace &lt;your username&gt; accordingly.</p>
 
 <h3 id="setting-up-bashrc">Setting up .bashrc</h3>
 
 <p>I am not using a login shell, and I could not find any suitable method to source <code>~/.profile</code> or <code>~/.bash_profile</code> on login in i3. So I added my configuration to <code>~/.bashrc</code> file. I know, it is a hack, but it works well for me without much headache.</p>
 
-<p>Open <code>~/.bashrc</code> file and add following lines to the end of the file.</p>
+<p>Open <code>~/.bashrc</code> file and add following lines to the end of the file.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> -f ~/.ssh/agent.env <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
     . ~/.ssh/agent.env &gt; /dev/null
     <span class="k">if</span> ! <span class="nb">kill</span> -0 <span class="nv">$SSH_AGENT_PID</span> &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span> <span class="k">then</span>
@@ -198,7 +203,8 @@ Your selection?</code></pre></div>
     <span class="nb">echo</span> <span class="s2">&#34;Starting ssh-agent&#34;</span>
     <span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span> tee ~/.ssh/agent.env<span class="sb">`</span>
     ssh-add
-<span class="k">fi</span></code></pre></div>
+<span class="k">fi</span></code></pre></div></p>
+
 <p>It will automatically start an ssh-agent if it is not already running. Otherwise, it uses the previously running agent.</p>
 
 <p>Now log out and log in again to see, if ssh-agent works. Open a terminal and run the command <code>ssh-add -l</code>. It will show you the hash value of your ssh-key which is loaded by the ssh-agent.</p>

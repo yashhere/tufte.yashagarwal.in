@@ -21,7 +21,7 @@ If you are working on large projects, it is undoubtedly a good idea to have a bu
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -124,6 +124,7 @@ For JavaScript projects, <code>Grunt</code> serves the similar purpose. It is a 
 <p>Grunt has a module <a href="https://github.com/drewzboto/grunt-connect-proxy" target="_blank">grunt-connect-proxy</a> that exists to help to solve this issue. It delegates requests that match a given URL to the backend of your choice. So for example, you want to access your backend using the URL <a href="http://localhost:8080/api" target="_blank">http://localhost:8080/api</a>, you can write a proxy rule so that whenever your user tries to access this URL in a browser, the proxy will get the data from your backend and server it at this particular URL.</p>
 
 <p>The procedure to setup the proxy is simple. First, you will have to add the proxy configuration to your <code>Gruntfile.js</code>. In this example, I am assuming that the backend server is running on the port 8000 and the Grunt server is running on the port 8080. This configuration will delegate all requests to <a href="http://localhost:8080/api" target="_blank">http://localhost:8080/api</a> to <a href="http://localhost:8000/backend" target="_blank">http://localhost:8000/backend</a>.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">connect</span><span class="o">:</span> <span class="p">{</span>
   <span class="nx">server</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
@@ -149,13 +150,16 @@ For JavaScript projects, <code>Grunt</code> serves the similar purpose. It is a 
     <span class="p">]</span>
   <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
+
 <p>Now register your Grunt server task to run the proxy on Grunt execution.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;server&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
    <span class="nx">grunt</span><span class="p">.</span><span class="nx">task</span><span class="p">.</span><span class="nx">run</span><span class="p">([</span>
        <span class="s1">&#39;configureProxies:server&#39;</span><span class="p">,</span>
        <span class="s1">&#39;connect:server&#39;</span><span class="p">,</span>
    <span class="p">]);</span>
 <span class="p">});</span></code></pre></div>
+
 <p>Let me explain, the above two scripts line by line. In the connect section of your <code>Gruntfile</code>, we add a new section called <code>proxies</code>. The options defined in the proxies section are explained below.</p>
 
 <ul>
@@ -169,15 +173,18 @@ For JavaScript projects, <code>Grunt</code> serves the similar purpose. It is a 
 <p>More options can be found in the <a href="https://github.com/drewzboto/grunt-connect-proxy#grunt-connect-proxy" target="_blank">documentation</a> of <code>grunt-connect-proxy</code>.</p>
 
 <p>You will also need to setup the proxy&rsquo;s middleware in the <code>options</code> section of the <code>connect</code>. The relevant code is as follows.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">...</span>
 <span class="nx">middleware</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">connect</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">middlewares</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">middlewares</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;grunt-connect-proxy/lib/utils&#39;</span><span class="p">).</span><span class="nx">proxyRequest</span><span class="p">);</span>
   <span class="k">return</span> <span class="nx">middlewares</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="p">...</span></code></pre></div>
+
 <p>Finally, include your proxy task in the server task. It is necessary to append the proxy task before the connect task. Also, make sure to specify the connect target in the <code>configureProxies</code> section. In our case, the connect target is <code>server</code>.</p>
 
 <p>Now you can start your Grunt server via this configured proxy by typing <code>Grunt server</code> in the command line. You should see something like this in the console.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ grunt server
 ...
 Running <span class="s2">&#34;configureProxies:server&#34;</span> <span class="o">(</span>configureProxies<span class="o">)</span> task
@@ -187,6 +194,7 @@ Proxy created <span class="k">for</span>: /api to localhost:8000
 Running <span class="s2">&#34;connect:server&#34;</span> <span class="o">(</span>connect<span class="o">)</span> task
 Started connect web server on http://localhost:8080
 ...</code></pre></div>
+
 <p>The above output confirms that the proxy is working fine.
 Some of the example URLs are:</p>
 

@@ -19,7 +19,7 @@
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -128,13 +128,13 @@ ga('send', 'pageview');
 
 <p>For our window manager to show up, it needs to be added either in a login manager or user&rsquo;s <code>~/.xinitrx</code> file. There is a default version of this file which contain some code which we may want to retain, so rather than making this file from scratch, copy the default version of file to user&rsquo;s home directory.</p>
 
-<p><code>cp /etc/X11/xinit/xinitrc ~/.xinitrc</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cp /etc/X11/xinit/xinitrc ~/.xinitrc</code></pre></div>
 
 <p>Now add the command <code>exec Openbox-session</code> to the end of the file. Remember that the lines following this command will be ignored by the system. An openbox session should be able to be started by entering the command <code>startx</code>.</p>
 
 <p>An openbox session can be started automatically upon login using shell&rsquo;s startup script. Add following to the shell&rsquo;s startup script, <code>~/.bash_profile</code> for bash and <code>~/.zprofile</code> for zsh.</p>
 
-<p><code>[[ -z $DISPLAY &amp;&amp; $XDG_VTNR -eq 1 ]] &amp;&amp; exec startx</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[[</span> -z <span class="nv">$DISPLAY</span> <span class="o">&amp;&amp;</span> <span class="nv">$XDG_VTNR</span> -eq <span class="m">1</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">exec</span> startx</code></pre></div>
 
 <hr />
 
@@ -151,7 +151,7 @@ ga('send', 'pageview');
 
 <p>To configure openbox, it is necessary to create a local openbox profile in user&rsquo;s home directory. A global configuration can be found in <code>/etc/xdg/openbox</code> which is well documented and copying the global configuration to the user&rsquo;s directory will give a good starting point to customizing from.</p>
 
-<p><code>cp -R /etc/xdg/openbox ~/.config/</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cp -R /etc/xdg/openbox ~/.config/</code></pre></div>
 
 <p>These files can be edited by hand, although some graphical tools are also available, use of these may be desired.</p>
 
@@ -163,7 +163,7 @@ ga('send', 'pageview');
 
 <p>In order to see changes after editing a configuration file, open box needs to be refreshed. This can be done with the reconfigure command.</p>
 
-<p><code>openbox &ndash;reconfigure</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">openbox --reconfigure</code></pre></div>
 
 <hr />
 
@@ -187,12 +187,10 @@ ga('send', 'pageview');
 
 <p>In order to have <a href="https://aur.archlinux.org/packages/obmenu-generator/" target="_blank"><code>obmenu-generator (AUR)</code></a> make a menu on demand, the <code>menu.xml</code> file should contain the following code as the only entry.</p>
 
-<pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&#34;1.0&#34;</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span>?&gt;
 &lt;openbox_menu&gt;
-    &lt;menu id="root-menu" label="OpenBox 3" execute="/usr/bin/obmenu-generator"&gt;
-    &lt;/menu&gt;
-&lt;/openbox_menu&gt;
-</pre>
+    &lt;menu <span class="nv">id</span><span class="o">=</span><span class="s2">&#34;root-menu&#34;</span> <span class="nv">label</span><span class="o">=</span><span class="s2">&#34;OpenBox 3&#34;</span> <span class="nv">execute</span><span class="o">=</span><span class="s2">&#34;/usr/bin/obmenu-generator&#34;</span>&gt;&lt;/menu&gt;
+&lt;/openbox_menu&gt;</code></pre></div>
 
 <hr />
 
@@ -207,11 +205,11 @@ ga('send', 'pageview');
 <p>Some file managers deeply integrate into desktop environments and when installed with openbox, they end up pulling multiple dependencies which is certainly not desired. Our aim behind building openbox setup was to have minimum dependencies so that we can get lightweight desktop. However, there are several file managers available which fit into openbox very well. In my choice, <a href="https://www.archlinux.org/packages/?name=pcmanfm" target="_blank"><code>pcmanfm</code></a> is the best choice here. <a href="https://www.archlinux.org/packages/?name=pcmanfm" target="_blank"><code>pcmanfm</code></a> is a lightweight and fast file manager with network and thrash support. <a href="https://www.archlinux.org/packages/?name=pcmanfm" target="_blank"><code>pcmanfm</code></a> can also manage desktop icons and wallpaper setting, although if you plan to use conky in your system, then you may not want <a href="https://www.archlinux.org/packages/?name=pcmanfm" target="_blank"><code>pcmanfm</code></a> to manage desktop for you. The reason is that <a href="https://www.archlinux.org/packages/?name=pcmanfm" target="_blank"><code>pcmanfm</code></a> treats desktop as a window, so when you switch to desktop, the conky hides behind the desktop window. To get the icons and wallpaper, you can use other standalone tools such as <a href="https://www.archlinux.org/packages/community/x86_64/idesk/" target="_blank"><code>idesk</code></a> and <a href="https://www.archlinux.org/packages/extra/x86_64/feh/" target="_blank"><code>feh</code></a> or <a href="https://www.archlinux.org/packages/extra/x86_64/nitrogen/" target="_blank"><code>nitrogen</code></a>.
 To start pcmanfm is desktop mode, add the following to the autostart file</p>
 
-<p><code>pcmanfm &ndash;desktop &amp;</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pcmanfm --desktop <span class="p">&amp;</span></code></pre></div>
 
 <p>and to stop it for managing desktop</p>
 
-<p><code>pcmanfm &ndash;desktop-off &amp;</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pcmanfm --desktop-off <span class="p">&amp;</span></code></pre></div>
 
 <p>In order to use many of the functions that are in file managers it is necessary to have a a few additional programs. <a href="https://www.archlinux.org/packages/?name=gvfs" target="_blank"><code>gvfs</code></a> gives you the ability to mount volumes and have trash control. It is not mandatory to have, but it allows on demand mounting to be done completely within the file manager, as opposed to having to drop down to the command line. A volume manager such as <a href="https://www.archlinux.org/packages/?name=udisks2" target="_blank"><code>udisks2</code></a> will also be wanted, and for auto-mounting removable disks, <a href="https://www.archlinux.org/packages/community/any/udiskie/" target="_blank"><code>udiskie</code></a> works well with openbox. <a href="https://www.archlinux.org/packages/community/any/udiskie/" target="_blank"><code>udiskie</code></a> can be added to openbox’s autostart file like any other application.</p>
 
@@ -220,7 +218,7 @@ To start pcmanfm is desktop mode, add the following to the autostart file</p>
 <h3 id="composition">Composition</h3>
 
 <p>Openbox does not provide native support for composition, although having a compositor may prevent screen flickering and other distorting with applications like <a href="https://www.archlinux.org/packages/community/any/oblogout/" target="_blank"><code>oblogout</code></a>. There are some options which work great with openbox. The one which I am using and quite happy with, is <a href="https://wiki.archlinux.org/index.php/Compton" target="_blank"><code>compton</code></a>. It can be used with or without any initial configuration, although there are lot of different configuration options if you decide to customize the setup. To start <a href="https://wiki.archlinux.org/index.php/Compton" target="_blank"><code>compton</code></a> in background with shadows, use this in <code>autostart</code> file.
-<code>compton -b -c &amp;</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">compton -b -c <span class="p">&amp;</span></code></pre></div>.</p>
 
 <hr />
 

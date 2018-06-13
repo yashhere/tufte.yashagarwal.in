@@ -19,7 +19,7 @@
   <script src='https://yashagarwal.in/js/redirection.js'></script>
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='http://localhost:1313/css/chroma-styles.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -115,8 +115,11 @@ ga('send', 'pageview');
 <p>I <a href="https://agorf.gr/2016/06/29/low-battery-notification-in-i3wm/" target="_blank">found</a> a bash script which shows a notification using <em>notify-send</em> when battery charge level reaches or drops below a configured threshold. However, I had to do some additional steps to make this script work on my system.</p>
 
 <p>The first issue was the <em>lockfile</em> program which was not installed in my system. I installed it using following command.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt install procmail</code></pre></div>
+
 <p>The second issue was more difficult to solve. I planned to set up the script to run every minute using <em>cron</em>. However, it turns out that cron operates in a very <a href="http://askubuntu.com/a/23438/173003" target="_blank">minimalistic</a> environment and notify-send requires the presence of some special variables in the environment. These variables are <strong>DBUS_SESSION_BUS_ADDRESS</strong>, <strong>XAUTHORITY</strong> and <strong>DISPLAY</strong>. To provide the values of these variables to the cron environment, I modified the script and sourced a new file <code>.bat_envs</code>.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
 </span><span class="cp"></span>
 . /home/yash/.bat_envs
@@ -144,12 +147,14 @@ SHOLD <span class="o">]]</span><span class="p">;</span> <span class="k">then</sp
 <span class="k">fi</span>
 
 rm -f <span class="nv">$lock_path</span></code></pre></div>
+
 <p>Read this blog <a href="https://agorf.gr/2016/06/29/low-battery-notification-in-i3wm/" target="_blank">post</a> to understand how this script works.</p>
 
 <p>As the notify-send requires some special X session environmental variables, we will need a method to provide these variables to notify-send in cron environment. The safest way to get X session related environmental variables is to get them from the environment of a process of the user who is logged on to X. To obtain these variables, the following script will run every time a user logs in and stores these variables in a file <code>.bat_envs</code>.</p>
 
 <!--https://unix.stackexchange.com/a/111194 -->
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
+
+<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
 </span><span class="cp"></span>
 <span class="nv">env_path</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.bat_envs&#34;</span>
 
@@ -164,15 +169,22 @@ touch <span class="s2">&#34;</span><span class="si">${</span><span class="nv">en
     <span class="nb">echo</span> <span class="s2">&#34;export </span><span class="si">${</span><span class="nv">env_name</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="si">${</span><span class="nv">env_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span>
 <span class="k">done</span>
 
-chmod <span class="m">600</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">env_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></div>
+chmod <span class="m">600</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">env_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></div></p>
+
 <p>To run this script at startup, I added this file to the i3 config file with the following command.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">exec</span> --no-startup-id <span class="s2">&#34;path to your script&#34;</span></code></pre></div>
+
 <p>Then at the end of cron file, I added a new entry for the battery monitoring script.</p>
 
 <p>To open cron file:</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">crontab -e</code></pre></div>
+
 <p>Now add the following line to the end of the file and save the file.</p>
+
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">* * * * * bash <span class="s2">&#34;path to your script&#34;</span> &gt;&gt; <span class="s2">&#34;path to your log file&#34;</span></code></pre></div>
+
 <p>Replace the <em>path to your script</em> (with double quotes) with your script path and the <em>path to your log file</em> with a path where you want to save your log file.</p>
 
 <p>Now every minute, this script will be executed and if your battery percent drops below the threshold value, you will be notified with a notification bubble.</p>
