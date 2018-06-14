@@ -10,13 +10,16 @@ title: Custom Arch Linux setup with Openbox
 type: posts
 ---
 
+{{< load-photoswipe >}}
+
+
 After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and  when you put them together you get something amazing.
 
 When I first installed Arch, I had several choices. I tried xfce and gnome as my desktop environments. While both of them have their own pros and cons, I ended up liking none. The sole reason was the dependencies, these two softwares bring with them. My sole intention of installing Arch was to have something, which I control, not like Ubuntu, where you are forced to use the preinstalled softwares and when you try to uninstall something, you fear of breaking some other program.
 
 So I end up going the route of building something up from scratch using Openbox as a base. At this point I have a fast, lightweight desktop that is extremely stable and is truly my desktop as I have built it from the ground up choosing every application.
 
-![Arch Linux Desktop](/images/desktop.jpg)
+<center>{{< figure src="/images/desktop.jpg" caption="Openbox on ArchLinux" caption-position="none">}}</center>
 
 ----
 

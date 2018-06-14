@@ -8,6 +8,7 @@ tags:
     - review
 ---
 
+{{< load-photoswipe >}}
 
 
 If I have to define 2017 in one word, that would be amazing. This year has been a life-changing year for me. I learned a lot of new things, had some excellent experience in the company of amazing people, had a great time in my academic life and SSL. 2017 has been a very significant year for me, and I want to record this memory by documenting some of the most amazing things that I learned and experienced this year.
@@ -42,13 +43,9 @@ Recently I started working on Debian Packaging. [Praveen](http://civic.gnu.org.i
 
 
 
-<center>{{< figure src="/images/HackFest1.jpg" title="Working on my first Debian package" >}}</center>
+{{< figure link="/images/HackFest1.jpg" caption="Working on my first Debian package" caption-position="bottom"  caption-effect="appear"  >}}
 
-<center>{{< figure src="/images/HackFest2.jpg" title="Praveen Sir and team" >}}</center>
-
-
-
-
+{{< figure src="/images/HackFest2.jpg" caption="Praveen Sir and team" caption-position="bottom"  caption-effect="appear" >}}
 
 ## Placement
 
@@ -56,7 +53,7 @@ I joined NIT Calicut due to many [reasons](http://dsanghi.blogspot.in/2011/05/my
 
 
 
-<center>{{< figure src="/images/placement.png" title="A private post on FB, now public" >}}</center>
+<center>{{< figure src="/images/placement.png" caption="A private post on FB, now public" caption-position="bottom"  caption-effect="appear" width="450px">}}</center>
 
 
 

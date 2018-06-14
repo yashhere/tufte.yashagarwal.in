@@ -12,6 +12,7 @@ date: '2017-02-22T13:37:56+05:30'
 title: Setting up Hugo automatic deployment to Github with Wercker
 type: posts
 ---
+{{< load-photoswipe >}}
 
 Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.
 
@@ -52,7 +53,8 @@ It is very simple to build a Hugo site. Invoke <code>hugo</code> command under y
 
 What if a single push to <code>source</code> branch can trigger all the process for you automatically. Here the magic of continuous integration(CI) comes into picture. A free Wercker account can be easily created and hooked to Github account and a new application from a chosen repository. After setting up everything, a push to the development branch will automatically trigger the Wercker. One of the biggest advantages of using Wercker is its extensive collection of user made and well documented "steps." In this post, I will use two steps, *build hugo* and *deploy to Github*.
 
-![Wercker Steps](/images/wercker-steps.png)
+<center>{{< figure src="/images/wercker-steps.png" caption="Wercker Steps" caption-position="none">}}</center>
+<!-- ![Wercker Steps](/images/wercker-steps.png) -->
 <strong>Wercker -> Registry -> steps </strong>
 
 The first task is to create a <code>wercker.yml</code> file. It will tell Wercker which all actions, it should perform. Here is my [wercker.yml](https://raw.githubusercontent.com/yash2696/yash2696.github.io/source/wercker.yml) for reference. In this, I have used two pipelines, *build* and *deploy*. Please follow the official docs for the more detailed steps. I will list all the problems which I face while setting up things properly.
@@ -78,17 +80,22 @@ For new interface, even if you add a deploy stage in the <code>wercker.yml</code
 
 In <code>deploy</code> stage, I used this [step](https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/) to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to set up the environment variable $GIT_TOKEN to each pipeline, acquired from Github setting.
 
-![Wercker Pipeline](/images/wercker-pipeline.png)
-<br>
-<br>
+<center>{{< figure src="/images/wercker-pipeline.png" caption="Wercker Pipeline" caption-position="none">}}</center>
+<!-- ![Wercker Pipeline](/images/wercker-pipeline.png) -->
+<!-- <br>
+<br> -->
 
 You need to generate a new access token for your deploy stage from Github settings.
-![Github Access Token](/images/wercker-access-token.png)
+<center>{{< figure src="/images/wercker-access-token.png" caption="Github Access Token" caption-position="none">}}</center>
+<!-- ![Github Access Token](/images/wercker-access-token.png) -->
 <br>
 <br>
 
 After adding deploy stage, add the token you obtained from the Github to Environmental Variables in deploy pipeline.
-![Wercker Token](/images/wercker-token.png)
+
+<center>{{< figure src="/images/wercker-token.png" caption="Wercker Token" caption-position="none">}}</center>
+
+<!-- ![Wercker Token](/images/wercker-token.png) -->
 <br>
 <br>
 

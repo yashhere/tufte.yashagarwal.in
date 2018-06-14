@@ -7,6 +7,9 @@ tags:
 title: Wanna get insulted by sudo
 type: posts
 ---
+
+{{< load-photoswipe >}}
+
 <p style="text-align: left;">
   You might have tried many Linux easters eggs for fun, but you are going to love this hack which makes `sudo` insult you.
 </p>
@@ -15,7 +18,8 @@ type: posts
   Confused what I am talking about? Here, take a look at this gif to get an idea of how `sudo` can insult you for typing in the incorrect password.
 </p>
 
-![Terminal Shot](/images/insult.gif)
+<center>{{< figure src="/images/insult.gif" caption-position="none">}}</center>
+<!-- ![Terminal Shot](/images/insult.gif) -->
 
 <p style="text-align: left;">
   Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with Linux, and anyway, this is way better than the plain &#8220; You entered a wrong password&#8221; error message. So let&#8217;s learn how to do this.
@@ -37,7 +41,8 @@ Now save the file. If you are using vim, then use Ctrl+X to save the file and qu
 
 &nbsp;
 
-![Sample Sudoers File](/images/sudoers.png)
+<center>{{< figure src="/images/sudoers.png" caption="Sample sudoers file" caption-position="none">}}</center>
+<!-- ![Sample Sudoers File](/images/sudoers.png) -->
 
 Once you have saved the file, go to terminal and type the following command to clear the old password from `sudo`'s memory.
 
