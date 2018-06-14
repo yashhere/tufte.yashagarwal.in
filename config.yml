@@ -35,8 +35,12 @@ params:
     customCSS:
     - css/custom.css
     - css/syntax.css
+    - css/chroma-styles.css
+    - css/footnotes.css
     customJS:
+    - js/jquery.js
     - js/redirection.js
+    - js/footnoteTooltip.js
     favicon: favicon.ico
     gopher: ''
   copyright:
