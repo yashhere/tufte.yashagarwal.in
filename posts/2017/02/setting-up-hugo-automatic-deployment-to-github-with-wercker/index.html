@@ -213,7 +213,7 @@ git push origin master</code></pre></div></p>
 <p>What if a single push to <code>source</code> branch can trigger all the process for you automatically. Here the magic of continuous integration(CI) comes into picture. A free Wercker account can be easily created and hooked to Github account and a new application from a chosen repository. After setting up everything, a push to the development branch will automatically trigger the Wercker. One of the biggest advantages of using Wercker is its extensive collection of user made and well documented &ldquo;steps.&rdquo; In this post, I will use two steps, <em>build hugo</em> and <em>deploy to Github</em>.</p>
 
 <p><center>
-
+<link rel="stylesheet" href="https://yashagarwal.in/css/hugo-easy-gallery.css" />
 <div class="box fancy-figure caption-position-none" >
   <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
@@ -253,7 +253,7 @@ git push origin master</code></pre></div></p>
 <p>In <code>deploy</code> stage, I used this <a href="https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/" target="_blank">step</a> to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to set up the environment variable $GIT_TOKEN to each pipeline, acquired from Github setting.</p>
 
 <p><center>
-<link rel="stylesheet" href="https://yashagarwal.in/css/hugo-easy-gallery.css" />
+
 <div class="box fancy-figure caption-position-none" >
   <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
