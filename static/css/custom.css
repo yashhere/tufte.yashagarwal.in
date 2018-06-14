@@ -15,6 +15,9 @@ body {
     text-transform: none;
 }
 
+.box figure a {
+    border: none;
+}
 p>code {
     background-color: #e8e8e8;
     border-radius: 4px;
