@@ -18,7 +18,7 @@ To paraphrase Buffett and Munger – decision-making is not about making brillia
 
 <!-- <div style="width:50%; margin: 30px auto"><img style=" width: 200px; height: 200px; border-radius: 2%; margin-left: auto; margin-right: auto; display: block;" src="/images/yash.jpg"></div> -->
 Hi there,<br>
-I am Yash Agarwal(यश अग्रवाल, [y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)). I graduated from Department of Computer Science and Engineering at NIT Calicut, India.
+I am Yash Agarwal(यश अग्रवाल, [y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)). I graduated from Department of Computer Science and Engineering at NIT Calicut, India in 2018.
 
 I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything related to the tech. I am a big fan of Linux and can talk anything about it. My first interaction with Linux was in the second year of under-graduation during Scheme programming lab (yeah, you read it right!). I immediately fall in love with it. Unlike most of my classmates, I started using Linux for my daily use, not just for assignments. I learned a lot in the process. I did have to spend a lot of time just hacking around in Linux, to reach this level. That reflects in my CGPA too :innocent:.
 
@@ -39,8 +39,7 @@ And add me to your [RSS](/index.xml) reader.
     + ~~Arch Linux and i3~~(January '18 to March '18)
     + Ubuntu and i3(March '18 to present)
 <br/>
-2. This blog is built using [Hugo](https://gohugo.io/), a static site generator. The theme used is [minimo](https://themes.gohugo.io/minimo). The source code of this blog can be found on [GitLab](https://gitlab.com/yashhere/yashhere.gitlab.io). A mirror exists at [GitHub](https://github.com/yashhere/yashhere.github.io) also. This site is automatically built using GitLab CI for GitLab and [Wercker](http://www.wercker.com) for GitHub. So this site is accessible at both [`yashhere.gitlab.io`](https://yashhere.gitlab.io) and [`yashhere.github.io`](https://yashhere.github.io).
-
+1. This blog is built using [Hugo](https://gohugo.io/), a static site generator. The theme used is [minimo](https://themes.gohugo.io/minimo). The source code of this blog can be found on [GitLab](https://gitlab.com/yashhere/yashhere.gitlab.io). A mirror exists at [GitHub](https://github.com/yashhere/yashhere.github.io) also.
 
 <!-- Ping me on Matrix where I hang out as `@im_y:matrix.org` and `@yashhere:matrix.org`. -->
 
