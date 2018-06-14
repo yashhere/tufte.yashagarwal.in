@@ -18,10 +18,12 @@ Note: If you had gone for installation via SSH option, then I would suggest you 
 
   <title>Arch Linux Installation Guide Part 2 • /dev/yash/notes</title>
   <link rel='canonical' href='https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/'>
-  <script src='https://yashagarwal.in/js/jquery.js'></script><script src='https://yashagarwal.in/js/redirection.js'></script><script src='https://yashagarwal.in/js/footnoteTooltip.js'></script>
+  
+  
+  
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'><link rel='stylesheet' href='https://yashagarwal.in/css/footnotes.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'><link rel='stylesheet' href='https://yashagarwal.in/css/footnotes.css'>
 <script>
 window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-75475356-3', 'auto');
@@ -260,9 +262,7 @@ sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
 <p>All these tools are part of my <code>i3</code> config with exception of the theme related packages. So installing them here will help me later while setting up the <code>i3</code> window manager.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S i3 rofi polybar xautolock powerline-fonts-git i3lock-fancy-git compton scrot feh dunst unclutter xfce4-power-manager numlockx lxappearance adapta-gtk-theme gtk-engine-murrine gnome-themes-standard termite</code></pre></div></p>
 
-<p><a name="fonts"></a></p>
-
-<h5 id="fix-ugly-fonts-sup-2-refs-sup">Fix ugly fonts<sup><a href="#refs">[2]</a></sup></h5>
+<h5 id="fix-ugly-fonts-1">Fix Ugly Fonts <sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></h5>
 
 <p>Fonts rendering is one area where Linux still lags behind Windows and OSX. It can be a nightmare for users to setup fonts properly in Linux. In Arch Linux, this is even worse. I found some tricks to improve the quality of font rendering on Arch Linux. Though this is far from perfect, it is manageable. Follow these <a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/" target="_blank">steps</a> on Reddit to fix font rendering. I use Noto Sans, Adobe Source Code Pro, and Microsoft fonts. My apologies, but I can&rsquo;t help here. Some websites still use Microsoft fonts.</p>
 
@@ -282,15 +282,15 @@ sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
 <p>That&rsquo;s all! Your system should be in working condition now. Do check out my <a href="https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/" target="_blank">dotfiles</a> if you want to set up your system like mine.</p>
 
 <p>Hope you enjoyed the article. Cheers 😄</p>
+<div class="footnotes">
 
 <hr />
 
-<p><a name="refs"></a></p>
-
 <ol>
-<li><a href="https://wiki.archlinux.org/" target="_blank">Arch Wiki</a></li>
-<li><a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/" target="_blank">Make your Arch fonts beautiful easily!</a><sup><a href="#fonts">Return</a></sup></li>
+<li id="fn:1"><a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/" target="_blank">Make your Arch fonts beautiful easily!</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
 </ol>
+</div>
 
 </div>
 
@@ -435,9 +435,7 @@ sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
       </div>
     </footer>
 
-  </div><script src='https://yashagarwal.in/assets/js/main.f29c93b9.js'></script>
-
-</body>
+  </div><script src='https://yashagarwal.in/assets/js/main.f29c93b9.js'></script><script src='https://yashagarwal.in/js/jquery.js'></script><script src='https://yashagarwal.in/js/redirection.js'></script><script src='https://yashagarwal.in/js/footnoteTooltip.js'></script></body>
 
 </html>
 
