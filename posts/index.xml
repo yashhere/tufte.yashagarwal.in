@@ -54,7 +54,7 @@ If you are working on large projects, it is undoubtedly a good idea to have a bu
       <pubDate>Wed, 28 Mar 2018 20:58:26 +0530</pubDate>
       
       <guid>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</guid>
-      <description>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities. Then last year (2017) again, I decided that I should try for GSoC one more time.</description>
+      <description>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors.</description>
     </item>
     
     <item>
@@ -151,7 +151,7 @@ This guide is written primarily for my reference, as someone who has installed A
       <pubDate>Sun, 31 Dec 2017 23:19:00 +0530</pubDate>
       
       <guid>https://yashagarwal.in/posts/2017/12/2017---the-best-till-now/</guid>
-      <description>If I have to define 2017 in one word, that would be amazing. This year has been a life-changing year for me. I learned a lot of new things, had some excellent experience in the company of amazing people, had a great time in my academic life and SSL. 2017 has been a very significant year for me, and I want to record this memory by documenting some of the most amazing things that I learned and experienced this year.</description>
+      <description>If I have to define 2017 in one word, that would be amazing. This year has been a life-changing year for me. I learned a lot of new things, had some excellent experience in the company of amazing people, had a great time in my academic life and SSL.</description>
     </item>
     
     <item>
@@ -182,8 +182,8 @@ SSH Generating an SSH key pair provides you with a public key and a private key.
       
       <guid>https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</guid>
       <description>When viewing Hindi content in any browser in Arch Linux, the rendering looks weird.
-Doesn&amp;rsquo;t look good right! I&amp;rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix. The appropriate package for installing Indic Language support is ttf-indic-otf.
-Now go to /usr/share/fonts/TTF and take the backup of two fonts FreeSans.ttf and FreeSerif.ttf. Now delete these two fonts from the directory.</description>
+    before applying the fix
+    Doesn&amp;rsquo;t look good right! I&amp;rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix.</description>
     </item>
     
     <item>
@@ -211,7 +211,7 @@ Marketing Website We started planning next edition of FOSSMeet sometime around S
       <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
       <guid>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
-      <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.</description>
+      <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux.</description>
     </item>
     
     <item>
@@ -230,7 +230,7 @@ As a beginner to open source projects, the problem I faced, in the beginning, wa
       <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
-      <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and when you put them together you get something amazing.</description>
+      <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment.</description>
     </item>
     
     <item>
@@ -261,7 +261,7 @@ There is just one rule you must follow while designing your own editor preferenc
       <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
       
       <guid>https://yashagarwal.in/posts/2016/04/wanna-get-insulted-by-sudo/</guid>
-      <description>You might have tried many Linux easters eggs for fun, but you are going to love this hack which makes `sudo` insult you. Confused what I am talking about? Here, take a look at this gif to get an idea of how `sudo` can insult you for typing in the incorrect password. Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with Linux, and anyway, this is way better than the plain &amp;#8220; You entered a wrong password&amp;#8221; error message.</description>
+      <description>You might have tried many Linux easters eggs for fun, but you are going to love this hack which makes `sudo` insult you. Confused what I am talking about? Here, take a look at this gif to get an idea of how `sudo` can insult you for typing in the incorrect password.</description>
     </item>
     
   </channel>

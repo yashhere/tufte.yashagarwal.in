@@ -35,7 +35,7 @@ If you are working on large projects, it is undoubtedly a good idea to have a bu
       <pubDate>Wed, 28 Mar 2018 20:58:26 +0530</pubDate>
       
       <guid>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</guid>
-      <description>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities. Then last year (2017) again, I decided that I should try for GSoC one more time.</description>
+      <description>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors.</description>
     </item>
     
     <item>
@@ -54,7 +54,7 @@ Introduction In this tutorial, I will show you how to create a basic Hugo theme.
       <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
       <guid>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
-      <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.</description>
+      <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux.</description>
     </item>
     
     <item>
