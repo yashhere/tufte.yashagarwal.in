@@ -192,8 +192,9 @@ All these tools are part of my `i3` config with exception of the theme related p
 pacaur -S i3 rofi polybar xautolock powerline-fonts-git i3lock-fancy-git compton scrot feh dunst unclutter xfce4-power-manager numlockx lxappearance adapta-gtk-theme gtk-engine-murrine gnome-themes-standard termite
 {{< /highlight >}}
 
-<a name="fonts"></a>
-##### Fix ugly fonts<sup>[\[2\]](#refs)</sup>
+
+##### Fix Ugly Fonts [^1]
+
 Fonts rendering is one area where Linux still lags behind Windows and OSX. It can be a nightmare for users to setup fonts properly in Linux. In Arch Linux, this is even worse. I found some tricks to improve the quality of font rendering on Arch Linux. Though this is far from perfect, it is manageable. Follow these [steps](https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/) on Reddit to fix font rendering. I use Noto Sans, Adobe Source Code Pro, and Microsoft fonts. My apologies, but I can't help here. Some websites still use Microsoft fonts.
 
 
@@ -215,8 +216,6 @@ Do not forget to [setup](https://stackoverflow.com/a/13021677) `npm` to install 
 That's all! Your system should be in working condition now. Do check out my [dotfiles](https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/) if you want to set up your system like mine.
 
 Hope you enjoyed the article. Cheers :smile:
-*****
-<a name="refs"></a>
 
-1. [Arch Wiki](https://wiki.archlinux.org/)
-2. [Make your Arch fonts beautiful easily!](https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/)<sup>[Return](#fonts)</sup>
+
+[^1]: [Make your Arch fonts beautiful easily!](https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/)
