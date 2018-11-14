@@ -74,6 +74,7 @@ params:
 permalinks:
   page: /:title/
   posts: /posts/:year/:month/:slug/
+  readings: /readings/:year/:month/:slug
 preserveTaxonomyNames: true
 pygmentsCodeFencesGuessSyntax: true
 pygmentsuseclasses: true
