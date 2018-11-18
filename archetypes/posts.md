@@ -1,6 +1,7 @@
 ---
+{{ $alternate_title := replace .TranslationBaseName "-" " " | humanize | title }}
 date: "{{ .Date }}"
-title: "{{ replace .TranslationBaseName '-' ' ' | title }}"
+title: "{{ slicestr $alternate_title 11 }}"
 categories:
   -
 tags:
