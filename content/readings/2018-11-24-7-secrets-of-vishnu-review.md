@@ -7,7 +7,6 @@ categories:
 tags:
   - Mythology
   - Philosophy
-draft: true
 ---
 
 {{< load-photoswipe >}}
