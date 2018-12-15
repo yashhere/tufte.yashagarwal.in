@@ -28,6 +28,7 @@ menu:
   - name: whoami
     url: /whoami
   - identifier: Readings
+    title: Readings
     name: Readings
     url: /readings
 params:
