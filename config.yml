@@ -5,7 +5,7 @@ MetaDataFormat: "yaml"
 archetypeDir: "archetypes"
 config: "config.toml"
 enableGitInfo: false
-copyright: Creative Commons Attribution-ShareAlike 4.0 International License
+copyright: Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International
 defaultContentLanguage: en
 disqusShortname: yashhere
 googleAnalytics: "UA-75475356-3"
@@ -47,7 +47,7 @@ params:
   copyright:
     holder: Yash Agarwal
     startYear: '2015'
-    suffix: ' - Creative Commons Attribution-ShareAlike 4.0 International License'
+    suffix: ' - Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International'
   info:
     description: The directory of my thoughts
     title404: Nothing's here!
