@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Science on /dev/yash/notes</title>
+    <link>https://yashagarwal.in/tags/computer-science/</link>
+    <description>Recent content in Computer Science on /dev/yash/notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
+    <lastBuildDate>Sat, 15 Dec 2018 19:04:38 +0530</lastBuildDate>
+    
+	<atom:link href="https://yashagarwal.in/tags/computer-science/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Code Book - Review</title>
+      <link>https://yashagarwal.in/readings/2018/12/the-code-book---review/</link>
+      <pubDate>Sat, 15 Dec 2018 19:04:38 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/readings/2018/12/the-code-book---review/</guid>
+      <description>Rating: 5 / 5 
+I was interested in Cryptography and Number Theory during my undergraduate studies so reading the history of Cryptography in this book was intriguing for me. The author has done excellent work in making sure that even an uninitiated person in Cryptography can understand and appreciate the importance of work done in this field.</description>
+    </item>
+    
+  </channel>
+</rss>

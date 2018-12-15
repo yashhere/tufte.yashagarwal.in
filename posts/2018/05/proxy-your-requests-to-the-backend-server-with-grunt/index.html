@@ -14,7 +14,7 @@ If you are working on large projects, it is undoubtedly a good idea to have a bu
 <meta property='og:site_name' content='/dev/yash/notes'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='configuration'><meta property='article:published_time' content='2018-05-15T17:14:13&#43;05:30'/><meta property='article:modified_time' content='2018-05-15T17:14:13&#43;05:30'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.31.1" />
+<meta name="generator" content="Hugo 0.48" />
 
   <title>Proxy Your Requests to the Backend Server With Grunt • /dev/yash/notes</title>
   <link rel='canonical' href='https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/'>
@@ -24,12 +24,16 @@ If you are working on large projects, it is undoubtedly a good idea to have a bu
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
 <link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'><link rel='stylesheet' href='https://yashagarwal.in/css/footnotes.css'>
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-75475356-3', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-75475356-3', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 
@@ -151,7 +155,8 @@ For JavaScript projects, <code>Grunt</code> serves the similar purpose. It is a 
       <span class="p">}</span>
     <span class="p">]</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Now register your Grunt server task to run the proxy on Grunt execution.</p>
 
@@ -160,7 +165,8 @@ For JavaScript projects, <code>Grunt</code> serves the similar purpose. It is a 
        <span class="s1">&#39;configureProxies:server&#39;</span><span class="p">,</span>
        <span class="s1">&#39;connect:server&#39;</span><span class="p">,</span>
    <span class="p">]);</span>
-<span class="p">});</span></code></pre></div>
+<span class="p">});</span>
+</code></pre></div>
 
 <p>Let me explain, the above two scripts line by line. In the connect section of your <code>Gruntfile</code>, we add a new section called <code>proxies</code>. The options defined in the proxies section are explained below.</p>
 
@@ -181,7 +187,8 @@ For JavaScript projects, <code>Grunt</code> serves the similar purpose. It is a 
   <span class="nx">middlewares</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;grunt-connect-proxy/lib/utils&#39;</span><span class="p">).</span><span class="nx">proxyRequest</span><span class="p">);</span>
   <span class="k">return</span> <span class="nx">middlewares</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="p">...</span></code></pre></div>
+<span class="p">...</span>
+</code></pre></div>
 
 <p>Finally, include your proxy task in the server task. It is necessary to append the proxy task before the connect task. Also, make sure to specify the connect target in the <code>configureProxies</code> section. In our case, the connect target is <code>server</code>.</p>
 
@@ -280,7 +287,7 @@ Some of the example URLs are:</p>
   
 <div class='comments-container'>
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -353,13 +360,7 @@ Some of the example URLs are:</p>
   </nav>
 </div>
         <div class='copyright'>
-  <p>
-        
-          
-        
-      
-
-       &copy; 2015-2018 Yash Agarwal  - Creative Commons Attribution-ShareAlike 4.0 International License
+  <p>Creative Commons Attribution-ShareAlike 4.0 International License
   </p>
 </div>
 

@@ -14,7 +14,7 @@ Note: If you had gone for installation via SSH option, then I would suggest you 
 <meta property='og:site_name' content='/dev/yash/notes'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Configuration'><meta property='article:tag' content='Arch Linux'><meta property='article:tag' content='i3'><meta property='article:published_time' content='2018-01-26T15:45:27&#43;05:30'/><meta property='article:modified_time' content='2018-01-26T15:45:27&#43;05:30'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.31.1" />
+<meta name="generator" content="Hugo 0.48" />
 
   <title>Arch Linux Installation Guide Part 2 • /dev/yash/notes</title>
   <link rel='canonical' href='https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/'>
@@ -24,12 +24,16 @@ Note: If you had gone for installation via SSH option, then I would suggest you 
   <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
 <link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'><link rel='stylesheet' href='https://yashagarwal.in/css/footnotes.css'>
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-75475356-3', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-75475356-3', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 </head>
 
@@ -233,7 +237,7 @@ sudo systemctl start mariadb.service</code></pre></div></p></li>
     <span class="nb">AllowOverride</span> <span class="k">All</span>
     <span class="nb">Options</span> FollowSymlinks
     <span class="nb">Require</span> <span class="k">all</span> granted
-<span class="nt">&lt;/Directory</span><span class="s"></span><span class="nt">&gt;</span></code></pre></div>
+<span class="nt">&lt;/Directory&gt;</span></code></pre></div>
 Then include following in <code>/etc/httpd/conf/httpd.conf</code>
 <div class="highlight"><pre class="chroma"><code class="language-ApacheConf" data-lang="ApacheConf"><span class="c"># phpMyAdmin configuration</span>
 <span class="nb">Include</span> conf/extra/phpmyadmin.conf</code></pre></div></li>
@@ -262,7 +266,7 @@ sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
 <p>All these tools are part of my <code>i3</code> config with exception of the theme related packages. So installing them here will help me later while setting up the <code>i3</code> window manager.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S i3 rofi polybar xautolock powerline-fonts-git i3lock-fancy-git compton scrot feh dunst unclutter xfce4-power-manager numlockx lxappearance adapta-gtk-theme gtk-engine-murrine gnome-themes-standard termite</code></pre></div></p>
 
-<h5 id="fix-ugly-fonts-1">Fix Ugly Fonts <sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></h5>
+<h5 id="fix-ugly-fonts-1">Fix Ugly Fonts <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></h5>
 
 <p>Fonts rendering is one area where Linux still lags behind Windows and OSX. It can be a nightmare for users to setup fonts properly in Linux. In Arch Linux, this is even worse. I found some tricks to improve the quality of font rendering on Arch Linux. Though this is far from perfect, it is manageable. Follow these <a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/" target="_blank">steps</a> on Reddit to fix font rendering. I use Noto Sans, Adobe Source Code Pro, and Microsoft fonts. My apologies, but I can&rsquo;t help here. Some websites still use Microsoft fonts.</p>
 
@@ -349,7 +353,7 @@ sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
   
 <div class='comments-container'>
   <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -422,13 +426,7 @@ sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
   </nav>
 </div>
         <div class='copyright'>
-  <p>
-        
-          
-        
-      
-
-       &copy; 2015-2018 Yash Agarwal  - Creative Commons Attribution-ShareAlike 4.0 International License
+  <p>Creative Commons Attribution-ShareAlike 4.0 International License
   </p>
 </div>
 

@@ -18,6 +18,7 @@ body {
 .box figure a {
     border: none;
 }
+
 p>code {
     background-color: #e8e8e8;
     border-radius: 4px;
@@ -30,7 +31,8 @@ p>code {
     border-radius: 4px;
 
 }
-.chroma > code {
+
+.chroma>code {
     font-family: Monaco, monospace, monospace;
     font-size: 0.90em;
     padding: 1px 2px 1px 2px;
@@ -75,13 +77,15 @@ textarea {
 }
 
 blockquote {
+    font-style: normal;
     font-size: 1em;
     line-height: 1.5;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 
 @media screen and (min-width: 480px) {
+
     .title,
     h1,
     h2,
@@ -101,7 +105,7 @@ blockquote {
     }
 
     .footer>div:last-child {
-      margin-bottom: 1em;
+        margin-bottom: 1em;
     }
 
     .header:after {

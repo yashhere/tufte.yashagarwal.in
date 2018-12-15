@@ -5,10 +5,20 @@
     <link>https://yashagarwal.in/categories/experience/</link>
     <description>Recent content in Experience on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 28 Mar 2018 20:58:26 +0530</lastBuildDate>
+    <copyright>Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
+    <lastBuildDate>Sat, 25 Aug 2018 21:16:41 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/categories/experience/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Beginning a New Journey</title>
+      <link>https://yashagarwal.in/posts/2018/08/beginning-a-new-journey/</link>
+      <pubDate>Sat, 25 Aug 2018 21:16:41 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/08/beginning-a-new-journey/</guid>
+      <description>When I was in eighth (or was it ninth?) class, one of our teachers asked in the class, what do you want to become in your life? People said a lot of things. When my turn came up, I stood up and said, “Mein software engineer banana chahta hu” (I want to become a software engineer). It was not that I was genuinely interested in Computers. When I look back now, I realize that it was my cousins who affected my choice (in an indirect way) and their achievements fascinated me to aim at this particular career choice.</description>
+    </item>
     
     <item>
       <title>So I Applied for GSoC</title>

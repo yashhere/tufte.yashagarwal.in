@@ -5,6 +5,7 @@
     <link>https://yashagarwal.in/tags/</link>
     <description>Recent content in Tags on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
+    <copyright>Creative Commons Attribution-ShareAlike 4.0 International License</copyright>
     <lastBuildDate>Sun, 13 May 2018 17:10:13 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -38,9 +39,18 @@
     </item>
     
     <item>
+      <title>Computer Science</title>
+      <link>https://yashagarwal.in/tags/computer-science/</link>
+      <pubDate>Sat, 15 Dec 2018 19:04:38 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/computer-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Configuration</title>
       <link>https://yashagarwal.in/tags/configuration/</link>
-      <pubDate>Tue, 15 May 2018 17:14:13 +0530</pubDate>
+      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
       
       <guid>https://yashagarwal.in/tags/configuration/</guid>
       <description></description>
@@ -49,7 +59,7 @@
     <item>
       <title>Configuration</title>
       <link>https://yashagarwal.in/tags/configuration/</link>
-      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
+      <pubDate>Tue, 15 May 2018 17:14:13 +0530</pubDate>
       
       <guid>https://yashagarwal.in/tags/configuration/</guid>
       <description></description>
@@ -88,6 +98,15 @@
       <pubDate>Mon, 26 Mar 2018 11:57:14 +0530</pubDate>
       
       <guid>https://yashagarwal.in/tags/fossmeet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fiction</title>
+      <link>https://yashagarwal.in/tags/fiction/</link>
+      <pubDate>Mon, 05 Nov 2018 12:00:44 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/fiction/</guid>
       <description></description>
     </item>
     
@@ -137,6 +156,15 @@
     </item>
     
     <item>
+      <title>Mythology</title>
+      <link>https://yashagarwal.in/tags/mythology/</link>
+      <pubDate>Sat, 24 Nov 2018 14:00:36 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/mythology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>NITC</title>
       <link>https://yashagarwal.in/tags/nitc/</link>
       <pubDate>Thu, 14 Jun 2018 17:59:28 +0530</pubDate>
@@ -169,6 +197,15 @@
       <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://yashagarwal.in/tags/openbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Philosophy</title>
+      <link>https://yashagarwal.in/tags/philosophy/</link>
+      <pubDate>Sat, 24 Nov 2018 14:00:36 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/philosophy/</guid>
       <description></description>
     </item>
     
@@ -223,6 +260,15 @@
       <pubDate>Wed, 27 Dec 2017 20:21:09 +0530</pubDate>
       
       <guid>https://yashagarwal.in/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Science</title>
+      <link>https://yashagarwal.in/tags/science/</link>
+      <pubDate>Sat, 15 Dec 2018 19:04:38 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/science/</guid>
       <description></description>
     </item>
     
