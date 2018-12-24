@@ -72,15 +72,29 @@ textarea {
 }
 
 .entry-content {
-    font-size: 1em;
+    font-family: 'Quattrocento Sans';
+    font-size: 1.1em;
     line-height: 1.4;
+}
+
+.entry-content a {
+    color: #7F7F7F;
+    font-weight: 500;
+    border-bottom: none;
+}
+
+.entry-content a:hover {
+    color: #191919;
 }
 
 blockquote {
     font-style: normal;
-    font-size: 1em;
+    font-family: 'Quattrocento Sans';
+    font-size: 1.2em;
     line-height: 1.5;
     font-weight: 500;
+    background: rgb(243, 243, 243);
+    padding: 1em 1em
 }
 
 

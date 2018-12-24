@@ -5,9 +5,13 @@
     </h2>
   </header>
 
+  {{ $noPages := where .Data.Pages "Section" "ne" "page" }}
+  {{ $noReadings := where .Data.Pages "Section" "ne" "readings" }}
+  {{ $filtered := $noPages | intersect $noReadings }}
+
   <div class='list-container'>
     <ul class='list'>
-    {{ range ( first 5 ( where .Data.Pages "Section" "ne" "page" ) ) }}
+    {{ range ( first 5 $filtered ) }}
       {{ .Render "li" }}
     {{ end }}
     </ul>
