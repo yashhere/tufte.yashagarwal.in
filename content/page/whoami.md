@@ -30,22 +30,13 @@ Now that you know few things about me, go ahead, and read some of the stuff on t
 
 And add me to your [RSS](/index.xml) reader.
 
-
-#### Stats for nerds:
-
-1. My current operating system is:
-    + ~~Arch Linux and Gnome Desktop~~(September '17 to November '17)
-    + ~~Linux Mint and i3~~(November '17 to January '18)
-    + ~~Arch Linux and i3~~(January '18 to March '18)
-    + Ubuntu and i3(March '18 to present)
-<br/>
-1. This blog is built using [Hugo](https://gohugo.io/), a static site generator. The theme used is [minimo](https://themes.gohugo.io/minimo). The source code of this blog can be found on [GitLab](https://gitlab.com/yashhere/yashhere.gitlab.io). A mirror exists at [GitHub](https://github.com/yashhere/yashhere.github.io) also.
-
 <!-- Ping me on Matrix where I hang out as `@im_y:matrix.org` and `@yashhere:matrix.org`. -->
 
 You can find me at:
 
-1. **Email:** yashagarwaljpr [at] gmail [dot] com
+1. **Email:** yashagarwaljpr+blog [at] gmail [dot] com
 2. [Twitter](https://www.twitter.com/yash__here)
 3. [GitHub](https://www.github.com/yashhere)
 4. [GitLab](https://www.gitLab.com/yashhere)
+
+**Disclaimer:** All the views expressed on this blog are my own, not of my current or any past employer.
