@@ -1,1 +1,4 @@
-{{- template "_internal/google_analytics_async.html" . -}}
+
+{{ if ne (printf "%v" $.Site.BaseURL) "http://localhost:1313/" }}
+  {{- template "_internal/google_analytics_async.html" . -}}
+{{- end -}}
