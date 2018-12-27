@@ -62,14 +62,14 @@ params:
     config:
       platforms:
       - github
-      - facebook
+      # - facebook
       - twitter
-      - instagram
-      - codepen
+      # - instagram
+      # - codepen
       - linkedin
-    facebook: profile.php?id=100001324105675
+    # facebook: profile.php?id=100001324105675
     github: yashhere
-    instagram: yum_yash
+    # instagram: yum_yash
     linkedin: theyashagarwal
     twitter: yash__here
 permalinks:
