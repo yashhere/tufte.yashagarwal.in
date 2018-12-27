@@ -32,11 +32,6 @@ And add me to your [RSS](/index.xml) reader.
 
 <!-- Ping me on Matrix where I hang out as `@im_y:matrix.org` and `@yashhere:matrix.org`. -->
 
-You can find me at:
-
-1. **Email:** yashagarwaljpr+blog [at] gmail [dot] com
-2. [Twitter](https://www.twitter.com/yash__here)
-3. [GitHub](https://www.github.com/yashhere)
-4. [GitLab](https://www.gitLab.com/yashhere)
+Most preferred to contact me is to email me at **yashagarwaljpr+blog[at]gmail[dot]com.**
 
 **Disclaimer:** All the views expressed on this blog are my own, not of my current or any past employer.
