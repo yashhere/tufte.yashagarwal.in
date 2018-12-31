@@ -32,6 +32,6 @@ And add me to your [RSS](/index.xml) reader.
 
 <!-- Ping me on Matrix where I hang out as `@im_y:matrix.org` and `@yashhere:matrix.org`. -->
 
-Most preferred to contact me is to email me at **yashagarwaljpr+blog[at]gmail[dot]com.**
+Most preferred way to contact me is to email at **yashagarwaljpr+blog[at]gmail[dot]com.**
 
 **Disclaimer:** All the views expressed on this blog are my own, not of my current or any past employer.
