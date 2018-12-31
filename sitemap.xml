@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashagarwal.in/posts/2018/12/2018---year-in-review/</loc>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/readings/2018/12/the-millionaire-booklet---review/</loc>
     <lastmod>2018-12-17T09:50:27+05:30</lastmod>
   </url>
@@ -174,7 +179,7 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2018-12-17T09:50:27+05:30</lastmod>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
   </url>
   
   <url>
@@ -274,13 +279,13 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/experience/</loc>
-    <lastmod>2018-08-25T21:16:41+05:30</lastmod>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/experience/</loc>
-    <lastmod>2018-08-25T21:16:41+05:30</lastmod>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -346,13 +351,13 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/life/</loc>
-    <lastmod>2018-08-25T21:16:41+05:30</lastmod>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/life/</loc>
-    <lastmod>2018-08-25T21:16:41+05:30</lastmod>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -429,7 +434,7 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2018-08-25T21:16:41+05:30</lastmod>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -460,6 +465,12 @@
   <url>
     <loc>https://yashagarwal.in/tags/review/</loc>
     <lastmod>2018-06-14T17:59:28+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/review/</loc>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
