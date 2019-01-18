@@ -5,33 +5,23 @@ title: "whoami"
 type: page
 ---
 
-> None of my writings started out as a book project.
-I wrote my first book – Seeking Wisdom – as a memorandum for myself with the expectation that I could transfer some of its essentials to my children.
-I learn and write because I want to be a little wiser day by day.
-I don’t want to be a great-problem-solver. I want to avoid problems – prevent them from happening and doing right from the beginning.
-And I focus on consequential decisions.
-To paraphrase Buffett and Munger – decision-making is not about making brilliant decisions, but avoiding terrible ones. Mistakes and dumb decisions are a fact of life and I’m going to make more, but as long as I can avoid the big or “fatal” ones I’m fine.
+Hi there, I am Yash ([y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)) 👋.
 
-> — Peter Bevelin
+I am a computer programmer interested in network security, cryptography, and distributed systems.
 
-<!-- ![Arch Linux Desktop](/images/cover.png) -->
+I love trying new operating systems, learning new programming languages and ricing my Linux Desktop.
 
-<!-- <div style="width:50%; margin: 30px auto"><img style=" width: 200px; height: 200px; border-radius: 2%; margin-left: auto; margin-right: auto; display: block;" src="/images/yash.jpg"></div> -->
-Hi there,<br>
-I am Yash Agarwal(यश अग्रवाल, [y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)). I graduated from Department of Computer Science and Engineering at NIT Calicut, India in 2018.
+Other than computers, I am interested in economics, books, writing, history and philosophy. Although I do not prefer
+discussing my thoughts in public spaces, one to one is always an option.
 
-I love trying new operating systems, new tech, and new programming languages. Well, pretty much everything related to the tech. I am a big fan of Linux and can talk anything about it. My first interaction with Linux was in the second year of under-graduation during Scheme programming lab (yeah, you read it right!). I immediately fall in love with it. Unlike most of my classmates, I started using Linux for my daily use, not just for assignments. I learned a lot in the process. I did have to spend a lot of time just hacking around in Linux, to reach this level. That reflects in my CGPA too :innocent:.
+I work as a Software Engineer at Cisco Systems in Bangalore.
 
-##### Why do I write a blog?
+Most preferred way to contact me is to email at <br/> **yashagarwaljpr+blog [at] gmail [dot] com.**
 
-The answer is that it helps me vent out my ideas and other thoughts that otherwise would be lost. I believe that when you read something, you simply convince yourself that you understand it properly. But when you write down the same thing, you have to prove that you understand it properly by putting it into meaningful sentences. In that way, writing has helped me put together my knowledge in a systematic manner. One other motivation was to document some of my life experiences so that somebody else can take benefit from it.
+As an alternative, ping me on [@yash__here](https://twitter.com/yash__here), but the chances that I will see your
+message are less
+because I do not use Twitter actively.
 
-Now that you know few things about me, go ahead, and read some of the stuff on this blog.
-
-And add me to your [RSS](/index.xml) reader.
-
-<!-- Ping me on Matrix where I hang out as `@im_y:matrix.org` and `@yashhere:matrix.org`. -->
-
-Most preferred way to contact me is to email at **yashagarwaljpr+blog[at]gmail[dot]com.**
+My resume is [here](/pdf/resume.pdf), but I am not looking for a new job right now.
 
 **Disclaimer:** All the views expressed on this blog are my own, not of my current or any past employer.
