@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GRPC on /dev/yash/notes</title>
+    <link>https://yashagarwal.in/tags/grpc/</link>
+    <description>Recent content in GRPC on /dev/yash/notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
+    <lastBuildDate>Sun, 10 Feb 2019 14:29:08 +0530</lastBuildDate>
+    
+	<atom:link href="https://yashagarwal.in/tags/grpc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 1</title>
+      <link>https://yashagarwal.in/posts/2019/02/go---grpc---opa---a-perfect-union---part-1/</link>
+      <pubDate>Sun, 10 Feb 2019 14:29:08 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2019/02/go---grpc---opa---a-perfect-union---part-1/</guid>
+      <description>TL;DR &amp;ndash; In a series of blog posts, I will be implementing a simple library application supporting both gRPC and REST interfaces using Go, gRPC, and OPA. My approach might not be the most optimal one, but I am learning these technologies currently. Please give your valuable suggestions and be kind :)
+I have been learning the basics of microservices and Golang lately. On the work front, I got a chance to work on Go, gRPC, and Open Policy Agent as my first professional project.</description>
+    </item>
+    
+  </channel>
+</rss>

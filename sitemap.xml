@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashagarwal.in/posts/2019/02/go---grpc---opa---a-perfect-union---part-1/</loc>
+    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/12/2018---year-in-review/</loc>
     <lastmod>2018-12-31T22:02:08+05:30</lastmod>
   </url>
@@ -179,7 +184,7 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
+    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
   </url>
   
   <url>
@@ -308,6 +313,12 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/grpc/</loc>
+    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/categories/gsoc/</loc>
     <lastmod>2018-03-28T20:58:26+05:30</lastmod>
     <priority>0</priority>
@@ -334,6 +345,12 @@
   <url>
     <loc>https://yashagarwal.in/tags/github/</loc>
     <lastmod>2017-02-22T13:37:56+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/go/</loc>
+    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -392,6 +409,12 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/opa/</loc>
+    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/tags/octane/</loc>
     <lastmod>2017-12-26T20:53:35+05:30</lastmod>
     <priority>0</priority>
@@ -434,7 +457,7 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
+    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -525,6 +548,12 @@
   <url>
     <loc>https://yashagarwal.in/categories/thoughts/</loc>
     <lastmod>2018-08-25T21:16:41+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/tutorial/</loc>
+    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
