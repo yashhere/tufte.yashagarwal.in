@@ -8,7 +8,7 @@ enableGitInfo: false
 copyright: Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International
 defaultContentLanguage: en
 disqusShortname: yashhere
-googleAnalytics: "UA-75475356-3"
+# googleAnalytics: "UA-75475356-3"
 enableEmoji: true
 enableRobotsTXT: true
 languages:
