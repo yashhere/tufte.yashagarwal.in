@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://yashagarwal.in/posts/2019/02/go---grpc---opa---a-perfect-union---part-2/</loc>
+    <lastmod>2019-02-17T14:44:56+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2019/02/go---grpc---opa---a-perfect-union---part-1/</loc>
     <lastmod>2019-02-10T14:29:08+05:30</lastmod>
   </url>
@@ -184,7 +189,7 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
+    <lastmod>2019-02-17T14:44:56+05:30</lastmod>
   </url>
   
   <url>
@@ -236,13 +241,13 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/configuration/</loc>
-    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/tags/configuration/</loc>
-    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -314,7 +319,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/grpc/</loc>
-    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
+    <lastmod>2019-02-17T14:44:56+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -350,7 +355,7 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/go/</loc>
-    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
+    <lastmod>2019-02-17T14:44:56+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -410,7 +415,7 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/opa/</loc>
-    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
+    <lastmod>2019-02-17T14:44:56+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -457,7 +462,7 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2019-02-10T14:29:08+05:30</lastmod>
+    <lastmod>2019-02-17T14:44:56+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -487,13 +492,13 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/review/</loc>
-    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
+    <lastmod>2018-06-14T17:59:28+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/tags/review/</loc>
-    <lastmod>2018-06-14T17:59:28+05:30</lastmod>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -548,6 +553,12 @@
   <url>
     <loc>https://yashagarwal.in/categories/thoughts/</loc>
     <lastmod>2018-08-25T21:16:41+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/tutorial/</loc>
+    <lastmod>2019-02-17T14:44:56+05:30</lastmod>
     <priority>0</priority>
   </url>
   

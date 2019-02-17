@@ -6,10 +6,19 @@
     <description>Recent content in Go on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Sun, 10 Feb 2019 14:29:08 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 17 Feb 2019 14:44:56 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/categories/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2</title>
+      <link>https://yashagarwal.in/posts/2019/02/go---grpc---opa---a-perfect-union---part-2/</link>
+      <pubDate>Sun, 17 Feb 2019 14:44:56 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2019/02/go---grpc---opa---a-perfect-union---part-2/</guid>
+      <description>In the last post, we discussed about the structure of our library application. In this post, we will define the data definitions using protobuf, and then we will use these definitions to create a Go service. We will also add a REST interface to the service.</description>
+    </item>
     
     <item>
       <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 1</title>
