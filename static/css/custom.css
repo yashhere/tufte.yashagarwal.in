@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i|Lato');
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i|Lato|Inconsolata');
 
 body {
     text-rendering: optimizeLegibility;
@@ -20,6 +20,8 @@ body {
 }
 
 p>code {
+    font-family: Inconsolata;
+    font-size: 0.90em;
     background-color: #e8e8e8;
     border-radius: 4px;
     padding: 0 5.591px;
@@ -33,7 +35,7 @@ p>code {
 }
 
 .chroma>code {
-    font-family: Monaco, monospace, monospace;
+    font-family: Inconsolata, monospace, monospace;
     font-size: 0.90em;
     padding: 1px 2px 1px 2px;
     border-radius: 4px;
