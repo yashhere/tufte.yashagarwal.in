@@ -17,6 +17,7 @@ application. In this post, we will define the data definitions using protobuf, a
 create a Go service. We will also add a REST interface to the service. So let's get started.
 
 <h6>Defining Proto Definitions</h6>
+
 gRPC uses protocol buffers for serializing structured data. To define the structure of the data that you want to serialize, we use a *proto* file - it is a simple text file that contains all the logical pieces of your data in the form of *messages*, and the methods that will be called over the network. To know more about the syntax of proto files, visit [this](https://grpc.io/docs/guides/) link.
 
 I have defined the following proto file -
@@ -115,11 +116,14 @@ protoc -I/usr/local/include -I. \
 It will generate corresponding Golang definitions of the messages and services defined in the Proto file. These
 definitions can be used by the server and client stubs to communicate with each other.
 
-Now we can start implementing the code for our services `AddBook`, `ListAllBooks` and `SearchBook`. It is going to be a very naive implementation of a library system, but it will suffice to learn all the concepts.
+<h6>Implementation of Go service</h6>
+
+Now we can start implementing the code for our services `AddBook()`, `ListAllBooks()` and `SearchBook()`. It is going to
+be a very naive implementation of a library system, but it will be sufficient to learn all the concepts.
 
 My implementation of the server stub is hosted
 [here](https://github.com/yashhere/go-library-service/blob/master/pkg/librarylib/server.go). A basic flow diagram of
-this implementation will look like this - 
+this implementation will look like this -
 
 <center>{{< figure src="/images/OPA_Service_Flow_Diagram.jpeg"caption-position="bottom"  caption-effect="appear" width="650px">}}</center>
 
@@ -127,11 +131,11 @@ The gRPC server will listen on port `:50051` and a REST HTTP server will listen 
 running on port `:8182`. The REST server is
 implemented using [gRPC-Gateway](https://github.com/grpc-ecosystem/grpc-gateway). There are three methods - `AddBook()`,
 `ListAllBooks()`, and `SearchBook()`. These methods can be called using either gRPC methods or using the REST endpoints
-`/addBook`, `/listBooks` and `/searchBook`. By design, the library gRPC service will not implement the authorization
+`/addBook`, `/listBooks` and `/searchBook`. By design, the library gRPC service will not implement the authentication
 part of the service. The main purpose of using gRPC here is to provide a scalable and secure medium where all the
 communication between client and server is happening in binary format, which is slightly more secure than the
 traditional mediums. In the current form, this gRPC server will accept requests from everyone and execute the desired
-functions. That is not desirable. What if a student tried to add a book to the library. Only Admins should be allowed to
+functions. That is not desirable. What if a student tries to add a book to the library. Only Admins should be allowed to
 execute such functions. What if someone who is not a student of the University tries to access the service. How to stop
 them?
 
@@ -148,14 +152,15 @@ If you have noticed, I have defined an `access_level` field in the proto definit
 us what is the minimum access level required for a user to access this book.
 
 Again, in the proto definition of the `User`, I have defined a `user_type` field. This field will serve as an indicator of
-the access rights of the user. In the real world, these access rights will be decided after the user has authenticated into
+the access rights of the user. In the real world, these access rights will be decided after the user has authenticated
+herself to
 the system, but here, we will hardcode the access rights.
 
 So, only users with access rights equal to `Administration` will be allowed to add books to the system. Here we do not
 care, who is the user. If the user is supplying the correct access right, she will be allowed to operate.
 The *who* part will be determined by the authentication logic in real-world scenarios.
 
-There are some books in the library, which has access rights equal to that of a Faculty. It means that only faculties
+There are some books in the library, which has access rights equal to that of a `Faculty`. It means that only faculties
 will be allowed to access those books. The students will not be able to access these books, even while searching for
 books using ISBN. This kind of mechanism can be implemented using OPA very easily. We will see the implementation of OPA
 part in the next post.
@@ -184,7 +189,7 @@ The `ListAllBooks()` is different in the way that it does not need any ISBN.
 Now, here one problem arises, how to make sure that the search results will not return any book which the user is not
 authorized to access. We will solve this problem using OPA in the next and last post of this series.
 
-I hope you liked this post. If you have any doubts or want to say anything else, please comment. It will be a great
+I hope that this post was helpful. If you have any doubts or want to say anything else, please comment. It will be a great
 motivation and appreciation for me.
 
 Thanks for reading. Cheers :smile:
