@@ -6,10 +6,21 @@
     <description>Recent content in OPA on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Sun, 17 Feb 2019 14:44:56 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 18 Feb 2019 06:47:15 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/tags/opa/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 3</title>
+      <link>https://yashagarwal.in/posts/2019/02/go---grpc---opa---a-perfect-union---part-3/</link>
+      <pubDate>Mon, 18 Feb 2019 06:47:15 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2019/02/go---grpc---opa---a-perfect-union---part-3/</guid>
+      <description>I finished my last post with the following issue -
+ Now, here one problem arises, how to make sure that the search results will not return any book which the user is not authorized to access. We will solve this problem using OPA in the next and last post of this series.
+ Let&amp;rsquo;s solve this issue now. We will use OPA&amp;rsquo;s declarative language, Rego, to implement policies which will decide on the basis of some user-provided data, which all objects are to be returned to the user.</description>
+    </item>
     
     <item>
       <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2</title>
