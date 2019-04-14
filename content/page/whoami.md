@@ -22,4 +22,6 @@ As an alternative, ping me on [@yash__here](https://twitter.com/yash__here).
 
 My resume is [here](/pdf/resume.pdf), but I am not looking for a new job right now.
 
-**Disclaimer:** All the views expressed on this blog are my own, not of my current or any past employer.
+<!-- [Here](/successes) is a list of some of my successes in life. -->
+
+[Here](/failures) is a list of all of my failures in life.
