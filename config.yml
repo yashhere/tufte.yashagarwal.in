@@ -27,10 +27,6 @@ menu:
     url: /posts
   - name: whoami
     url: /whoami
-  - identifier: Readings
-    title: Readings
-    name: Readings
-    url: /readings
 params:
   assets:
     customCSS:
