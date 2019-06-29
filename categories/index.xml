@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>Tutorial</title>
+      <title>tutorial</title>
       <link>https://yashagarwal.in/categories/tutorial/</link>
       <pubDate>Mon, 18 Feb 2019 06:47:15 +0530</pubDate>
       
@@ -39,7 +39,7 @@
     </item>
     
     <item>
-      <title>experience</title>
+      <title>Experience</title>
       <link>https://yashagarwal.in/categories/experience/</link>
       <pubDate>Mon, 31 Dec 2018 22:02:08 +0530</pubDate>
       
@@ -48,7 +48,7 @@
     </item>
     
     <item>
-      <title>life</title>
+      <title>Life</title>
       <link>https://yashagarwal.in/categories/life/</link>
       <pubDate>Mon, 31 Dec 2018 22:02:08 +0530</pubDate>
       
@@ -66,11 +66,29 @@
     </item>
     
     <item>
-      <title>thoughts</title>
+      <title>Thoughts</title>
       <link>https://yashagarwal.in/categories/thoughts/</link>
       <pubDate>Sat, 25 Aug 2018 21:16:41 +0530</pubDate>
       
       <guid>https://yashagarwal.in/categories/thoughts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Customization</title>
+      <link>https://yashagarwal.in/categories/customization/</link>
+      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/categories/customization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development</title>
+      <link>https://yashagarwal.in/categories/development/</link>
+      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/categories/development/</guid>
       <description></description>
     </item>
     
@@ -89,24 +107,6 @@
       <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
       
       <guid>https://yashagarwal.in/categories/system-administration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>customization</title>
-      <link>https://yashagarwal.in/categories/customization/</link>
-      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/categories/customization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>development</title>
-      <link>https://yashagarwal.in/categories/development/</link>
-      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/categories/development/</guid>
       <description></description>
     </item>
     
@@ -147,7 +147,7 @@
     </item>
     
     <item>
-      <title>Updates</title>
+      <title>updates</title>
       <link>https://yashagarwal.in/categories/updates/</link>
       <pubDate>Wed, 28 Mar 2018 20:58:26 +0530</pubDate>
       

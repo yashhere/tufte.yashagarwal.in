@@ -229,18 +229,6 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/linux/</loc>
-    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/system-administration/</loc>
-    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/categories/customization/</loc>
     <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
@@ -248,6 +236,18 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/development/</loc>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/linux/</loc>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/system-administration/</loc>
     <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
