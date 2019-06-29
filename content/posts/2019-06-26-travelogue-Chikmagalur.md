@@ -5,7 +5,8 @@ title: "Travelogue - Chikmagalur"
 categories:
   - Travelouge
 tags:
-  - Travel
+  - Trip
+  - Hill Stations
 ---
 
 {{< load-photoswipe >}}
@@ -15,7 +16,7 @@ South India is blessed with nature throughout the year, but monsoons bring a dif
 We (I and my flatmates in Bengaluru) were planning a trip to Chikmagalur since the beginning of June. One of my friends knows driving, so we decided to rent a car and drive ourselves to a distance of approximately 250 KMs. We booked the car through Drivezy. They had promised a Mahindra KUV100, but at the last moment, that couldn't keep their commitment and gave us a Honda Amaze with automatic transmission. My friend who was driving had never driven such a car, so we all got scared of our fate for the next two days, but we decided to go ahead with it, trusting our friend. 
  
  
- *I too know driving, but like every other aspect of my life, I never gained enough confidence to go on such a long drive. It was a similar case this time as well. Let's stop this discussion here ...*
+ *I too know driving, but like every other aspect of my life, I never gained enough confidence to go on such a long drive. It was a similar case this time as well.*
 
 The way to Chikmagalur from Bengaluru is the well-maintained NH75 (it has a total of four tolls, so maintenance is expected). We started early in the morning of Saturday, 22<sup>nd</sup> June to avoid Bengaluru's traffic. Nature was accommodating that day, and the Sun 🌞 stayed hidden behind clouds for most of our journey. That made our 6-hour drive very enjoyable. 
 
@@ -55,55 +56,57 @@ However, the fascinating thing is at the ceiling. The carvings done on the ceili
 As I mentioned above, I am not an architecture buff, so I would not be able to write a lot about the architecture of the temple. However, enjoy some more photos.
 
 {{< gallery >}}
-  {{< figure src="https://i.imgur.com/KknscQQ.jpg" >}}
-  {{< figure src="https://i.imgur.com/00jHoa8.jpg" >}}
-  {{< figure src="https://i.imgur.com/jb3McxQ.jpg" >}}
-  {{< figure src="https://i.imgur.com/r1unZAg.jpg" >}}
-  {{< figure src="https://i.imgur.com/BB759kW.jpg" >}}
-  {{< figure src="https://i.imgur.com/Tw9YP1E.jpg" >}}
-  {{< figure src="https://i.imgur.com/EFCbhyx.jpg" >}}
-  {{< figure src="https://i.imgur.com/lPVAP1H.jpg" >}}
-  {{< figure src="https://i.imgur.com/WQGjwur.jpg" >}}
-  {{< figure src="https://i.imgur.com/8JDPQZ7.jpg" >}}
-  {{< figure src="https://i.imgur.com/jUYDuQd.jpg" >}}
+  {{< figure link="https://i.imgur.com/KknscQQ.jpg" src="/images/chikmagalur/KknscQQm.jpg" >}}
+  {{< figure link="https://i.imgur.com/00jHoa8.jpg" src="/images/chikmagalur/00jHoa8m.jpg" >}}
+  {{< figure link="https://i.imgur.com/jb3McxQ.jpg" src="/images/chikmagalur/jb3McxQm.jpg" >}}
+  {{< figure link="https://i.imgur.com/r1unZAg.jpg" src="/images/chikmagalur/r1unZAgm.jpg" >}}
+  {{< figure link="https://i.imgur.com/BB759kW.jpg" src="/images/chikmagalur/BB759kWm.jpg" >}}
+  {{< figure link="https://i.imgur.com/Tw9YP1E.jpg" src="/images/chikmagalur/Tw9YP1Em.jpg" >}}
+  {{< figure link="https://i.imgur.com/8bLIIC5.jpg" src="/images/chikmagalur/8bLIIC5m.jpg" >}}
+  {{< figure link="https://i.imgur.com/lPVAP1H.jpg" src="/images/chikmagalur/lPVAP1Hm.jpg" >}}
+  {{< figure link="https://i.imgur.com/WQGjwur.jpg" src="/images/chikmagalur/WQGjwurm.jpg" >}}
+  {{< figure link="https://i.imgur.com/8JDPQZ7.jpg" src="/images/chikmagalur/8JDPQZ7m.jpg" >}}
+  {{< figure link="https://i.imgur.com/jUYDuQd.jpg" src="/images/chikmagalur/jUYDuQdm.jpg" >}}
 {{< /gallery >}}
 
 After this temple, we continued our journey to Chikmagalur. We had booked a homestay option. The name of the homestay was Sunshine Palm Retreat if I recall correctly. It was one of best stay, I have experienced on any trip till now. It was not crowded, the staff was co-operative, and the ambiance was excellent.
 
 {{< figure src="https://i.imgur.com/JUTwVEN.jpg" caption="The Silver Palm Retreat Homestay" caption-position="bottom"  caption-effect="appear" >}}
 
-In the evening of Saturday, we decided to go for our second destination of the day - the so-called *shooting point*. When we searched on Google maps, we found one location with a similar name. We started driving in that direction. However, it turned out that we were going to the wrong place. We tried asking locals, but language was an issue. Most of the signboards are also in Kannada only. Somehow we ended up getting on the right track and reached the correct location on time.
+In the evening of Saturday, we decided to go for our second destination of the day - the so-called *shooting point*. When we searched on Google maps, we found one location with a similar name. We started driving in that direction. However, it turned out that we were going to the wrong place. We tried asking locals, but language was an issue. Most of the signboards are also in Kannada only. Somehow we ended up getting on the right track and reached the correct location on time. After reaching there, Google Maps shows that place is called Bagmane Sunrise Point. Even this name does not seems to be correct.
 
-As soon we reached there, I realized that all the efforts that we put in reaching here were worthwhile. It was an open ground area on top of a small hill at one end of a small village. I started roaming here and there, enjoying the serenity of nature. I am not a very photogenic person, so I prefer to click pictures of objects and nature more than standing in different angles in front of a camera.
+As soon we reached there, I realized that all the efforts that we put in reaching there were worthwhile. It was an open ground area on top of a small hill at one end of a small village. I started roaming here and there, enjoying the serenity of nature. I am not a very photogenic person, so I prefer to click pictures of objects and nature more than standing in front of a camera at different angles.
 
 {{< gallery >}}
-  {{< figure src="https://i.imgur.com/CcvBJyE.jpg" >}}
-  {{< figure src="https://i.imgur.com/ttrEWMP.jpg" >}}
-  {{< figure src="https://i.imgur.com/c84g6tX.jpg" >}}
+  {{< figure link="https://i.imgur.com/CcvBJyE.jpg" src="/images/chikmagalur/CcvBJyEm.jpg">}}
+  {{< figure link="https://i.imgur.com/ttrEWMP.jpg" src="/images/chikmagalur/ttrEWMPm.jpg">}}
+  {{< figure link="https://i.imgur.com/c84g6tX.jpg" src="/images/chikmagalur/c84g6tXm.jpg">}}
 {{< /gallery >}}
 
-We spent around 1.5 hours there and then came back. [India vs. Afghanistan](https://www.cricbuzz.com/live-cricket-scorecard/20264/ind-vs-afg-match-28-icc-cricket-world-cup-2019) was live on TV, and we fixed ourselves in front of the TV for the next 4 hours. India somehow won that match. Thank God!
+We spent around 1.5 hours there and then came back. [India vs. Afghanistan](https://www.cricbuzz.com/live-cricket-scorecard/20264/ind-vs-afg-match-28-icc-cricket-world-cup-2019) cricket match was live on TV, and we fixed ourselves in front of the TV for the next 4 hours. India somehow won that match. Thank God!
 
-Next day, it was raining from early morning. We did not want to take any risk by driving on the precipitous and narrow zig-zag roads. So we dropped our plan to go to Butter Milk Waterfalls, and instead decided to go to Mullayanagiri peaks as our last destination. We again lost our way, but somehow managed to reach the place. 
+Next day, it was raining from early morning. We did not want to take any risk by driving on the steep and narrow zig-zag roads. So we dropped our plan to go to Butter Milk Waterfalls and instead decided to go to Mullayanagiri peaks as our last destination. We again lost our way, but somehow managed to reach the place. 
 
 It was drizzling there. However, we were at such a high altitude that we had to bring our sweaters out. Surprisingly, I found vendors selling Maggi there. I was not expecting the taste to be good, but I was wrong. For that sort of place, the Maggi was delicious.
 
 {{< youtube F9SpC8nFF0A >}}
 
 <br/>
-Despite the weather conditions, we decided to climb to the top of the hill. As we were going up, the weather was turning more and bleaker. Out of 5 of us, only three managed to reach the top, including me. The view from the top of the hill was just amazing. Wherever I saw, I saw just the mountain mist. My clothes were wet, and my spectacles were completely covered in fog.
+Despite the weather conditions, we decided to climb to the top of the hill. As we were going up, the weather was turning more and bleaker. Out of five of us, only three managed to reach the top, including me. The view from the top of the hill was just amazing. Wherever I saw, I saw just the mountain mist. My clothes were wet, and my spectacles were completely covered in fog.
 
 {{< gallery >}}
-  {{< figure src="https://i.imgur.com/WSP3EE6.jpg" >}}
-  {{< figure src="https://i.imgur.com/PwLILXb.jpg" >}}
-  {{< figure src="https://i.imgur.com/E6Vd1nX.jpg" >}}
+  {{< figure link="https://i.imgur.com/WSP3EE6.jpg" src="/images/chikmagalur/WSP3EE6m.jpg">}}
+  {{< figure link="https://i.imgur.com/PwLILXb.jpg" src="/images/chikmagalur/PwLILXbm.jpg">}}
+  {{< figure link="https://i.imgur.com/E6Vd1nX.jpg" src="/images/chikmagalur/E6Vd1nXm.jpg">}}
 {{< /gallery >}}
 
-Moreover, here is a video shot when we were coming down from the hilltop.
+I shot a video when we were coming down from the hilltop.
 
 {{< youtube So_UD2tpRic  >}}
 
 <br/>
+
+---
 
 To summarise, the timing of this trip was not appropriate, but I do not regret it. I have gone to other hill stations after the monsoons get over, but it is a different experience altogether to go in a rainy season. Chikmagalur is worth more than one visit. Do try to go at an appropriate time if you want to visit more places.
 
