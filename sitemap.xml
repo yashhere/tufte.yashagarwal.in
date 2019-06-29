@@ -15,6 +15,12 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/hill-stations/</loc>
+    <lastmod>2019-06-29T06:10:03+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/</loc>
     <lastmod>2019-06-29T06:10:03+05:30</lastmod>
     <priority>0</priority>
@@ -27,18 +33,18 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/tags/travel/</loc>
-    <lastmod>2019-06-29T06:10:03+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/posts/2019/06/travelogue-chikmagalur/</loc>
     <lastmod>2019-06-29T06:10:03+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/travelouge/</loc>
+    <lastmod>2019-06-29T06:10:03+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/trip/</loc>
     <lastmod>2019-06-29T06:10:03+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -223,12 +229,6 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/development/</loc>
-    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/categories/linux/</loc>
     <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
@@ -242,6 +242,12 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/customization/</loc>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/development/</loc>
     <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -264,14 +270,14 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/tags/configuration/</loc>
+    <loc>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</loc>
     <lastmod>2018-05-15T17:14:13+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</loc>
+    <loc>https://yashagarwal.in/tags/configuration/</loc>
     <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>

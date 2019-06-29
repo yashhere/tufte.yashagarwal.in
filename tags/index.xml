@@ -12,11 +12,20 @@
     
     
     <item>
-      <title>Travel</title>
-      <link>https://yashagarwal.in/tags/travel/</link>
+      <title>Hill Stations</title>
+      <link>https://yashagarwal.in/tags/hill-stations/</link>
       <pubDate>Sat, 29 Jun 2019 06:10:03 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/tags/travel/</guid>
+      <guid>https://yashagarwal.in/tags/hill-stations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Trip</title>
+      <link>https://yashagarwal.in/tags/trip/</link>
+      <pubDate>Sat, 29 Jun 2019 06:10:03 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/trip/</guid>
       <description></description>
     </item>
     
@@ -138,7 +147,7 @@
     </item>
     
     <item>
-      <title>Configuration</title>
+      <title>configuration</title>
       <link>https://yashagarwal.in/tags/configuration/</link>
       <pubDate>Tue, 15 May 2018 17:14:13 +0530</pubDate>
       

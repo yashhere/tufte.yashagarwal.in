@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Development on /dev/yash/notes</title>
+    <title>development on /dev/yash/notes</title>
     <link>https://yashagarwal.in/categories/development/</link>
-    <description>Recent content in Development on /dev/yash/notes</description>
+    <description>Recent content in development on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
     <lastBuildDate>Tue, 12 Jun 2018 09:45:46 +0530</lastBuildDate>
