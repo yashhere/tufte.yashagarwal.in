@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sudo on /dev/yash/notes</title>
+    <title>sudo on /dev/yash/notes</title>
     <link>https://yashagarwal.in/tags/sudo/</link>
-    <description>Recent content in Sudo on /dev/yash/notes</description>
+    <description>Recent content in sudo on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
     <lastBuildDate>Sun, 03 Apr 2016 12:20:36 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
       
       <guid>https://yashagarwal.in/posts/2016/04/wanna-get-insulted-by-sudo/</guid>
-      <description>You might have tried many Linux easters eggs for fun, but you are going to love this hack which makes `sudo` insult you. Confused what I am talking about? Here, take a look at this gif to get an idea of how `sudo` can insult you for typing in the incorrect password.</description>
+      <description>You might have tried many Linux easters eggs for fun, but you are going to love this hack which makes `sudo` insult you. Confused what I am talking about? Here, take a look at this gif to get an idea of how `sudo` can insult you for typing in the incorrect password.       Now you might be thinking, why would anyone want to take insult?</description>
     </item>
     
   </channel>

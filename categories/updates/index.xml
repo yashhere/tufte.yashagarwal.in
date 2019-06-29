@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Updates on /dev/yash/notes</title>
+    <title>updates on /dev/yash/notes</title>
     <link>https://yashagarwal.in/categories/updates/</link>
-    <description>Recent content in Updates on /dev/yash/notes</description>
+    <description>Recent content in updates on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Sun, 25 Feb 2018 10:10:04 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 28 Mar 2018 20:58:26 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/categories/updates/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>So I Applied for GSoC</title>
+      <link>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</link>
+      <pubDate>Wed, 28 Mar 2018 20:58:26 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</guid>
+      <description>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities.</description>
+    </item>
+    
+    <item>
+      <title>Deactivated My Facebook Account</title>
+      <link>https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/</link>
+      <pubDate>Fri, 23 Mar 2018 21:00:44 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/</guid>
+      <description>Today, I deactivated my Facebook account again. For last few days, I started feeling that I am using Facebook excessively. That was affecting some other works. It was even affecting my public life. I was using Facebook day in and day out. Today when I woke up in the morning, I first opened Facebook and didn&amp;rsquo;t leave my bed for one hour. I realized that I have wasted one hour merely browsing through useless stuff.</description>
+    </item>
     
     <item>
       <title>My New Domain</title>

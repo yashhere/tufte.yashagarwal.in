@@ -14,7 +14,7 @@ Note: If you had gone for installation via SSH option, then I would suggest you 
 <meta property='og:site_name' content='/dev/yash/notes'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Configuration'><meta property='article:tag' content='Arch Linux'><meta property='article:tag' content='i3'><meta property='article:published_time' content='2018-01-26T15:45:27&#43;05:30'/><meta property='article:modified_time' content='2018-01-26T15:45:27&#43;05:30'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.55.6" />
 
   <title>Arch Linux Installation Guide Part 2 • /dev/yash/notes</title>
   <link rel='canonical' href='https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/'>
@@ -183,7 +183,7 @@ To test the virtual hosts on you local machine, add the virtual names to your <c
 <p>Open <code>/etc/httpd/conf/httpd.conf</code> and uncomment following line.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">LoadModule mpm_prefork_module modules/mod_mpm_prefork.so</code></pre></div>
 and comment the following installation_guide
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">#LoadModule mpm_event_module modules/mod_mpm_event.so</code></pre></div></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#LoadModule mpm_event_module modules/mod_mpm_event.so</span></code></pre></div></p>
 
 <p>Now add these lines to <code>/etc/httpd/conf/httpd.conf</code>:</p>
 
@@ -244,8 +244,8 @@ Once all these steps are done, your LAMP stack should be working.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> tlp.service
 sudo systemctl <span class="nb">enable</span> tlp-sleep.service
 
-<span class="c1"># mask some services for tlp to work properly
-</span><span class="c1"></span>sudo systemctl mask systemd-rfkill.service
+<span class="c1"># mask some services for tlp to work properly</span>
+sudo systemctl mask systemd-rfkill.service
 sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
 
 <h5 id="install-i3-and-other-tools">Install i3 and other tools</h5>
@@ -295,7 +295,7 @@ sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
   
 </svg>
 </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/linux'>Linux</a>, <a class='category' href='https://yashagarwal.in/categories/customization'>Customization</a>, <a class='category' href='https://yashagarwal.in/categories/system-administration'>System Administration</a></div>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/linux'>Linux</a>, <a class='category' href='https://yashagarwal.in/categories/customization'>customization</a>, <a class='category' href='https://yashagarwal.in/categories/system-administration'>System Administration</a></div>
 <div class='tags'>
   <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
@@ -304,7 +304,7 @@ sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
   
 </svg>
 </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/configuration'>Configuration</a>, <a class='tag' href='https://yashagarwal.in/tags/arch-linux'>Arch Linux</a>, <a class='tag' href='https://yashagarwal.in/tags/i3'>I3</a></div>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/configuration'>Configuration</a>, <a class='tag' href='https://yashagarwal.in/tags/arch-linux'>Arch Linux</a>, <a class='tag' href='https://yashagarwal.in/tags/i3'>i3</a></div>
 
   </div>
 </footer>

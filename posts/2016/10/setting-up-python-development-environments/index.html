@@ -14,7 +14,7 @@ As a beginner to open source projects, the problem I faced, in the beginning, wa
 <meta property='og:site_name' content='/dev/yash/notes'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Pip'><meta property='article:tag' content='Python'><meta property='article:tag' content='Virtual Environments'><meta property='article:published_time' content='2016-10-09T00:00:00Z'/><meta property='article:modified_time' content='2016-10-09T00:00:00Z'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.55.6" />
 
   <title>Setting up Python Development Environments • /dev/yash/notes</title>
   <link rel='canonical' href='https://yashagarwal.in/posts/2016/10/setting-up-python-development-environments/'>
@@ -129,33 +129,33 @@ Then install <code>pip</code> using
 
 <h4 id="installing-a-package-using-pip">Installing a package using pip</h4>
 
-<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will search and install [package]
-</span><span class="c1"></span>pip install <span class="o">[</span>package<span class="o">]</span>
+<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will search and install [package]</span>
+pip install <span class="o">[</span>package<span class="o">]</span>
 pip install django</code></pre></div>
 If you are using python3, then don&rsquo;t forget to use <code>pip3</code>.</p>
 
 <p><code>pip</code> can be used to install a specific version of package also.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will search and install [package] with [version]
-</span><span class="c1"></span>pip install <span class="o">[</span>package<span class="o">]==[</span>version<span class="o">]</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will search and install [package] with [version]</span>
+pip install <span class="o">[</span>package<span class="o">]==[</span>version<span class="o">]</span>
 pip install <span class="nv">django</span><span class="o">==</span><span class="m">1</span>.6.5</code></pre></div></p>
 
 <h4 id="uninstalling-a-package-using-pip">Uninstalling a package using pip</h4>
 
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will search and uninstall [package]
-</span><span class="c1"></span>pip uninstall <span class="o">[</span>package<span class="o">]</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will search and uninstall [package]</span>
+pip uninstall <span class="o">[</span>package<span class="o">]</span>
 pip uninstall django</code></pre></div>
 
 <h4 id="upgrading-a-package-using-pip">upgrading a package using pip</h4>
 
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will upgrade [package] to latest version
-</span><span class="c1"></span>pip install --upgrade <span class="o">[</span>package<span class="o">]</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will upgrade [package] to latest version</span>
+pip install --upgrade <span class="o">[</span>package<span class="o">]</span>
 pip install --upgrade django</code></pre></div>
 
 <h4 id="creating-list-of-all-packages-with-pip">Creating list of all packages with pip</h4>
 
 <p>It is one of most used and most useful feature of <code>pip</code>. It allows you to make a list of all the dependencies of your project.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will output the file to current directory
-</span><span class="c1"></span>pip freeze &gt; <span class="o">[</span>file_name.txt<span class="o">]</span></code></pre></div></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#it will output the file to current directory</span>
+pip freeze &gt; <span class="o">[</span>file_name.txt<span class="o">]</span></code></pre></div></p>
 
 <p>All these commands above will install the packages globally. But that&rsquo;s not what is desired. <code>virtualenv</code> comes to our rescue here.</p>
 
@@ -182,12 +182,12 @@ pip install --upgrade django</code></pre></div>
 <p><code>virtualenvwrapper</code> also places all your virtual environments in one place. It makes working with projects very easy.</p>
 
 <p>Now open your <code>.bashrc</code> and add these two lines to the end.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># All your projects will be saved in python-dev folder
-</span><span class="c1"></span><span class="nb">export</span> <span class="nv">PROJECT_HOME</span><span class="o">=</span>~/python-dev
-<span class="c1"># ~/python-dev/virtualenvs will contains python interpreters for each project.
-</span><span class="c1"></span><span class="nb">export</span> <span class="nv">WORKON_HOME</span><span class="o">=</span>~/python-dev/virtualenvs
-<span class="c1"># source the virtualenvwrapper script
-</span><span class="c1"></span><span class="nb">source</span> /usr/local/bin/virtualenvwrapper.sh</code></pre></div></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># All your projects will be saved in python-dev folder</span>
+<span class="nb">export</span> <span class="nv">PROJECT_HOME</span><span class="o">=</span>~/python-dev
+<span class="c1"># ~/python-dev/virtualenvs will contains python interpreters for each project.</span>
+<span class="nb">export</span> <span class="nv">WORKON_HOME</span><span class="o">=</span>~/python-dev/virtualenvs
+<span class="c1"># source the virtualenvwrapper script</span>
+<span class="nb">source</span> /usr/local/bin/virtualenvwrapper.sh</code></pre></div></p>
 
 <p>You can change &ldquo;python-dev&rdquo; to any name you wish. Your virtual environments will be created at that location.</p>
 

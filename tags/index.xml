@@ -6,35 +6,53 @@
     <description>Recent content in Tags on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Sun, 13 May 2018 17:10:13 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 29 Jun 2019 06:10:03 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Android</title>
-      <link>https://yashagarwal.in/tags/android/</link>
-      <pubDate>Sun, 13 May 2018 17:10:13 +0530</pubDate>
+      <title>Travel</title>
+      <link>https://yashagarwal.in/tags/travel/</link>
+      <pubDate>Sat, 29 Jun 2019 06:10:03 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/tags/android/</guid>
+      <guid>https://yashagarwal.in/tags/travel/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Arch Linux</title>
-      <link>https://yashagarwal.in/tags/arch-linux/</link>
-      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
+      <title>GRPC</title>
+      <link>https://yashagarwal.in/tags/grpc/</link>
+      <pubDate>Mon, 18 Feb 2019 06:47:15 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/tags/arch-linux/</guid>
+      <guid>https://yashagarwal.in/tags/grpc/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>CSE</title>
-      <link>https://yashagarwal.in/tags/cse/</link>
-      <pubDate>Thu, 14 Jun 2018 17:59:28 +0530</pubDate>
+      <title>OPA</title>
+      <link>https://yashagarwal.in/tags/opa/</link>
+      <pubDate>Mon, 18 Feb 2019 06:47:15 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/tags/cse/</guid>
+      <guid>https://yashagarwal.in/tags/opa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>review</title>
+      <link>https://yashagarwal.in/tags/review/</link>
+      <pubDate>Mon, 31 Dec 2018 22:02:08 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Personal Finance</title>
+      <link>https://yashagarwal.in/tags/personal-finance/</link>
+      <pubDate>Mon, 17 Dec 2018 09:50:27 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/personal-finance/</guid>
       <description></description>
     </item>
     
@@ -48,11 +66,74 @@
     </item>
     
     <item>
-      <title>Configuration</title>
-      <link>https://yashagarwal.in/tags/configuration/</link>
-      <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
+      <title>Science</title>
+      <link>https://yashagarwal.in/tags/science/</link>
+      <pubDate>Sat, 15 Dec 2018 19:04:38 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/tags/configuration/</guid>
+      <guid>https://yashagarwal.in/tags/science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mythology</title>
+      <link>https://yashagarwal.in/tags/mythology/</link>
+      <pubDate>Sat, 24 Nov 2018 14:00:36 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/mythology/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Philosophy</title>
+      <link>https://yashagarwal.in/tags/philosophy/</link>
+      <pubDate>Sat, 24 Nov 2018 14:00:36 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/philosophy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fiction</title>
+      <link>https://yashagarwal.in/tags/fiction/</link>
+      <pubDate>Mon, 05 Nov 2018 12:00:44 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/fiction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CSE</title>
+      <link>https://yashagarwal.in/tags/cse/</link>
+      <pubDate>Thu, 14 Jun 2018 17:59:28 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/cse/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NITC</title>
+      <link>https://yashagarwal.in/tags/nitc/</link>
+      <pubDate>Thu, 14 Jun 2018 17:59:28 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/nitc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Arch Linux</title>
+      <link>https://yashagarwal.in/tags/arch-linux/</link>
+      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/arch-linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>i3</title>
+      <link>https://yashagarwal.in/tags/i3/</link>
+      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/i3/</guid>
       <description></description>
     </item>
     
@@ -66,20 +147,20 @@
     </item>
     
     <item>
-      <title>Docker</title>
-      <link>https://yashagarwal.in/tags/docker/</link>
-      <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Drozer</title>
       <link>https://yashagarwal.in/tags/drozer/</link>
       <pubDate>Sun, 13 May 2018 17:10:13 +0530</pubDate>
       
       <guid>https://yashagarwal.in/tags/drozer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>android</title>
+      <link>https://yashagarwal.in/tags/android/</link>
+      <pubDate>Sun, 13 May 2018 17:10:13 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/android/</guid>
       <description></description>
     </item>
     
@@ -102,51 +183,6 @@
     </item>
     
     <item>
-      <title>Fiction</title>
-      <link>https://yashagarwal.in/tags/fiction/</link>
-      <pubDate>Mon, 05 Nov 2018 12:00:44 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/fiction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GRPC</title>
-      <link>https://yashagarwal.in/tags/grpc/</link>
-      <pubDate>Mon, 18 Feb 2019 06:47:15 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/grpc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gh-pages</title>
-      <link>https://yashagarwal.in/tags/gh-pages/</link>
-      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/gh-pages/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Github</title>
-      <link>https://yashagarwal.in/tags/github/</link>
-      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Github</title>
-      <link>https://yashagarwal.in/tags/github/</link>
-      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Hugo</title>
       <link>https://yashagarwal.in/tags/hugo/</link>
       <pubDate>Fri, 02 Mar 2018 11:27:05 +0530</pubDate>
@@ -156,137 +192,20 @@
     </item>
     
     <item>
-      <title>I3</title>
-      <link>https://yashagarwal.in/tags/i3/</link>
-      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/i3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mythology</title>
-      <link>https://yashagarwal.in/tags/mythology/</link>
-      <pubDate>Sat, 24 Nov 2018 14:00:36 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/mythology/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>NITC</title>
-      <link>https://yashagarwal.in/tags/nitc/</link>
-      <pubDate>Thu, 14 Jun 2018 17:59:28 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/nitc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>NTFS</title>
-      <link>https://yashagarwal.in/tags/ntfs/</link>
-      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/ntfs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>OPA</title>
-      <link>https://yashagarwal.in/tags/opa/</link>
-      <pubDate>Mon, 18 Feb 2019 06:47:15 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/opa/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Octane</title>
-      <link>https://yashagarwal.in/tags/octane/</link>
-      <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/octane/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Openbox</title>
-      <link>https://yashagarwal.in/tags/openbox/</link>
-      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/openbox/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Personal Finance</title>
-      <link>https://yashagarwal.in/tags/personal-finance/</link>
-      <pubDate>Mon, 17 Dec 2018 09:50:27 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/personal-finance/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Philosophy</title>
-      <link>https://yashagarwal.in/tags/philosophy/</link>
-      <pubDate>Sat, 24 Nov 2018 14:00:36 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/philosophy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pip</title>
-      <link>https://yashagarwal.in/tags/pip/</link>
-      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/pip/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Polkit</title>
-      <link>https://yashagarwal.in/tags/polkit/</link>
-      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/polkit/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Python</title>
       <link>https://yashagarwal.in/tags/python/</link>
-      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
       
       <guid>https://yashagarwal.in/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Python</title>
-      <link>https://yashagarwal.in/tags/python/</link>
-      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      <title>github</title>
+      <link>https://yashagarwal.in/tags/github/</link>
+      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Review</title>
-      <link>https://yashagarwal.in/tags/review/</link>
-      <pubDate>Thu, 14 Jun 2018 17:59:28 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Review</title>
-      <link>https://yashagarwal.in/tags/review/</link>
-      <pubDate>Mon, 31 Dec 2018 22:02:08 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/review/</guid>
+      <guid>https://yashagarwal.in/tags/github/</guid>
       <description></description>
     </item>
     
@@ -300,29 +219,65 @@
     </item>
     
     <item>
-      <title>Science</title>
-      <link>https://yashagarwal.in/tags/science/</link>
-      <pubDate>Sat, 15 Dec 2018 19:04:38 +0530</pubDate>
+      <title>Docker</title>
+      <link>https://yashagarwal.in/tags/docker/</link>
+      <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/tags/science/</guid>
+      <guid>https://yashagarwal.in/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Sublime text</title>
-      <link>https://yashagarwal.in/tags/sublime-text/</link>
-      <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
+      <title>Octane</title>
+      <link>https://yashagarwal.in/tags/octane/</link>
+      <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/tags/sublime-text/</guid>
+      <guid>https://yashagarwal.in/tags/octane/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Sudo</title>
-      <link>https://yashagarwal.in/tags/sudo/</link>
-      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
+      <title>NTFS</title>
+      <link>https://yashagarwal.in/tags/ntfs/</link>
+      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
       
-      <guid>https://yashagarwal.in/tags/sudo/</guid>
+      <guid>https://yashagarwal.in/tags/ntfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Polkit</title>
+      <link>https://yashagarwal.in/tags/polkit/</link>
+      <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/polkit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wercker</title>
+      <link>https://yashagarwal.in/tags/wercker/</link>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/wercker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gh-pages</title>
+      <link>https://yashagarwal.in/tags/gh-pages/</link>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/gh-pages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pip</title>
+      <link>https://yashagarwal.in/tags/pip/</link>
+      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/pip/</guid>
       <description></description>
     </item>
     
@@ -336,11 +291,29 @@
     </item>
     
     <item>
-      <title>Wercker</title>
-      <link>https://yashagarwal.in/tags/wercker/</link>
-      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      <title>openbox</title>
+      <link>https://yashagarwal.in/tags/openbox/</link>
+      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://yashagarwal.in/tags/wercker/</guid>
+      <guid>https://yashagarwal.in/tags/openbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sublime text</title>
+      <link>https://yashagarwal.in/tags/sublime-text/</link>
+      <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/sublime-text/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sudo</title>
+      <link>https://yashagarwal.in/tags/sudo/</link>
+      <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/sudo/</guid>
       <description></description>
     </item>
     

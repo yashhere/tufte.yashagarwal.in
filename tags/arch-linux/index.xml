@@ -22,10 +22,10 @@
     
     <item>
       <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>
-      <link>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</link>
+      <link>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/</link>
       <pubDate>Thu, 01 Feb 2018 12:54:34 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</guid>
+      <guid>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/</guid>
       <description>This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
 So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems.</description>
     </item>
@@ -79,7 +79,8 @@ SSH Generating an SSH key pair provides you with a public key and a private key.
       <guid>https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</guid>
       <description>When viewing Hindi content in any browser in Arch Linux, the rendering looks weird.
     before applying the fix
-    Doesn&amp;rsquo;t look good right! I&amp;rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix.</description>
+    Doesn&amp;rsquo;t look good right! I&amp;rsquo;ll try to fix this issue in this post. You might need to install the appropriate font support in Arch Linux before applying this fix. The appropriate package for installing Indic Language support is ttf-indic-otf.
+Now go to /usr/share/fonts/TTF and take the backup of two fonts FreeSans.</description>
     </item>
     
     <item>
@@ -97,7 +98,7 @@ SSH Generating an SSH key pair provides you with a public key and a private key.
       <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
-      <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment.</description>
+      <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and when you put them together you get something amazing.</description>
     </item>
     
   </channel>

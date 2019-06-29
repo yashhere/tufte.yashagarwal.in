@@ -14,7 +14,7 @@ Introduction In this tutorial, I will show you how to create a basic Hugo theme.
 <meta property='og:site_name' content='/dev/yash/notes'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Hugo'><meta property='article:published_time' content='2018-03-02T11:27:05&#43;05:30'/><meta property='article:modified_time' content='2018-03-02T11:27:05&#43;05:30'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.55.6" />
 
   <title>Develop a Theme for Hugo • /dev/yash/notes</title>
   <link rel='canonical' href='https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/'>
@@ -137,7 +137,7 @@ Introduction In this tutorial, I will show you how to create a basic Hugo theme.
 
 <p>This is an example of frontmatter written in YAML.
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
-</span><span class="w"></span>date<span class="p">:</span><span class="w"> </span><span class="s2">&#34;2018-02-11T11:45:05+05:30&#34;</span><span class="w">
+</span><span class="w"></span>date<span class="p">:</span><span class="w"> </span><span class="s2">&#34;2018-02-11T1105+05:30&#34;</span><span class="w">
 </span><span class="w"></span>title<span class="p">:</span><span class="w"> </span><span class="s2">&#34;Basic Hugo Theming Tutorial.&#34;</span><span class="w">
 </span><span class="w"></span>description<span class="p">:</span><span class="w"> </span><span class="s2">&#34;A primer about theme development for Hugo, a static site generator written in Golang.&#34;</span><span class="w">
 </span><span class="w"></span>categories<span class="p">:</span><span class="w">
@@ -223,12 +223,12 @@ MetaDataFormat: <span class="s2">&#34;yaml&#34;</span></code></pre></div></p>
 
 <p>Now when you run your site, Hugo will show some errors. It is normal because our layouts and themes directories are still empty.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose
-INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 Using config file: /home/yash/zeo/config.yaml
-Building sites … INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 syncing static files to /home/yash/zeo/public/
-WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 No translation bundle found <span class="k">for</span> default language <span class="s2">&#34;en&#34;</span>
-WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 Translation func <span class="k">for</span> language en not found, use default.
-WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 i18n not initialized, check that you have language file <span class="o">(</span>in i18n<span class="o">)</span> that matches the site language or the default language.
-WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:20:59 <span class="o">[</span>en<span class="o">]</span> Unable to locate layout <span class="k">for</span> <span class="s2">&#34;taxonomyTerm&#34;</span>:
+INFO <span class="m">2018</span>/02/11 <span class="m">1159</span> Using config file: /home/yash/zeo/config.yaml
+Building sites … INFO <span class="m">2018</span>/02/11 <span class="m">1159</span> syncing static files to /home/yash/zeo/public/
+WARN <span class="m">2018</span>/02/11 <span class="m">1159</span> No translation bundle found <span class="k">for</span> default language <span class="s2">&#34;en&#34;</span>
+WARN <span class="m">2018</span>/02/11 <span class="m">1159</span> Translation func <span class="k">for</span> language en not found, use default.
+WARN <span class="m">2018</span>/02/11 <span class="m">1159</span> i18n not initialized, check that you have language file <span class="o">(</span>in i18n<span class="o">)</span> that matches the site language or the default language.
+WARN <span class="m">2018</span>/02/11 <span class="m">1159</span> <span class="o">[</span>en<span class="o">]</span> Unable to locate layout <span class="k">for</span> <span class="s2">&#34;taxonomyTerm&#34;</span>:
 ...
 ...</code></pre></div></p>
 
@@ -253,8 +253,8 @@ drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Fe
 <p>In this tutorial, we will be creating a theme called <code>zeo</code>. As mentioned earlier, my aim is to show you how to use Hugo&rsquo;s features to fill out your HTML files from the markdown content, I will not be focusing on CSS. So the theme will be ugly but functional.</p>
 
 <p>Let&rsquo;s create a basic skeleton of the theme. It will create the directory structure of the theme and place empty files for you to fill in.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># run it from the root of your site
-</span><span class="c1"></span>$ hugo new theme zeo
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># run it from the root of your site</span>
+$ hugo new theme zeo
 $ ls -l themes/zeo/
 total <span class="m">20</span>
 drwxr-xr-x <span class="m">2</span> yash hogwarts <span class="m">4096</span> Feb <span class="m">11</span> <span class="m">11</span>:30 archetypes
@@ -270,11 +270,11 @@ theme: <span class="s2">&#34;zeo&#34;</span></code></pre></div></p>
 
 <p>Now that we have an empty theme, let&rsquo;s build the site.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose
-INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 Using config file: /home/yash/zeo/config.yaml
-Building sites … INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 syncing static files to /home/yash/zeo/public/
-WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 No translation bundle found <span class="k">for</span> default language <span class="s2">&#34;en&#34;</span>
-WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 Translation func <span class="k">for</span> language en not found, use default.
-WARN <span class="m">2018</span>/02/11 <span class="m">11</span>:34:14 i18n not initialized, check that you have language file <span class="o">(</span>in i18n<span class="o">)</span> that matches the site language or the default language.
+INFO <span class="m">2018</span>/02/11 <span class="m">1114</span> Using config file: /home/yash/zeo/config.yaml
+Building sites … INFO <span class="m">2018</span>/02/11 <span class="m">1114</span> syncing static files to /home/yash/zeo/public/
+WARN <span class="m">2018</span>/02/11 <span class="m">1114</span> No translation bundle found <span class="k">for</span> default language <span class="s2">&#34;en&#34;</span>
+WARN <span class="m">2018</span>/02/11 <span class="m">1114</span> Translation func <span class="k">for</span> language en not found, use default.
+WARN <span class="m">2018</span>/02/11 <span class="m">1114</span> i18n not initialized, check that you have language file <span class="o">(</span>in i18n<span class="o">)</span> that matches the site language or the default language.
 
                    <span class="p">|</span> EN
 +------------------+----+
@@ -367,9 +367,9 @@ Total in <span class="m">11</span> ms
 
 <p>Hugo has a command for generating skeleton of posts, just like it did for sites and themes.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose new post/first.md
-INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:40:58 Using config file: /home/yash/zeo/config.yaml
-INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:40:58 attempting to create <span class="s2">&#34;post/first.md&#34;</span> of <span class="s2">&#34;post&#34;</span> of ext <span class="s2">&#34;.md&#34;</span>
-INFO <span class="m">2018</span>/02/11 <span class="m">11</span>:40:58 curpath: /home/yash/zeo/archetypes/default.md
+INFO <span class="m">2018</span>/02/11 <span class="m">1158</span> Using config file: /home/yash/zeo/config.yaml
+INFO <span class="m">2018</span>/02/11 <span class="m">1158</span> attempting to create <span class="s2">&#34;post/first.md&#34;</span> of <span class="s2">&#34;post&#34;</span> of ext <span class="s2">&#34;.md&#34;</span>
+INFO <span class="m">2018</span>/02/11 <span class="m">1158</span> curpath: /home/yash/zeo/archetypes/default.md
 ...
 ...
 /home/yash/zeo/content/post/first.md created</code></pre></div></p>
@@ -398,9 +398,9 @@ Categories: <span class="o">[]</span>
 
 <p>Create one more post in <code>content/post</code> directory.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo --verbose new post/second.md
-INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 Using config file: /home/yash/zeo/config.yaml
-INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 attempting to create <span class="s2">&#34;post/second.md&#34;</span> of <span class="s2">&#34;post&#34;</span> of ext <span class="s2">&#34;.md&#34;</span>
-INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 curpath: /home/yash/zeo/themes/zeo/archetypes/post.md
+INFO <span class="m">2018</span>/02/11 <span class="m">1256</span> Using config file: /home/yash/zeo/config.yaml
+INFO <span class="m">2018</span>/02/11 <span class="m">1256</span> attempting to create <span class="s2">&#34;post/second.md&#34;</span> of <span class="s2">&#34;post&#34;</span> of ext <span class="s2">&#34;.md&#34;</span>
+INFO <span class="m">2018</span>/02/11 <span class="m">1256</span> curpath: /home/yash/zeo/themes/zeo/archetypes/post.md
 ...
 ...
 /home/yash/zeo/content/post/second.md created</code></pre></div></p>
@@ -410,17 +410,17 @@ INFO <span class="m">2018</span>/02/11 <span class="m">12</span>:13:56 curpath: 
 <p>By default, Hugo does not generate posts with an empty content section. So you will need to add some content before you try to build the site.</p>
 
 <p>Let&rsquo;s look at the <code>content/post/first.md</code> file, after adding content to it.
-<div class="highlight"><pre class="chroma"><code class="language-markdown" data-lang="markdown">$ cat content/post/first.md<span class="err">
-</span><span class="err"></span>---<span class="err">
-</span><span class="err"></span>title: &#34;First&#34;<span class="err">
-</span><span class="err"></span>date: 2018-02-11T11:35:58+05:30<span class="err">
-</span><span class="err"></span>draft: true<span class="err">
-</span><span class="err"></span>Tags: [&#34;first&#34;]<span class="err">
-</span><span class="err"></span>Categories: [&#34;Hugo&#34;]<span class="err">
-</span><span class="err">
-</span><span class="err"></span>---<span class="err">
-</span><span class="err">
-</span><span class="err"></span>Hi there. My first Hugo post</code></pre></div></p>
+<div class="highlight"><pre class="chroma"><code class="language-markdown" data-lang="markdown">$ cat content/post/first.md
+---
+title: &#34;First&#34;
+date: 2018-02-11T1158+05:30
+draft: true
+Tags: [&#34;first&#34;]
+Categories: [&#34;Hugo&#34;]
+
+---
+
+Hi there. My first Hugo post</code></pre></div></p>
 
 <p>Now that our posts are ready, we need to create templates to show them in a list on the home page and to show their content on separate pages for each post.</p>
 
@@ -693,7 +693,7 @@ $ vim themes/zeo/layouts/_default/single.html
   
 </svg>
 </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/development'>Development</a>, <a class='category' href='https://yashagarwal.in/categories/customization'>Customization</a></div>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/development'>Development</a>, <a class='category' href='https://yashagarwal.in/categories/customization'>customization</a></div>
 <div class='tags'>
   <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   

@@ -14,7 +14,7 @@ This guide is written primarily for my reference, as someone who has installed A
 <meta property='og:site_name' content='/dev/yash/notes'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Configuration'><meta property='article:tag' content='Arch Linux'><meta property='article:tag' content='i3'><meta property='article:published_time' content='2018-01-24T21:49:05&#43;05:30'/><meta property='article:modified_time' content='2018-01-24T21:49:05&#43;05:30'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.55.6" />
 
   <title>Arch Linux Installation Guide Part 1 • /dev/yash/notes</title>
   <link rel='canonical' href='https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/'>
@@ -227,13 +227,13 @@ This will set up your user account, create a home directory for your user, set t
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">nano /etc/sudoers</code></pre></div></p>
 
 <p>Now uncomment the following line to enable <code>root</code> privilege for all the users inside <code>wheel</code> group:
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"># %wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL</code></pre></div></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># %wheel ALL=(ALL) ALL</span></code></pre></div></p>
 
 <p>Now you can safely disable root account
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd -l root
 
-<span class="c1"># login into your user account
-</span><span class="c1"></span>su your-user-name</code></pre></div>
+<span class="c1"># login into your user account</span>
+su your-user-name</code></pre></div>
 From this point onwards, it is necessary to append <code>sudo</code> to any command that requires <code>root</code> privileges.</p>
 
 <h3 id="10-install-bootloader">10. Install bootloader</h3>
@@ -251,13 +251,13 @@ Here <code>--efi-directory</code> is the folder where the <code>EFI</code> parti
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></div></p>
 
 <p>If you encounter any errors related to <code>lvm</code> during installation of grub, then follow these steps.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># come out of chroot
-</span><span class="c1"></span><span class="nb">exit</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># come out of chroot</span>
+<span class="nb">exit</span>
 mkdir /mnt/hostrun
 mount --bind /run /mnt/hostrun
 
-<span class="c1"># back to chroot
-</span><span class="c1"></span>arch-chroot /mnt
+<span class="c1"># back to chroot</span>
+arch-chroot /mnt
 mkdir /run/lvm
 mount --bind /hostrun/lvm /run/lvm</code></pre></div></p>
 
@@ -306,7 +306,7 @@ Finally, reboot your machine by typing <code>reboot</code> and remove the instal
   
 </svg>
 </span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/linux'>Linux</a>, <a class='category' href='https://yashagarwal.in/categories/customization'>Customization</a>, <a class='category' href='https://yashagarwal.in/categories/system-administration'>System Administration</a></div>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/linux'>Linux</a>, <a class='category' href='https://yashagarwal.in/categories/customization'>customization</a>, <a class='category' href='https://yashagarwal.in/categories/system-administration'>System Administration</a></div>
 <div class='tags'>
   <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
@@ -315,7 +315,7 @@ Finally, reboot your machine by typing <code>reboot</code> and remove the instal
   
 </svg>
 </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/configuration'>Configuration</a>, <a class='tag' href='https://yashagarwal.in/tags/arch-linux'>Arch Linux</a>, <a class='tag' href='https://yashagarwal.in/tags/i3'>I3</a></div>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/configuration'>Configuration</a>, <a class='tag' href='https://yashagarwal.in/tags/arch-linux'>Arch Linux</a>, <a class='tag' href='https://yashagarwal.in/tags/i3'>i3</a></div>
 
   </div>
 </footer>

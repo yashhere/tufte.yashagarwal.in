@@ -6,10 +6,19 @@
     <description>Recent content in Python on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Sun, 09 Oct 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jan 2018 11:23:23 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>My Own Configuration Manager</title>
+      <link>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</link>
+      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</guid>
+      <description>I have been using Linux since I was in my second year of undergraduate. My experiments with the dotfiles (configuration files) also started at the same time. For the uninformed, in Linux, it is common to configure a lot of settings and configurations within dotfiles. Dotfiles are files in a Linux user&amp;rsquo;s home directory that begin with a dot or a full-stop character. This dot indicates to the operating system, that these files are used to store the settings of programs like vim or shells like bash or fish to name a few.</description>
+    </item>
     
     <item>
       <title>Setting up Python Development Environments</title>

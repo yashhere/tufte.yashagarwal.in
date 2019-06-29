@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
+So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems.'>
+
+<meta property='og:title' content='Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups • /dev/yash/notes'>
+<meta property='og:description' content='This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
+So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems.'>
+<meta property='og:url' content='https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/'>
+<meta property='og:site_name' content='/dev/yash/notes'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='configuration'><meta property='article:tag' content='Arch Linux'><meta property='article:published_time' content='2018-02-01T12:54:34&#43;05:30'/><meta property='article:modified_time' content='2018-02-01T12:54:34&#43;05:30'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+  <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups • /dev/yash/notes</title>
+  <link rel='canonical' href='https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/'>
+  
+  
+  
+  <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'><link rel='stylesheet' href='https://yashagarwal.in/css/footnotes.css'>
+
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='https://yashagarwal.in/'>Home</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/posts'>Posts</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/whoami'>whoami</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>/dev/yash/notes</p>
+          
+          <p class='site-description subtitle'>The directory of my thoughts</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2018-02-01T12:54:34&#43;05:30'>Feb 01, 2018</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+3 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p>This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.</p>
+
+<p>So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems. It is generally one operating system showing the correct time, and other one showing wrong time. It happens because Microsoft Windows thinks that the hardware clock (CMOS clock or BIOS clock) of the machine is using localtime (depends on your current time zone) and hence it doesn&rsquo;t do anything and shows you the same time. But most GNU/Linux operating systems (Ubuntu, Arch Linux, etc.) thinks that the hardware clock is set to track UTC time. Hence the mismatch in the time happens. For example, assume that the current real time is <code>10:22:51</code> and the hardware clock time is set to <code>10:22:51</code>. Windows will interpret this time as local time and show <code>10:22:51</code> but *nix based systems will show <code>15:52:51</code> because they will interpret this time as UTC time. Of course, the above example is true if we assume time zone as India, which is <code>+05:30</code> from UTC.</p>
+
+<p>This issue can be fixed either from Windows or from GNU/Linux OS. I prefer to adjust the behavior of Windows to use UTC time. It is much more convenient to use when traveling between different time zones. Please note that this method might not work or cause instability with older versions of Windows OS. I have tried this fix on Windows 10, and it works without any issues.</p>
+
+<p>Open an Administrator Command Prompt by pressing <code>⊞ + x</code>, then type <code>a</code>. This method of opening Administrator Command Prompt does not work on Windows 7.</p>
+
+<p>Now execute the following command:
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">reg add <span class="s2">&#34;HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation&#34;</span> /v RealTimeIsUniversal /d 1 /t REG_DWORD /f</code></pre></div></p>
+
+<p>Windows Time Service which keeps the clock in Windows OS accurate will still write the localtime to the Real-time clock (RTC) regardless of the registry settings on shutdown. So I prefer to disable the Windows Time Service.
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">sc config w32time start= disabled</code></pre></div></p>
+
+<p>Now you may need to change the time in your BIOS to UTC time. Although that depends on whether your Windows OS was showing correct time before applying the above modifications. If yes, then changing BIOS time to UTC will make sure that both Windows and GNU/Linux convert hardware clock to localtime.</p>
+
+<hr />
+
+<h5 id="references">References</h5>
+
+<ol>
+<li><a href="https://help.ubuntu.com/community/UbuntuTime#Multiple_Boot_Systems_Time_Conflicts" target="_blank">Multiple Boot Systems Time Conflicts</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Time#UTC_in_Windows" target="_blank">UTC in Windows</a></li>
+</ol>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/linux'>Linux</a>, <a class='category' href='https://yashagarwal.in/categories/system-administration'>System Administration</a></div>
+<div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/configuration'>Configuration</a>, <a class='tag' href='https://yashagarwal.in/tags/arch-linux'>Arch Linux</a></div>
+
+  </div>
+</footer>
+
+
+    
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Why a Sanskrit Shloka?</a>
+    </div><div class='next-entry'>
+      <a href='https://yashagarwal.in/posts/2018/02/my-new-domain/'>
+        <span class='screen-reader'>Next post: </span>My New Domain<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+  
+<div class='comments-container'>
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yashhere" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='https://yashagarwal.in/assets/js/main.f29c93b9.js'></script><script src='https://yashagarwal.in/js/jquery.js'></script><script src='https://yashagarwal.in/js/redirection.js'></script><script src='https://yashagarwal.in/js/footnoteTooltip.js'></script></body>
+
+</html>
+

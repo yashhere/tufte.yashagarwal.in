@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Openbox on /dev/yash/notes</title>
+    <title>openbox on /dev/yash/notes</title>
     <link>https://yashagarwal.in/tags/openbox/</link>
-    <description>Recent content in Openbox on /dev/yash/notes</description>
+    <description>Recent content in openbox on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
     <lastBuildDate>Sat, 11 Jun 2016 00:00:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
       
       <guid>https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
-      <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment.</description>
+      <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and when you put them together you get something amazing.</description>
     </item>
     
   </channel>

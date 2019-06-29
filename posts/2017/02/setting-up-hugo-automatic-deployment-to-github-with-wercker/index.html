@@ -12,7 +12,7 @@
 <meta property='og:site_name' content='/dev/yash/notes'>
 <meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='gh-pages'><meta property='article:tag' content='Hugo'><meta property='article:tag' content='Github'><meta property='article:tag' content='Wercker'><meta property='article:published_time' content='2017-02-22T13:37:56&#43;05:30'/><meta property='article:modified_time' content='2017-02-22T13:37:56&#43;05:30'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.48" />
+<meta name="generator" content="Hugo 0.55.6" />
 
   <title>Setting up Hugo automatic deployment to Github with Wercker • /dev/yash/notes</title>
   <link rel='canonical' href='https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/'>
@@ -181,9 +181,9 @@
 
 <p>My site is a User site, so I wanted all the static files to be saved in the master branch. As Hugo generates all the static files under <code>public</code> directory, I needed another branch to store my source files. So my made a new branch <code>source</code> which will save all the source files for my blog. Don&rsquo;t forget to remove the .git folder from the theme folder. Otherwise, the build will fail at later stage. You can try using git submodule feature to avoid this issue. I created a repository <code>yash2696.github.io</code> in Github also.</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git init                       <span class="c1">#initialized git repository in site root
-</span><span class="c1"></span>git checkout -b <span class="nb">source</span>         <span class="c1">#created new branch source
-</span><span class="c1"></span>git remote add origin https://github.com/yash2696/yash2696.github.io
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git init                       <span class="c1">#initialized git repository in site root</span>
+git checkout -b <span class="nb">source</span>         <span class="c1">#created new branch source</span>
+git remote add origin https://github.com/yash2696/yash2696.github.io
 git add .
 git commit -m <span class="s2">&#34;Initial Commit&#34;</span>
 git push origin source</code></pre></div>
@@ -325,7 +325,7 @@ git push origin master</code></pre></div></p>
   
 </svg>
 </span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/gh-pages'>Gh-pages</a>, <a class='tag' href='https://yashagarwal.in/tags/hugo'>Hugo</a>, <a class='tag' href='https://yashagarwal.in/tags/github'>Github</a>, <a class='tag' href='https://yashagarwal.in/tags/wercker'>Wercker</a></div>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/gh-pages'>gh-pages</a>, <a class='tag' href='https://yashagarwal.in/tags/hugo'>Hugo</a>, <a class='tag' href='https://yashagarwal.in/tags/github'>github</a>, <a class='tag' href='https://yashagarwal.in/tags/wercker'>Wercker</a></div>
 
   </div>
 </footer>

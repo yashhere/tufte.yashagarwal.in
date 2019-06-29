@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Programming on /dev/yash/notes</title>
+    <title>programming on /dev/yash/notes</title>
     <link>https://yashagarwal.in/categories/programming/</link>
-    <description>Recent content in Programming on /dev/yash/notes</description>
+    <description>Recent content in programming on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
     <lastBuildDate>Tue, 12 Jun 2018 09:45:46 +0530</lastBuildDate>
@@ -36,7 +36,7 @@ If you are working on large projects, it is undoubtedly a good idea to have a bu
       <pubDate>Wed, 28 Mar 2018 20:58:26 +0530</pubDate>
       
       <guid>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</guid>
-      <description>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors.</description>
+      <description>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities.</description>
     </item>
     
     <item>

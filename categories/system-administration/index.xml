@@ -22,10 +22,10 @@
     
     <item>
       <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>
-      <link>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</link>
+      <link>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/</link>
       <pubDate>Thu, 01 Feb 2018 12:54:34 +0530</pubDate>
       
-      <guid>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows--gnu/linux-dual-boot-setups/</guid>
+      <guid>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/</guid>
       <description>This post is going to be one among those, that I have written for my own reference. Whatever I am going to mention in this post, is not new. Everything has already been said and written many times on many websites and Linux forums.
 So I will start with explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not same in both the operating systems.</description>
     </item>
@@ -86,7 +86,7 @@ SSH Generating an SSH key pair provides you with a public key and a private key.
       <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
       
       <guid>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
-      <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux.</description>
+      <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.</description>
     </item>
     
   </channel>
