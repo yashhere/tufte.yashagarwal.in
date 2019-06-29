@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>tutorial</title>
+      <title>Tutorial</title>
       <link>https://yashagarwal.in/categories/tutorial/</link>
       <pubDate>Mon, 18 Feb 2019 06:47:15 +0530</pubDate>
       
@@ -75,15 +75,6 @@
     </item>
     
     <item>
-      <title>Customization</title>
-      <link>https://yashagarwal.in/categories/customization/</link>
-      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/categories/customization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Development</title>
       <link>https://yashagarwal.in/categories/development/</link>
       <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
@@ -107,6 +98,15 @@
       <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
       
       <guid>https://yashagarwal.in/categories/system-administration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>customization</title>
+      <link>https://yashagarwal.in/categories/customization/</link>
+      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/categories/customization/</guid>
       <description></description>
     </item>
     
