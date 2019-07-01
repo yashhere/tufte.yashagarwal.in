@@ -110,24 +110,24 @@ related:
     - weight: 10
     - pattern: "2006"
 
-privacy:
-  disqus:
-    disable: false
-  googleAnalytics:
-    anonymizeIP: true
-    disable: true
-    respectDoNotTrack: true
-    useSessionStorage: false
-  instagram:
-    disable: false
-    simple: false
-  twitter:
-    disable: false
-    enableDNT: true
-    simple: false
-  vimeo:
-    disable: false
-    simple: false
-  youtube:
-    disable: false
-    privacyEnhanced: true
+# privacy:
+#   disqus:
+#     disable: false
+#   googleAnalytics:
+#     anonymizeIP: true
+#     disable: true
+#     respectDoNotTrack: true
+#     useSessionStorage: false
+#   instagram:
+#     disable: false
+#     simple: false
+#   twitter:
+#     disable: false
+#     enableDNT: true
+#     simple: false
+#   vimeo:
+#     disable: false
+#     simple: false
+#   youtube:
+#     disable: false
+#     privacyEnhanced: true
