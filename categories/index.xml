@@ -48,7 +48,7 @@
     </item>
     
     <item>
-      <title>Life</title>
+      <title>life</title>
       <link>https://yashagarwal.in/categories/life/</link>
       <pubDate>Mon, 31 Dec 2018 22:02:08 +0530</pubDate>
       
@@ -71,6 +71,15 @@
       <pubDate>Sat, 25 Aug 2018 21:16:41 +0530</pubDate>
       
       <guid>https://yashagarwal.in/categories/thoughts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Customization</title>
+      <link>https://yashagarwal.in/categories/customization/</link>
+      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/categories/customization/</guid>
       <description></description>
     </item>
     
@@ -98,15 +107,6 @@
       <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
       
       <guid>https://yashagarwal.in/categories/system-administration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>customization</title>
-      <link>https://yashagarwal.in/categories/customization/</link>
-      <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/categories/customization/</guid>
       <description></description>
     </item>
     
@@ -147,7 +147,7 @@
     </item>
     
     <item>
-      <title>updates</title>
+      <title>Updates</title>
       <link>https://yashagarwal.in/categories/updates/</link>
       <pubDate>Wed, 28 Mar 2018 20:58:26 +0530</pubDate>
       

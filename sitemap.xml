@@ -229,6 +229,12 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/categories/customization/</loc>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/categories/development/</loc>
     <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
@@ -242,12 +248,6 @@
   
   <url>
     <loc>https://yashagarwal.in/categories/system-administration/</loc>
-    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/customization/</loc>
     <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -270,14 +270,14 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/tags/configuration/</loc>
+    <loc>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</loc>
     <lastmod>2018-05-15T17:14:13+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</loc>
+    <loc>https://yashagarwal.in/tags/configuration/</loc>
     <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
