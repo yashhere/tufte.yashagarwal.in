@@ -9,7 +9,7 @@ tags:
   - Hill Stations
 ---
 
-{{< load-photoswipe >}}
+
 
 South India is blessed with nature throughout the year, but monsoons bring a different flavor and ethereal quality to some places. Although rainy season might not be the best time to travel, there is a certain charm in holidaying during the downpour.
 
@@ -111,3 +111,5 @@ I shot a video when we were coming down from the hilltop.
 To summarise, the timing of this trip was not appropriate, but I do not regret it. I have gone to other hill stations after the monsoons get over, but it is a different experience altogether to go in a rainy season. Chikmagalur is worth more than one visit. Do try to go at an appropriate time if you want to visit more places.
 
 Thanks for reading. Cheers :smile:
+
+{{< load-photoswipe >}}
