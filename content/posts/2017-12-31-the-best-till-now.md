@@ -35,7 +35,7 @@ It is one thing which I could never excel in my undergrad life. People say that 
 
 
 
-<center>{{< tweet 873491081173897216 >}}</center>
+<!-- <center>{{< tweet 873491081173897216 >}}</center> -->
 
 
 
