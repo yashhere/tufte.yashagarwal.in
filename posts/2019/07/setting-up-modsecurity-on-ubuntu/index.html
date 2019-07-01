@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Recently, I am experimenting with Web Application Firewalls a lot. ModSecurity is one of them. It is the most famous and useful open source Web Application Firewall (WAF) in existence. It is supported by various web servers such as Apache, Nginx, and IIS.
+The job of ModSecurity is to sit in front of the application web server and check the incoming requests and outgoing responses to filter out malicious content.'>
+
+<meta property='og:title' content='Setting Up ModSecurity on Ubuntu • /dev/yash/notes'>
+<meta property='og:description' content='Recently, I am experimenting with Web Application Firewalls a lot. ModSecurity is one of them. It is the most famous and useful open source Web Application Firewall (WAF) in existence. It is supported by various web servers such as Apache, Nginx, and IIS.
+The job of ModSecurity is to sit in front of the application web server and check the incoming requests and outgoing responses to filter out malicious content.'>
+<meta property='og:url' content='https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/'>
+<meta property='og:site_name' content='/dev/yash/notes'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Linux'><meta property='article:published_time' content='2019-07-01T18:20:18&#43;05:30'/><meta property='article:modified_time' content='2019-07-01T18:20:18&#43;05:30'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.55.6" />
+
+  <title>Setting Up ModSecurity on Ubuntu • /dev/yash/notes</title>
+  <link rel='canonical' href='https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/'>
+  
+  
+  
+  <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
+<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'><link rel='stylesheet' href='https://yashagarwal.in/css/footnotes.css'>
+
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  <li>
+      <a href='https://yashagarwal.in/'>Home</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/posts'>Posts</a>
+    </li>
+  <li>
+      <a href='https://yashagarwal.in/whoami'>whoami</a>
+    </li>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>/dev/yash/notes</p>
+          
+          <p class='site-description subtitle'>The directory of my thoughts</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Setting Up ModSecurity on Ubuntu</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2019-07-01T18:20:18&#43;05:30'>Jul 01, 2019</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+6 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p>Recently, I am experimenting with Web Application Firewalls a lot. ModSecurity is one of them. It is the most famous and useful open source Web Application Firewall (WAF) in existence. It is supported by various web servers such as Apache, Nginx, and IIS.</p>
+
+<p>The job of ModSecurity is to sit in front of the application web server and check the incoming requests and outgoing responses to filter out malicious content. It does so by the use of powerful and complex regular expressions. ModSecurity uses a rule language for its rules. The rule language has variables and operators defined to aid in the process of parsing HTTP requests.</p>
+
+<p>ModSecurity, in itself, cannot block or allow requests. It is just a rule engine. It requires rules to operate appropriately. That&rsquo;s where its sister project, Core Rule Set (CRS) comes into the picture. CRS is a rule set developed to be used with ModSecurity. It has been in active development for several years now and is very mature. Together, ModSecurity and CRS form a formidable defense against the widespread web application attacks.</p>
+
+<p>Now, that you know, what a WAF is, let&rsquo;s proceed to install ModSecurity on Ubuntu. I will be compiling ModSecurity&rsquo;s latest version on Ubuntu 18.04. We will also configure ModSecurity to use Core Rule Set.</p>
+
+<h5 id="installing-dependencies">Installing Dependencies</h5>
+
+<p>ModSecurity requires some dependencies to work properly. Let&rsquo;s install them -</p>
+
+<p>First, upgrade the Ubuntu system.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get -y update
+sudo apt-get -y upgrade</code></pre></div></p>
+
+<p>Now install the dependencies.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get -y install git libtool dh-autoreconf pkgconf gawk libcurl4-gnutls-dev libexpat1-dev libpcre3-dev libssl-dev libxml2-dev libyajl-dev zlibc zlib1g-dev libxml2 libpcre++-dev libxml2-dev libgeoip-dev liblmdb-dev lua5.2-dev iputils-ping locales apache2 apache2-dev ca-certificates wget</code></pre></div></p>
+
+<p><em>Optional</em>: clean up the Ubuntu caches.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt-get clean <span class="o">&amp;&amp;</span> sudo rm -rf /var/lib/apt/lists/*</code></pre></div></p>
+
+<p>Install <code>SSDeep</code> as well (as done <a href="https://github.com/CRS-support/modsecurity-docker/blob/v3/apache-apache/Dockerfile" target="_blank">here</a>)
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~
+git clone https://github.com/ssdeep-project/ssdeep
+<span class="nb">cd</span> ssdeep
+./bootstrap
+./configure
+make
+sudo make install</code></pre></div></p>
+
+<h5 id="compiling-modsecurity">Compiling ModSecurity</h5>
+
+<p>Let&rsquo;s clone ModSecurity from Github.</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~
+git clone -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity
+<span class="nb">cd</span> ModSecurity
+git submodule init
+git submodule update
+./build.sh
+./configure
+make                <span class="c1"># takes ~8 minutes on AWS t2.micro</span>
+sudo make install</code></pre></div>
+
+<h5 id="compiling-modsecurity-apache-connector">Compiling ModSecurity-apache connector</h5>
+
+<p>To configure it with Apache, we will require ModSecurity-apache connector. Let&rsquo;s install that as well.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~
+git clone https://github.com/SpiderLabs/ModSecurity-apache
+<span class="nb">cd</span> ModSecurity-apache
+./autogen.sh
+./configure --with-libmodsecurity<span class="o">=</span>/usr/local/modsecurity
+make
+sudo make install</code></pre></div></p>
+
+<h5 id="setting-up-crs-rules">Setting up CRS rules</h5>
+
+<p>Now, let&rsquo;s download CRS rule set as well.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> ~
+git clone -b v3.2/dev https://github.com/SpiderLabs/owasp-modsecurity-crs
+sudo mv owasp-modsecurity-crs/ /usr/local/</code></pre></div></p>
+
+<p>Rename CRS configuration file -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo mv /usr/local/owasp-modsecurity-crs/crs-setup.conf.example /usr/local/owasp-modsecurity-crs/crs-setup.conf</code></pre></div></p>
+
+<h5 id="setting-up-modsecurity">Setting up ModSecurity</h5>
+
+<p>Now, we need to create a file in the Apache modules directory, so that Apache can know, how to activate ModSecurity.</p>
+
+<p>Create <code>/etc/apache2/mods-enabled/security3.conf</code> file and paste the following contents -</p>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">LoadModule security3_module /usr/lib/apache2/modules/mod_security3.so
+modsecurity on
+modsecurity_rules_file <span class="s1">&#39;/etc/apache2/modsec/main.conf&#39;</span></code></pre></div>
+
+<p>As you can see, the last line in above code block reference a file <code>main.conf</code> in a folder <code>modsec</code>. This folder will not be present by default. We need to create that.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo mkdir -p /etc/apache2/modsec</code></pre></div></p>
+
+<p>Setup ModSecurity configuration file -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># enables Unicode support in ModSecurity</span>
+sudo wget -P /etc/apache2/modsec/ https://raw.githubusercontent.com/SpiderLabs/ModSecurity/v3/master/unicode.mapping
+
+sudo wget -P /etc/apache2/modsec/ https://raw.githubusercontent.com/SpiderLabs/ModSecurity/v3/master/modsecurity.conf-recommended
+sudo mv /etc/apache2/modsec/modsecurity.conf-recommended /etc/apache2/modsec/modsecurity.conf</code></pre></div></p>
+
+<p>Change the SecRuleEngine directive in the configuration to change from the default &ldquo;detection only&rdquo; mode to actively dropping malicious traffic.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -i <span class="s1">&#39;s/SecRuleEngine DetectionOnly/SecRuleEngine On/&#39;</span> /etc/apache2/modsec/modsecurity.conf</code></pre></div></p>
+
+<p>Change the location of <code>modsec_audit.log</code> file to Apache log directory.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo sed -i <span class="s1">&#39;s/SecAuditLog \/var\/log\/modsec_audit.log/SecAuditLog \/var\/log\/apache2\/modsec_audit.log/&#39;</span> /etc/apache2/modsec/modsecurity.conf</code></pre></div></p>
+
+<p>To configure ModSecurity to use CRS rule set, put the following text in <code>/etc/apache2/modsec/main.conf</code> file.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Include <span class="s2">&#34;/etc/apache2/modsec/modsecurity.conf&#34;</span>
+Include <span class="s2">&#34;/usr/local/owasp-modsecurity-crs/crs-setup.conf&#34;</span>
+Include <span class="s2">&#34;/usr/local/owasp-modsecurity-crs/rules/*.conf&#34;</span></code></pre></div></p>
+
+<p>Also enable some Apache modules for better functioning of ModSecurity.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo a2enmod unique_id headers rewrite actions dav dav_fs</code></pre></div></p>
+
+<p>Now restart the Apache server
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart apache2</code></pre></div></p>
+
+<h5 id="fixing-some-common-issues">Fixing some common issues</h5>
+
+<p>Sometimes, I had encountered errors, when ModSecurity was not able to append logs to its log file. I figured out that ModSecurity did not have enough permissions to write that file. We can fix this issue quickly.</p>
+
+<p>First, test if you really have this issue or not.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl <span class="s1">&#39;http://localhost/?q=&#34;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&#39;</span>
+&lt;!DOCTYPE HTML PUBLIC <span class="s2">&#34;-//IETF//DTD HTML 2.0//EN&#34;</span>&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;403 Forbidden&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You dont have permission to access / on this server.&lt;br /&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;address&gt;Apache/2.4.29 <span class="o">(</span>Ubuntu<span class="o">)</span> Server at localhost Port <span class="m">80</span>&lt;/address&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre></div></p>
+
+<p>Now go to Apache log directory and check the contents of <code>modsec_audit.log</code> file.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /var/log/apache2
+tail modsec_audit.log</code></pre></div></p>
+
+<p>You should see the following content -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">---0LzdyETA---A--
+<span class="o">[</span><span class="m">01</span>/Jul/201942:41 +0000<span class="o">]</span> <span class="m">156199216179</span>.666171 <span class="m">127</span>.0.0.1 <span class="m">41824</span> ip-xxx-xx-xx-xx.ap-south-1.compute.internal <span class="m">80</span>
+---0LzdyETA---B--
+GET /?q<span class="o">=</span><span class="s2">&#34;&gt;&lt;script&gt;alert(1)&lt;/script&gt; HTTP/1.1
+</span><span class="s2">Host: localhost
+</span><span class="s2">User-Agent: curl/7.58.0
+</span><span class="s2">Accept: */*
+</span><span class="s2">
+</span><span class="s2">---TqjMwy7h---D--
+</span><span class="s2">
+</span><span class="s2">---TqjMwy7h---F--
+</span><span class="s2">HTTP/1.1 403
+</span><span class="s2">
+</span><span class="s2">---TqjMwy7h---H--
+</span><span class="s2">ModSecurity: Warning. detected XSS using libinjection. [file &#34;</span>/usr/local/owasp-modsecurity-crs/rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf<span class="s2">&#34;] [line &#34;</span><span class="m">37</span><span class="s2">&#34;] [id &#34;</span><span class="m">941100</span><span class="s2">&#34;] [rev &#34;&#34;] [msg &#34;</span>XSS Attack Detected via libinjection<span class="s2">&#34;] [data &#34;</span>Matched Data: XSS data found within ARGS <span class="s2">&#34;&gt;&lt;script&gt;alert(1)&lt;/script&gt;&#34;</span><span class="o">]</span> <span class="o">[</span>severity <span class="s2">&#34;2&#34;</span><span class="o">]</span> <span class="o">[</span>ver <span class="s2">&#34;OWASP_CRS/3.1.0&#34;</span><span class="o">]</span> <span class="o">[</span>maturity <span class="s2">&#34;0&#34;</span><span class="o">]</span> <span class="o">[</span>accuracy <span class="s2">&#34;0&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;application-multi&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;language-multi&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;platform-multi&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;attack-xss&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;OWASP_CRS/WEB_ATTACK/XSS&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;WASCTC/WASC-8&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;WASCTC/WASC-22&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;OWASP_TOP_10/A3&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;OWASP_AppSensor/IE1&#34;</span><span class="o">]</span> <span class="o">[</span>tag <span class="s2">&#34;CAPEC-242&#34;</span><span class="o">]</span> <span class="o">[</span>hostname <span class="s2">&#34;localhost&#34;</span><span class="o">]</span> <span class="o">[</span>uri <span class="s2">&#34;/&#34;</span><span class="o">]</span> <span class="o">[</span>unique_id <span class="s2">&#34;156198848361.198287&#34;</span><span class="o">]</span> <span class="o">[</span>ref <span class="s2">&#34;v8,27t:utf8toUnicode,t:urlDecodeUni,t:htmlEntityDecode,t:jsDecode,t:cssDecode,t:removeNulls&#34;</span><span class="o">]</span>
+....
+....
+
+---TqjMwy7h---I--
+
+---TqjMwy7h---J--
+
+---TqjMwy7h---Z--</code></pre></div></p>
+
+<p>If you do not see the following content, and the file is empty or it does not exist, then ModSecurity was not able to open this file for writing. Use the following fix -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># find out the user, Apache is running as</span>
+<span class="nv">apache_user</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>ps -ef <span class="p">|</span> egrep <span class="s1">&#39;(httpd|apache2|apache)&#39;</span> <span class="p">|</span> grep -v <span class="sb">`</span>whoami<span class="sb">`</span> <span class="p">|</span> grep -v root <span class="p">|</span> head -n1 <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span><span class="s2">&#34;</span></code></pre></div></p>
+
+<p>Now, change the owner of Apache log directory to <code>apache_user</code>.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo chown -R <span class="nv">$apache_user</span>:<span class="nv">$apache_user</span> /var/log/apache2/*</code></pre></div></p>
+
+<p>Now, ModSecurity should be able to append logs to the file <code>modsec_audit.log</code>.</p>
+
+<h5 id="bonus-enabling-json-logs"><em>Bonus</em>: Enabling JSON logs</h5>
+
+<p><strong>Note:</strong> Honestly speaking, I was not able to make it work everytime. I do not know what is the issue, but it works with some of the installations, and with of the installations, it just doesn&rsquo;t log anything to the <code>audit</code> directory. If anyone has managed to make it work consistently, please let me know.</p>
+
+<p>Anyway, if you are like me, who do not like the default ModSecurity log format, ModSecurity provides an option to generate logs in JSON format as well. To enable JSON support, YAJL library should be installed. We already installed this package when we were installing dependencies, so our ModSecurity setup is compiled with JSON support. Let us now configure ModSecurity to generate JSON logs.</p>
+
+<p>Open the <code>/etc/apache2/modsec/modsecurity.conf</code> file and find the following lines -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">SecAuditLogType           Serial
+SecAuditLog               /var/log/modsec_audit.log</code></pre></div></p>
+
+<p>Once you have found the following lines, replace these lines with the following lines
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">SecAuditLogFormat         JSON
+SecAuditLogType           Parallel
+SecAuditLog               /var/log/apache2/modsec_audit.log
+SecAuditLogStorageDir     /var/log/apache2/audit/
+
+SecAuditLogFileMode       <span class="m">0644</span>
+SecAuditLogDirMode        <span class="m">0755</span></code></pre></div></p>
+
+<p>Restart Apache server
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart apache2</code></pre></div></p>
+
+<p>Now, go to <code>/var/log/apache2/</code> directory and create <code>audit</code> folder.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /var/log/apache2
+sudo mkdir audit
+
+<span class="c1"># make `apache_user` owner of this directory as well...</span>
+sudo chown -R <span class="nv">$apache_user</span>:<span class="nv">$apache_user</span> /var/log/apache2/audit</code></pre></div></p>
+
+<p>Now, ModSecurity should be able to generate JSON logs in this directory. ModSecurity generates logs in the following format -
+<div class="highlight"><pre class="chroma"><code class="language-conf" data-lang="conf">ubuntu@server:/var/log/apache2$ tree audit
+audit
+└── 20190701
+    ├── 20190701-1132
+    │   ├── 20190701-113225-156196094515.868593
+    │   └── 20190701-113226-156196094691.154769
+    ├── 20190701-1211
+    │   ├── 20190701-121122-156196328239.048942
+    │   └── 20190701-121122-156196328243.018882
+
+    ....
+    ....</code></pre></div></p>
+
+<p>Now, your site should be relatively more secure than before.</p>
+
+<h5 id="a-warning-though">A warning, though</h5>
+
+<p>CRS is known to generate a lot of false positive when enabled completely. We have not touched CRS paranoia levels. By default, it is set to paranoia level 1, which is known to produce false positives rarely, but still, as a measure of precaution, monitor your site&rsquo;s traffic for some time, and then decide if you need to disable some of the CRS rules or not.</p>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/technical'>Technical</a></div>
+<div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='https://yashagarwal.in/tags/linux'>Linux</a></div>
+
+  </div>
+</footer>
+
+
+    
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='https://yashagarwal.in/posts/2019/06/travelogue-chikmagalur/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Travelogue - Chikmagalur</a>
+    </div></div>
+</nav>
+
+  
+<div class='comments-container'>
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yashhere" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='https://yashagarwal.in/assets/js/main.f29c93b9.js'></script><script src='https://yashagarwal.in/js/jquery.js'></script><script src='https://yashagarwal.in/js/redirection.js'></script><script src='https://yashagarwal.in/js/footnoteTooltip.js'></script></body>
+
+</html>
+

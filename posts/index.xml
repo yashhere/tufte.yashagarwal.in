@@ -6,10 +6,20 @@
     <description>Recent content in Posts on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Sat, 29 Jun 2019 06:10:03 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jul 2019 18:20:18 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Setting Up ModSecurity on Ubuntu</title>
+      <link>https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/</link>
+      <pubDate>Mon, 01 Jul 2019 18:20:18 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/</guid>
+      <description>Recently, I am experimenting with Web Application Firewalls a lot. ModSecurity is one of them. It is the most famous and useful open source Web Application Firewall (WAF) in existence. It is supported by various web servers such as Apache, Nginx, and IIS.
+The job of ModSecurity is to sit in front of the application web server and check the incoming requests and outgoing responses to filter out malicious content.</description>
+    </item>
     
     <item>
       <title>Travelogue - Chikmagalur</title>

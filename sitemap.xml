@@ -4,30 +4,47 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2019-06-29T06:10:03+05:30</lastmod>
+    <lastmod>2019-07-01T18:20:18+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/</loc>
-    <lastmod>2019-06-29T06:10:03+05:30</lastmod>
+    <lastmod>2019-07-01T18:20:18+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/tags/hill-stations/</loc>
-    <lastmod>2019-06-29T06:10:03+05:30</lastmod>
+    <loc>https://yashagarwal.in/tags/linux/</loc>
+    <lastmod>2019-07-01T18:20:18+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2019-06-29T06:10:03+05:30</lastmod>
+    <lastmod>2019-07-01T18:20:18+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/</loc>
+    <lastmod>2019-07-01T18:20:18+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/tags/</loc>
+    <lastmod>2019-07-01T18:20:18+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/technical/</loc>
+    <lastmod>2019-07-01T18:20:18+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/hill-stations/</loc>
     <lastmod>2019-06-29T06:10:03+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -385,18 +402,18 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/tags/github/</loc>
-    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</loc>
     <lastmod>2018-01-21T11:23:23+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/tags/python/</loc>
+    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/github/</loc>
     <lastmod>2018-01-21T11:23:23+05:30</lastmod>
     <priority>0</priority>
   </url>

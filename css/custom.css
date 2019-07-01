@@ -21,10 +21,10 @@ body {
 
 p>code {
     font-family: Inconsolata;
-    font-size: 0.90em;
+    font-size: 1em;
     background-color: #e8e8e8;
     border-radius: 4px;
-    padding: 0 5.591px;
+    /* padding: 0 5.591px; */
     padding: 0 0.28rem;
 }
 
@@ -36,7 +36,7 @@ p>code {
 
 .chroma>code {
     font-family: Inconsolata, monospace, monospace;
-    font-size: 0.90em;
+    font-size: 1em;
     padding: 1px 2px 1px 2px;
     border-radius: 4px;
     color: #444;
@@ -75,8 +75,8 @@ textarea {
 
 .entry-content {
     font-family: 'Quattrocento Sans';
-    font-size: 1.1em;
-    line-height: 1.4;
+    /* font-size: 1.1em; */
+    /* line-height: 1.4; */
     color: #000;
 }
 
