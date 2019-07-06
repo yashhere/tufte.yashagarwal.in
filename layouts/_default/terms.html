@@ -1,19 +1,45 @@
 {{ partial "header" . }}
 
 <main id='main' class='main'>
+
   <header class='header-container'>
-    <div class='header'>
+    <div class='header list-header'>
       <div class='header-info'>
         <h1 class='title'>
-          {{- ( ( i18n .Data.Singular 2 ) | default .Title ) | title -}}
+          {{- "Posts By Category" -}}
         </h1>
+
         {{ partial "header/subtitle" . }}
       </div>
     </div>
   </header>
 
-  <div class='term-cloud-container'>
-    {{ partial "extras/term_cloud" . }}
+  {{ if .Content }}
+  <div class='entry'>
+    {{ partial "entry/content" . }}
+  </div>
+  {{ end }}
+
+  <div class='home-sections-container'>
+    <div class='home-sections'>
+      {{ range $key, $taxonomy := .Site.Taxonomies.categories.ByCount }}
+      <section id='recent-posts' class='home-section custom-home-section'>
+        <header>
+          <h2 class='home-section-title title'>
+            {{ humanize .Name }} ({{ .Count }})
+          </h2>
+        </header>
+
+        <div class='list-container'>
+          <ul class='list'>
+            {{ range $taxonomy.Pages }}
+            {{ .Render "li" }}
+            {{ end }}
+          </ul>
+        </div>
+      </section>
+      {{ end }}
+    </div>
   </div>
 </main>
 

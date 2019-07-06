@@ -25,6 +25,10 @@ menu:
   - identifier: posts
     name: Posts
     url: /posts
+    weight: 10
+  - identifier: categories
+    name: Categories
+    url: /categories
   - name: whoami
     url: /whoami
 params:
@@ -70,8 +74,7 @@ params:
     twitter: yash__here
 permalinks:
   page: /:title/
-  posts: /posts/:year/:month/:slug/
-  readings: /readings/:year/:month/:slug
+  posts: /:sections/:year/:month/:slug/
 preserveTaxonomyNames: true
 pygmentsCodeFencesGuessSyntax: true
 pygmentsuseclasses: true
@@ -79,9 +82,7 @@ pygmentsOptions:
   linenostart: 1
   linenos: table
 taxonomies:
-  author: authors
   category: categories
-  tag: tags
 theme: minimo
 title: /dev/yash/notes
 
@@ -91,24 +92,24 @@ blackfriday:
   fractions: true
   smartDashes: true
 
-related:
-  threshold: 80
-  includeNewer: false
-  toLower: false
-  indices:
-    - name: "keywords"
-    - weight: 150
-  indices:
-    - name : "author"
-    - toLower: true
-    - weight: 30
-  indices:
-    - name : "tags"
-    - weight: 100
-  indices:
-    - name : "date"
-    - weight: 10
-    - pattern: "2006"
+# related:
+#   threshold: 80
+#   includeNewer: false
+#   toLower: false
+#   indices:
+#     - name: "keywords"
+#     - weight: 150
+#   indices:
+#     - name : "author"
+#     - toLower: true
+#     - weight: 30
+#   indices:
+#     - name : "tags"
+#     - weight: 100
+#   indices:
+#     - name : "date"
+#     - weight: 10
+#     - pattern: "2006"
 
 privacy:
   disqus:
