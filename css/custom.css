@@ -100,6 +100,16 @@ blockquote {
     padding: 1em 1em
 }
 
+.custom-home-section {
+    margin-bottom: 3em;
+}
+
+.custom-home-section .title {
+    /* font-family: 'Quattrocento Sans'; */
+    font-size: 1.5em;
+    border-bottom: 1px solid #c4c4c4;
+    padding-bottom: 0.3em;
+}
 
 @media screen and (min-width: 480px) {
 
