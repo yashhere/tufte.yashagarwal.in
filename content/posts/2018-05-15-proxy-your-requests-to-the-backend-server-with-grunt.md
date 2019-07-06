@@ -2,8 +2,7 @@
 date: "2018-05-15T17:14:13+05:30"
 title: "Proxy Your Requests to the Backend Server With Grunt"
 categories:
-  - Development
-  - programming
+  - Technical
 tags:
   - configuration
 ---

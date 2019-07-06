@@ -2,9 +2,7 @@
 date: "2018-06-01T10:21:45+05:30"
 title: "Mistakes That I Made in NITC"
 categories:
-  - life
-  - experience
-  - thoughts
+  - Write-ups
 tags:
   - NITC
   - CSE

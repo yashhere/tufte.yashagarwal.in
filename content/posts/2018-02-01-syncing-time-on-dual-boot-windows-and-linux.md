@@ -2,8 +2,7 @@
 date: "2018-02-01T12:54:34+05:30"
 title: "Syncing Time on Windows & GNU/Linux Dual Boot Setups"
 categories:
-    - linux
-    - System Administration
+    - Hacks
 tags:
     - configuration
     - Arch Linux

@@ -2,8 +2,7 @@
 date: "2018-06-14T17:59:28+05:30"
 title: "The Good and Bad about CSED of NIT-C"
 categories:
-  - experience
-  - Thoughts
+  - Write-ups
 tags:
   - NITC
   - CSE

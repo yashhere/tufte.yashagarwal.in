@@ -2,8 +2,7 @@
 date: "2017-12-31T23:19:00+05:30"
 title: "2017 - The Best Till Now"
 categories:
-    - Experience
-    - Life
+    - Write-ups
 tags:
     - review
 ---

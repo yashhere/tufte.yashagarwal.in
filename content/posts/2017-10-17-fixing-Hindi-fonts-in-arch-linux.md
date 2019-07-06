@@ -3,8 +3,7 @@ date: '2017-10-17T21:55:53+05:30'
 title: Fixing Hindi Fonts in Arch Linux
 type: posts
 categories:
-    - Linux
-    - customization
+    - Hacks
 tags:
     - Arch Linux
 ---

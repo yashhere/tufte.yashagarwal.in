@@ -2,8 +2,7 @@
 date: "2018-03-02T11:27:05+05:30"
 title: "Develop a Theme for Hugo"
 categories:
-  - Development
-  - customization
+  - Technical
 tags:
   - Hugo
 ---

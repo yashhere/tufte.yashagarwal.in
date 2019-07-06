@@ -2,9 +2,7 @@
 date: "2018-01-21T11:23:23+05:30"
 title: "My Own Configuration Manager"
 categories:
-    - linux
-    - programming
-    - development
+    - Technical
 tags:
     - configuration
     - python

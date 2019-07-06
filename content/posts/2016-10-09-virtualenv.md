@@ -1,7 +1,6 @@
 ---
 categories:
-    - linux
-    - development
+    - Technical
 date: '2016-10-09'
 tags:
     - Pip

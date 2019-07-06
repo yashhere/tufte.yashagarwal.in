@@ -2,7 +2,7 @@
 date: "2018-02-25T10:10:04+05:30"
 title: "My New Domain"
 categories:
-  - Updates
+  - Write-ups
 ---
 
 I bought a new domain a few days back - [_yashagarwal.in_](http://yashagarwal.in). I was trying to buy this domain for last two years, but it was already taken. My previous domain, _yashagarwal.me_ that I got for free via GitHub education pack was good enough for me, but the thought that I own a domain which is a top-level domain of some other country was in itself something which I was not comfortable with. So when I got the chance to buy this domain, I didn't delay. Hope this domain will remain my personal home on the web for years to come.

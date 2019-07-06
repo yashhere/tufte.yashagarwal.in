@@ -1,8 +1,6 @@
 ---
 categories:
-    - Linux
-    - customization
-    - System Administration
+    - Hacks
 tags:
     - Arch Linux
     - Polkit

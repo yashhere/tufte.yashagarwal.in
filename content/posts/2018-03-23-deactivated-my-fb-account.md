@@ -2,10 +2,7 @@
 date: "2018-03-23T21:00:44+05:30"
 title: "Deactivated My Facebook Account"
 categories:
-  - life
-  - experience
-  - Thoughts
-  - updates
+  - Write-ups
 tags:
   - NITC
 ---

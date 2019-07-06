@@ -2,9 +2,7 @@
 date: "2018-01-30T20:29:00+05:30"
 title: "Why a Sanskrit Shloka?"
 categories:
-    - Thoughts
-    - Life
-    - Experience
+    - Philosophy
 tags:
     - NITC
 ---

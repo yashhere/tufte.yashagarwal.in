@@ -1,7 +1,7 @@
 ---
 date: '2016-04-03T12:20:36+00:00'
 categories:
-    - Linux
+    - Hacks
 tags:
     - sudo
 title: Wanna get insulted by sudo

@@ -3,8 +3,7 @@ title: "Setting up ALM Octane with Docker Compose"
 date: 2017-12-26T20:53:35+05:30
 type: posts
 categories:
-  - Linux
-  - System Administration
+  - Technical
 tags:
   - Arch Linux
   - Docker

@@ -2,11 +2,7 @@
 date: "2018-03-28T20:58:26+05:30"
 title: "So I Applied for GSoC"
 categories:
-  - GSoC
-  - Experience
-  - Development
-  - programming
-  - updates
+  - Write-ups
 tags:
   - CSE
   - FOSS

@@ -3,9 +3,7 @@ date: "2017-12-27T20:21:09+05:30"
 title: "Setting Up SSH Agent in i3"
 type: posts
 categories:
-    - Linux
-    - customization
-    - System Administration
+    - Hacks
 tags:
     - i3
     - SSH

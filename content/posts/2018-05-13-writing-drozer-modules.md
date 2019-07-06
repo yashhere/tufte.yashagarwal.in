@@ -2,8 +2,7 @@
 date: "2018-05-13T17:10:13+05:30"
 title: "Writing Drozer Modules"
 categories:
-  - Security
-  - CSE
+  - Technical
 tags:
   - Drozer
   - android

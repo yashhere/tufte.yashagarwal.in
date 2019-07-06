@@ -1,8 +1,6 @@
 ---
 categories:
-    - Linux
-    - customization
-date: '2016-06-11'
+    - Technical
 tags:
     - openbox
     - Arch Linux

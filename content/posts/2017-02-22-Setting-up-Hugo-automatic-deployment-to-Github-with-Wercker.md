@@ -1,8 +1,6 @@
 ---
 Categories:
-    - Git
-    - Development
-    - System Administration
+    - Technical
 Tags:
     - gh-pages
     - Hugo

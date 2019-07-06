@@ -2,9 +2,7 @@
 date: "2018-08-25T21:16:41+05:30"
 title: "Beginning a New Journey"
 categories:
-  - Experience
-  - Thoughts
-  - Life
+  - Write-ups
 ---
 
 When I was in eighth (or was it ninth?) class, one of our teachers asked in the class, what do you want to become in your life? People said a lot of things. When my turn came up, I stood up and said, *“Mein software engineer banana chahta hu”* (I want to become a software engineer). It was not that I was genuinely interested in Computers. When I look back now, I realize that it was my cousins who affected my choice (in an indirect way) and their achievements fascinated me to aim at this particular career choice.

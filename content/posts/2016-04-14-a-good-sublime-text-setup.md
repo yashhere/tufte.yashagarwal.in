@@ -1,7 +1,6 @@
 ---
 categories:
-    - Development
-    - Customization
+    - Technical
 date: '2016-04-14T10:55:35+00:00'
 title: A good Sublime Text Setup
 type: posts

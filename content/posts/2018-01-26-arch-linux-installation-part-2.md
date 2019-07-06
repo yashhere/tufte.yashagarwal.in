@@ -2,9 +2,7 @@
 date: "2018-01-26T15:45:27+05:30"
 title: "Arch Linux Installation Guide Part 2"
 categories:
-    - Linux
-    - customization
-    - System Administration
+    - Hacks
 tags:
     - Configuration
     - Arch Linux

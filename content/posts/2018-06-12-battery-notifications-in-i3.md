@@ -2,11 +2,7 @@
 date: "2018-06-12T09:45:46+05:30"
 title: "Battery Notifications in i3"
 categories:
-  - linux
-  - Development
-  - customization
-  - programming
-  - System Administration
+  - Hacks
 tags:
   - Arch Linux
   - i3

@@ -3,8 +3,7 @@
 date: "2019-02-10T14:29:08+05:30"
 title: "Go + gRPC + OPA - A Perfect Union - Part 1"
 categories:
-  - tutorial
-  - Go
+  - Technical
 tags:
   - GRPC
   - OPA
