@@ -73,24 +73,12 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/go/</loc>
-    <lastmod>2019-02-18T06:47:15+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-3/</loc>
     <lastmod>2019-02-18T06:47:15+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/tags/opa/</loc>
-    <lastmod>2019-02-18T06:47:15+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/tutorial/</loc>
     <lastmod>2019-02-18T06:47:15+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -111,13 +99,7 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/experience/</loc>
-    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/life/</loc>
+    <loc>https://yashagarwal.in/categories/write-ups/</loc>
     <lastmod>2018-12-31T22:02:08+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -212,12 +194,6 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/thoughts/</loc>
-    <lastmod>2018-08-25T21:16:41+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/tags/cse/</loc>
     <lastmod>2018-06-14T17:59:28+05:30</lastmod>
     <priority>0</priority>
@@ -246,25 +222,7 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/customization/</loc>
-    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/development/</loc>
-    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/linux/</loc>
-    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/system-administration/</loc>
+    <loc>https://yashagarwal.in/categories/hacks/</loc>
     <lastmod>2018-06-12T09:45:46+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -276,19 +234,8 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/programming/</loc>
-    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/</loc>
     <lastmod>2018-06-01T10:21:45+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</loc>
-    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
   </url>
   
   <url>
@@ -298,19 +245,12 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/cse/</loc>
-    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
-    <priority>0</priority>
+    <loc>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</loc>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/tags/drozer/</loc>
-    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/security/</loc>
     <lastmod>2018-05-13T17:10:13+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -333,20 +273,8 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/gsoc/</loc>
-    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</loc>
     <lastmod>2018-03-28T20:58:26+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/updates/</loc>
-    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -387,6 +315,12 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/categories/philosophy/</loc>
+    <lastmod>2018-01-30T20:29:00+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/</loc>
     <lastmod>2018-01-30T20:29:00+05:30</lastmod>
   </url>
@@ -402,18 +336,18 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/github/</loc>
+    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</loc>
     <lastmod>2018-01-21T11:23:23+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/tags/python/</loc>
-    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/tags/github/</loc>
     <lastmod>2018-01-21T11:23:23+05:30</lastmod>
     <priority>0</priority>
   </url>
@@ -479,12 +413,6 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/git/</loc>
-    <lastmod>2017-02-22T13:37:56+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</loc>
     <lastmod>2017-02-22T13:37:56+05:30</lastmod>
   </url>
@@ -515,17 +443,6 @@
   <url>
     <loc>https://yashagarwal.in/tags/virtual-environments/</loc>
     <lastmod>2016-10-09T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/</loc>
-    <lastmod>2016-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/tags/openbox/</loc>
-    <lastmod>2016-06-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -562,11 +479,20 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/posts/1/01/custom-arch-linux-setup-with-openbox/</loc>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/failures/</loc>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/page/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/openbox/</loc>
     <priority>0</priority>
   </url>
   

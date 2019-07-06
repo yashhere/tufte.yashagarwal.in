@@ -21,5 +21,127 @@
 The job of ModSecurity is to sit in front of the application web server and check the incoming requests and outgoing responses to filter out malicious content.</description>
     </item>
     
+    <item>
+      <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 3</title>
+      <link>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-3/</link>
+      <pubDate>Mon, 18 Feb 2019 06:47:15 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-3/</guid>
+      <description>I finished my last post with the following issue -
+ Now, here one problem arises, how to make sure that the search results will not return any book which the user is not authorized to access. We will solve this problem using OPA in the next and last post of this series.
+ Let&amp;rsquo;s solve this issue now. We will use OPA&amp;rsquo;s declarative language, Rego, to implement policies which will decide on the basis of some user-provided data, which all objects are to be returned to the user.</description>
+    </item>
+    
+    <item>
+      <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2</title>
+      <link>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/</link>
+      <pubDate>Sun, 17 Feb 2019 14:44:56 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/</guid>
+      <description>In the last post, we discussed about the structure of our library application. In this post, we will define the data definitions using protobuf, and then we will use these definitions to create a Go service. We will also add a REST interface to the service. So let&amp;rsquo;s get started.
+Defining Proto Definitions gRPC uses protocol buffers for serializing structured data. To define the structure of the data that you want to serialize, we use a proto file - it is a simple text file that contains all the logical pieces of your data in the form of messages, and the methods that will be called over the network.</description>
+    </item>
+    
+    <item>
+      <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 1</title>
+      <link>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/</link>
+      <pubDate>Sun, 10 Feb 2019 14:29:08 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/</guid>
+      <description>TL;DR &amp;ndash; In a series of blog posts, I will be implementing a simple library application supporting both gRPC and REST interfaces using Go, gRPC, and OPA. My approach might not be the most optimal one, but I am learning these technologies currently. Please give your valuable suggestions and be kind :)
+I have been learning the basics of microservices and Golang lately. On the work front, I got a chance to work on Go, gRPC, and Open Policy Agent as my first professional project.</description>
+    </item>
+    
+    <item>
+      <title>Proxy Your Requests to the Backend Server With Grunt</title>
+      <link>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</link>
+      <pubDate>Tue, 15 May 2018 17:14:13 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</guid>
+      <description>This article was originally published on zeolearn.
+If you are working on large projects, it is undoubtedly a good idea to have a build script or some task scripts to help to automate some of the repetitive parts of the development process. For JavaScript projects, Grunt serves the similar purpose. It is a JavaScript task/build runner that is written on top of NodeJS. Grunt can help you with automatically minifying your JavaScript or CSS files, reload your browser on every file change, can show you a comprehensive list of JavaScript errors, compile your SASS/LESS files into CSS files automatically and many other things.</description>
+    </item>
+    
+    <item>
+      <title>Writing Drozer Modules</title>
+      <link>https://yashagarwal.in/posts/2018/05/writing-drozer-modules/</link>
+      <pubDate>Sun, 13 May 2018 17:10:13 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/05/writing-drozer-modules/</guid>
+      <description>This post is a result of my experimentation with Drozer. Drozer is a security testing framework for Android, developed by MWR Labs. According the Drozer&amp;rsquo;s official documentation:
+ Drozer allows you to assume the role of an Android app and interact with other apps. It can do anything that an installed application can do, such as make use of Android’s Inter-Process Communication (IPC) mechanism and interact with the underlying operating system.</description>
+    </item>
+    
+    <item>
+      <title>Develop a Theme for Hugo</title>
+      <link>https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/</link>
+      <pubDate>Fri, 02 Mar 2018 11:27:05 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/</guid>
+      <description>This article was originally published on zeolearn.
+Introduction In this tutorial, I will show you how to create a basic Hugo theme. I assume that you are familiar with basic HTML, and how to write content in markdown. I will be explaining the working of Hugo and how it uses Go templating language and how you can use these templates to organize your content. As this post will be focusing mainly on Hugo&amp;rsquo;s working, I will not be covering CSS here.</description>
+    </item>
+    
+    <item>
+      <title>My Own Configuration Manager</title>
+      <link>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</link>
+      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</guid>
+      <description>I have been using Linux since I was in my second year of undergraduate. My experiments with the dotfiles (configuration files) also started at the same time. For the uninformed, in Linux, it is common to configure a lot of settings and configurations within dotfiles. Dotfiles are files in a Linux user&amp;rsquo;s home directory that begin with a dot or a full-stop character. This dot indicates to the operating system, that these files are used to store the settings of programs like vim or shells like bash or fish to name a few.</description>
+    </item>
+    
+    <item>
+      <title>Setting up ALM Octane with Docker Compose</title>
+      <link>https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/</link>
+      <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/</guid>
+      <description>Recently, I got a chance to setup ALM Octane on one of my university server for a course project. From the support page of ALM Octane:
+ ALM Octane is a web-based application lifecycle management platform that enables teams to collaborate easily, manage the product delivery pipeline, and visualise the impact of changes.
+ Precursor My department insists on using open source software (a plus point, indeed !). But ALM Octane has Oracle DB/MSSQL as a dependency.</description>
+    </item>
+    
+    <item>
+      <title>Setting up Hugo automatic deployment to Github with Wercker</title>
+      <link>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</link>
+      <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
+      <description>Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican and Hugo. Without any doubt, Hugo is the simplest to setup. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less pain for me to set up the blog again.</description>
+    </item>
+    
+    <item>
+      <title>Setting up Python Development Environments</title>
+      <link>https://yashagarwal.in/posts/2016/10/setting-up-python-development-environments/</link>
+      <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2016/10/setting-up-python-development-environments/</guid>
+      <description>Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?
+As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at.</description>
+    </item>
+    
+    <item>
+      <title>A good Sublime Text Setup</title>
+      <link>https://yashagarwal.in/posts/2016/04/a-good-sublime-text-setup/</link>
+      <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2016/04/a-good-sublime-text-setup/</guid>
+      <description>So, after a hectic day, good news finally came. I have been selected as a Lab Administrator for the Software Systems Lab of my college. Cheers!!!
+Let&amp;#8217;s come to our today&amp;#8217;s topic on configuring Sublime Text Settings.
+There is just one rule you must follow while designing your own editor preference configuration.
+ Don&amp;#8217;t put any lines in your configuration that you don&amp;#8217;t understand.
+ You will find tons of online tutorials that contains all kinds of awesome hacks to make your sublime text experience better but the worst way to make your development environment better is just to borrow the configuration from someone else.</description>
+    </item>
+    
+    <item>
+      <title>Custom Arch Linux setup with Openbox</title>
+      <link>https://yashagarwal.in/posts/1/01/custom-arch-linux-setup-with-openbox/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/1/01/custom-arch-linux-setup-with-openbox/</guid>
+      <description>After my summer vacation started, I bought a new laptop and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my own desktop environment starting with ArchLinux and Openbox and then piecing all pieces together to build a proper desktop environment. Building a desktop this way really follows the Unix Methodology; have softwares that each do one thing well, and when you put them together you get something amazing.</description>
+    </item>
+    
   </channel>
 </rss>

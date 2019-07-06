@@ -156,7 +156,7 @@
     </item>
     
     <item>
-      <title>configuration</title>
+      <title>Configuration</title>
       <link>https://yashagarwal.in/tags/configuration/</link>
       <pubDate>Tue, 15 May 2018 17:14:13 +0530</pubDate>
       
@@ -210,20 +210,20 @@
     </item>
     
     <item>
+      <title>Github</title>
+      <link>https://yashagarwal.in/tags/github/</link>
+      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Python</title>
       <link>https://yashagarwal.in/tags/python/</link>
       <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
       
       <guid>https://yashagarwal.in/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>github</title>
-      <link>https://yashagarwal.in/tags/github/</link>
-      <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/github/</guid>
       <description></description>
     </item>
     
@@ -309,15 +309,6 @@
     </item>
     
     <item>
-      <title>openbox</title>
-      <link>https://yashagarwal.in/tags/openbox/</link>
-      <pubDate>Sat, 11 Jun 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://yashagarwal.in/tags/openbox/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Sublime text</title>
       <link>https://yashagarwal.in/tags/sublime-text/</link>
       <pubDate>Thu, 14 Apr 2016 10:55:35 +0000</pubDate>
@@ -332,6 +323,15 @@
       <pubDate>Sun, 03 Apr 2016 12:20:36 +0000</pubDate>
       
       <guid>https://yashagarwal.in/tags/sudo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openbox</title>
+      <link>https://yashagarwal.in/tags/openbox/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yashagarwal.in/tags/openbox/</guid>
       <description></description>
     </item>
     
