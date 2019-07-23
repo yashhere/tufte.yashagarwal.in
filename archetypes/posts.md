@@ -4,7 +4,5 @@ date: "{{ .Date }}"
 title: "{{ slicestr $alternate_title 11 }}"
 categories:
   -
-tags:
-  -
 draft: true
 ---
