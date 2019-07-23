@@ -201,7 +201,7 @@ sudo chown -R $apache_user:$apache_user /var/log/apache2/*
 Now, ModSecurity should be able to append logs to the file `modsec_audit.log`.
 
 ##### *Bonus*: Enabling JSON logs
-**Note:** Honestly speaking, I was not able to make it work everytime. I do not know what is the issue, but it works with some of the installations, and with of the installations, it just doesn't log anything to the `audit` directory. If anyone has managed to make it work consistently, please let me know.
+**Note:** Honestly speaking, I was not able to make it work everytime. I do not know what is the issue, but it works with some of the installations, and with some of the installations, it just doesn't log anything to the `audit` directory. If anyone has managed to make it work consistently, please let me know.
 
 
 Anyway, if you are like me, who do not like the default ModSecurity log format, ModSecurity provides an option to generate logs in JSON format as well. To enable JSON support, YAJL library should be installed. We already installed this package when we were installing dependencies, so our ModSecurity setup is compiled with JSON support. Let us now configure ModSecurity to generate JSON logs.
