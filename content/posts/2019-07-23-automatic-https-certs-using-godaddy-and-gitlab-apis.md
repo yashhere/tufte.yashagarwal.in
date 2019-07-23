@@ -1,6 +1,6 @@
 ---
 
-date: "2019-07-23T22:12:28+05:30"
+date: "2019-07-23T16:40:28+05:30"
 title: "Automatic HTTPS Certs Using GoDaddy and Gitlab APIs"
 categories:
   - Technical
