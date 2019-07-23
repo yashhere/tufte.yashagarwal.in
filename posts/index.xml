@@ -6,10 +6,20 @@
     <description>Recent content in Posts on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Mon, 01 Jul 2019 18:20:18 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jul 2019 16:40:28 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Automatic HTTPS Certs Using GoDaddy and Gitlab APIs</title>
+      <link>https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/</link>
+      <pubDate>Tue, 23 Jul 2019 16:40:28 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/</guid>
+      <description>Before I start, here is some technical information about my website -
+ Hosted on Gitlab and usage its CD for automatic deployment which is triggered on a git commit. Domain name registrar is GoDaddy. Let&amp;rsquo;s Encrypt as the TLS certificate provider for my domain name.  Let&amp;rsquo;s Encrypt provides certificates for a duration of 90 days only, so I was forced to set up the certbot every three months, then generate the certificate and manually deploy the certificates to GitLab.</description>
+    </item>
     
     <item>
       <title>Setting Up ModSecurity on Ubuntu</title>
