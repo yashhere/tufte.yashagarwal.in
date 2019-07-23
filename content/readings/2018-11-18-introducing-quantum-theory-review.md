@@ -2,7 +2,7 @@
 date: "2018-11-18T20:31:06+05:30"
 title: "Introducing Quantum Theory - Review"
 categories:
-  - Book Reviews
+  - Books
 tags:
   - Science
 ---

@@ -2,7 +2,7 @@
 date: "2018-11-05T12:00:44+05:30"
 title: "The Rozabal Line - Review"
 categories:
-  - Book Reviews
+  - Books
 tags:
   - Fiction
 ---
