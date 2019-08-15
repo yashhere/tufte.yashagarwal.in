@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Books on /dev/yash/notes</title>
-    <link>https://yashagarwal.in/categories/books/</link>
-    <description>Recent content in Books on /dev/yash/notes</description>
+    <title>Readings on /dev/yash/notes</title>
+    <link>https://yashagarwal.in/categories/readings/</link>
+    <description>Recent content in Readings on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Mon, 17 Dec 2018 09:50:27 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2019 07:28:01 +0530</lastBuildDate>
     
-	<atom:link href="https://yashagarwal.in/categories/books/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yashagarwal.in/categories/readings/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Richest Man in Babylon - Review</title>
+      <link>https://yashagarwal.in/readings/2019-08-15-the-richest-man-in-babylon-review/</link>
+      <pubDate>Thu, 15 Aug 2019 07:28:01 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/readings/2019-08-15-the-richest-man-in-babylon-review/</guid>
+      <description>Rating: 4 / 5 
+I have read a few personal finance-related books until now. All of them preaches to save, not spend, and invest, and I will be rich. This book is no different, but it does provide a simple base upon which, more modern understanding of finance can be built.
+Most of the things described in this book are common knowledge, but many of us tend to overlook them.</description>
+    </item>
     
     <item>
       <title>The Millionaire Booklet - Review</title>

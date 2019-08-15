@@ -6,10 +6,21 @@
     <description>Recent content on /dev/yash/notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Tue, 23 Jul 2019 16:40:28 +0530</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2019 07:28:01 +0530</lastBuildDate>
     
 	<atom:link href="https://yashagarwal.in/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Richest Man in Babylon - Review</title>
+      <link>https://yashagarwal.in/readings/2019-08-15-the-richest-man-in-babylon-review/</link>
+      <pubDate>Thu, 15 Aug 2019 07:28:01 +0530</pubDate>
+      
+      <guid>https://yashagarwal.in/readings/2019-08-15-the-richest-man-in-babylon-review/</guid>
+      <description>Rating: 4 / 5 
+I have read a few personal finance-related books until now. All of them preaches to save, not spend, and invest, and I will be rich. This book is no different, but it does provide a simple base upon which, more modern understanding of finance can be built.
+Most of the things described in this book are common knowledge, but many of us tend to overlook them.</description>
+    </item>
     
     <item>
       <title>Automatic HTTPS Certs Using GoDaddy and Gitlab APIs</title>

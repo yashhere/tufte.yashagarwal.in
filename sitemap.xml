@@ -4,19 +4,36 @@
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2019-07-23T16:40:28+05:30</lastmod>
+    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/</loc>
+    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/readings/</loc>
+    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/readings/</loc>
+    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/readings/2019-08-15-the-richest-man-in-babylon-review/</loc>
+    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/</loc>
     <lastmod>2019-07-23T16:40:28+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/</loc>
-    <lastmod>2019-07-23T16:40:28+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -70,18 +87,6 @@
   <url>
     <loc>https://yashagarwal.in/categories/write-ups/</loc>
     <lastmod>2018-12-31T22:02:08+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/books/</loc>
-    <lastmod>2018-12-17T09:50:27+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/readings/</loc>
-    <lastmod>2018-12-17T09:50:27+05:30</lastmod>
     <priority>0</priority>
   </url>
   
