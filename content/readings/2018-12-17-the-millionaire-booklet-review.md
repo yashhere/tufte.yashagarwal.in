@@ -3,7 +3,7 @@
 date: "2018-12-17T09:50:27+05:30"
 title: "The Millionaire Booklet - Review"
 categories:
-  - Books
+  - Readings
 tags:
   - Personal Finance
 ---

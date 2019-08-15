@@ -3,7 +3,7 @@
 date: "2018-12-15T19:04:38+05:30"
 title: "The Code Book - Review"
 categories:
-  -   Books
+  - Readings
 tags:
   -   Science
   -   Computer Science

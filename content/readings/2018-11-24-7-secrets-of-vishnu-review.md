@@ -3,7 +3,7 @@
 date: "2018-11-24T14:00:36+05:30"
 title: "7 Secrets of Vishnu - Review"
 categories:
-  - Books
+  - Readings
 tags:
   - Mythology
   - Philosophy
