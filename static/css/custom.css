@@ -2,8 +2,10 @@
 
 body {
     text-rendering: optimizeLegibility;
-    background-color: #fafafa;
+    background-color: #fefefe;
+    color: #444;
     font-family: Lato, 'Quattrocento Sans', 'Helvetica Neue', 'Siyam Rupali', sans-serif;
+    line-height: 1.5;
 }
 
 .copyright {
@@ -81,13 +83,47 @@ textarea {
 }
 
 .entry-content a {
-    color: #7F7F7F;
     font-weight: 500;
     border-bottom: none;
+    color: #0645ad;
+    text-decoration: none;
 }
 
 .entry-content a:hover {
-    color: #191919;
+    color: #06e;
+}
+
+
+.entry-content a:visited {
+    color: #0b0080;
+}
+
+.entry-content a:active {
+    color: #faa700;
+}
+
+.entry-content a:focus {
+    outline: thin dotted;
+}
+
+*::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+}
+
+*::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+}
+
+a::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #0645ad;
+}
+
+a::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #0645ad;
 }
 
 blockquote {
@@ -138,5 +174,14 @@ blockquote {
     .header:after {
         margin-top: 2em;
         margin-bottom: 2em;
+    }
+
+    kbd,
+    pre,
+    tt,
+    var {
+        font-size: 0.90em;
+        font-family: Monaco, Ubuntu Mono, Consolas, Andale Mono, monospace;
+        white-space: pre-wrap
     }
 }
