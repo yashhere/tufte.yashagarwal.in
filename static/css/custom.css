@@ -1,13 +1,37 @@
-@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i|Lato|Inconsolata');
+/* @import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i|Lato|Inconsolata'); */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&Cormorant+Garamond:400i|EB+Garamond:400i&display=swap');
+
+*::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+}
+
+*::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #000;
+}
+
+a::-moz-selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #0645ad;
+}
+
+a::selection {
+    background: rgba(255, 255, 0, 0.3);
+    color: #0645ad;
+}
 
 body {
     text-rendering: optimizeLegibility;
-    background-color: #fafafa;
-    font-family: Lato, 'Quattrocento Sans', 'Helvetica Neue', 'Siyam Rupali', sans-serif;
+    background-color: #fefefe;
+    color: #000;
+    line-height: 1.5;
+    font-size: 1.2em;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .copyright {
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 .header-info .title {
@@ -20,22 +44,26 @@ body {
 }
 
 p>code {
-    font-family: Inconsolata;
-    font-size: 1em;
+    font-family: monospace, monospace;
+    _font-family: 'courier new', monospace;
+    /* font-family: Inconsolata; */
+    font-size: 0.98em;
+    color: #000;
     background-color: #e8e8e8;
     border-radius: 4px;
-    /* padding: 0 5.591px; */
+    padding: 0 5.591px;
     padding: 0 0.28rem;
 }
 
 .chroma {
     border: 2px solid #d2d2d2;
     border-radius: 4px;
-
 }
 
 .chroma>code {
-    font-family: Inconsolata, monospace, monospace;
+    font-family: monospace, monospace;
+    _font-family: 'courier new', monospace;
+    /* font-family: Inconsolata, monospace, monospace; */
     font-size: 1em;
     padding: 1px 2px 1px 2px;
     border-radius: 4px;
@@ -50,13 +78,20 @@ kbd,
 pre,
 tt,
 var {
-    font-size: 0.90em;
-    font-family: Monaco, Ubuntu Mono, Consolas, Andale Mono, monospace;
+    font-size: 1em;
+    font-family: monospace, monospace;
+    _font-family: 'courier new', monospace;
     white-space: pre-wrap
 }
 
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 textarea {
-    font-family: sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 100%;
     line-height: 1.15;
     margin: 0
@@ -66,7 +101,7 @@ button,
 input,
 select,
 textarea {
-    font-family: Lato, 'Quattrocento Sans', 'Helvetica Neue', 'Siyam Rupali', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.1em;
     line-height: 1.5;
     color: #37474f;
@@ -74,26 +109,49 @@ textarea {
 }
 
 .entry-content {
-    font-family: 'Quattrocento Sans';
-    /* font-size: 1.1em; */
+    font-family: 'Source Sans Pro';
+    font-size: 1em;
     /* line-height: 1.4; */
     color: #000;
 }
 
 .entry-content a {
-    color: #7F7F7F;
+    color: #0645ad;
     font-weight: 500;
     border-bottom: none;
+    text-decoration: none;
 }
 
 .entry-content a:hover {
     color: #191919;
 }
 
+.entry-content a:visited {
+    color: #0b0080;
+}
+
+
+.entry-content a:visited {
+    color: #0b0080;
+}
+
+.entry-content a:hover {
+    color: #06e;
+}
+
+.entry-content a:active {
+    color: #faa700;
+}
+
+.entry-content a:focus {
+    outline: thin dotted;
+}
+
 blockquote {
     font-style: normal;
-    font-family: 'Quattrocento Sans';
-    font-size: 1.2em;
+    font-family: 'EB Garamond';
+    font-size: 1em;
+    font-style: italic;
     line-height: 1.5;
     font-weight: 500;
     background: rgb(243, 243, 243);
@@ -106,9 +164,23 @@ blockquote {
 
 .custom-home-section .title {
     /* font-family: 'Quattrocento Sans'; */
-    font-size: 1.5em;
+    font-size: 1.2em;
     border-bottom: 1px solid #c4c4c4;
     padding-bottom: 0.3em;
+}
+
+.home-sections-container {
+    font-size: 1em;
+}
+
+hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #eee;
+    margin: 1em 0;
+    padding: 0;
 }
 
 @media screen and (min-width: 480px) {
@@ -120,8 +192,9 @@ blockquote {
     h4,
     h5,
     h6 {
-        font-family: Lato, 'Quattrocento Sans', Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, Siyam Rupali, sans-serif;
+        font-family: 'Source Sans Pro', sans-serif;
         /* font-weight: 700; */
+        font-size: 1.5em;
         line-height: 1.5;
         color: #37474f;
         margin: 0 0 .625em
