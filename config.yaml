@@ -35,8 +35,8 @@ Social:
   twitter: yash__here
 
 Permalinks:
-  posts: "/:filename/"
-  notes: "/notes/:filename/"
+  posts: ":sections/:year/:month/:slug/"
+  notes: ":sections/:filename/"
 
 Taxonomies:
   category: categories
