@@ -30,7 +30,7 @@ pages:
     - "which curl || ( apk update && apk add curl)"
     - "which gem || (apk add ruby)"
     - apk --update add grep
-    - bash install_hugo.sh
+    - sh install_hugo.sh
     - apk del grep
     - npm install
     - gem install asciidoctor
