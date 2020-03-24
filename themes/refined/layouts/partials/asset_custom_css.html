@@ -9,7 +9,7 @@
             {{ else }}
                 {{ $asset_min_cache_busted := resources.Get $asset | minify | fingerprint }}
                 <link href="{{ $asset_min_cache_busted.RelPermalink }}" rel="preload" as="style" onload="this.rel='stylesheet'">
-                <noscript><link rel="stylesheet" href="{{ (index . $asset) | relURL }}"></noscript>
+                <noscript><link rel="stylesheet" href="{{ $asset | relURL }}"></noscript>
             {{ end }}
         {{ else }}
             <link href="{{ $asset | relURL }}" rel="preload" as="style" onload="this.rel='stylesheet'">

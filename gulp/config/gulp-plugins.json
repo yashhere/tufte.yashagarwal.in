@@ -1,0 +1,32 @@
+{
+  "scssLint": {
+    "config": "./gulp/config/lint-scss.yml"
+  },
+  "minifyCSS": {
+    "compatibility": "ie8"
+  },
+  "minifyHTML": {
+    "collapseWhitespace": true,
+    "removeComments": true,
+    "minifyCSS": true
+  },
+  "gzipOptions": {
+    "append": false,
+    "extension": "gz",
+    "threshold": "1kb",
+    "level": 9
+  },
+  "jshintOptions": {
+    "node": true,
+    "globals": {
+      "app": false,
+      "angular": false,
+      "$": true,
+      "_": true,
+      "moment": false,
+      "window": false
+    }
+  },
+  "revOptions" : {
+  }
+}
