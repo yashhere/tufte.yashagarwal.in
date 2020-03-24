@@ -33,6 +33,7 @@ pages:
     - sh install_hugo.sh
     - apk del grep
     - npm install
+    - npm install -g gulp
     - gem install asciidoctor
   script:
     - gulp prod
