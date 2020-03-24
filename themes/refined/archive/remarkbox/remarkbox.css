@@ -1,0 +1,31 @@
+/* ** Remarkbox */
+.powered-by {
+    font-family: sans-serif;
+    font-size: 0.6em;
+    text-align: center;
+}
+
+/* No extra padding on top/bottom of "powered by" */
+p.powered-by {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.powered-by img {
+    display: inline;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.container .powered-by a,
+.container .powered-by a:visited,
+.container .powered-by a:hover {
+    color: #292929;
+    opacity: .75;
+    text-decoration: none;
+    background-image: none;       /* No fancy link underlines */
+}
+
+.powered-by a:hover {
+    opacity: 1.0;
+}

@@ -1,0 +1,23 @@
+{{ $icons_map := site.Data.taxonomy.icons }}
+<div class="post-taxo right no-color-links">
+    {{ range $taxo, $icon := $icons_map }}
+        {{ with $.Page.Param $taxo }}
+            <div>
+                {{ $taxo_list := . }}
+                {{ $count := len $taxo_list }}
+                {{ if gt $count 0 }}
+                    &nbsp;
+                    <i class="{{ $.Param "fontawesome.style" | default "fal" }} {{ $icon }}"></i>&nbsp;&nbsp;
+                    {{ range $cnt, $taxo_term := $taxo_list }}
+                        {{ with site.GetPage (printf "/%s/%s" $taxo ($taxo_term | urlize)) }}
+                            <a class="p-category" href="{{ .Permalink }}">{{ $taxo_term }}</a>
+                        {{ end }}
+                        {{ if lt $cnt (sub $count 1) }}
+                            ,
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            </div>
+        {{ end }}
+    {{ end }}
+</div>

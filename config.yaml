@@ -1,0 +1,168 @@
+BaseURL: "https://yashagarwal.in/"
+Title: /dev/yash/notes
+theme: refined
+
+contentdir: content
+layoutdir: layouts
+publishdir: public
+cleandestinationdir: true
+
+pygmentsCodeFences: true
+pygmentsUseClasses: true
+pygmentsUseClassic: false
+pygmentsCodeFencesGuessSyntax: true
+pygmentsOptions:
+  linenostart: 1
+  linenos: table
+
+enableEmoji: true
+enableRobotsTXT: true
+LanguageCode: en-us
+disableFastRender: true
+disqusShortname: yashhere
+
+Author:
+  name: Yash Agarwal
+  email: yashagarwaljpr@gmail.com
+  bio: ""
+  photo:
+    url: me--optimized.jpg
+    width: 400
+    height: 400
+
+Social:
+  github: yashhere
+  twitter: yash__here
+
+Permalinks:
+  posts: "/:filename/"
+  notes: "/notes/:filename/"
+
+Taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - ATOM
+    - JF2Feed
+  section:
+    - HTML
+    - RSS
+    - ATOM
+    - JF2Feed
+  taxonomy:
+    - HTML
+    - RSS
+    - ATOM
+    - JF2Feed
+  taxonomyTerm:
+    - HTML
+  page:
+    - HTML
+    - JF2Post
+
+caches:
+  getjson:
+    dir: ":cacheDir/:project"
+    maxAge: 1m
+  getcsv:
+    dir: ":cacheDir/:project"
+    maxAge: 1m
+
+Params:
+  themecolorbase: "blue"
+  css_lazy_load: true
+  cache_busting: true
+  custom_css:
+    - css/custom.css
+    - css/fragmentioner.css
+    - css/syntax.css
+    - css/hugo-easy-gallery.css
+    - css/photoswipe.css
+
+  mainSections:
+    - posts
+    - notes
+  tagline: "The directory of my thoughts"
+  images:
+    - android-chrome-512x512.png
+  favicons: true
+  feedSections:
+    - posts
+  html5_validator: true
+
+  source:
+    url: "https://gitlab.com/yashhere/yashhere.gitlab.io"
+    md_dir: content
+  #  indieweb:
+  #    domain: 'https://scripter.co/'
+  #    webring: "\U0001F3D4\U0001F434\U0001F391"
+  #    webmention:
+  #      endpoint: 'https://webmention.io/'
+  #      account: scripter.co
+  social:
+    - name: Github
+      link: "https://github.com/yashhere/"
+      relme: true
+    - name: Gitlab
+      link: "https://gitlab.com/users/yashhere/projects"
+    - name: Twitter
+      link: "https://twitter.com/yash__here/"
+    - name: Keybase.io
+      link: "https://keybase.io/yash2696"
+      icon: keybase
+
+privacy:
+  disqus:
+    disable: false
+  googleAnalytics:
+    anonymizeIP: true
+    disable: true
+    respectDoNotTrack: true
+    useSessionStorage: false
+  instagram:
+    disable: false
+    simple: false
+  twitter:
+    disable: false
+    enableDNT: true
+    simple: false
+  vimeo:
+    disable: false
+    simple: false
+  youtube:
+    disable: false
+    privacyEnhanced: true
+
+markup:
+  highlight:
+    codeFences: true
+    guessSyntax: false
+    hl_Lines: ""
+    lineNoStart: 1
+    lineNos: false
+    lineNumbersInTable: true
+    noClasses: true
+    tabWidth: 4
+
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer: true
+    parser:
+      attribute: true
+      autoHeadingID: true
+      autoHeadingIDType: github
+    renderer:
+      hardWraps: false
+      unsafe: false
+      xhtml: false

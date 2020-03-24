@@ -1,0 +1,8 @@
+<li class="h-entry li">
+    {{ partial "date-maybe.html" (dict "page" . "fmt" "01/02" "fmtupd" "2006/01/02") }}
+    <span class="p-name post-title no-text-decoration"><a class="u-url" href='{{ .Permalink }}'>{{ .Title }}</a></span>
+    <div class="right">
+        {{ partial "taxo-buttons.html" . }}
+    </div>
+    <div class="clear-float"></div>
+</li>

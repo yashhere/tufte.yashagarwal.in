@@ -1,0 +1,8 @@
+{{/* {{ with site.Params.isso }} */}}
+    <div class="comments clear-float">
+        <hr />
+        <h2>Comments</h2>
+        {{/* {{ partial "isso.html" . }} */}}
+        {{ template "_internal/disqus.html" . }}
+    </div>
+{{/* {{ end }} */}}

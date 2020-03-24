@@ -1,0 +1,14 @@
+{{ $page_relpermalink := .RelPermalink }}
+<nav id="nav" class="nav-collapse opened" aria-hidden="false">
+    <ul class="navbar">
+        <li><a class="{{ if eq .Kind "home" }}active{{ end }}" href="/">Home</a></li>
+        {{ range site.Params.mainSections }}
+            {{ with site.GetPage (printf "/%s" .) }}
+                <li><a class="{{ if eq $page_relpermalink .RelPermalink }}active{{ end }}" href="{{ .Permalink }}">{{ .Type | title }}</a></li>
+            {{ end }}
+        {{ end }}
+        {{ with site.GetPage "/search" }}
+            <li><a class="{{ if eq $page_relpermalink .RelPermalink }}active{{ end }}" href="{{ .Permalink }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
+</nav>
