@@ -29,7 +29,7 @@ pages:
   before_script:
     - "which curl || ( apk update && apk add curl)"
     - "which gem || (apk add ruby)"
-    - bash install_hugo.sh
+    - sh install_hugo.sh
     - npm install
     - gem install asciidoctor
   script:
