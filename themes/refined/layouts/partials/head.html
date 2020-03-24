@@ -1,0 +1,196 @@
+<head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+    <!-- Above is a short hand for the below line. -->
+    <!-- https://htmldog.com/guides/html/intermediate/metatags/ -->
+    <!-- <meta http-equiv="content-type" content="text/html; charset=utf-8"> -->
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+    <!-- No referrer: https://webbkoll.dataskydd.net/en/ -->
+    <meta name="referrer" content="no-referrer">
+
+    <title>
+        {{ if eq .RelPermalink "/" }}
+            {{ site.Title }} ❚
+        {{ else }}
+            {{ .Title }} ❚ {{ site.Title }}
+        {{ end }}
+    </title>
+
+    <!-- {{ template "_internal/google_analytics_async.html" . }} -->
+    {{ partialCached "googleanalytics.html" . }}
+
+    <!-- Lazy load CSS -->
+    <!-- https://github.com/filamentgroup/loadCSS -->
+    <!-- view-source:https://master-origin-loadcss.fgview.com/test/preload.html -->
+    {{ with site.Params.css_lazy_load }}
+        <script type="application/javascript">
+         /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+         !function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+         /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+         !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+        </script>
+    {{ end }}
+
+    <!-- Fonts -->
+    <!-- Optimize Google Fonts CSS: https://stackoverflow.com/a/43215105/1219634 -->
+    <!-- Thu Apr 12 13:26:43 EDT 2018 - kmodi
+         Do *NOT* use onload for loading Google Fonts, else you get the text-resizing on browser refresh issue.
+         I believe that's the FOUT issue as explained in https://css-tricks.com/fout-foit-foft/.
+    -->
+    <!-- Wed Apr 25 12:25:23 EDT 2018 - kmodi
+         Today I stopped using Google Fonts altogether.. all fonts served locally now.
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
+    -->
+
+    <!-- Prefetch Fonts -->
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content#The_basics -->
+    {{ with .Param "prefetch" }}
+        {{ range .fonts }}
+            {{ printf `<link rel="preload" href="%s" as="font">` . | safeHTML }}
+        {{ end }}
+    {{ end }}
+
+    <!-- CSS -->
+    <!-- Tue Oct 24 13:54:10 EDT 2017 - kmodi  -->
+    <!-- Below CSS from poole.css (now part of refined.css) had to loaded inline.
+         Then lazy loading the whole refined.css is fine.
+         Do so fixing the clipping issue of the navbar. -->
+    <style>
+     {{ $theme := index site.Data.theme (.Param "themecolorbase") }}
+     {{ with $theme }}
+     :root {
+         --theme-color: {{ index . "default_color" | safeCSS }};
+         --theme-color-light: {{ index . "light_color" | safeCSS }};
+     }
+     {{ end }}
+     html {
+         line-height: 1.5;
+     }
+    </style>
+
+    <!-- Above style minified:
+
+         https://report-uri.com/home/hash/
+         'sha256-dz7ZpyTcIE0piEsLX0yFv48DnJBbF9O1hZFVT1dtOuM='
+
+         :root{--theme-color: #ac4142;--theme-color-light: rgba(172, 65, 66, 0.2)}html{line-height:1.5}@media(min-width:38em){html{font-size:20px}}
+    -->
+    {{ if eq (getenv "HUGO_ENV") "devel" }}
+        <style>{{ partialCached "css/debugprint.css" . | safeCSS }}</style>
+    {{ end }}
+
+    <!-- Retain the order of loading these CSS files -->
+    <!-- Tue Nov 28 14:59:22 EST 2017 - kmodi
+         Do *NOT* lazy load refined.css, as that caused a lot of visual glitch. -->
+    <!-- Just load the refined.css directly for now until I get time to figure out
+         which are the critical components in that CSS that I can inline here. -->
+    {{ $refined_css := resources.Get "css/refined.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $refined_css.RelPermalink }}">
+    <!-- Enable HTTP/2 Push -->
+    <link rel="preload" href="{{ $refined_css.RelPermalink }}" as="style">
+
+    {{ partialCached "asset_custom_css.html" . }}
+
+{{/*    {{ with .Param "custom_inline_css" }}*/}}
+{{/*        <style>*/}}
+{{/*         {{ range . }}*/}}
+{{/*         {{ partialCached . . | safeCSS }}*/}}
+{{/*         {{ end }}*/}}
+{{/*        </style>*/}}
+{{/*    {{ end }}*/}}
+
+    <!-- Above style minified:
+
+         https://report-uri.com/home/hash/
+         'sha256-g+G3lRCw4GItB/QuA6kuqRNJQyMve2qEv7Sxbmt3qk8='
+
+         .chroma{background-color:#fff}.chroma .err{color:#a61717;background-color:#e3d2d2}.chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}.chroma .lntable{border-spacing:0;padding:0;margin:0;border:0;width:100%;overflow:auto;display:block}.chroma .hl{background-color:#ffc;display:block;width:100%}.chroma .lnt{margin-right:.4em;padding:0 .4em;display:block}.chroma .ln{margin-right:.4em;padding:0 .4em}.chroma .k{color:#000;font-weight:700}.chroma .kc{color:#000;font-weight:700}.chroma .kd{color:#000;font-weight:700}.chroma .kn{color:#000;font-weight:700}.chroma .kp{color:#000;font-weight:700}.chroma .kr{color:#000;font-weight:700}.chroma .kt{color:#458;font-weight:700}.chroma .na{color:teal}.chroma .nb{color:#0086b3}.chroma .bp{color:#999}.chroma .nc{color:#458;font-weight:700}.chroma .no{color:teal}.chroma .nd{color:#3c5d5d;font-weight:700}.chroma .ni{color:purple}.chroma .ne{color:#900;font-weight:700}.chroma .nf{color:#900;font-weight:700}.chroma .nl{color:#900;font-weight:700}.chroma .nn{color:#555}.chroma .nt{color:navy}.chroma .nv{color:teal}.chroma .vc{color:teal}.chroma .vg{color:teal}.chroma .vi{color:teal}.chroma .s{color:#d14}.chroma .sa{color:#d14}.chroma .sb{color:#d14}.chroma .sc{color:#d14}.chroma .dl{color:#d14}.chroma .sd{color:#d14}.chroma .s2{color:#d14}.chroma .se{color:#d14}.chroma .sh{color:#d14}.chroma .si{color:#d14}.chroma .sx{color:#d14}.chroma .sr{color:#009926}.chroma .s1{color:#d14}.chroma .ss{color:#990073}.chroma .m{color:#099}.chroma .mb{color:#099}.chroma .mf{color:#099}.chroma .mh{color:#099}.chroma .mi{color:#099}.chroma .il{color:#099}.chroma .mo{color:#099}.chroma .o{color:#000;font-weight:700}.chroma .ow{color:#000;font-weight:700}.chroma .c{color:#998;font-style:italic}.chroma .ch{color:#998;font-style:italic}.chroma .cm{color:#998;font-style:italic}.chroma .c1{color:#998;font-style:italic}.chroma .cs{color:#999;font-weight:700;font-style:italic}.chroma .cp{color:#999;font-weight:700;font-style:italic}.chroma .cpf{color:#999;font-weight:700;font-style:italic}.chroma .gd{color:#000;background-color:#fdd}.chroma .ge{color:#000;font-style:italic}.chroma .gr{color:#a00}.chroma .gh{color:#999}.chroma .gi{color:#000;background-color:#dfd}.chroma .go{color:#888}.chroma .gp{color:#555}.chroma .gs{font-weight:700}.chroma .gu{color:#aaa}.chroma .gt{color:#a00}.chroma .w{color:#bbb}.chroma .hl{background-color:rgba(172,65,66,.2);min-width:100ch}
+    -->
+
+    <!-- Isso -->
+    <!-- https://github.com/posativ/isso/issues/287 -->
+    {{ with site.Params.isso }}
+        <style>
+         {{ with .hidenamefield }}
+         #isso-thread input[name="author"] {
+             display: none;
+         }
+         {{ end }}
+         {{ with .hideemailfield }}
+         #isso-thread input[name="email"] {
+             display: none;
+         }
+         {{ end }}
+         {{ with .hidewebsitefield }}
+         #isso-thread input[name="website"] {
+             display: none;
+         }
+         {{ end }}
+         {{ with .hidevotes }}
+         .isso-comment-footer .votes,
+         .isso-comment-footer .upvote,
+         .isso-comment-footer .spacer,
+         .isso-comment-footer .downvote {
+             display: none;
+         }
+         {{ end }}
+        </style>
+    {{ end }}
+
+    {{ $resp_nav_js := resources.Get "js/responsive-nav-orig.js" | minify | fingerprint }}
+    <script src="{{ $resp_nav_js.RelPermalink }}"></script>
+    <!-- Enable HTTP/2 Push -->
+    <link rel="preload" href="{{ $resp_nav_js.RelPermalink }}" as="script">
+
+    <!-- FontAwesome Pro 5.0.11 -->
+    {{ $fa_js := resources.Get "js/libs/fa/fontawesome-all.js" | minify | fingerprint }}
+    <script defer src="{{ $fa_js.RelPermalink }}"></script>
+    <!-- Enable HTTP/2 Push -->
+    <link rel="preload" href="{{ $fa_js.RelPermalink }}" as="script">
+
+    {{ with .Params.mathjax }}
+        {{ partialCached "mathjax.html" $ }}
+    {{ end }}
+
+    {{ with .Params.wavedrom }}
+        {{ partialCached "wavedrom.html" $ }}
+    {{ end }}
+
+    <!-- Favicons -->
+    <!-- Generated using https://realfavicongenerator.net/ -->
+    {{ if (.Param "favicons") }}
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ (resources.Get "icons/apple-touch-icon.png" | fingerprint).RelPermalink }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ (resources.Get "icons/favicon-32x32.png" | fingerprint).RelPermalink }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ (resources.Get "icons/favicon-16x16.png" | fingerprint).RelPermalink }}">
+        <link rel="shortcut icon" href="{{ (resources.Get "icons/favicon.ico" | fingerprint).RelPermalink }}">
+        <link rel="manifest" href="{{ (resources.Get "icons/manifest.json" | fingerprint).RelPermalink }}">
+        <link rel="mask-icon" href="{{ (resources.Get "icons/safari-pinned-tab.svg" | fingerprint).RelPermalink }}" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-config" content="{{ (resources.Get "icons/browserconfig.xml" | fingerprint).RelPermalink }}">
+        <meta name="theme-color" content="#ffffff" />
+    {{ end }}
+
+    <!-- Webmention, Opengraph and Twitter -->
+    {{ partialCached "indieweb-head.html" . }}
+    {{ partial "opengraph.html" . }}
+    {{ partial "twitter_cards.html" . }}
+
+    <!-- RSS -->
+    <!-- https://gohugo.io/templates/rss/#reference-your-rss-feed-in-head -->
+    {{ range .AlternativeOutputFormats -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink (printf "%s for %s" (.Name | title) site.Title) | safeHTML }}
+    {{ end -}}
+
+    <!-- Author -->
+    {{ partial "author.html" (dict "page" . "fmt" "DC") }}
+
+    <!-- Hugo info -->
+    <!-- https://stackoverflow.com/a/10534167/1219634 -->
+    <!-- https://w3c.github.io/html/single-page.html#the-meta-element -->
+    {{ printf `<meta name="hugo-build-date" content="%s"/>` hugo.BuildDate | safeHTML }}
+    {{ printf `<meta name="hugo-commit-hash" content="%s"/>` hugo.CommitHash | safeHTML }}
+    {{ hugo.Generator }}
+</head>

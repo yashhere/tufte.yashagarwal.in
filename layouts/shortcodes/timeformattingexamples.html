@@ -1,0 +1,33 @@
+{{ $date := .Get 0 }}
+The time string {{ printf `<i>"%s"</i>` $date | safeHTML }}
+(RFC3339 format) can be output in different formats:
+
+<br />
+<br />
+
+<table>
+    <tr><th>Go Formatting string</th>
+        <th>Output</th>
+    </tr>
+    {{ range (slice "Jan 2 15:04:05 2006 MST" "2006-01-02 03:04pm Monday" "Jan 2, Mon" "It's 3 O'clock") }}
+        {{ $fmt := . }}
+        {{ printf `<tr><td><code>"%s"</code></td><td><code>"%s"</code></td></tr>` $fmt (dateFormat $fmt $date) | safeHTML }}
+    {{ end }}
+</table>
+
+Below shows examples of printing ordinal dates using a combination of
+<code>((dateFormat "2" $dt) | humanize)</code> and <code>(dateFormat "of
+January" $dt)</code>:
+
+<br />
+<br />
+
+<table>
+    <tr><th>Date (<code>$dt</code>)</th>
+        <th>Output</th>
+    </tr>
+    {{ range (slice "2018-06-01" "2018-06-02" "2018-06-03" "2018-06-04" "2018-06-10") }}
+        {{ $dt := . }}
+        {{ printf `<tr><td>%s</td><td><code>"%s %s"</code></td></tr>` $dt ((dateFormat "2" $dt) | humanize) (dateFormat "of January" $dt) | safeHTML }}
+    {{ end }}
+</table>

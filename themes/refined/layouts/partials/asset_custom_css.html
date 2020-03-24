@@ -1,0 +1,30 @@
+<!-- https://gist.github.com/carlmjohnson/e3716a0a89fab0484d0552a750c8cfb7 -->
+{{ range site.Params.custom_css }}
+    {{ $asset := . }}
+    {{ if site.Params.css_lazy_load }} <!-- If CSS lazy loading is enabled -->
+        {{ if site.Params.cache_busting }}
+            {{ if site.IsServer }}
+                <link href="{{ $asset | relURL }}" rel="preload" as="style" onload="this.rel='stylesheet'">
+                <noscript><link rel="stylesheet" href="{{ $asset | relURL }}"></noscript>
+            {{ else }}
+                {{ $asset_min_cache_busted := resources.Get $asset | minify | fingerprint }}
+                <link href="{{ $asset_min_cache_busted.RelPermalink }}" rel="preload" as="style" onload="this.rel='stylesheet'">
+                <noscript><link rel="stylesheet" href="{{ (index . $asset) | relURL }}"></noscript>
+            {{ end }}
+        {{ else }}
+            <link href="{{ $asset | relURL }}" rel="preload" as="style" onload="this.rel='stylesheet'">
+            <noscript><link rel="stylesheet" href="{{ $asset | relURL }}"></noscript>
+        {{ end }}
+    {{ else }}                  <!-- If CSS lazy loading is disabled (default) -->
+        {{ if site.Params.cache_busting }}
+            {{ if site.IsServer }}
+                <link rel="stylesheet" href="{{ $asset | relURL }}">
+            {{ else }}
+                {{ $asset_min_cache_busted := resources.Get $asset | minify | fingerprint }}
+                <link rel="stylesheet" href="{{ $asset_min_cache_busted.RelPermalink }}">
+            {{ end }}
+        {{ else }}
+            <link rel="stylesheet" href="{{ $asset | relURL }}">
+        {{ end }}
+    {{ end }}
+{{ end }}

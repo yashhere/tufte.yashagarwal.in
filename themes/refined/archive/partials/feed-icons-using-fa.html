@@ -1,0 +1,17 @@
+<ul class="social feed right">
+    {{ range .AlternativeOutputFormats }}
+        {{ $name_upper := .Name | upper }}
+        {{ if (or (eq $name_upper "RSS") (eq $name_upper "ATOM")) }}
+            {{ $offset := (cond (eq .Name "RSS") 30 40) }}
+            <li>
+                {{ printf `<a href="%s">` .Permalink | safeHTML }}
+                <span class="fa-layers">
+                    {{ printf `<i class="%s fa-rss fa-1x"></i>` "far" | safeHTML }}
+                    {{ printf `<span class="fa-layers-text" data-fa-transform="up-10 right-%d">%s</span>` $offset $name_upper | safeHTML }}
+                </span>
+                {{ printf "</a>" | safeHTML }}
+            </li>
+        {{ end }}
+    {{ end }}
+</ul>
+<div class="clear-float"></div>
