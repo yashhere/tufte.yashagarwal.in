@@ -1,0 +1,15 @@
+[submodule "hugo-debugprint"]
+	path = themes/hugo-debugprint
+	url = https://github.com/kaushalmodi/hugo-debugprint.git
+[submodule "hugo-atom-feed"]
+	path = themes/hugo-atom-feed
+	url = https://github.com/kaushalmodi/hugo-atom-feed
+[submodule "hugo-jf2"]
+	path = themes/hugo-jf2
+	url = https://github.com/kaushalmodi/hugo-jf2
+[submodule "hugo-search-fuse-js"]
+	path = themes/hugo-search-fuse-js
+	url = https://github.com/kaushalmodi/hugo-search-fuse-js
+[submodule "refined"]
+	path = themes/refined
+	url = https://github.com/kaushalmodi/refined
