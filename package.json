@@ -13,7 +13,7 @@
   },
   "homepage": "https://gitlab.com/yashhere/yashhere.gitlab.io#readme",
   "devDependencies": {
-    "autoprefixer": "^9.7.4",
+    "autoprefixer": "^9.7.5",
     "cssgrace": "^3.0.0",
     "cssnano": "^4.1.10",
     "del": "^5.1.0",
