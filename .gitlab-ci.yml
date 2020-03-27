@@ -1,0 +1,25 @@
+# All available Hugo versions are listed here: https://gitlab.com/pages/hugo/container_registry
+# image: registry.gitlab.com/pages/hugo:latest
+image: monachus/hugo
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+test:
+  script:
+    - hugo
+  except:
+    - source
+
+pages:
+  before_script:
+    - apk add --no-cache imagemagick-dev imagemagick
+  script:
+    - hugo
+    - find public/ -not -path "*/static/*" \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' \) -print0 | xargs -0 -P8 -n2 mogrify -strip -thumbnail '1000>' -format jpg
+    - gzip -k -6 $(find public -type f)
+  artifacts:
+    paths:
+      - public
+  only:
+    - source
