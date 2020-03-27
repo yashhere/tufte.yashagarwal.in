@@ -13,6 +13,7 @@ test:
 
 pages:
   before_script:
+    - apt update
     - apt install -y gzip imagemagick
   script:
     - hugo
