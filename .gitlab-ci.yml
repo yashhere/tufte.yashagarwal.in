@@ -5,13 +5,20 @@ image: monachus/hugo
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 
+stages:
+  - test
+  - deploy
+
 test:
+  stage: test
   script:
     - hugo
   except:
     - source
+    - staging
 
-pages:
+deploy_live:
+  stage: deploy
   before_script:
     - apt update
     - apt install -y imagemagick
@@ -19,8 +26,30 @@ pages:
     - hugo --gc --minify
     - find ./public -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png \) -print0 | xargs -0 -P16 -n2 mogrify -compress JPEG -strip -quality 40
     - gzip -k -6 -r $(find public -type f)
+  environment:
+    name: live
+    url: https://yashagarwal.in
+  artifacts:
+    paths:
+      - public
+    expire_in: 2 weeks
+  only:
+    - source
+
+deploy_staging:
+  stage: deploy
+  before_script:
+    - apt update
+    - apt install -y imagemagick
+  script:
+    - hugo --gc --minify
+    - find ./public -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png \) -print0 | xargs -0 -P16 -n2 mogrify -compress JPEG -strip -quality 40
+    - gzip -k -6 -r $(find public -type f)
+  environment:
+    name: staging
+    url: https://staging.yashagarwal.in
   artifacts:
     paths:
       - public
   only:
-    - source
+    - staging
