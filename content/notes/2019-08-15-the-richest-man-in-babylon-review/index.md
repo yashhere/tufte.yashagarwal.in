@@ -1,16 +1,18 @@
----
-date: "2019-08-15T07:28:01+05:30"
-title: "The Richest Man in Babylon - Review"
-categories:
- - Readings
----
++++
+title = "The Richest Man in Babylon - Review"
+author = ["Yash Agarwal"]
+date = 2019-08-15T07:28:01+05:30
+images = []
+tags = ["Personal Finance"]
+categories = ["Review"]
+draft = false
++++
 
 {{< load-photoswipe >}}
 
-<center>{{< figure src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535865613l/41592121._SY475_.jpg" caption-position="none">}}
+{{< figure src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535865613l/41592121._SY475_.jpg" caption-position="none">}}
 
-<span style="color:red">**Rating: 4 / 5**</span>
-</center>
+{{< rating 4 >}}
 
 I have read a few personal finance-related books until now. All of them preaches to save, not spend, and invest, and I will be rich. This book is no different, but it does provide a simple base upon which, more modern understanding of finance can be built.
 

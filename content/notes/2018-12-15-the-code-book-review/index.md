@@ -1,21 +1,19 @@
----
-
-date: "2018-12-15T19:04:38+05:30"
-title: "The Code Book - Review"
-categories:
-  - Readings
-tags:
-  -   Science
-  -   Computer Science
-
----
++++
+title = "The Code Book - Review"
+author = ["Yash Agarwal"]
+date = 2018-12-15T19:04:38+05:30
+images = []
+tags = ["Science", "CS"]
+categories = ["Review"]
+draft = false
++++
 
 {{< load-photoswipe >}}
 
-<center>{{< figure src="https://images.gr-assets.com/books/1403181687l/17994.jpg" caption-position="none">}}
+{{< figure src="https://images.gr-assets.com/books/1403181687l/17994.jpg" caption-position="none">}}
 
-<span style="color:red">**Rating: 5 / 5**</span>
-</center>
+{{< rating 5 >}}
+
 
 I was interested in Cryptography and Number Theory during my undergraduate studies so reading the
 history of Cryptography in this book was intriguing for me. The author has done excellent work in making sure that even
