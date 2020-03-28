@@ -1,0 +1,23 @@
+box: debian
+build:
+  steps:
+    - script:
+        name: install git
+        code: |
+          apt-get update
+          apt-get install git -y
+    - script:
+        name: initialize git submodules
+        code: |
+          git submodule update --init --recursive
+    - arjen/hugo-build:
+        version: latest
+        theme: refined
+
+deploy:
+  steps:
+    - uetchy/gh-pages:
+        token: $GIT_TOKEN
+        repo: yashhere/yashhere.github.io
+        path: public
+        #        domain: yashagarwal.me
