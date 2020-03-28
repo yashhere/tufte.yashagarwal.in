@@ -18,7 +18,17 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/categories/readings/</loc>
+    <loc>https://yashagarwal.in/tags/personal-finance/</loc>
+    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/categories/review/</loc>
+    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/</loc>
     <lastmod>2019-08-15T07:28:01+05:30</lastmod>
   </url>
   
@@ -39,11 +49,6 @@
   
   <url>
     <loc>https://yashagarwal.in/posts/</loc>
-    <lastmod>2019-07-23T16:40:28+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/tags/</loc>
     <lastmod>2019-07-23T16:40:28+05:30</lastmod>
   </url>
   
@@ -128,11 +133,6 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/tags/personal-finance/</loc>
-    <lastmod>2018-12-17T09:50:27+05:30</lastmod>
-  </url>
-  
-  <url>
     <loc>https://yashagarwal.in/notes/2018-12-17-the-millionaire-booklet-review/</loc>
     <lastmod>2018-12-17T09:50:27+05:30</lastmod>
   </url>
@@ -143,7 +143,7 @@
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/tags/computer-science/</loc>
+    <loc>https://yashagarwal.in/tags/cs/</loc>
     <lastmod>2018-12-15T19:04:38+05:30</lastmod>
   </url>
   
@@ -179,11 +179,6 @@
   
   <url>
     <loc>https://yashagarwal.in/tags/fiction/</loc>
-    <lastmod>2018-11-05T12:00:44+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/notes/</loc>
     <lastmod>2018-11-05T12:00:44+05:30</lastmod>
   </url>
   

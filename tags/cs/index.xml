@@ -2,20 +2,20 @@
     <channel>
         <title>
             
-                    Readings on
+                    CS on
                 
             
             /dev/yash/notes</title>
-        <link>https://yashagarwal.in/categories/readings/</link>
-        <description>Recent content  in Readings
+        <link>https://yashagarwal.in/tags/cs/</link>
+        <description>Recent content  in CS
             on /dev/yash/notes</description>
         <language>en-us</language>
         
                 <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
-                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 14:57:42 +0000</lastBuildDate>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 16:40:05 +0000</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-            <atom:link href="https://yashagarwal.in/categories/readings/index.xml" rel="self" type="application/rss&#43;xml" />
+            <atom:link href="https://yashagarwal.in/tags/cs/index.xml" rel="self" type="application/rss&#43;xml" />
         
     </channel>
 </rss>

@@ -2,20 +2,20 @@
     <channel>
         <title>
             
-                    Computer Science on
+                    Review on
                 
             
             /dev/yash/notes</title>
-        <link>https://yashagarwal.in/tags/computer-science/</link>
-        <description>Recent content  in Computer Science
+        <link>https://yashagarwal.in/categories/review/</link>
+        <description>Recent content  in Review
             on /dev/yash/notes</description>
         <language>en-us</language>
         
                 <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
-                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 14:57:42 +0000</lastBuildDate>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 16:40:05 +0000</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-            <atom:link href="https://yashagarwal.in/tags/computer-science/index.xml" rel="self" type="application/rss&#43;xml" />
+            <atom:link href="https://yashagarwal.in/categories/review/index.xml" rel="self" type="application/rss&#43;xml" />
         
     </channel>
 </rss>
