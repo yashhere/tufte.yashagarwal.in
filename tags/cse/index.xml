@@ -1,0 +1,341 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    CSE on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/tags/cse/</link>
+        <description>Recent content  in CSE
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/tags/cse/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>The Good and Bad about CSED of NIT-C</title>
+                <link>https://yashagarwal.in/posts/2018/06/the-good-and-bad-about-csed-of-nit-c/</link>
+                
+                
+                <description>&lt;p&gt;Four years ago, in this very month of June, JEE Mains results were out. I had screwed up my JEE Advanced, so I had to settle for an NIT. My AIR was good enough to get me a seat of Computer Science and Engineering in any of the NITs except the first three (at that time Trichy, Warangal, and Surathkal). I was skeptical about going to &lt;a href=&#34;http://nitc.ac.in/&#34;&gt;NIT Calicut&lt;/a&gt; because of its distance from my native place, so NIT Allahabad was the most suitable choice. However, in the end, I decided to give preference to NIT Calicut over NIT Allahabad. One of the many reasons for this decision was an excellent &lt;a href=&#34;http://dsanghi.blogspot.com/2011/05/my-2011-list-of-recommended-csit.html&#34;&gt;article&lt;/a&gt; by Dr. Dheeraj Sanghi, a retired professor from IIT Kanpur. His blog post was the primary reason; I decided to go with NIT Calicut. Now that I have graduated from NIT Calicut, I think it is the right time to document my observations about the CSE department of NIT Calicut from the perspective of a student.&lt;/p&gt;
+&lt;p&gt;My exposure to the CSE department was limited to the facilities provided to undergraduate students only (almost everything except some academic facilities), so I am not entirely sure if this article will help any of the postgraduate students out there. However, some points below might help you decide about the non-academic activities of the department.&lt;/p&gt;
+&lt;h2 id=&#34;faculties&#34;&gt;Faculties&lt;/h2&gt;
+&lt;p&gt;Like every other NIT, NIT Calicut also suffers from the lack of permanent faculties. Most of the faculties in the department are recruited on a contract basis (ad-hoc). It is &lt;strong&gt;not&lt;/strong&gt; necessarily a &lt;a href=&#34;http://dsanghi.blogspot.com/2018/05/teaching-by-temps-it-is-budget-issue-too.html&#34;&gt;bad&lt;/a&gt; thing, but many a time, an ad-hoc faculty gets to teach a subject where one does not hold strong command. In that case, the subject becomes a burden for both student and teacher. It happened to me many times when I was stuck in a situation that I ended up losing my interest in the subject as well as grades.&lt;/p&gt;
+&lt;p&gt;Most of the core subjects are taught by permanent faculties who are very good at their subjects. These faculties are very experienced and are alumni of some of India&amp;rsquo;s top IITs and IISc. The department used to &lt;a href=&#34;http://dsanghi.blogspot.com/2011/05/my-2011-list-of-recommended-csit.html&#34;&gt;ask&lt;/a&gt; new hires to get a postgraduate degree from some IIT or IISc, but this does not seem to be the case anymore.&lt;/p&gt;
+&lt;p&gt;Most of the professors prefer to teach traditional computer science subjects, so if you are interested in AI, Data Science, or any other such areas of computer science, then you might have to depend on self-study.&lt;/p&gt;
+&lt;h2 id=&#34;club-activities&#34;&gt;Club Activities&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://assoc.cse.nitc.ac.in&#34;&gt;CSEA&lt;/a&gt; is the main departmental club that organizes almost every co-curricular activity in the department. In my opinion, CSEA is the best department association in NIT Calicut. I was not a member of CSEA, so all of my views are from the perspective of an outsider. CSEA organizes talks and workshops for the freshers from time to time. I attended all the lectures and seminars arranged by CSEA in my initial years, and I feel that those workshops were quite beneficial for me as a student.&lt;/p&gt;
+&lt;p&gt;FOSSCell is a group of students who contribute to open-source software. FOSSCell organizes workshops related to Linux and open source contributions. It also organizes &lt;a href=&#34;http://fossmeet.in/&#34;&gt;FOSSMeet&lt;/a&gt;, the yearly free and open-source software conference organized in NIT-C. It is one of the largest gatherings of open source enthusiasts in South India. I have written two posts about my experience as a part of the organizing team of FOSSMeet. You can read them &lt;a href=&#34;https://yashagarwal.in/posts/2017/03/fossmeet17/&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://yashagarwal.in/posts/2018/03/fossmeet18/&#34;&gt;here&lt;/a&gt;. Attending and organizing FOSSMeet is one of the best experiences of my college life. The current executives of FOSSCell are actively working on improving the state of open source contributions in NIT-C. I hope the situation will change in the coming years.&lt;/p&gt;
+&lt;p&gt;The students manage all the labs in the department. The &lt;a href=&#34;http://athena.nitc.ac.in&#34;&gt;Software Systems Lab&lt;/a&gt; is assigned to undergraduate students. This lab is probably the crown jewel and pride of every CS student of NIT Calicut. It remains open most of the time. All the department servers are kept in this lab and are managed independently by the student administrators chosen by the student administrators. The student administrators are given the responsibility to maintain all the department websites. I do not know if any other university or college in India provides such independence to its students. I was one of the student administrators in this lab, and I consider that this was the best thing that happened to me during my graduation.&lt;/p&gt;
+&lt;h2 id=&#34;the-infrastructure&#34;&gt;The Infrastructure&lt;/h2&gt;
+&lt;p&gt;A traditional computer science course does not require many types of equipment except a laptop and a fast enough internet connection. Internet speed is not extraordinary in NIT-C, but it was sufficient for me. The network administrators blocked many websites, but if the site is related to coursework, sending a short mail was enough in most cases to get it unblocked.&lt;/p&gt;
+&lt;p&gt;The labs are equipped with modern computer systems, and Ubuntu is installed on almost every department system. The particular emphasis on the use of open-source software is a big plus point for the department.&lt;/p&gt;
+&lt;h2 id=&#34;courses&#34;&gt;Courses&lt;/h2&gt;
+&lt;p&gt;The curriculum was last updated in 2010. Since then, six batches have graduated. I think it is an excellent time to consider revising it. The current curriculum is good enough for most traditional CS subjects, but its focus on the present buzzwords of the CS world is very less. I heard that the department changed the curriculum for the batches joining 2017 onwards, but I doubt that there are any significant changes.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;The academics are taken quite seriously in the department (apparently). The level of question papers in examinations is generally very tough. I always felt the heat, at least. However, teachers are quite friendly and will help you with any of your queries.&lt;/p&gt;
+&lt;p&gt;The situation of lab courses (except OS, Compilers, and DSA lab) in the department is very pathetic. Operating Systems lab and Compiler lab have a well-defined structure, and the feeling of developing your tiny OS or compiler is one of the best feelings ever. Data Structure and Algorithms lab runs in parallel to the corresponding theory course, and that helps students in understanding theory by practice.&lt;/p&gt;
+&lt;p&gt;I cannot say the same about any other lab in the department; most of the students end up learning nothing new from these lab courses. The problem is in the way these courses are handled. There does not seem to be a proper structure of teaching in these courses. Students are expected to learn on their own and come to the lab and give exams. Although most of the time, the corresponding theory course carries marks for a mini project which compensates for the lab course, these lab courses do have some scope for improvements.&lt;/p&gt;
+&lt;h2 id=&#34;placements--higher-studies&#34;&gt;Placements &amp;amp; Higher Studies&lt;/h2&gt;
+&lt;p&gt;The department does not handle placements, but the quality of education and the focus on industry-oriented courses do affect the placements. The placement department of NIT-C has been doing an excellent job of maintaining a track record of over 90% placements from computer science every year.&lt;/p&gt;
+&lt;p&gt;Department, as such, does not focus on placements much. I feel that the department is more interested in making researchers than software engineers. Most of the courses are very heavily inclined towards theory. From my batch, I know at least ten people who are planning to go to the USA for higher studies in the next two years. The faculties also encourage students to pursue higher education (and subsequently research). Perhaps, it is one of the reasons that the state of competitive coding is not very good in the department.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Despite continuous lack of good permanent faculties and its location disadvantages, CSED of NIT-C has managed to produce competent engineers year by year. Spending four years in Kerala can be a different experience for outsiders, especially North Indians, but it is an experience worth gaining. If you have a good rank in JEE Mains and do not mind going too far from home, CSED of NIT Calicut is an excellent choice. I hope you will not regret the decision, though I will not say the same about other departments of NIT-C.&lt;/p&gt;
+&lt;p&gt;If you decide to join NIT-C, do read my article about my &lt;a href=&#34;https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/&#34;&gt;experience&lt;/a&gt; at NIT Calicut.&lt;/p&gt;
+&lt;p&gt;Thanks to my friends &lt;a href=&#34;https://www.linkedin.com/in/aashishsatya&#34;&gt;Aashish&lt;/a&gt;, &lt;a href=&#34;https://www.linkedin.com/in/mahaveer-chouhan-575abba7/&#34;&gt;Mahaveer&lt;/a&gt; and &lt;a href=&#34;https://www.facebook.com/faris.shajahan.1&#34;&gt;Faris&lt;/a&gt; for reading the drafts of this article and providing their suggestions.&lt;/p&gt;
+&lt;p&gt;Best wishes. Cheers 😄&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/write-ups">Write-ups</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/cse">CSE</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/review">review</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/nitc">NITC</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/06/the-good-and-bad-about-csed-of-nit-c/</guid>
+                <pubDate>Thu, 14 Jun 2018 17:59:28 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Mistakes That I Made in NITC</title>
+                <link>https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/</link>
+                
+                
+                <description>&lt;p&gt;Now that I am graduated from NIT Calicut, one more chapter of my life is over. It is time to move on to the next page, but before I begin that phase, I thought it would be nice, to sum up, the experience that I gathered in NIT Calicut. The last four years have been great for me. I learned a lot of new life lessons, but there were some decisions that I could have avoided. I take full responsibility for my actions and do not blame anybody for the same. Although I do not regret taking any of those decisions, I feel it is crucial to document all those lessons before they vanish from my &lt;em&gt;otherwise&lt;/em&gt; average memory. This post is intended to serve as a document for my future self, but most of the content here should be able to help anyone who happens to read this post. Most of this content has been taken from my journal, which I maintained (not consistently) over the last two years.&lt;/p&gt;
+&lt;h2 id=&#34;studies&#34;&gt;Studies&lt;/h2&gt;
+&lt;p&gt;From the first year itself, I had an impression from various online QA sites and some seniors that studies are not a big deal in college. That was a grave mistake which cost me a lot during my college life. I tried to compensate for it in the latter half of my graduation, but that was not enough.&lt;/p&gt;
+&lt;p&gt;While my friends used to learn by teaching each other, I never enjoyed studying in groups. I wish I had participated more in such group learning activities.&lt;/p&gt;
+&lt;p&gt;Most of the courses taught in traditional colleges like NITC are useless, in my opinion. However, Data Structures and Algorithms(DSA) was one subject which shows its importance again and again. It is one of those subjects where I should have put more attention. Although I was suffering from a fracture at the time of this course, some more efforts from my side could have changed things as they are today.&lt;/p&gt;
+&lt;h2 id=&#34;wrong-learning-methods&#34;&gt;Wrong learning methods&lt;/h2&gt;
+&lt;p&gt;I always tended to learn anything new using the tutorials available on the Internet. It is fine, but I never tried to do any projects/practicals to strengthen my learning. In my experience, it is always better to learn any programming language by doing projects in it.&lt;/p&gt;
+&lt;p&gt;My first programming language was C, which was taught in an introductory course in the first year. C is a relatively low-level language, and it helped me in understanding many concepts and working on many systems related stuff. Still, I feel that it is also one of the reasons that I am not able to think in higher-level abstraction. When I started learning Python, I was not able to think anything in abstract terms. I wish I had put more effort into learning Python or any other OOP language early in my college life.&lt;/p&gt;
+&lt;h2 id=&#34;communication&#34;&gt;Communication&lt;/h2&gt;
+&lt;p&gt;I have always been an introvert person when it comes to communicating with people. I wish I had worked on improving this aspect of my personality. For the first two years, I never asked any seniors for advice, never asked any questions in the classroom, never discussed project ideas with any faculty. I tried to improve myself in the last two years, and I feel satisfied with my efforts. In my opinion, it is always better to ask a more experienced person for their advice than to take blind steps and regret later.&lt;/p&gt;
+&lt;p&gt;I was hesitant about talking to people from different linguistic backgrounds in my first and second years. Again thanks to my inability to communicate with new people. I improved this later, but first impressions are crucial, if not everything.&lt;/p&gt;
+&lt;h2 id=&#34;friends-and-seniors&#34;&gt;Friends and seniors&lt;/h2&gt;
+&lt;p&gt;In my first year, I made a mistake by choosing to befriend some people who identified themselves as &lt;em&gt;state seniors&lt;/em&gt; (people from the same north Indian state as I am). I was naive in identifying people at that time, but when I look back now, I feel that if I had avoided those people and invested that time in learning something related to CS, I could have gained more out of college. For a person who was entirely new for CS, that one year&amp;rsquo;s time was very crucial, and I completely wasted it. It took me two years to rectify my mistake.&lt;/p&gt;
+&lt;h2 id=&#34;not-taking-breaks&#34;&gt;Not taking breaks&lt;/h2&gt;
+&lt;p&gt;I never took breaks from learning new things. I always put my work ahead of my personal life. That was the wrong approach. However, I do not blame myself for this. I was new to such work-life equations, and I did not realize the requirement to maintain a proper work-life balance. I wanted to learn a lot of new things, and college provided me a suitable environment, but I feel that I exhausted myself many times. That resulted in my loss of interest from Computer Science also in the second year.&lt;/p&gt;
+&lt;h2 id=&#34;writing-and-reading&#34;&gt;Writing and Reading&lt;/h2&gt;
+&lt;p&gt;I was never a voracious reader in my childhood. I never tried to spend my free time with books. After coming to college, I saw many people reading books day and night. That inspired me to develop a new hobby of &lt;strong&gt;Reading&lt;/strong&gt;. Although I still do not read a lot (just 5-6 books a year), it is better than reading none.&lt;/p&gt;
+&lt;p&gt;I started this blog in the second year. My intention was &lt;em&gt;not&lt;/em&gt; to write. I just wanted to learn how to set up Wordpress and Jekyll. However, slowly I developed the habit of writing. I now consider it the biggest takeaway from college. Writing a blog has helped me learn new things and systematically explain things.&lt;/p&gt;
+&lt;p&gt;I tried to write a journal to document significant events in life, but I could not maintain it regularly. That is one thing which I would like to improve in the coming years.&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/write-ups">Write-ups</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/nitc">NITC</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/cse">CSE</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/</guid>
+                <pubDate>Fri, 01 Jun 2018 10:21:45 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>So I Applied for GSoC</title>
+                <link>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</link>
+                
+                
+                <description>
+
+
+
+    
+
+    
+    
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css&#34; integrity=&#34;sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css&#34; integrity=&#34;sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css&#34;&gt;
+
+    
+
+    
+    &lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+        
+        &lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+        
+        &lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+            
+            &lt;div class=&#34;pswp__container&#34;&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+                &lt;div class=&#34;pswp__top-bar&#34;&gt;
+                    
+                    &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+                    
+                    
+                    &lt;div class=&#34;pswp__preloader&#34;&gt;
+                        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+                            &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+                                &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+                    &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+                &lt;/button&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+                &lt;/button&gt;
+                &lt;div class=&#34;pswp__caption&#34;&gt;
+                    &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities. Then last year (2017) again, I decided that I should try for GSoC one more time. I looked for the projects, started reading codebase of one project, but due to my lack of determination, I again did not apply.&lt;/p&gt;
+&lt;p&gt;In the summers of 2017, I got some time to think about it. I decided that for the next year, I will try everything to make sure that I apply for GSoC 2018. I started coding as much as possible and pushing my code to GitHub to build an impressive profile.&lt;/p&gt;
+&lt;p&gt;Now I can say that I am satisfied with my efforts to some extent. I did start some good &lt;a href=&#34;https://github.com/yashhere/BeautifyMP3&#34;&gt;open&lt;/a&gt; &lt;a href=&#34;https://github.com/yashhere/ConMan&#34;&gt;source&lt;/a&gt; &lt;a href=&#34;https://github.com/yashhere/Goofy&#34;&gt;projects&lt;/a&gt;. They are not very extraordinary, but something is better than nothing. I dived into Debian packaging also and volunteered for a FOSS event. Spreading awareness about FOSS is also contributing to FOSS. Isn&amp;rsquo;t it?&lt;/p&gt;
+&lt;p&gt;Coming back to GSoC, this year, I have successfully submitted a proposal to the Debian Project. It does not matter whether I get it or not. I overcame one of my biggest fears of doubting my capabilities. It is something that I was trying to do for the last two years. This moment is worth celebrating.&lt;/p&gt;
+&lt;p&gt;Read about my GSoC project on &lt;a href=&#34;https://wiki.debian.org/SummerOfCode2018/Projects#SummerOfCode2018.2FProjects.2FBootTorrent.Boot_many_machines_via_bittorrent&#34;&gt;Boot Many Machines via Bittorrent&lt;/a&gt;. It is related to something which I learned in &lt;a href=&#34;http://athena.nitc.ac.in/&#34;&gt;SSL&lt;/a&gt; as SSL admin.&lt;/p&gt;
+&lt;p&gt;Read my project proposal on &lt;a href=&#34;https://docs.google.com/document/d/1N7wcc6rwFuauTS-jH2JuLDnZIX0w79AzTPSvSJU3PtA/edit?usp=sharing&#34;&gt;Google Drive&lt;/a&gt; or &lt;a href=&#34;https://wiki.debian.org/YashAgarwal/GSoCProposal&#34;&gt;Debian Wiki&lt;/a&gt;.&lt;/p&gt;
+
+
+
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/hugo-easy-gallery.css&#34;&gt;
+    
+
+
+&lt;div class=&#34;box&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2018-03-28/gsoc-timeline.png#center&#34; alt=&#34;gsoc timeline&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2018-03-28/gsoc-timeline.png#center&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Eagerly waiting for the results. 😄&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update(24/04/2018)&lt;/strong&gt;: Finally, I did not get into GSoC this time too. No worries. I anticipated the results and prepared backup plans. Looking forward to a productive summer. :)&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/write-ups">Write-ups</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/cse">CSE</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/foss">FOSS</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</guid>
+                <pubDate>Wed, 28 Mar 2018 20:58:26 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Searching the goal</title>
+                <link>https://yashagarwal.in/posts/2016/04/searching-the-goal/</link>
+                
+                
+                <description>&lt;p&gt;A boy, probably of age 16, just cleared his 10th board exam. He saw people working on computers, and that fascinated him. So he had only one ambition. You got it, right? One fine day, suddenly his friend&amp;rsquo;s mother asked, &amp;ldquo;So what about the future? You are going to enter in class 11th. It is the right time to decide about your future. What do you want to become, a doctor or an engineer?&amp;rdquo; The boy had no clue how big that question was. What the cost would have been. He simply nodded and said, &amp;ldquo;I like computers very much so I would go for engineering.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it. He decided his fate.&lt;/p&gt;
+&lt;p&gt;So here comes the day&lt;/p&gt;
+&lt;h2 id=&#34;an-accident&#34;&gt;An accident&lt;/h2&gt;
+&lt;p&gt;After that day, he got into a coaching institute which promised a good rank in JEE. He was told that he would have to study consistently and regularly. The boy, being a determined one, started studying day and night.&lt;/p&gt;
+&lt;p&gt;This continued for two years. Finally, after giving 12th board exams, he gave JEE. Unfortunately, he didn&amp;rsquo;t even get into extended merit list.&lt;/p&gt;
+&lt;p&gt;Devastated, he pledged not to give up. Oh, that stupid silly guy! He decided to try for one more year.&lt;/p&gt;
+&lt;p&gt;He joined another institute in his city. Again the same routine, studying day and night to fulfill &lt;em&gt;his&lt;/em&gt; dreams.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Result&lt;/em&gt;: Same, Fail!&lt;/p&gt;
+&lt;p&gt;But somehow he got a decent rank in JEE Mains thanks to his excellent performance in board exams.&lt;/p&gt;
+&lt;h2 id=&#34;a-disaster&#34;&gt;A disaster&lt;/h2&gt;
+&lt;p&gt;Now he had to face one more question. Which college and which branch? For him, the answer was simple. Go to any South Indian college thanks to the influence of his cousins on him (who were very successful in their lives, of course!). He chose Computer Science and Engineering because&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;He loved computers.&lt;/li&gt;
+&lt;li&gt;Everybody said, &amp;ldquo;Bahut scope hai is branch me.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Every top ranker of this country choose this branch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So the decision was clear. He packed his bag and left home for a NIT situated some 2200 kms far, the comp-sci branch.&lt;/p&gt;
+&lt;h2 id=&#34;the-coding-disaster&#34;&gt;The coding disaster&lt;/h2&gt;
+&lt;p&gt;He reached the college. He loved new people, new place, new environment, everything was new, right!. Studies started. He got good grades initially until the real coding and Computer Science related stuff started as courses. His grades fell drastically, his morale too. He got good marks enough to pass the courses. He tried giving his best, but all concepts seemed so alien to him as they wouldn&amp;rsquo;t stay inside his head.&lt;/p&gt;
+&lt;p&gt;That guy is now about to complete his 2nd year and just thinking what went wrong with him. He is still trying to keep his journey on the right track. Whether he will be able to finish it successfully or not, only time will tell.&lt;/p&gt;
+&lt;p&gt;At last one more year is coming, and it&amp;rsquo;s story will also come here next year.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.quora.com/What-were-you-once-that-youll-never-be-again/answer/Nishant-Kumar-187?srid=8MaF%EF%BF%BDshare=8df79cac&#34;&gt;Inspired by this Quora Post&lt;/a&gt;&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/philosophy">Philosophy</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/nitc">NITC</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/cse">CSE</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2016/04/searching-the-goal/</guid>
+                <pubDate>Sun, 10 Apr 2016 00:33:16 +0000</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

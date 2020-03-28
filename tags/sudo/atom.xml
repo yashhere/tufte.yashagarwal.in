@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator><title type="html"><![CDATA[sudo on /dev/yash/notes]]></title>
+    
+        <subtitle type="html"><![CDATA[The directory of my thoughts]]></subtitle>
+    
+    
+    
+            <link href="https://yashagarwal.in/tags/sudo/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://yashagarwal.in/tags/sudo/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+            <link href="https://yashagarwal.in/tags/sudo/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
+            <link href="https://yashagarwal.in/tags/sudo/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
+    <updated>2020-03-28T08:04:50+00:00</updated>
+    
+    
+    <author>
+            <name>Yash Agarwal</name>
+            
+                <email>yashagarwaljpr@gmail.com</email>
+            </author>
+    
+        <id>https://yashagarwal.in/tags/sudo/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Wanna get insulted by sudo]]></title>
+            <link href="https://yashagarwal.in/posts/2016/04/wanna-get-insulted-by-sudo/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://yashagarwal.in/posts/2016/04/wanna-get-insulted-by-sudo/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2016-04-03T12:20:36+00:00</published>
+            <updated>2016-04-03T12:20:36+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[
+
+
+
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet" href="/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css">
+
+    
+
+    
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        
+        <div class="pswp__bg"></div>
+        
+        <div class="pswp__scroll-wrap">
+            
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    
+                    
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<p>You might have tried many Linux easters eggs for fun, but you are going to love this hack which makes <code>sudo</code> insult you.</p>
+<p>Confused what I am talking about? Here, take a look at this gif to get an idea of how <code>sudo</code> can insult you for typing in the incorrect password.</p>
+
+
+
+    <link rel="stylesheet" href="/css/hugo-easy-gallery.css">
+    
+
+
+<div class="box fancy-figure caption-position-none"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img">
+            <img itemprop="thumbnail" src="/images/2016-04-03/insult.gif" alt="A terminal screen"/>
+        </div>
+        <a href="/images/2016-04-03/insult.gif" itemprop="contentUrl"></a>
+    </figure>
+</div>
+
+<p>Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with Linux, and anyway, this is way better than the plain &ldquo;You entered a wrong password&rdquo; error message. So let&rsquo;s learn how to do this.</p>
+<h2 id="enable-insults-in-sudo">Enable insults in sudo</h2>
+<p>You can enable the insults feature in <code>sudo</code> by modifying the <code>sudo</code> configuration file. To open the <code>sudo</code> configuration file, launch a terminal and type the following command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo visudo</code></pre></div>
+<p>It will open <code>/etc/sudoers</code> configuration file in the terminal, in vim text editor if you have configured it as your default editor. In distros like Ubuntu, it will be opened in nano. Now you will have to find the section where the defaults are listed. Most probably you will find it at the top. Now find the line that starts with <code>Defaults</code> and append the word <code>insults</code> to the end of the line (any addition to the line is comma separated). If this line is not present then add the following line to the section</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Defaults insults</code></pre></div>
+<p>(Always use <code>visudo</code> as it has a self-check system which will save you from messing up things)</p>
+<p>Now save the file. If you are using vim, then use <code>Ctrl+X</code> to save the file and quit the editor and if you are using nano then use <code>Ctrl+X</code> to leave the editor. At the time of quitting, it will ask you if you want to save the changes. To keep the changes, press <code>Y</code>.</p>
+
+
+
+<div class="box fancy-figure caption-position-none"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img">
+            <img itemprop="thumbnail" src="/images/2016-04-03/sudoers.png" alt="Sample sudoers file"/>
+        </div>
+        <a href="/images/2016-04-03/sudoers.png" itemprop="contentUrl"></a>
+            <figcaption>
+                    <p>Sample sudoers file</p>
+            </figcaption>
+    </figure>
+</div>
+
+<p>Once you have saved the file, go to terminal and type the following command to clear the old password from <code>sudo</code>'s cache.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo -k</code></pre></div>
+<p>That&rsquo;s all. Use any command with <code>sudo</code>. Deliberately type a wrong password and enjoy abusing &hellip;</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/sudo" term="sudo" label="sudo" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

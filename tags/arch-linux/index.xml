@@ -1,0 +1,1112 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    Arch Linux on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/tags/arch-linux/</link>
+        <description>Recent content  in Arch Linux
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/tags/arch-linux/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Battery Notifications in i3</title>
+                <link>https://yashagarwal.in/posts/2018/06/battery-notifications-in-i3/</link>
+                
+                
+                <description>&lt;p&gt;I am using &lt;em&gt;i3&lt;/em&gt; window manager for the last seven months, and it has been a pleasant and productive experience so far. There were a few hiccups here and there, but that is expected with such minimalistic setups. One thing that I never noticed was the lack of notifications on critical battery levels. For the last few months, my laptop battery was discharging to 0% all the time. Probably this proved to be too fatal for my battery. According to this &lt;a href=&#34;https://lifehacker.com/5875162/how-often-should-i-charge-my-gadgets-battery-to-prolong-its-lifespan&#34;&gt;article&lt;/a&gt;, lithium-ion batteries are not expected to go from 100% to 0% frequently. I recently bought a new battery, and I did not want to reduce the lifespan of this battery too. So I decided to set up battery notifications for my i3 setup.&lt;/p&gt;
+&lt;p&gt;I &lt;a href=&#34;https://agorf.gr/2016/06/29/low-battery-notification-in-i3wm/&#34;&gt;found&lt;/a&gt; a bash script which shows a notification using &lt;em&gt;notify-send&lt;/em&gt; when battery charge level reaches or drops below a configured threshold. However, I had to do some additional steps to make this script work on my system.&lt;/p&gt;
+&lt;p&gt;The first issue was the &lt;em&gt;lockfile&lt;/em&gt; program, which was not installed in my system. I installed it using the following command.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt install procmail&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The second issue was more difficult to solve. I planned to set up the script to run every minute using &lt;em&gt;cron&lt;/em&gt;. However, it turns out that cron operates in a very &lt;a href=&#34;http://askubuntu.com/a/23438/173003&#34;&gt;minimalistic&lt;/a&gt; environment and notify-send requires the presence of some special variables in the environment. These variables are &lt;strong&gt;DBUS_SESSION_BUS_ADDRESS&lt;/strong&gt;, &lt;strong&gt;XAUTHORITY&lt;/strong&gt; and &lt;strong&gt;DISPLAY&lt;/strong&gt;. To provide the values of these variables to the cron environment, I modified the script and sourced a new file &lt;code&gt;.bat_envs&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/usr/bin/env bash
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+. /home/yash/.bat_envs
+
+&lt;span class=&#34;nv&#34;&gt;THRESHOLD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;15&lt;/span&gt;
+
+&lt;span class=&#34;nv&#34;&gt;lock_path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/tmp/battery.lock&amp;#39;&lt;/span&gt;
+
+lockfile -r &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$lock_path&lt;/span&gt; 2&amp;gt;/dev/null &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt;
+
+&lt;span class=&#34;nv&#34;&gt;acpi_path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;find /sys/class/power_supply/ -name &lt;span class=&#34;s1&#34;&gt;&amp;#39;BAT*&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; head -1&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;charge_now&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;cat &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$acpi_path&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/charge_now&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;charge_full&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;cat &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$acpi_path&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/charge_full&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;charge_status&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;cat &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$acpi_path&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/status&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;charge_percent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;%.0f&amp;#39;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$charge_now&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; / &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$charge_full&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt; * 100&amp;#34;&lt;/span&gt;
+ &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; bc -l&lt;span class=&#34;k&#34;&gt;))&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Battery running critically low at &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$charge_percent&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;%!&amp;#34;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[[&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$charge_status&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;Discharging&amp;#39;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[[&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$charge_percent&lt;/span&gt; -le &lt;span class=&#34;nv&#34;&gt;$THRE&lt;/span&gt;
+SHOLD &lt;span class=&#34;o&#34;&gt;]]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+  /usr/bin/notify-send -u critical &lt;span class=&#34;s2&#34;&gt;&amp;#34;Low battery&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$message&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+
+  &lt;span class=&#34;nv&#34;&gt;current_date_time&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;`date +%Y%m%d%H%M%S`&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;[BATTERY LOG] = &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$charge_percent&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;% on &lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$current_date_time&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+
+rm -f &lt;span class=&#34;nv&#34;&gt;$lock_path&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Read this blog &lt;a href=&#34;https://agorf.gr/2016/06/29/low-battery-notification-in-i3wm/&#34;&gt;post&lt;/a&gt; to understand how this script works.&lt;/p&gt;
+&lt;p&gt;As the notify-send requires some special X session environmental variables, we will need a method to provide these variables to notify-send in cron environment. The safest way to get X session related environmental variables is to get them from the environment of a process of the user who is logged on to X. The following script will run every time a user logs in and stores these variables in a file &lt;code&gt;.bat_envs&lt;/code&gt;.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/usr/bin/env bash
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;env_path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$HOME&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/.bat_envs&amp;#34;&lt;/span&gt;
+
+rm -f &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_path&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+touch &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_path&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+
+&lt;span class=&#34;nv&#34;&gt;copy_envs&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;XAUTHORITY DISPLAY DBUS_SESSION_BUS_ADDRESS&amp;#34;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; env_name in &lt;span class=&#34;nv&#34;&gt;$copy_envs&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+    env &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_path&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;export &lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_name&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_path&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+
+chmod &lt;span class=&#34;m&#34;&gt;600&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;env_path&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To run this script at startup, I added this file to the i3 config file with the following command.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; --no-startup-id &lt;span class=&#34;s2&#34;&gt;&amp;#34;path to your script&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then at the end of cron file, I added a new entry for the battery monitoring script.&lt;/p&gt;
+&lt;p&gt;To open cron file:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;crontab -e&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now add the following line to the end of the file and save the file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;* * * * * bash &lt;span class=&#34;s2&#34;&gt;&amp;#34;path to your script&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;path to your log file&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Replace the &lt;em&gt;path to your script&lt;/em&gt; (with double quotes) with your script path and the &lt;em&gt;path to your log file&lt;/em&gt; with a path where you want to save your log file.&lt;/p&gt;
+&lt;p&gt;Now every minute, this script will be executed, and if your battery percent drops below the threshold value, you will be notified with a notification bubble.&lt;/p&gt;
+&lt;p&gt;I tested this procedure on &lt;em&gt;Ubuntu 18.04 with i3&lt;/em&gt;. It should work on Arch Linux and other non-Debian distributions also, but the steps might be slightly different due to various reasons. Please comment if you face any issues with the setup.&lt;/p&gt;
+&lt;p&gt;Thank you for reading the article. Cheers 😄&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/hacks">Hacks</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/i3">i3</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/06/battery-notifications-in-i3/</guid>
+                <pubDate>Tue, 12 Jun 2018 09:45:46 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</title>
+                <link>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/</link>
+                
+                
+                <description>&lt;p&gt;This post is going to be one of those that I have written for my reference. Whatever I am going to mention in this post is not new. Everything has already been said and written many times on many websites and Linux forums.&lt;/p&gt;
+&lt;p&gt;So I will start by explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not the same in both the operating systems. It is generally one operating system showing the correct time, and the other one showing the wrong time. It happens because Microsoft Windows thinks that the hardware clock (CMOS clock or BIOS clock) of the machine is using the local time (depends on your current time zone), and hence it doesn&amp;rsquo;t do anything and shows you the same time. But most GNU/Linux operating systems (Ubuntu, Arch Linux, etc.) think that the hardware clock is set to track UTC. Hence the mismatch in the time happens. For example, assume that the current real-time is 10:22:51, and the hardware clock time is set to 10:22:51. Windows will interpret this time as local time and show 10:22:51, but Linux based systems will show 15:52:51 because they will understand this time as UTC. Of course, the above example is true if we assume time zone as India, which is +05:30 from UTC.&lt;/p&gt;
+&lt;p&gt;This issue can be fixed either from Windows or from GNU/Linux OS. I prefer to adjust the behavior of Windows to use UTC. It is much more convenient to use when traveling between different time zones. Please note that this method might not work or cause instability with older versions of Windows OS. I have tried this fix on Windows 10, and it works without any issues.&lt;/p&gt;
+&lt;p&gt;Open an Administrator Command Prompt by pressing &lt;code&gt;⊞ + x&lt;/code&gt;, then type &lt;code&gt;a&lt;/code&gt;. This method of opening the Administrator Command Prompt does not work on Windows 7.&lt;/p&gt;
+&lt;p&gt;Now execute the following command:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;reg add &lt;span class=&#34;s2&#34;&gt;&amp;#34;HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation&amp;#34;&lt;/span&gt; /v RealTimeIsUniversal /d 1 /t REG_DWORD /f&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Windows Time Service, which keeps the clock in Windows OS accurate, will still write the local time to the Real-time clock (RTC) regardless of the registry settings on shutdown. So I prefer to disable the Windows Time Service.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-batch&#34; data-lang=&#34;batch&#34;&gt;sc config w32time start= disabled&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now you may need to change the time in your BIOS to UTC time, although that depends on whether your Windows OS was showing the correct time before applying the above modifications. If yes, then changing BIOS time to UTC will make sure that both Windows and GNU/Linux convert hardware clock to local time.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/community/UbuntuTime#Multiple_Boot_Systems_Time_Conflicts&#34;&gt;Multiple Boot Systems Time Conflicts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Time#UTC_in_Windows&#34;&gt;UTC in Windows&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/hacks">Hacks</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/configuration">configuration</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/</guid>
+                <pubDate>Thu, 01 Feb 2018 12:54:34 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Arch Linux Installation Guide Part 2</title>
+                <link>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/</link>
+                
+                
+                <description>&lt;p&gt;In this post, I will continue from my last &lt;a href=&#34;https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/&#34;&gt;post&lt;/a&gt; and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current dotfile &lt;a href=&#34;https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/&#34;&gt;configuration&lt;/a&gt; setup to work properly. The choice of applications is highly opinionated and your preferences might be different.&lt;/p&gt;
+&lt;div class=&#34;note&#34;&gt;
+    &lt;div&gt;&lt;/div&gt;
+    
+If you had gone for installation via SSH option, then I would suggest you to edit your `sshd_config` file and disable `root` login. It can be a security risk otherwise.
+
+&lt;/div&gt;
+&lt;h3 id=&#34;install-a-terminal-based-browser&#34;&gt;Install a terminal based browser&lt;/h3&gt;
+&lt;p&gt;Terminal-based browsers are very handy in cases when you are required to login into a captive portal and you don&amp;rsquo;t have access to a graphical browser. We will install two different browsers, &lt;code&gt;elinks&lt;/code&gt; and &lt;code&gt;w3m&lt;/code&gt;.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S elinks w3m&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;install-x-server&#34;&gt;Install X server.&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S xorg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This will install minimal X desktop environment with fonts, in case, you want to test your system before installing any desktop environment.&lt;/p&gt;
+&lt;h3 id=&#34;enable-multilib-repository-for-32-bit-package-support&#34;&gt;Enable multilib repository for 32-bit package support&lt;/h3&gt;
+&lt;p&gt;To enable multilib repository, uncomment the &lt;code&gt;[multilib]&lt;/code&gt; section in &lt;code&gt;/etc/pacman.conf&lt;/code&gt;.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;multilib&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;Include&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; /etc/pacman.d/mirrorlist&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now upgrade your system.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -Syyu&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;install-video-and-touchpad-drivers&#34;&gt;Install video and touchpad drivers&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S xf86-video-intel xf86-input-synaptics&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;install-pacaur-to-fetch-and-install-packages-from-aur&#34;&gt;Install pacaur to fetch and install packages from AUR&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S expac yajl --noconfirm
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /tmp
+gpg --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;cower
+makepkg -i PKGBUILD --noconfirm
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;pacaur
+makepkg -i PKGBUILD --noconfirm
+cd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;install-graphical-browsers&#34;&gt;Install graphical browsers&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pacaur -S firefox chromium&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;install-code-editors&#34;&gt;Install code editors&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pacaur -S sublime-text-dev atom-editor-git visual-studio-code-bin neovim neovim-drop-in leafpad&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;setup-lamp-stack&#34;&gt;Setup LAMP stack&lt;/h3&gt;
+&lt;h4 id=&#34;install-apache-server&#34;&gt;Install Apache server&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S apache
+
+&lt;span class=&#34;c1&#34;&gt;# Make your user-directory available to apache server&lt;/span&gt;
+mkdir ~/public_html
+chmod o+x ~
+chmod o+x ~/public_html
+chmod -R o+r ~/public_html&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# To enable virtualhosts, uncomment the following line in `/etc/httpd/conf/httpd.conf`&lt;/span&gt;
+Include conf/extra/httpd-vhosts.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add your virtualhost configuration in following file -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo vim /etc/httpd/conf/extra/httpd-vhosts.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;To test the virtual hosts on you local machine, add the virtual names to your &lt;code&gt;/etc/hosts&lt;/code&gt; file.&lt;/p&gt;
+&lt;h4 id=&#34;install-php&#34;&gt;Install PHP:&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S php php-apache&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To use PHP with apache, open &lt;code&gt;/etc/httpd/conf/httpd.conf&lt;/code&gt; and uncomment following line -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;LoadModule mpm_prefork_module modules/mod_mpm_prefork.so&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;and comment out the following line -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# LoadModule mpm_event_module modules/mod_mpm_event.so&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now add these lines to &lt;code&gt;/etc/httpd/conf/httpd.conf&lt;/code&gt;:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Add these at the end of `LoadModule` section.&lt;/span&gt;
+LoadModule php7_module modules/libphp7.so
+AddHandler php7-script .php
+
+&lt;span class=&#34;c1&#34;&gt;# Place this at the end of the `Include` section:&lt;/span&gt;
+Include conf/extra/php7_module.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h4 id=&#34;install-mysql-server&#34;&gt;Install MySQL server&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S mariadb
+
+&lt;span class=&#34;c1&#34;&gt;# Initialize the MariaDB data directory prior to starting the service. To do so, run:&lt;/span&gt;
+sudo mysql_install_db --user&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;mysql --basedir&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/usr --datadir&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/var/lib/mysql
+
+&lt;span class=&#34;c1&#34;&gt;# Then issue the commands to start the database server&lt;/span&gt;
+sudo systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; mariadb.service
+sudo systemctl start mariadb.service
+
+&lt;span class=&#34;c1&#34;&gt;# To apply recommended security settings to your database, run&lt;/span&gt;
+sudo mysql_secure_installation&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id=&#34;install-phpmyadmin&#34;&gt;Install PHPMyAdmin&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S phpmyadmin php-mcrypt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Enable &lt;code&gt;mysqli&lt;/code&gt;, &lt;code&gt;mcrypt&lt;/code&gt;, &lt;code&gt;zip&lt;/code&gt; and &lt;code&gt;bz2&lt;/code&gt; extensions in &lt;code&gt;/etc/php/php.ini&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Create the apache configuration file &lt;code&gt;/etc/httpd/conf/extra/phpmyadmin.conf&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ApacheConf&#34; data-lang=&#34;ApacheConf&#34;&gt;&lt;span class=&#34;nb&#34;&gt;Alias&lt;/span&gt; &lt;span class=&#34;sx&#34;&gt;/phpmyadmin&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;/usr/share/webapps/phpMyAdmin&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;Directory&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/usr/share/webapps/phpMyAdmin&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;DirectoryIndex&lt;/span&gt; index.php
+    &lt;span class=&#34;nb&#34;&gt;AllowOverride&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;All&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;Options&lt;/span&gt; FollowSymlinks
+    &lt;span class=&#34;nb&#34;&gt;Require&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;all&lt;/span&gt; granted
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then include following in &lt;code&gt;/etc/httpd/conf/httpd.conf&lt;/code&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ApacheConf&#34; data-lang=&#34;ApacheConf&#34;&gt;&lt;span class=&#34;c&#34;&gt;# phpMyAdmin configuration&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;Include&lt;/span&gt; conf/extra/phpmyadmin.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now restart &lt;code&gt;httpd&lt;/code&gt; service to apply settings.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo systemctl restart httpd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Once all these steps are done, your LAMP stack should be working.&lt;/p&gt;
+&lt;h3 id=&#34;setup-power-management&#34;&gt;Setup power management&lt;/h3&gt;
+&lt;p&gt;Install &lt;code&gt;tlp&lt;/code&gt; and some of its optional dependencies
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S tlp tlp-rdw bash-completion ethtool lsb-release smartmontools&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Then enable &lt;code&gt;tlp&lt;/code&gt; services
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; tlp.service
+sudo systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; tlp-sleep.service
+
+&lt;span class=&#34;c1&#34;&gt;# mask some services for tlp to work properly&lt;/span&gt;
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;install-i3-and-other-tools&#34;&gt;Install i3 and other tools&lt;/h3&gt;
+&lt;p&gt;All these tools are part of my &lt;code&gt;i3&lt;/code&gt; config with exception of the theme related packages. So installing them here will help me later while setting up the &lt;code&gt;i3&lt;/code&gt; window manager.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pacaur -S i3 rofi polybar xautolock powerline-fonts-git i3lock-fancy-git compton scrot feh dunst unclutter xfce4-power-manager numlockx lxappearance adapta-gtk-theme gtk-engine-murrine gnome-themes-standard termite&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;fix-ugly-fonts-1&#34;&gt;Fix Ugly Fonts &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/h3&gt;
+&lt;p&gt;Fonts rendering is one area where Linux still lags behind Windows and OSX. It can be a nightmare for users to setup fonts properly in Linux. In Arch Linux, this is even worse. I found some tricks to improve the quality of font rendering on Arch Linux. Though this is far from perfect, it is manageable. Follow these &lt;a href=&#34;https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/&#34;&gt;steps&lt;/a&gt; on Reddit to fix font rendering. I use Noto Sans, Adobe Source Code Pro, and Microsoft fonts. My apologies, but I can&amp;rsquo;t help here. Some websites still use Microsoft fonts.&lt;/p&gt;
+&lt;h3 id=&#34;setup-python-environment&#34;&gt;Setup Python Environment&lt;/h3&gt;
+&lt;p&gt;I use Python extensively and virtual environments are a must for my development setup. I use &lt;code&gt;pipenv&lt;/code&gt; to manage my virtual environments. To install &lt;code&gt;pipenv&lt;/code&gt;, you need to install &lt;code&gt;virtualenv&lt;/code&gt; first. To install it, run the following command.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S python-virtualenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now you are ready to install &lt;code&gt;pipenv&lt;/code&gt;. Follow &lt;a href=&#34;http://pipenv.readthedocs.io/en/latest/install/#fancy-installation-of-pipenv&#34;&gt;these&lt;/a&gt; instructions to install the tool.&lt;/p&gt;
+&lt;h3 id=&#34;install-some-other-common-tools&#34;&gt;Install some other common tools&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S vlc openssh npm imagemagick git la-capitaine-icon-theme-git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Do not forget to &lt;a href=&#34;https://stackoverflow.com/a/13021677&#34;&gt;setup&lt;/a&gt; &lt;code&gt;npm&lt;/code&gt; to install packages globally without requiring &lt;code&gt;sudo&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s all! Your system should be in working condition now. Do check out my &lt;a href=&#34;https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/&#34;&gt;dotfiles&lt;/a&gt; if you want to set up your system like mine.&lt;/p&gt;
+&lt;p&gt;Hope you enjoyed the article. Cheers 😄&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/&#34;&gt;Make your Arch fonts beautiful easily!&lt;/a&gt; &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/hacks">Hacks</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/series/arch-linux-installation">Arch Linux Installation</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/configuration">configuration</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/i3">i3</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/</guid>
+                <pubDate>Fri, 26 Jan 2018 15:45:27 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Arch Linux Installation Guide Part 1</title>
+                <link>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/</link>
+                
+                
+                <description>&lt;p&gt;Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.&lt;/p&gt;
+&lt;p&gt;This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&amp;rsquo;t remember all the installation steps perfectly. Most of the steps have been taken from &lt;a href=&#34;https://wiki.archlinux.org/index.php/installation_guide&#34;&gt;Arch wiki&lt;/a&gt; and should work on other setups also.&lt;/p&gt;
+&lt;div class=&#34;note&#34;&gt;
+    &lt;div&gt;&lt;/div&gt;
+    
+All the commands are run in root shell unless otherwise specified.
+
+&lt;/div&gt;
+&lt;h2 id=&#34;0-check-your-network-connection&#34;&gt;0. Check your network connection&lt;/h2&gt;
+&lt;p&gt;If you are behind a captive portal, use &lt;code&gt;links&lt;/code&gt; to open browser and login into your network. For WiFi connections, use &lt;code&gt;wifi-menu&lt;/code&gt;. LAN connections should not require any setup. The boot environment should automatically detect any wired connections. After connecting, test your connection by pinging any website:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ping -c &lt;span class=&#34;m&#34;&gt;5&lt;/span&gt; google.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;1-setup-ssh&#34;&gt;1. Setup SSH&lt;/h2&gt;
+&lt;p&gt;This step is not mandatory, though I prefer to use this method to install Arch Linux, as it provides me the convenience of copying and pasting the commands directly from Arch wiki.&lt;/p&gt;
+&lt;p&gt;By default the Arch Linux &lt;code&gt;root&lt;/code&gt; account password is empty. We need to set up a password for &lt;code&gt;root&lt;/code&gt; account, which is needed for an SSH connection.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;passwd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now we need to change the setting to permit &lt;code&gt;root&lt;/code&gt; login via SSH in &lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;. Check that &lt;code&gt;PermitRootLogin yes&lt;/code&gt; is uncommented in this file. If this line is not present there, add this to the end. Now start the &lt;code&gt;sshd.service&lt;/code&gt; by issuing the command
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo systemctl start sshd.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Also, note the IP address of the target machine by inspecting the output of the following command.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ip addr&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Pro tip:&lt;/em&gt; One liner to get only the IP address
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ip -o -4 addr show &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk -F &lt;span class=&#34;s1&#34;&gt;&amp;#39;[ /]+&amp;#39;&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;/global/ {print $4}&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now on your host machine, connect to the target machine via SSH using the following command
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh root@ip-address-of-target&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;2-partition-the-disks&#34;&gt;2. Partition the disks&lt;/h2&gt;
+&lt;p&gt;If Windows 8 or above is already installed on your machine, then your hard disk is probably using &lt;code&gt;GPT&lt;/code&gt; partitioning scheme. In that case, use &lt;code&gt;gdisk&lt;/code&gt; to partition your hard disk. &lt;del&gt;If you use &lt;code&gt;fdisk&lt;/code&gt; on a GPT partitioned HDD, there is a possibility of data loss.&lt;/del&gt; &lt;code&gt;fdisk&lt;/code&gt; understands &lt;code&gt;GPT&lt;/code&gt; partitioning scheme also.[1]&lt;/p&gt;
+&lt;p&gt;My preferred setup is to have one root partition and one home partition and use &lt;code&gt;EFI&lt;/code&gt; partition created by Windows to install boot-loader. The root and home partition will be formatted using &lt;code&gt;ext4&lt;/code&gt; file-system and the &lt;code&gt;EFI&lt;/code&gt; partition should be formatted using &lt;code&gt;FAT32&lt;/code&gt; file-system.&lt;/p&gt;
+&lt;p&gt;For this guide, I am assuming that the &lt;code&gt;EFI&lt;/code&gt; partition is &lt;code&gt;sda1&lt;/code&gt;, root partition is &lt;code&gt;sda9&lt;/code&gt; and home partition is &lt;code&gt;sda10&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Now to format the partitions with &lt;code&gt;ext4&lt;/code&gt; file-system:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mkfs.ext4 /dev/sda9
+mkfs.ext4 /dev/sda10&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-mount-the-partitions&#34;&gt;3. Mount the partitions&lt;/h2&gt;
+&lt;p&gt;Now mount the root partition (&lt;code&gt;sda9&lt;/code&gt; in this case) to &lt;code&gt;/mnt&lt;/code&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mount /dev/sda9 /mnt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;If you have created any other partitions in previous steps, mount them at appropriate locations.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mkdir /mnt/home
+mount /dev/sda10 /mnt/home
+
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;4-install-the-base-file-system&#34;&gt;4. Install the base file-system&lt;/h2&gt;
+&lt;p&gt;To install the base system and some development tools, issue the following command.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pacstrap /mnt base base-devel&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;This will take a while to download and install. After it finishes, it will give you a bare-bone Arch Linux system with just the tools required to run a Linux distribution, no other software is installed.&lt;/p&gt;
+&lt;h2 id=&#34;5-generate-etcfstab&#34;&gt;5. Generate /etc/fstab&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;/etc/fstab&lt;/code&gt; file stores the information about file systems of partitions and how to mount the partitions on system boot up. To generate this file, issue the following command:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+If you prefer to use partition labels (sda1, sda9 etc.) instead of UUID, then use &lt;code&gt;-L&lt;/code&gt; flag in place of &lt;code&gt;-U&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;6-chroot-into-the-system&#34;&gt;6. chroot into the system&lt;/h2&gt;
+&lt;p&gt;From the &lt;a href=&#34;https://wiki.archlinux.org/index.php/Change_root&#34;&gt;Arch wiki&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Chroot is an operation that changes the apparent root directory for the current running process and their children. A program that is run in such a modified environment cannot access files and commands outside that environmental directory tree. This modified environment is called a chroot jail.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;At this step, we will go to the root of the newly installed system at &lt;code&gt;/mnt&lt;/code&gt; and pretend as if we are logged into this system.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;arch-chroot /mnt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;7-setup-the-time-zone-locale-and-hostname&#34;&gt;7. Setup the time zone, locale, and hostname&lt;/h2&gt;
+&lt;p&gt;Browse the &lt;code&gt;/use/share/zoneinfo&lt;/code&gt; directory to find your location entries. My location is India, so I will use this command.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;To set the hardware clock:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;hwclock --systohc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;To set the locale for your system, open the &lt;code&gt;/etc/locale.gen&lt;/code&gt; file and uncomment your language. or run the following command for the default &lt;code&gt;en_US.UTF-8 UTF-8&lt;/code&gt;.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nv&#34;&gt;LANG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;C perl -i -pe &lt;span class=&#34;s1&#34;&gt;&amp;#39;s/#(en_US.UTF)/$1/&amp;#39;&lt;/span&gt; /etc/locale.gen&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Now generate the localization with
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;locale-gen&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Then set the &lt;code&gt;LANG&lt;/code&gt; variable in &lt;code&gt;/etc/locale.conf&lt;/code&gt; accordingly, or run the following command:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;localectl set-locale &lt;span class=&#34;nv&#34;&gt;LANG&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;en_US.UTF-8&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;To set the hostname for your machine:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;hostnamectl set-hostname your-host-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;To allow other machines to address the host by name, it is necessary to edit the &lt;code&gt;/etc/hosts&lt;/code&gt; file to look like this:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;127.0.0.1    localhost.localdomain          localhost
+::1          localhost.localdomain          localhost
+127.0.1.1    your-host-name.localdomain     your-host-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;8-create-user-account&#34;&gt;8. Create user account&lt;/h2&gt;
+&lt;p&gt;Before creating user account, set password for &lt;code&gt;root&lt;/code&gt; account
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;passwd&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now create a local account for your user
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;useradd -m -G wheel -s /bin/bash your-user-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;This will set up your user account, create a home directory for your user, set the default shell to &lt;code&gt;bash&lt;/code&gt; and add your user to &lt;code&gt;wheel&lt;/code&gt; group, which is necessary to gain &lt;code&gt;sudo&lt;/code&gt; access in later steps.&lt;/p&gt;
+&lt;p&gt;Set password for your user.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;passwd your-user-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;9-enable-sudo-access&#34;&gt;9. Enable sudo access&lt;/h2&gt;
+&lt;p&gt;This allows you to use root privileges without using the root account. To enable this, first open &lt;code&gt;/etc/sudoers&lt;/code&gt; file
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;nano /etc/sudoers&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now uncomment the following line to enable &lt;code&gt;root&lt;/code&gt; privilege for all the users inside &lt;code&gt;wheel&lt;/code&gt; group:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# %wheel ALL=(ALL) ALL&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now you can safely disable root account
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;passwd -l root
+
+&lt;span class=&#34;c1&#34;&gt;# login into your user account&lt;/span&gt;
+su your-user-name&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;From this point onwards, it is necessary to append &lt;code&gt;sudo&lt;/code&gt; to any command that requires &lt;code&gt;root&lt;/code&gt; privileges.&lt;/p&gt;
+&lt;h2 id=&#34;10-install-bootloader&#34;&gt;10. Install bootloader&lt;/h2&gt;
+&lt;p&gt;My preferred bootloader of choice is &lt;code&gt;grub&lt;/code&gt;. To install &lt;code&gt;grub&lt;/code&gt;, we need to install following packages.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S grub efibootmgr&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now install &lt;code&gt;grub&lt;/code&gt; with the following command.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo grub-install --target&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;x86_64-efi --efi-directory&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/boot --bootloader-id&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;arch&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Here &lt;code&gt;--efi-directory&lt;/code&gt; is the folder where the &lt;code&gt;EFI&lt;/code&gt; partition is mounted &lt;a href=&#34;#step3&#34;&gt;step 3&lt;/a&gt; and &lt;code&gt;--bootloader-id&lt;/code&gt; is the label that will appear in your UEFI boot menu entry.&lt;/p&gt;
+&lt;p&gt;This particular step is specific to my machine&amp;rsquo;s hardware, you might not need to run this step. I need to add &lt;code&gt;pci=nommconf&lt;/code&gt; to my kernel boot parameters in &lt;code&gt;/etc/default/grub&lt;/code&gt;, otherwise &lt;code&gt;tty&lt;/code&gt; prints error messages continuously.&lt;/p&gt;
+&lt;p&gt;Now run to generate grub configuration file.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo grub-mkconfig -o /boot/grub/grub.cfg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;If you encounter any errors related to &lt;code&gt;lvm&lt;/code&gt; during installation of grub, then follow these steps.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# come out of chroot&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt;
+mkdir /mnt/hostrun
+mount --bind /run /mnt/hostrun
+
+&lt;span class=&#34;c1&#34;&gt;# back to chroot&lt;/span&gt;
+arch-chroot /mnt
+mkdir /run/lvm
+mount --bind /hostrun/lvm /run/lvm&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now you can install &lt;code&gt;grub&lt;/code&gt; without any errors.&lt;/p&gt;
+&lt;h2 id=&#34;11-configure-the-network&#34;&gt;11. Configure the network&lt;/h2&gt;
+&lt;p&gt;By default, your current system cannot connect to the network in the current state. I prefer to use &lt;a href=&#34;https://wiki.archlinux.org/index.php/NetworkManager&#34;&gt;NetworkManager&lt;/a&gt; for my network management, even when I am not using GNOME. For wireless networking, install the following additional packages.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pacman -S iw wpa_supplicant dialog networkmanager network-manager-applet dhclient&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;NetworkManager&lt;/code&gt; supports basic DHCP configuration. For full support, I have installed &lt;code&gt;dhclient&lt;/code&gt;. &lt;code&gt;NetworkManager&lt;/code&gt; also supports automatic wired connection detection and comes with curses based tool &lt;code&gt;nmtui&lt;/code&gt; to setup wireless connection.&lt;/p&gt;
+&lt;p&gt;To enable NetworkManager to start at system startup
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo systemctl &lt;span class=&#34;nb&#34;&gt;enable&lt;/span&gt; NetworkManager.service&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;12-reboot-now&#34;&gt;12. Reboot now&lt;/h2&gt;
+&lt;p&gt;If you had performed the &lt;code&gt;lvm&lt;/code&gt; troubleshooting steps during &lt;code&gt;grub&lt;/code&gt; install, then
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;umount /run/lvm&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now exit from &lt;code&gt;chroot&lt;/code&gt; by typing &lt;code&gt;exit&lt;/code&gt; in the shell. Unmount all the mounted partitions with:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;umount -R /mnt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Finally, reboot your machine by typing &lt;code&gt;reboot&lt;/code&gt; and remove the installation USB drive. If you are not able to boot into your system at this point, boot from the installation media again and attempt to fix the installation.&lt;/p&gt;
+&lt;p&gt;If you can see a terminal with a prompt for your username, congratulations! You have completed the first step towards building your own system.&lt;/p&gt;
+&lt;p&gt;I will be writing about making your system usable and stable in the &lt;a href=&#34;https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/&#34;&gt;second&lt;/a&gt; part of this guide.&lt;/p&gt;
+&lt;p&gt;Hope you enjoyed the post. Stay tuned :)&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/hacks">Hacks</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/series/arch-linux-installation">Arch Linux Installation</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/configuration">configuration</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/i3">i3</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/</guid>
+                <pubDate>Wed, 24 Jan 2018 21:49:05 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Setting Up SSH Agent in i3</title>
+                <link>https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/</link>
+                
+                
+                <description>&lt;p&gt;In this post, I will write about the procedure to correctly setup SSH and GPG agents in the i3 window manager. To follow this post, you need to have ssh-keys and your private GPG keys ready. If you do not already have these keys with you, I will describe the process of creating the keys.&lt;/p&gt;
+&lt;h2 id=&#34;ssh&#34;&gt;SSH&lt;/h2&gt;
+&lt;p&gt;Generating an SSH key pair provides you with a public key and a private key. The private key should never be given to anyone and public key, well the name itself is self-explanatory.&lt;/p&gt;
+&lt;p&gt;To create a new key pair, open a terminal and paste the text below.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh-keygen -t rsa -b &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; -C &lt;span class=&#34;s2&#34;&gt;&amp;#34;your_email_address&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;This command will create a new ssh key pair with the given email address as the label. Press Enter for any question asked. When it asks for the passphrase, type a strong passphrase, otherwise leave it blank to have no password.&lt;/p&gt;
+&lt;h2 id=&#34;gpg&#34;&gt;GPG&lt;/h2&gt;
+&lt;p&gt;You might need to download the GPG command line tools before following the below steps. Follow your distribution&amp;rsquo;s documentation for more help.&lt;/p&gt;
+&lt;p&gt;Once you have downloaded the tools, open a terminal, and type the following command.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --gen-key&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+You will see something like this. Enter 1 to select the default key choice.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+gpg: directory `/home/yash/.gnupg&amp;#39; created
+gpg: new configuration file `/home/yash/.gnupg/gpg.conf&amp;#39; created
+gpg: WARNING: options in `/home/yash/.gnupg/gpg.conf&amp;#39; are not yet active during this run
+gpg: keyring `/home/yash/.gnupg/secring.gpg&amp;#39; created
+gpg: keyring `/home/yash/.gnupg/pubring.gpg&amp;#39; created
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection?&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;At the next prompt, enter the key size. It is recommended to use the maximum key size of 4096 bits.&lt;/p&gt;
+&lt;p&gt;Enter the time duration for which the key should remain valid. Press Enter to specify the default selection, indicating that the key does not expire.&lt;/p&gt;
+&lt;p&gt;After verifying the information, enter your user information and a strong passphrase. Afterward, GPG will start generating your key. You will see:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse,
+utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;You can now use the key (until it expires) to encrypt your data.&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-ssh-agent&#34;&gt;Setting up SSH Agent&lt;/h2&gt;
+&lt;h3 id=&#34;configuring-i3&#34;&gt;Configuring i3&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Update (26/05/2018):&lt;/strong&gt; &lt;em&gt;As pointed out by &lt;a href=&#34;https://sakshamsharma.com/&#34;&gt;Saksham&lt;/a&gt; in the comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Open i3 configuration file and add an &lt;code&gt;exec_always&lt;/code&gt; statement -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;exec_always ~/.config/i3/scripts/gnome-keyring.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Obviously, you will need to change the path according to your OS. Now make a new file in &lt;code&gt;~/.config/i3/scripts&lt;/code&gt; with name &lt;code&gt;gnome-keyring.sh&lt;/code&gt; and paste the below text in it.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;/usr/bin/gnome-keyring-daemon --start --components&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;gpg,pkcs11,secrets,ssh&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+(Assuming that you already have installed gnome-keyring)&lt;/p&gt;
+&lt;p&gt;Now, reload the i3.&lt;/p&gt;
+&lt;h3 id=&#34;configuring-ssh&#34;&gt;Configuring SSH&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Update (26/05/2018):&lt;/strong&gt; &lt;em&gt;This step is also optional. Thanks to &lt;a href=&#34;https://sakshamsharma.com/&#34;&gt;Saksham&lt;/a&gt; for pointing it out.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Open &lt;code&gt;~/.ssh/config&lt;/code&gt; file and add following content to it -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Host *
+  AddKeysToAgent yes
+  IdentityFile /home/&amp;lt;your username&amp;gt;/.ssh/id_rsa&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Replace &amp;lt;your username&amp;gt; accordingly.&lt;/p&gt;
+&lt;h3 id=&#34;setting-up-bashrc&#34;&gt;Setting up .bashrc&lt;/h3&gt;
+&lt;p&gt;I am not using a login shell, and I could not find any suitable method to source &lt;code&gt;~/.profile&lt;/code&gt; or &lt;code&gt;~/.bash_profile&lt;/code&gt; on login in i3. So I added my configuration to &lt;code&gt;~/.bashrc&lt;/code&gt; file. I know it is a hack, but it works well for me without much headache.&lt;/p&gt;
+&lt;p&gt;Open &lt;code&gt;~/.bashrc&lt;/code&gt; file and add following lines to the end of the file.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; -f ~/.ssh/agent.env &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+    . ~/.ssh/agent.env &amp;gt; /dev/null
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; ! &lt;span class=&#34;nb&#34;&gt;kill&lt;/span&gt; -0 &lt;span class=&#34;nv&#34;&gt;$SSH_AGENT_PID&lt;/span&gt; &amp;gt; /dev/null 2&amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Stale agent file found. Spawning a new agent. &amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;ssh-agent &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tee ~/.ssh/agent.env&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+        ssh-add
+    &lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Starting ssh-agent&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;ssh-agent &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tee ~/.ssh/agent.env&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+    ssh-add
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;It will automatically start an &lt;code&gt;ssh-agent&lt;/code&gt; if it is not already running. Otherwise, it attaches to a previously running agent.&lt;/p&gt;
+&lt;p&gt;Now log out and log in again to see if ssh-agent works. Open a terminal and run the command &lt;code&gt;ssh-add -l&lt;/code&gt;. It will show you the hash value of your ssh-key, which is loaded by the ssh-agent.&lt;/p&gt;
+&lt;p&gt;That is all for today. Thank you for reading!&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/hacks">Hacks</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/i3">i3</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/ssh">SSH</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/</guid>
+                <pubDate>Wed, 27 Dec 2017 20:21:09 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Setting up ALM Octane with Docker Compose</title>
+                <link>https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/</link>
+                
+                
+                <description>&lt;p&gt;Recently, I got a chance to set up ALM Octane on one of my university servers for a course project. From the support page of ALM Octane:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ALM Octane is a web-based application lifecycle management platform that enables teams to collaborate easily, manage the product delivery pipeline, and visualize the impact of changes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;precursor&#34;&gt;Precursor&lt;/h2&gt;
+&lt;p&gt;My &lt;a href=&#34;http://cse.nitc.ac.in&#34;&gt;department&lt;/a&gt; insists on using open-source software (a plus point, indeed!). But ALM Octane has Oracle DB/MSSQL as a dependency. My professor was not very enthusiastic about installing a proprietary database on the server. So I came up with a different approach. I set up this database (&lt;a href=&#34;http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html&#34;&gt;free version&lt;/a&gt; of Oracle DB, the Oracle Database 11g Express Edition) in a Docker container. ALM Octane has three components &amp;ndash; Oracle DB, Elastic Search, and the Octane Server itself. The problem was to handle the condition that these three components should be installed on different machines. I decided to use three separate Docker containers for this isolation and then configured them to communicate with each other with docker-compose.&lt;/p&gt;
+&lt;h3 id=&#34;wait--docker-compose&#34;&gt;Wait &amp;hellip; Docker Compose?&lt;/h3&gt;
+&lt;p&gt;(Skip this if already know about Docker and Compose)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Docker-compose is a tool to define and run multi-container Docker applications. Compose uses a compose file to configure the services used by the applications. Then all the services and the application can be run by using a single command.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So before reading this article any further, if you do not know about docker-compose, go and read about it.&lt;/p&gt;
+&lt;h2 id=&#34;the-problem&#34;&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;Three primary services are required for the proper functioning of the Octane Server &amp;ndash; Octane, Oracle DB and Elastic Search. The difficulty was to set up adequate configuration options for these services and the appropriate setup for communication between them. I searched on Docker Hub for any pre-built images. Fortunately, I found some pre-built Docker images for my purpose. So I started writing my config file.&lt;/p&gt;
+&lt;h2 id=&#34;the-solution&#34;&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;Here is my config file for easy reference.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;k&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;2&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;octane_oracle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;alexeiled/docker-oracle-xe-11g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;shm_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;2g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mem_limit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;4g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;octane_es&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;elasticsearch&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2.4&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- ES_HEAP_SIZE=4G&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mem_limit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;4g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;octane&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;hpsoftware/almoctane&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;8080:8080&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;volumes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- /opt/octane/conf&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;/opt/octane/conf&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- /opt/octane/log&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;/opt/octane/log&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- /opt/octane/repo&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;/opt/octane/repo&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;links&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- octane_oracle&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- octane_es&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mem_limit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;4g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;env_file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- ./octane.env&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;The configuration options in the code are for a system with RAM of 8GB. The options must be tuned for the best performance before deploying on the production server.&lt;/p&gt;
+&lt;p&gt;In the code, I have exposed port &lt;code&gt;8080&lt;/code&gt; of the Octane Docker container to the port 8080 of the host machine. It will make sure that we can access the Octane application on &lt;code&gt;localhost:8080&lt;/code&gt;. The &lt;code&gt;octane.env&lt;/code&gt; file contains three variables for easy site management.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;SERVER_DOMAIN=&lt;span class=&#34;s2&#34;&gt;&amp;#34;your domain name&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;ADMIN_PASSWORD=&lt;span class=&#34;s2&#34;&gt;&amp;#34;your password&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#This disables the minimum memory check to enable to run on smaller machines.&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;DISABLE_VALIDATOR_MEMORY=&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, if you try to run the container with &lt;code&gt;docker-compose up&lt;/code&gt;, you will encounter various validation errors. It is because, before starting the server, you need to adjust some settings. If you noticed in the config file, there is a section to define volumes. These volumes are persistent and are used to keep changes saved between two docker-compose runs. I have mapped three volumes from the Docker container to the host machine. So you can now edit the files in the &lt;code&gt;/opt/octane/&lt;/code&gt; folder on the host machine, and changes will reflect in the Docker container. The file where you will have to make changes is &lt;code&gt;/opt/octane/conf/setup.xml&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can read the documentation of ALM Octane to find out which settings to be changed. Once you do the necessary changes, fire up the command &lt;code&gt;docker-compose up&lt;/code&gt; and wait for some time. Docker Compose will finish processing, and the server can be accessed on &lt;a href=&#34;http://localhost:8080&#34;&gt;http://localhost:8080&lt;/a&gt; on the host machine. While deploying it on the production server, make sure that your network administrator has opened the port 8080 for your server. Otherwise, the site will not be accessible. Also, the docker-compose can be run in the background by issuing command &lt;code&gt;docker-compose up -d&lt;/code&gt;.&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/docker">Docker</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/octane">Octane</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/</guid>
+                <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Fixing Hindi Fonts in Arch Linux</title>
+                <link>https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</link>
+                
+                
+                <description>
+
+
+
+    
+
+    
+    
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css&#34; integrity=&#34;sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css&#34; integrity=&#34;sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css&#34;&gt;
+
+    
+
+    
+    &lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+        
+        &lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+        
+        &lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+            
+            &lt;div class=&#34;pswp__container&#34;&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+                &lt;div class=&#34;pswp__top-bar&#34;&gt;
+                    
+                    &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+                    
+                    
+                    &lt;div class=&#34;pswp__preloader&#34;&gt;
+                        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+                            &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+                                &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+                    &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+                &lt;/button&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+                &lt;/button&gt;
+                &lt;div class=&#34;pswp__caption&#34;&gt;
+                    &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;When viewing Hindi content in any browser in Arch Linux, the rendering looks weird.&lt;/p&gt;
+
+
+
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/hugo-easy-gallery.css&#34;&gt;
+    
+
+
+&lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2017-10-17/before.png&#34; alt=&#34;before applying the fix&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2017-10-17/before.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+            &lt;figcaption&gt;
+                    &lt;p&gt;before applying the fix&lt;/p&gt;
+            &lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It doesn&amp;rsquo;t look good, right! I&amp;rsquo;ll try to fix this issue in this post. You might need to install the appropriate &lt;a href=&#34;https://wiki.archlinux.org/index.php/fonts&#34;&gt;font support&lt;/a&gt; in Arch Linux before applying this fix. The suitable package for installing Indic Language support is &lt;a href=&#34;https://www.archlinux.org/packages/extra/any/ttf-indic-otf/&#34;&gt;ttf-indic-otf&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now go to &lt;code&gt;/usr/share/fonts/TTF&lt;/code&gt; and take the backup of two fonts &lt;code&gt;FreeSans.ttf&lt;/code&gt; and &lt;code&gt;FreeSerif.ttf&lt;/code&gt;. Now delete these two fonts from the directory. Restart the browser and see the difference.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2017-10-17/after.png&#34; alt=&#34;after applying the fix&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2017-10-17/after.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+            &lt;figcaption&gt;
+                    &lt;p&gt;after applying the fix&lt;/p&gt;
+            &lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This bug is reported in &lt;a href=&#34;https://bugs.launchpad.net/ubuntu/+source/chromium-browser/+bug/856736&#34;&gt;this&lt;/a&gt; bug report in 2011. I don&amp;rsquo;t know why nobody has fixed it yet. Or maybe I was not able to find the proper solution. This workaround is also given in the same bug report.&lt;/p&gt;
+&lt;p&gt;I hope this helps. :)&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/hacks">Hacks</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</guid>
+                <pubDate>Tue, 17 Oct 2017 21:55:53 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Mounting NTFS partitions on Arch Linux</title>
+                <link>https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</link>
+                
+                
+                <description>&lt;p&gt;Yesterday I installed Arch Linux once again. A clean, bloat-free desktop with Budgie Desktop environment with some must-have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don&amp;rsquo;t know whether it is a bug in Budgie or just a wrong setting). I also faced the problem of mounting Windows NTFS volumes on the user&amp;rsquo;s wish. Arch Linux wiki has details about how to automount partitions on start-up. Still, I had a tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu-like distribution on the mounting of NTFS drives. I got a hint from Arch Linux Wiki about the Polkit configuration setting, which can be used to allow a standard user to mount partitions. Here is a solution that I found after a long search on various Arch Linux Community pages.&lt;/p&gt;
+&lt;p&gt;You will need to install &lt;code&gt;ntfs-3g&lt;/code&gt;, &lt;code&gt;polkit&lt;/code&gt; and &lt;code&gt;udisks2&lt;/code&gt; to use this code. Please refer to &lt;a href=&#34;https://wiki.archlinux.org/index.php/Udisks&#34;&gt;Arch Wiki&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I think when using Gentoo, you will also need to compile the support for the NTFS file system in Kernel also. Please see &lt;a href=&#34;https://wiki.gentoo.org/wiki/NTFS&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Add the following code to &lt;code&gt;/etc/polkit-1/rules.d/10-udisks2.rules&lt;/code&gt; -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Allow udisks2 to mount devices without authentication for users in the &amp;#34;wheel&amp;#34; group.
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;polkit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;addRule&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;action&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;action&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;org.freedesktop.udisks2.filesystem-mount-system&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;action&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;org.freedesktop.udisks2.filesystem-mount&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;isInGroup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;wheel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;polkit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;YES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;polkit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;addRule&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;action&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;action&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;id&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;org.freedesktop.udisks.filesystem-mount-system-internal&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+        &lt;span class=&#34;nx&#34;&gt;subject&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;isInGroup&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;wheel&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;polkit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;YES&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now you will be able to mount NTFS partition without any problem. :)&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/hacks">Hacks</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/polkit">Polkit</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/ntfs">NTFS</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</guid>
+                <pubDate>Tue, 14 Mar 2017 10:30:36 +0000</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Custom Arch Linux setup with Openbox</title>
+                <link>https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/</link>
+                
+                
+                <description>
+
+
+
+    
+
+    
+    
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css&#34; integrity=&#34;sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css&#34; integrity=&#34;sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css&#34;&gt;
+
+    
+
+    
+    &lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+        
+        &lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+        
+        &lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+            
+            &lt;div class=&#34;pswp__container&#34;&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+                &lt;div class=&#34;pswp__top-bar&#34;&gt;
+                    
+                    &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+                    
+                    
+                    &lt;div class=&#34;pswp__preloader&#34;&gt;
+                        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+                            &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+                                &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+                    &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+                &lt;/button&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+                &lt;/button&gt;
+                &lt;div class=&#34;pswp__caption&#34;&gt;
+                    &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;After my summer vacation started, I bought a new laptop, and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my desktop environment, beginning with ArchLinux and Openbox, and then piecing all pieces together to build a proper desktop environment. Building a desktop this way follows the Unix Methodology; have software that each does one thing well, and when you put them together, you get something amazing.&lt;/p&gt;
+&lt;p&gt;When I first installed Arch, I had several choices. I tried &lt;code&gt;xfce&lt;/code&gt; and &lt;code&gt;gnome&lt;/code&gt; as my desktop environments. While both of them have their pros and cons, I ended up liking none. The sole reason was the dependencies; these two software bring with them. My only intention of installing Arch was to have something, which I control, not like Ubuntu, where you are forced to use the preinstalled software and when you try to uninstall something, you fear of breaking some other program.&lt;/p&gt;
+&lt;p&gt;So I end up going the route of building something up from scratch using Openbox as a base. At this point, I have a fast, lightweight desktop that is exceptionally stable and is genuinely my desktop as I have built it from the ground up, choosing every application.&lt;/p&gt;
+
+
+
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/hugo-easy-gallery.css&#34;&gt;
+    
+
+
+&lt;div class=&#34;box fancy-figure caption-position-none&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2016-06-09/desktop.jpg&#34; alt=&#34;Openbox on ArchLinux&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2016-06-09/desktop.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+            &lt;figcaption&gt;
+                    &lt;p&gt;Openbox on ArchLinux&lt;/p&gt;
+            &lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;window-manager&#34;&gt;Window Manager&lt;/h2&gt;
+&lt;p&gt;After the installation of Arch, the first thing I did was to install &lt;code&gt;openbox&lt;/code&gt;, a tiling window manager. You may also try other window managers like &lt;code&gt;awesome&lt;/code&gt;, &lt;code&gt;i3&lt;/code&gt;, and &lt;code&gt;fluxbox&lt;/code&gt;, etc. but I chose Openbox because it is used everywhere. Thus there is a plethora of information out there about customizing it.&lt;/p&gt;
+&lt;p&gt;For our window manager to show up, it needs to be added either in a login manager or user&amp;rsquo;s &lt;code&gt;~/.xinitrx&lt;/code&gt; file. There is a default version of this file that contain some code which we may want to retain, so rather than making this file from scratch, copy the default version of the file to the user&amp;rsquo;s home directory.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cp /etc/X11/xinit/xinitrc ~/.xinitrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now add the command &lt;code&gt;exec Openbox-session&lt;/code&gt; to the end of the file. Remember that the system will ignore the lines following this command. An Openbox session should be able to be started by entering the command &lt;code&gt;startx&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;An openbox session can be started automatically upon login using shell&amp;rsquo;s startup script. Add following to the shell&amp;rsquo;s startup script, &lt;code&gt;~/.bash_profile&lt;/code&gt; for bash and &lt;code&gt;~/.zprofile&lt;/code&gt; for zsh.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;[[&lt;/span&gt; -z &lt;span class=&#34;nv&#34;&gt;$DISPLAY&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$XDG_VTNR&lt;/span&gt; -eq &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;]]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; startx&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;configuring-openbox&#34;&gt;Configuring Openbox&lt;/h2&gt;
+&lt;p&gt;Setting up openbox is quite simple. Four files make the basis of openbox configuration. They are &lt;code&gt;rc.xml&lt;/code&gt;, &lt;code&gt;autostart&lt;/code&gt;,  &lt;code&gt;menu.xml&lt;/code&gt; and &lt;code&gt;environment&lt;/code&gt;. These files controls everything about the window manager.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;rc.xml&lt;/strong&gt;: Determine the behavior and settings of overall Openbox session&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;autostart&lt;/strong&gt;: Contains a list of applications to be launched with the window manager&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;menu.xml&lt;/strong&gt;: It makes the right-click context menu of the desktop&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;environment&lt;/strong&gt;: Can be used to export and set relevant environmental variables&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For the configuration of Openbox, it is necessary to create a local Openbox profile in the user&amp;rsquo;s home directory. A global configuration file can be found in &lt;code&gt;/etc/xdg/openbox&lt;/code&gt;, which is well documented, and copying the global configuration to the user&amp;rsquo;s directory will give a good starting point to start customizing.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;cp -R /etc/xdg/openbox ~/.config/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;These files can be edited by hand, although some graphical tools are also available, use of these may be desired.&lt;/p&gt;
+&lt;h2 id=&#34;themes-and-appearance&#34;&gt;Themes and Appearance&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/obconf&#34;&gt;obconf&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/lxappearance-obconf/&#34;&gt;lxappearance-obconf&lt;/a&gt; can be used to configure appearance and theme of openbox session. There are quite a few themes available in &lt;a href=&#34;https://www.archlinux.org/packages/community/any/openbox-themes/&#34;&gt;openbox-themes&lt;/a&gt; package. My personal favorite is &lt;a href=&#34;https://www.archlinux.org/packages/community/any/numix-themes/&#34;&gt;Numix-themes&lt;/a&gt; and &lt;a href=&#34;https://aur.archlinux.org/packages/numix-icon-theme-git/&#34;&gt;Numix-icon-theme-git (AUR)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To see changes after editing a configuration file, the Openbox needs to be refreshed. It can be done with the &lt;code&gt;reconfigure&lt;/code&gt; command.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;openbox --reconfigure&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;menus&#34;&gt;Menus&lt;/h2&gt;
+&lt;p&gt;The type and behavior of Openbox menus, accessible by right-clicking the background, can be changed using &lt;code&gt;~/.config/openbox/menu.xml&lt;/code&gt; file. Openbox provides two kinds of menus, &lt;code&gt;Static&lt;/code&gt;, and &lt;code&gt;Dynamic&lt;/code&gt; menus (Piped and Generators)&lt;/p&gt;
+&lt;p&gt;Static menus are hardcoded in XML and is stored in the &lt;code&gt;menu.xml&lt;/code&gt; file. Whenever you install a new application, you will have to update the XML file to update the menu manually. It is a viable solution if the apps are not installed on a day to day basis.&lt;/p&gt;
+&lt;p&gt;Pipe menus are the sections of the Openbox menu that Openbox creates on the fly by running a generic script and using its plain text output as menu entries. This scheme can be used in different ways, like adding a mail checker in the menu or adding a weather forecast menu. You can check &lt;a href=&#34;http://openbox.org/wiki/Openbox:Pipemenus&#34;&gt;openbox pipe menu page&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;p&gt;Generators are the most convenient type of menus. These can be found in most desktop environments where applications show up in the menu automatically. If applications are being installed regularly, then this will probably be the preferred choice.&lt;/p&gt;
+&lt;h3 id=&#34;static-menus&#34;&gt;Static Menus&lt;/h3&gt;
+&lt;p&gt;The process of making these menus can be automated by static menu generator like &lt;a href=&#34;https://www.archlinux.org/packages/?name=obmenu&#34;&gt;obmenu&lt;/a&gt;. It will generate static menus from installed applications by looking into certain directories. Others available tools are &lt;a href=&#34;https://www.archlinux.org/packages/?name=menumaker&#34;&gt;menumaker&lt;/a&gt;, &lt;a href=&#34;https://www.archlinux.org/packages/?name=obmenu&#34;&gt;obmenu&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/?name=archlinux-xdg-menu&#34;&gt;xdg-menu&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;dynamic-menus&#34;&gt;Dynamic Menus&lt;/h3&gt;
+&lt;p&gt;Dynamic menus give the same kind of functionality most people are used to. So it was my preferred choice. They can be used to generate full, complex menus on the fly. One of the most popular application for generating dynamic menus is &lt;a href=&#34;https://aur.archlinux.org/packages/obmenu-generator/&#34;&gt;obmenu-generator (AUR)&lt;/a&gt;. Though it is not officially connected to Openbox, it is widely used.&lt;/p&gt;
+&lt;p&gt;In order to have &lt;a href=&#34;https://aur.archlinux.org/packages/obmenu-generator/&#34;&gt;obmenu-generator (AUR)&lt;/a&gt; make a menu on demand, the &lt;code&gt;menu.xml&lt;/code&gt; file should contain the following code as the only entry.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&amp;lt;?xml &lt;span class=&#34;nv&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;1.0&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;encoding&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;UTF-8&amp;#34;&lt;/span&gt;?&amp;gt;
+&amp;lt;openbox_menu&amp;gt;
+    &amp;lt;menu &lt;span class=&#34;nv&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;root-menu&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;label&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;OpenBox 3&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;/usr/bin/obmenu-generator&amp;#34;&lt;/span&gt;&amp;gt;&amp;lt;/menu&amp;gt;
+&amp;lt;/openbox_menu&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;panels-and-taskbars&#34;&gt;Panels and Taskbars&lt;/h2&gt;
+&lt;p&gt;You can get any panel like &lt;a href=&#34;https://www.archlinux.org/packages/extra/i686/xfce4-panel/&#34;&gt;xfce4-panel&lt;/a&gt; or the simple and customizable &lt;a href=&#34;https://www.archlinux.org/packages/?name=tint2&#34;&gt;tint2&lt;/a&gt;. I chose tint2 because it very closely follows the openbox spirit of having easy customization with plain configuration files. tint2 package also containg a graphical tool &lt;code&gt;tint2conf&lt;/code&gt; for customizing panel and you can obviously go right to the tint2 configuration file and edit it there. This also means it is easy to pick up your configuration file and move it to another computer, or restore an old configuration since it is as simple as pasting a text document in the right place. tint2 can also have sections for each individual desktop and has various small widget like programs that can be used with it such as a calendar, &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/gsimplecal/&#34;&gt;gsimplecal&lt;/a&gt;, a volume application, &lt;a href=&#34;https://www.archlinux.org/packages/?name=volumeicon&#34;&gt;volumeicon&lt;/a&gt;, a battery indicator, &lt;a href=&#34;https://www.archlinux.org/packages/?name=cbatticon&#34;&gt;cbatticon&lt;/a&gt;, a network indicator like &lt;a href=&#34;https://www.archlinux.org/packages/extra/any/wicd/&#34;&gt;wicd&lt;/a&gt; which also have a system tray icon and a mini task tray. To start tint2 with openbox, you need to add &lt;code&gt;tint2 &amp;amp;&lt;/code&gt; to the &lt;code&gt;autostart&lt;/code&gt; file.&lt;/p&gt;
+&lt;h2 id=&#34;file-manager&#34;&gt;File Manager&lt;/h2&gt;
+&lt;p&gt;Some file managers deeply integrate into desktop environments, and when installed with Openbox, they end up pulling multiple dependencies, which is certainly not desired. Our aim behind building an Openbox set up was to have minimum dependencies so that we can get a lightweight desktop. However, there are several file managers available that fit into the Openbox very well. In my choice, &lt;a href=&#34;https://www.archlinux.org/packages/?name=pcmanfm&#34;&gt;pcmanfm&lt;/a&gt; is the best choice here. pcmanfm is a lightweight and fast file manager with network and thrash support. pcmanfm can also manage desktop icons and wallpaper setting, although if you plan to use conky in your system, then you may not want pcmanfm to manage desktop for you. The reason is that pcmanfm treats desktop as a window, so when you switch to desktop, the conky hides behind the desktop window. To get the icons and wallpaper, you can use other standalone tools such as &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/idesk/&#34;&gt;&lt;code&gt;idesk&lt;/code&gt;&lt;/a&gt; and &lt;a href=&#34;https://www.archlinux.org/packages/extra/x86_64/feh/&#34;&gt;&lt;code&gt;feh&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://www.archlinux.org/packages/extra/x86_64/nitrogen/&#34;&gt;&lt;code&gt;nitrogen&lt;/code&gt;&lt;/a&gt;.
+To start pcmanfm is the desktop mode, add the following to the autostart file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pcmanfm --desktop &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and to stop it for managing desktop&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;pcmanfm --desktop-off &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Many functions present in modern file managers require the installation of a few additional programs. &lt;a href=&#34;https://www.archlinux.org/packages/?name=gvfs&#34;&gt;&lt;code&gt;gvfs&lt;/code&gt;&lt;/a&gt; gives you the ability to mount volumes and have trash control. It is not mandatory to have, but it allows on-demand mounting completely from within the file manager, as opposed to having to drop down to the command line. A disk-volume manager such as &lt;a href=&#34;https://www.archlinux.org/packages/?name=udisks2&#34;&gt;&lt;code&gt;udisks2&lt;/code&gt;&lt;/a&gt; will also be wanted, and for auto-mounting removable disks, &lt;a href=&#34;https://www.archlinux.org/packages/community/any/udiskie/&#34;&gt;&lt;code&gt;udiskie&lt;/code&gt;&lt;/a&gt; works well with Openbox. udiskie can be added to Openbox&amp;rsquo;s autostart file like any other application.&lt;/p&gt;
+&lt;h2 id=&#34;composition&#34;&gt;Composition&lt;/h2&gt;
+&lt;p&gt;Openbox does not provide native support for composition, although having a compositor may prevent screen flickering and other distortion in applications like &lt;a href=&#34;https://www.archlinux.org/packages/community/any/oblogout/&#34;&gt;&lt;code&gt;oblogout&lt;/code&gt;&lt;/a&gt;. Some options work great with Openbox. The one which I am using and quite happy with is &lt;a href=&#34;https://wiki.archlinux.org/index.php/Compton&#34;&gt;&lt;code&gt;compton&lt;/code&gt;&lt;/a&gt;. It can be used with or without any initial configuration, although there are a lot of different configuration options if you decide to customize the setup. To start compton in background with shadows, use this in &lt;code&gt;autostart&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;compton -b -c &lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;wrapping-up&#34;&gt;Wrapping up&lt;/h2&gt;
+&lt;p&gt;While setting up my desktop using Openbox ended up being much more work than I could have with typical desktop environments. But now I have a much more stable desktop, about which I know, what is running in my system, and that my system is not cluttered with any software that I never use.&lt;/p&gt;
+&lt;p&gt;While it might not be for everybody having to configure every little bit of the desktop, I genuinely feel I have ended up with excellent user experience, and a system that is customized precisely to fit my needs.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.archlinux.org/&#34;&gt;Arch Linux Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/openbox">openbox</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/</guid>
+                <pubDate>Thu, 09 Jun 2016 10:20:36 +0000</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

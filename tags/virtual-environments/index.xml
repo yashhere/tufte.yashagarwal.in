@@ -1,0 +1,142 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    Virtual Environments on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/tags/virtual-environments/</link>
+        <description>Recent content  in Virtual Environments
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/tags/virtual-environments/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Setting up Python Development Environments</title>
+                <link>https://yashagarwal.in/posts/2016/10/setting-up-python-development-environments/</link>
+                
+                
+                <description>&lt;p&gt;Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?&lt;/p&gt;
+&lt;p&gt;As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the Internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.&lt;/p&gt;
+&lt;p&gt;Python uses &lt;code&gt;pip&lt;/code&gt; for package management.&lt;/p&gt;
+&lt;h2 id=&#34;installing-pip&#34;&gt;Installing pip&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;pip&lt;/code&gt; depends on setuptools library, which is in official Ubuntu repositories. To install it for python2 -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python-setuptools&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then install &lt;code&gt;pip&lt;/code&gt; using -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python-pip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;and for python3 -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python3-setuptools&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Then install &lt;code&gt;pip&lt;/code&gt; using -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python3-pip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;It should install &lt;code&gt;pip&lt;/code&gt; on your system for both python versions. &lt;code&gt;pip&lt;/code&gt; is very easy to use. It will take care of every single package you may require for your project.&lt;/p&gt;
+&lt;h3 id=&#34;installing-a-package-using-pip&#34;&gt;Installing a package using pip&lt;/h3&gt;
+&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will search and install [package]&lt;/span&gt;
+pip install &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;package&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+pip install django&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+If you are using python3, then don&amp;rsquo;t forget to use &lt;code&gt;pip3&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip&lt;/code&gt; can be used to install a specific version of package also.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will search and install [package] with [version]&lt;/span&gt;
+pip install &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;package&lt;span class=&#34;o&#34;&gt;]==[&lt;/span&gt;version&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+pip install &lt;span class=&#34;nv&#34;&gt;django&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;1.6.5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;uninstalling-a-package-using-pip&#34;&gt;Uninstalling a package using pip&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will search and uninstall [package]&lt;/span&gt;
+pip uninstall &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;package&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+pip uninstall django&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;upgrading-a-package-using-pip&#34;&gt;upgrading a package using pip&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will upgrade [package] to latest version&lt;/span&gt;
+pip install --upgrade &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;package&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+pip install --upgrade django&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;creating-list-of-all-packages-with-pip&#34;&gt;Creating list of all packages with pip&lt;/h3&gt;
+&lt;p&gt;It is one of most used and most useful feature of &lt;code&gt;pip&lt;/code&gt;. It allows you to make a list of all the dependencies of your project.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will output the file to current directory&lt;/span&gt;
+pip freeze &amp;gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;file_name.txt&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;All these commands above will install the packages globally. But that&amp;rsquo;s not what is desired. &lt;code&gt;virtualenv&lt;/code&gt; comes to our rescue here.&lt;/p&gt;
+&lt;h2 id=&#34;virtualenv&#34;&gt;Virtualenv&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves a very particular problem; it allows multiple python projects that have different and often conflicting dependencies, to coexist on the same system.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves this problem by creating different isolated development environments for your projects. An environment is a folder which contains everything; your project needs to work properly.&lt;/p&gt;
+&lt;h3 id=&#34;installing-virtualenv&#34;&gt;Installing virtualenv&lt;/h3&gt;
+&lt;p&gt;By default, if you install &lt;code&gt;virtualenv&lt;/code&gt; using &lt;code&gt;pip&lt;/code&gt;, it will use system&amp;rsquo;s default python to create virtual environments. To overcome this problem, we will install &lt;code&gt;virtualenv&lt;/code&gt; using ubuntu package manager.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python-virtualenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;installing-virtualenvwrapper&#34;&gt;Installing virtualenvwrapper&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; provides some set of commands which makes working with virtual environments much easier.&lt;/p&gt;
+&lt;p&gt;To install it -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pip install virtualenvwrapper&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip&lt;/code&gt;, &lt;code&gt;virtualenv&lt;/code&gt; and &lt;code&gt;virtualenvwrapper&lt;/code&gt; are the only packages which you will need to install globally. All other per project packages will be installed in respective virtual environments.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also places all your virtual environments in one place. It makes working with projects very easy.&lt;/p&gt;
+&lt;p&gt;Now open your &lt;code&gt;.bashrc&lt;/code&gt; and add these two lines to the end -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# All your projects will be saved in python-dev folder&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;PROJECT_HOME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~/python-dev
+
+&lt;span class=&#34;c1&#34;&gt;# ~/python-dev/virtualenvs will contains python interpreters for each project.&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;WORKON_HOME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~/python-dev/virtualenvs
+
+&lt;span class=&#34;c1&#34;&gt;# source the virtualenvwrapper script&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; /usr/local/bin/virtualenvwrapper.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;You can change &lt;code&gt;python-dev&lt;/code&gt; to any name you wish. Your virtual environments will be created at that location.&lt;/p&gt;
+&lt;p&gt;Now restart your terminal to source the &lt;code&gt;.bashrc&lt;/code&gt; or use -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; .bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;basic-usage&#34;&gt;Basic Usage&lt;/h3&gt;
+&lt;p&gt;Create a virtual environment -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mkvirtualenv myproject&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;It will create &lt;code&gt;myproject&lt;/code&gt; folder in the python-dev directory. To activate this project -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;workon myproject&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Alternatively you can create project using &lt;code&gt;mkproject&lt;/code&gt; command. It will create a virtual environment as well as a project directory in the &lt;code&gt;$PROJECT_HOME&lt;/code&gt;, which is &lt;code&gt;cd&lt;/code&gt;-ed into when you &lt;code&gt;workon&lt;/code&gt; myproject.&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t forget to deactivate current project when you switch between different projects.&lt;/p&gt;
+&lt;p&gt;To deactivate a project -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;deactivate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;To delete a virtual environment -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;rmvirtualenv myproject&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;List all environments -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;lsvirtualenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;it will also list all virtual environments -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;workon&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Please refer to virtualenvwrapper documentation for &lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html&#34;&gt;full list of virtualenvwrapper commands&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;virtualenvwrapper also provides the tab-completion feature which is very handy when you have a lot of projects to work with.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it. Hope you liked the post. 😄&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/pip">Pip</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/python">Python</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/virtual-environments">Virtual Environments</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2016/10/setting-up-python-development-environments/</guid>
+                <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

@@ -2,133 +2,402 @@
 <html lang='en'>
 
 <head>
-  <meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='In this post, I will write about the procedure to correctly setup SSH and GPG agents in the i3 window manager. To follow this post, you need to have ssh-keys and your private GPG keys ready. If you do not already have these keys with you, I will describe the process of creating the keys.
-SSH Generating an SSH key pair provides you with a public key and a private key.'>
+    <meta charset='utf-8'>
 
-<meta property='og:title' content='Setting Up SSH Agent in i3 • /dev/yash/notes'>
-<meta property='og:description' content='In this post, I will write about the procedure to correctly setup SSH and GPG agents in the i3 window manager. To follow this post, you need to have ssh-keys and your private GPG keys ready. If you do not already have these keys with you, I will describe the process of creating the keys.
-SSH Generating an SSH key pair provides you with a public key and a private key.'>
-<meta property='og:url' content='https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/'>
-<meta property='og:site_name' content='/dev/yash/notes'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='i3'><meta property='article:tag' content='SSH'><meta property='article:tag' content='Arch Linux'><meta property='article:published_time' content='2017-12-27T20:21:09&#43;05:30'/><meta property='article:modified_time' content='2017-12-27T20:21:09&#43;05:30'/><meta name='twitter:card' content='summary'>
+<link href="https://gmpg.org/xfn/11" rel="profile">
 
-<meta name="generator" content="Hugo 0.55.6" />
 
-  <title>Setting Up SSH Agent in i3 • /dev/yash/notes</title>
-  <link rel='canonical' href='https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/'>
-  
-  
-  
-  <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'><link rel='stylesheet' href='https://yashagarwal.in/css/footnotes.css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+
+<meta name="referrer" content="no-referrer">
+
+
+ 
+<meta property="og:title" content="Setting Up SSH Agent in i3" />
+<meta property="og:description"
+      content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/" />
+
+
+    
+        <meta property="article:published_time" content="2017-12-27T20:21:09&#43;05:30"/>
+    
+    
+        <meta property="article:modified_time" content="2017-12-27T20:21:09&#43;05:30"/>
+    
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+
+<!-- rel="me" links for IndieAuth -->
+
+<link href="https://github.com/yashhere/" rel="me">
+
+
+    
+    
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" data-proofer-ignore>
+    
+    
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+
+
+
+
+ <meta name="twitter:card" content="summary"/><meta name="twitter:image" content="/android-chrome-512x512.db28abcc591bd775d661d3fdb11c7c9e71d5e5fa81728f383b1a36c25c683bae.png"/>
+<meta name="twitter:title" content="Setting Up SSH Agent in i3"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@yash__here"/>
+    <meta name="twitter:creator" content="@yash__here"/>
+
+
+
+
+
+<meta name="hugo-build-date" content="2020-03-24T12:13:38Z"/>
+<meta name="hugo-commit-hash" content="157669a0"/>
+<meta name="generator" content="Hugo 0.68.3" />
+    <title>Setting Up SSH Agent in i3 • /dev/yash/notes</title>
+    <link rel='canonical' href='https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/'>
+    
+
+    
+    <link rel='icon' href='/favicon.ico'>
+
+
+
+    
+        <link rel="preload" href="/fonts/libre-baskerville/2012/subset/LibreBaskerville-Regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/iosevka/1.14.1/subset/iosevka-ss08-regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/linux-libertine/5.3.0/subset/LinBiolinum_Rah.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/source-sans-pro/2.020R-ro-1.075R-it/subset/SourceSansPro-Regular.woff2" as="font" crossorigin>
+    
+
+
+
+
+
+
+
+
+
+    <script>
+         
+        !function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+         
+        !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+    </script>
+
+
+
+<style>
+    
+    
+    :root {
+        --theme-color: #6a9fb5;
+        --theme-color-light: rgba(106, 159, 181, 0.2);
+    }
+    
+    html {
+        line-height: 1.5;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/styles.min.15fd0b6e02e8ee12d83e881e2534f306dc69495d71be498824f554b1b13fbf54.css" integrity="sha256-Ff0LbgLo7hLYPogeJTTzBtxpSV1xvkmIJPVUsbE/v1Q=">
+
+
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.da6b5b4da09d91a8af30baf04214409c80aeae536efdd0622d169644a02f7e6d.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.58d47dcaa2ba2c5b650ea35c1155248de2aff6efe389ada218b0101b4a1f3fff.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.72101f3ce24cd49875bf0159cfd78e64dea181370d779f442bedef2023a1969b.png">
+    <link rel="manifest" href="/manifest.bbc56ff464bdd48b6d8b7ac25ace729fb4ab976ddc589fabac051358ccb5c6ca.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.12bcf28d5986de6bb989d2e4a8c6b84e0c723dae4c62fa5f91d5c1f94d69b3be.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d" />
+    <meta name="theme-color" content="#ffffff" />
+
+
+
+
+<link rel="alternate" type="application/jf2post+json" href="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/jf2post.json" title="Jf2post for /dev/yash/notes" />
+
+ 
+
+     
+
+
+
+    
+    
+    
+        
+    
+
+
+     
+    
+    <meta name="DC.Creator" content="Yash Agarwal"/>
+    
+
 
 </head>
 
-
-<body class='page type-posts'>
-  <div class='site'>
-
-    <a class='screen-reader' href='#main'>Skip to Content</a>
-
-    <header id='header' class='header-container'>
-      <div class='header site-header'>
-        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
-  <ul class='main-menu'>
-  <li>
-      <a href='https://yashagarwal.in/'>Home</a>
-    </li>
-  <li>
-      <a href='https://yashagarwal.in/posts'>Posts</a>
-    </li>
-  <li>
-      <a href='https://yashagarwal.in/categories'>Categories</a>
-    </li>
-  <li>
-      <a href='https://yashagarwal.in/whoami'>whoami</a>
-    </li>
-  
-  </ul>
+<body lang="en">
+    <div class="border" id="home"></div>
+    <div class="wrapper">   
+        
+<nav id="nav" class="nav-collapse opened" aria-hidden="false">
+    <ul class="navbar">
+        <li><a class="" href="/">Home</a></li>
+        
+            
+                <li><a class="" href="https://yashagarwal.in/posts/">Posts</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/notes/">Notes</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/whoami/">Whoami</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/search/">Search</a></li>
+            
+        
+    </ul>
 </nav>
 
-        <div class='header-info'>
-          
-          <p class='site-title title'>/dev/yash/notes</p>
-          
-          <p class='site-description subtitle'>The directory of my thoughts</p>
+
+<div class="container">
+    <header class="masthead">
+        <div class="masthead-title no-text-decoration">
+            <a href="/">/dev/yash/notes</a> <span class="blinking-cursor">❚</span>
         </div>
-      </div>
+        <div class="masthead-tagline">
+            The directory of my thoughts
+        </div>
     </header>
 
 
-<main id='main' class='main'>
-  <article lang='en' class='entry'>
-    <header class='header-container'>
-  <div class='header entry-header'>
-    <div class='header-info'>
-      <h1 class='title'>Setting Up SSH Agent in i3</h1>
-      
+        
 
+
+
+
+
+
+
+
+<article class="post h-entry posts">
+    <header>
+        <div class="center">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__hacks__"
+                                
+                                
+                                title="See all 8 posts categorized in ‘Hacks’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/hacks/">Hacks</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__arch-linux__"
+                                
+                                
+                                title="See all 9 posts tagged with ‘Arch Linux’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/arch-linux/">Arch Linux</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__i3__"
+                                
+                                
+                                title="See all 4 posts tagged with ‘i3’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/i3/">i3</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__ssh__"
+                                
+                                
+                                title="This is the only post tagged with ‘SSH’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/ssh/">SSH</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
     </div>
-    
-<div class='meta'>
-  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-  <line x1="16" y1="2" x2="16" y2="6"/>
-  <line x1="8" y1="2" x2="8" y2="6"/>
-  <line x1="3" y1="10" x2="21" y2="10"/>
-  
-</svg>
-<span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2017-12-27T20:21:09&#43;05:30'>Dec 27, 2017</time>
-</span>
-
-  
-  
-<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <circle cx="12" cy="12" r="10"/>
-  <polyline points="12 6 12 12 15 15"/>
-  
-</svg>
-4 mins read
-</span>
-
 
 </div>
 
+        <h1 class="post-title p-name">Setting Up SSH Agent in i3</h1>
 
-  </div>
-</header>
+        
+        <data class="u-url" value="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/"></data>
+
+        <div class="date-syndication">
+            
+
 
     
     
+    <div class="post-date">
+        
+        <time datetime="2017-12-27T20:21:09+0530" class="dt-published">Wed Dec 27, 2017</time>
+        
+        
+    </div>
 
-    <div class='entry-content'>
-  
+
+            
+
+
+
+
+        </div>
+         
+
+     
+
+
+
+    
+    
+    
+        
+    
+
+
+    
+        
+        <span class="hide">
+            &mdash; <a href="https://yashagarwal.in/" class="u-author">Yash Agarwal</a>
+        </span>
+    
+
+
+    </header>
+
+    <div class="content">
+        
+
+
+        
+
+
+
+
+
+                       
+
+
+        <div class="e-content">
+            
+
+
+
 
 <p>In this post, I will write about the procedure to correctly setup SSH and GPG agents in the i3 window manager. To follow this post, you need to have ssh-keys and your private GPG keys ready. If you do not already have these keys with you, I will describe the process of creating the keys.</p>
-
-<h2 id="ssh">SSH</h2>
-
+<h2 id="ssh">SSH&nbsp;<a class="headline-hash no-text-decoration" href="#ssh">#</a> </h2>
 <p>Generating an SSH key pair provides you with a public key and a private key. The private key should never be given to anyone and public key, well the name itself is self-explanatory.</p>
-
 <p>To create a new key pair, open a terminal and paste the text below.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;your_email_address&#34;</span></code></pre></div></p>
-
 <p>This command will create a new ssh key pair with the given email address as the label. Press Enter for any question asked. When it asks for the passphrase, type a strong passphrase, otherwise leave it blank to have no password.</p>
-
-<h2 id="gpg">GPG</h2>
-
+<h2 id="gpg">GPG&nbsp;<a class="headline-hash no-text-decoration" href="#gpg">#</a> </h2>
 <p>You might need to download the GPG command line tools before following the below steps. Follow your distribution&rsquo;s documentation for more help.</p>
-
-<p>Once you have downloaded the tools, open a terminal and type the following command.
+<p>Once you have downloaded the tools, open a terminal, and type the following command.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gpg --gen-key</code></pre></div>
-You will see something like this. Enter 1 to select default key choice.</p>
-
+You will see something like this. Enter 1 to select the default key choice.</p>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -144,54 +413,36 @@ Please select what kind of key you want:
    (3) DSA (sign only)
    (4) RSA (sign only)
 Your selection?</code></pre></div>
-
-<p>At the next prompt, enter the key size. It is recommanded to use the maximum key size of 4096 bits.</p>
-
+<p>At the next prompt, enter the key size. It is recommended to use the maximum key size of 4096 bits.</p>
 <p>Enter the time duration for which the key should remain valid. Press Enter to specify the default selection, indicating that the key does not expire.</p>
-
-<p>After verifying the information, enter your user information and a strong passphrase. Afterwards, GPG will start generating your key. You will see:
-<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text"> We need to generate a lot of random bytes. It is a good idea to
- perform some other action (type on the keyboard, move the mouse,
- utilize the disks) during the prime generation; this gives the
- random number generator a better chance to gain enough entropy.</code></pre></div></p>
-
+<p>After verifying the information, enter your user information and a strong passphrase. Afterward, GPG will start generating your key. You will see:
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse,
+utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.</code></pre></div></p>
 <p>You can now use the key (until it expires) to encrypt your data.</p>
-
-<h2 id="setting-up-ssh-agent">Setting up SSH Agent</h2>
-
-<h3 id="configuring-i3">Configuring i3</h3>
-
-<p><strong>Update (26/05/2018):</strong> <em>As pointed out by <a href="https://sakshamsharma.com/" target="_blank">Saksham</a> in comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored.</em></p>
-
-<p>Open i3 configuration file and add an <code>exec_always</code> statement
+<h2 id="setting-up-ssh-agent">Setting up SSH Agent&nbsp;<a class="headline-hash no-text-decoration" href="#setting-up-ssh-agent">#</a> </h2>
+<h3 id="configuring-i3">Configuring i3&nbsp;<a class="headline-hash no-text-decoration" href="#configuring-i3">#</a> </h3>
+<p><strong>Update (26/05/2018):</strong> <em>As pointed out by <a href="https://sakshamsharma.com/">Saksham</a> in the comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored.</em></p>
+<p>Open i3 configuration file and add an <code>exec_always</code> statement -
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">exec_always ~/.config/i3/scripts/gnome-keyring.sh</code></pre></div></p>
-
-<p>Obviously, you will need to change the path according to your OS. Now make a new file in <code>~/.config/i3/scripts</code> with name <code>gnome-keyring.sh</code> and paste the below text in it.
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>/usr/bin/gnome-keyring-daemon --start --components<span class="o">=</span>gpg,pkcs11,secrets,ssh<span class="k">)</span>
+<p>Obviously, you will need to change the path according to your OS. Now make a new file in <code>~/.config/i3/scripts</code> with name <code>gnome-keyring.sh</code> and paste the below text in it.</p>
+<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>/usr/bin/gnome-keyring-daemon --start --components<span class="o">=</span>gpg,pkcs11,secrets,ssh<span class="k">)</span>
 <span class="nb">export</span> GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK</code></pre></div>
 (Assuming that you already have installed gnome-keyring)</p>
-
 <p>Now, reload the i3.</p>
-
-<h3 id="configuring-ssh">Configuring SSH</h3>
-
-<p><strong>Update (26/05/2018):</strong> <em>This step is also optional. Thanks to <a href="https://sakshamsharma.com/" target="_blank">Saksham</a> for pointing it out.</em></p>
-
-<p>Open <code>~/.ssh/config</code> file and add following content to it.
+<h3 id="configuring-ssh">Configuring SSH&nbsp;<a class="headline-hash no-text-decoration" href="#configuring-ssh">#</a> </h3>
+<p><strong>Update (26/05/2018):</strong> <em>This step is also optional. Thanks to <a href="https://sakshamsharma.com/">Saksham</a> for pointing it out.</em></p>
+<p>Open <code>~/.ssh/config</code> file and add following content to it -</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Host *
   AddKeysToAgent yes
   IdentityFile /home/&lt;your username&gt;/.ssh/id_rsa</code></pre></div>
-Replace &lt;your username&gt; accordingly.</p>
-
-<h3 id="setting-up-bashrc">Setting up .bashrc</h3>
-
-<p>I am not using a login shell, and I could not find any suitable method to source <code>~/.profile</code> or <code>~/.bash_profile</code> on login in i3. So I added my configuration to <code>~/.bashrc</code> file. I know, it is a hack, but it works well for me without much headache.</p>
-
+<p>Replace &lt;your username&gt; accordingly.</p>
+<h3 id="setting-up-bashrc">Setting up .bashrc&nbsp;<a class="headline-hash no-text-decoration" href="#setting-up-bashrc">#</a> </h3>
+<p>I am not using a login shell, and I could not find any suitable method to source <code>~/.profile</code> or <code>~/.bash_profile</code> on login in i3. So I added my configuration to <code>~/.bashrc</code> file. I know it is a hack, but it works well for me without much headache.</p>
 <p>Open <code>~/.bashrc</code> file and add following lines to the end of the file.
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> -f ~/.ssh/agent.env <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
     . ~/.ssh/agent.env &gt; /dev/null
-    <span class="k">if</span> ! <span class="nb">kill</span> -0 <span class="nv">$SSH_AGENT_PID</span> &gt; /dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">&#34;Stale agent file found. Spawning new agent… &#34;</span>
+    <span class="k">if</span> ! <span class="nb">kill</span> -0 <span class="nv">$SSH_AGENT_PID</span> &gt; /dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;Stale agent file found. Spawning a new agent. &#34;</span>
         <span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span> tee ~/.ssh/agent.env<span class="sb">`</span>
         ssh-add
     <span class="k">fi</span>
@@ -200,61 +451,185 @@ Replace &lt;your username&gt; accordingly.</p>
     <span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span> tee ~/.ssh/agent.env<span class="sb">`</span>
     ssh-add
 <span class="k">fi</span></code></pre></div></p>
-
-<p>It will automatically start an ssh-agent if it is not already running. Otherwise, it uses the previously running agent.</p>
-
-<p>Now log out and log in again to see, if ssh-agent works. Open a terminal and run the command <code>ssh-add -l</code>. It will show you the hash value of your ssh-key which is loaded by the ssh-agent.</p>
-
+<p>It will automatically start an <code>ssh-agent</code> if it is not already running. Otherwise, it attaches to a previously running agent.</p>
+<p>Now log out and log in again to see if ssh-agent works. Open a terminal and run the command <code>ssh-add -l</code>. It will show you the hash value of your ssh-key, which is loaded by the ssh-agent.</p>
 <p>That is all for today. Thank you for reading!</p>
 
+
+        </div>
+    </div>
+</article>
+
+
+
+        <footer>
+            
+
+
+
+
+<div class="no-text-decoration">
+    <div class="jump top"><a href="#" title="Top of this page">⮉</a></div>
+    <div class="jump bottom"><a href="#bottom" title="Bottom of this page">⮋</a></div>
 </div>
 
+
+ 
     
-<footer class='entry-footer-container'>
-  <div class='entry-footer'>
-  <div class='categories'>
-  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
-  
-</svg>
-</span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/hacks'>Hacks</a></div>
-
-  </div>
-</footer>
-
-
-    
-  </article>
-  
-<nav class='entry-nav-container'>
-  <div class='entry-nav'><div class='prev-entry'>
-      <a href='https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/'>
-        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="20" y1="12" x2="4" y2="12"/>
-  <polyline points="10 18 4 12 10 6"/>
-  
-</svg>
- Previous</span>
-        <span class='screen-reader'>Previous post: </span>Setting up ALM Octane with Docker Compose</a>
-    </div><div class='next-entry'>
-      <a href='https://yashagarwal.in/posts/2017/12/2017-the-best-till-now/'>
-        <span class='screen-reader'>Next post: </span>2017 - The Best Till Now<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="4" y1="12" x2="20" y2="12"/>
-  <polyline points="14 6 20 12 14 18"/>
-  
-</svg>
-</span>
-      </a>
-    </div></div>
+        <div class="hugotoc no-text-decoration">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ssh">SSH</a></li>
+    <li><a href="#gpg">GPG</a></li>
+    <li><a href="#setting-up-ssh-agent">Setting up SSH Agent</a>
+      <ul>
+        <li><a href="#configuring-i3">Configuring i3</a></li>
+        <li><a href="#configuring-ssh">Configuring SSH</a></li>
+        <li><a href="#setting-up-bashrc">Setting up .bashrc</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
+            <a href="#" class="back-to-top">Back to top</a>
+        </div>
+    
 
-  
-<div class='comments-container'>
-  <div id="disqus_thread"></div>
+
+
+<div class="backtotop center no-text-decoration">
+    <a href="#">back to <span class="top">top</span></a>
+</div>
+
+
+<div class="right">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__hacks__"
+                                
+                                
+                                title="See all 8 posts categorized in ‘Hacks’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/hacks/">Hacks</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__arch-linux__"
+                                
+                                
+                                title="See all 9 posts tagged with ‘Arch Linux’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/arch-linux/">Arch Linux</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__i3__"
+                                
+                                
+                                title="See all 4 posts tagged with ‘i3’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/i3/">i3</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__ssh__"
+                                
+                                
+                                title="This is the only post tagged with ‘SSH’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/ssh/">SSH</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+</div>
+<div class="clear-float"></div>
+
+
+
+<div class="prev-next-navigator clear-float">
+    
+        <span class="prev-post left no-text-decoration">
+            <a href="https://yashagarwal.in/posts/2017/12/2017-the-best-till-now/" class="nobr">« 2017 - The Best Till Now</a>
+        </span>
+    
+    
+        <span class="next-post right no-text-decoration">
+            <a href="https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/" class="nobr">Setting up ALM Octane with Docker Compose »</a>
+        </span>
+    
+</div>
+
+
+<a id="bottom"></a>
+
+
+
+
+
+
+
+
+
+                       
+
+
+
+
+    <div class="comments clear-float">
+        <hr />
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -274,50 +649,201 @@ Replace &lt;your username&gt; accordingly.</p>
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+
+     
+            <ul class="no-bullets feed right inline">
+    
+        
+        
+    
+</ul>
+<div class="clear-float"></div>
+
+            <div class='copyright'>
+    <p>
+    </p>
+</div>
+        </footer>
+        <hr />
+        </div> 
+    </div>
+    <footer> 
+        
+
+<ul class="social no-text-decoration">
+    
+        <li>
+            <a href="https://github.com/yashhere/" title="Github">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-github"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://gitlab.com/users/yashhere/projects" title="Gitlab">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-gitlab"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://twitter.com/yash__here/" title="Twitter">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-twitter"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://keybase.io/yash2696" title="Keybase.io">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-keybase"></i>
+                
+            </a>
+        </li>
+    
+</ul>
+
+
+
+
+
+
+    
+    
+    
+        
+    
+    
+    
+        
+            
+            
+                
+            
+        
+    
+    
+    
+        
+            
+        
+    
+
+
+
+
+
+ 
+    
+    
+
+
+
+<p class="generated no-text-decoration">
+    Generated using <a href="https://github.com/yashhere/refined-mod"><code class="nobr">modified</code></a> <a href="https://gitlab.com/kaushalmodi/hugo-theme-refined"><code class="nobr">hugo-theme-refined</code></a> + <span class="nobr">Hugo <a href="https://github.com/gohugoio/hugo/commit/157669a0">0.68.3</a></span><br /><span class="nobr">&mdash; Markdown <a href="https://gitlab.com/yashhere/yashhere.gitlab.io/raw/source/content/posts/2017-12-28-setting-up-ssh-agent-in-i3/index.md">source</a> of this page</span>.
+</p>
+
+<p>
+    
+</p>
+
+
+
+
+<div class="badges no-text-decoration">
+    
+    
+
+    
+        
+        
+        <a href="https://html5.validator.nu/?doc=https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/&amp;showsource=yes">
+            
+            <img src="/images/html5-css3-semantics-badge--scaled-optimized.0f343c79b5f793c32b308b8b872fccdc6f8f10dc328d12f3f8fba203ab3ccc6e.png"
+                 width="46" height="18" class="pixelated"
+                 alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+                 title="HTML5 Powered with CSS3 / Styling, and Semantics">
+        </a>
+    
 </div>
 
-</main>
 
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social-menu-container'>
-  <nav aria-label='Social Menu'>
-    <ul class='social-menu'><li>
-        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-  
-</svg>
-</a>
-      </li><li>
-        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-  
-</svg>
-</a>
-      </li><li>
-        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
-  
-</svg>
-</a>
-      </li></ul>
-  </nav>
-</div>
-        <div class='copyright'>
-  <p>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International
-  </p>
-</div>
 
-      </div>
+
+
+
+
+
+    <div class="h-card">
+        
+            
+            <img class="u-photo" alt="Photo of Yash Agarwal"
+                 src="/author/yash.2842f98c30eaf22e6f1f7bbe38ac8d584cd916ec640e15b3aaf512b6d56ea8e2.jpg" width="400" height="400">
+        
+        
+        <a class="p-name u-url" href="https://yashagarwal.in/">Yash Agarwal</a>
+        
+            <p>
+                <a class="u-email" href="mailto:yashagarwaljpr@gmail.com" rel="me">yashagarwaljpr@gmail.com</a>
+            </p>
+        
+        
+    </div>
+
+
+
     </footer>
 
-  </div><script src='https://yashagarwal.in/assets/js/main.f29c93b9.js'></script><script src='https://yashagarwal.in/js/jquery.js'></script><script src='https://yashagarwal.in/js/redirection.js'></script><script src='https://yashagarwal.in/js/footnoteTooltip.js'></script></body>
 
+
+
+
+
+
+
+
+
+    
+        
+        
+
+        
+        <link rel="preload" href="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" as="script" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU=">
+        <script src="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU="></script>
+    
+
+
+
+
+
+<link rel="preload" href="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js" as="script">
+<script src="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js"></script>
+
+
+
+
+
+<script>var nav=responsiveNav("#nav");</script>
+</body>
 </html>
-

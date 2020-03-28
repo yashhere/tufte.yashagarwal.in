@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator><title type="html"><![CDATA[Arch Linux Installation on /dev/yash/notes]]></title>
+    
+        <subtitle type="html"><![CDATA[The directory of my thoughts]]></subtitle>
+    
+    
+    
+            <link href="https://yashagarwal.in/series/arch-linux-installation/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://yashagarwal.in/series/arch-linux-installation/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+            <link href="https://yashagarwal.in/series/arch-linux-installation/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
+            <link href="https://yashagarwal.in/series/arch-linux-installation/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
+    <updated>2020-03-28T08:04:50+00:00</updated>
+    
+    
+    <author>
+            <name>Yash Agarwal</name>
+            
+                <email>yashagarwaljpr@gmail.com</email>
+            </author>
+    
+        <id>https://yashagarwal.in/series/arch-linux-installation/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Arch Linux Installation Guide Part 2]]></title>
+            <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/?utm_source=atom_feed" rel="related" type="text/html" title="Arch Linux Installation Guide Part 1" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/?utm_source=atom_feed" rel="related" type="text/html" title="Setting Up SSH Agent in i3" />
+                <link href="https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/?utm_source=atom_feed" rel="related" type="text/html" title="My Own Configuration Manager" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/?utm_source=atom_feed" rel="related" type="text/html" title="Setting up ALM Octane with Docker Compose" />
+                <link href="https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Fixing Hindi Fonts in Arch Linux" />
+            
+                <id>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-01-26T15:45:27+05:30</published>
+            <updated>2018-01-26T15:45:27+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>In this post, I will continue from my last <a href="https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/">post</a> and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current dotfile <a href="https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/">configuration</a> setup to work properly. The choice of applications is highly opinionated and your preferences might be different.</p>
+<div class="note">
+    <div></div>
+    
+If you had gone for installation via SSH option, then I would suggest you to edit your `sshd_config` file and disable `root` login. It can be a security risk otherwise.
+
+</div>
+<h3 id="install-a-terminal-based-browser">Install a terminal based browser</h3>
+<p>Terminal-based browsers are very handy in cases when you are required to login into a captive portal and you don&rsquo;t have access to a graphical browser. We will install two different browsers, <code>elinks</code> and <code>w3m</code>.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S elinks w3m</code></pre></div></p>
+<h3 id="install-x-server">Install X server.</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S xorg</code></pre></div>
+<p>This will install minimal X desktop environment with fonts, in case, you want to test your system before installing any desktop environment.</p>
+<h3 id="enable-multilib-repository-for-32-bit-package-support">Enable multilib repository for 32-bit package support</h3>
+<p>To enable multilib repository, uncomment the <code>[multilib]</code> section in <code>/etc/pacman.conf</code>.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>multilib<span class="o">]</span>
+<span class="nv">Include</span> <span class="o">=</span> /etc/pacman.d/mirrorlist</code></pre></div></p>
+<p>Now upgrade your system.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -Syyu</code></pre></div></p>
+<h3 id="install-video-and-touchpad-drivers">Install video and touchpad drivers</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S xf86-video-intel xf86-input-synaptics</code></pre></div>
+<h3 id="install-pacaur-to-fetch-and-install-packages-from-aur">Install pacaur to fetch and install packages from AUR</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S expac yajl --noconfirm
+<span class="nb">cd</span> /tmp
+gpg --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h<span class="o">=</span>cower
+makepkg -i PKGBUILD --noconfirm
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h<span class="o">=</span>pacaur
+makepkg -i PKGBUILD --noconfirm
+cd</code></pre></div>
+<h3 id="install-graphical-browsers">Install graphical browsers</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S firefox chromium</code></pre></div>
+<h3 id="install-code-editors">Install code editors</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S sublime-text-dev atom-editor-git visual-studio-code-bin neovim neovim-drop-in leafpad</code></pre></div>
+<h3 id="setup-lamp-stack">Setup LAMP stack</h3>
+<h4 id="install-apache-server">Install Apache server</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S apache
+
+<span class="c1"># Make your user-directory available to apache server</span>
+mkdir ~/public_html
+chmod o+x ~
+chmod o+x ~/public_html
+chmod -R o+r ~/public_html</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># To enable virtualhosts, uncomment the following line in `/etc/httpd/conf/httpd.conf`</span>
+Include conf/extra/httpd-vhosts.conf</code></pre></div>
+<p>Add your virtualhost configuration in following file -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo vim /etc/httpd/conf/extra/httpd-vhosts.conf</code></pre></div></p>
+<p>To test the virtual hosts on you local machine, add the virtual names to your <code>/etc/hosts</code> file.</p>
+<h4 id="install-php">Install PHP:</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S php php-apache</code></pre></div>
+<p>To use PHP with apache, open <code>/etc/httpd/conf/httpd.conf</code> and uncomment following line -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">LoadModule mpm_prefork_module modules/mod_mpm_prefork.so</code></pre></div></p>
+<p>and comment out the following line -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># LoadModule mpm_event_module modules/mod_mpm_event.so</span></code></pre></div></p>
+<p>Now add these lines to <code>/etc/httpd/conf/httpd.conf</code>:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Add these at the end of `LoadModule` section.</span>
+LoadModule php7_module modules/libphp7.so
+AddHandler php7-script .php
+
+<span class="c1"># Place this at the end of the `Include` section:</span>
+Include conf/extra/php7_module.conf</code></pre></div></p>
+<h4 id="install-mysql-server">Install MySQL server</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S mariadb
+
+<span class="c1"># Initialize the MariaDB data directory prior to starting the service. To do so, run:</span>
+sudo mysql_install_db --user<span class="o">=</span>mysql --basedir<span class="o">=</span>/usr --datadir<span class="o">=</span>/var/lib/mysql
+
+<span class="c1"># Then issue the commands to start the database server</span>
+sudo systemctl <span class="nb">enable</span> mariadb.service
+sudo systemctl start mariadb.service
+
+<span class="c1"># To apply recommended security settings to your database, run</span>
+sudo mysql_secure_installation</code></pre></div>
+<h4 id="install-phpmyadmin">Install PHPMyAdmin</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S phpmyadmin php-mcrypt</code></pre></div>
+<p>Enable <code>mysqli</code>, <code>mcrypt</code>, <code>zip</code> and <code>bz2</code> extensions in <code>/etc/php/php.ini</code>.</p>
+<p>Create the apache configuration file <code>/etc/httpd/conf/extra/phpmyadmin.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-ApacheConf" data-lang="ApacheConf"><span class="nb">Alias</span> <span class="sx">/phpmyadmin</span> <span class="s2">&#34;/usr/share/webapps/phpMyAdmin&#34;</span>
+<span class="nt">&lt;Directory</span> <span class="s">&#34;/usr/share/webapps/phpMyAdmin&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">DirectoryIndex</span> index.php
+    <span class="nb">AllowOverride</span> <span class="k">All</span>
+    <span class="nb">Options</span> FollowSymlinks
+    <span class="nb">Require</span> <span class="k">all</span> granted
+<span class="nt">&lt;/Directory&gt;</span></code></pre></div>
+<p>Then include following in <code>/etc/httpd/conf/httpd.conf</code>
+<div class="highlight"><pre class="chroma"><code class="language-ApacheConf" data-lang="ApacheConf"><span class="c"># phpMyAdmin configuration</span>
+<span class="nb">Include</span> conf/extra/phpmyadmin.conf</code></pre></div></p>
+<p>Now restart <code>httpd</code> service to apply settings.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart httpd</code></pre></div>
+Once all these steps are done, your LAMP stack should be working.</p>
+<h3 id="setup-power-management">Setup power management</h3>
+<p>Install <code>tlp</code> and some of its optional dependencies
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S tlp tlp-rdw bash-completion ethtool lsb-release smartmontools</code></pre></div></p>
+<p>Then enable <code>tlp</code> services
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> tlp.service
+sudo systemctl <span class="nb">enable</span> tlp-sleep.service
+
+<span class="c1"># mask some services for tlp to work properly</span>
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
+<h3 id="install-i3-and-other-tools">Install i3 and other tools</h3>
+<p>All these tools are part of my <code>i3</code> config with exception of the theme related packages. So installing them here will help me later while setting up the <code>i3</code> window manager.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S i3 rofi polybar xautolock powerline-fonts-git i3lock-fancy-git compton scrot feh dunst unclutter xfce4-power-manager numlockx lxappearance adapta-gtk-theme gtk-engine-murrine gnome-themes-standard termite</code></pre></div></p>
+<h3 id="fix-ugly-fonts-1">Fix Ugly Fonts <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h3>
+<p>Fonts rendering is one area where Linux still lags behind Windows and OSX. It can be a nightmare for users to setup fonts properly in Linux. In Arch Linux, this is even worse. I found some tricks to improve the quality of font rendering on Arch Linux. Though this is far from perfect, it is manageable. Follow these <a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/">steps</a> on Reddit to fix font rendering. I use Noto Sans, Adobe Source Code Pro, and Microsoft fonts. My apologies, but I can&rsquo;t help here. Some websites still use Microsoft fonts.</p>
+<h3 id="setup-python-environment">Setup Python Environment</h3>
+<p>I use Python extensively and virtual environments are a must for my development setup. I use <code>pipenv</code> to manage my virtual environments. To install <code>pipenv</code>, you need to install <code>virtualenv</code> first. To install it, run the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S python-virtualenv</code></pre></div></p>
+<p>Now you are ready to install <code>pipenv</code>. Follow <a href="http://pipenv.readthedocs.io/en/latest/install/#fancy-installation-of-pipenv">these</a> instructions to install the tool.</p>
+<h3 id="install-some-other-common-tools">Install some other common tools</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S vlc openssh npm imagemagick git la-capitaine-icon-theme-git</code></pre></div>
+<p>Do not forget to <a href="https://stackoverflow.com/a/13021677">setup</a> <code>npm</code> to install packages globally without requiring <code>sudo</code>.</p>
+<p>That&rsquo;s all! Your system should be in working condition now. Do check out my <a href="https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/">dotfiles</a> if you want to set up your system like mine.</p>
+<p>Hope you enjoyed the article. Cheers 😄</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/">Make your Arch fonts beautiful easily!</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/series/arch-linux-installation" term="arch-linux-installation" label="Arch Linux Installation" />
+                            
+                        
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/configuration" term="configuration" label="configuration" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/i3" term="i3" label="i3" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Arch Linux Installation Guide Part 1]]></title>
+            <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/?utm_source=atom_feed" rel="related" type="text/html" title="Setting Up SSH Agent in i3" />
+                <link href="https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/?utm_source=atom_feed" rel="related" type="text/html" title="My Own Configuration Manager" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/?utm_source=atom_feed" rel="related" type="text/html" title="Setting up ALM Octane with Docker Compose" />
+                <link href="https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Fixing Hindi Fonts in Arch Linux" />
+                <link href="https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Mounting NTFS partitions on Arch Linux" />
+            
+                <id>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-01-24T21:49:05+05:30</published>
+            <updated>2018-01-24T21:49:05+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.</p>
+<p>This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&rsquo;t remember all the installation steps perfectly. Most of the steps have been taken from <a href="https://wiki.archlinux.org/index.php/installation_guide">Arch wiki</a> and should work on other setups also.</p>
+<div class="note">
+    <div></div>
+    
+All the commands are run in root shell unless otherwise specified.
+
+</div>
+<h2 id="0-check-your-network-connection">0. Check your network connection</h2>
+<p>If you are behind a captive portal, use <code>links</code> to open browser and login into your network. For WiFi connections, use <code>wifi-menu</code>. LAN connections should not require any setup. The boot environment should automatically detect any wired connections. After connecting, test your connection by pinging any website:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ping -c <span class="m">5</span> google.com</code></pre></div></p>
+<h2 id="1-setup-ssh">1. Setup SSH</h2>
+<p>This step is not mandatory, though I prefer to use this method to install Arch Linux, as it provides me the convenience of copying and pasting the commands directly from Arch wiki.</p>
+<p>By default the Arch Linux <code>root</code> account password is empty. We need to set up a password for <code>root</code> account, which is needed for an SSH connection.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div></p>
+<p>Now we need to change the setting to permit <code>root</code> login via SSH in <code>/etc/ssh/sshd_config</code>. Check that <code>PermitRootLogin yes</code> is uncommented in this file. If this line is not present there, add this to the end. Now start the <code>sshd.service</code> by issuing the command
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start sshd.service</code></pre></div></p>
+<p>Also, note the IP address of the target machine by inspecting the output of the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip addr</code></pre></div></p>
+<p><em>Pro tip:</em> One liner to get only the IP address
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip -o -4 addr show <span class="p">|</span> awk -F <span class="s1">&#39;[ /]+&#39;</span> <span class="s1">&#39;/global/ {print $4}&#39;</span></code></pre></div></p>
+<p>Now on your host machine, connect to the target machine via SSH using the following command
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh root@ip-address-of-target</code></pre></div></p>
+<h2 id="2-partition-the-disks">2. Partition the disks</h2>
+<p>If Windows 8 or above is already installed on your machine, then your hard disk is probably using <code>GPT</code> partitioning scheme. In that case, use <code>gdisk</code> to partition your hard disk. <del>If you use <code>fdisk</code> on a GPT partitioned HDD, there is a possibility of data loss.</del> <code>fdisk</code> understands <code>GPT</code> partitioning scheme also.[1]</p>
+<p>My preferred setup is to have one root partition and one home partition and use <code>EFI</code> partition created by Windows to install boot-loader. The root and home partition will be formatted using <code>ext4</code> file-system and the <code>EFI</code> partition should be formatted using <code>FAT32</code> file-system.</p>
+<p>For this guide, I am assuming that the <code>EFI</code> partition is <code>sda1</code>, root partition is <code>sda9</code> and home partition is <code>sda10</code>.</p>
+<p>Now to format the partitions with <code>ext4</code> file-system:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/sda9
+mkfs.ext4 /dev/sda10</code></pre></div></p>
+<h2 id="3-mount-the-partitions">3. Mount the partitions</h2>
+<p>Now mount the root partition (<code>sda9</code> in this case) to <code>/mnt</code>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mount /dev/sda9 /mnt</code></pre></div></p>
+<p>If you have created any other partitions in previous steps, mount them at appropriate locations.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir /mnt/home
+mount /dev/sda10 /mnt/home
+
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot</code></pre></div></p>
+<h2 id="4-install-the-base-file-system">4. Install the base file-system</h2>
+<p>To install the base system and some development tools, issue the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacstrap /mnt base base-devel</code></pre></div></p>
+<p>This will take a while to download and install. After it finishes, it will give you a bare-bone Arch Linux system with just the tools required to run a Linux distribution, no other software is installed.</p>
+<h2 id="5-generate-etcfstab">5. Generate /etc/fstab</h2>
+<p>The <code>/etc/fstab</code> file stores the information about file systems of partitions and how to mount the partitions on system boot up. To generate this file, issue the following command:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></pre></div>
+If you prefer to use partition labels (sda1, sda9 etc.) instead of UUID, then use <code>-L</code> flag in place of <code>-U</code>.</p>
+<h2 id="6-chroot-into-the-system">6. chroot into the system</h2>
+<p>From the <a href="https://wiki.archlinux.org/index.php/Change_root">Arch wiki</a>:</p>
+<blockquote>
+<p>Chroot is an operation that changes the apparent root directory for the current running process and their children. A program that is run in such a modified environment cannot access files and commands outside that environmental directory tree. This modified environment is called a chroot jail.</p>
+</blockquote>
+<p>At this step, we will go to the root of the newly installed system at <code>/mnt</code> and pretend as if we are logged into this system.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">arch-chroot /mnt</code></pre></div></p>
+<h2 id="7-setup-the-time-zone-locale-and-hostname">7. Setup the time zone, locale, and hostname</h2>
+<p>Browse the <code>/use/share/zoneinfo</code> directory to find your location entries. My location is India, so I will use this command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime</code></pre></div></p>
+<p>To set the hardware clock:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hwclock --systohc</code></pre></div></p>
+<p>To set the locale for your system, open the <code>/etc/locale.gen</code> file and uncomment your language. or run the following command for the default <code>en_US.UTF-8 UTF-8</code>.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LANG</span><span class="o">=</span>C perl -i -pe <span class="s1">&#39;s/#(en_US.UTF)/$1/&#39;</span> /etc/locale.gen</code></pre></div>
+Now generate the localization with
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">locale-gen</code></pre></div></p>
+<p>Then set the <code>LANG</code> variable in <code>/etc/locale.conf</code> accordingly, or run the following command:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">localectl set-locale <span class="nv">LANG</span><span class="o">=</span><span class="s2">&#34;en_US.UTF-8&#34;</span></code></pre></div></p>
+<p>To set the hostname for your machine:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hostnamectl set-hostname your-host-name</code></pre></div></p>
+<p>To allow other machines to address the host by name, it is necessary to edit the <code>/etc/hosts</code> file to look like this:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">127.0.0.1    localhost.localdomain          localhost
+::1          localhost.localdomain          localhost
+127.0.1.1    your-host-name.localdomain     your-host-name</code></pre></div></p>
+<h2 id="8-create-user-account">8. Create user account</h2>
+<p>Before creating user account, set password for <code>root</code> account
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div></p>
+<p>Now create a local account for your user
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">useradd -m -G wheel -s /bin/bash your-user-name</code></pre></div></p>
+<p>This will set up your user account, create a home directory for your user, set the default shell to <code>bash</code> and add your user to <code>wheel</code> group, which is necessary to gain <code>sudo</code> access in later steps.</p>
+<p>Set password for your user.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd your-user-name</code></pre></div></p>
+<h2 id="9-enable-sudo-access">9. Enable sudo access</h2>
+<p>This allows you to use root privileges without using the root account. To enable this, first open <code>/etc/sudoers</code> file
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">nano /etc/sudoers</code></pre></div></p>
+<p>Now uncomment the following line to enable <code>root</code> privilege for all the users inside <code>wheel</code> group:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># %wheel ALL=(ALL) ALL</span></code></pre></div></p>
+<p>Now you can safely disable root account
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd -l root
+
+<span class="c1"># login into your user account</span>
+su your-user-name</code></pre></div></p>
+<p>From this point onwards, it is necessary to append <code>sudo</code> to any command that requires <code>root</code> privileges.</p>
+<h2 id="10-install-bootloader">10. Install bootloader</h2>
+<p>My preferred bootloader of choice is <code>grub</code>. To install <code>grub</code>, we need to install following packages.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S grub efibootmgr</code></pre></div></p>
+<p>Now install <code>grub</code> with the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-install --target<span class="o">=</span>x86_64-efi --efi-directory<span class="o">=</span>/boot --bootloader-id<span class="o">=</span>arch</code></pre></div></p>
+<p>Here <code>--efi-directory</code> is the folder where the <code>EFI</code> partition is mounted <a href="#step3">step 3</a> and <code>--bootloader-id</code> is the label that will appear in your UEFI boot menu entry.</p>
+<p>This particular step is specific to my machine&rsquo;s hardware, you might not need to run this step. I need to add <code>pci=nommconf</code> to my kernel boot parameters in <code>/etc/default/grub</code>, otherwise <code>tty</code> prints error messages continuously.</p>
+<p>Now run to generate grub configuration file.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></div></p>
+<p>If you encounter any errors related to <code>lvm</code> during installation of grub, then follow these steps.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># come out of chroot</span>
+<span class="nb">exit</span>
+mkdir /mnt/hostrun
+mount --bind /run /mnt/hostrun
+
+<span class="c1"># back to chroot</span>
+arch-chroot /mnt
+mkdir /run/lvm
+mount --bind /hostrun/lvm /run/lvm</code></pre></div></p>
+<p>Now you can install <code>grub</code> without any errors.</p>
+<h2 id="11-configure-the-network">11. Configure the network</h2>
+<p>By default, your current system cannot connect to the network in the current state. I prefer to use <a href="https://wiki.archlinux.org/index.php/NetworkManager">NetworkManager</a> for my network management, even when I am not using GNOME. For wireless networking, install the following additional packages.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S iw wpa_supplicant dialog networkmanager network-manager-applet dhclient</code></pre></div></p>
+<p><code>NetworkManager</code> supports basic DHCP configuration. For full support, I have installed <code>dhclient</code>. <code>NetworkManager</code> also supports automatic wired connection detection and comes with curses based tool <code>nmtui</code> to setup wireless connection.</p>
+<p>To enable NetworkManager to start at system startup
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> NetworkManager.service</code></pre></div></p>
+<h2 id="12-reboot-now">12. Reboot now</h2>
+<p>If you had performed the <code>lvm</code> troubleshooting steps during <code>grub</code> install, then
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">umount /run/lvm</code></pre></div></p>
+<p>Now exit from <code>chroot</code> by typing <code>exit</code> in the shell. Unmount all the mounted partitions with:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">umount -R /mnt</code></pre></div></p>
+<p>Finally, reboot your machine by typing <code>reboot</code> and remove the installation USB drive. If you are not able to boot into your system at this point, boot from the installation media again and attempt to fix the installation.</p>
+<p>If you can see a terminal with a prompt for your username, congratulations! You have completed the first step towards building your own system.</p>
+<p>I will be writing about making your system usable and stable in the <a href="/posts/2018/01/arch-linux-installation-guide-part-2/">second</a> part of this guide.</p>
+<p>Hope you enjoyed the post. Stay tuned :)</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/series/arch-linux-installation" term="arch-linux-installation" label="Arch Linux Installation" />
+                            
+                        
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/configuration" term="configuration" label="configuration" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/i3" term="i3" label="i3" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

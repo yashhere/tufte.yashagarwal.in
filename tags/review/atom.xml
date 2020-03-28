@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator><title type="html"><![CDATA[review on /dev/yash/notes]]></title>
+    
+        <subtitle type="html"><![CDATA[The directory of my thoughts]]></subtitle>
+    
+    
+    
+            <link href="https://yashagarwal.in/tags/review/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://yashagarwal.in/tags/review/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+            <link href="https://yashagarwal.in/tags/review/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
+            <link href="https://yashagarwal.in/tags/review/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
+    <updated>2020-03-28T08:04:50+00:00</updated>
+    
+    
+    <author>
+            <name>Yash Agarwal</name>
+            
+                <email>yashagarwaljpr@gmail.com</email>
+            </author>
+    
+        <id>https://yashagarwal.in/tags/review/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[2018 - Year in Review]]></title>
+            <link href="https://yashagarwal.in/posts/2018/12/2018-year-in-review/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://yashagarwal.in/posts/2018/12/2018-year-in-review/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-12-31T22:02:08+05:30</published>
+            <updated>2018-12-31T22:02:08+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>The year 2018 has been quite a roller coaster year for me. I saw many ups and downs, many successes, and many failures faced many
+challenges on the personal front and struggled to keep myself on track. I have been working hard on improving my lifestyle
+(not materialistically) for the last few years, and the benefits have begun to show up now. This year was a pinnacle in
+that aspect. A lot of micro changes happened in my life this year.</p>
+<p>I often read my blog posts from last year. Reading these posts give me a good feeling about
+the improvements that I could bring in myself during the previous three years. Writing year <a href="/posts/2017/12/2017-the-best-till-now/">reviews</a> and posts like <a href="/posts/2018/08/beginning-a-new-journey/">this</a>,
+<a href="/posts/2018/06/mistakes-that-i-made-in-nitc/">this</a> and <a href="/posts/2018/03/deactivated-my-facebook-account/">this</a> serve
+as documents of my deeds from past for my future. It helps me in not repeating the same mistakes. As a human being, I
+cannot run away from committing mistakes, but I can always make sure that I do not repeat the same mistakes.</p>
+<blockquote>
+<p>Those who cannot remember the past are condemned to repeat it.</p>
+</blockquote>
+<h2 id="blogging--writing">Blogging &amp; Writing</h2>
+<p>I had set a target to write 15 blog articles at the beginning of this year. In the end, I managed to achieve this goal.
+I managed to write 17 blog posts and six book reviews. My blog managed to get much traffic this year, mainly thanks to some of my technical posts.</p>
+<p>I got some good responses from people about my technical blog posts. My aim to start writing technical posts was to keep an account
+of what I learn. It feels very nice when I go back to my posts to read how I did something last time. So I consider
+myself successful that at least I could benefit from my writing.</p>
+<p>Though, in 2018, after leaving college, the frequency
+of technical posts on this blog has dipped to almost zero. It is probably because I am not exploring enough after
+joining the corporate world. In
+college, I used Linux all the time, but now it is nearly four months since I last booted Linux in my system. I think it
+is yet another phase of my learning, and I will take some time adjusting with this. I have some <em>lovely</em> technical post ideas, and I hope that I will be able to articulate them soon next year.</p>
+<h2 id="reading">Reading</h2>
+<p>For most of the year, I did not pay any heed to books, and I was never very interested in buying
+books. However, at the end of October, I purchased a Kindle Paperwhite. I
+consider this to be the <a href="https://twitter.com/yash__here/status/1075396841267752963">best</a> investment done by me this year. Since buying it, I have read eight books. I finally managed to
+finish my <a href="https://www.goodreads.com/user_challenges/10979019">Goodreads reading challenge</a> of 10 books. Although I
+could not finish one book and included one <a href="https://www.goodreads.com/book/show/31284204-the-millionaire-booklet">audiobook</a> to this challenge to complete my target on time.</p>
+<p>This year, I discovered my interest in Economics. I am reading some economics-related literature lately. It is a subtle shift
+from my all-CS life. I plan to read a lot of economics-related books in 2019 to gain more expertise in this domain. But
+I still need to figure out a way to stop it from interfering with my first (or second, maybe!) love.</p>
+<p>Some of my favorite reads from this year (not in any particular order) -</p>
+<ul>
+<li>
+<p><strong>Technology / CS</strong></p>
+<ol>
+<li><a href="https://danluu.com/branch-prediction/">Branch Prediction</a></li>
+<li><a href="http://infolab.stanford.edu/~backrub/google.html">The Anatomy of a Large-Scale Hypertextual Web Search Engine</a></li>
+<li><a href="https://chrisdown.name/2018/01/02/in-defence-of-swap.html">In defence of swap: common misconceptions</a></li>
+<li><a href="https://jvns.ca/blog/2018/03/05/things-ive-learned-networking/">A few things I&rsquo;ve learned about computer networking</a></li>
+<li><a href="https://blog.cloudflare.com/using-go-as-a-scripting-language-in-linux/">Using Go as a scripting language in Linux</a></li>
+<li><a href="https://rcoh.me/posts/cache-oblivious-datastructures/">Maximize Cache Performance with this One Weird Trick: An Introduction to Cache-Oblivious Data
+Structures</a></li>
+<li><a href="https://www.cl.cam.ac.uk/~mgk25/mswish/ut-rtc.html">IBM PC Real Time Clock should run in UT</a></li>
+<li><a href="http://c-faq.com/decl/spiral.anderson.html">The ``Clockwise/Spiral Rule&rsquo;'</a></li>
+<li><a href="https://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></li>
+<li><a href="http://mattjolson.github.io/2017/12/07/benefits-of-a-classical-education.html">So, should you do a CS degree?</a></li>
+<li><a href="http://beza1e1.tuxen.de/articles/accidentally_turing_complete.html">Accidentally Turing-Complete</a></li>
+</ol>
+<!-- raw HTML omitted -->
+<ol start="13">
+<li><a href="https://www.xda-developers.com/apple-new-iphone-xr-influence-android-trends">How Apple’s New Lineup and iPhone XR will Influence Android Trends, for Better and
+Worse</a></li>
+<li><a href="https://scotthelme.co.uk/perfect-forward-secrecy/">Perfect Forward Secrecy - An Introduction</a></li>
+<li><a href="https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/">zxcvbn: realistic password strength
+estimation</a></li>
+<li><a href="https://askubuntu.com/q/638382">How can I turn photos of paper documents into a scanned document?</a></li>
+<li><a href="https://medium.com/swlh/chatbots-were-the-next-big-thing-what-happened-5fc49dd6fa61">Chatbots were the next big thing: what
+happened?</a></li>
+<li><a href="https://arstechnica.com/gadgets/2018/07/the-ai-revolution-has-spawned-a-new-chips-arms-race/">The AI revolution has spawned a new chips arms
+race</a></li>
+<li><a href="https://www.theverge.com/2018/6/13/17446660/mozilla-firefox-pocket-recommendations-ceo-nate-weiner-interview-converge-podcast">How Firefox is using Pocket to try to build a better news feed than
+Facebook</a></li>
+<li><a href="https://www.diamandis.com/blog/countdown-to-the-singularity">Countdown to the Singularity</a></li>
+<li><a href="https://qz.com/1366350/what-the-hell-is-going-on-with-apple/">What the hell is going on with Apple?</a></li>
+<li><a href="https://interestingengineering.com/why-chinese-artificial-intelligence-will-run-the-world">Why Chinese Artificial Intelligence Will Run The
+World</a></li>
+<li><a href="https://www.technologyreview.com/s/612327/europes-quest-for-an-unhackable-quantum-internet/">Inside Europe’s quest to build an unhackable quantum internet</a></li>
+<li><a href="https://spectrum.ieee.org/computing/hardware/the-case-against-quantum-computing">The Case Against Quantum
+Computing</a></li>
+</ol>
+<!-- raw HTML omitted -->
+</li>
+<li>
+<p><strong>Economics</strong></p>
+<ol>
+<li><a href="https://www.wired.com/story/why-hard-escape-amazons-long-reach/">Why It&rsquo;s Hard to Escape Amazon&rsquo;s Long Reach</a></li>
+<li><a href="https://www.aboveavalon.com/notes/2018/7/11/the-race-to-a-trillion">The Race to a Trillion</a></li>
+<li><a href="https://www.bloombergquint.com/opinion/ambani-is-ready-for-his-triple-play-close-up">Ambani Is Ready for His Triple Play Close-Up</a></li>
+<li><a href="https://www.livemint.com/Opinion/M0oJYwIP1OxJWnzaz6Eo8H/Penalty-kicks-and-behavioural-economics.html">Penalty kicks and behavioural
+economics</a></li>
+<li><a href="https://www.collaborativefund.com/blog/the-psychology-of-money/">The Psychology of Money</a></li>
+<li><a href="https://www.bloomberg.com/features/2018-apple-trillion-dollar-world/">Apple’s Trillion-Dollar World</a></li>
+<li><a href="https://hbr.org/2018/08/how-to-beat-mid-career-malaise">How to Beat Mid-Career Malaise</a></li>
+<li><a href="https://www.theguardian.com/news/2018/jul/10/the-staggering-rise-of-indias-super-rich">The staggering rise of India’s
+super-rich</a></li>
+<li><a href="https://www.theatlantic.com/business/archive/2018/08/the-problem-with-bezos-billions/566552/">Jeff Bezos’s $150 Billion Fortune Is a Policy
+Failure</a></li>
+<li><a href="https://www.washingtonpost.com/business/2018/08/06/how-year-old-roads-predict-modern-day-prosperity">How 2,000-year-old roads predict modern-day prosperity</a></li>
+<li><a href="https://25iq.com/2018/08/11/how-subscription-business-models-are-changing-business-and-investing-the-microeconomics-of-subscriptions/">How Subscription Business Models are Changing Business and Investing (the Microeconomics of
+Subscriptions)</a></li>
+<li><a href="https://www.getrichslowly.org/income-vs-wealth/">What it means to be rich: The difference between income and
+wealth</a></li>
+<li><a href="https://seekingalpha.com/article/4205122-dark-decade-ahead">The Dark Decade Ahead</a></li>
+<li><a href="https://stratechery.com/2018/the-iphone-franchise/">The iPhone Franchise</a></li>
+<li><a href="https://www.newyorker.com/magazine/2018/09/17/the-real-cost-of-the-2008-financial-crisis">The Real Cost of the 2008 Financial
+Crisis</a></li>
+<li><a href="https://twitter.com/naval/status/1002103360646823936?lang=en">How to Get Rich (without getting lucky)</a></li>
+<li><a href="https://zandercutt.com/2018/08/23/the-approval-economy/">The Approval Economy</a></li>
+<li><a href="https://www.washingtonpost.com/outlook/five-myths/five-myths-about-capitalism/2018/09/27/3f0b72f6-c06f-11e8-90c9-23f963eea204_story.html">Five myths about
+capitalism</a></li>
+<li><a href="https://www.theverge.com/2018/10/23/17970466/amazon-prime-shopping-behavior-streaming-alexa-minimum-wage">How Amazon’s Retail Revolution Is Changing The Way We Shop</a></li>
+<li><a href="http://evonomics.com/wealth-power-productivity-laurie-macfarlane/">Why Wealth Is Determined More by Power Than
+Productivity</a></li>
+<li><a href="https://justinjackson.ca/costs">Let&rsquo;s Talk About Startup Costs</a></li>
+<li><a href="https://www.bloomberg.com/news/articles/2018-11-16/how-companies-get-you-to-pay-more-for-the-same-product">How Companies Get You to Pay More for the Same
+Product</a></li>
+<li><a href="https://www.vox.com/the-goods/2018/10/31/18048340/art-market-expensive-ai-painting">Why is art so expensive?</a></li>
+<li><a href="https://www.nytimes.com/2018/12/18/business/bond-market-risks.html">Stock Markets Are Wild, but Bond Markets Can Be Dangerous</a></li>
+<li><a href="https://www.livemint.com/Companies/HNZA71LNVNNVXQ1eaIKu6M/British-Raj-siphoned-out-45-trillion-from-India-Utsa-Patna.html">British Raj siphoned out $45 trillion from India: Utsa
+Patnaik</a></li>
+<li><a href="https://theweek.com/articles/809324/how-spot-next-recession">How to spot the next recession</a></li>
+</ol>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li><strong>Misc</strong>
+<ol>
+<li><a href="https://www.nytimes.com/2018/02/21/technology/personaltech/smart-things-dumb-stuff.html">In an Era of ‘Smart’ Things, Sometimes Dumb Stuff Is
+Better</a></li>
+<li><a href="https://www.theladders.com/career-advice/einstein-aristotle-and-ockham-on-how-real-geniuses-solve-difficult-problems">Einstein, Aristotle, and Ockham on how real geniuses solve difficult problems</a></li>
+<li><a href="https://www.theglobeandmail.com/technology/your-smartphone-is-making-you-stupid/article37511900/">Your smartphone📱is making you👈 stupid, antisocial 🙅 and unhealthy 😷. So why can&rsquo;t you put it
+down❔⁉️</a></li>
+<li>Indian Nationalism: The Memories Of History – <a href="https://swarajyamag.com/ideas/indian-nationalism-the-memories-of-history-part-i">Part
+I</a>, <a href="https://swarajyamag.com/ideas/indian-nationalism-nehruvian-and-marxist-conception-of-india-part-ii">Part
+II</a>, <a href="https://swarajyamag.com/ideas/indian-nationalism-the-nationalist-conception-of-india-part-iii">Part
+III</a></li>
+<li><a href="https://blog.ncase.me/take-your-time/">Take Your Time</a></li>
+<li><a href="https://www.nytimes.com/2016/02/28/magazine/what-google-learned-from-its-quest-to-build-the-perfect-team.html">What Google Learned From Its Quest to Build the Perfect Team</a></li>
+<li><a href="https://www.newyorker.com/magazine/2018/12/10/the-friendship-that-made-google-huge">The Friendship That Made Google Huge</a></li>
+<li><a href="https://www.linkedin.com/pulse/you-what-write-harry-shum/">You are what you write</a></li>
+<li><a href="https://swarajyamag.com/ideas/being-dk-in-the-age-of-msd">Being DK In The Age Of MSD</a></li>
+<li><a href="https://scroll.in/field/868038/post-retirement-rahul-dravid-is-now-getting-the-unconditional-love-he-always-deserved-as-under-19-world-cup-triumph-showed">The growing legacy of Rahul Sharad Dravid</a></li>
+<li><a href="https://medium.com/@ztrana/the-only-real-way-to-acquire-wisdom-7489a10c8f8e">The Only Real Way to Acquire Wisdom</a></li>
+<li><a href="https://praxis.fortelabs.co/personal-sprints-applying-design-thinking-to-your-life/">Personal Sprints: Applying Design Thinking to Your Life</a></li>
+<li><a href="https://fs.blog/2018/06/succeed-at-work/">Smarter, Not Harder: How to Succeed at Work</a></li>
+<li><a href="https://www.quantamagazine.org/real-life-schrodingers-cats-probe-the-boundary-of-the-quantum-world-20180625/">Real-Life Schrödinger’s Cats Probe the Boundary of the Quantum World</a></li>
+<li><a href="https://www.economist.com/graphic-detail/2018/06/15/which-traits-predict-graduates-earnings">Which traits predict graduates’ earnings?</a></li>
+<li><a href="https://andrewchen.co/power-user-curve/">The Power User Curve: The best way to understand your most engaged users</a></li>
+<li><a href="https://www.economist.com/the-world-if/2018/07/07/what-if-people-were-paid-for-their-data">What if people were paid for their data?</a></li>
+<li><a href="https://www.quantamagazine.org/graduate-student-solves-quantum-verification-problem-20181008/">Graduate Student Solves Quantum Verification Problem</a></li>
+<li><a href="https://www.spectator.co.uk/2018/07/it-doesnt-matter-how-hard-you-work-just-how-busy-you-look/">It doesn’t matter how hard you work – just how busy you look</a></li>
+<li><a href="http://www.paulgraham.com/love.html">How to Do What You Love</a></li>
+<li><a href="https://www.nytimes.com/2018/08/14/style/how-can-i-focus-better.html">Finding It Hard to Focus? Maybe It’s Not Your Fault</a></li>
+<li><a href="https://avc.com/2018/08/first-mover-disadvantage/">First Mover Disadvantage</a></li>
+<li><a href="https://medium.com/@gettinadmin/the-sharechat-phenomenon-6dfff8244af1">The ShareChat Phenomenon</a></li>
+<li><a href="https://scroll.in/article/890631/vinod-mehta-on-atal-behari-vajpayee-and-the-1998-nuclear-tests-how-a-tired-pm-became-a-bold-pm">Atal Bihari Vajpayee and his Achilles heel: Excerpts from Vinod Mehta’s memoirs</a></li>
+<li><a href="https://qz.com/work/1373353/work-life-balance-is-an-unhealthy-myth/">Work-life balance is an unhealthy myth</a></li>
+<li><a href="https://www.engadget.com/2018/09/04/who-controls-your-data/">Who controls your data?</a></li>
+<li><a href="https://www.newyorker.com/humor/daily-shouts/your-first-ninety-days-in-hell">Your First Ninety Days in Hell</a></li>
+<li><a href="https://qz.com/1422925/the-public-internet-was-almost-a-democracy/">The internet can’t handle functioning like a democracy</a></li>
+<li><a href="https://waitbutwhy.com/2018/04/picking-career.html">How to Pick a Career (That Actually Fits You)</a></li>
+<li><a href="https://fs.blog/2018/10/long-game/">The Surprising Power of The Long Game</a></li>
+<li><a href="https://www.jotform.com/blog/the-world-needs-polymaths/">Why the world needs deep generalists, not specialists</a></li>
+<li><a href="https://waitbutwhy.com/2014/12/10-types-odd-friendships-youre-probably-part.html">10 Types of Odd Friendships You’re Probably Part Of</a></li>
+</ol>
+</li>
+</ul>
+<p>I used <a href="https://www.instapaper.com">Instapaper</a> extensively throughout the year to manage and save the articles that I liked. Although I was never
+very consistent in reading those saved articles, it was still a good exercise. I finished all my pending pile of
+saved articles by the end of the year. Moreover, for this post, it became straightforward for me to recollect those
+links. This list grew excessively large, but I did not want to lose any of these links because of some random third-party
+service shutting down, so I am adding them here for easy reference in the future.</p>
+<p>Next year onwards, I plan to read one academic paper from my favorite areas of CS in every two weeks and summarise them to improve my
+understanding of the domain (the <a href="/readings">readings</a> section of my blog was initially intended for this purpose). Moreover, seeing my experience in the last two months, I feel encouraged to increase my Goodreads
+reading challenge to 20 books.</p>
+<h2 id="work">Work</h2>
+<p>The year 2018 was a pivotal year for me on this front. It was the year when I had to come out of the comfort zone of my
+parents&rsquo; protection. My professional life began this year, and I started earning MONEY. It feels delightful when you see the money gets deposited to your bank account every month for the hard(!) work that you
+have done for the last one month. But</p>
+<blockquote>
+<p>With great power comes great responsibility.</p>
+</blockquote>
+<p>I believe that I have been able to control this feeling of power quite nicely until now. Probably being an <em>Agarwal</em> helped :P</p>
+<p>Coming back to work, those who do not know, I joined Cisco Systems this year as a Software Engineer. The job is pretty good for my initial expectations. I made some good friends. First time in my life, I managed to make a group of friends.</p>
+<p>Quite an achievement.</p>
+<h2 id="studies">Studies</h2>
+<p>This year was officially my last year in formal education. <!-- raw HTML omitted --> Although I failed to finish my bachelors with a satisfactory final GPA (at least I am not happy with it), I am very much satisfied with all my learnings from college. I learned many life lessons, kept myself in
+check, built some useful contacts, learned a lot about many CS-related things, and ended up with a decent job in the
+end.</p>
+<p>However, I sense that this is not the happy ending of my journey towards learning, and I have a lot more to learn. I
+recently read the book &ldquo;The Alchemist,&rdquo; and the central theme of this book is to keep looking for your legend. I am
+still searching for my legend. In 2019, I expect to find new ways to keep learning and explore new areas both in CS and other fields of life.</p>
+<h2 id="relationships">Relationships</h2>
+<p>Before this year, I had an assumption that I lack social skills. I hesitated in talking to people. I decided to change
+it this year. I was waiting for a change in my life, probably because NITC had become too monotonous for me. It was one of my
+new year&rsquo;s resolution that I will change myself and become more approachable to people.</p>
+<p>I do not know if I have changed or not, but I feel much more confident now than ever in communicating with people. I hope I will continue to improve in 2019 as well.</p>
+<h2 id="social-media">Social Media</h2>
+<p>I was trying to get rid of Facebook for quite some time. This year, I finally managed to control my addiction. For a
+good part of the year, either my Facebook account remained deactivated, or I was logged out of it. In the past, I used to feel a
+strong urge to open Facebook every ten minutes, but this year, I was able to keep this urge in control. When my account was not
+deactivated, I kept myself so busy in other works, that I did not even think of Facebook.</p>
+<p>Moreover, the good thing is that I
+did not notice any symptoms of withdrawal symptoms because of this sudden quitting of Facebook. A friend&rsquo;s advice worked
+nicely. It was quite tricky, indeed.</p>
+<p>I was never addicted to any other social media platform, but I decided that I can use Twitter for my benefit. I feel
+Twitter is a useful tool if utilized correctly. I followed many people who tweet regularly about CS related stuff. I open
+Twitter once every 2-3 days for a very short duration to collect some articles and tips. Nowadays, these articles, along with a few blog articles from Feedly, mainly form my Instapaper feed. Though Instapaper recently switched to
+commercial model again, I decided to keep using it for the time being until I find some other alternative.</p>
+<h2 id="miscellaneous">Miscellaneous</h2>
+<p>I had decided to exercise for at least 90% part of 2018. I failed miserably. Leave alone every day; I could not even do it
+continuously for one month. I need to make this a top priority. Otherwise, it is going to create trouble for me soon.</p>
+<p>For the last two years, I am trying to get up early in the morning every day. My body does not seem to care, though. It seems a classic
+example of the struggle between mind and body. My brain says that I am an early bird, but my body straightforwardly rejects
+this idea. I have felt the positives of waking up early, so I am still trying my best so that my body can
+adjust to this change. I will keep working on this habit in 2019 as well.</p>
+<p>I noticed a bad habit in myself - procrastination. I procrastinated a lot in 2018. Things that I could have finished well
+within the deadlines took me ages to complete. I was always late in my BTech project deadlines, I could not finish one of my
+hobby projects, I could not finish my study targets on time, and many other such examples haunted me this year. It is one
+of my most important goals of 2019 that I need a way to find how to concentrate on one thing at a time. Many things distract me while I am working. Technology itself is a significant distraction, but because I am a CS
+professional, this is one thing from which I cannot run away. However, I will still try to avoid getting distracted
+by my <em>curiosity</em> and put more focus on doing work.</p>
+<p>I am writing more than ever. However, with my increased writing, my English vocabulary is not enough anymore. This year, it
+happened many times that I wanted to write something, but because of the lack of proper words in my vocabulary, I had to
+settle with <em>inferior</em> words. I tried multiple times this year to work on improving my vocabulary, but I failed badly.
+I will increase my focus on improving my knowledge of English in 2019 so that such small issues do not stop me from adding something to my skills.</p>
+<p>This year, I experimented and tried to organize myself with to-do lists. It was a fruitful exercise, and it had a lot of sound effects on my productivity. The days when I made a to-do list, I felt very energetic and encouraged to
+finish all the tasks on my list. However, then I noticed one thing, I could not continue doing this for more than a few days at
+once. For initial days, I felt encouraged to complete my tasks, but soon it began to appear as a
+burden, and I felt exhausted. So it seems that something in the middle will work for me. This year, I will continue
+using to-do lists (I use Google Keep for this) but for short durations of time. I will refrain from using it every day
+to avoid getting exhausted. I am considering a switch to <a href="https://www.notion.so">Notion</a> to maintain my monthly and long-term goals.
+Probably that will also help me in keeping track of my goals without feeling the heat.</p>
+<p>All of my friends love to travel. It seems a common habit in most of my friends. However, I am an exception. I&rsquo;m not particularly eager to go on trips. I attribute it to my issues with motion sickness. For the whole year of 2018, I do not have a single
+trip memory other than my travels to Bengaluru and Jaipur airports. Oh yeah, after thinking for some time, I recalled that I went on one trip
+from Bengaluru to Calicut to attend my convocation ceremony. That&rsquo;s all! I will <em>consider</em> accepting trip invitations
+from my friends in 2019. Up until now, I keep refusing to join them in their trips due to my health issues, my desire to
+stay in solitude and partially because of my unwillingness to explore anything outside technology. However, it is time I start changing
+myself.</p>
+<p>It was a grave mistake that during my four-year stay in Kerala, I did not try to learn Malayalam. I feel that I
+missed an excellent opportunity to learn a new language. Although I am as bad as other north Indians when it comes to
+knowing multiple languages (correct me if I am wrong, I do not intend to generalize all north Indians), I think that learning a new language can be very beneficial for <em>some parts of my brain</em>. Now I am in Karnataka, yet
+another south Indian state and with yet another language. It is an excellent opportunity, and I am not going to repeat
+my mistake this time. Even if I do not succeed in learning Kannada, it will provide enough challenges to my brain for the short term.
+Who knows, it might also give me a new skill!</p>
+<p><strong>Welcome 2019, I hope that you will help me in taking a step closer to discovering myself. Give me new experiences, keep me grounded and help me in
+contributing to the progress of my India.</strong> 😊</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/write-ups" term="write-ups" label="Write-ups" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/review" term="review" label="Review" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[The Good and Bad about CSED of NIT-C]]></title>
+            <link href="https://yashagarwal.in/posts/2018/06/the-good-and-bad-about-csed-of-nit-c/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/?utm_source=atom_feed" rel="related" type="text/html" title="Mistakes That I Made in NITC" />
+                <link href="https://yashagarwal.in/posts/2016/04/searching-the-goal/?utm_source=atom_feed" rel="related" type="text/html" title="Searching the goal" />
+                <link href="https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/?utm_source=atom_feed" rel="related" type="text/html" title="So I Applied for GSoC" />
+                <link href="https://yashagarwal.in/posts/2018/03/fossmeet18/?utm_source=atom_feed" rel="related" type="text/html" title="FOSSMeet&#39;18" />
+                <link href="https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/?utm_source=atom_feed" rel="related" type="text/html" title="Deactivated My Facebook Account" />
+            
+                <id>https://yashagarwal.in/posts/2018/06/the-good-and-bad-about-csed-of-nit-c/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-06-14T17:59:28+05:30</published>
+            <updated>2018-06-14T17:59:28+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Four years ago, in this very month of June, JEE Mains results were out. I had screwed up my JEE Advanced, so I had to settle for an NIT. My AIR was good enough to get me a seat of Computer Science and Engineering in any of the NITs except the first three (at that time Trichy, Warangal, and Surathkal). I was skeptical about going to <a href="http://nitc.ac.in/">NIT Calicut</a> because of its distance from my native place, so NIT Allahabad was the most suitable choice. However, in the end, I decided to give preference to NIT Calicut over NIT Allahabad. One of the many reasons for this decision was an excellent <a href="http://dsanghi.blogspot.com/2011/05/my-2011-list-of-recommended-csit.html">article</a> by Dr. Dheeraj Sanghi, a retired professor from IIT Kanpur. His blog post was the primary reason; I decided to go with NIT Calicut. Now that I have graduated from NIT Calicut, I think it is the right time to document my observations about the CSE department of NIT Calicut from the perspective of a student.</p>
+<p>My exposure to the CSE department was limited to the facilities provided to undergraduate students only (almost everything except some academic facilities), so I am not entirely sure if this article will help any of the postgraduate students out there. However, some points below might help you decide about the non-academic activities of the department.</p>
+<h2 id="faculties">Faculties</h2>
+<p>Like every other NIT, NIT Calicut also suffers from the lack of permanent faculties. Most of the faculties in the department are recruited on a contract basis (ad-hoc). It is <strong>not</strong> necessarily a <a href="http://dsanghi.blogspot.com/2018/05/teaching-by-temps-it-is-budget-issue-too.html">bad</a> thing, but many a time, an ad-hoc faculty gets to teach a subject where one does not hold strong command. In that case, the subject becomes a burden for both student and teacher. It happened to me many times when I was stuck in a situation that I ended up losing my interest in the subject as well as grades.</p>
+<p>Most of the core subjects are taught by permanent faculties who are very good at their subjects. These faculties are very experienced and are alumni of some of India&rsquo;s top IITs and IISc. The department used to <a href="http://dsanghi.blogspot.com/2011/05/my-2011-list-of-recommended-csit.html">ask</a> new hires to get a postgraduate degree from some IIT or IISc, but this does not seem to be the case anymore.</p>
+<p>Most of the professors prefer to teach traditional computer science subjects, so if you are interested in AI, Data Science, or any other such areas of computer science, then you might have to depend on self-study.</p>
+<h2 id="club-activities">Club Activities</h2>
+<p><a href="http://assoc.cse.nitc.ac.in">CSEA</a> is the main departmental club that organizes almost every co-curricular activity in the department. In my opinion, CSEA is the best department association in NIT Calicut. I was not a member of CSEA, so all of my views are from the perspective of an outsider. CSEA organizes talks and workshops for the freshers from time to time. I attended all the lectures and seminars arranged by CSEA in my initial years, and I feel that those workshops were quite beneficial for me as a student.</p>
+<p>FOSSCell is a group of students who contribute to open-source software. FOSSCell organizes workshops related to Linux and open source contributions. It also organizes <a href="http://fossmeet.in/">FOSSMeet</a>, the yearly free and open-source software conference organized in NIT-C. It is one of the largest gatherings of open source enthusiasts in South India. I have written two posts about my experience as a part of the organizing team of FOSSMeet. You can read them <a href="/posts/2017/03/fossmeet17/">here</a> and <a href="/posts/2018/03/fossmeet18/">here</a>. Attending and organizing FOSSMeet is one of the best experiences of my college life. The current executives of FOSSCell are actively working on improving the state of open source contributions in NIT-C. I hope the situation will change in the coming years.</p>
+<p>The students manage all the labs in the department. The <a href="http://athena.nitc.ac.in">Software Systems Lab</a> is assigned to undergraduate students. This lab is probably the crown jewel and pride of every CS student of NIT Calicut. It remains open most of the time. All the department servers are kept in this lab and are managed independently by the student administrators chosen by the student administrators. The student administrators are given the responsibility to maintain all the department websites. I do not know if any other university or college in India provides such independence to its students. I was one of the student administrators in this lab, and I consider that this was the best thing that happened to me during my graduation.</p>
+<h2 id="the-infrastructure">The Infrastructure</h2>
+<p>A traditional computer science course does not require many types of equipment except a laptop and a fast enough internet connection. Internet speed is not extraordinary in NIT-C, but it was sufficient for me. The network administrators blocked many websites, but if the site is related to coursework, sending a short mail was enough in most cases to get it unblocked.</p>
+<p>The labs are equipped with modern computer systems, and Ubuntu is installed on almost every department system. The particular emphasis on the use of open-source software is a big plus point for the department.</p>
+<h2 id="courses">Courses</h2>
+<p>The curriculum was last updated in 2010. Since then, six batches have graduated. I think it is an excellent time to consider revising it. The current curriculum is good enough for most traditional CS subjects, but its focus on the present buzzwords of the CS world is very less. I heard that the department changed the curriculum for the batches joining 2017 onwards, but I doubt that there are any significant changes.</p>
+<!-- raw HTML omitted -->
+<p>The academics are taken quite seriously in the department (apparently). The level of question papers in examinations is generally very tough. I always felt the heat, at least. However, teachers are quite friendly and will help you with any of your queries.</p>
+<p>The situation of lab courses (except OS, Compilers, and DSA lab) in the department is very pathetic. Operating Systems lab and Compiler lab have a well-defined structure, and the feeling of developing your tiny OS or compiler is one of the best feelings ever. Data Structure and Algorithms lab runs in parallel to the corresponding theory course, and that helps students in understanding theory by practice.</p>
+<p>I cannot say the same about any other lab in the department; most of the students end up learning nothing new from these lab courses. The problem is in the way these courses are handled. There does not seem to be a proper structure of teaching in these courses. Students are expected to learn on their own and come to the lab and give exams. Although most of the time, the corresponding theory course carries marks for a mini project which compensates for the lab course, these lab courses do have some scope for improvements.</p>
+<h2 id="placements--higher-studies">Placements &amp; Higher Studies</h2>
+<p>The department does not handle placements, but the quality of education and the focus on industry-oriented courses do affect the placements. The placement department of NIT-C has been doing an excellent job of maintaining a track record of over 90% placements from computer science every year.</p>
+<p>Department, as such, does not focus on placements much. I feel that the department is more interested in making researchers than software engineers. Most of the courses are very heavily inclined towards theory. From my batch, I know at least ten people who are planning to go to the USA for higher studies in the next two years. The faculties also encourage students to pursue higher education (and subsequently research). Perhaps, it is one of the reasons that the state of competitive coding is not very good in the department.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Despite continuous lack of good permanent faculties and its location disadvantages, CSED of NIT-C has managed to produce competent engineers year by year. Spending four years in Kerala can be a different experience for outsiders, especially North Indians, but it is an experience worth gaining. If you have a good rank in JEE Mains and do not mind going too far from home, CSED of NIT Calicut is an excellent choice. I hope you will not regret the decision, though I will not say the same about other departments of NIT-C.</p>
+<p>If you decide to join NIT-C, do read my article about my <a href="/posts/2018/06/mistakes-that-i-made-in-nitc/">experience</a> at NIT Calicut.</p>
+<p>Thanks to my friends <a href="https://www.linkedin.com/in/aashishsatya">Aashish</a>, <a href="https://www.linkedin.com/in/mahaveer-chouhan-575abba7/">Mahaveer</a> and <a href="https://www.facebook.com/faris.shajahan.1">Faris</a> for reading the drafts of this article and providing their suggestions.</p>
+<p>Best wishes. Cheers 😄</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/write-ups" term="write-ups" label="Write-ups" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/cse" term="cse" label="CSE" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/review" term="review" label="review" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/nitc" term="nitc" label="NITC" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[2017 - The Best Till Now]]></title>
+            <link href="https://yashagarwal.in/posts/2017/12/2017-the-best-till-now/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://yashagarwal.in/posts/2017/12/2017-the-best-till-now/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2017-12-31T23:19:00+05:30</published>
+            <updated>2017-12-31T23:19:00+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[
+
+
+
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet" href="/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css">
+
+    
+
+    
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        
+        <div class="pswp__bg"></div>
+        
+        <div class="pswp__scroll-wrap">
+            
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    
+                    
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<p>If I have to define 2017 in one word, that would be amazing. This year has been a life-changing year for me. I learned a lot of new things, had some excellent experience in the company of amazing people, had a great time in my academic life and SSL. 2017 has been a very significant year for me, and I want to record this memory by documenting some of the most amazing things that I learned and experienced this year.</p>
+<h2 id="grades">Grades</h2>
+<p>Although I cared very little for grades for the most of my college life, this year changed my perception of grades. I finally understood that the grades are also equally important. I started <em>2017</em> with only one goal &mdash; getting good grades. I studied a lot in the first half of the year, and it is because of that time, I hold an excellent command over Computer Networks. If I have to choose any one semester for my placement, It would be 6th semester.</p>
+<p>I invested most of my time for preparation of campus placements in the mid of the year. Reading Data Structures and Algorithms have proven to be very beneficial for me. However, the way I studied Data Structures, hasn&rsquo;t improved my skills in real-world problem-solving skills.</p>
+<p>I did not do exceptionally well in academics in the late half of the year. Partly because of the <em>after placement</em> and <em>&ldquo;Dude, it is fourth year&rdquo;</em> type of environment around me. My final year project did not go in the right direction, and it is one of the very few disappointments for me in <em>2017</em>.</p>
+<h2 id="coding">Coding</h2>
+<p>It is one thing which I could never excel in my undergrad life. People say that coding is a skill and it requires practice. However, to continue doing that practice, one needs patience, that, unfortunately, I lack. This year continued to be the same as 2016. I could not overcome my fear of coding. I tried doing something different in the form of <a href="https://twitter.com/_100DaysOfCode">#100daysofcode</a>, but couldn&rsquo;t continue it after 20 days because of my preparations for campus placements. I have again started writing code on a regular basis in late December. Looking forward to code more frequently in 2018.</p>
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr"><a href="https://twitter.com/TheYashAgarwal?ref_src=twsrc%5Etfw">@theyashagarwal</a> is one of the <a href="https://twitter.com/hashtag/supercoder?src=hash&amp;ref_src=twsrc%5Etfw">#supercoder</a> of the day. Good work. <a href="https://twitter.com/hashtag/100DaysOfCode?src=hash&amp;ref_src=twsrc%5Etfw">#100DaysOfCode</a> <a href="https://twitter.com/hashtag/301DaysOfCode?src=hash&amp;ref_src=twsrc%5Etfw">#301DaysOfCode</a></p>&mdash; SuperCoderBot (@heroes_bot) <a href="https://twitter.com/heroes_bot/status/873491081173897216?ref_src=twsrc%5Etfw">June 10, 2017</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Recently I started working on Debian Packaging. <a href="http://civic.gnu.org.in/author/praveen">Praveen</a> sir has always been very supportive of me and answered all my ludicrous questions very patiently. My conversation with him about free software philosophy has been very enlightening. Debian Packaging was a very satisfying experience to be able to give something back to the community. Now, I hold <a href="https://qa.debian.org/developer.php?login=yashagarwaljpr@gmail.com">one</a> package in the unstable Debian repository and <a href="https://qa.debian.org/developer.php?login=bansaly26@gmail.com">two</a> more packages in the pipeline for approval.</p>
+
+
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+        
+    
+
+
+    <link rel="stylesheet" href="/css/hugo-easy-gallery.css">
+    
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/2017-12-31/HackFest1.jpg');">
+            <img itemprop="thumbnail" src="/images/2017-12-31/HackFest1.jpg" alt="Working on my first Debian package"/>
+        </div>
+        <a href="/images/2017-12-31/HackFest1.jpg" itemprop="contentUrl"></a>
+            <figcaption>
+                    <p>Working on my first Debian package</p>
+            </figcaption>
+    </figure>
+</div>
+
+    
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/2017-12-31/HackFest2.jpg');">
+            <img itemprop="thumbnail" src="/images/2017-12-31/HackFest2.jpg" alt="Praveen sir and team"/>
+        </div>
+        <a href="/images/2017-12-31/HackFest2.jpg" itemprop="contentUrl"></a>
+            <figcaption>
+                    <p>Praveen sir and team</p>
+            </figcaption>
+    </figure>
+</div>
+
+
+</div>
+<h2 id="placement">Placement</h2>
+<p>I joined NIT Calicut due to many <a href="http://dsanghi.blogspot.in/2011/05/my-2011-list-of-recommended-csit.html">reasons</a>. Placements were undoubtedly one of the most important of them. Fortunately, I was among first few students to get placed in my batch. That moment came with a great relief in my life.</p>
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img">
+            <img itemprop="thumbnail" src="/images/2017-12-31/placement.png#center" alt="A private post on FB, now public"/>
+        </div>
+        <a href="/images/2017-12-31/placement.png#center" itemprop="contentUrl"></a>
+            <figcaption>
+                    <p>A private post on FB, now public</p>
+            </figcaption>
+    </figure>
+</div>
+
+<h2 id="reading">Reading</h2>
+<p>I had started this year with an aim to read ten books and keep track of my reading on <a href="https://www.goodreads.com/user_challenges/8390620">Goodreads</a>. In the end, I could not finish my goal. I did occasionally try to meet my goal, but my excessive reliance on soft copies of the books always distracted me. Now, it is not a surprise that I am unable to read anything on a screen. I got three hard copy books and finished two of them. However, I could not go past more than 20 pages of any digital book, that I bought on Kindle.</p>
+<h2 id="writing">Writing</h2>
+<p>I have not written for the most of the year. I do think about writing occasionally and keep a note of all the ideas that I get. However, due to my busy schedule and my usual procrastination, I do not write that often. In 2018, I will try to write more often.</p>
+<h2 id="health">Health</h2>
+<p>It is one issue where I do not put enough stress. I can divide my year into two parts for this portion. Pre Birthday half and post Birthday half. I maintained a daily exercise routine for the first half of the year. That helped me in many ways. I felt more energetic, more productive and more resolute to troubles in life. I slept at ten each day and woke up early morning. It resulted in excellent health, which I had always lacked.</p>
+<p>However, the second half of the year was disastrous. Due to weather and other unavoidable circumstances, I could not keep up my routine; once I came back to college. I started sleeping late again, and that resulted in me going to docter very often in the last two months.</p>
+<h2 id="relations">Relations</h2>
+<p>I continued to feel bored in the company of people. It is somewhat strange that after getting into college, year by year, my interest in public events has decreased gradually. It may be because of the difference in my understanding of happiness and that of others.</p>
+<p>I built good relations with some faculties in the <a href="http://cse.nitc.ac.in">Department</a>, my technical skills got me some admirers, who eventually became my <em>friends</em>. I made some new friends from MCA also this year. It has been a pleasant experience overall.</p>
+<p><strong><em>Looking forward to 2018 for, full of new experiences!</em></strong></p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/write-ups" term="write-ups" label="Write-ups" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/review" term="review" label="review" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

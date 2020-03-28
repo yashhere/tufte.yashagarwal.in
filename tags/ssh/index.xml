@@ -1,0 +1,132 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    SSH on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/tags/ssh/</link>
+        <description>Recent content  in SSH
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/tags/ssh/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Setting Up SSH Agent in i3</title>
+                <link>https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/</link>
+                
+                
+                <description>&lt;p&gt;In this post, I will write about the procedure to correctly setup SSH and GPG agents in the i3 window manager. To follow this post, you need to have ssh-keys and your private GPG keys ready. If you do not already have these keys with you, I will describe the process of creating the keys.&lt;/p&gt;
+&lt;h2 id=&#34;ssh&#34;&gt;SSH&lt;/h2&gt;
+&lt;p&gt;Generating an SSH key pair provides you with a public key and a private key. The private key should never be given to anyone and public key, well the name itself is self-explanatory.&lt;/p&gt;
+&lt;p&gt;To create a new key pair, open a terminal and paste the text below.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ssh-keygen -t rsa -b &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; -C &lt;span class=&#34;s2&#34;&gt;&amp;#34;your_email_address&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;This command will create a new ssh key pair with the given email address as the label. Press Enter for any question asked. When it asks for the passphrase, type a strong passphrase, otherwise leave it blank to have no password.&lt;/p&gt;
+&lt;h2 id=&#34;gpg&#34;&gt;GPG&lt;/h2&gt;
+&lt;p&gt;You might need to download the GPG command line tools before following the below steps. Follow your distribution&amp;rsquo;s documentation for more help.&lt;/p&gt;
+&lt;p&gt;Once you have downloaded the tools, open a terminal, and type the following command.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;gpg --gen-key&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+You will see something like this. Enter 1 to select the default key choice.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+gpg: directory `/home/yash/.gnupg&amp;#39; created
+gpg: new configuration file `/home/yash/.gnupg/gpg.conf&amp;#39; created
+gpg: WARNING: options in `/home/yash/.gnupg/gpg.conf&amp;#39; are not yet active during this run
+gpg: keyring `/home/yash/.gnupg/secring.gpg&amp;#39; created
+gpg: keyring `/home/yash/.gnupg/pubring.gpg&amp;#39; created
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection?&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;At the next prompt, enter the key size. It is recommended to use the maximum key size of 4096 bits.&lt;/p&gt;
+&lt;p&gt;Enter the time duration for which the key should remain valid. Press Enter to specify the default selection, indicating that the key does not expire.&lt;/p&gt;
+&lt;p&gt;After verifying the information, enter your user information and a strong passphrase. Afterward, GPG will start generating your key. You will see:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse,
+utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;You can now use the key (until it expires) to encrypt your data.&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-ssh-agent&#34;&gt;Setting up SSH Agent&lt;/h2&gt;
+&lt;h3 id=&#34;configuring-i3&#34;&gt;Configuring i3&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Update (26/05/2018):&lt;/strong&gt; &lt;em&gt;As pointed out by &lt;a href=&#34;https://sakshamsharma.com/&#34;&gt;Saksham&lt;/a&gt; in the comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Open i3 configuration file and add an &lt;code&gt;exec_always&lt;/code&gt; statement -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;exec_always ~/.config/i3/scripts/gnome-keyring.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Obviously, you will need to change the path according to your OS. Now make a new file in &lt;code&gt;~/.config/i3/scripts&lt;/code&gt; with name &lt;code&gt;gnome-keyring.sh&lt;/code&gt; and paste the below text in it.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;/usr/bin/gnome-keyring-daemon --start --components&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;gpg,pkcs11,secrets,ssh&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+(Assuming that you already have installed gnome-keyring)&lt;/p&gt;
+&lt;p&gt;Now, reload the i3.&lt;/p&gt;
+&lt;h3 id=&#34;configuring-ssh&#34;&gt;Configuring SSH&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Update (26/05/2018):&lt;/strong&gt; &lt;em&gt;This step is also optional. Thanks to &lt;a href=&#34;https://sakshamsharma.com/&#34;&gt;Saksham&lt;/a&gt; for pointing it out.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Open &lt;code&gt;~/.ssh/config&lt;/code&gt; file and add following content to it -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Host *
+  AddKeysToAgent yes
+  IdentityFile /home/&amp;lt;your username&amp;gt;/.ssh/id_rsa&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Replace &amp;lt;your username&amp;gt; accordingly.&lt;/p&gt;
+&lt;h3 id=&#34;setting-up-bashrc&#34;&gt;Setting up .bashrc&lt;/h3&gt;
+&lt;p&gt;I am not using a login shell, and I could not find any suitable method to source &lt;code&gt;~/.profile&lt;/code&gt; or &lt;code&gt;~/.bash_profile&lt;/code&gt; on login in i3. So I added my configuration to &lt;code&gt;~/.bashrc&lt;/code&gt; file. I know it is a hack, but it works well for me without much headache.&lt;/p&gt;
+&lt;p&gt;Open &lt;code&gt;~/.bashrc&lt;/code&gt; file and add following lines to the end of the file.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt; -f ~/.ssh/agent.env &lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+    . ~/.ssh/agent.env &amp;gt; /dev/null
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; ! &lt;span class=&#34;nb&#34;&gt;kill&lt;/span&gt; -0 &lt;span class=&#34;nv&#34;&gt;$SSH_AGENT_PID&lt;/span&gt; &amp;gt; /dev/null 2&amp;gt;&lt;span class=&#34;p&#34;&gt;&amp;amp;&lt;/span&gt;1&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;then&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Stale agent file found. Spawning a new agent. &amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;ssh-agent &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tee ~/.ssh/agent.env&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+        ssh-add
+    &lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Starting ssh-agent&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;eval&lt;/span&gt; &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;ssh-agent &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; tee ~/.ssh/agent.env&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;
+    ssh-add
+&lt;span class=&#34;k&#34;&gt;fi&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;It will automatically start an &lt;code&gt;ssh-agent&lt;/code&gt; if it is not already running. Otherwise, it attaches to a previously running agent.&lt;/p&gt;
+&lt;p&gt;Now log out and log in again to see if ssh-agent works. Open a terminal and run the command &lt;code&gt;ssh-add -l&lt;/code&gt;. It will show you the hash value of your ssh-key, which is loaded by the ssh-agent.&lt;/p&gt;
+&lt;p&gt;That is all for today. Thank you for reading!&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/hacks">Hacks</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/i3">i3</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/ssh">SSH</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/</guid>
+                <pubDate>Wed, 27 Dec 2017 20:21:09 +0530</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

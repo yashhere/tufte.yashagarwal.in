@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator><title type="html"><![CDATA[NITC on /dev/yash/notes]]></title>
+    
+        <subtitle type="html"><![CDATA[The directory of my thoughts]]></subtitle>
+    
+    
+    
+            <link href="https://yashagarwal.in/tags/nitc/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://yashagarwal.in/tags/nitc/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+            <link href="https://yashagarwal.in/tags/nitc/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
+            <link href="https://yashagarwal.in/tags/nitc/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
+    <updated>2020-03-28T08:04:50+00:00</updated>
+    
+    
+    <author>
+            <name>Yash Agarwal</name>
+            
+                <email>yashagarwaljpr@gmail.com</email>
+            </author>
+    
+        <id>https://yashagarwal.in/tags/nitc/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[The Good and Bad about CSED of NIT-C]]></title>
+            <link href="https://yashagarwal.in/posts/2018/06/the-good-and-bad-about-csed-of-nit-c/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/?utm_source=atom_feed" rel="related" type="text/html" title="Mistakes That I Made in NITC" />
+                <link href="https://yashagarwal.in/posts/2016/04/searching-the-goal/?utm_source=atom_feed" rel="related" type="text/html" title="Searching the goal" />
+                <link href="https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/?utm_source=atom_feed" rel="related" type="text/html" title="So I Applied for GSoC" />
+                <link href="https://yashagarwal.in/posts/2018/03/fossmeet18/?utm_source=atom_feed" rel="related" type="text/html" title="FOSSMeet&#39;18" />
+                <link href="https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/?utm_source=atom_feed" rel="related" type="text/html" title="Deactivated My Facebook Account" />
+            
+                <id>https://yashagarwal.in/posts/2018/06/the-good-and-bad-about-csed-of-nit-c/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-06-14T17:59:28+05:30</published>
+            <updated>2018-06-14T17:59:28+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Four years ago, in this very month of June, JEE Mains results were out. I had screwed up my JEE Advanced, so I had to settle for an NIT. My AIR was good enough to get me a seat of Computer Science and Engineering in any of the NITs except the first three (at that time Trichy, Warangal, and Surathkal). I was skeptical about going to <a href="http://nitc.ac.in/">NIT Calicut</a> because of its distance from my native place, so NIT Allahabad was the most suitable choice. However, in the end, I decided to give preference to NIT Calicut over NIT Allahabad. One of the many reasons for this decision was an excellent <a href="http://dsanghi.blogspot.com/2011/05/my-2011-list-of-recommended-csit.html">article</a> by Dr. Dheeraj Sanghi, a retired professor from IIT Kanpur. His blog post was the primary reason; I decided to go with NIT Calicut. Now that I have graduated from NIT Calicut, I think it is the right time to document my observations about the CSE department of NIT Calicut from the perspective of a student.</p>
+<p>My exposure to the CSE department was limited to the facilities provided to undergraduate students only (almost everything except some academic facilities), so I am not entirely sure if this article will help any of the postgraduate students out there. However, some points below might help you decide about the non-academic activities of the department.</p>
+<h2 id="faculties">Faculties</h2>
+<p>Like every other NIT, NIT Calicut also suffers from the lack of permanent faculties. Most of the faculties in the department are recruited on a contract basis (ad-hoc). It is <strong>not</strong> necessarily a <a href="http://dsanghi.blogspot.com/2018/05/teaching-by-temps-it-is-budget-issue-too.html">bad</a> thing, but many a time, an ad-hoc faculty gets to teach a subject where one does not hold strong command. In that case, the subject becomes a burden for both student and teacher. It happened to me many times when I was stuck in a situation that I ended up losing my interest in the subject as well as grades.</p>
+<p>Most of the core subjects are taught by permanent faculties who are very good at their subjects. These faculties are very experienced and are alumni of some of India&rsquo;s top IITs and IISc. The department used to <a href="http://dsanghi.blogspot.com/2011/05/my-2011-list-of-recommended-csit.html">ask</a> new hires to get a postgraduate degree from some IIT or IISc, but this does not seem to be the case anymore.</p>
+<p>Most of the professors prefer to teach traditional computer science subjects, so if you are interested in AI, Data Science, or any other such areas of computer science, then you might have to depend on self-study.</p>
+<h2 id="club-activities">Club Activities</h2>
+<p><a href="http://assoc.cse.nitc.ac.in">CSEA</a> is the main departmental club that organizes almost every co-curricular activity in the department. In my opinion, CSEA is the best department association in NIT Calicut. I was not a member of CSEA, so all of my views are from the perspective of an outsider. CSEA organizes talks and workshops for the freshers from time to time. I attended all the lectures and seminars arranged by CSEA in my initial years, and I feel that those workshops were quite beneficial for me as a student.</p>
+<p>FOSSCell is a group of students who contribute to open-source software. FOSSCell organizes workshops related to Linux and open source contributions. It also organizes <a href="http://fossmeet.in/">FOSSMeet</a>, the yearly free and open-source software conference organized in NIT-C. It is one of the largest gatherings of open source enthusiasts in South India. I have written two posts about my experience as a part of the organizing team of FOSSMeet. You can read them <a href="/posts/2017/03/fossmeet17/">here</a> and <a href="/posts/2018/03/fossmeet18/">here</a>. Attending and organizing FOSSMeet is one of the best experiences of my college life. The current executives of FOSSCell are actively working on improving the state of open source contributions in NIT-C. I hope the situation will change in the coming years.</p>
+<p>The students manage all the labs in the department. The <a href="http://athena.nitc.ac.in">Software Systems Lab</a> is assigned to undergraduate students. This lab is probably the crown jewel and pride of every CS student of NIT Calicut. It remains open most of the time. All the department servers are kept in this lab and are managed independently by the student administrators chosen by the student administrators. The student administrators are given the responsibility to maintain all the department websites. I do not know if any other university or college in India provides such independence to its students. I was one of the student administrators in this lab, and I consider that this was the best thing that happened to me during my graduation.</p>
+<h2 id="the-infrastructure">The Infrastructure</h2>
+<p>A traditional computer science course does not require many types of equipment except a laptop and a fast enough internet connection. Internet speed is not extraordinary in NIT-C, but it was sufficient for me. The network administrators blocked many websites, but if the site is related to coursework, sending a short mail was enough in most cases to get it unblocked.</p>
+<p>The labs are equipped with modern computer systems, and Ubuntu is installed on almost every department system. The particular emphasis on the use of open-source software is a big plus point for the department.</p>
+<h2 id="courses">Courses</h2>
+<p>The curriculum was last updated in 2010. Since then, six batches have graduated. I think it is an excellent time to consider revising it. The current curriculum is good enough for most traditional CS subjects, but its focus on the present buzzwords of the CS world is very less. I heard that the department changed the curriculum for the batches joining 2017 onwards, but I doubt that there are any significant changes.</p>
+<!-- raw HTML omitted -->
+<p>The academics are taken quite seriously in the department (apparently). The level of question papers in examinations is generally very tough. I always felt the heat, at least. However, teachers are quite friendly and will help you with any of your queries.</p>
+<p>The situation of lab courses (except OS, Compilers, and DSA lab) in the department is very pathetic. Operating Systems lab and Compiler lab have a well-defined structure, and the feeling of developing your tiny OS or compiler is one of the best feelings ever. Data Structure and Algorithms lab runs in parallel to the corresponding theory course, and that helps students in understanding theory by practice.</p>
+<p>I cannot say the same about any other lab in the department; most of the students end up learning nothing new from these lab courses. The problem is in the way these courses are handled. There does not seem to be a proper structure of teaching in these courses. Students are expected to learn on their own and come to the lab and give exams. Although most of the time, the corresponding theory course carries marks for a mini project which compensates for the lab course, these lab courses do have some scope for improvements.</p>
+<h2 id="placements--higher-studies">Placements &amp; Higher Studies</h2>
+<p>The department does not handle placements, but the quality of education and the focus on industry-oriented courses do affect the placements. The placement department of NIT-C has been doing an excellent job of maintaining a track record of over 90% placements from computer science every year.</p>
+<p>Department, as such, does not focus on placements much. I feel that the department is more interested in making researchers than software engineers. Most of the courses are very heavily inclined towards theory. From my batch, I know at least ten people who are planning to go to the USA for higher studies in the next two years. The faculties also encourage students to pursue higher education (and subsequently research). Perhaps, it is one of the reasons that the state of competitive coding is not very good in the department.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Despite continuous lack of good permanent faculties and its location disadvantages, CSED of NIT-C has managed to produce competent engineers year by year. Spending four years in Kerala can be a different experience for outsiders, especially North Indians, but it is an experience worth gaining. If you have a good rank in JEE Mains and do not mind going too far from home, CSED of NIT Calicut is an excellent choice. I hope you will not regret the decision, though I will not say the same about other departments of NIT-C.</p>
+<p>If you decide to join NIT-C, do read my article about my <a href="/posts/2018/06/mistakes-that-i-made-in-nitc/">experience</a> at NIT Calicut.</p>
+<p>Thanks to my friends <a href="https://www.linkedin.com/in/aashishsatya">Aashish</a>, <a href="https://www.linkedin.com/in/mahaveer-chouhan-575abba7/">Mahaveer</a> and <a href="https://www.facebook.com/faris.shajahan.1">Faris</a> for reading the drafts of this article and providing their suggestions.</p>
+<p>Best wishes. Cheers 😄</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/write-ups" term="write-ups" label="Write-ups" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/cse" term="cse" label="CSE" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/review" term="review" label="review" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/nitc" term="nitc" label="NITC" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Mistakes That I Made in NITC]]></title>
+            <link href="https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2016/04/searching-the-goal/?utm_source=atom_feed" rel="related" type="text/html" title="Searching the goal" />
+                <link href="https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/?utm_source=atom_feed" rel="related" type="text/html" title="So I Applied for GSoC" />
+                <link href="https://yashagarwal.in/posts/2018/03/fossmeet18/?utm_source=atom_feed" rel="related" type="text/html" title="FOSSMeet&#39;18" />
+                <link href="https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/?utm_source=atom_feed" rel="related" type="text/html" title="Deactivated My Facebook Account" />
+                <link href="https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/?utm_source=atom_feed" rel="related" type="text/html" title="Why a Sanskrit Shloka?" />
+            
+                <id>https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-06-01T10:21:45+05:30</published>
+            <updated>2018-06-01T10:21:45+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Now that I am graduated from NIT Calicut, one more chapter of my life is over. It is time to move on to the next page, but before I begin that phase, I thought it would be nice, to sum up, the experience that I gathered in NIT Calicut. The last four years have been great for me. I learned a lot of new life lessons, but there were some decisions that I could have avoided. I take full responsibility for my actions and do not blame anybody for the same. Although I do not regret taking any of those decisions, I feel it is crucial to document all those lessons before they vanish from my <em>otherwise</em> average memory. This post is intended to serve as a document for my future self, but most of the content here should be able to help anyone who happens to read this post. Most of this content has been taken from my journal, which I maintained (not consistently) over the last two years.</p>
+<h2 id="studies">Studies</h2>
+<p>From the first year itself, I had an impression from various online QA sites and some seniors that studies are not a big deal in college. That was a grave mistake which cost me a lot during my college life. I tried to compensate for it in the latter half of my graduation, but that was not enough.</p>
+<p>While my friends used to learn by teaching each other, I never enjoyed studying in groups. I wish I had participated more in such group learning activities.</p>
+<p>Most of the courses taught in traditional colleges like NITC are useless, in my opinion. However, Data Structures and Algorithms(DSA) was one subject which shows its importance again and again. It is one of those subjects where I should have put more attention. Although I was suffering from a fracture at the time of this course, some more efforts from my side could have changed things as they are today.</p>
+<h2 id="wrong-learning-methods">Wrong learning methods</h2>
+<p>I always tended to learn anything new using the tutorials available on the Internet. It is fine, but I never tried to do any projects/practicals to strengthen my learning. In my experience, it is always better to learn any programming language by doing projects in it.</p>
+<p>My first programming language was C, which was taught in an introductory course in the first year. C is a relatively low-level language, and it helped me in understanding many concepts and working on many systems related stuff. Still, I feel that it is also one of the reasons that I am not able to think in higher-level abstraction. When I started learning Python, I was not able to think anything in abstract terms. I wish I had put more effort into learning Python or any other OOP language early in my college life.</p>
+<h2 id="communication">Communication</h2>
+<p>I have always been an introvert person when it comes to communicating with people. I wish I had worked on improving this aspect of my personality. For the first two years, I never asked any seniors for advice, never asked any questions in the classroom, never discussed project ideas with any faculty. I tried to improve myself in the last two years, and I feel satisfied with my efforts. In my opinion, it is always better to ask a more experienced person for their advice than to take blind steps and regret later.</p>
+<p>I was hesitant about talking to people from different linguistic backgrounds in my first and second years. Again thanks to my inability to communicate with new people. I improved this later, but first impressions are crucial, if not everything.</p>
+<h2 id="friends-and-seniors">Friends and seniors</h2>
+<p>In my first year, I made a mistake by choosing to befriend some people who identified themselves as <em>state seniors</em> (people from the same north Indian state as I am). I was naive in identifying people at that time, but when I look back now, I feel that if I had avoided those people and invested that time in learning something related to CS, I could have gained more out of college. For a person who was entirely new for CS, that one year&rsquo;s time was very crucial, and I completely wasted it. It took me two years to rectify my mistake.</p>
+<h2 id="not-taking-breaks">Not taking breaks</h2>
+<p>I never took breaks from learning new things. I always put my work ahead of my personal life. That was the wrong approach. However, I do not blame myself for this. I was new to such work-life equations, and I did not realize the requirement to maintain a proper work-life balance. I wanted to learn a lot of new things, and college provided me a suitable environment, but I feel that I exhausted myself many times. That resulted in my loss of interest from Computer Science also in the second year.</p>
+<h2 id="writing-and-reading">Writing and Reading</h2>
+<p>I was never a voracious reader in my childhood. I never tried to spend my free time with books. After coming to college, I saw many people reading books day and night. That inspired me to develop a new hobby of <strong>Reading</strong>. Although I still do not read a lot (just 5-6 books a year), it is better than reading none.</p>
+<p>I started this blog in the second year. My intention was <em>not</em> to write. I just wanted to learn how to set up Wordpress and Jekyll. However, slowly I developed the habit of writing. I now consider it the biggest takeaway from college. Writing a blog has helped me learn new things and systematically explain things.</p>
+<p>I tried to write a journal to document significant events in life, but I could not maintain it regularly. That is one thing which I would like to improve in the coming years.</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/write-ups" term="write-ups" label="Write-ups" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/nitc" term="nitc" label="NITC" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/cse" term="cse" label="CSE" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[FOSSMeet'18]]></title>
+            <link href="https://yashagarwal.in/posts/2018/03/fossmeet18/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2017/03/fossmeet17/?utm_source=atom_feed" rel="related" type="text/html" title="FOSSMeet&#39;17" />
+                <link href="https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/?utm_source=atom_feed" rel="related" type="text/html" title="Deactivated My Facebook Account" />
+                <link href="https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/?utm_source=atom_feed" rel="related" type="text/html" title="Why a Sanskrit Shloka?" />
+                <link href="https://yashagarwal.in/posts/2016/04/searching-the-goal/?utm_source=atom_feed" rel="related" type="text/html" title="Searching the goal" />
+            
+                <id>https://yashagarwal.in/posts/2018/03/fossmeet18/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-03-26T11:57:14+05:30</published>
+            <updated>2018-03-26T11:57:14+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>I know I am very late in writing this post. It has been almost one and a half months since the last edition of FOSSMeet is over. I have been a part of FOSSMeet both as a participant and a volunteer. I want to share some of my observations, views, and suggestions through this post. I intend to keep a memory of my most favorite event of NIT Calicut. Juniors can read this post and think about ways to improve FOSSCell and FOSSMeet. I did the same by reading Kartik&rsquo;s <a href="http://techglider.in/post/2013/04/14/of-fossmeets-at-nit-calicut/"><em>post</em></a>.</p>
+<p>Before I start, if you have not read my <em>post</em> on the 2017 edition of the FOSSMeet, it is a good time to read that first. This post is going to be a follow up from where I stopped that post. <a href="/posts/2017/03/fossmeet17/">Here</a> is the link to that post.</p>
+<p>I&rsquo;ll start by quoting some lines from the last paragraph of that article.</p>
+<blockquote>
+<p>I hope that I will find time next year for FOSSMeet, although I would prefer to attend FOSSMeet as a participant observing everything silently rather than being a part of the organizing team.</p>
+</blockquote>
+<p>These were my views after last year&rsquo;s FOSSMeet. I felt that I was not getting any benefit from volunteering for FOSSMeet. It is one thing that you help conducting an event, but on a personal level, I was not learning much. I wanted to attend talks and learn about free software philosophies, but because I was busy volunteering for workshops in <em>SSL</em>, I could not participate in any lecture. So I wanted to make sure that in my last FOSSMeet, I do attend all the talks and learn something new.</p>
+<p>But fate had its plans for me. Few days after writing that post, Simsar, the coordinator of FOSSMeet &lsquo;17, came to my room and asked me if I would like to become the next secretary of FOSSCell. Those who don&rsquo;t know, FOSSCell is the group of people in NITC, who are supposed to work on free and open-source contribution. But it is not very active for the last few years. Probably the seniors decided to give me a chance because I was quite active in providing my suggestions for the FOSSCell when I was in the third year and had shown my intentions to reinitiate FOSSCell. Anyway, I was not very enthusiastic about this opportunity and <em>refused</em> to accept it. I thought that the topic was closed and did not bother about it much.</p>
+<p>Fast forward two months, I was at home thinking about the reasons that I could not get an internship were. I figured out some reasons (a topic reserved for a later post!) and decided that whatever happens, I will not commit these mistakes again. A few days later, Simsar messaged me on WhatsApp, asking whether I am still interested in the post of secretary. This time, I immediately accepted his offer. I was under the influence of my learnings from past mistakes. And that&rsquo;s how I became the unexpected (at least for my batchmates) secretary of FOSSCell.</p>
+<p>I was placed in the first few days of placement season, so I was free on that front. CSEA had conducted a Debian packaging workshop at the very beginning of the semester, but I could not attend that workshop. So I messaged Pirate Praveen sir privately and asked him whether he can guide me about Debian packaging. As with most of the senior open source contributors, he was very enthusiastic about helping me. So that&rsquo;s how I restarted my journey in open source. It was a fun time learning about free software ideology from Pirate Praveen. We decided to conduct a small Debian Packaging hackathon in NITC. As it is a norm in CSE NITC nowadays about any such activity, people did not turn up at all for this hackathon. Only five people showed up for the hackathon. That was disappointing. Though, on a personal level, I was satisfied. I submitted two packages to the Debian unstable repository. We did not have any other activity for the remaining of that semester.</p>
+<p>Okay, enough of the background!</p>
+<h2 id="my-observations">My Observations</h2>
+<p>We opted for the <a href="https://talkfunnel.com">HasGeek&rsquo;s Funnel</a> for the proposal acceptance this time also. The funnel works quite well for our workflow. We did not get many <a href="https://fossmeet-nitc.talkfunnel.com/2018">proposals</a> in the beginning. I had read somewhere on the web that FOSSMeet had a MiniDebConf once. That seemed like an excellent idea to the team. So I talked with Praveen sir, about the possibility of a separate Debian track during FOSSMeet. I thought that Debian packaging might be a good and easy way to introduce NITC students to Open-source software.</p>
+<p>In previous editions of FOSSMeets, the organizers used to receive the <a href="http://techglider.in/post/2013/04/14/of-fossmeets-at-nit-calicut/">feedback</a> that the student audience is entirely novice for some sessions and the supposedly advanced session turned out to be a beginner session. We were well aware of this problem and thought of a way to solve this. The solution may be a controversial one because even I have mixed feelings about this solution. We decided to look at the GitHub profiles of each participant and then select a few participants rather than allowing each and everyone who is paying money to attend the FOSSMeet. Our experience from last year was awful in this aspect. Students from various colleges of Kerala came to FOSSMeet just to get the certificate. Such an audience was not contributing anything to FOSSMeet.</p>
+<p>Now, let me explain why I think that this is not the right way to filter good participants. If I am not wrong, one motive behind organizing such <em>student run conferences</em> is to inspire beginners and college students to learn about free and open-source software and to allow them to learn about new technologies. Now, it should not matter if the person has any prior experience or not. In our case, we prioritized the <em>previous experience</em> part and neglected <em>the will to learn</em>. I know that it is tough to identify if a person is really interested in the event or just coming for the certificate, but still, there must be some better way to solve this issue. For now, this method is the best option available, and it worked well enough for our purpose.</p>
+<p>The decision to allow only 150 participants was an excellent move. We had decided not to have parallel workshops and talks. This decision was a direct outcome of some of the bad feedback from the previous FOSSMeets. The decisions to check GitHub profiles and to restrict the number of participants made sure that this edition of FOSSMeet has the most appropriate (read qualified) audience for any session.</p>
+<p>We publicized the event among CSED&rsquo;s first years. We even had a beginner level Git workshop for them. We were expecting that they will come to take part in the event. These events provide excellent opportunities for newcomers to learn about Computer Science and its various fields. I used to give priority to a CSEA event over any cultural event when I was in my first year. But, the turnout of first-year students for FOSSMeet was very less. I sometimes worry, how are these people going to continue organizing FOSSMeet. In the end, conducting this event will become a burden (of carrying a legacy) for them, and they will hold this event just like any other useless event that happens in NITC every weekend. We even made the entry, free for them; still, if they don&rsquo;t feel interested in the event, then they are at an apparent loss.</p>
+<p>One other complaint that we received from the community was that the procedure of selecting proposals from the funnel is not transparent. <em>In my opinion</em>, it is true. The organizing team of FOSSMeet sit together and choose the topics based on the relevance of the topics and its relation to FOSS ideologies. Most of the proposals in the funnel were related to some technology or programming language. We aimed to give a chance to the talks which explain more about free software in general. Most of the proposals selected this year revolved around this theme with one or two exceptions. But I think it might be a good idea to publicly tell the factors that are taken into account while selecting proposals. FOSSMeet is an event about free software and the community, and it is the responsibility of the organizers to make sure that they adhere to the ideologies of free software, including transparency.</p>
+<p>The decision to select philosophical topics might seem like a great thing. Still, in reality, the student audience is not very interested in listening to some random guy preaching about something which is not very relevant to them. Students want more technical knowledge, which they can get only from technical talks and workshops. I hope that future FOSSMeet organizers will be more careful about maintaining the right balance between technical and not technical discussions and workshops.</p>
+<p>Some students from Amrita college complained about our selection of the same speakers every year. In my opinion, it is a very valid complaint. In my last three FOSSMeets, almost 3-5 speakers are giving talks/workshops every year. I am not saying that it is bad in any way, but the organizing team can start a bit early and invite some other prominent faces of the field from different parts of the country. The issue is that we begin contacting speakers very late and the people coming from far corners of the country or from abroad get very little time for making arrangements.</p>
+<p>We used to have panel discussions in FOSSMeet. For the last two years, we stopped having one. I think that a panel discussion is a great way to learn about different viewpoints of experienced people. It will be good if the future organizers can squeeze one such panel discussion in the FOSSMeet schedule.</p>
+<p>Now coming to my memories of this edition of the event, I liked the video conference by Bradley M Kuhn, the president of the Software Freedom Conservancy. The way he explained current issues in software freedom was fascinating. I was amazed by his humbleness. I was looking forward to the talk by RMS, but he could not deliver his speech due to some technical issues.</p>
+<p><strong>On a lighter note</strong>, It feels strange when you are working in a team where everyone except you speaks a language that you don&rsquo;t understand. I know that it is a very natural behavior, and I have no <em>complains</em> about it. But in my opinion, language is a tool of communication, and when you are not able to communicate your views to others, then there is some problem. When I think about these issues, I admire the forefathers of India for their farsightedness to make a <em>foreign</em> but <em>universal</em> language, one of the official languages of the Republic of India.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I feel at a loss because I got the chance to attend only three FOSSMeets (2015 edition never came to reality). It has been a great experience both as a participant and a volunteer for me over the last three years. I have written two posts about FOSSMeets and have tried to cover everything which I liked or disliked about this event. I might be very <em>biased</em> in the views expressed here as I was very disappointed with the lack of any activity from the FOSSCell side to introduce students about open source contributions. My <em>lack</em> of good communication skills made sure that the trend continues in my tenure also. I wish good luck to the next office bearers and hope that they will not continue this trend. 😄</p>
+<p>Thanks to all fourth years &ndash; Sajmal, <strong>Navaneeth</strong>, Nithin, Kumar, Pavithra, Vrushabh, Nitin, and others for making the FOSSMeet a success. All the best to all juniors &ndash; Abhiram, Archana, Olive, Amruth, Gazala, Abhirami, Anupam, Madhumita, Adil, Vysakh, Arun, and others. Special mention to some second years also &ndash; Nirmal, Faris, Darshana, Kavitha, Naina, Vishnu, and others for helping us out in a smooth organization of the event.</p>
+<p>Feeling relieved now, as this long overdue post is finally complete. If you find the article interesting, share your views in the comments section. Thanks for reading. ☺</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/write-ups" term="write-ups" label="Write-ups" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/nitc" term="nitc" label="NITC" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/fossmeet" term="fossmeet" label="FOSSMeet" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/foss" term="foss" label="FOSS" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Deactivated My Facebook Account]]></title>
+            <link href="https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/?utm_source=atom_feed" rel="related" type="text/html" title="Why a Sanskrit Shloka?" />
+                <link href="https://yashagarwal.in/posts/2017/03/fossmeet17/?utm_source=atom_feed" rel="related" type="text/html" title="FOSSMeet&#39;17" />
+                <link href="https://yashagarwal.in/posts/2016/04/searching-the-goal/?utm_source=atom_feed" rel="related" type="text/html" title="Searching the goal" />
+            
+                <id>https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-03-23T21:00:44+05:30</published>
+            <updated>2018-03-23T21:00:44+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Today, I deactivated my Facebook account again. For the last few days, I was feeling that I am using Facebook excessively. It was affecting my work, my <em>public life</em>. I was using Facebook day in and day out. Today when I woke up in the morning, I first opened Facebook and didn&rsquo;t leave my bed for one hour. I realized that I had wasted one hour merely browsing through useless stuff. Immediately, I decided to deactivate the account for some time and analyze how much my life changes by one less distraction.</p>
+<p>Coincidentally, it is the time of <a href="http://ragam.org.in/Main/">Ragam</a>, the annual cultural festival of NIT Calicut. I <em>introspect</em> myself every year at the same time. For the last two years, this introspection is resulting in the deactivation of my Facebook account. It is the reason why I could finish all my pending projects in the summers.</p>
+<p>I sometimes feel that after coming to NITC, I have become much more socially awkward and even more of a loner than I was before. I never enjoyed going into public events, but in college, that tendency seems to have increased a lot. Now, I do not feel comfortable with this state. I want to change this, but every time I try, there is some <em>invisible force</em> which pulls me back from expressing myself. NITC&rsquo;s environment was entirely different for a person like me, who always preferred to stay alone. So, I built a <em>bubble</em> around myself, where there is no one to disturb or doubt me. It was okay in the initial years of my campus life when circumstances were not in my favor, but now this bubble is an obstacle for me. I feel difficulty in coming out of this bubble.</p>
+<p>There are only one and a half months left of my undergraduate life. I might not overcome this fear at this time. But I hope that the change of environment will help me cross this barrier. I have learned a lot of lessons from my mistakes in the past, and I hope that I will not repeat one of the biggest mistakes of my life.</p>
+<p>I will write again about the changes I feel after deactivating Facebook. In the meantime, I will try to spend more time with my friends and less on my laptop. 😌</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/write-ups" term="write-ups" label="Write-ups" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/nitc" term="nitc" label="NITC" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Why a Sanskrit Shloka?]]></title>
+            <link href="https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2017/03/fossmeet17/?utm_source=atom_feed" rel="related" type="text/html" title="FOSSMeet&#39;17" />
+                <link href="https://yashagarwal.in/posts/2016/04/searching-the-goal/?utm_source=atom_feed" rel="related" type="text/html" title="Searching the goal" />
+            
+                <id>https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-01-30T20:29:00+05:30</published>
+            <updated>2018-01-30T20:29:00+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<blockquote>
+<p>श्रूयतां धर्मसर्वस्वं श्रुत्वा चाप्यवधार्यताम् ।</p>
+<p>आत्मनः प्रतिकूलानि परेषां न समाचरेत् ।।</p>
+<p>If the entire Dharma can be said in a few words, then it is — that which is unfavorable to us, do not do that to others.<!-- raw HTML omitted --></p>
+<p>—  Padmapuraana, shrushti 19/357–358</p>
+</blockquote>
+<p>So when you landed on this blog, the first thing you might have noticed is that the home page of this blog has a Sanskrit shloka. Many people ask me, why did I choose to display a Sanskrit shloka on my blog.</p>
+<p>There is no one answer to this question. There have been several incidents in my undergraduate life, which have given me a lot of good and evil memories. This shloka summarizes all those experiences that I earned in NIT Calicut during my undergraduate course. It reminds me, how I should treat others to receive similar treatment.</p>
+<p>It was my first time away from home and family when I got admission in NIT Calicut. I was very naive about judging people. I got to know many new people in NITC. That is when I learned that not everyone is helping you. People are here to exploit you, and they will do anything to achieve their goals and to get success, whether it comes at the price of someone else&rsquo;s loss. It is the harsh truth of life, and the sooner one understands this, the better. I realized this in my second year, and that is when my life changed. Thankfully, I did not find other such people after my first year. However, life is very long, and I am bound to find such people at some point in my life again. I hope the experience that I earned in NITC will help me face that time.</p>
+<p>Now, to the second part of the question, why Sanskrit? A quick Google search reveals that this shloka represents the concept of <a href="https://en.wikipedia.org/wiki/Golden_Rule">Golden Rule</a>, which is common to most world religions, and Hinduism is no exception here. There is even a <a href="https://hinduism.stackexchange.com/questions/21431/what-all-hindu-scriptures-advocate-the-golden-rule-and-what-is-the-oldest-hindu">question</a> about the relation of this shloka with Hinduism. I studied Sanskrit for six years till my 10<!-- raw HTML omitted -->th<!-- raw HTML omitted --> standard and feel a connection to it. Besides, Hindi is my mother tongue, so Sanskrit was the obvious choice given that there is not much Hinduism related literature available in Hindi.</p>
+<p><strong>Edit(23/03/2018)</strong>: I have removed the shloka from the front page now. I am keeping this post for historical purpose.</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/philosophy" term="philosophy" label="Philosophy" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/nitc" term="nitc" label="NITC" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[FOSSMeet'17]]></title>
+            <link href="https://yashagarwal.in/posts/2017/03/fossmeet17/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2016/04/searching-the-goal/?utm_source=atom_feed" rel="related" type="text/html" title="Searching the goal" />
+            
+                <id>https://yashagarwal.in/posts/2017/03/fossmeet17/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2017-03-13T21:03:16+00:00</published>
+            <updated>2017-03-13T21:03:16+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>One more edition of FOSSMeet&rsquo;17 was successfully organized in NIT Calicut recently. As an active member of the organizing team of this year&rsquo;s edition (though I sidelined myself at the end) and a keen but silent observer, I want to share my experience, ideas, and some observations through this post.</p>
+<h2 id="marketing-website">Marketing Website</h2>
+<p>We started planning the next edition of FOSSMeet sometime around September. Not many people were interested in planning. Anyway, Shrimadhav and I began working on the marketing website. The first design was straightaway rejected by Piyush and Simsar, which I feel, was fruitful. In the process, I learned some critical insights about planning, team management, and design of a user-friendly website. So I again started working on the site. The end product was clean, good looking, and simple (at least I was happy with it :P).</p>
+<p>In the meanwhile, Amal and I started thinking about ideas, how can we restructure the FOSSCell, which had not seen a single activity (except those trademark events which were conducted just for formality) in years. I now understand that it was a mistake. It is a prerequisite about open source contribution that you should contribute to the products which you use in day to day life. When we started thinking about the FOSSCell, we didn&rsquo;t know about any of these points. We conducted a formal test(more of a filtering process), then we had a small meeting with the selected 2nd years about the FOSSCell, and we discussed the plan for next semester. Then everyone left for winter vacations.</p>
+<h2 id="a-period-of-self-evaluation">A period of self-evaluation</h2>
+<p>In the winter holidays, we tried to have some IRC discussions, which again was somewhat successful because of the efforts from Shrimadhav and Simsar. It was a new experience for me also, but still, I tried to attend as much as I could. I also took one session on Git and Vim, which again was an entirely new experience for me.</p>
+<p>In the winter vacation, I found some time to think about the purpose of FOSSMeet and FOSSCell and in what direction we were heading. I somehow understood that I was not qualified enough to guide someone about open source contribution or in general FOSS ideology, because I, myself was not contributing anything to open source community, and had no characteristic of a FOSS enthusiast. So I somehow lost my interest in FOSSCell and even in Linux. Shrimadhav asked me my ideas about FOSSCell activities, but I had no clue what to say. So that&rsquo;s how the FOSSCell again died without achieving anything significant. I feel it was my mistake. I still feel sad about this. :(</p>
+<h2 id="fossmeet-time">FOSSMeet time</h2>
+<p>So as the FOSSMeet&rsquo;s dates came near, people started coming for <em>volunteering</em>. It was good for the event, though. The funnel was already up last semester, and we were getting some good proposals also. FOSSMeet also went superbly. All the participants gave excellent reviews. There were some hiccups also, The Campus Internet Connectivity being the most significant one. There were some issues in SSL also, again, somewhere I hold an important responsibility. All in all, everybody praised the event and organization of the event. This year, we tried to reduce the use of plastics, and I feel that we were quite successful.</p>
+<h2 id="my-observations">My Observations</h2>
+<p>There were some issues about the event, which I didn&rsquo;t like at a personal level. I sometimes think about what is the motive for conducting some activities in colleges. An event like FOSSMeet which attract the attention of all FOSS enthusiasts from all over Kerala has a huge potential of inspiring the young folks of NIT Calicut. We somehow succeed in that motive, but what about the situation after FOSSMeet. The enthusiasm about FOSS should not last just for two days, but we cannot blame others for the condition. I don&rsquo;t have a proper idea about the FOSS because there was no proper guidance from my senior batches. I learned many things in the workshops organized by CSEA, in fact, I first learned the proper use of Linux Shell in the Linux workshop conducted by CSEA (and FOSSCell, at least for formality). But you can&rsquo;t ask them to do everything. I think they are already overloaded. But there were no such workshops by FOSSCell.</p>
+<p>Second, the curriculum of the NITC CSE department focuses more on the theoretical side of Computer Science, which is good. But it negatively affects student activities outside the classroom. That is one of the primary reasons why we cannot produce more GSoC participants or why don&rsquo;t we have more open source enthusiasts.</p>
+<p>Third, one of the speakers in FOSSMeet mentioned one fundamental flaw in the structure of the organizing team of FOSSMeet. It doesn&rsquo;t have any representation from other branches. FOSSMeet has become an event for CSE folks, where people from different departments do not take any interest. I think publicity was a major issue here. I don&rsquo;t believe that there was any publicity done to explain FOSSMeet to the students of other branches. (If I am wrong here, please correct me).</p>
+<p>Fourth, people are ready to <em>volunteer</em> for organizing an event, but they do not want to come and attend the workshops. FOSSMeet is held by individuals who have no previous experience of FOSS and have no intention to dive into open source community any time soon. FOSSMeet has become a tradition that is continued every year because it happened the previous year also. I do not feel that enthusiasm to promote FOSS in FOSSMeet because we are organizing it to keep the legacy. I am not saying that whatever effort organizers put in conducting FOSSMeet&rsquo;17 was not significant. I am not the right person to blame them because I was also part of the same team. But still, I feel that FOSSMeet has lost its original motive to promote FOSS culture in NITC. It encourages more people from outside NITC, but inside NITC, it is just one of those many events organized by random clubs.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>It&rsquo;s been an interesting one year for me after becoming SS Lab Admin because I started taking part in department activities that I always wanted to do. Being a member of the organizing team of FOSSMeet&rsquo;17 was again a learning experience for me. I learned many new things, in SSL and outside SSL too. I committed some mistakes also in making the right decisions at the right moment, but that&rsquo;s how I learn. So no regrets. :) I hope that I will find time next year for FOSSMeet, although I would prefer to attend FOSSMeet as a participant observing everything silently rather than being a part of the organizing team.</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/write-ups" term="write-ups" label="Write-ups" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/nitc" term="nitc" label="NITC" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/foss" term="foss" label="FOSS" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/fossmeet" term="fossmeet" label="FOSSMeet" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Searching the goal]]></title>
+            <link href="https://yashagarwal.in/posts/2016/04/searching-the-goal/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://yashagarwal.in/posts/2016/04/searching-the-goal/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2016-04-10T00:33:16+00:00</published>
+            <updated>2016-04-10T00:33:16+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>A boy, probably of age 16, just cleared his 10th board exam. He saw people working on computers, and that fascinated him. So he had only one ambition. You got it, right? One fine day, suddenly his friend&rsquo;s mother asked, &ldquo;So what about the future? You are going to enter in class 11th. It is the right time to decide about your future. What do you want to become, a doctor or an engineer?&rdquo; The boy had no clue how big that question was. What the cost would have been. He simply nodded and said, &ldquo;I like computers very much so I would go for engineering.&rdquo;</p>
+<p>That&rsquo;s it. He decided his fate.</p>
+<p>So here comes the day</p>
+<h2 id="an-accident">An accident</h2>
+<p>After that day, he got into a coaching institute which promised a good rank in JEE. He was told that he would have to study consistently and regularly. The boy, being a determined one, started studying day and night.</p>
+<p>This continued for two years. Finally, after giving 12th board exams, he gave JEE. Unfortunately, he didn&rsquo;t even get into extended merit list.</p>
+<p>Devastated, he pledged not to give up. Oh, that stupid silly guy! He decided to try for one more year.</p>
+<p>He joined another institute in his city. Again the same routine, studying day and night to fulfill <em>his</em> dreams.</p>
+<p><em>Result</em>: Same, Fail!</p>
+<p>But somehow he got a decent rank in JEE Mains thanks to his excellent performance in board exams.</p>
+<h2 id="a-disaster">A disaster</h2>
+<p>Now he had to face one more question. Which college and which branch? For him, the answer was simple. Go to any South Indian college thanks to the influence of his cousins on him (who were very successful in their lives, of course!). He chose Computer Science and Engineering because</p>
+<ul>
+<li>He loved computers.</li>
+<li>Everybody said, &ldquo;Bahut scope hai is branch me.&rdquo;</li>
+<li>Every top ranker of this country choose this branch.</li>
+</ul>
+<p>So the decision was clear. He packed his bag and left home for a NIT situated some 2200 kms far, the comp-sci branch.</p>
+<h2 id="the-coding-disaster">The coding disaster</h2>
+<p>He reached the college. He loved new people, new place, new environment, everything was new, right!. Studies started. He got good grades initially until the real coding and Computer Science related stuff started as courses. His grades fell drastically, his morale too. He got good marks enough to pass the courses. He tried giving his best, but all concepts seemed so alien to him as they wouldn&rsquo;t stay inside his head.</p>
+<p>That guy is now about to complete his 2nd year and just thinking what went wrong with him. He is still trying to keep his journey on the right track. Whether he will be able to finish it successfully or not, only time will tell.</p>
+<p>At last one more year is coming, and it&rsquo;s story will also come here next year.</p>
+<p><a href="https://www.quora.com/What-were-you-once-that-youll-never-be-again/answer/Nishant-Kumar-187?srid=8MaF%EF%BF%BDshare=8df79cac">Inspired by this Quora Post</a></p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/philosophy" term="philosophy" label="Philosophy" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/nitc" term="nitc" label="NITC" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/cse" term="cse" label="CSE" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

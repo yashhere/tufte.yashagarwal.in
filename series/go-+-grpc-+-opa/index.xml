@@ -1,0 +1,500 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    Go &#43; gRPC &#43; OPA on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/series/go-&#43;-grpc-&#43;-opa/</link>
+        <description>Recent content  in Go &#43; gRPC &#43; OPA
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/series/go-&#43;-grpc-&#43;-opa/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 3</title>
+                <link>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-3/</link>
+                
+                
+                <description>&lt;p&gt;I finished my last &lt;a href=&#34;https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/&#34;&gt;post&lt;/a&gt; with the following issue -&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Now, here one problem arises, how to make sure that the search results will not return any book which the user is not
+authorized to access. We will solve this problem using OPA in the next and last post of this series.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let&amp;rsquo;s solve this issue now. We will use OPA&amp;rsquo;s declarative language, Rego, to implement policies which will decide on the
+basis of some user-provided data, which all objects are to be returned to the user.&lt;/p&gt;
+&lt;p&gt;We will also define a list of all the users who are part of this library. Here we are hardcoding this data, as I did
+not want to waste my time in implementing a user registration service, but this functionality is not very important from
+our point of view. We will require only one field from this users data - the &lt;code&gt;user_type&lt;/code&gt; field. This field will
+determine what the access level for the user is. We have already added the &lt;code&gt;access_level&lt;/code&gt; field in the &lt;code&gt;Book&lt;/code&gt; definition
+of our proto file.&lt;/p&gt;
+&lt;p&gt;When the user wants to search for a particular book, it will provide its &lt;code&gt;user_type&lt;/code&gt; the ISBN of the book to our service. Our service
+will take that ISBN and pass it to the OPA server. OPA server already has the &lt;code&gt;Book&lt;/code&gt; data and the &lt;code&gt;User&lt;/code&gt; data. Now it has
+the required ISBN to query the Book data. The Rego policy will query the Book data by ISBN. It will also
+check for the &lt;code&gt;access_level&lt;/code&gt; condition. Moreover, after this operation, it will return the resultant set of books that satisfy both the requirements.&lt;/p&gt;
+&lt;p&gt;Here is the Rego policy -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;n&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;library&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;books&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;users&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;search_books&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;book&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;book&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;isbn&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;books&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;].&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;isbn&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;user_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;books&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;].&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;access_level&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;book&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;books&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;list_all_books&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;books&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;input&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;user_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;books&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;].&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;access_level&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The user data is &lt;a href=&#34;https://github.com/yashhere/go-library-service/blob/master/OPA/users.json&#34;&gt;here&lt;/a&gt; and the book data is &lt;a href=&#34;https://github.com/yashhere/go-library-service/blob/master/add_books.sh&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A sample &lt;code&gt;input&lt;/code&gt; request is shown below -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nt&#34;&gt;&amp;#34;input&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;book&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;isbn&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;1128959038&amp;#34;&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;nt&#34;&gt;&amp;#34;user_type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;code&gt;input&lt;/code&gt; is the data that the user is providing. In &lt;code&gt;search_books&lt;/code&gt; function, the input ISBN is matched with the ISBN
+of all books one by one. Then the resultant set of books is filtered by &lt;code&gt;user_type&lt;/code&gt; and &lt;code&gt;access_level&lt;/code&gt; (these
+two fields are essentially the same). In the last, the resultant set of books is assigned to the variable &lt;code&gt;book&lt;/code&gt; which
+will be returned to the gRPC service.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;list_all_books&lt;/code&gt; function is implemented similarly. The only difference is that we do not need to filter the books
+by ISBN. Filtering by &lt;code&gt;access_level&lt;/code&gt; is enough.&lt;/p&gt;
+&lt;p&gt;Now our library service is completed. It is a very basic service. The intention was to show that the decision-making process can be offloaded to the OPA to reduce the complexity of the services. In this example, the advantages might not
+be obvious, but in large production environments, where many services are running, it can make a significant
+difference.&lt;/p&gt;
+&lt;p&gt;The code for this series can be found on my &lt;a href=&#34;https://github.com/yashhere/go-library-service&#34;&gt;Github&lt;/a&gt; account.&lt;/p&gt;
+&lt;p&gt;I hope you liked the article. Share your views and suggestions in the comments.&lt;/p&gt;
+&lt;p&gt;Thanks for reading. Cheers :)&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/series/go-&#43;-grpc-&#43;-opa">Go &#43; gRPC &#43; OPA</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/grpc">GRPC</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/opa">OPA</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-3/</guid>
+                <pubDate>Mon, 18 Feb 2019 06:47:15 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2</title>
+                <link>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/</link>
+                
+                
+                <description>
+
+
+
+    
+
+    
+    
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css&#34; integrity=&#34;sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css&#34; integrity=&#34;sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css&#34;&gt;
+
+    
+
+    
+    &lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+        
+        &lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+        
+        &lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+            
+            &lt;div class=&#34;pswp__container&#34;&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+                &lt;div class=&#34;pswp__top-bar&#34;&gt;
+                    
+                    &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+                    
+                    
+                    &lt;div class=&#34;pswp__preloader&#34;&gt;
+                        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+                            &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+                                &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+                    &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+                &lt;/button&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+                &lt;/button&gt;
+                &lt;div class=&#34;pswp__caption&#34;&gt;
+                    &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;In the last &lt;a href=&#34;https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/&#34;&gt;post&lt;/a&gt;, we discussed about the structure of our library
+application. In this post, we will define the data definitions using protobuf, and then we will use these definitions to
+create a Go service. We will also add a REST interface to the service. So let&amp;rsquo;s get started.&lt;/p&gt;
+&lt;h2 id=&#34;defining-proto-definitions&#34;&gt;Defining Proto Definitions&lt;/h2&gt;
+&lt;p&gt;gRPC uses protocol buffers for serializing structured data. To define the structure of the data that you want to serialize, we use a &lt;em&gt;proto&lt;/em&gt; file - it is a simple text file that contains all the logical pieces of your data in the form of &lt;em&gt;messages&lt;/em&gt;, and the methods that will be called over the network. To know more about the syntax of proto files, visit &lt;a href=&#34;https://grpc.io/docs/guides/&#34;&gt;this&lt;/a&gt; link.&lt;/p&gt;
+&lt;p&gt;I have defined the following proto file -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-proto&#34; data-lang=&#34;proto&#34;&gt;&lt;span class=&#34;n&#34;&gt;syntax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;proto3&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;package&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;library&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;google/api/annotations.proto&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;service&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;LibraryService&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;rpc&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ListAllBooks&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;QueryFormat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;returns&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Books&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;option&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;google.api.http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;post&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/listBooks&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;body&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;rpc&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AddBook&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;QueryFormat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;returns&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Response&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;option&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;google.api.http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;post&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/addBook&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;body&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;rpc&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SearchBook&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;QueryFormat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;returns&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Response&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;option&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;google.api.http&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;post&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;/searchBook&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;n&#34;&gt;body&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// the library
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Library&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Books&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;books&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Books&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;repeated&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Book&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;books&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// metadata about a book
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Book&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;title&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;author&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;isbn&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;int32&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;no_of_copies&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;int32&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;access_level&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// details about a user
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kd&#34;&gt;enum&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;UserType&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// https://github.com/golang/protobuf/issues/258
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;GARBAGE&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;Student&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;Administration&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;Faculty&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;int32&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;id_no&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;UserType&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;QueryFormat&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;Book&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;book&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Response&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;action&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;int32&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;status&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;k&#34;&gt;oneof&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;Book&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;book&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;User&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;user_data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;message&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Empty&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To compile it, run the following commands -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;protoc -I/usr/local/include -I. &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-I&lt;span class=&#34;nv&#34;&gt;$GOPATH&lt;/span&gt;/src &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;-I&lt;span class=&#34;nv&#34;&gt;$GOPATH&lt;/span&gt;/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;--go_out&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;plugins&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;grpc:. &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;api/library.proto&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;protoc -I/usr/local/include -I. &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -I&lt;span class=&#34;nv&#34;&gt;$GOPATH&lt;/span&gt;/src &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  -I&lt;span class=&#34;nv&#34;&gt;$GOPATH&lt;/span&gt;/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  --grpc-gateway_out&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;logtostderr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;true:. &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;  api/library.proto&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It will generate corresponding Golang definitions of the messages and services defined in the Proto file. These
+definitions can be used by the server and client stubs to communicate with each other.&lt;/p&gt;
+&lt;h2 id=&#34;implementation-of-go-service&#34;&gt;Implementation of Go service&lt;/h2&gt;
+&lt;p&gt;Now we can start implementing the code for our services &lt;code&gt;AddBook()&lt;/code&gt;, &lt;code&gt;ListAllBooks()&lt;/code&gt; and &lt;code&gt;SearchBook()&lt;/code&gt;. It is going to
+be a very naive implementation of a library system, but it will be sufficient to learn all the concepts.&lt;/p&gt;
+&lt;p&gt;My implementation of the server stub is hosted
+&lt;a href=&#34;https://github.com/yashhere/go-library-service/blob/master/pkg/librarylib/server.go&#34;&gt;here&lt;/a&gt;. A basic flow diagram of
+this implementation will look like this -&lt;/p&gt;
+
+
+
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/hugo-easy-gallery.css&#34;&gt;
+    
+
+
+&lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34; style=&#34;max-width:650px&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center&#34; alt=&#34;Architecture&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The gRPC server will listen on port &lt;code&gt;:50051&lt;/code&gt;, and a REST HTTP server will listen on port &lt;code&gt;:8181&lt;/code&gt;. The OPA server is
+running on port &lt;code&gt;:8182&lt;/code&gt;. The REST server is
+implemented using &lt;a href=&#34;https://github.com/grpc-ecosystem/grpc-gateway&#34;&gt;gRPC-Gateway&lt;/a&gt;. There are three methods - &lt;code&gt;AddBook()&lt;/code&gt;,
+&lt;code&gt;ListAllBooks()&lt;/code&gt;, and &lt;code&gt;SearchBook()&lt;/code&gt;. These methods can be called using either gRPC methods or using the REST endpoints
+&lt;code&gt;/addBook&lt;/code&gt;, &lt;code&gt;/listBooks&lt;/code&gt; and &lt;code&gt;/searchBook&lt;/code&gt;. By design, the library gRPC service will not implement the authentication
+part of the service. The main purpose of using gRPC here is to provide a scalable and secure medium where all the
+communication between client and server is happening in binary format, which is slightly more secure than the
+traditional mediums. In the current form, this gRPC server will accept requests from everyone and execute the desired
+functions. That is not desirable. What if a student tries to add a book to the library. Only Admins should be allowed to
+execute such functions. What if someone who is not a student of the University tries to access the service. How to stop
+them?&lt;/p&gt;
+&lt;p&gt;There are two steps to solve this issue -&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Authentication&lt;/strong&gt; - It mainly deals with the question - who are you? It is a way to gain access to the system by verifying your identity. In our case, a user will provide its username and password to access the library service.
+Without this authentication, the user will not be able to access the system. We will not be implementing authentication
+functionality in our application.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Authorization&lt;/strong&gt; - It deals with the question - which resources are you allowed to use? OPA can be used here to define various rights based on the access levels of the users.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you have noticed, I have defined an &lt;code&gt;access_level&lt;/code&gt; field in the proto definition of the &lt;code&gt;Book&lt;/code&gt;. This field will tell
+us what is the minimum access level required for a user to access this book.&lt;/p&gt;
+&lt;p&gt;Again, in the proto definition of the &lt;code&gt;User&lt;/code&gt;, I have defined a &lt;code&gt;user_type&lt;/code&gt; field. This field will serve as an indicator of
+the access rights of the user. In the real world, these access rights will be decided after the user has authenticated
+herself to
+the system, but here, we will hardcode the access rights.&lt;/p&gt;
+&lt;p&gt;So, only users with access rights equal to &lt;code&gt;Administration&lt;/code&gt; will be allowed to add books to the system. Here we do not
+care who the user is. If the user is supplying the correct access right, she will be allowed to operate.
+The authentication logic in real-world scenarios will determine the &lt;em&gt;who&lt;/em&gt; part.&lt;/p&gt;
+&lt;p&gt;There are some books in the library, which have access rights equal to that of a &lt;code&gt;Faculty&lt;/code&gt;. It means that only faculties
+will be allowed to access those books. The students will not be able to access these books, even while searching for
+books using ISBN. This kind of mechanism can be implemented using OPA very quickly. We will see the implementation of the OPA
+part in the next post.&lt;/p&gt;
+&lt;p&gt;While querying the service, users are required to supply their identity (at least &lt;code&gt;user_type&lt;/code&gt;) and the book ISBN if
+they are searching for some book. The administrators are supposed to provide the name, author, access level, number of copies, and ISBN while adding the books. I have not added the error checking functionality in the code, but it should be
+easy enough to implement such functionality.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/yashhere/go-library-service/blob/master/cmd/main.go&#34;&gt;main.go&lt;/a&gt; file is the starting point of this service. It will spawn two servers in two Go Routines. Ideally, some synchronization mechanisms should be implemented in the code to avoid race conditions in some cases - for example, what will happen if two or more clients are trying to add the same book simultaneously. Here in our case, nothing serious
+will happen, as OPA will take only one book per ISBN, and discard all the other books with the same ISBN even if the other
+metadata is different (I designed the service in this way to keep the code easy enough to understand), but if there are
+other operations like DeleteBook and IssueBook, then the race conditions can cause issues.&lt;/p&gt;
+&lt;p&gt;In the &lt;code&gt;AddBook()&lt;/code&gt; function, the user provided book details will be sent to the OPA server using a REST call. OPA will
+store this information in its in-memory store at a unique place determined by the ISBN of the book. In actual cases, the data should be stored in some persistent
+storage, such as a DB. OPA will take the information from the DB. Again, to keep the implementation easy enough to
+understand, we are not using any such persistent storage. If any other book with different metadata but the same ISBN comes,
+then OPA will overwrite the existing book with the new one.&lt;/p&gt;
+&lt;p&gt;In the &lt;code&gt;SearchBook()&lt;/code&gt; function, the user will provide the ISBN of the desired book. The gRPC service will call
+the OPA using REST API and find if any such book exists or not.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;ListAllBooks()&lt;/code&gt; is different in the way that it does not need any ISBN.&lt;/p&gt;
+&lt;p&gt;Now, here one problem arises, how to make sure that the search results will not return any book which the user is not
+authorized to access. We will solve this problem using OPA in the next and last post of this series.&lt;/p&gt;
+&lt;p&gt;I hope that this post was helpful. If you have any doubts or want to say anything else, please comment. It will be a great
+motivation and appreciation for me.&lt;/p&gt;
+&lt;p&gt;Thanks for reading. Cheers 😄&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/series/go-&#43;-grpc-&#43;-opa">Go &#43; gRPC &#43; OPA</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/grpc">GRPC</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/opa">OPA</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/</guid>
+                <pubDate>Sun, 17 Feb 2019 14:44:56 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 1</title>
+                <link>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/</link>
+                
+                
+                <description>&lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt; &amp;ndash; In a series of blog posts, I will be implementing a simple library application supporting both gRPC and REST interfaces using Go, gRPC, and
+OPA. My approach might not be the most optimal one, but I am learning these technologies currently. Please give your
+valuable suggestions and be kind :)&lt;/p&gt;
+&lt;p&gt;I have been learning the basics of microservices and Golang lately. On the work front, I got a chance to work on Go, gRPC, and Open
+Policy Agent as my first professional project. In this post, I will be demonstrating what I learned in the last few months.
+We will be implementing a simple gRPC based library service, which will be able to serve
+requests using both gRPC and REST calls. It will also incorporate the Open Policy Agent (OPA) to provide the authorization
+to users. Let&amp;rsquo;s begin with a quick introduction to gRPC and OPA.&lt;/p&gt;
+&lt;h2 id=&#34;grpc&#34;&gt;gRPC&lt;/h2&gt;
+&lt;p&gt;gRPC is Google&amp;rsquo;s implementation for Remote Procedure Calls(RPC). RPC is mainly used in building scalable distributed systems. While REST has a limited set of verbs, RPC can define any function calls, including synchronous and asynchronous calls.&lt;/p&gt;
+&lt;p&gt;In gRPC, the client can make procedure calls as if the requests are made to some local function. However, the underlying client
+stub (auto-generated) will send the call to the server. The server will have a similar server stub, which will be able to
+handle the requests coming from the client. The server will send the response to the client using similar mechanisms
+over the network. All the communication is serialized to binary format, so it is ideal for distributed systems as binary format
+tends to be on the faster side for large amounts of data.&lt;/p&gt;
+&lt;p&gt;For more info about gRPC, visit the official &lt;a href=&#34;https://grpc.io/&#34;&gt;website&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;open-policy-agent-opa&#34;&gt;Open Policy Agent (OPA)&lt;/h2&gt;
+&lt;p&gt;OPA gives us the ability to define a fine-grained policy control mechanism. However, I think the most critical benefit of
+using OPA is that it gives you the ability to decouple your services and the definition of policies from the enforcement
+of it.&lt;/p&gt;
+&lt;p&gt;There are mainly two parts of OPA -&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A JSON document store where you can define anything from your users, access roles,
+permission levels, etc.&lt;/li&gt;
+&lt;li&gt;A policy is written in a declarative language. This policy gives you new derivative data from the original JSON document store evaluated by the policy. The declarative language is called Rego, and these policies are also documents that generate results according to the defined policy. The users query these results.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This info will be sufficient for our use case. More info about it can be found at the official
+&lt;a href=&#34;https://www.openpolicyagent.org/&#34;&gt;website&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;the-skeleton-of-our-application&#34;&gt;The skeleton of our Application&lt;/h2&gt;
+&lt;p&gt;We will be building a command-line library application. This application will support adding, deleting, searching, issuing, and returning of
+books. There are three types of users &amp;ndash; student, faculties, and staff. Not all users have a similar kind of access level. There are some books which are only reserved for students, and some are exclusively reserved for faculties and so on.&lt;/p&gt;
+&lt;p&gt;I think emulating the &lt;a href=&#34;https://harrypotter.fandom.com/wiki/Hogwarts_Library&#34;&gt;library&lt;/a&gt; at Hogwarts will be a good idea here. Students and ordinary people were not allowed inside
+the restricted section of the library. We will emulate that restricted section using the authorization mechanisms
+provided by OPA.&lt;/p&gt;
+&lt;p&gt;The gRPC protocol will handle the communications part in our app, but not everyone in Hogwarts is using gRPC. Wizards
+are still in love with REST (not a bad thing, though), so we will provide them alike the REST interface to interact
+with our service. We do not want to face the wrath of the wizards, after all.&lt;/p&gt;
+&lt;p&gt;OPA can either be used as a standalone application or be embedded in the Go service as well. Both approaches have
+their pros and cons. I have decided to use OPA as an independent service, as it will be more comfortable that way for us to push
+authorization data and policies to it if such a need arises in the future.&lt;/p&gt;
+&lt;p&gt;One more issue remains - where to store the added books. Shall we persist them? In practical scenarios, persistence is
+always a good idea, but here I do not want to complicate things too much. We could use any Object storage servers (e.g., Minio) to
+store the JSON data generated from our gRPC methods, but that will unnecessarily add complexity to our simple scenario.
+Wizards do not like complicate stuff, you know!&lt;/p&gt;
+&lt;p&gt;In the next posts, we will define our gRPC proto file and build the Go service around it. Then we will add a REST
+interface to our service for simple CRUD operations in our application. Then we will add OPA authorization to restrict
+our users from adding and viewing books which they are not supposed to access.&lt;/p&gt;
+&lt;p&gt;Thank you for reading. Cheers 😊&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/series/go-&#43;-grpc-&#43;-opa">Go &#43; gRPC &#43; OPA</category>
+                                
+                            
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/grpc">GRPC</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/opa">OPA</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/</guid>
+                <pubDate>Sun, 10 Feb 2019 14:29:08 +0530</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

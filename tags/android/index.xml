@@ -1,0 +1,155 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    android on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/tags/android/</link>
+        <description>Recent content  in android
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/tags/android/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Writing Drozer Modules</title>
+                <link>https://yashagarwal.in/posts/2018/05/writing-drozer-modules/</link>
+                
+                
+                <description>&lt;p&gt;This post is a result of my experimentation with Drozer. Drozer is a security testing framework for Android, developed by MWR Labs. According the Drozer&amp;rsquo;s official &lt;a href=&#34;https://labs.mwrinfosecurity.com/assets/BlogFiles/mwri-drozer-user-guide-2015-03-23.pdf&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Drozer allows you to assume the role of an Android app and interact with other apps. It can do anything that an
+installed application can do, such as making use of Android&amp;rsquo;s Inter-Process Communication (IPC) mechanism and
+interact with the underlying operating system.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Drozer modules are written in Python. The module performs operations on an Android device with the help of an agent app installed on the device. The agent app, by default, has permission to use the internet connection only. This permission is required so that the agent can open a ServerSocket on port 31415 (default). The agent will listen for the incoming connections on this port. The console will connect to the agent on this port.&lt;/p&gt;
+&lt;p&gt;Drozer modules are inherited Python classes. The parent class is defined in &lt;a href=&#34;https://github.com/mwrlabs/drozer/blob/develop/src/drozer/modules/base.py&#34;&gt;drozer.modules.Module&lt;/a&gt;. Drozer console provides commands to create a custom module repository, which is very useful for the local development of modules.&lt;/p&gt;
+&lt;p&gt;You can read more about the structure of a Drozer module &lt;a href=&#34;https://github.com/mwrlabs/drozer/wiki/Writing-a-Module&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I will explain all the critical parts of a Drozer module with the help of a sample module. I will be implementing a module to record and save the sound from the inbuilt mic of an Android device.&lt;/p&gt;
+&lt;p&gt;I initialized a new module repository using the Drozer console using the following command.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;dz&amp;gt; module repository create custom
+Initialised repository at custom.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You will see a new directory &lt;code&gt;custom&lt;/code&gt; in your current directory after executing above command. Navigate to this directory and create a new folder with any name. I prefer to name this folder same as my module name. In this folder, create a file &lt;code&gt;__init__.py&lt;/code&gt;. Drozer identifies the folder as a module directory if &lt;code&gt;__init__.py&lt;/code&gt; is present in the directory. Now you can implement your module in this directory.&lt;/p&gt;
+&lt;p&gt;To begin implementing our module, create a new file &lt;code&gt;record.py&lt;/code&gt; in the module directory. Drozer has many different utility classes, which we can use to simplify our implementation. To use these utility classes (&lt;a href=&#34;https://github.com/mwrlabs/drozer/wiki/Using-mixins&#34;&gt;mixins&lt;/a&gt;), our module class must extend &lt;em&gt;mixins&lt;/em&gt; using Python&amp;rsquo;s multiple inheritance feature.&lt;/p&gt;
+&lt;p&gt;We first need to import all the required mixins. The mixins are stored in &lt;code&gt;modules.common&lt;/code&gt; package in the Drozer source tree. After importing mixins and extending our class, the code will look like this. You can also import any other standard Python module here.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;kn&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;drozer.modules&lt;/span&gt; &lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;common&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Module&lt;/span&gt;
+&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;os&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;subprocess&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;time&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Record&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Module&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;common&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Shell&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;common&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FileSystem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;common&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ClassLoader&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now we will set up the metadata for our module. This information will help Drozer to organize and list our module correctly. We can define the name, description, author, date, license, path, permissions, and examples. Most of the available options are self-explanatory. But &lt;em&gt;path&lt;/em&gt; and &lt;em&gt;permissions&lt;/em&gt; require some explanation.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;path&lt;/em&gt; variable defined here is an array that contains the values for the namespace of the module. Drozer supports separate namespaces for each module. We can combine similar modules in the same namespace using this feature.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;permissions&lt;/em&gt; array variable contains all the permissions that this module will require for proper functioning. For example, our module will need permission to record audio on the device to work correctly. So we define this permission in the permissions array. The agent app on the device is required to have this permission. Otherwise, our module will throw an error.&lt;/p&gt;
+&lt;p&gt;The following snippet shows the metadata section of our module.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Record sound from the inbuilt mic of an Android device.&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;description&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Record sound from the inbuilt mic of an Android device. The default save format is 3GPP. Relies on the agent having the RECORD_AUDIO permission.&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;examples&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;dz&amp;gt; run custom.record.record
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;Setting up recorder configuration...
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;Recording started
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;Press any key to stop recording
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;Recording stopped...downloading recording
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;Screenshot captured. Saved at location /home/yash/work/drozer/1524201166.3gp
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;author&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Yash Agarwal&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;date&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;2018-04-14&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;license&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;BSD (3 clause)&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;custom&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;record&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;permissions&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;android.permission.RECORD_AUDIO&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;com.mwr.dz.permissions.GET_CONTEXT&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now we can start implementing the heart of our module, the &lt;code&gt;execute()&lt;/code&gt; function. This function will be invoked by Drozer when the module is run. Every action that the module is expected to perform should be implemented in this method.&lt;/p&gt;
+&lt;p&gt;The implementation of &lt;code&gt;execute()&lt;/code&gt; method is slightly tricky and requires an understanding of different classes and methods provided by the Android API. As we are writing a module to record sound, we will look into the documentation of &lt;a href=&#34;https://developer.android.com/guide/topics/media/mediarecorder.html&#34;&gt;MediaRecorder&lt;/a&gt; class. Before reading further, go through the documentation about the use of reflection API in Drozer &lt;a href=&#34;https://github.com/mwrlabs/drozer/wiki/Using-Reflection&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;execute()&lt;/code&gt; function is given below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;execute&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;arguments&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;):&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;# unique file names&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;filename&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()))&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;.3gp&amp;#34;&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;# current working directory of Drozer console&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;cwd&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;workingDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;# Magic of Reflection API !!!&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;android.media.MediaRecorder&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;AudioSource&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;klass&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;android.media.MediaRecorder$AudioSource&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;OutputFormat&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;klass&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;android.media.MediaRecorder$OutputFormat&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;AudioEncoder&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;klass&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;android.media.MediaRecorder$AudioEncoder&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setAudioSource&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AudioSource&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MIC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setOutputFormat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OutputFormat&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;THREE_GPP&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setAudioEncoder&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AudioEncoder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AMR_NB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setOutputFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/recording.3gp&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cwd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;prepare&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+
+    &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Recording started&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+    &lt;span class=&#34;nb&#34;&gt;raw_input&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Press any key to stop recording&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stop&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+    &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Recording stopped...&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;recorder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;release&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;# Download file from device to PC&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;downloadFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;%s&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/recording.3gp&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cwd&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filename&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;length&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;bp&#34;&gt;None&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stdout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Recording saved&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
+        &lt;span class=&#34;bp&#34;&gt;self&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stderr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;write&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Recording could not be fetched from the device.&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I followed the sample use case given on &lt;a href=&#34;https://developer.android.com/reference/android/media/MediaRecorder.html&#34;&gt;this&lt;/a&gt; page, to instantiate and use the &lt;em&gt;MediaRecorder&lt;/em&gt; object.&lt;/p&gt;
+&lt;p&gt;After the recording is finished, we want to save this recorded media file to our computer. Drozer provides a method, &lt;a href=&#34;https://github.com/mwrlabs/drozer/blob/c92d74024c653b6dc7de3378a24e51d276ae2c62/src/drozer/modules/common/file_system.py&#34;&gt;downloadFile&lt;/a&gt; exactly for this purpose. This method returns the length of the data downloaded on success and &lt;code&gt;None&lt;/code&gt; otherwise. We can use this information to test the success or failure of the fetching of the recording.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s all. We have successfully implemented a Drozer module which can record the sound on an Android device without the knowledge of the user. Do you smell something fishy here? The whole idea here depends on that particular &lt;code&gt;android.permission.RECORD_AUDIO&lt;/code&gt; permission that our agent app had. It allowed our module to record without &lt;em&gt;user consent&lt;/em&gt; (actually, the user gave her consent unknowingly while installing agent app). Many apps nowadays ask for arbitrarily random permissions. Those permissions might not be related to the functionality of the app in any way, but because there is no method to install apps without granting these permissions, the users grant all permissions to these apps. That can be exploited very easily. This tutorial tried to show one of such exploitations.&lt;/p&gt;
+&lt;p&gt;Here are some exercises that you should try if you want to learn more about Drozer module development.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A module to initiate a call on a device.&lt;/li&gt;
+&lt;li&gt;A module to get the clipboard values on a device&lt;/li&gt;
+&lt;li&gt;Try finding a public exploit on Android forums such as XDA and implement that exploit as a Drozer module.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Slightly tougher one.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A module to terminate a call without user intervention (I do not know if it is possible to do this programmatically. If you implement this successfully, do let me know in the comments section.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thanks for reading. Cheers :)&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/drozer">Drozer</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/android">android</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/05/writing-drozer-modules/</guid>
+                <pubDate>Sun, 13 May 2018 17:10:13 +0530</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

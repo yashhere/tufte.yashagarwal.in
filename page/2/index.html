@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+
+<link href="https://gmpg.org/xfn/11" rel="profile">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+
+<meta name="referrer" content="no-referrer">
+
+
+ 
+<meta property="og:title" content="/dev/yash/notes" />
+<meta property="og:description"
+      content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yashagarwal.in/" />
+
+
+    
+        <meta property="og:updated_time" content="2019-07-23T16:40:28&#43;05:30"/>
+    
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+<!-- rel="me" links for IndieAuth -->
+
+<link href="https://github.com/yashhere/" rel="me">
+
+
+    
+    
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" data-proofer-ignore>
+    
+    
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+
+
+
+
+ <meta name="twitter:card" content="summary"/><meta name="twitter:image" content="/android-chrome-512x512.db28abcc591bd775d661d3fdb11c7c9e71d5e5fa81728f383b1a36c25c683bae.png"/>
+<meta name="twitter:title" content="/dev/yash/notes"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@yash__here"/>
+    <meta name="twitter:creator" content="@yash__here"/>
+
+
+
+
+
+<meta name="hugo-build-date" content="2020-03-24T12:13:38Z"/>
+<meta name="hugo-commit-hash" content="157669a0"/>
+<meta name="generator" content="Hugo 0.68.3" />
+    <title>
+    /dev/yash/notes ❚</title>
+    <link rel='canonical' href='https://yashagarwal.in/'>
+    
+        <link href="/" rel="alternate" type="application/rss+xml" title="/dev/yash/notes" />
+    
+
+    
+    <link rel='icon' href='/favicon.ico'>
+
+
+
+    
+        <link rel="preload" href="/fonts/libre-baskerville/2012/subset/LibreBaskerville-Regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/iosevka/1.14.1/subset/iosevka-ss08-regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/linux-libertine/5.3.0/subset/LinBiolinum_Rah.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/source-sans-pro/2.020R-ro-1.075R-it/subset/SourceSansPro-Regular.woff2" as="font" crossorigin>
+    
+
+
+
+
+
+
+
+
+
+    <script>
+         
+        !function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+         
+        !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+    </script>
+
+
+
+<style>
+    
+    
+    :root {
+        --theme-color: #6a9fb5;
+        --theme-color-light: rgba(106, 159, 181, 0.2);
+    }
+    
+    html {
+        line-height: 1.5;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/styles.min.15fd0b6e02e8ee12d83e881e2534f306dc69495d71be498824f554b1b13fbf54.css" integrity="sha256-Ff0LbgLo7hLYPogeJTTzBtxpSV1xvkmIJPVUsbE/v1Q=">
+
+
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.da6b5b4da09d91a8af30baf04214409c80aeae536efdd0622d169644a02f7e6d.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.58d47dcaa2ba2c5b650ea35c1155248de2aff6efe389ada218b0101b4a1f3fff.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.72101f3ce24cd49875bf0159cfd78e64dea181370d779f442bedef2023a1969b.png">
+    <link rel="manifest" href="/manifest.bbc56ff464bdd48b6d8b7ac25ace729fb4ab976ddc589fabac051358ccb5c6ca.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.12bcf28d5986de6bb989d2e4a8c6b84e0c723dae4c62fa5f91d5c1f94d69b3be.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d" />
+    <meta name="theme-color" content="#ffffff" />
+
+
+
+
+<link rel="alternate" type="application/rss+xml" href="https://yashagarwal.in/index.xml" title="RSS for /dev/yash/notes" />
+<link rel="alternate" type="application/atom+xml" href="https://yashagarwal.in/atom.xml" title="Atom for /dev/yash/notes" />
+<link rel="alternate" type="application/jf2feed+json" href="https://yashagarwal.in/jf2feed.json" title="Jf2feed for /dev/yash/notes" />
+
+ 
+
+     
+
+
+
+
+     
+    
+    <meta name="DC.Creator" content="Yash Agarwal"/>
+    
+
+
+</head>
+
+<body lang="en">
+    <div class="border" id="home"></div>
+    <div class="wrapper">   
+        
+<nav id="nav" class="nav-collapse opened" aria-hidden="false">
+    <ul class="navbar">
+        <li><a class="active" href="/">Home</a></li>
+        
+            
+                <li><a class="" href="https://yashagarwal.in/posts/">Posts</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/notes/">Notes</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/whoami/">Whoami</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/search/">Search</a></li>
+            
+        
+    </ul>
+</nav>
+
+
+<div class="container">
+    <header class="masthead">
+        <div class="masthead-title no-text-decoration">
+            <a href="/">/dev/yash/notes</a> <span class="blinking-cursor">❚</span>
+        </div>
+        <div class="masthead-tagline">
+            The directory of my thoughts
+        </div>
+    </header>
+
+
+        
+    <div class="posts h-feed">
+    <header>
+        
+        <data class="u-url" value="https://yashagarwal.in/"></data>
+         
+
+     
+
+
+
+
+    
+        
+        <span class="hide">
+            &mdash; <a href="https://yashagarwal.in/" class="u-author">Yash Agarwal</a>
+        </span>
+    
+
+
+        <data class="p-name" value="/dev/yash/notes"></data>
+    </header>
+    
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/06/battery-notifications-in-i3/'> Battery Notifications in i3</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__hacks__"
+                                
+                                
+                                title="See all 8 posts categorized in ‘Hacks’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/hacks/">Hacks</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__arch-linux__"
+                                
+                                
+                                title="See all 9 posts tagged with ‘Arch Linux’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/arch-linux/">Arch Linux</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__i3__"
+                                
+                                
+                                title="See all 4 posts tagged with ‘i3’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/i3/">i3</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-06-12T09:45:46+0530" class="dt-published">Tue Jun 12, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>I am using i3 window manager for the last seven months, and it has been a pleasant and productive experience so far. There were a few hiccups here and there, but that is expected with such minimalistic setups. One thing that I never noticed was the lack of notifications on critical battery levels. For the last few months, my laptop battery was discharging to 0% all the time. Probably this proved to be too fatal for my battery.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/06/battery-notifications-in-i3/'
+               title="Read more about Battery Notifications in i3">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Battery Notifications in i3</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/'> Mistakes That I Made in NITC</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__write-ups__"
+                                
+                                
+                                title="See all 10 posts categorized in ‘Write-ups’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/write-ups/">Write-ups</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__nitc__"
+                                
+                                
+                                title="See all 7 posts tagged with ‘NITC’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/nitc/">NITC</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__cse__"
+                                
+                                
+                                title="See all 4 posts tagged with ‘CSE’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/cse/">CSE</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-06-01T10:21:45+0530" class="dt-published">Fri Jun 1, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>Now that I am graduated from NIT Calicut, one more chapter of my life is over. It is time to move on to the next page, but before I begin that phase, I thought it would be nice, to sum up, the experience that I gathered in NIT Calicut. The last four years have been great for me. I learned a lot of new life lessons, but there were some decisions that I could have avoided.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/06/mistakes-that-i-made-in-nitc/'
+               title="Read more about Mistakes That I Made in NITC">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Mistakes That I Made in NITC</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/'> Proxy Your Requests to the Backend Server With Grunt</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__technical__"
+                                
+                                
+                                title="See all 14 posts categorized in ‘Technical’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/technical/">Technical</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__configuration__"
+                                
+                                
+                                title="See all 5 posts tagged with ‘configuration’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/configuration/">configuration</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-05-15T17:14:13+0530" class="dt-published">Tue May 15, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>This article was originally published on zeolearn.
+If you are working on large projects, it is undoubtedly a good idea to have a build script or some task scripts to help to automate some of the repetitive parts of the development process. For JavaScript projects, Grunt serves a similar purpose. It is a JavaScript task/build runner that is written on top of NodeJS. Grunt can help you with automatically minifying your JavaScript or CSS files, or reload your browser on every file change.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/'
+               title="Read more about Proxy Your Requests to the Backend Server With Grunt">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Proxy Your Requests to the Backend Server With Grunt</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/05/writing-drozer-modules/'> Writing Drozer Modules</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__technical__"
+                                
+                                
+                                title="See all 14 posts categorized in ‘Technical’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/technical/">Technical</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__drozer__"
+                                
+                                
+                                title="This is the only post tagged with ‘Drozer’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/drozer/">Drozer</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__android__"
+                                
+                                
+                                title="This is the only post tagged with ‘android’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/android/">android</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-05-13T17:10:13+0530" class="dt-published">Sun May 13, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>This post is a result of my experimentation with Drozer. Drozer is a security testing framework for Android, developed by MWR Labs. According the Drozer&rsquo;s official documentation:
+ Drozer allows you to assume the role of an Android app and interact with other apps. It can do anything that an installed application can do, such as making use of Android&rsquo;s Inter-Process Communication (IPC) mechanism and interact with the underlying operating system.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/05/writing-drozer-modules/'
+               title="Read more about Writing Drozer Modules">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Writing Drozer Modules</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/'> So I Applied for GSoC</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__write-ups__"
+                                
+                                
+                                title="See all 10 posts categorized in ‘Write-ups’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/write-ups/">Write-ups</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__cse__"
+                                
+                                
+                                title="See all 4 posts tagged with ‘CSE’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/cse/">CSE</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__foss__"
+                                
+                                
+                                title="See all 3 posts tagged with ‘FOSS’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/foss/">FOSS</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-03-28T20:58:26+0530" class="dt-published">Wed Mar 28, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/'
+               title="Read more about So I Applied for GSoC">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about So I Applied for GSoC</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/03/fossmeet18/'> FOSSMeet&#39;18</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__write-ups__"
+                                
+                                
+                                title="See all 10 posts categorized in ‘Write-ups’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/write-ups/">Write-ups</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__nitc__"
+                                
+                                
+                                title="See all 7 posts tagged with ‘NITC’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/nitc/">NITC</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__fossmeet__"
+                                
+                                
+                                title="See all 2 posts tagged with ‘FOSSMeet’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/fossmeet/">FOSSMeet</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__foss__"
+                                
+                                
+                                title="See all 3 posts tagged with ‘FOSS’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/foss/">FOSS</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-03-26T11:57:14+0530" class="dt-published">Mon Mar 26, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>I know I am very late in writing this post. It has been almost one and a half months since the last edition of FOSSMeet is over. I have been a part of FOSSMeet both as a participant and a volunteer. I want to share some of my observations, views, and suggestions through this post. I intend to keep a memory of my most favorite event of NIT Calicut. Juniors can read this post and think about ways to improve FOSSCell and FOSSMeet.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/03/fossmeet18/'
+               title="Read more about FOSSMeet&#39;18">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about FOSSMeet&#39;18</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/'> Deactivated My Facebook Account</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__write-ups__"
+                                
+                                
+                                title="See all 10 posts categorized in ‘Write-ups’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/write-ups/">Write-ups</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__nitc__"
+                                
+                                
+                                title="See all 7 posts tagged with ‘NITC’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/nitc/">NITC</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-03-23T21:00:44+0530" class="dt-published">Fri Mar 23, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>Today, I deactivated my Facebook account again. For the last few days, I was feeling that I am using Facebook excessively. It was affecting my work, my public life. I was using Facebook day in and day out. Today when I woke up in the morning, I first opened Facebook and didn&rsquo;t leave my bed for one hour. I realized that I had wasted one hour merely browsing through useless stuff.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/03/deactivated-my-facebook-account/'
+               title="Read more about Deactivated My Facebook Account">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Deactivated My Facebook Account</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/'> Develop a Theme for Hugo</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__technical__"
+                                
+                                
+                                title="See all 14 posts categorized in ‘Technical’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/technical/">Technical</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__hugo__"
+                                
+                                
+                                title="See all 2 posts tagged with ‘Hugo’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/hugo/">Hugo</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-03-02T11:27:05+0530" class="dt-published">Fri Mar 2, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>This article was originally published on zeolearn.
+Introduction In this tutorial, I will show you how to create a basic Hugo theme. I assume that you are familiar with basic HTML, and how to write content in markdown. I will be explaining the working of Hugo and how it uses Go templating language and how you can use these templates to organize your content. As this post will be focusing mainly on Hugo&rsquo;s working, I will not be covering CSS here.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/'
+               title="Read more about Develop a Theme for Hugo">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Develop a Theme for Hugo</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/02/my-new-domain/'> My New Domain</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__write-ups__"
+                                
+                                
+                                title="See all 10 posts categorized in ‘Write-ups’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/write-ups/">Write-ups</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-02-25T10:10:04+0530" class="dt-published">Sun Feb 25, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>I bought a new domain a few days back - yashagarwal.in. I was trying to buy this domain for the last two years, but it was already taken. My previous domain, yashagarwal.me that I got for free via GitHub education pack, was good enough for me, but the thought that I own a domain which is a top-level domain of some other country was in itself something which was not comfortable to me.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/02/my-new-domain/'
+               title="Read more about My New Domain">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about My New Domain</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/'> Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__hacks__"
+                                
+                                
+                                title="See all 8 posts categorized in ‘Hacks’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/hacks/">Hacks</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__configuration__"
+                                
+                                
+                                title="See all 5 posts tagged with ‘configuration’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/configuration/">configuration</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__arch-linux__"
+                                
+                                
+                                title="See all 9 posts tagged with ‘Arch Linux’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/arch-linux/">Arch Linux</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-02-01T12:54:34+0530" class="dt-published">Thu Feb 1, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>This post is going to be one of those that I have written for my reference. Whatever I am going to mention in this post is not new. Everything has already been said and written many times on many websites and Linux forums.
+So I will start by explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not the same in both the operating systems.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/'
+               title="Read more about Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</span>
+            </a>
+        </div>
+    
+</article>
+      
+    
+</div>
+
+
+        <footer>
+            
+    <div class="pagination no-text-decoration">
+    
+        <a class="pagination-item newer" href="/">Newer</a>
+    
+    
+        <a class="pagination-item older" href="/page/3/">Older</a>
+    
+</div>
+
+
+     
+            <ul class="no-bullets feed right inline">
+    
+        
+        
+            <li class="inline no-text-decoration">
+                <a href="https://yashagarwal.in/index.xml">RSS</a>
+            </li>
+        
+    
+        
+        
+            <li class="inline no-text-decoration">
+                <a href="https://yashagarwal.in/atom.xml">ATOM</a>
+            </li>
+        
+    
+        
+        
+    
+</ul>
+<div class="clear-float"></div>
+
+            <div class='copyright'>
+    <p>
+    </p>
+</div>
+        </footer>
+        <hr />
+        </div> 
+    </div>
+    <footer> 
+        
+
+<ul class="social no-text-decoration">
+    
+        <li>
+            <a href="https://github.com/yashhere/" title="Github">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-github"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://gitlab.com/users/yashhere/projects" title="Gitlab">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-gitlab"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://twitter.com/yash__here/" title="Twitter">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-twitter"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://keybase.io/yash2696" title="Keybase.io">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-keybase"></i>
+                
+            </a>
+        </li>
+    
+</ul>
+
+
+
+
+
+
+    
+    
+    
+        
+    
+    
+    
+    
+    
+
+
+
+
+
+ 
+    
+    
+
+
+
+<p class="generated no-text-decoration">
+    Generated using <a href="https://github.com/yashhere/refined-mod"><code class="nobr">modified</code></a> <a href="https://gitlab.com/kaushalmodi/hugo-theme-refined"><code class="nobr">hugo-theme-refined</code></a> + <span class="nobr">Hugo <a href="https://github.com/gohugoio/hugo/commit/157669a0">0.68.3</a></span><br />
+</p>
+
+<p>
+    
+</p>
+
+
+
+
+<div class="badges no-text-decoration">
+    
+    
+
+    
+        
+        
+        <a href="https://html5.validator.nu/?doc=https://yashagarwal.in/&amp;showsource=yes">
+            
+            <img src="/images/html5-css3-semantics-badge--scaled-optimized.0f343c79b5f793c32b308b8b872fccdc6f8f10dc328d12f3f8fba203ab3ccc6e.png"
+                 width="46" height="18" class="pixelated"
+                 alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+                 title="HTML5 Powered with CSS3 / Styling, and Semantics">
+        </a>
+    
+</div>
+
+
+
+
+
+
+
+
+    <div class="h-card">
+        
+            
+            <img class="u-photo" alt="Photo of Yash Agarwal"
+                 src="/author/yash.2842f98c30eaf22e6f1f7bbe38ac8d584cd916ec640e15b3aaf512b6d56ea8e2.jpg" width="400" height="400">
+        
+        
+        <a class="p-name u-url" href="https://yashagarwal.in/">Yash Agarwal</a>
+        
+            <p>
+                <a class="u-email" href="mailto:yashagarwaljpr@gmail.com" rel="me">yashagarwaljpr@gmail.com</a>
+            </p>
+        
+        
+    </div>
+
+
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    
+        
+        
+
+        
+        <link rel="preload" href="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" as="script" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU=">
+        <script src="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU="></script>
+    
+
+
+
+
+
+<link rel="preload" href="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js" as="script">
+<script src="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js"></script>
+
+
+
+
+
+<script>var nav=responsiveNav("#nav");</script>
+</body>
+</html>

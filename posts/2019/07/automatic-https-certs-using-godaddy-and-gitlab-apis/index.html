@@ -2,143 +2,373 @@
 <html lang='en'>
 
 <head>
-  <meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='Before I start, here is some technical information about my website -
- Hosted on Gitlab and usage its CD for automatic deployment which is triggered on a git commit. Domain name registrar is GoDaddy. Let&rsquo;s Encrypt as the TLS certificate provider for my domain name.  Let&rsquo;s Encrypt provides certificates for a duration of 90 days only, so I was forced to set up the certbot every three months, then generate the certificate and manually deploy the certificates to GitLab.'>
+    <meta charset='utf-8'>
 
-<meta property='og:title' content='Automatic HTTPS Certs Using GoDaddy and Gitlab APIs • /dev/yash/notes'>
-<meta property='og:description' content='Before I start, here is some technical information about my website -
- Hosted on Gitlab and usage its CD for automatic deployment which is triggered on a git commit. Domain name registrar is GoDaddy. Let&rsquo;s Encrypt as the TLS certificate provider for my domain name.  Let&rsquo;s Encrypt provides certificates for a duration of 90 days only, so I was forced to set up the certbot every three months, then generate the certificate and manually deploy the certificates to GitLab.'>
-<meta property='og:url' content='https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/'>
-<meta property='og:site_name' content='/dev/yash/notes'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2019-07-23T16:40:28&#43;05:30'/><meta property='article:modified_time' content='2019-07-23T16:40:28&#43;05:30'/><meta name='twitter:card' content='summary'>
+<link href="https://gmpg.org/xfn/11" rel="profile">
 
-<meta name="generator" content="Hugo 0.55.6" />
 
-  <title>Automatic HTTPS Certs Using GoDaddy and Gitlab APIs • /dev/yash/notes</title>
-  <link rel='canonical' href='https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/'>
-  
-  
-  
-  <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'><link rel='stylesheet' href='https://yashagarwal.in/css/footnotes.css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+
+<meta name="referrer" content="no-referrer">
+
+
+ 
+<meta property="og:title" content="Automatic HTTPS Certs Using GoDaddy and Gitlab APIs" />
+<meta property="og:description"
+      content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/" />
+
+
+    
+        <meta property="article:published_time" content="2019-07-23T16:40:28&#43;05:30"/>
+    
+    
+        <meta property="article:modified_time" content="2019-07-23T16:40:28&#43;05:30"/>
+    
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+
+<!-- rel="me" links for IndieAuth -->
+
+<link href="https://github.com/yashhere/" rel="me">
+
+
+    
+    
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" data-proofer-ignore>
+    
+    
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+
+
+
+
+ <meta name="twitter:card" content="summary"/><meta name="twitter:image" content="/android-chrome-512x512.db28abcc591bd775d661d3fdb11c7c9e71d5e5fa81728f383b1a36c25c683bae.png"/>
+<meta name="twitter:title" content="Automatic HTTPS Certs Using GoDaddy and Gitlab APIs"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@yash__here"/>
+    <meta name="twitter:creator" content="@yash__here"/>
+
+
+
+
+
+<meta name="hugo-build-date" content="2020-03-24T12:13:38Z"/>
+<meta name="hugo-commit-hash" content="157669a0"/>
+<meta name="generator" content="Hugo 0.68.3" />
+    <title>Automatic HTTPS Certs Using GoDaddy and Gitlab APIs • /dev/yash/notes</title>
+    <link rel='canonical' href='https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/'>
+    
+
+    
+    <link rel='icon' href='/favicon.ico'>
+
+
+
+    
+        <link rel="preload" href="/fonts/libre-baskerville/2012/subset/LibreBaskerville-Regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/iosevka/1.14.1/subset/iosevka-ss08-regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/linux-libertine/5.3.0/subset/LinBiolinum_Rah.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/source-sans-pro/2.020R-ro-1.075R-it/subset/SourceSansPro-Regular.woff2" as="font" crossorigin>
+    
+
+
+
+
+
+
+
+
+
+    <script>
+         
+        !function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+         
+        !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+    </script>
+
+
+
+<style>
+    
+    
+    :root {
+        --theme-color: #6a9fb5;
+        --theme-color-light: rgba(106, 159, 181, 0.2);
+    }
+    
+    html {
+        line-height: 1.5;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/styles.min.15fd0b6e02e8ee12d83e881e2534f306dc69495d71be498824f554b1b13fbf54.css" integrity="sha256-Ff0LbgLo7hLYPogeJTTzBtxpSV1xvkmIJPVUsbE/v1Q=">
+
+
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.da6b5b4da09d91a8af30baf04214409c80aeae536efdd0622d169644a02f7e6d.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.58d47dcaa2ba2c5b650ea35c1155248de2aff6efe389ada218b0101b4a1f3fff.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.72101f3ce24cd49875bf0159cfd78e64dea181370d779f442bedef2023a1969b.png">
+    <link rel="manifest" href="/manifest.bbc56ff464bdd48b6d8b7ac25ace729fb4ab976ddc589fabac051358ccb5c6ca.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.12bcf28d5986de6bb989d2e4a8c6b84e0c723dae4c62fa5f91d5c1f94d69b3be.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d" />
+    <meta name="theme-color" content="#ffffff" />
+
+
+
+
+<link rel="alternate" type="application/jf2post+json" href="https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/jf2post.json" title="Jf2post for /dev/yash/notes" />
+
+ 
+
+     
+
+
+
+    
+    
+    
+        
+    
+
+
+     
+    
+    <meta name="DC.Creator" content="Yash Agarwal"/>
+    
+
 
 </head>
 
-
-<body class='page type-posts'>
-  <div class='site'>
-
-    <a class='screen-reader' href='#main'>Skip to Content</a>
-
-    <header id='header' class='header-container'>
-      <div class='header site-header'>
-        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
-  <ul class='main-menu'>
-  <li>
-      <a href='https://yashagarwal.in/'>Home</a>
-    </li>
-  <li>
-      <a href='https://yashagarwal.in/posts'>Posts</a>
-    </li>
-  <li>
-      <a href='https://yashagarwal.in/categories'>Categories</a>
-    </li>
-  <li>
-      <a href='https://yashagarwal.in/whoami'>whoami</a>
-    </li>
-  
-  </ul>
+<body lang="en">
+    <div class="border" id="home"></div>
+    <div class="wrapper">   
+        
+<nav id="nav" class="nav-collapse opened" aria-hidden="false">
+    <ul class="navbar">
+        <li><a class="" href="/">Home</a></li>
+        
+            
+                <li><a class="" href="https://yashagarwal.in/posts/">Posts</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/notes/">Notes</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/whoami/">Whoami</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/search/">Search</a></li>
+            
+        
+    </ul>
 </nav>
 
-        <div class='header-info'>
-          
-          <p class='site-title title'>/dev/yash/notes</p>
-          
-          <p class='site-description subtitle'>The directory of my thoughts</p>
+
+<div class="container">
+    <header class="masthead">
+        <div class="masthead-title no-text-decoration">
+            <a href="/">/dev/yash/notes</a> <span class="blinking-cursor">❚</span>
         </div>
-      </div>
+        <div class="masthead-tagline">
+            The directory of my thoughts
+        </div>
     </header>
 
 
-<main id='main' class='main'>
-  <article lang='en' class='entry'>
-    <header class='header-container'>
-  <div class='header entry-header'>
-    <div class='header-info'>
-      <h1 class='title'>Automatic HTTPS Certs Using GoDaddy and Gitlab APIs</h1>
-      
+        
 
+
+
+
+
+
+
+
+<article class="post h-entry posts">
+    <header>
+        <div class="center">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__technical__"
+                                
+                                
+                                title="See all 14 posts categorized in ‘Technical’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/technical/">Technical</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__linux__"
+                                
+                                
+                                title="See all 2 posts tagged with ‘Linux’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/linux/">Linux</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
     </div>
-    
-<div class='meta'>
-  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-  <line x1="16" y1="2" x2="16" y2="6"/>
-  <line x1="8" y1="2" x2="8" y2="6"/>
-  <line x1="3" y1="10" x2="21" y2="10"/>
-  
-</svg>
-<span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2019-07-23T16:40:28&#43;05:30'>Jul 23, 2019</time>
-</span>
-
-  
-  
-<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <circle cx="12" cy="12" r="10"/>
-  <polyline points="12 6 12 12 15 15"/>
-  
-</svg>
-5 mins read
-</span>
-
 
 </div>
 
+        <h1 class="post-title p-name">Automatic HTTPS Certs Using GoDaddy and Gitlab APIs</h1>
 
-  </div>
-</header>
+        
+        <data class="u-url" value="https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/"></data>
+
+        <div class="date-syndication">
+            
+
 
     
     
+    <div class="post-date">
+        
+        <time datetime="2019-07-23T16:40:28+0530" class="dt-published">Tue Jul 23, 2019</time>
+        
+        
+    </div>
 
-    <div class='entry-content'>
-  
+
+            
+
+
+
+
+        </div>
+         
+
+     
+
+
+
+    
+    
+    
+        
+    
+
+
+    
+        
+        <span class="hide">
+            &mdash; <a href="https://yashagarwal.in/" class="u-author">Yash Agarwal</a>
+        </span>
+    
+
+
+    </header>
+
+    <div class="content">
+        
+
+
+        
+
+
+
+
+
+                       
+
+
+        <div class="e-content">
+            
+
+
+
 
 <p>Before I start, here is some technical information about my website -</p>
-
 <ul>
-<li>Hosted on Gitlab and usage its CD for automatic deployment which is triggered on a git commit.</li>
-<li>Domain name registrar is GoDaddy.</li>
+<li>Hosted on Gitlab and usage its CD for automatic deployment, which is triggered on a git commit.</li>
+<li>The domain name registrar is GoDaddy.</li>
 <li>Let&rsquo;s Encrypt as the TLS certificate provider for my domain name.</li>
 </ul>
-
-<p>Let&rsquo;s Encrypt provides certificates for a duration of 90 days only, so I was forced to set up the <code>certbot</code> every three months, then generate the certificate and <em>manually</em> deploy the certificates to GitLab. It was frustrating because in three months, my shell probably will not remember the command I used last time, and I was too lazy to document the process somewhere.</p>
-
-<p>Then I came across a <a href="https://github.com/pallavagarwal07/NamesiloCert" target="_blank">project</a> which was trying to do a similar thing with other domain name registrar. I thought that this is an excellent setup to adapt and modify it to suit my needs. So I decided to write my module for automatic deployment of Let&rsquo;s Encrypt certificates to GitLab.</p>
-
-<h4 id="how-does-let-s-encrypt-work">How does Let&rsquo;s Encrypt work?</h4>
-
-<p>Before Let&rsquo;s Encrypt can generate the certificate for the domain, it requires the user to prove domain ownership. Let&rsquo;s Encrypt provides two <a href="https://letsencrypt.org/docs/challenge-types/" target="_blank">methods</a> to do this task -</p>
-
+<p>Let&rsquo;s Encrypt provides certificates for 90 days only, so I was forced to set up the <code>certbot</code> every three months, then generate the certificate and <em>manually</em> deploy the certificates to GitLab. It was frustrating because in three months, my shell probably will not remember the command I used last time, and I was too lazy to document the process somewhere.</p>
+<p>Then I came across a <a href="https://github.com/pallavagarwal07/NamesiloCert">project</a>, which was trying to do a similar thing with other domain name registrar. I thought that this is an excellent setup to adapt and modify it to suit my needs. So I decided to write my module for automatic deployment of Let&rsquo;s Encrypt certificates to GitLab.</p>
+<h2 id="how-does-lets-encrypt-work">How does Let&rsquo;s Encrypt work?&nbsp;<a class="headline-hash no-text-decoration" href="#how-does-lets-encrypt-work">#</a> </h2>
+<p>Before Let&rsquo;s Encrypt can generate the certificate for the domain, it requires the user to prove domain ownership. Let&rsquo;s Encrypt provides two <a href="https://letsencrypt.org/docs/challenge-types/">methods</a> to do this task -</p>
 <ul>
 <li>Updating the DNS records of the domain registrar (DNS-01 challenge)</li>
 <li>Adding an HTTP resource under a well-known URI on the website (HTTP-01 challenge)</li>
 </ul>
-
 <p>Using the second method requires me to add a file on my website, and I did not want to do that. Moreover, if in the future, I decide to host some other service, which does not have a website, then this method will fail.</p>
-
-<p>The first method requires that the domain configuration on the domain registrar is modified. GoDaddy provides a robust API, and it is not difficult to utilize that API to automate specific tasks. The probability of changing the registrar is quite low, at least for the next few years. It will be easier to generate the certificates for any subdomains, as all the subdomains will also be hosted under same domain registrar.</p>
-
-<h4 id="how-does-the-tool-work">How does the tool work?</h4>
-
+<p>The first method requires that the domain configuration on the domain registrar is modified. GoDaddy provides a robust API, and it is not difficult to utilize that API to automate specific tasks. The probability of changing the registrar is quite low, at least for the next few years. It will be easier to generate the certificates for any subdomains, as all the subdomains will also be hosted under the same domain registrar.</p>
+<h2 id="how-does-the-tool-work">How does the tool work?&nbsp;<a class="headline-hash no-text-decoration" href="#how-does-the-tool-work">#</a> </h2>
 <p>So here are the steps:</p>
-
 <ol>
 <li>Call <code>certbot</code> with all the domain names</li>
 <li>Invoke GoDaddy API to update the DNS records as indicated by Certbot</li>
@@ -146,13 +376,9 @@
 <li>Let <code>certbot</code> verify the DNS changes</li>
 <li>Use the GitLab API to deploy the generated certificates to GitLab pages</li>
 </ol>
-
-<h5 id="step-1-invoking-certbot">Step 1: Invoking certbot</h5>
-
+<h3 id="step-1-invoking-certbot">Step 1: Invoking certbot&nbsp;<a class="headline-hash no-text-decoration" href="#step-1-invoking-certbot">#</a> </h3>
 <p>In step 1, we call <code>certbot</code> will the preferred method DNS. We also need to supply an email id (used by Let&rsquo;s Encrypt to notify domain expiration). The <code>EMAIL_ID</code> environment variable can be used to store the email id of the user.</p>
-
 <p>Certbot runs in an interactive mode by default. It is not desired in a scripted environment. Certbot also provides mechanisms to deploy the certificates to a local server automatically, but as we are hosting our website on Gitlab, we do not want the automatic deployment facility. So we need to invoke the <code>certbot</code> command with <code>--manual</code> and <code>certonly</code> modes.</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">certbot   --manual <span class="se">\
 </span><span class="se"></span>          --preferred-challenges dns <span class="se">\
 </span><span class="se"></span>          --agree-tos <span class="se">\
@@ -169,90 +395,169 @@
 </span><span class="se"></span>          --manual-auth-hook <span class="si">${</span><span class="nv">DIR</span><span class="si">}</span>/auth_hook.sh <span class="se">\
 </span><span class="se"></span>          -d yashagarwal.in <span class="se">\
 </span><span class="se"></span>          certonly</code></pre></div>
-
 <p>The explanation for most of the flags used in the above command can be found by running the following command -</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">certbot --help</code></pre></div>
-
-<p>The <code>--manual-auth-hook</code> flag is worth looking. This hook provides a mechanism to specify the executable which can be used to facilitate domain ownership validation. In this case, the hook points to a script <code>auth_hook.sh</code> which then calls a Go client which interacts with GoDaddy API.</p>
-
-<h5 id="step-2-adding-dns-entry-to-godaddy-dns-manager">Step 2: Adding DNS entry to GoDaddy DNS manager</h5>
-
-<p>Certbot supplies two environment variables <code>CERTBOT_DOMAIN</code> which contains the domain name to be verified and <code>CERTBOT_VALIDATION</code> which contains a random string corresponding to <code>_acme-challenge TXT</code> entry. What this means is that, if I have</p>
-
+<p>The <code>--manual-auth-hook</code> flag is worth looking. This hook provides a mechanism to specify the executable, which can be used to facilitate domain ownership validation. In this case, the hook points to a script <code>auth_hook.sh</code>, which then calls a Go client, which interacts with GoDaddy API.</p>
+<h3 id="step-2-adding-dns-entry-to-godaddy-dns-manager">Step 2: Adding DNS entry to GoDaddy DNS manager&nbsp;<a class="headline-hash no-text-decoration" href="#step-2-adding-dns-entry-to-godaddy-dns-manager">#</a> </h3>
+<p>Certbot supplies two environment variables <code>CERTBOT_DOMAIN</code>, which contains the domain name to be verified and <code>CERTBOT_VALIDATION</code>, which includes a random string corresponding to <code>_acme-challenge TXT</code> entry. What this means is that, if I have</p>
 <div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">CERTBOT_DOMAIN=yashagarwal.in
 CERTBOT_VALIDATION=6VNg5kDVI_BF1S9N5s74LTBHQnwDpQqKlblKRjIzBwM</code></pre></div>
-
-<p>then the DNS manager should contain a TXT entry <code>_acme-challenge.yashagarwal.in</code> with the value of <code>6VNg5kDVI_BF1S9N5s74LTBHQnwDpQqKlblKRjIzBwM</code>.</p>
-
-<p>The <code>auth_hook.sh</code> file calls the Go client with the abovementioned environment variables. The relevant code can be found <a href="https://github.com/yashhere/GoDaddy-GitLab-Certs/blob/master/auth_hook.sh" target="_blank">here</a>.</p>
-
-<p>Once all the DNS entries are added, the <code>auth_hook.sh</code> script will sleep for 10 minutes. It is to allow DNS changes to propagate throughout the Internet. It is a random duration as I could not find any GoDaddy support page mentioning the exact duration used by them.</p>
-
-<h5 id="step-3-generation-of-certificates">Step 3: Generation of certificates</h5>
-
-<p>Once the <code>auth_hook.sh</code> script returns succesfully, <code>certbot</code> will verify the DNS records. If the verification is successful, <code>certbot</code> will generate the certificates in <code>./generated/config/live/{CERTBOT_DOMAIN}</code> directory.</p>
-
-<h5 id="step-4-deploying-the-certificates-to-gitlab">Step 4: Deploying the certificates to GitLab</h5>
-
-<p>I use the following command to deploy the certificates to Gitlab pages where my website is hosted -
+<p>Then the DNS manager should contain a TXT entry <code>_acme-challenge.yashagarwal.in</code> with the value of <code>6VNg5kDVI_BF1S9N5s74LTBHQnwDpQqKlblKRjIzBwM</code>.</p>
+<p>The <code>auth_hook.sh</code> file calls the Go client with the abovementioned environment variables. The relevant code can be found <a href="https://github.com/yashhere/GoDaddy-GitLab-Certs/blob/master/auth_hook.sh">here</a>.</p>
+<p>Once all the DNS entries are added, the <code>auth_hook.sh</code> script will sleep for 10 minutes. It is to allow DNS changes to propagate throughout the Internet. It is a random duration as I could not find any GoDaddy support page mentioning the exact period used by them.</p>
+<h3 id="step-3-generation-of-certificates">Step 3: Generation of certificates&nbsp;<a class="headline-hash no-text-decoration" href="#step-3-generation-of-certificates">#</a> </h3>
+<p>Once the <code>auth_hook.sh</code> script returns successfully, <code>certbot</code> will verify the DNS records. If the verification is successful, <code>certbot</code> will generate the certificates in <code>./generated/config/live/{CERTBOT_DOMAIN}</code> directory.</p>
+<h3 id="step-4-deploying-the-certificates-to-gitlab">Step 4: Deploying the certificates to GitLab&nbsp;<a class="headline-hash no-text-decoration" href="#step-4-deploying-the-certificates-to-gitlab">#</a> </h3>
+<p>I use the following command to deploy the certificates to Gitlab pages where my website is hosted -</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl  -vvv <span class="se">\
 </span><span class="se"></span>      --request PUT <span class="se">\
 </span><span class="se"></span>      --header <span class="s2">&#34;Private-Token:</span><span class="si">${</span><span class="nv">GITLAB_TOKEN</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>      --form <span class="s2">&#34;certificate=@</span><span class="si">${</span><span class="nv">key_dir</span><span class="si">}</span><span class="s2">/fullchain.pem&#34;</span> <span class="se">\
-</span><span class="se"></span>      --form <span class="s2">&#34;key=@</span><span class="si">${</span><span class="nv">key_dir</span><span class="si">}</span><span class="s2">/privkey.pem&#34;</span> <span class="se">\ </span><span class="s2">&#34;https://gitlab.com/api/v4/projects/yashhere%2Fyashhere.gitlab.io/pages/domains/yashagarwal.in&#34;</span></code></pre></div></p>
-
-<p>where
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">key_dir</span><span class="o">=</span><span class="s2">&#34;./generated/config/live/yashagarwal.in&#34;</span></code></pre></div></p>
-
-<p>moreover, <code>GITLAB_TOKEN</code> is an environment variable which contains the API token generated from Gitlab settings page.</p>
-
-<h5 id="automatic-deployment-using-travis-ci">Automatic Deployment using Travis CI</h5>
-
+</span><span class="se"></span>      --form <span class="s2">&#34;key=@</span><span class="si">${</span><span class="nv">key_dir</span><span class="si">}</span><span class="s2">/privkey.pem&#34;</span> <span class="se">\ </span><span class="s2">&#34;https://gitlab.com/api/v4/projects/yashhere%2Fyashhere.gitlab.io/pages/domains/yashagarwal.in&#34;</span></code></pre></div>
+<p>where</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">key_dir</span><span class="o">=</span><span class="s2">&#34;./generated/config/live/yashagarwal.in&#34;</span></code></pre></div>
+<p>Moreover, <code>GITLAB_TOKEN</code> is an environment variable that contains the API token generated from the Gitlab settings page.</p>
+<h2 id="automatic-deployment-using-travis-ci">Automatic Deployment using Travis CI&nbsp;<a class="headline-hash no-text-decoration" href="#automatic-deployment-using-travis-ci">#</a> </h2>
 <p>It is not automation if I have to run this script manually every three months. So I created a Travis CI job to automate this process. The job will run every month and deploy my certificates automatically. It has been four months, and I have not faced any issues with this setup.</p>
-
-<p>The code for this post can be viewed at <a href="https://github.com/yashhere/GoDaddy-GitLab-Certs" target="_blank">Github</a>.</p>
-
+<p>The code for this post can be viewed at <a href="https://github.com/yashhere/GoDaddy-GitLab-Certs">Github</a>.</p>
 <p>Thanks for reading. Cheers 😄</p>
 
+
+        </div>
+    </div>
+</article>
+
+
+
+        <footer>
+            
+
+
+
+
+<div class="no-text-decoration">
+    <div class="jump top"><a href="#" title="Top of this page">⮉</a></div>
+    <div class="jump bottom"><a href="#bottom" title="Bottom of this page">⮋</a></div>
 </div>
 
+
+ 
     
-<footer class='entry-footer-container'>
-  <div class='entry-footer'>
-  <div class='categories'>
-  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
-  
-</svg>
-</span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/technical'>Technical</a></div>
-
-  </div>
-</footer>
-
-
-    
-  </article>
-  
-<nav class='entry-nav-container'>
-  <div class='entry-nav'><div class='prev-entry'>
-      <a href='https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/'>
-        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="20" y1="12" x2="4" y2="12"/>
-  <polyline points="10 18 4 12 10 6"/>
-  
-</svg>
- Previous</span>
-        <span class='screen-reader'>Previous post: </span>Setting Up ModSecurity on Ubuntu</a>
-    </div></div>
+        <div class="hugotoc no-text-decoration">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-does-lets-encrypt-work">How does Let&rsquo;s Encrypt work?</a></li>
+    <li><a href="#how-does-the-tool-work">How does the tool work?</a>
+      <ul>
+        <li><a href="#step-1-invoking-certbot">Step 1: Invoking certbot</a></li>
+        <li><a href="#step-2-adding-dns-entry-to-godaddy-dns-manager">Step 2: Adding DNS entry to GoDaddy DNS manager</a></li>
+        <li><a href="#step-3-generation-of-certificates">Step 3: Generation of certificates</a></li>
+        <li><a href="#step-4-deploying-the-certificates-to-gitlab">Step 4: Deploying the certificates to GitLab</a></li>
+      </ul>
+    </li>
+    <li><a href="#automatic-deployment-using-travis-ci">Automatic Deployment using Travis CI</a></li>
+  </ul>
 </nav>
+            <a href="#" class="back-to-top">Back to top</a>
+        </div>
+    
 
-  
-<div class='comments-container'>
-  <div id="disqus_thread"></div>
+
+
+<div class="backtotop center no-text-decoration">
+    <a href="#">back to <span class="top">top</span></a>
+</div>
+
+
+<div class="right">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__technical__"
+                                
+                                
+                                title="See all 14 posts categorized in ‘Technical’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/technical/">Technical</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__linux__"
+                                
+                                
+                                title="See all 2 posts tagged with ‘Linux’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/linux/">Linux</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+</div>
+<div class="clear-float"></div>
+
+
+
+<div class="prev-next-navigator clear-float">
+    
+    
+        <span class="next-post right no-text-decoration">
+            <a href="https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/" class="nobr">Setting Up ModSecurity on Ubuntu »</a>
+        </span>
+    
+</div>
+
+
+<a id="bottom"></a>
+
+
+
+
+
+
+
+
+
+                       
+
+
+
+
+    <div class="comments clear-float">
+        <hr />
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -272,50 +577,201 @@ CERTBOT_VALIDATION=6VNg5kDVI_BF1S9N5s74LTBHQnwDpQqKlblKRjIzBwM</code></pre></div
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+
+     
+            <ul class="no-bullets feed right inline">
+    
+        
+        
+    
+</ul>
+<div class="clear-float"></div>
+
+            <div class='copyright'>
+    <p>
+    </p>
+</div>
+        </footer>
+        <hr />
+        </div> 
+    </div>
+    <footer> 
+        
+
+<ul class="social no-text-decoration">
+    
+        <li>
+            <a href="https://github.com/yashhere/" title="Github">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-github"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://gitlab.com/users/yashhere/projects" title="Gitlab">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-gitlab"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://twitter.com/yash__here/" title="Twitter">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-twitter"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://keybase.io/yash2696" title="Keybase.io">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-keybase"></i>
+                
+            </a>
+        </li>
+    
+</ul>
+
+
+
+
+
+
+    
+    
+    
+        
+    
+    
+    
+        
+            
+            
+                
+            
+        
+    
+    
+    
+        
+            
+        
+    
+
+
+
+
+
+ 
+    
+    
+
+
+
+<p class="generated no-text-decoration">
+    Generated using <a href="https://github.com/yashhere/refined-mod"><code class="nobr">modified</code></a> <a href="https://gitlab.com/kaushalmodi/hugo-theme-refined"><code class="nobr">hugo-theme-refined</code></a> + <span class="nobr">Hugo <a href="https://github.com/gohugoio/hugo/commit/157669a0">0.68.3</a></span><br /><span class="nobr">&mdash; Markdown <a href="https://gitlab.com/yashhere/yashhere.gitlab.io/raw/source/content/posts/2019-07-23-automatic-https-certs-using-godaddy-and-gitlab-apis/index.md">source</a> of this page</span>.
+</p>
+
+<p>
+    
+</p>
+
+
+
+
+<div class="badges no-text-decoration">
+    
+    
+
+    
+        
+        
+        <a href="https://html5.validator.nu/?doc=https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/&amp;showsource=yes">
+            
+            <img src="/images/html5-css3-semantics-badge--scaled-optimized.0f343c79b5f793c32b308b8b872fccdc6f8f10dc328d12f3f8fba203ab3ccc6e.png"
+                 width="46" height="18" class="pixelated"
+                 alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+                 title="HTML5 Powered with CSS3 / Styling, and Semantics">
+        </a>
+    
 </div>
 
-</main>
 
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social-menu-container'>
-  <nav aria-label='Social Menu'>
-    <ul class='social-menu'><li>
-        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-  
-</svg>
-</a>
-      </li><li>
-        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-  
-</svg>
-</a>
-      </li><li>
-        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
-  
-</svg>
-</a>
-      </li></ul>
-  </nav>
-</div>
-        <div class='copyright'>
-  <p>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International
-  </p>
-</div>
 
-      </div>
+
+
+
+
+
+    <div class="h-card">
+        
+            
+            <img class="u-photo" alt="Photo of Yash Agarwal"
+                 src="/author/yash.2842f98c30eaf22e6f1f7bbe38ac8d584cd916ec640e15b3aaf512b6d56ea8e2.jpg" width="400" height="400">
+        
+        
+        <a class="p-name u-url" href="https://yashagarwal.in/">Yash Agarwal</a>
+        
+            <p>
+                <a class="u-email" href="mailto:yashagarwaljpr@gmail.com" rel="me">yashagarwaljpr@gmail.com</a>
+            </p>
+        
+        
+    </div>
+
+
+
     </footer>
 
-  </div><script src='https://yashagarwal.in/assets/js/main.f29c93b9.js'></script><script src='https://yashagarwal.in/js/jquery.js'></script><script src='https://yashagarwal.in/js/redirection.js'></script><script src='https://yashagarwal.in/js/footnoteTooltip.js'></script></body>
 
+
+
+
+
+
+
+
+
+    
+        
+        
+
+        
+        <link rel="preload" href="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" as="script" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU=">
+        <script src="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU="></script>
+    
+
+
+
+
+
+<link rel="preload" href="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js" as="script">
+<script src="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js"></script>
+
+
+
+
+
+<script>var nav=responsiveNav("#nav");</script>
+</body>
 </html>
-

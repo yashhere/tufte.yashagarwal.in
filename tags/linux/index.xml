@@ -1,0 +1,332 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    Linux on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/tags/linux/</link>
+        <description>Recent content  in Linux
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/tags/linux/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Automatic HTTPS Certs Using GoDaddy and Gitlab APIs</title>
+                <link>https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/</link>
+                
+                
+                <description>&lt;p&gt;Before I start, here is some technical information about my website -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hosted on Gitlab and usage its CD for automatic deployment, which is triggered on a git commit.&lt;/li&gt;
+&lt;li&gt;The domain name registrar is GoDaddy.&lt;/li&gt;
+&lt;li&gt;Let&amp;rsquo;s Encrypt as the TLS certificate provider for my domain name.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let&amp;rsquo;s Encrypt provides certificates for 90 days only, so I was forced to set up the &lt;code&gt;certbot&lt;/code&gt; every three months, then generate the certificate and &lt;em&gt;manually&lt;/em&gt; deploy the certificates to GitLab. It was frustrating because in three months, my shell probably will not remember the command I used last time, and I was too lazy to document the process somewhere.&lt;/p&gt;
+&lt;p&gt;Then I came across a &lt;a href=&#34;https://github.com/pallavagarwal07/NamesiloCert&#34;&gt;project&lt;/a&gt;, which was trying to do a similar thing with other domain name registrar. I thought that this is an excellent setup to adapt and modify it to suit my needs. So I decided to write my module for automatic deployment of Let&amp;rsquo;s Encrypt certificates to GitLab.&lt;/p&gt;
+&lt;h2 id=&#34;how-does-lets-encrypt-work&#34;&gt;How does Let&amp;rsquo;s Encrypt work?&lt;/h2&gt;
+&lt;p&gt;Before Let&amp;rsquo;s Encrypt can generate the certificate for the domain, it requires the user to prove domain ownership. Let&amp;rsquo;s Encrypt provides two &lt;a href=&#34;https://letsencrypt.org/docs/challenge-types/&#34;&gt;methods&lt;/a&gt; to do this task -&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Updating the DNS records of the domain registrar (DNS-01 challenge)&lt;/li&gt;
+&lt;li&gt;Adding an HTTP resource under a well-known URI on the website (HTTP-01 challenge)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Using the second method requires me to add a file on my website, and I did not want to do that. Moreover, if in the future, I decide to host some other service, which does not have a website, then this method will fail.&lt;/p&gt;
+&lt;p&gt;The first method requires that the domain configuration on the domain registrar is modified. GoDaddy provides a robust API, and it is not difficult to utilize that API to automate specific tasks. The probability of changing the registrar is quite low, at least for the next few years. It will be easier to generate the certificates for any subdomains, as all the subdomains will also be hosted under the same domain registrar.&lt;/p&gt;
+&lt;h2 id=&#34;how-does-the-tool-work&#34;&gt;How does the tool work?&lt;/h2&gt;
+&lt;p&gt;So here are the steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Call &lt;code&gt;certbot&lt;/code&gt; with all the domain names&lt;/li&gt;
+&lt;li&gt;Invoke GoDaddy API to update the DNS records as indicated by Certbot&lt;/li&gt;
+&lt;li&gt;Wait for 10 minutes for DNS changes to propagate&lt;/li&gt;
+&lt;li&gt;Let &lt;code&gt;certbot&lt;/code&gt; verify the DNS changes&lt;/li&gt;
+&lt;li&gt;Use the GitLab API to deploy the generated certificates to GitLab pages&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;step-1-invoking-certbot&#34;&gt;Step 1: Invoking certbot&lt;/h3&gt;
+&lt;p&gt;In step 1, we call &lt;code&gt;certbot&lt;/code&gt; will the preferred method DNS. We also need to supply an email id (used by Let&amp;rsquo;s Encrypt to notify domain expiration). The &lt;code&gt;EMAIL_ID&lt;/code&gt; environment variable can be used to store the email id of the user.&lt;/p&gt;
+&lt;p&gt;Certbot runs in an interactive mode by default. It is not desired in a scripted environment. Certbot also provides mechanisms to deploy the certificates to a local server automatically, but as we are hosting our website on Gitlab, we do not want the automatic deployment facility. So we need to invoke the &lt;code&gt;certbot&lt;/code&gt; command with &lt;code&gt;--manual&lt;/code&gt; and &lt;code&gt;certonly&lt;/code&gt; modes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;certbot   --manual &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --preferred-challenges dns &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --agree-tos &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --email &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;EMAIL_ID&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --no-eff-email &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --expand &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --renew-by-default &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --manual-public-ip-logging-ok &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --noninteractive &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --redirect &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --config-dir &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;DIR&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/generated/config &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --work-dir &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;DIR&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/generated/work &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --logs-dir &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;DIR&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/generated/logs &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          --manual-auth-hook &lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;DIR&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;/auth_hook.sh &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          -d yashagarwal.in &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;          certonly&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The explanation for most of the flags used in the above command can be found by running the following command -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;certbot --help&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;code&gt;--manual-auth-hook&lt;/code&gt; flag is worth looking. This hook provides a mechanism to specify the executable, which can be used to facilitate domain ownership validation. In this case, the hook points to a script &lt;code&gt;auth_hook.sh&lt;/code&gt;, which then calls a Go client, which interacts with GoDaddy API.&lt;/p&gt;
+&lt;h3 id=&#34;step-2-adding-dns-entry-to-godaddy-dns-manager&#34;&gt;Step 2: Adding DNS entry to GoDaddy DNS manager&lt;/h3&gt;
+&lt;p&gt;Certbot supplies two environment variables &lt;code&gt;CERTBOT_DOMAIN&lt;/code&gt;, which contains the domain name to be verified and &lt;code&gt;CERTBOT_VALIDATION&lt;/code&gt;, which includes a random string corresponding to &lt;code&gt;_acme-challenge TXT&lt;/code&gt; entry. What this means is that, if I have&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;CERTBOT_DOMAIN=yashagarwal.in
+CERTBOT_VALIDATION=6VNg5kDVI_BF1S9N5s74LTBHQnwDpQqKlblKRjIzBwM&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then the DNS manager should contain a TXT entry &lt;code&gt;_acme-challenge.yashagarwal.in&lt;/code&gt; with the value of &lt;code&gt;6VNg5kDVI_BF1S9N5s74LTBHQnwDpQqKlblKRjIzBwM&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;auth_hook.sh&lt;/code&gt; file calls the Go client with the abovementioned environment variables. The relevant code can be found &lt;a href=&#34;https://github.com/yashhere/GoDaddy-GitLab-Certs/blob/master/auth_hook.sh&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Once all the DNS entries are added, the &lt;code&gt;auth_hook.sh&lt;/code&gt; script will sleep for 10 minutes. It is to allow DNS changes to propagate throughout the Internet. It is a random duration as I could not find any GoDaddy support page mentioning the exact period used by them.&lt;/p&gt;
+&lt;h3 id=&#34;step-3-generation-of-certificates&#34;&gt;Step 3: Generation of certificates&lt;/h3&gt;
+&lt;p&gt;Once the &lt;code&gt;auth_hook.sh&lt;/code&gt; script returns successfully, &lt;code&gt;certbot&lt;/code&gt; will verify the DNS records. If the verification is successful, &lt;code&gt;certbot&lt;/code&gt; will generate the certificates in &lt;code&gt;./generated/config/live/{CERTBOT_DOMAIN}&lt;/code&gt; directory.&lt;/p&gt;
+&lt;h3 id=&#34;step-4-deploying-the-certificates-to-gitlab&#34;&gt;Step 4: Deploying the certificates to GitLab&lt;/h3&gt;
+&lt;p&gt;I use the following command to deploy the certificates to Gitlab pages where my website is hosted -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl  -vvv &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;      --request PUT &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;      --header &lt;span class=&#34;s2&#34;&gt;&amp;#34;Private-Token:&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;GITLAB_TOKEN&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;      --form &lt;span class=&#34;s2&#34;&gt;&amp;#34;certificate=@&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;key_dir&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/fullchain.pem&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;      --form &lt;span class=&#34;s2&#34;&gt;&amp;#34;key=@&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;${&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;key_dir&lt;/span&gt;&lt;span class=&#34;si&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/privkey.pem&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;https://gitlab.com/api/v4/projects/yashhere%2Fyashhere.gitlab.io/pages/domains/yashagarwal.in&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;where&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nv&#34;&gt;key_dir&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;./generated/config/live/yashagarwal.in&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Moreover, &lt;code&gt;GITLAB_TOKEN&lt;/code&gt; is an environment variable that contains the API token generated from the Gitlab settings page.&lt;/p&gt;
+&lt;h2 id=&#34;automatic-deployment-using-travis-ci&#34;&gt;Automatic Deployment using Travis CI&lt;/h2&gt;
+&lt;p&gt;It is not automation if I have to run this script manually every three months. So I created a Travis CI job to automate this process. The job will run every month and deploy my certificates automatically. It has been four months, and I have not faced any issues with this setup.&lt;/p&gt;
+&lt;p&gt;The code for this post can be viewed at &lt;a href=&#34;https://github.com/yashhere/GoDaddy-GitLab-Certs&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks for reading. Cheers 😄&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/linux">Linux</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2019/07/automatic-https-certs-using-godaddy-and-gitlab-apis/</guid>
+                <pubDate>Tue, 23 Jul 2019 16:40:28 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Setting Up ModSecurity on Ubuntu</title>
+                <link>https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/</link>
+                
+                
+                <description>&lt;p&gt;Recently, I am experimenting with Web Application Firewalls a lot. ModSecurity is one of them. It is the most famous and useful open-source Web Application Firewall (WAF) in existence. It is supported by various web servers such as Apache, Nginx, and IIS.&lt;/p&gt;
+&lt;p&gt;The job of ModSecurity is to sit in front of the application web server and check the incoming requests and outgoing responses to filter out malicious content. It does so by the use of powerful and complex regular expressions. ModSecurity uses a rule language for its rules. The rule language has variables and operators defined to aid in the process of parsing HTTP requests.&lt;/p&gt;
+&lt;p&gt;ModSecurity, in itself, cannot block or allow requests. It is just a rule engine. It requires rules to operate appropriately. That&amp;rsquo;s where its sister project, Core Rule Set (CRS), comes into the picture. CRS is a rule set developed to be used with ModSecurity. It has been in active development for several years now and is very mature. Together, ModSecurity and CRS form a formidable defense against the widespread web application attacks.&lt;/p&gt;
+&lt;p&gt;Now that you know, what a WAF is, let&amp;rsquo;s proceed to install ModSecurity on Ubuntu. I will be compiling ModSecurity&amp;rsquo;s latest version on Ubuntu 18.04. We will also configure ModSecurity to use Core Rule Set.&lt;/p&gt;
+&lt;h2 id=&#34;installing-dependencies&#34;&gt;Installing Dependencies&lt;/h2&gt;
+&lt;p&gt;ModSecurity requires some dependencies to work correctly. Let&amp;rsquo;s install them -&lt;/p&gt;
+&lt;p&gt;First, upgrade the Ubuntu system.&lt;/p&gt;
+&lt;div class=&#34;highlight-wrapper&#34;&gt;
+    &lt;div class=&#34;highlight-before&#34;&gt;bash&lt;/div&gt;
+    
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get -y update
+sudo apt-get -y upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    
+&lt;/div&gt;
+&lt;p&gt;Now install the dependencies.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get -y install git libtool dh-autoreconf pkgconf gawk libcurl4-gnutls-dev libexpat1-dev libpcre3-dev libssl-dev libxml2-dev libyajl-dev zlibc zlib1g-dev libxml2 libpcre++-dev libxml2-dev libgeoip-dev liblmdb-dev lua5.2-dev iputils-ping locales apache2 apache2-dev ca-certificates wget&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Optional&lt;/em&gt;: clean up the Ubuntu caches.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get clean &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo rm -rf /var/lib/apt/lists/*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Install &lt;code&gt;SSDeep&lt;/code&gt; as well (as done &lt;a href=&#34;https://github.com/CRS-support/modsecurity-docker/blob/v3/apache-apache/Dockerfile&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~
+git clone https://github.com/ssdeep-project/ssdeep
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ssdeep
+./bootstrap
+./configure
+make
+sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;compiling-modsecurity&#34;&gt;Compiling ModSecurity&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s clone ModSecurity from Github.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~
+git clone -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ModSecurity
+git submodule init
+git submodule update
+./build.sh
+./configure
+make                &lt;span class=&#34;c1&#34;&gt;# takes ~8 minutes on AWS t2.micro&lt;/span&gt;
+sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;compiling-modsecurity-apache-connector&#34;&gt;Compiling ModSecurity-apache connector&lt;/h2&gt;
+&lt;p&gt;To configure it with Apache, we will require ModSecurity-apache connector. Let&amp;rsquo;s install that as well.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~
+git clone https://github.com/SpiderLabs/ModSecurity-apache
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ModSecurity-apache
+./autogen.sh
+./configure --with-libmodsecurity&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/usr/local/modsecurity
+make
+sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;setting-up-crs-rules&#34;&gt;Setting up CRS rules&lt;/h2&gt;
+&lt;p&gt;Now, let&amp;rsquo;s download CRS rule set as well.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~
+git clone -b v3.2/dev https://github.com/SpiderLabs/owasp-modsecurity-crs
+sudo mv owasp-modsecurity-crs/ /usr/local/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Rename CRS configuration file -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mv /usr/local/owasp-modsecurity-crs/crs-setup.conf.example /usr/local/owasp-modsecurity-crs/crs-setup.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;setting-up-modsecurity&#34;&gt;Setting up ModSecurity&lt;/h2&gt;
+&lt;p&gt;Now, we need to create a file in the Apache modules directory, so that Apache can know, how to activate ModSecurity.&lt;/p&gt;
+&lt;p&gt;Create &lt;code&gt;/etc/apache2/mods-enabled/security3.conf&lt;/code&gt; file and paste the following contents -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;LoadModule security3_module /usr/lib/apache2/modules/mod_security3.so
+modsecurity on
+modsecurity_rules_file &lt;span class=&#34;s1&#34;&gt;&amp;#39;/etc/apache2/modsec/main.conf&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;As you can see, the last line in the above code block reference a file &lt;code&gt;main.conf&lt;/code&gt; in a folder &lt;code&gt;modsec&lt;/code&gt;. This folder will not be present by default. We need to create that.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo mkdir -p /etc/apache2/modsec&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Setup ModSecurity configuration file -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# enables Unicode support in ModSecurity&lt;/span&gt;
+sudo wget -P /etc/apache2/modsec/ https://raw.githubusercontent.com/SpiderLabs/ModSecurity/v3/master/unicode.mapping
+
+sudo wget -P /etc/apache2/modsec/ https://raw.githubusercontent.com/SpiderLabs/ModSecurity/v3/master/modsecurity.conf-recommended
+sudo mv /etc/apache2/modsec/modsecurity.conf-recommended /etc/apache2/modsec/modsecurity.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Change the SecRuleEngine directive in the configuration to change from the default &amp;ldquo;detection only&amp;rdquo; mode to actively dropping malicious traffic.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sed -i &lt;span class=&#34;s1&#34;&gt;&amp;#39;s/SecRuleEngine DetectionOnly/SecRuleEngine On/&amp;#39;&lt;/span&gt; /etc/apache2/modsec/modsecurity.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Change the location of &lt;code&gt;modsec_audit.log&lt;/code&gt; file to Apache log directory.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo sed -i &lt;span class=&#34;s1&#34;&gt;&amp;#39;s/SecAuditLog \/var\/log\/modsec_audit.log/SecAuditLog \/var\/log\/apache2\/modsec_audit.log/&amp;#39;&lt;/span&gt; /etc/apache2/modsec/modsecurity.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To configure ModSecurity to use CRS rule set, put the following text in &lt;code&gt;/etc/apache2/modsec/main.conf&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Include &lt;span class=&#34;s2&#34;&gt;&amp;#34;/etc/apache2/modsec/modsecurity.conf&amp;#34;&lt;/span&gt;
+Include &lt;span class=&#34;s2&#34;&gt;&amp;#34;/usr/local/owasp-modsecurity-crs/crs-setup.conf&amp;#34;&lt;/span&gt;
+Include &lt;span class=&#34;s2&#34;&gt;&amp;#34;/usr/local/owasp-modsecurity-crs/rules/*.conf&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Also enable some Apache modules for better functioning of ModSecurity.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo a2enmod unique_id headers rewrite actions dav dav_fs&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now restart the Apache server&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo systemctl restart apache2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;fixing-some-common-issues&#34;&gt;Fixing some common issues&lt;/h2&gt;
+&lt;p&gt;Sometimes, I had encountered errors when ModSecurity was not able to append logs to its log file. I figured out that ModSecurity did not have enough permissions to write that file. We can fix this issue quickly.&lt;/p&gt;
+&lt;p&gt;First, test if you really have this issue or not.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl &lt;span class=&#34;s1&#34;&gt;&amp;#39;http://localhost/?q=&amp;#34;&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&amp;#39;&lt;/span&gt;
+&amp;lt;!DOCTYPE HTML PUBLIC &lt;span class=&#34;s2&#34;&gt;&amp;#34;-//IETF//DTD HTML 2.0//EN&amp;#34;&lt;/span&gt;&amp;gt;
+&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;
+&amp;lt;title&amp;gt;403 Forbidden&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;Forbidden&amp;lt;/h1&amp;gt;
+&amp;lt;p&amp;gt;You dont have permission to access / on this server.&amp;lt;br /&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;hr&amp;gt;
+&amp;lt;address&amp;gt;Apache/2.4.29 &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;Ubuntu&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; Server at localhost Port 80&amp;lt;/address&amp;gt;
+&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now go to Apache log directory and check the contents of &lt;code&gt;modsec_audit.log&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /var/log/apache2
+tail modsec_audit.log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see the following content -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;---0LzdyETA---A--
+&lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;01/Jul/2019:14:42:41 +0000&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; 156199216179.666171 127.0.0.1 &lt;span class=&#34;m&#34;&gt;41824&lt;/span&gt; ip-xxx-xx-xx-xx.ap-south-1.compute.internal &lt;span class=&#34;m&#34;&gt;80&lt;/span&gt;
+---0LzdyETA---B--
+GET /?q&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; HTTP/1.1
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;Host: localhost
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;User-Agent: curl/7.58.0
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;Accept: */*
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;---TqjMwy7h---D--
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;---TqjMwy7h---F--
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;HTTP/1.1 403
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;---TqjMwy7h---H--
+&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;ModSecurity: Warning. detected XSS using libinjection. [file &amp;#34;&lt;/span&gt;/usr/local/owasp-modsecurity-crs/rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf&lt;span class=&#34;s2&#34;&gt;&amp;#34;] [line &amp;#34;&lt;/span&gt;37&lt;span class=&#34;s2&#34;&gt;&amp;#34;] [id &amp;#34;&lt;/span&gt;941100&lt;span class=&#34;s2&#34;&gt;&amp;#34;] [rev &amp;#34;&amp;#34;] [msg &amp;#34;&lt;/span&gt;XSS Attack Detected via libinjection&lt;span class=&#34;s2&#34;&gt;&amp;#34;] [data &amp;#34;&lt;/span&gt;Matched Data: XSS data found within ARGS:q: &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;severity &lt;span class=&#34;s2&#34;&gt;&amp;#34;2&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;ver &lt;span class=&#34;s2&#34;&gt;&amp;#34;OWASP_CRS/3.1.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;maturity &lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;accuracy &lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;application-multi&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;language-multi&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;platform-multi&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;attack-xss&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;OWASP_CRS/WEB_ATTACK/XSS&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;WASCTC/WASC-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;WASCTC/WASC-22&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;OWASP_TOP_10/A3&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;OWASP_AppSensor/IE1&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;tag &lt;span class=&#34;s2&#34;&gt;&amp;#34;CAPEC-242&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;hostname &lt;span class=&#34;s2&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;uri &lt;span class=&#34;s2&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;unique_id &lt;span class=&#34;s2&#34;&gt;&amp;#34;156198848361.198287&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;ref &lt;span class=&#34;s2&#34;&gt;&amp;#34;v8,27t:utf8toUnicode,t:urlDecodeUni,t:htmlEntityDecode,t:jsDecode,t:cssDecode,t:removeNulls&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+....
+....
+
+---TqjMwy7h---I--
+
+---TqjMwy7h---J--
+
+---TqjMwy7h---Z--&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you do not see the following content, and the file is empty or it does not exist, then ModSecurity was not able to open this file for writing. Use the following fix -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# find out the user, Apache is running as&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;apache_user&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;ps -ef &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; egrep &lt;span class=&#34;s1&#34;&gt;&amp;#39;(httpd|apache2|apache)&amp;#39;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep -v &lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt;whoami&lt;span class=&#34;sb&#34;&gt;`&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; grep -v root &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; head -n1 &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; awk &lt;span class=&#34;s1&#34;&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, change the owner of Apache log directory to &lt;code&gt;apache_user&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo chown -R &lt;span class=&#34;nv&#34;&gt;$apache_user&lt;/span&gt;:&lt;span class=&#34;nv&#34;&gt;$apache_user&lt;/span&gt; /var/log/apache2/*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, ModSecurity should be able to append logs to the file &lt;code&gt;modsec_audit.log&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;bonus-enabling-json-logs&#34;&gt;&lt;em&gt;Bonus&lt;/em&gt;: Enabling JSON logs&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Honestly speaking, I was not able to make it work every time. I do not know what is the issue, but it works with some of the installations, and with some of the installations, it just doesn&amp;rsquo;t log anything to the &lt;code&gt;audit&lt;/code&gt; directory. If anyone has managed to make it work consistently, please let me know.&lt;/p&gt;
+&lt;p&gt;Anyway, if you are like me, who do not like the default ModSecurity log format, ModSecurity provides an option to generate logs in JSON format as well. To enable JSON support, the YAJL library should be installed. We already installed this package when we were installing dependencies, so our ModSecurity setup is compiled with JSON support. Let us now configure ModSecurity to generate JSON logs.&lt;/p&gt;
+&lt;p&gt;Open the &lt;code&gt;/etc/apache2/modsec/modsecurity.conf&lt;/code&gt; file and find the following lines -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;SecAuditLogType           Serial
+SecAuditLog               /var/log/modsec_audit.log&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Once you have found the following lines, replace these lines with the following lines&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;SecAuditLogFormat         JSON
+SecAuditLogType           Parallel
+SecAuditLog               /var/log/apache2/modsec_audit.log
+SecAuditLogStorageDir     /var/log/apache2/audit/
+
+SecAuditLogFileMode       &lt;span class=&#34;m&#34;&gt;0644&lt;/span&gt;
+SecAuditLogDirMode        &lt;span class=&#34;m&#34;&gt;0755&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Restart Apache server&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo systemctl restart apache2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, go to &lt;code&gt;/var/log/apache2/&lt;/code&gt; directory and create &lt;code&gt;audit&lt;/code&gt; folder.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /var/log/apache2
+sudo mkdir audit
+
+&lt;span class=&#34;c1&#34;&gt;# make `apache_user` owner of this directory as well...&lt;/span&gt;
+sudo chown -R &lt;span class=&#34;nv&#34;&gt;$apache_user&lt;/span&gt;:&lt;span class=&#34;nv&#34;&gt;$apache_user&lt;/span&gt; /var/log/apache2/audit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, ModSecurity should be able to generate JSON logs in this directory. ModSecurity generates logs in the following format -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;ubuntu@server:/var/log/apache2$ tree audit
+audit
+└── 20190701
+    ├── 20190701-1132
+    │   ├── 20190701-113225-156196094515.868593
+    │   └── 20190701-113226-156196094691.154769
+    ├── 20190701-1211
+    │   ├── 20190701-121122-156196328239.048942
+    │   └── 20190701-121122-156196328243.018882
+
+    ....
+    ....&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, your site should be relatively more secure than before.&lt;/p&gt;
+&lt;h2 id=&#34;a-warning-though&#34;&gt;A warning, though&lt;/h2&gt;
+&lt;p&gt;CRS is known to generate a lot of false-positive when enabled completely. We have not touched CRS paranoia levels. By default, it is set to paranoia level 1, which is known to produce false positives rarely, but still, as a measure of precaution, monitor your site&amp;rsquo;s traffic for some time, and then decide if you need to disable some of the CRS rules or not.&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/linux">Linux</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/</guid>
+                <pubDate>Mon, 01 Jul 2019 18:20:18 +0530</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

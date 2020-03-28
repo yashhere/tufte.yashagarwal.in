@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator><title type="html"><![CDATA[openbox on /dev/yash/notes]]></title>
+    
+        <subtitle type="html"><![CDATA[The directory of my thoughts]]></subtitle>
+    
+    
+    
+            <link href="https://yashagarwal.in/tags/openbox/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://yashagarwal.in/tags/openbox/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+            <link href="https://yashagarwal.in/tags/openbox/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
+            <link href="https://yashagarwal.in/tags/openbox/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
+    <updated>2020-03-28T08:04:50+00:00</updated>
+    
+    
+    <author>
+            <name>Yash Agarwal</name>
+            
+                <email>yashagarwaljpr@gmail.com</email>
+            </author>
+    
+        <id>https://yashagarwal.in/tags/openbox/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Custom Arch Linux setup with Openbox]]></title>
+            <link href="https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2016-06-09T10:20:36+00:00</published>
+            <updated>2016-06-09T10:20:36+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[
+
+
+
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet" href="/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css">
+
+    
+
+    
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        
+        <div class="pswp__bg"></div>
+        
+        <div class="pswp__scroll-wrap">
+            
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    
+                    
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<p>After my summer vacation started, I bought a new laptop, and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my desktop environment, beginning with ArchLinux and Openbox, and then piecing all pieces together to build a proper desktop environment. Building a desktop this way follows the Unix Methodology; have software that each does one thing well, and when you put them together, you get something amazing.</p>
+<p>When I first installed Arch, I had several choices. I tried <code>xfce</code> and <code>gnome</code> as my desktop environments. While both of them have their pros and cons, I ended up liking none. The sole reason was the dependencies; these two software bring with them. My only intention of installing Arch was to have something, which I control, not like Ubuntu, where you are forced to use the preinstalled software and when you try to uninstall something, you fear of breaking some other program.</p>
+<p>So I end up going the route of building something up from scratch using Openbox as a base. At this point, I have a fast, lightweight desktop that is exceptionally stable and is genuinely my desktop as I have built it from the ground up, choosing every application.</p>
+
+
+
+    <link rel="stylesheet" href="/css/hugo-easy-gallery.css">
+    
+
+
+<div class="box fancy-figure caption-position-none"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img">
+            <img itemprop="thumbnail" src="/images/2016-06-09/desktop.jpg" alt="Openbox on ArchLinux"/>
+        </div>
+        <a href="/images/2016-06-09/desktop.jpg" itemprop="contentUrl"></a>
+            <figcaption>
+                    <p>Openbox on ArchLinux</p>
+            </figcaption>
+    </figure>
+</div>
+
+<h2 id="window-manager">Window Manager</h2>
+<p>After the installation of Arch, the first thing I did was to install <code>openbox</code>, a tiling window manager. You may also try other window managers like <code>awesome</code>, <code>i3</code>, and <code>fluxbox</code>, etc. but I chose Openbox because it is used everywhere. Thus there is a plethora of information out there about customizing it.</p>
+<p>For our window manager to show up, it needs to be added either in a login manager or user&rsquo;s <code>~/.xinitrx</code> file. There is a default version of this file that contain some code which we may want to retain, so rather than making this file from scratch, copy the default version of the file to the user&rsquo;s home directory.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cp /etc/X11/xinit/xinitrc ~/.xinitrc</code></pre></div>
+<p>Now add the command <code>exec Openbox-session</code> to the end of the file. Remember that the system will ignore the lines following this command. An Openbox session should be able to be started by entering the command <code>startx</code>.</p>
+<p>An openbox session can be started automatically upon login using shell&rsquo;s startup script. Add following to the shell&rsquo;s startup script, <code>~/.bash_profile</code> for bash and <code>~/.zprofile</code> for zsh.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[[</span> -z <span class="nv">$DISPLAY</span> <span class="o">&amp;&amp;</span> <span class="nv">$XDG_VTNR</span> -eq <span class="m">1</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">exec</span> startx</code></pre></div>
+<h2 id="configuring-openbox">Configuring Openbox</h2>
+<p>Setting up openbox is quite simple. Four files make the basis of openbox configuration. They are <code>rc.xml</code>, <code>autostart</code>,  <code>menu.xml</code> and <code>environment</code>. These files controls everything about the window manager.</p>
+<ul>
+<li><strong>rc.xml</strong>: Determine the behavior and settings of overall Openbox session</li>
+<li><strong>autostart</strong>: Contains a list of applications to be launched with the window manager</li>
+<li><strong>menu.xml</strong>: It makes the right-click context menu of the desktop</li>
+<li><strong>environment</strong>: Can be used to export and set relevant environmental variables</li>
+</ul>
+<p>For the configuration of Openbox, it is necessary to create a local Openbox profile in the user&rsquo;s home directory. A global configuration file can be found in <code>/etc/xdg/openbox</code>, which is well documented, and copying the global configuration to the user&rsquo;s directory will give a good starting point to start customizing.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cp -R /etc/xdg/openbox ~/.config/</code></pre></div>
+<p>These files can be edited by hand, although some graphical tools are also available, use of these may be desired.</p>
+<h2 id="themes-and-appearance">Themes and Appearance</h2>
+<p><a href="https://www.archlinux.org/packages/community/x86_64/obconf">obconf</a> and <a href="https://www.archlinux.org/packages/community/x86_64/lxappearance-obconf/">lxappearance-obconf</a> can be used to configure appearance and theme of openbox session. There are quite a few themes available in <a href="https://www.archlinux.org/packages/community/any/openbox-themes/">openbox-themes</a> package. My personal favorite is <a href="https://www.archlinux.org/packages/community/any/numix-themes/">Numix-themes</a> and <a href="https://aur.archlinux.org/packages/numix-icon-theme-git/">Numix-icon-theme-git (AUR)</a>.</p>
+<p>To see changes after editing a configuration file, the Openbox needs to be refreshed. It can be done with the <code>reconfigure</code> command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">openbox --reconfigure</code></pre></div>
+<h2 id="menus">Menus</h2>
+<p>The type and behavior of Openbox menus, accessible by right-clicking the background, can be changed using <code>~/.config/openbox/menu.xml</code> file. Openbox provides two kinds of menus, <code>Static</code>, and <code>Dynamic</code> menus (Piped and Generators)</p>
+<p>Static menus are hardcoded in XML and is stored in the <code>menu.xml</code> file. Whenever you install a new application, you will have to update the XML file to update the menu manually. It is a viable solution if the apps are not installed on a day to day basis.</p>
+<p>Pipe menus are the sections of the Openbox menu that Openbox creates on the fly by running a generic script and using its plain text output as menu entries. This scheme can be used in different ways, like adding a mail checker in the menu or adding a weather forecast menu. You can check <a href="http://openbox.org/wiki/Openbox:Pipemenus">openbox pipe menu page</a> for more information.</p>
+<p>Generators are the most convenient type of menus. These can be found in most desktop environments where applications show up in the menu automatically. If applications are being installed regularly, then this will probably be the preferred choice.</p>
+<h3 id="static-menus">Static Menus</h3>
+<p>The process of making these menus can be automated by static menu generator like <a href="https://www.archlinux.org/packages/?name=obmenu">obmenu</a>. It will generate static menus from installed applications by looking into certain directories. Others available tools are <a href="https://www.archlinux.org/packages/?name=menumaker">menumaker</a>, <a href="https://www.archlinux.org/packages/?name=obmenu">obmenu</a> and <a href="https://www.archlinux.org/packages/?name=archlinux-xdg-menu">xdg-menu</a>.</p>
+<h3 id="dynamic-menus">Dynamic Menus</h3>
+<p>Dynamic menus give the same kind of functionality most people are used to. So it was my preferred choice. They can be used to generate full, complex menus on the fly. One of the most popular application for generating dynamic menus is <a href="https://aur.archlinux.org/packages/obmenu-generator/">obmenu-generator (AUR)</a>. Though it is not officially connected to Openbox, it is widely used.</p>
+<p>In order to have <a href="https://aur.archlinux.org/packages/obmenu-generator/">obmenu-generator (AUR)</a> make a menu on demand, the <code>menu.xml</code> file should contain the following code as the only entry.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">&#34;1.0&#34;</span> <span class="nv">encoding</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span>?&gt;
+&lt;openbox_menu&gt;
+    &lt;menu <span class="nv">id</span><span class="o">=</span><span class="s2">&#34;root-menu&#34;</span> <span class="nv">label</span><span class="o">=</span><span class="s2">&#34;OpenBox 3&#34;</span> <span class="nv">execute</span><span class="o">=</span><span class="s2">&#34;/usr/bin/obmenu-generator&#34;</span>&gt;&lt;/menu&gt;
+&lt;/openbox_menu&gt;</code></pre></div>
+<h2 id="panels-and-taskbars">Panels and Taskbars</h2>
+<p>You can get any panel like <a href="https://www.archlinux.org/packages/extra/i686/xfce4-panel/">xfce4-panel</a> or the simple and customizable <a href="https://www.archlinux.org/packages/?name=tint2">tint2</a>. I chose tint2 because it very closely follows the openbox spirit of having easy customization with plain configuration files. tint2 package also containg a graphical tool <code>tint2conf</code> for customizing panel and you can obviously go right to the tint2 configuration file and edit it there. This also means it is easy to pick up your configuration file and move it to another computer, or restore an old configuration since it is as simple as pasting a text document in the right place. tint2 can also have sections for each individual desktop and has various small widget like programs that can be used with it such as a calendar, <a href="https://www.archlinux.org/packages/community/x86_64/gsimplecal/">gsimplecal</a>, a volume application, <a href="https://www.archlinux.org/packages/?name=volumeicon">volumeicon</a>, a battery indicator, <a href="https://www.archlinux.org/packages/?name=cbatticon">cbatticon</a>, a network indicator like <a href="https://www.archlinux.org/packages/extra/any/wicd/">wicd</a> which also have a system tray icon and a mini task tray. To start tint2 with openbox, you need to add <code>tint2 &amp;</code> to the <code>autostart</code> file.</p>
+<h2 id="file-manager">File Manager</h2>
+<p>Some file managers deeply integrate into desktop environments, and when installed with Openbox, they end up pulling multiple dependencies, which is certainly not desired. Our aim behind building an Openbox set up was to have minimum dependencies so that we can get a lightweight desktop. However, there are several file managers available that fit into the Openbox very well. In my choice, <a href="https://www.archlinux.org/packages/?name=pcmanfm">pcmanfm</a> is the best choice here. pcmanfm is a lightweight and fast file manager with network and thrash support. pcmanfm can also manage desktop icons and wallpaper setting, although if you plan to use conky in your system, then you may not want pcmanfm to manage desktop for you. The reason is that pcmanfm treats desktop as a window, so when you switch to desktop, the conky hides behind the desktop window. To get the icons and wallpaper, you can use other standalone tools such as <a href="https://www.archlinux.org/packages/community/x86_64/idesk/"><code>idesk</code></a> and <a href="https://www.archlinux.org/packages/extra/x86_64/feh/"><code>feh</code></a> or <a href="https://www.archlinux.org/packages/extra/x86_64/nitrogen/"><code>nitrogen</code></a>.
+To start pcmanfm is the desktop mode, add the following to the autostart file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pcmanfm --desktop <span class="p">&amp;</span></code></pre></div>
+<p>and to stop it for managing desktop</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pcmanfm --desktop-off <span class="p">&amp;</span></code></pre></div>
+<p>Many functions present in modern file managers require the installation of a few additional programs. <a href="https://www.archlinux.org/packages/?name=gvfs"><code>gvfs</code></a> gives you the ability to mount volumes and have trash control. It is not mandatory to have, but it allows on-demand mounting completely from within the file manager, as opposed to having to drop down to the command line. A disk-volume manager such as <a href="https://www.archlinux.org/packages/?name=udisks2"><code>udisks2</code></a> will also be wanted, and for auto-mounting removable disks, <a href="https://www.archlinux.org/packages/community/any/udiskie/"><code>udiskie</code></a> works well with Openbox. udiskie can be added to Openbox&rsquo;s autostart file like any other application.</p>
+<h2 id="composition">Composition</h2>
+<p>Openbox does not provide native support for composition, although having a compositor may prevent screen flickering and other distortion in applications like <a href="https://www.archlinux.org/packages/community/any/oblogout/"><code>oblogout</code></a>. Some options work great with Openbox. The one which I am using and quite happy with is <a href="https://wiki.archlinux.org/index.php/Compton"><code>compton</code></a>. It can be used with or without any initial configuration, although there are a lot of different configuration options if you decide to customize the setup. To start compton in background with shadows, use this in <code>autostart</code> file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">compton -b -c <span class="p">&amp;</span></code></pre></div>
+<h2 id="wrapping-up">Wrapping up</h2>
+<p>While setting up my desktop using Openbox ended up being much more work than I could have with typical desktop environments. But now I have a much more stable desktop, about which I know, what is running in my system, and that my system is not cluttered with any software that I never use.</p>
+<p>While it might not be for everybody having to configure every little bit of the desktop, I genuinely feel I have ended up with excellent user experience, and a system that is customized precisely to fit my needs.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://wiki.archlinux.org/">Arch Linux Wiki</a></li>
+</ul>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/technical" term="technical" label="Technical" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/openbox" term="openbox" label="openbox" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

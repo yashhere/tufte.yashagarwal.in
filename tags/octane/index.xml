@@ -1,0 +1,114 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    Octane on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/tags/octane/</link>
+        <description>Recent content  in Octane
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/tags/octane/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Setting up ALM Octane with Docker Compose</title>
+                <link>https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/</link>
+                
+                
+                <description>&lt;p&gt;Recently, I got a chance to set up ALM Octane on one of my university servers for a course project. From the support page of ALM Octane:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ALM Octane is a web-based application lifecycle management platform that enables teams to collaborate easily, manage the product delivery pipeline, and visualize the impact of changes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;precursor&#34;&gt;Precursor&lt;/h2&gt;
+&lt;p&gt;My &lt;a href=&#34;http://cse.nitc.ac.in&#34;&gt;department&lt;/a&gt; insists on using open-source software (a plus point, indeed!). But ALM Octane has Oracle DB/MSSQL as a dependency. My professor was not very enthusiastic about installing a proprietary database on the server. So I came up with a different approach. I set up this database (&lt;a href=&#34;http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html&#34;&gt;free version&lt;/a&gt; of Oracle DB, the Oracle Database 11g Express Edition) in a Docker container. ALM Octane has three components &amp;ndash; Oracle DB, Elastic Search, and the Octane Server itself. The problem was to handle the condition that these three components should be installed on different machines. I decided to use three separate Docker containers for this isolation and then configured them to communicate with each other with docker-compose.&lt;/p&gt;
+&lt;h3 id=&#34;wait--docker-compose&#34;&gt;Wait &amp;hellip; Docker Compose?&lt;/h3&gt;
+&lt;p&gt;(Skip this if already know about Docker and Compose)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Docker-compose is a tool to define and run multi-container Docker applications. Compose uses a compose file to configure the services used by the applications. Then all the services and the application can be run by using a single command.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So before reading this article any further, if you do not know about docker-compose, go and read about it.&lt;/p&gt;
+&lt;h2 id=&#34;the-problem&#34;&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;Three primary services are required for the proper functioning of the Octane Server &amp;ndash; Octane, Oracle DB and Elastic Search. The difficulty was to set up adequate configuration options for these services and the appropriate setup for communication between them. I searched on Docker Hub for any pre-built images. Fortunately, I found some pre-built Docker images for my purpose. So I started writing my config file.&lt;/p&gt;
+&lt;h2 id=&#34;the-solution&#34;&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;Here is my config file for easy reference.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span class=&#34;k&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;2&amp;#39;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;services&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;octane_oracle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;alexeiled/docker-oracle-xe-11g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;shm_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;2g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mem_limit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;4g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;octane_es&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;elasticsearch&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;2.4&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;environment&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- ES_HEAP_SIZE=4G&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mem_limit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;4g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;  &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;octane&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;image&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;hpsoftware/almoctane&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;ports&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- &lt;span class=&#34;s2&#34;&gt;&amp;#34;8080:8080&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;volumes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- /opt/octane/conf&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;/opt/octane/conf&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- /opt/octane/log&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;/opt/octane/log&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- /opt/octane/repo&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;/opt/octane/repo&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;links&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- octane_oracle&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- octane_es&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mem_limit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;4g&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;env_file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;      &lt;/span&gt;- ./octane.env&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;The configuration options in the code are for a system with RAM of 8GB. The options must be tuned for the best performance before deploying on the production server.&lt;/p&gt;
+&lt;p&gt;In the code, I have exposed port &lt;code&gt;8080&lt;/code&gt; of the Octane Docker container to the port 8080 of the host machine. It will make sure that we can access the Octane application on &lt;code&gt;localhost:8080&lt;/code&gt;. The &lt;code&gt;octane.env&lt;/code&gt; file contains three variables for easy site management.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;SERVER_DOMAIN=&lt;span class=&#34;s2&#34;&gt;&amp;#34;your domain name&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;ADMIN_PASSWORD=&lt;span class=&#34;s2&#34;&gt;&amp;#34;your password&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;#This disables the minimum memory check to enable to run on smaller machines.&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;DISABLE_VALIDATOR_MEMORY=&lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, if you try to run the container with &lt;code&gt;docker-compose up&lt;/code&gt;, you will encounter various validation errors. It is because, before starting the server, you need to adjust some settings. If you noticed in the config file, there is a section to define volumes. These volumes are persistent and are used to keep changes saved between two docker-compose runs. I have mapped three volumes from the Docker container to the host machine. So you can now edit the files in the &lt;code&gt;/opt/octane/&lt;/code&gt; folder on the host machine, and changes will reflect in the Docker container. The file where you will have to make changes is &lt;code&gt;/opt/octane/conf/setup.xml&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can read the documentation of ALM Octane to find out which settings to be changed. Once you do the necessary changes, fire up the command &lt;code&gt;docker-compose up&lt;/code&gt; and wait for some time. Docker Compose will finish processing, and the server can be accessed on &lt;a href=&#34;http://localhost:8080&#34;&gt;http://localhost:8080&lt;/a&gt; on the host machine. While deploying it on the production server, make sure that your network administrator has opened the port 8080 for your server. Otherwise, the site will not be accessible. Also, the docker-compose can be run in the background by issuing command &lt;code&gt;docker-compose up -d&lt;/code&gt;.&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/arch-linux">Arch Linux</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/docker">Docker</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/octane">Octane</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/</guid>
+                <pubDate>Tue, 26 Dec 2017 20:53:35 +0530</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

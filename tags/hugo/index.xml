@@ -1,0 +1,727 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    Hugo on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/tags/hugo/</link>
+        <description>Recent content  in Hugo
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/tags/hugo/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Develop a Theme for Hugo</title>
+                <link>https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/</link>
+                
+                
+                <description>&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://www.zeolearn.com/magazine/develop-a-theme-for-hugo&#34;&gt;zeolearn&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this tutorial, I will show you how to create a basic Hugo theme. I assume that you are familiar with basic HTML, and how to write content in markdown. I will be explaining the working of Hugo and how it uses Go templating language and how you can use these templates to organize your content. As this post will be focusing mainly on Hugo&amp;rsquo;s working, I will not be covering CSS here.&lt;/p&gt;
+&lt;p&gt;We will be starting with some necessary information about the terminology used in Hugo. Then we will create a Hugo site with a very basic template. Then we will add new templates and posts to our site as we delve further into Hugo. With very slight variations to what you will learn here, you will be able to create different types of real-world websites.&lt;/p&gt;
+&lt;p&gt;Now, a short tutorial about the flow of this post. The commands that start with &lt;code&gt;$&lt;/code&gt; are meant to be run in the terminal or command line. The output of the command will follow immediately. Comments will begin with &lt;code&gt;#&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;some-terminology&#34;&gt;Some Terminology&lt;/h2&gt;
+&lt;h3 id=&#34;configuration-file&#34;&gt;Configuration File&lt;/h3&gt;
+&lt;p&gt;Hugo uses a configuration file to identify common settings for your site. It is located in the root of your site. This file can be written in TOML, YAML or JSON formats. Hugo identifies this file using the extension.&lt;/p&gt;
+&lt;p&gt;By default, Hugo expects to find Markdown files in your &lt;code&gt;content/&lt;/code&gt; directory and template files in your &lt;code&gt;themes/&lt;/code&gt; directory. It will create HTML files in your &lt;code&gt;public/&lt;/code&gt; directory. You can change this by specifying alternate locations in the configuration file.&lt;/p&gt;
+&lt;h3 id=&#34;content&#34;&gt;Content&lt;/h3&gt;
+&lt;p&gt;The content files will contain the metadata and text about your posts. A content file can be divided into two sections, the top section being frontmatter and the next section is the markdown that will be converted to HTML by Hugo. The content files reside in &lt;code&gt;/content&lt;/code&gt; directory.&lt;/p&gt;
+&lt;h3 id=&#34;frontmatter&#34;&gt;Frontmatter&lt;/h3&gt;
+&lt;p&gt;The frontmatter section contains information about your post. It can be written in JSON, TOML or YAML. Hugo identifies the type of frontmatter used with the help of identifying tokens(markers). TOML is surrounded by &lt;code&gt;+++&lt;/code&gt;, YAML is by &lt;code&gt;---&lt;/code&gt; and JSON is enclosed in curly braces &lt;code&gt;{&lt;/code&gt; and &lt;code&gt;}&lt;/code&gt;. The information in the front matter of a content type will be parsed to be used in the template for that specific content type while converting to HTML.&lt;/p&gt;
+&lt;p&gt;I prefer to use YAML, so you might need to translate your configurations if you are using JSON or TOML.&lt;/p&gt;
+&lt;p&gt;This is an example of frontmatter written in YAML.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;---&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;2018-02-11T11:45:05+05:30&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Basic Hugo Theming Tutorial.&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;description&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;A primer about theme development for Hugo, a static site generator written in Golang.&amp;#34;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;categories&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;- Hugo&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;- Customization&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;tags&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;- Theme&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;---&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;You can read more about different configuration options available for frontmatter &lt;a href=&#34;https://gohugo.io/content-management/front-matter/#readout&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;markdown&#34;&gt;Markdown&lt;/h3&gt;
+&lt;p&gt;The markdown section is where you will write your actual post. The content written here will automatically be converted to HTML by Hugo with the help of a Markdown engine.&lt;/p&gt;
+&lt;h3 id=&#34;templates&#34;&gt;Templates&lt;/h3&gt;
+&lt;p&gt;In Hugo, templates govern the way; your content will be rendered to HTML. Each template provides a consistent layout when rendering the markdown content. The templates reside in the &lt;code&gt;/layouts&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;There are three types of templates: &lt;em&gt;single&lt;/em&gt;, &lt;em&gt;list&lt;/em&gt; and &lt;em&gt;partial&lt;/em&gt;. Each kind of template take some content as input and transform it according to the way defined in the template.&lt;/p&gt;
+&lt;h4 id=&#34;single-template&#34;&gt;Single Template&lt;/h4&gt;
+&lt;p&gt;A single template is used to render a single page. The best example of this is &lt;em&gt;about&lt;/em&gt; page.&lt;/p&gt;
+&lt;h4 id=&#34;list-template&#34;&gt;List Template&lt;/h4&gt;
+&lt;p&gt;A list template renders a group of related content. It can be all recent posts or all posts belonging to a particular category.&lt;/p&gt;
+&lt;p&gt;The homepage template is a specific type of list template. Hugo assumes that the homepage will serve as a bridge to all the other content on your website.&lt;/p&gt;
+&lt;h3 id=&#34;partials&#34;&gt;Partials&lt;/h3&gt;
+&lt;p&gt;Partials are short code snippets that can be injected in any other template type. They are instrumental when you want to repeat some content on every page of your website. The header and footer content are good candidates to be included in separate partials. It is a good practice to use partials liberally in your Hugo site as it adheres to &lt;a href=&#34;https://en.wikipedia.org/wiki/Don%27t_repeat_yourself&#34;&gt;DRY&lt;/a&gt; principle.&lt;/p&gt;
+&lt;h2 id=&#34;okay-lets-start&#34;&gt;Okay, Let&amp;rsquo;s Start&lt;/h2&gt;
+&lt;p&gt;So now that you have a basic understanding of Hugo, we will create a new site using Hugo. Hugo provides a command to generate new sites. We will use that command to scaffold our site. It will create a basic skeleton of your site and will give you a basic configuration file.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ hugo new site ~/zeo
+$ &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ~/zeo
+$ ls -l
+total &lt;span class=&#34;m&#34;&gt;28&lt;/span&gt;
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:13 archetypes
+-rw-r--r-- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; yash hogwarts   &lt;span class=&#34;m&#34;&gt;82&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:13 config.toml
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:13 content
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:13 data
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:13 layouts
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:13 static
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:13 themes&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; I will use YAML format for the config file. Hugo, By default, uses TOML format.&lt;/p&gt;
+&lt;p&gt;A small description of this directory structure:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;archetypes&lt;/strong&gt;: The archetypes contains predefined frontmatter format for your website&amp;rsquo;s content types. It facilitates consistent metadata format across all the content of your site.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;content&lt;/strong&gt;: The content directory contains the markdown files that will be converted to HTML and served to the user.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;data&lt;/strong&gt;: From Hugo documentation&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The data folder is where you can store additional data for Hugo to use when generating your site. Data files are not used to generate standalone pages; rather, they are meant to be supplemental to content files. This feature can extend the content in case your front matter fields grow out of control. Or perhaps you want to show a larger dataset in a template (see example below). In both cases, it is a good idea to outsource the data in their files.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;layouts&lt;/strong&gt;: The layouts folder stores all the templates files which form the presentation of the content files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;static&lt;/strong&gt;: The static folder will contain all the static assets such as &lt;code&gt;CSS&lt;/code&gt;, &lt;code&gt;JS&lt;/code&gt; and &lt;code&gt;image&lt;/code&gt; files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;themes&lt;/strong&gt;: The themes folder is where we will be storing our theme.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We will edit the &lt;code&gt;config.yaml&lt;/code&gt; file to edit some basic configuration of the site.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ vim config.yaml
+baseURL: /
+title: &lt;span class=&#34;s2&#34;&gt;&amp;#34;My First Blog&amp;#34;&lt;/span&gt;
+defaultContentLanguage: en
+languages:
+  en:
+    lang: en
+    languageName: English
+    weight: &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+MetaDataFormat: &lt;span class=&#34;s2&#34;&gt;&amp;#34;yaml&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now when you run your site, Hugo will show some errors. It is normal because our layouts and themes directories are still empty.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ hugo --verbose
+INFO 2018/02/11 11:20:59 Using config file: /home/yash/zeo/config.yaml
+Building sites … INFO 2018/02/11 11:20:59 syncing static files to /home/yash/zeo/public/
+WARN 2018/02/11 11:20:59 No translation bundle found &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; default language &lt;span class=&#34;s2&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;
+WARN 2018/02/11 11:20:59 Translation func &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; language en not found, use default.
+WARN 2018/02/11 11:20:59 i18n not initialized, check that you have language file &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;in i18n&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; that matches the site language or the default language.
+WARN 2018/02/11 11:20:59 &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;en&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; Unable to locate layout &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;taxonomyTerm&amp;#34;&lt;/span&gt;:
+...
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;This command will also create a new directory called &lt;code&gt;public/&lt;/code&gt;. This is the directory where Hugo will save all the generated HTML files related to your site. It also stores all static data in this folder.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s have a look at the &lt;code&gt;public&lt;/code&gt; folder.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ls -l public/
+total &lt;span class=&#34;m&#34;&gt;16&lt;/span&gt;
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb  &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:22 categories
+-rw-r--r-- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; yash hogwarts  &lt;span class=&#34;m&#34;&gt;400&lt;/span&gt; Feb  &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:25 index.xml
+-rw-r--r-- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; yash hogwarts  &lt;span class=&#34;m&#34;&gt;383&lt;/span&gt; Feb  &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:25 sitemap.xml
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb  &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:22 tags&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Hugo generated some XML files, but there are no HTML files. It is because we have not created any content in our content directory yet.&lt;/p&gt;
+&lt;p&gt;At this point, you have a working site with you. All that is left is to add some content and a theme to your site.&lt;/p&gt;
+&lt;h3 id=&#34;create-a-new-theme&#34;&gt;Create a new theme&lt;/h3&gt;
+&lt;p&gt;Hugo doesn&amp;rsquo;t ship with a default theme. There are a lot of themes available on Hugo website. Hugo also ships with a command to create new themes.&lt;/p&gt;
+&lt;p&gt;In this tutorial, we will be creating a theme called &lt;code&gt;zeo&lt;/code&gt;. As mentioned earlier, my aim is to show you how to use Hugo&amp;rsquo;s features to fill out your HTML files from the markdown content, I will not be focusing on CSS. So the theme will be ugly but functional.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s create a basic skeleton of the theme. It will create the directory structure of the theme and place empty files for you to fill in.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# run it from the root of your site&lt;/span&gt;
+$ hugo new theme zeo
+$ ls -l themes/zeo/
+total &lt;span class=&#34;m&#34;&gt;20&lt;/span&gt;
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:30 archetypes
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:30 layouts
+-rw-r--r-- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;1081&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:30 LICENSE.md
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:30 static
+-rw-r--r-- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; yash hogwarts  &lt;span class=&#34;m&#34;&gt;432&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:30 theme.toml&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Fill out &lt;code&gt;LICENSE.md&lt;/code&gt; and &lt;code&gt;theme.toml&lt;/code&gt; file if you plan to distribute your theme to outside world.&lt;/p&gt;
+&lt;p&gt;Now we will edit our &lt;code&gt;config.yaml&lt;/code&gt; file to use this theme.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ vim config.yaml
+theme: &lt;span class=&#34;s2&#34;&gt;&amp;#34;zeo&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now that we have an empty theme, let&amp;rsquo;s build the site.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ hugo --verbose
+INFO 2018/02/11 11:34:14 Using config file: /home/yash/zeo/config.yaml
+Building sites … INFO 2018/02/11 11:34:14 syncing static files to /home/yash/zeo/public/
+WARN 2018/02/11 11:34:14 No translation bundle found &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; default language &lt;span class=&#34;s2&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;
+WARN 2018/02/11 11:34:14 Translation func &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; language en not found, use default.
+WARN 2018/02/11 11:34:14 i18n not initialized, check that you have language file &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;in i18n&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; that matches the site language or the default language.
+
+                   &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; EN
++------------------+----+
+  Pages            &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;
+  Paginator pages  &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Non-page files   &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Static files     &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Processed images &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Aliases          &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Sitemaps         &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+  Cleaned          &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+
+Total in &lt;span class=&#34;m&#34;&gt;12&lt;/span&gt; ms&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+These warnings are harmless in our case, as we are developing our site in English only.&lt;/p&gt;
+&lt;p&gt;Hugo does two things while generating your website. It transforms all the content files to HTML using the defined templates, and its copies static files into the site. Static files are not transformed by Hugo. They are copied exactly as they are.&lt;/p&gt;
+&lt;h3 id=&#34;the-cycle&#34;&gt;The Cycle&lt;/h3&gt;
+&lt;p&gt;The usual development cycle when developing themes for Hugo is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Delete the &lt;code&gt;/public&lt;/code&gt; folder&lt;/li&gt;
+&lt;li&gt;Run the built-in web server and open your site in the browser&lt;/li&gt;
+&lt;li&gt;Make changes to your theme files&lt;/li&gt;
+&lt;li&gt;View your changes in browser&lt;/li&gt;
+&lt;li&gt;Repeat step 3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is necessary to delete the &lt;code&gt;public&lt;/code&gt; directory because Hugo does not try to remove any outdated files from this folder. So the old data might interfere with your workflow.&lt;/p&gt;
+&lt;p&gt;It is also a good idea to track changes in your theme with the help of a version control software. I prefer Git for this. You can use others according to your preference.&lt;/p&gt;
+&lt;h3 id=&#34;run-your-site-in-the-browser&#34;&gt;Run your site in the browser&lt;/h3&gt;
+&lt;p&gt;Hugo has a built-in web server which helps considerably while developing themes for Hugo. It also has a &lt;em&gt;live reload&lt;/em&gt; and &lt;em&gt;watch&lt;/em&gt; feature which watches for changes in your files and reloads the web page accordingly.&lt;/p&gt;
+&lt;p&gt;Run it with &lt;code&gt;hugo server&lt;/code&gt; command.&lt;/p&gt;
+&lt;p&gt;Now open &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt; in your browser. By default, Hugo will not show anything, because it cannot find any HTML file in the public directory.&lt;/p&gt;
+&lt;p&gt;The command to load web server with &lt;code&gt;--watch&lt;/code&gt; option is:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ hugo server --watch --verbose
+...
+...
+                   &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; EN
++------------------+----+
+  Pages            &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt;
+  Paginator pages  &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Non-page files   &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Static files     &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Processed images &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Aliases          &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+  Sitemaps         &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+  Cleaned          &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;  &lt;span class=&#34;m&#34;&gt;0&lt;/span&gt;
+
+Total in &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; ms
+...
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;update-the-home-page-template&#34;&gt;Update the Home page template&lt;/h3&gt;
+&lt;p&gt;Hugo looks for following directories in theme&amp;rsquo;s &lt;code&gt;/layout&lt;/code&gt; folder to search for &lt;code&gt;index.html&lt;/code&gt; page.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;index.html&lt;/li&gt;
+&lt;li&gt;_default/list.html&lt;/li&gt;
+&lt;li&gt;_default/single.html&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is always desirable to update the most specific template related to the content type. It is not a hard and fast rule, but a good generalization to follow.&lt;/p&gt;
+&lt;p&gt;We will first make a static page to see if our &lt;code&gt;index.html&lt;/code&gt; page is rendered correctly.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/index.html
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Hello World!&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Build the site and verify the results. You should see &lt;em&gt;Hello World!&lt;/em&gt; when you open &lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;building-a-functional-home-page&#34;&gt;Building a functional Home Page&lt;/h3&gt;
+&lt;p&gt;Now we will create a home page which will reflect the content of our site every time we build it.&lt;/p&gt;
+&lt;p&gt;For that, we will first create some new posts. We will display these posts as a list on the home page and on their pages, too.&lt;/p&gt;
+&lt;p&gt;Hugo has a command for generating skeleton of posts, just like it did for sites and themes.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ hugo --verbose new post/first.md
+INFO 2018/02/11 11:40:58 Using config file: /home/yash/zeo/config.yaml
+INFO 2018/02/11 11:40:58 attempting to create &lt;span class=&#34;s2&#34;&gt;&amp;#34;post/first.md&amp;#34;&lt;/span&gt; of &lt;span class=&#34;s2&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt; of ext &lt;span class=&#34;s2&#34;&gt;&amp;#34;.md&amp;#34;&lt;/span&gt;
+INFO 2018/02/11 11:40:58 curpath: /home/yash/zeo/archetypes/default.md
+...
+...
+/home/yash/zeo/content/post/first.md created&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;new&lt;/code&gt; command uses an archetype to generate the frontmatter for new posts. When we created our site, hugo created a default archetype in the &lt;code&gt;/archetype&lt;/code&gt; folder.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat archetypes/default.md
+---
+title: &lt;span class=&#34;s2&#34;&gt;&amp;#34;{{ replace .Name &amp;#34;&lt;/span&gt;-&lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; | title }}&amp;#34;&lt;/span&gt;
+date: &lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; .Date &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
+
+---&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;It is a good idea to create a default archetype in the themes folder also so that users can override the theme&amp;rsquo;s archetype with their archetype whenever they want.&lt;/p&gt;
+&lt;p&gt;We will create a new archetype for our posts&amp;rsquo; frontmatter and delete the default &lt;code&gt;archetype/default.md&lt;/code&gt;.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ rm -rf archetype/default.md
+$ vim themes/zeo/archetypes/post.md
+---
+title: &lt;span class=&#34;s2&#34;&gt;&amp;#34;{{ replace .Name &amp;#34;&lt;/span&gt;-&lt;span class=&#34;s2&#34;&gt;&amp;#34; &amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34; | title }}&amp;#34;&lt;/span&gt;
+date: &lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; .Date &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
+Description: &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+Tags: &lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt;
+Categories: &lt;span class=&#34;o&#34;&gt;[]&lt;/span&gt;
+
+---&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Create one more post in &lt;code&gt;content/post&lt;/code&gt; directory.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ hugo --verbose new post/second.md
+INFO 2018/02/11 12:13:56 Using config file: /home/yash/zeo/config.yaml
+INFO 2018/02/11 12:13:56 attempting to create &lt;span class=&#34;s2&#34;&gt;&amp;#34;post/second.md&amp;#34;&lt;/span&gt; of &lt;span class=&#34;s2&#34;&gt;&amp;#34;post&amp;#34;&lt;/span&gt; of ext &lt;span class=&#34;s2&#34;&gt;&amp;#34;.md&amp;#34;&lt;/span&gt;
+INFO 2018/02/11 12:13:56 curpath: /home/yash/zeo/themes/zeo/archetypes/post.md
+...
+...
+/home/yash/zeo/content/post/second.md created&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;See the difference. Hugo used the theme&amp;rsquo;s archetype for generating the frontmatter this time.&lt;/p&gt;
+&lt;p&gt;By default, Hugo does not generate posts with an empty content section. So you will need to add some content before you try to build the site.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s look at the &lt;code&gt;content/post/first.md&lt;/code&gt; file, after adding content to it.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;$ cat content/post/first.md
+---
+title: &amp;#34;First&amp;#34;
+date: 2018-02-11T11:35:58+05:30
+draft: true
+Tags: [&amp;#34;first&amp;#34;]
+Categories: [&amp;#34;Hugo&amp;#34;]
+
+---
+
+Hi there. My first Hugo post&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Now that our posts are ready, we need to create templates to show them in a list on the home page and to show their content on separate pages for each post.&lt;/p&gt;
+&lt;p&gt;We will first edit the template for the home page that we created previously. We will then modify &amp;ldquo;single&amp;rdquo; templates which are used to generate output for a single content file. We also have &amp;ldquo;list&amp;rdquo; templates which are used to group similar type of content and render them as a list.
+The home page will show a list of last ten posts that we have created. Let&amp;rsquo;s update its template to add this logic.&lt;/p&gt;
+&lt;h3 id=&#34;update-your-home-page-to-show-your-content&#34;&gt;Update your home page to show your content&lt;/h3&gt;
+&lt;p&gt;Now add your template code to &lt;code&gt;themes/zeo/layouts/index.html&lt;/code&gt;.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/index.html
+$ cat !$
+cat themes/zeo/layouts/index.html
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ range first 10 .Data.Pages }}
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ end }}
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Hugo uses Go Template Engine. This engine scans the templates for commands that are enclosed between &lt;code&gt;{{&lt;/code&gt; and &lt;code&gt;}}&lt;/code&gt;. In this template, the commands are &lt;code&gt;range&lt;/code&gt;, &lt;code&gt;first&lt;/code&gt;, &lt;code&gt;.Data.Pages&lt;/code&gt;, &lt;code&gt;.Title&lt;/code&gt; and &lt;code&gt;end&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The template implies that we are going to get first 10 latest pages from our content folder and render their title as &lt;code&gt;h1&lt;/code&gt; heading.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;range&lt;/code&gt; is an iterator function. Hugo treats every HTML file created as a page, so &lt;code&gt;range&lt;/code&gt; will loop through all the pages created. Here we are instructing &lt;code&gt;range&lt;/code&gt; to stop after first ten pages.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;end&lt;/code&gt; command signals the end of the &lt;em&gt;range&lt;/em&gt; iterator. The engine loops back to the next iteration as soon as it encounters the &lt;em&gt;end&lt;/em&gt; command. Everything between &lt;em&gt;range&lt;/em&gt; and &lt;em&gt;end&lt;/em&gt; will be evaluated for each iteration of the loop.&lt;/p&gt;
+&lt;p&gt;Build the website and see the changes. The homepage now shows our two posts. However, you cannot click on the posts and read their content. Let&amp;rsquo;s change that too.&lt;/p&gt;
+&lt;h3 id=&#34;linking-your-posts-on-home-page&#34;&gt;Linking your posts on Home Page&lt;/h3&gt;
+&lt;p&gt;Let&amp;rsquo;s add a link to the post&amp;rsquo;s page from home page.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/index.html
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ range first 10 .Data.Pages }}
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Permalink }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ end }}
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Build your site and see the result. The titles are now links, but when you click on them, it takes you to a page which says &lt;code&gt;404 page not found&lt;/code&gt;. That is expected because we have not created any template for the single pages where the content can be rendered. So Hugo could not find any template, and it did not output any HTML file. We will change that in a minute.&lt;/p&gt;
+&lt;p&gt;We want to render the posts, which are in &lt;code&gt;content/post&lt;/code&gt; directory. That means that their section is post and their type is also post.&lt;/p&gt;
+&lt;p&gt;Hugo uses section and type information to identify the template file for each piece of content. It will first look for a template file which matches the section or type of the content. If it could not find it, then it will use &lt;code&gt;_default/single.html&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;Since we do not have any other content type yet, we will just start by updating the &lt;code&gt;_default/single.html&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;Remember that Hugo will use this file for every content type for which we have not created a template. However, for now, we will accept that cost as we do not have any other content type with us. We will refactor our templates to accommodate more content types, as we add more content.&lt;/p&gt;
+&lt;p&gt;Update the template file.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/_default/single.html
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ .Content }}
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Build the site and verify the results. You will see that on clicking on &lt;code&gt;first&lt;/code&gt;, you get the usual result, but clicking on &lt;code&gt;second&lt;/code&gt; still produces the &lt;code&gt;404 page not found&lt;/code&gt; error. It is because Hugo does not generate pages with empty content. Remember I mentioned it earlier.&lt;/p&gt;
+&lt;p&gt;Now that we have our home page and posts page ready, we will build a page to list all the posts, not just the recent ten posts. This page will be accessible at &lt;a href=&#34;http://localhost:1313/post&#34;&gt;http://localhost:1313/post&lt;/a&gt;. Currently, this page is blank because there is no template defined for it.&lt;/p&gt;
+&lt;p&gt;This page will show the listings of all the posts, so the type of this page will be a list. We will again use the default &lt;code&gt;_default/list.html&lt;/code&gt; as we do not have any other content type with us.&lt;/p&gt;
+&lt;p&gt;Update the list file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/_default/list.html
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ range .Data.Pages }}
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Permalink }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ end }}
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;add-date-published-to-the-posts&#34;&gt;Add &amp;ldquo;Date Published&amp;rdquo; to the posts&lt;/h3&gt;
+&lt;p&gt;It is a standard practice to add the date on which the post was published on the blog. The front matter of our posts has a variable named &lt;code&gt;date&lt;/code&gt;. We will use that variable to fetch the date. Our posts are using the default &lt;em&gt;single&lt;/em&gt; template, so we will edit that file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/_default/single.html
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Date.Format &amp;#34;Sun, Feb 11, 2018&amp;#34; }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ .Content }}
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;adding-top-level-pages&#34;&gt;Adding top-level Pages&lt;/h2&gt;
+&lt;p&gt;Okay, so now that we have our homepage, post-list page and post content pages in place, we will add a new &lt;em&gt;about&lt;/em&gt; page at the top level of our blog, not at a sublevel like we did for posts.&lt;/p&gt;
+&lt;p&gt;Hugo uses the directory structure of the content directory to identify the structure of the blog. Let&amp;rsquo;s verify that and create a new &lt;code&gt;about&lt;/code&gt; page in the content directory.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim content/about.md
+---
+title: &amp;#34;about&amp;#34;
+description: &amp;#34;about this blog&amp;#34;
+date: &amp;#34;2018-02-11&amp;#34;
+---
+
+### about me
+
+Hi there, you just reached my blog.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Let&amp;rsquo;s generate the site and view the results.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ hugo --verbose
+$ ls -l public/
+total &lt;span class=&#34;m&#34;&gt;36&lt;/span&gt;
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 12:43 about
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 12:43 categories
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:20 css
+-rw-r--r-- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; yash hogwarts  &lt;span class=&#34;m&#34;&gt;187&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 12:43 index.html
+-rw-r--r-- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;1183&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 12:43 index.xml
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;2&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 11:20 js
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;4&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 12:43 post
+-rw-r--r-- &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;1139&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 12:43 sitemap.xml
+drwxr-xr-x &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; yash hogwarts &lt;span class=&#34;m&#34;&gt;4096&lt;/span&gt; Feb &lt;span class=&#34;m&#34;&gt;11&lt;/span&gt; 12:43 tags&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Notice that Hugo created a new directory &lt;code&gt;about&lt;/code&gt;. This directory contains only one file &lt;code&gt;index.html&lt;/code&gt;. The about page will be rendered from &lt;code&gt;about/index.html&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If you look carefully, the &lt;code&gt;about&lt;/code&gt; page is listed with the posts on the homepage. It is not desirable, so let&amp;rsquo;s change that first.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/index.html
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;posts&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ range first 10 .Data.Pages }}
+    {{ if eq .Type &amp;#34;post&amp;#34;}}
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Permalink }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    {{ end }}
+  {{ end }}
+
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;pages&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ range .Data.Pages }}
+    {{ if eq .Type &amp;#34;page&amp;#34; }}
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Permalink }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    {{ end }}
+  {{ end }}
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now build the site and verify the results. The homepage now has two sections, one for posts and other for the pages. Click on the &lt;em&gt;about&lt;/em&gt; page. You will see the page for &lt;em&gt;about&lt;/em&gt;. Remember, I mentioned that Hugo would use the &lt;em&gt;single&lt;/em&gt; template for each page, for which it cannot find a template file. There is still one issue. The &lt;em&gt;about&lt;/em&gt; page shows the date also. We do not want to show the date on the &lt;em&gt;about&lt;/em&gt; page.&lt;/p&gt;
+&lt;p&gt;There are a couple of ways to fix this. We can add an if-else statement to detect the type of the content and display date only if it is a post. However, let&amp;rsquo;s use the feature provided by Hugo and create a new template type for the posts. Before we do that, let&amp;rsquo;s learn to use one more template type which is &lt;em&gt;partials&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;partials-1&#34;&gt;Partials&lt;/h2&gt;
+&lt;p&gt;In Hugo, partials are used to store the shared piece of code which repeats in more than one templates. Partials are kept in &lt;code&gt;themes/zeo/layouts/partials&lt;/code&gt; directory. Partials can be used to override the themes presentation. End users can use them to change the default behavior of a theme. It is always a good idea to use partials as much as possible.&lt;/p&gt;
+&lt;h3 id=&#34;header-and-footer-partials&#34;&gt;Header and Footer partials&lt;/h3&gt;
+&lt;p&gt;Header and footer of most of the posts and pages will follow a similar pattern. So they form an excellent example to be defined as a partial.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/partials/header.html
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+
+$ vim themes/zeo/layouts/partials/footer.html
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;We can call a partial by including this path in the template
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;partial&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;header.html&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;update-the-homepage-template&#34;&gt;Update the Homepage template&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s update our homepage template to use these partials.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/index.html
+{{ partial &amp;#34;header.html&amp;#34; . }}
+
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;posts&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ range first 10 .Data.Pages }}
+    {{ if eq .Type &amp;#34;post&amp;#34;}}
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Permalink }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    {{ end }}
+  {{ end }}
+
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;pages&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ range .Data.Pages }}
+    {{ if or (eq .Type &amp;#34;page&amp;#34;) (eq .Type &amp;#34;about&amp;#34;) }}
+      &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Permalink }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Type }} - {{ .Title }} - {{ .RelPermalink }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+    {{ end }}
+  {{ end }}
+
+{{ partial &amp;#34;footer.html&amp;#34; . }}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;update-the-single-template&#34;&gt;Update the single template&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ vim themes/zeo/layouts/_default/single.html
+{{ partial &amp;#34;header.html&amp;#34; . }}
+
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Date.Format &amp;#34;Sun, Feb 11, 2018&amp;#34; }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ .Content }}
+
+{{ partial &amp;#34;footer.html&amp;#34; . }}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Build the website and verify the results. The title on the posts and the about page should both reflect the value from the markdown file.&lt;/p&gt;
+&lt;h2 id=&#34;fixing-the-date-shown-on-about-page&#34;&gt;Fixing the date shown on About page&lt;/h2&gt;
+&lt;p&gt;Remember, we had the issue that the date was showing on the &lt;em&gt;about&lt;/em&gt; page also. We discussed one method to solve this issue. Now I will discuss a more &lt;em&gt;hugoic&lt;/em&gt; way of solving this issue.&lt;/p&gt;
+&lt;p&gt;We will create a new section template to fix this issue.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;$ mkdir themes/zeo/layouts/post
+$ vim themes/zeo/layouts/post/single.html
+{{ partial &amp;#34;header.html&amp;#34; . }}
+
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Date.Format &amp;#34;Mon, Jan 2, 2006&amp;#34; }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ .Content }}
+
+{{ partial &amp;#34;footer.html&amp;#34; . }}
+
+
+$ vim themes/zeo/layouts/_default/single.html
+&lt;span class=&#34;cp&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ .Title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;h1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+  {{ .Content }}
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Note that we have changed the default &lt;em&gt;single&lt;/em&gt; template and added that logic in post&amp;rsquo;s &lt;em&gt;single&lt;/em&gt; template.&lt;/p&gt;
+&lt;p&gt;Build the website and verify the results. The &lt;em&gt;about&lt;/em&gt; page does not show the date now, but the posts page still show the date. We can also move the list template&amp;rsquo;s logic to the &lt;code&gt;index.html&lt;/code&gt; file of post section template.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;We have learnt, how Hugo harnesses the powerful yet simple Go template engine to create the static site generator. We also learnt about partials and their excellent utilization by Hugo in the spirit of &lt;em&gt;Don&amp;rsquo;t Repeat Yourself&lt;/em&gt; principle. Now that you know how to make themes in Hugo, go ahead and start creating new beautiful themes. Best of luck for your endaevour.&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/hugo">Hugo</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/03/develop-a-theme-for-hugo/</guid>
+                <pubDate>Fri, 02 Mar 2018 11:27:05 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Setting up Hugo automatic deployment to Github with Wercker</title>
+                <link>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</link>
+                
+                
+                <description>
+
+
+
+    
+
+    
+    
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css&#34; integrity=&#34;sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css&#34; integrity=&#34;sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css&#34;&gt;
+
+    
+
+    
+    &lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+        
+        &lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+        
+        &lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+            
+            &lt;div class=&#34;pswp__container&#34;&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+                &lt;div class=&#34;pswp__top-bar&#34;&gt;
+                    
+                    &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+                    
+                    
+                    &lt;div class=&#34;pswp__preloader&#34;&gt;
+                        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+                            &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+                                &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+                    &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+                &lt;/button&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+                &lt;/button&gt;
+                &lt;div class=&#34;pswp__caption&#34;&gt;
+                    &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;Recently, I again migrated my blog from Pelican to Hugo. So till now, I have experimented with Wordpress, Jekyll, Pelican, and Hugo. Without any doubt, Hugo is the simplest to set up. This time, I have setup Hugo in Windows, as I think, in my system, I reinstall Windows OS much less frequently than the Linux. So that way, it will be less painful for me to set up the blog again.&lt;/p&gt;
+&lt;p&gt;In this post, I will list all the process which I used to set up automatic deployment of Hugo generated site to Github pages using Wercker. In the beginning, I was trying to use Travis-CI, but then I read about Wercker somewhere. I was impressed with the integration of Wercker with Hugo and the availability of many its community-generated “steps” for the build and deploy process.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/overview/introduction/&#34;&gt;Hugo Docs&lt;/a&gt; already have a fantastic &lt;a href=&#34;https://gohugo.io/tutorials/automated-deployments/&#34;&gt;documentation&lt;/a&gt; for setting up Hugo with Wercker, but it is outdated. Other documentations available on-line is also obsolete. Wercker has changed many functionalities in its platform, which made it difficult for me to set up things correctly. But after hours of trial and error cycle, I was able to build and deploy my static files successfully.&lt;/p&gt;
+&lt;p&gt;Here I would like to share the issues I encountered and the tweaks I’ve made. The source codes of this site can be found &lt;a href=&#34;https://github.com/yash2696/yash2696.github.io&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;project-pages-or-user-pages&#34;&gt;Project Pages or User Pages&lt;/h2&gt;
+&lt;p&gt;Two types of sites are supported on Github Pages, User Site, and Project Site. User Sites will serve the files stored in the master branch of the repository &lt;code&gt;https://github.com/user_name/user_name.github.io&lt;/code&gt; at the address &lt;code&gt;https://user_name.github.io.&lt;/code&gt; For the Project sites, everything under the gh-pages will be served at the address &lt;code&gt;https://repo_name.github.io&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;My site is a User site, so I wanted all the static files to be saved in the master branch. As Hugo generates all the static files under &lt;code&gt;public&lt;/code&gt; directory, I needed another branch to store my source files. So my made a new branch &lt;code&gt;source&lt;/code&gt;, which will save all the source files for my blog. Don’t forget to remove the &lt;code&gt;.git&lt;/code&gt; folder from the theme folder. Otherwise, the build will fail at a later stage. You can try using the git submodule feature to avoid this issue. I created a repository &lt;code&gt;yash2696.github.io&lt;/code&gt; in Github also.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git init                       &lt;span class=&#34;c1&#34;&gt;#initialized git repository in site root&lt;/span&gt;
+git checkout -b &lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt;         &lt;span class=&#34;c1&#34;&gt;#created new branch source&lt;/span&gt;
+git remote add origin https://github.com/yash2696/yash2696.github.io
+git add .
+git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;Initial Commit&amp;#34;&lt;/span&gt;
+git push origin source&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then I initialized my master branch as a orphan branch.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git checkout --orphan master
+git rm -rf .
+rm -f &lt;span class=&#34;s1&#34;&gt;&amp;#39;.gitignore&amp;#39;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;#Your repository name&amp;#34;&lt;/span&gt; &amp;gt; README.md
+git add README.md
+git commit -a -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;Initial Commit&amp;#34;&lt;/span&gt;
+git push origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h2 id=&#34;automatic-deployment-using-wrecker&#34;&gt;Automatic deployment using Wrecker&lt;/h2&gt;
+&lt;p&gt;It is straightforward to build a Hugo site. Invoke &lt;code&gt;hugo&lt;/code&gt; command under your root directory, Hugo will create a public folder which will contain all your content, static files, etc. Then push this directory to Github, and voila, your site is up!&lt;/p&gt;
+&lt;p&gt;What if a single push to &lt;code&gt;source&lt;/code&gt; branch can trigger all the process for you automatically. Here the magic of continuous integration(CI) comes into the picture. A free Wercker account can be easily created and hooked to the Github account and a new application from a chosen repository. After setting up everything, a push to the development branch will automatically trigger the Wercker. One of the most significant advantages of using Wercker is its extensive collection of user-made and well documented &amp;ldquo;steps&amp;rdquo;. In this post, I will use two steps, &lt;code&gt;build hugo&lt;/code&gt; and &lt;code&gt;deploy to Github&lt;/code&gt;.&lt;/p&gt;
+
+
+
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/hugo-easy-gallery.css&#34;&gt;
+    
+
+
+&lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2017-02-22/wercker-steps.png&#34; alt=&#34;Wercker → Registry → steps&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2017-02-22/wercker-steps.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+            &lt;figcaption&gt;
+                    &lt;p&gt;Wercker → Registry → steps&lt;/p&gt;
+            &lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The first task is to create a &lt;code&gt;wercker.yml&lt;/code&gt; file. It will tell Wercker which all actions, it should perform. Here is my &lt;a href=&#34;https://raw.githubusercontent.com/yash2696/yash2696.github.io/source/wercker.yml&#34;&gt;wercker.yml&lt;/a&gt; for reference. In this, I have used two pipelines, &lt;em&gt;build&lt;/em&gt; and &lt;em&gt;deploy&lt;/em&gt;. Please follow the official docs for the more detailed steps. I will list all the problems which I face while setting up things properly.&lt;/p&gt;
+&lt;h3 id=&#34;build&#34;&gt;Build&lt;/h3&gt;
+&lt;p&gt;Following the official guide, I used this &lt;a href=&#34;https://github.com/ArjenSchwarz/wercker-step-hugo-build&#34;&gt;step&lt;/a&gt; to trigger Hugo to build HTML pages. I had already removed git repository information from the theme folder, so this step finished successfully. If you haven’t, you may add the following piece of code in your build step.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;- script:
+    name: install git
+    code: &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+        apt-get update
+        apt-get install git -y
+    - script:
+        name: initialize git submodules
+        code: &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt;
+            git submodule update --init --recursive&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;deploy&#34;&gt;Deploy&lt;/h3&gt;
+&lt;p&gt;There is no concept named &amp;ldquo;Add Deploy Target&amp;rdquo; in Wercker as of now. Most of the on-line tutorials follow this process which is outdated. Now Wercker uses a concept called &amp;ldquo;Workflows in Pipelines&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;For new interface, even if you add a deploy stage in the &lt;code&gt;wercker.yml&lt;/code&gt;, you will have to create a new pipeline &lt;code&gt;deploy&lt;/code&gt; under the Workflows tab. After creating the pipeline, the &amp;ldquo;YML Pipeline name&amp;rdquo; must be set to the deploy stage name, which in this case is &lt;code&gt;deploy&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;deploy&lt;/code&gt; stage, I used this &lt;a href=&#34;https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/&#34;&gt;step&lt;/a&gt; to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to set up the environment variable &lt;code&gt;$GIT_TOKEN&lt;/code&gt; to each pipeline, acquired from Github setting.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2017-02-22/wercker-pipeline.png&#34; alt=&#34;Wercker Pipeline&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2017-02-22/wercker-pipeline.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+            &lt;figcaption&gt;
+                    &lt;p&gt;Wercker Pipeline&lt;/p&gt;
+            &lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;You need to generate a new access token for your deploy stage from Github settings.
+
+
+
+&lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2017-02-22/wercker-access-token.png&#34; alt=&#34;Github Access Token&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2017-02-22/wercker-access-token.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+            &lt;figcaption&gt;
+                    &lt;p&gt;Github Access Token&lt;/p&gt;
+            &lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;After adding the deploy stage, add the token you obtained from the Github to Environmental Variables in deploy pipeline.&lt;/p&gt;
+
+
+
+&lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2017-02-22/wercker-token.png&#34; alt=&#34;Wercker Token&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2017-02-22/wercker-token.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+            &lt;figcaption&gt;
+                    &lt;p&gt;Wercker Token&lt;/p&gt;
+            &lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+&lt;p&gt;On the next push to your development branch, Wercker will automatically build the site and deploy it on Github Pages.&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/gh-pages">gh-pages</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/hugo">Hugo</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/github">Github</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/wercker">Wercker</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2017/02/setting-up-hugo-automatic-deployment-to-github-with-wercker/</guid>
+                <pubDate>Wed, 22 Feb 2017 13:37:56 +0530</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

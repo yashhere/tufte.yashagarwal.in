@@ -2,182 +2,513 @@
 <html lang='en'>
 
 <head>
-  <meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='In the last post, we discussed about the structure of our library application. In this post, we will define the data definitions using protobuf, and then we will use these definitions to create a Go service. We will also add a REST interface to the service.'>
+    <meta charset='utf-8'>
 
-<meta property='og:title' content='Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2 • /dev/yash/notes'>
-<meta property='og:description' content='In the last post, we discussed about the structure of our library application. In this post, we will define the data definitions using protobuf, and then we will use these definitions to create a Go service. We will also add a REST interface to the service.'>
-<meta property='og:url' content='https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/'>
-<meta property='og:site_name' content='/dev/yash/notes'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='GRPC'><meta property='article:tag' content='OPA'><meta property='article:published_time' content='2019-02-17T14:44:56&#43;05:30'/><meta property='article:modified_time' content='2019-02-17T14:44:56&#43;05:30'/><meta name='twitter:card' content='summary'>
+<link href="https://gmpg.org/xfn/11" rel="profile">
 
-<meta name="generator" content="Hugo 0.55.6" />
 
-  <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2 • /dev/yash/notes</title>
-  <link rel='canonical' href='https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/'>
-  
-  
-  
-  <link rel='icon' href='https://yashagarwal.in/favicon.ico'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700&subset=latin'>
-<link rel='stylesheet' href='https://yashagarwal.in/assets/css/main.77da63e1.css'><link rel='stylesheet' href='https://yashagarwal.in/css/custom.css'><link rel='stylesheet' href='https://yashagarwal.in/css/syntax.css'><link rel='stylesheet' href='https://yashagarwal.in/css/chroma-styles.css'><link rel='stylesheet' href='https://yashagarwal.in/css/footnotes.css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+
+<meta name="referrer" content="no-referrer">
+
+
+ 
+<meta property="og:title" content="Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2" />
+<meta property="og:description"
+      content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/" />
+
+
+    
+        <meta property="article:published_time" content="2019-02-17T14:44:56&#43;05:30"/>
+    
+    
+        <meta property="article:modified_time" content="2019-02-17T14:44:56&#43;05:30"/>
+    
+
+
+
+
+
+
+
+    
+        
+            
+            
+        
+    
+
+
+
+    
+
+
+
+
+
+
+<!-- rel="me" links for IndieAuth -->
+
+<link href="https://github.com/yashhere/" rel="me">
+
+
+    
+    
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" data-proofer-ignore>
+    
+    
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+
+
+
+
+ <meta name="twitter:card" content="summary"/><meta name="twitter:image" content="/android-chrome-512x512.db28abcc591bd775d661d3fdb11c7c9e71d5e5fa81728f383b1a36c25c683bae.png"/>
+<meta name="twitter:title" content="Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@yash__here"/>
+    <meta name="twitter:creator" content="@yash__here"/>
+
+
+
+
+
+<meta name="hugo-build-date" content="2020-03-24T12:13:38Z"/>
+<meta name="hugo-commit-hash" content="157669a0"/>
+<meta name="generator" content="Hugo 0.68.3" />
+    <title>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2 • /dev/yash/notes</title>
+    <link rel='canonical' href='https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/'>
+    
+
+    
+    <link rel='icon' href='/favicon.ico'>
+
+
+
+    
+        <link rel="preload" href="/fonts/libre-baskerville/2012/subset/LibreBaskerville-Regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/iosevka/1.14.1/subset/iosevka-ss08-regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/linux-libertine/5.3.0/subset/LinBiolinum_Rah.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/source-sans-pro/2.020R-ro-1.075R-it/subset/SourceSansPro-Regular.woff2" as="font" crossorigin>
+    
+
+
+
+
+
+
+
+
+
+    <script>
+         
+        !function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+         
+        !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+    </script>
+
+
+
+<style>
+    
+    
+    :root {
+        --theme-color: #6a9fb5;
+        --theme-color-light: rgba(106, 159, 181, 0.2);
+    }
+    
+    html {
+        line-height: 1.5;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/styles.min.15fd0b6e02e8ee12d83e881e2534f306dc69495d71be498824f554b1b13fbf54.css" integrity="sha256-Ff0LbgLo7hLYPogeJTTzBtxpSV1xvkmIJPVUsbE/v1Q=">
+
+
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.da6b5b4da09d91a8af30baf04214409c80aeae536efdd0622d169644a02f7e6d.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.58d47dcaa2ba2c5b650ea35c1155248de2aff6efe389ada218b0101b4a1f3fff.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.72101f3ce24cd49875bf0159cfd78e64dea181370d779f442bedef2023a1969b.png">
+    <link rel="manifest" href="/manifest.bbc56ff464bdd48b6d8b7ac25ace729fb4ab976ddc589fabac051358ccb5c6ca.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.12bcf28d5986de6bb989d2e4a8c6b84e0c723dae4c62fa5f91d5c1f94d69b3be.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d" />
+    <meta name="theme-color" content="#ffffff" />
+
+
+
+
+<link rel="alternate" type="application/jf2post+json" href="https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/jf2post.json" title="Jf2post for /dev/yash/notes" />
+
+ 
+
+     
+
+
+
+    
+    
+    
+        
+    
+
+
+     
+    
+    <meta name="DC.Creator" content="Yash Agarwal"/>
+    
+
 
 </head>
 
-
-<body class='page type-posts'>
-  <div class='site'>
-
-    <a class='screen-reader' href='#main'>Skip to Content</a>
-
-    <header id='header' class='header-container'>
-      <div class='header site-header'>
-        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
-  <ul class='main-menu'>
-  <li>
-      <a href='https://yashagarwal.in/'>Home</a>
-    </li>
-  <li>
-      <a href='https://yashagarwal.in/posts'>Posts</a>
-    </li>
-  <li>
-      <a href='https://yashagarwal.in/categories'>Categories</a>
-    </li>
-  <li>
-      <a href='https://yashagarwal.in/whoami'>whoami</a>
-    </li>
-  
-  </ul>
+<body lang="en">
+    <div class="border" id="home"></div>
+    <div class="wrapper">   
+        
+<nav id="nav" class="nav-collapse opened" aria-hidden="false">
+    <ul class="navbar">
+        <li><a class="" href="/">Home</a></li>
+        
+            
+                <li><a class="" href="https://yashagarwal.in/posts/">Posts</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/notes/">Notes</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/whoami/">Whoami</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/search/">Search</a></li>
+            
+        
+    </ul>
 </nav>
 
-        <div class='header-info'>
-          
-          <p class='site-title title'>/dev/yash/notes</p>
-          
-          <p class='site-description subtitle'>The directory of my thoughts</p>
+
+<div class="container">
+    <header class="masthead">
+        <div class="masthead-title no-text-decoration">
+            <a href="/">/dev/yash/notes</a> <span class="blinking-cursor">❚</span>
         </div>
-      </div>
+        <div class="masthead-tagline">
+            The directory of my thoughts
+        </div>
     </header>
 
 
-<main id='main' class='main'>
-  <article lang='en' class='entry'>
-    <header class='header-container'>
-  <div class='header entry-header'>
-    <div class='header-info'>
-      <h1 class='title'>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2</h1>
-      
+        
 
+
+
+
+
+
+
+
+<article class="post h-entry posts">
+    <header>
+        <div class="center">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__technical__"
+                                
+                                
+                                title="See all 14 posts categorized in ‘Technical’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/technical/">Technical</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline series">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__go-&#43;-grpc-&#43;-opa__"
+                                
+                                
+                                title="See all 3 posts in ‘Go &#43; gRPC &#43; OPA’ series"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/series/go-&#43;-grpc-&#43;-opa/">Go &#43; gRPC &#43; OPA</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__grpc__"
+                                
+                                
+                                title="See all 3 posts tagged with ‘GRPC’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/grpc/">GRPC</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__opa__"
+                                
+                                
+                                title="See all 3 posts tagged with ‘OPA’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/opa/">OPA</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
     </div>
-    
-<div class='meta'>
-  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-  <line x1="16" y1="2" x2="16" y2="6"/>
-  <line x1="8" y1="2" x2="8" y2="6"/>
-  <line x1="3" y1="10" x2="21" y2="10"/>
-  
-</svg>
-<span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2019-02-17T14:44:56&#43;05:30'>Feb 17, 2019</time>
-</span>
-
-  
-  
-<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <circle cx="12" cy="12" r="10"/>
-  <polyline points="12 6 12 12 15 15"/>
-  
-</svg>
-7 mins read
-</span>
-
 
 </div>
 
+        <h1 class="post-title p-name">Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2</h1>
 
-  </div>
-</header>
+        
+        <data class="u-url" value="https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/"></data>
+
+        <div class="date-syndication">
+            
+
 
     
     
-
-    <div class='entry-content'>
-  
-
-
-
-  
-
-
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-<script src="https://yashagarwal.in/js/load-photoswipe.js"></script>
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="https://yashagarwal.in/css/photoswipe.css" />
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
+    <div class="post-date">
+        
+        <time datetime="2019-02-17T14:44:56+0530" class="dt-published">Sun Feb 17, 2019</time>
+        
+        
     </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
+
+
+            
+
+
+
+
         </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
+         
+
+     
 
 
-<p>In the last <a href="https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/">post</a>, we discussed about the structure of our library
+
+    
+    
+    
+        
+    
+
+
+    
+        
+        <span class="hide">
+            &mdash; <a href="https://yashagarwal.in/" class="u-author">Yash Agarwal</a>
+        </span>
+    
+
+
+    </header>
+
+    <div class="content">
+        
+
+
+        
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+        
+        
+        
+            <div class="series">
+                <p>
+                    <a href="#" id="series"></a>
+                    This is a post in the
+                    
+                        “<b class="p-category">Go &#43; gRPC &#43; OPA</b>”
+                    
+                    series.
+                </p>
+                <table>
+                    
+                    
+                        
+                        
+                            <tr><td class="date">2019-02-18</td><td><a href="https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-3/">Go &#43; gRPC &#43; OPA - A Perfect Union - Part 3</a></td></tr>
+                        
+                    
+                        
+                        
+                            
+                            <tr class="active"><td class="date">2019-02-17</td><td>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 2</td></tr>
+                        
+                    
+                        
+                        
+                            <tr><td class="date">2019-02-10</td><td><a href="https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/">Go &#43; gRPC &#43; OPA - A Perfect Union - Part 1</a></td></tr>
+                        
+                       
+                    
+                </table>
+            </div>
+            <br />
+                       
+                       
+                       
+
+
+        <div class="e-content">
+            
+
+
+
+
+
+
+
+
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet" href="/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css">
+
+    
+
+    
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        
+        <div class="pswp__bg"></div>
+        
+        <div class="pswp__scroll-wrap">
+            
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    
+                    
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<p>In the last <a href="/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/">post</a>, we discussed about the structure of our library
 application. In this post, we will define the data definitions using protobuf, and then we will use these definitions to
 create a Go service. We will also add a REST interface to the service. So let&rsquo;s get started.</p>
-
-<h6>Defining Proto Definitions</h6>
-
-<p>gRPC uses protocol buffers for serializing structured data. To define the structure of the data that you want to serialize, we use a <em>proto</em> file - it is a simple text file that contains all the logical pieces of your data in the form of <em>messages</em>, and the methods that will be called over the network. To know more about the syntax of proto files, visit <a href="https://grpc.io/docs/guides/" target="_blank">this</a> link.</p>
-
+<h2 id="defining-proto-definitions">Defining Proto Definitions&nbsp;<a class="headline-hash no-text-decoration" href="#defining-proto-definitions">#</a> </h2>
+<p>gRPC uses protocol buffers for serializing structured data. To define the structure of the data that you want to serialize, we use a <em>proto</em> file - it is a simple text file that contains all the logical pieces of your data in the form of <em>messages</em>, and the methods that will be called over the network. To know more about the syntax of proto files, visit <a href="https://grpc.io/docs/guides/">this</a> link.</p>
 <p>I have defined the following proto file -</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-proto" data-lang="proto"><span class="n">syntax</span> <span class="o">=</span> <span class="s">&#34;proto3&#34;</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="kn">package</span> <span class="nn">library</span><span class="p">;</span><span class="err">
 </span><span class="err"></span><span class="k">import</span> <span class="s">&#34;google/api/annotations.proto&#34;</span><span class="p">;</span><span class="err">
@@ -248,48 +579,44 @@ create a Go service. We will also add a REST interface to the service. So let&rs
 </span><span class="err"></span><span class="p">}</span><span class="err">
 </span><span class="err">
 </span><span class="err"></span><span class="kd">message</span> <span class="nc">Empty</span> <span class="p">{}</span></code></pre></div>
-
 <p>To compile it, run the following commands -</p>
-
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">protoc -I/usr/local/include -I. <span class="se">\
 </span><span class="se"></span>-I<span class="nv">$GOPATH</span>/src <span class="se">\
 </span><span class="se"></span>-I<span class="nv">$GOPATH</span>/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis <span class="se">\
 </span><span class="se"></span>--go_out<span class="o">=</span><span class="nv">plugins</span><span class="o">=</span>grpc:. <span class="se">\
 </span><span class="se"></span>api/library.proto</code></pre></div>
-
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">protoc -I/usr/local/include -I. <span class="se">\
 </span><span class="se"></span>  -I<span class="nv">$GOPATH</span>/src <span class="se">\
 </span><span class="se"></span>  -I<span class="nv">$GOPATH</span>/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis <span class="se">\
 </span><span class="se"></span>  --grpc-gateway_out<span class="o">=</span><span class="nv">logtostderr</span><span class="o">=</span>true:. <span class="se">\
 </span><span class="se"></span>  api/library.proto</code></pre></div>
-
 <p>It will generate corresponding Golang definitions of the messages and services defined in the Proto file. These
 definitions can be used by the server and client stubs to communicate with each other.</p>
-
-<h6>Implementation of Go service</h6>
-
+<h2 id="implementation-of-go-service">Implementation of Go service&nbsp;<a class="headline-hash no-text-decoration" href="#implementation-of-go-service">#</a> </h2>
 <p>Now we can start implementing the code for our services <code>AddBook()</code>, <code>ListAllBooks()</code> and <code>SearchBook()</code>. It is going to
 be a very naive implementation of a library system, but it will be sufficient to learn all the concepts.</p>
-
 <p>My implementation of the server stub is hosted
-<a href="https://github.com/yashhere/go-library-service/blob/master/pkg/librarylib/server.go" target="_blank">here</a>. A basic flow diagram of
+<a href="https://github.com/yashhere/go-library-service/blob/master/pkg/librarylib/server.go">here</a>. A basic flow diagram of
 this implementation will look like this -</p>
 
-<p><center>
-<link rel="stylesheet" href="https://yashagarwal.in/css/hugo-easy-gallery.css" />
-<div class="box fancy-figure caption-position-bottom caption-effect-appear" style="max-width:650px">
-  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <div class="img">
-      <img itemprop="thumbnail" src="https://yashagarwal.in/images/OPA_Service_Flow_Diagram.jpeg" />
-    </div>
-    <a href="https://yashagarwal.in/images/OPA_Service_Flow_Diagram.jpeg" itemprop="contentUrl"></a>
-  </figure>
-</div>
-</center></p>
 
-<p>The gRPC server will listen on port <code>:50051</code> and a REST HTTP server will listen on port <code>:8181</code>. The OPA server is
+
+    <link rel="stylesheet" href="/css/hugo-easy-gallery.css">
+    
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-appear" style="max-width:650px" itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img">
+            <img itemprop="thumbnail" src="/images/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center" alt="Architecture"/>
+        </div>
+        <a href="/images/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center" itemprop="contentUrl"></a>
+    </figure>
+</div>
+
+<p>The gRPC server will listen on port <code>:50051</code>, and a REST HTTP server will listen on port <code>:8181</code>. The OPA server is
 running on port <code>:8182</code>. The REST server is
-implemented using <a href="https://github.com/grpc-ecosystem/grpc-gateway" target="_blank">gRPC-Gateway</a>. There are three methods - <code>AddBook()</code>,
+implemented using <a href="https://github.com/grpc-ecosystem/grpc-gateway">gRPC-Gateway</a>. There are three methods - <code>AddBook()</code>,
 <code>ListAllBooks()</code>, and <code>SearchBook()</code>. These methods can be called using either gRPC methods or using the REST endpoints
 <code>/addBook</code>, <code>/listBooks</code> and <code>/searchBook</code>. By design, the library gRPC service will not implement the authentication
 part of the service. The main purpose of using gRPC here is to provide a scalable and secure medium where all the
@@ -298,112 +625,223 @@ traditional mediums. In the current form, this gRPC server will accept requests 
 functions. That is not desirable. What if a student tries to add a book to the library. Only Admins should be allowed to
 execute such functions. What if someone who is not a student of the University tries to access the service. How to stop
 them?</p>
-
 <p>There are two steps to solve this issue -</p>
-
 <ol>
-<li><p><strong>Authentication</strong> - It mainly deals with the question - who are you? It is a way to gain access to the system by verifying your identity. In our case, a user will provide its username and password to access the library service.
+<li>
+<p><strong>Authentication</strong> - It mainly deals with the question - who are you? It is a way to gain access to the system by verifying your identity. In our case, a user will provide its username and password to access the library service.
 Without this authentication, the user will not be able to access the system. We will not be implementing authentication
-functionality in our application.</p></li>
-
-<li><p><strong>Authorization</strong> - It deals with the question - which resources are you allowed to use? OPA can be used here to
-define various rights based on the access levels of the users.</p></li>
+functionality in our application.</p>
+</li>
+<li>
+<p><strong>Authorization</strong> - It deals with the question - which resources are you allowed to use? OPA can be used here to define various rights based on the access levels of the users.</p>
+</li>
 </ol>
-
 <p>If you have noticed, I have defined an <code>access_level</code> field in the proto definition of the <code>Book</code>. This field will tell
 us what is the minimum access level required for a user to access this book.</p>
-
 <p>Again, in the proto definition of the <code>User</code>, I have defined a <code>user_type</code> field. This field will serve as an indicator of
 the access rights of the user. In the real world, these access rights will be decided after the user has authenticated
 herself to
 the system, but here, we will hardcode the access rights.</p>
-
 <p>So, only users with access rights equal to <code>Administration</code> will be allowed to add books to the system. Here we do not
-care, who is the user. If the user is supplying the correct access right, she will be allowed to operate.
-The <em>who</em> part will be determined by the authentication logic in real-world scenarios.</p>
-
-<p>There are some books in the library, which has access rights equal to that of a <code>Faculty</code>. It means that only faculties
+care who the user is. If the user is supplying the correct access right, she will be allowed to operate.
+The authentication logic in real-world scenarios will determine the <em>who</em> part.</p>
+<p>There are some books in the library, which have access rights equal to that of a <code>Faculty</code>. It means that only faculties
 will be allowed to access those books. The students will not be able to access these books, even while searching for
-books using ISBN. This kind of mechanism can be implemented using OPA very easily. We will see the implementation of OPA
+books using ISBN. This kind of mechanism can be implemented using OPA very quickly. We will see the implementation of the OPA
 part in the next post.</p>
-
 <p>While querying the service, users are required to supply their identity (at least <code>user_type</code>) and the book ISBN if
-they are searching for some book. The administrators are supposed to provide the name, author, access level, number of copies
-and ISBN while adding the books. I have not added the error checking functionality in the code, but it should be
+they are searching for some book. The administrators are supposed to provide the name, author, access level, number of copies, and ISBN while adding the books. I have not added the error checking functionality in the code, but it should be
 easy enough to implement such functionality.</p>
-
-<p>The <a href="https://github.com/yashhere/go-library-service/blob/master/cmd/main.go" target="_blank">main.go</a> file is the starting point of this service. It will spawn two servers in two Go Routines. Ideally, some synchronization mechanisms should be implemented in the code to avoid race conditions in some cases - for example, what will happen if two or more clients are trying to add the same book simultaneously. Here in our case, nothing serious
+<p>The <a href="https://github.com/yashhere/go-library-service/blob/master/cmd/main.go">main.go</a> file is the starting point of this service. It will spawn two servers in two Go Routines. Ideally, some synchronization mechanisms should be implemented in the code to avoid race conditions in some cases - for example, what will happen if two or more clients are trying to add the same book simultaneously. Here in our case, nothing serious
 will happen, as OPA will take only one book per ISBN, and discard all the other books with the same ISBN even if the other
 metadata is different (I designed the service in this way to keep the code easy enough to understand), but if there are
 other operations like DeleteBook and IssueBook, then the race conditions can cause issues.</p>
-
 <p>In the <code>AddBook()</code> function, the user provided book details will be sent to the OPA server using a REST call. OPA will
 store this information in its in-memory store at a unique place determined by the ISBN of the book. In actual cases, the data should be stored in some persistent
-storage such as a DB. OPA will take the information from the DB. Again, to keep the implementation easy enough to
-understand we are not using any such persistent storage. If any other book with different metadata but same ISBN comes,
+storage, such as a DB. OPA will take the information from the DB. Again, to keep the implementation easy enough to
+understand, we are not using any such persistent storage. If any other book with different metadata but the same ISBN comes,
 then OPA will overwrite the existing book with the new one.</p>
-
 <p>In the <code>SearchBook()</code> function, the user will provide the ISBN of the desired book. The gRPC service will call
 the OPA using REST API and find if any such book exists or not.</p>
-
 <p>The <code>ListAllBooks()</code> is different in the way that it does not need any ISBN.</p>
-
 <p>Now, here one problem arises, how to make sure that the search results will not return any book which the user is not
 authorized to access. We will solve this problem using OPA in the next and last post of this series.</p>
-
 <p>I hope that this post was helpful. If you have any doubts or want to say anything else, please comment. It will be a great
 motivation and appreciation for me.</p>
-
 <p>Thanks for reading. Cheers 😄</p>
 
+
+        </div>
+    </div>
+</article>
+
+
+
+        <footer>
+            
+
+
+
+
+<div class="no-text-decoration">
+    <div class="jump top"><a href="#" title="Top of this page">⮉</a></div>
+    <div class="jump bottom"><a href="#bottom" title="Bottom of this page">⮋</a></div>
 </div>
 
+
+ 
     
-<footer class='entry-footer-container'>
-  <div class='entry-footer'>
-  <div class='categories'>
-  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
-  
-</svg>
-</span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='https://yashagarwal.in/categories/technical'>Technical</a></div>
-
-  </div>
-</footer>
-
-
-    
-  </article>
-  
-<nav class='entry-nav-container'>
-  <div class='entry-nav'><div class='prev-entry'>
-      <a href='https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/'>
-        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="20" y1="12" x2="4" y2="12"/>
-  <polyline points="10 18 4 12 10 6"/>
-  
-</svg>
- Previous</span>
-        <span class='screen-reader'>Previous post: </span>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 1</a>
-    </div><div class='next-entry'>
-      <a href='https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-3/'>
-        <span class='screen-reader'>Next post: </span>Go &#43; gRPC &#43; OPA - A Perfect Union - Part 3<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <line x1="4" y1="12" x2="20" y2="12"/>
-  <polyline points="14 6 20 12 14 18"/>
-  
-</svg>
-</span>
-      </a>
-    </div></div>
+        <div class="hugotoc no-text-decoration">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#defining-proto-definitions">Defining Proto Definitions</a></li>
+    <li><a href="#implementation-of-go-service">Implementation of Go service</a></li>
+  </ul>
 </nav>
+            <a href="#" class="back-to-top">Back to top</a>
+        </div>
+    
 
-  
-<div class='comments-container'>
-  <div id="disqus_thread"></div>
+
+
+<div class="backtotop center no-text-decoration">
+    <a href="#">back to <span class="top">top</span></a>
+</div>
+
+
+<div class="right">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__technical__"
+                                
+                                
+                                title="See all 14 posts categorized in ‘Technical’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/technical/">Technical</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline series">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__go-&#43;-grpc-&#43;-opa__"
+                                
+                                
+                                title="See all 3 posts in ‘Go &#43; gRPC &#43; OPA’ series"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/series/go-&#43;-grpc-&#43;-opa/">Go &#43; gRPC &#43; OPA</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__grpc__"
+                                
+                                
+                                title="See all 3 posts tagged with ‘GRPC’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/grpc/">GRPC</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__opa__"
+                                
+                                
+                                title="See all 3 posts tagged with ‘OPA’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/opa/">OPA</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+</div>
+<div class="clear-float"></div>
+
+
+
+<div class="prev-next-navigator clear-float">
+    
+        <span class="prev-post left no-text-decoration">
+            <a href="https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-3/" class="nobr">« Go &#43; gRPC &#43; OPA - A Perfect Union - Part 3</a>
+        </span>
+    
+    
+        <span class="next-post right no-text-decoration">
+            <a href="https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/" class="nobr">Go &#43; gRPC &#43; OPA - A Perfect Union - Part 1 »</a>
+        </span>
+    
+</div>
+
+
+<a id="bottom"></a>
+
+
+
+
+
+
+
+
+
+                       
+
+
+
+
+    <div class="comments clear-float">
+        <hr />
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -423,50 +861,206 @@ motivation and appreciation for me.</p>
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+
+     
+            <ul class="no-bullets feed right inline">
+    
+        
+        
+    
+</ul>
+<div class="clear-float"></div>
+
+            <div class='copyright'>
+    <p>
+    </p>
+</div>
+        </footer>
+        <hr />
+        </div> 
+    </div>
+    <footer> 
+        
+
+<ul class="social no-text-decoration">
+    
+        <li>
+            <a href="https://github.com/yashhere/" title="Github">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-github"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://gitlab.com/users/yashhere/projects" title="Gitlab">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-gitlab"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://twitter.com/yash__here/" title="Twitter">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-twitter"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://keybase.io/yash2696" title="Keybase.io">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-keybase"></i>
+                
+            </a>
+        </li>
+    
+</ul>
+
+
+
+
+
+
+    
+    
+    
+        
+    
+    
+    
+        
+            
+            
+                
+            
+        
+    
+    
+    
+        
+            
+        
+    
+
+
+
+
+
+ 
+    
+    
+
+
+
+<p class="generated no-text-decoration">
+    Generated using <a href="https://github.com/yashhere/refined-mod"><code class="nobr">modified</code></a> <a href="https://gitlab.com/kaushalmodi/hugo-theme-refined"><code class="nobr">hugo-theme-refined</code></a> + <span class="nobr">Hugo <a href="https://github.com/gohugoio/hugo/commit/157669a0">0.68.3</a></span><br /><span class="nobr">&mdash; Markdown <a href="https://gitlab.com/yashhere/yashhere.gitlab.io/raw/source/content/posts/2019-02-17-go-grpc-opa-a-perfect-union-part-2/index.md">source</a> of this page</span>.
+</p>
+
+<p>
+    
+</p>
+
+
+
+
+<div class="badges no-text-decoration">
+    
+    
+
+    
+        
+        
+        <a href="https://html5.validator.nu/?doc=https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-2/&amp;showsource=yes">
+            
+            <img src="/images/html5-css3-semantics-badge--scaled-optimized.0f343c79b5f793c32b308b8b872fccdc6f8f10dc328d12f3f8fba203ab3ccc6e.png"
+                 width="46" height="18" class="pixelated"
+                 alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+                 title="HTML5 Powered with CSS3 / Styling, and Semantics">
+        </a>
+    
 </div>
 
-</main>
 
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social-menu-container'>
-  <nav aria-label='Social Menu'>
-    <ul class='social-menu'><li>
-        <a href='https://github.com/yashhere' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-  
-</svg>
-</a>
-      </li><li>
-        <a href='https://twitter.com/yash__here' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-  
-</svg>
-</a>
-      </li><li>
-        <a href='https://linkedin.com/in/theyashagarwal' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
-  
-</svg>
-</a>
-      </li></ul>
-  </nav>
-</div>
-        <div class='copyright'>
-  <p>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International
-  </p>
-</div>
 
-      </div>
+
+
+
+
+
+    <div class="h-card">
+        
+            
+            <img class="u-photo" alt="Photo of Yash Agarwal"
+                 src="/author/yash.2842f98c30eaf22e6f1f7bbe38ac8d584cd916ec640e15b3aaf512b6d56ea8e2.jpg" width="400" height="400">
+        
+        
+        <a class="p-name u-url" href="https://yashagarwal.in/">Yash Agarwal</a>
+        
+            <p>
+                <a class="u-email" href="mailto:yashagarwaljpr@gmail.com" rel="me">yashagarwaljpr@gmail.com</a>
+            </p>
+        
+        
+    </div>
+
+
+
     </footer>
 
-  </div><script src='https://yashagarwal.in/assets/js/main.f29c93b9.js'></script><script src='https://yashagarwal.in/js/jquery.js'></script><script src='https://yashagarwal.in/js/redirection.js'></script><script src='https://yashagarwal.in/js/footnoteTooltip.js'></script></body>
 
+
+
+
+
+
+
+
+
+    
+        
+        
+
+        
+        <link rel="preload" href="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" as="script" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU=">
+        <script src="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU="></script>
+    
+
+
+
+    <link rel="preload" href="/js/load-photoswipe.min.dd378cb6428bcab4fe1cf4d7367bf097aa87750b57800a8aa04736dc6a93dfb8.js" as="script">
+    <script src="/js/load-photoswipe.min.dd378cb6428bcab4fe1cf4d7367bf097aa87750b57800a8aa04736dc6a93dfb8.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
+
+
+
+<link rel="preload" href="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js" as="script">
+<script src="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js"></script>
+
+
+
+
+
+<script>var nav=responsiveNav("#nav");</script>
+</body>
 </html>
-

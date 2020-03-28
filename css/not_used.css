@@ -1,0 +1,230 @@
+/******************************************************************/
+/* Stuff that I might need in future                              */
+/******************************************************************/
+
+/* Archive list */
+.archive h3 {
+    margin-top:0;
+    padding-bottom: 0;
+}
+
+.fpimg {
+    padding-bottom: 2rem;
+}
+
+.lbg {
+    display: inline;
+    width: auto;
+    padding-left: 1rem;
+}
+
+.front {
+    margin-bottom: 500px;
+}
+
+/* This gets Google to fall into place */
+.social {
+    font-size: 1px;
+    padding-bottom: 2rem;
+    padding-top: 0;
+}
+
+/* From https://gist.github.com/thebigreason/1296097 */
+/* This gets Facebook to fall into place */
+.social iframe {
+    vertical-align: bottom;
+}
+
+/* Set an optional width for your button wrappers */
+.social span {
+    display: inline-block;
+    width: 110px;
+}
+
+.diff-added {
+    background-color: #ddffdd;
+}
+
+.diff-context {
+    color: #333333;
+}
+.diff-indicator-added {
+    background-color: #ddffdd;
+}
+.diff-indicator-removed {
+    background-color: #ffdddd;
+}
+.diff-removed {
+    background-color: #ffdddd;
+}
+
+.slime-repl-prompt {
+    font-weight:bold;
+    color:#7F0055;
+}
+
+.slime-repl-old {
+    font-weight:bold;
+}
+
+.slime-repl-inputed-output {
+    color:#FF0000;
+}
+
+region {
+    color: #ffffff;
+    background-color: #f9b593;
+}
+
+.j-adverb {
+    color: #00ff00;
+}
+.j-verb {
+    color: #ff0000;
+}
+.j-conjunction {
+    color: #0000ff;
+}
+.j-other {
+    color: #000000;
+}
+.org-block {
+    color: #7f7f7f;
+}
+.org-block-begin-line {
+    color: #3F7F5F;
+}
+.org-block-end-line {
+    color: #3F7F5F;
+}
+.org-code {
+    color: #7F0055;
+    font-weight: bold;
+}
+.org-meta-line {
+    color: #3F7F5F;
+}
+
+td.about-icon {
+    padding: 0rem 0.5rem;
+    border: 0px;
+    background-color: #fff;
+}
+
+button code {
+    padding: 2px 2px;/* 0em 0em; */
+    font-size: 100%;
+    color: #000;
+    background-color: #f9f9f9;
+    border-radius: 0px;
+}
+
+cursor {
+    color: #fff;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.twitter-share {
+    margin-top: -3.5em;
+}
+
+button {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #ac4142; /* #5bc0de; */
+    border-color: #9c3132;
+}
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-info.active,
+.open > .dropdown-toggle.btn-info {
+    color: #fff;
+    background-color: #f3d3d3;/* #31b0d5; */
+    border-color: #e3c3c3;/* #269abc; */
+}
+.btn-info:active,
+.btn-info.active,
+.open > .dropdown-toggle.btn-info {
+    background-image: none;
+}
+.btn-info.disabled,
+.btn-info[disabled],
+fieldset[disabled] .btn-info,
+.btn-info.disabled:hover,
+.btn-info[disabled]:hover,
+fieldset[disabled] .btn-info:hover,
+.btn-info.disabled:focus,
+.btn-info[disabled]:focus,
+fieldset[disabled] .btn-info:focus,
+.btn-info.disabled:active,
+.btn-info[disabled]:active,
+fieldset[disabled] .btn-info:active,
+.btn-info.disabled.active,
+.btn-info[disabled].active,
+fieldset[disabled] .btn-info.active {
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+.btn-info .badge {
+    color: #5bc0de;
+    background-color: #fff;
+}
+
+.collapse {
+    display: none;
+}
+.collapse.in {
+    display: block;
+}
+tr.collapse.in {
+    display: table-row;
+}
+tbody.collapse.in {
+    display: table-row-group;
+}
+.collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height .35s ease;
+    -o-transition: height .35s ease;
+    transition: height .35s ease;
+}

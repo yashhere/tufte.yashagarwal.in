@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+
+<link href="https://gmpg.org/xfn/11" rel="profile">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+
+<meta name="referrer" content="no-referrer">
+
+
+ 
+<meta property="og:title" content="configuration" />
+<meta property="og:description"
+      content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yashagarwal.in/tags/configuration/" />
+
+
+    
+        <meta property="og:updated_time" content="2018-05-15T17:14:13&#43;05:30"/>
+    
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+<!-- rel="me" links for IndieAuth -->
+
+<link href="https://github.com/yashhere/" rel="me">
+
+
+    
+    
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" data-proofer-ignore>
+    
+    
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+
+
+
+
+ <meta name="twitter:card" content="summary"/><meta name="twitter:image" content="/android-chrome-512x512.db28abcc591bd775d661d3fdb11c7c9e71d5e5fa81728f383b1a36c25c683bae.png"/>
+<meta name="twitter:title" content="configuration"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@yash__here"/>
+    <meta name="twitter:creator" content="@yash__here"/>
+
+
+
+
+
+<meta name="hugo-build-date" content="2020-03-24T12:13:38Z"/>
+<meta name="hugo-commit-hash" content="157669a0"/>
+<meta name="generator" content="Hugo 0.68.3" />
+    <title>configuration • /dev/yash/notes</title>
+    <link rel='canonical' href='https://yashagarwal.in/tags/configuration/'>
+    
+        <link href="/tags/configuration/" rel="alternate" type="application/rss+xml" title="/dev/yash/notes" />
+    
+
+    
+    <link rel='icon' href='/favicon.ico'>
+
+
+
+    
+        <link rel="preload" href="/fonts/libre-baskerville/2012/subset/LibreBaskerville-Regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/iosevka/1.14.1/subset/iosevka-ss08-regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/linux-libertine/5.3.0/subset/LinBiolinum_Rah.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/source-sans-pro/2.020R-ro-1.075R-it/subset/SourceSansPro-Regular.woff2" as="font" crossorigin>
+    
+
+
+
+
+
+
+
+
+
+    <script>
+         
+        !function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+         
+        !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+    </script>
+
+
+
+<style>
+    
+    
+    :root {
+        --theme-color: #6a9fb5;
+        --theme-color-light: rgba(106, 159, 181, 0.2);
+    }
+    
+    html {
+        line-height: 1.5;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/styles.min.15fd0b6e02e8ee12d83e881e2534f306dc69495d71be498824f554b1b13fbf54.css" integrity="sha256-Ff0LbgLo7hLYPogeJTTzBtxpSV1xvkmIJPVUsbE/v1Q=">
+
+
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.da6b5b4da09d91a8af30baf04214409c80aeae536efdd0622d169644a02f7e6d.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.58d47dcaa2ba2c5b650ea35c1155248de2aff6efe389ada218b0101b4a1f3fff.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.72101f3ce24cd49875bf0159cfd78e64dea181370d779f442bedef2023a1969b.png">
+    <link rel="manifest" href="/manifest.bbc56ff464bdd48b6d8b7ac25ace729fb4ab976ddc589fabac051358ccb5c6ca.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.12bcf28d5986de6bb989d2e4a8c6b84e0c723dae4c62fa5f91d5c1f94d69b3be.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d" />
+    <meta name="theme-color" content="#ffffff" />
+
+
+
+
+<link rel="alternate" type="application/rss+xml" href="https://yashagarwal.in/tags/configuration/index.xml" title="RSS for /dev/yash/notes" />
+<link rel="alternate" type="application/atom+xml" href="https://yashagarwal.in/tags/configuration/atom.xml" title="Atom for /dev/yash/notes" />
+<link rel="alternate" type="application/jf2feed+json" href="https://yashagarwal.in/tags/configuration/jf2feed.json" title="Jf2feed for /dev/yash/notes" />
+
+ 
+
+     
+
+
+
+
+     
+    
+    <meta name="DC.Creator" content="Yash Agarwal"/>
+    
+
+
+</head>
+
+<body lang="en">
+    <div class="border" id="home"></div>
+    <div class="wrapper">   
+        
+<nav id="nav" class="nav-collapse opened" aria-hidden="false">
+    <ul class="navbar">
+        <li><a class="" href="/">Home</a></li>
+        
+            
+                <li><a class="" href="https://yashagarwal.in/posts/">Posts</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/notes/">Notes</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/whoami/">Whoami</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/search/">Search</a></li>
+            
+        
+    </ul>
+</nav>
+
+
+<div class="container">
+    <header class="masthead">
+        <div class="masthead-title no-text-decoration">
+            <a href="/">/dev/yash/notes</a> <span class="blinking-cursor">❚</span>
+        </div>
+        <div class="masthead-tagline">
+            The directory of my thoughts
+        </div>
+    </header>
+
+
+                     
+
+
+
+
+
+
+
+    
+    <div class="all-terms right no-text-decoration">
+        
+            
+            
+            
+            
+            
+            
+                
+                    
+                    <span class="categories"><a href="https://yashagarwal.in/categories/">all <span class="term">categories</span></a></span>
+                    
+                
+            
+        
+            
+            
+            
+            
+            
+            
+        
+            
+            
+            
+            
+            
+            
+                
+                    
+                    <span class="tags"> | <a href="https://yashagarwal.in/tags/">all <span class="term">tags</span></a></span>
+                    
+                
+            
+        
+    </div>
+    <div class="clear-float"></div>
+
+
+
+
+
+
+
+<section class="h-feed">
+    <header>
+        
+        <data class="u-url" value="https://yashagarwal.in/tags/configuration/"></data>
+         
+
+     
+
+
+
+
+    
+        
+        <span class="hide">
+            &mdash; <a href="https://yashagarwal.in/" class="u-author">Yash Agarwal</a>
+        </span>
+    
+
+
+
+        
+        
+        
+
+        
+            <div class="center">
+    <div class="taxo no-text-decoration">
+         
+            
+         
+            
+         
+            
+        
+    </div>
+
+</div>
+            
+            <h1 class="p-name">Posts tagged with ‘configuration’ (5)</h1>
+        
+    </header>
+
+    
+        
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/'> Proxy Your Requests to the Backend Server With Grunt</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__technical__"
+                                
+                                
+                                title="See all 14 posts categorized in ‘Technical’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/technical/">Technical</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="active"
+                                
+                                
+                                title="See all 5 posts tagged with ‘configuration’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/configuration/">configuration</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-05-15T17:14:13+0530" class="dt-published">Tue May 15, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>This article was originally published on zeolearn.
+If you are working on large projects, it is undoubtedly a good idea to have a build script or some task scripts to help to automate some of the repetitive parts of the development process. For JavaScript projects, Grunt serves a similar purpose. It is a JavaScript task/build runner that is written on top of NodeJS. Grunt can help you with automatically minifying your JavaScript or CSS files, or reload your browser on every file change.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/'
+               title="Read more about Proxy Your Requests to the Backend Server With Grunt">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Proxy Your Requests to the Backend Server With Grunt</span>
+            </a>
+        </div>
+    
+</article>
+
+    
+        
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/'> Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__hacks__"
+                                
+                                
+                                title="See all 8 posts categorized in ‘Hacks’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/hacks/">Hacks</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="active"
+                                
+                                
+                                title="See all 5 posts tagged with ‘configuration’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/configuration/">configuration</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__arch-linux__"
+                                
+                                
+                                title="See all 9 posts tagged with ‘Arch Linux’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/arch-linux/">Arch Linux</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-02-01T12:54:34+0530" class="dt-published">Thu Feb 1, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>This post is going to be one of those that I have written for my reference. Whatever I am going to mention in this post is not new. Everything has already been said and written many times on many websites and Linux forums.
+So I will start by explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not the same in both the operating systems.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/'
+               title="Read more about Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups</span>
+            </a>
+        </div>
+    
+</article>
+
+    
+        
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/'> Arch Linux Installation Guide Part 2</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__hacks__"
+                                
+                                
+                                title="See all 8 posts categorized in ‘Hacks’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/hacks/">Hacks</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline series">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__arch-linux-installation__"
+                                
+                                
+                                title="See all 2 posts in ‘Arch Linux Installation’ series"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/series/arch-linux-installation/">Arch Linux Installation</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="active"
+                                
+                                
+                                title="See all 5 posts tagged with ‘configuration’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/configuration/">configuration</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__arch-linux__"
+                                
+                                
+                                title="See all 9 posts tagged with ‘Arch Linux’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/arch-linux/">Arch Linux</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__i3__"
+                                
+                                
+                                title="See all 4 posts tagged with ‘i3’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/i3/">i3</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-01-26T15:45:27+0530" class="dt-published">Fri Jan 26, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>In this post, I will continue from my last post and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current dotfile configuration setup to work properly. The choice of applications is highly opinionated and your preferences might be different.
+ If you had gone for installation via SSH option, then I would suggest you to edit your `sshd_config` file and disable `root` login.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/'
+               title="Read more about Arch Linux Installation Guide Part 2">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Arch Linux Installation Guide Part 2</span>
+            </a>
+        </div>
+    
+</article>
+
+    
+        
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/'> Arch Linux Installation Guide Part 1</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__hacks__"
+                                
+                                
+                                title="See all 8 posts categorized in ‘Hacks’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/hacks/">Hacks</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline series">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__arch-linux-installation__"
+                                
+                                
+                                title="See all 2 posts in ‘Arch Linux Installation’ series"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/series/arch-linux-installation/">Arch Linux Installation</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="active"
+                                
+                                
+                                title="See all 5 posts tagged with ‘configuration’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/configuration/">configuration</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__arch-linux__"
+                                
+                                
+                                title="See all 9 posts tagged with ‘Arch Linux’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/arch-linux/">Arch Linux</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__i3__"
+                                
+                                
+                                title="See all 4 posts tagged with ‘i3’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/i3/">i3</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-01-24T21:49:05+0530" class="dt-published">Wed Jan 24, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.
+This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&rsquo;t remember all the installation steps perfectly.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/'
+               title="Read more about Arch Linux Installation Guide Part 1">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about Arch Linux Installation Guide Part 1</span>
+            </a>
+        </div>
+    
+</article>
+
+    
+        
+        <article class="summary h-entry posts">
+    <header>
+        <h2 class="post-title p-name no-text-decoration"><a class="u-url" href='https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/'> My Own Configuration Manager</a> </h2>
+        
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__technical__"
+                                
+                                
+                                title="See all 14 posts categorized in ‘Technical’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/technical/">Technical</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="active"
+                                
+                                
+                                title="See all 5 posts tagged with ‘configuration’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/configuration/">configuration</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__python__"
+                                
+                                
+                                title="See all 2 posts tagged with ‘python’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/python/">python</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__github__"
+                                
+                                
+                                title="See all 2 posts tagged with ‘github’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/github/">github</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+
+        
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-01-21T11:23:23+0530" class="dt-published">Sun Jan 21, 2018</time>
+        
+        
+    </div>
+
+
+    </header>
+
+    <div class="post p-summary" >
+        <p>I have been using Linux since I was in my second year of undergraduate. My experiments with the dotfiles (configuration files) also started at the same time. For the uninformed, in Linux, it is common to configure a lot of settings and configurations within dotfiles. Dotfiles are files in a Linux user&rsquo;s home directory that begin with a dot or a full-stop character. This dot indicates to the operating system that these files are used to store the settings of programs like vim or shells like bash or fish to name a few.</p>
+
+    </div>
+
+    
+    
+    
+        <div class="readmore no-text-decoration">
+            <a href='https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/'
+               title="Read more about My Own Configuration Manager">
+                read <span class="more"> more</span>
+                <span class="screen-readers-only" > about My Own Configuration Manager</span>
+            </a>
+        </div>
+    
+</article>
+
+    
+
+    
+
+
+    
+    <div class="all-terms right no-text-decoration">
+        
+            
+            
+            
+            
+            
+            
+                
+                    
+                    <span class="categories"><a href="https://yashagarwal.in/categories/">all <span class="term">categories</span></a></span>
+                    
+                
+            
+        
+            
+            
+            
+            
+            
+            
+        
+            
+            
+            
+            
+            
+            
+                
+                    
+                    <span class="tags"> | <a href="https://yashagarwal.in/tags/">all <span class="term">tags</span></a></span>
+                    
+                
+            
+        
+    </div>
+    <div class="clear-float"></div>
+
+
+</section>
+
+
+
+        <footer>
+                 
+            <ul class="no-bullets feed right inline">
+    
+        
+        
+            <li class="inline no-text-decoration">
+                <a href="https://yashagarwal.in/tags/configuration/index.xml">RSS</a>
+            </li>
+        
+    
+        
+        
+            <li class="inline no-text-decoration">
+                <a href="https://yashagarwal.in/tags/configuration/atom.xml">ATOM</a>
+            </li>
+        
+    
+        
+        
+    
+</ul>
+<div class="clear-float"></div>
+
+            <div class='copyright'>
+    <p>
+    </p>
+</div>
+        </footer>
+        <hr />
+        </div> 
+    </div>
+    <footer> 
+        
+
+<ul class="social no-text-decoration">
+    
+        <li>
+            <a href="https://github.com/yashhere/" title="Github">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-github"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://gitlab.com/users/yashhere/projects" title="Gitlab">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-gitlab"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://twitter.com/yash__here/" title="Twitter">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-twitter"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://keybase.io/yash2696" title="Keybase.io">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-keybase"></i>
+                
+            </a>
+        </li>
+    
+</ul>
+
+
+
+
+
+
+    
+    
+    
+        
+    
+    
+    
+    
+    
+
+
+
+
+
+ 
+    
+    
+
+
+
+<p class="generated no-text-decoration">
+    Generated using <a href="https://github.com/yashhere/refined-mod"><code class="nobr">modified</code></a> <a href="https://gitlab.com/kaushalmodi/hugo-theme-refined"><code class="nobr">hugo-theme-refined</code></a> + <span class="nobr">Hugo <a href="https://github.com/gohugoio/hugo/commit/157669a0">0.68.3</a></span><br />
+</p>
+
+<p>
+    
+</p>
+
+
+
+
+<div class="badges no-text-decoration">
+    
+    
+
+    
+        
+        
+        <a href="https://html5.validator.nu/?doc=https://yashagarwal.in/tags/configuration/&amp;showsource=yes">
+            
+            <img src="/images/html5-css3-semantics-badge--scaled-optimized.0f343c79b5f793c32b308b8b872fccdc6f8f10dc328d12f3f8fba203ab3ccc6e.png"
+                 width="46" height="18" class="pixelated"
+                 alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+                 title="HTML5 Powered with CSS3 / Styling, and Semantics">
+        </a>
+    
+</div>
+
+
+
+
+
+
+
+
+    <div class="h-card">
+        
+            
+            <img class="u-photo" alt="Photo of Yash Agarwal"
+                 src="/author/yash.2842f98c30eaf22e6f1f7bbe38ac8d584cd916ec640e15b3aaf512b6d56ea8e2.jpg" width="400" height="400">
+        
+        
+        <a class="p-name u-url" href="https://yashagarwal.in/">Yash Agarwal</a>
+        
+            <p>
+                <a class="u-email" href="mailto:yashagarwaljpr@gmail.com" rel="me">yashagarwaljpr@gmail.com</a>
+            </p>
+        
+        
+    </div>
+
+
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    
+        
+        
+
+        
+        <link rel="preload" href="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" as="script" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU=">
+        <script src="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU="></script>
+    
+
+
+
+
+
+<link rel="preload" href="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js" as="script">
+<script src="/js/redirection.min.154c464b7ccd016cd68f46e35c9094c3604f617eb1f647925b952906a41775a5.js"></script>
+
+
+
+
+
+<script>var nav=responsiveNav("#nav");</script>
+</body>
+</html>

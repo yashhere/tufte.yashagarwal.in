@@ -1,0 +1,251 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>
+            
+                    Python on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/tags/python/</link>
+        <description>Recent content  in Python
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/tags/python/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>My Own Configuration Manager</title>
+                <link>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</link>
+                
+                
+                <description>&lt;p&gt;I have been using Linux since I was in my second year of undergraduate. My experiments with the dotfiles (configuration files) also started at the same time. For the uninformed, in Linux, it is common to configure a lot of settings and configurations within dotfiles. Dotfiles are files in a Linux user&amp;rsquo;s home directory that begin with a dot or a full-stop character. This dot indicates to the operating system that these files are used to store the settings of programs like &lt;code&gt;vim&lt;/code&gt; or shells like &lt;code&gt;bash&lt;/code&gt; or &lt;code&gt;fish&lt;/code&gt; to name a few.&lt;/p&gt;
+&lt;p&gt;In the beginning, I was keeping a manual backup of my dotfiles by copying them to a folder from time to time. But the list soon started getting huge, that it became complicated for me to keep track of the changes. Then I moved to symlinks. I started symlinking all the dotfiles from my folder to their usual locations. This setup worked perfectly fine, but as my collection of dotfiles grew, It became very cumbersome for me to symlink every dotfile manually.&lt;/p&gt;
+&lt;p&gt;I also tried a few tools built for this particular purpose. Some of them are &lt;code&gt;vcsh&lt;/code&gt;, &lt;code&gt;mr&lt;/code&gt;, and &lt;code&gt;stow&lt;/code&gt;. These tools work just fine, but I was not willing to learn new tools just for maintaining my dotfiles. At last, I decided to write my tool to solve this problem. This way, there will not be any external dependency, and this tool will also become part of my dotfiles.&lt;/p&gt;
+&lt;h2 id=&#34;design&#34;&gt;Design&lt;/h2&gt;
+&lt;p&gt;The tool, in itself, is inspired by the &lt;a href=&#34;https://en.wikipedia.org/wiki/Configuration_file#UNIX/Linux&#34;&gt;UNIX tradition&lt;/a&gt; of keeping configuration files for the settings of the programs. This configuration system uses a JSON formatted dotfile.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/yashhere/ConMan&#34;&gt;Here&lt;/a&gt; is the source code for the configuration system. Let&amp;rsquo;s have a look at the file structure of the repository.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;|-- .backups
+|   |-- 08-01-2018-15:47
+|   |-- 08-01-2018-19:30
+|   |-- ......
+|-- configure.py
+|-- current_status
+|-- dotfiles
+|   |-- dunst
+|   |-- gtk-3.0
+|   |-- i3
+|   |-- ......
+|-- dotfiles.json
+|-- LICENSE
+`-- README.md&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;During the initial setup, you need to edit the &lt;code&gt;dotfiles.json&lt;/code&gt; file to suit your setup. A relevant section of the JSON file is given below.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;pre&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;cloning repository&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;git&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;subcommand&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;clone&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+      &lt;span class=&#34;nt&#34;&gt;&amp;#34;argument&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://github.com/yashhere/dotfiles.git&amp;#34;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;linking&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;bashrc&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;src&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;dotfiles/.bashrc&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;dest&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;.bashrc&amp;#34;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;bash_profile&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;src&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;dotfiles/.bash_profile&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;dest&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;.bash_profile&amp;#34;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;profile&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;src&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;dotfiles/.profile&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;dest&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;.profile&amp;#34;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;i3&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;src&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;dotfiles/i3&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;nt&#34;&gt;&amp;#34;dest&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;.config/i3&amp;#34;&lt;/span&gt;
+      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;As can be seen, the JSON file has an array variable &lt;code&gt;linking&lt;/code&gt;, which can be used to set the paths for each configuration file and folder. The &lt;code&gt;configure.py&lt;/code&gt; script also requires a &lt;code&gt;dotfiles&lt;/code&gt; folder to be present in the current directory. The folder can be created manually, or if it is already version controlled on GitHub, then the script can clone it. For that, you can edit the &lt;code&gt;pre&lt;/code&gt; section in the &lt;code&gt;dotfiles.json&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Your dotfiles and config folders go inside the &lt;code&gt;dotfiles&lt;/code&gt; folder. You need to copy all your current configurations to this folder to get started.&lt;/p&gt;
+&lt;p&gt;So, how does the script know where a file or folder will be linked? Simple, you need to edit the &lt;code&gt;dotfiles.json&lt;/code&gt; file and add source and destination locations. For example, if you want to set up configurations of &lt;code&gt;i3&lt;/code&gt; to its original location (which is, &lt;code&gt;$HOME/.config/i3&lt;/code&gt;), then you need to create a new JSON object in the &lt;code&gt;linking&lt;/code&gt; array, like this.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;i3&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;src&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;dotfiles/i3&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+  &lt;span class=&#34;nt&#34;&gt;&amp;#34;dest&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;.config/i3&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Here the &lt;code&gt;name&lt;/code&gt; is used to identify the configuration file, the &lt;code&gt;src&lt;/code&gt; parameter is the location of your config file/folder in the dotfiles directory, and the &lt;code&gt;dest&lt;/code&gt; parameter is the final destination of the file/folder. Keen observers would notice that I have not used &lt;code&gt;$HOME&lt;/code&gt; anywhere. It is understood that the configuration will go to the current user&amp;rsquo;s home directory. So the &lt;code&gt;dest&lt;/code&gt; is relative to the user&amp;rsquo;s home directory, and &lt;code&gt;src&lt;/code&gt; is relative to the directory from which the &lt;code&gt;configure.py&lt;/code&gt; script is executed.&lt;/p&gt;
+&lt;p&gt;And you are done! Now, run &lt;code&gt;configure.py&lt;/code&gt;, and all your dotfiles and folders will be symlinked to their correct place.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;current_status&lt;/code&gt; file saves all the symlink locations that are being managed by the script, for your easy reference and to debug any error.&lt;/p&gt;
+&lt;h2 id=&#34;behind-the-scenes&#34;&gt;Behind the Scenes&lt;/h2&gt;
+&lt;p&gt;A lot to cool things happen behind the scenes. The script will check if any previous symlink exists at the given &lt;code&gt;dest&lt;/code&gt; location. It removes any symlinks to avoid redundancy. If the dest already has any dotfile or folder, then it backs it up in the &lt;code&gt;.backups&lt;/code&gt; under today&amp;rsquo;s date and time before replacing it with a symlink to avoid any potential data loss.&lt;/p&gt;
+&lt;p&gt;I hope the article was useful. Cheers 😄&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/configuration">configuration</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/python">python</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/github">github</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</guid>
+                <pubDate>Sun, 21 Jan 2018 11:23:23 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Setting up Python Development Environments</title>
+                <link>https://yashagarwal.in/posts/2016/10/setting-up-python-development-environments/</link>
+                
+                
+                <description>&lt;p&gt;Recently I was searching for Python projects on Github for contribution. Every single project I found, had a thing common among them. In every project&amp;rsquo;s contribution guide, it was asked to set up the virtual environment for the project. What the heck is this virtual environment and how does it work?&lt;/p&gt;
+&lt;p&gt;As a beginner to open source projects, the problem I faced, in the beginning, was how to set up the development environments for the projects I was looking at. I searched the Internet, I found some articles, but they were not complete. So I decided to write this guide, which will be useful for me in future also.&lt;/p&gt;
+&lt;p&gt;Python uses &lt;code&gt;pip&lt;/code&gt; for package management.&lt;/p&gt;
+&lt;h2 id=&#34;installing-pip&#34;&gt;Installing pip&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;pip&lt;/code&gt; depends on setuptools library, which is in official Ubuntu repositories. To install it for python2 -&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python-setuptools&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then install &lt;code&gt;pip&lt;/code&gt; using -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python-pip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;and for python3 -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python3-setuptools&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Then install &lt;code&gt;pip&lt;/code&gt; using -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python3-pip&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;It should install &lt;code&gt;pip&lt;/code&gt; on your system for both python versions. &lt;code&gt;pip&lt;/code&gt; is very easy to use. It will take care of every single package you may require for your project.&lt;/p&gt;
+&lt;h3 id=&#34;installing-a-package-using-pip&#34;&gt;Installing a package using pip&lt;/h3&gt;
+&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will search and install [package]&lt;/span&gt;
+pip install &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;package&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+pip install django&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+If you are using python3, then don&amp;rsquo;t forget to use &lt;code&gt;pip3&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip&lt;/code&gt; can be used to install a specific version of package also.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will search and install [package] with [version]&lt;/span&gt;
+pip install &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;package&lt;span class=&#34;o&#34;&gt;]==[&lt;/span&gt;version&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+pip install &lt;span class=&#34;nv&#34;&gt;django&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;==&lt;/span&gt;1.6.5&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;uninstalling-a-package-using-pip&#34;&gt;Uninstalling a package using pip&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will search and uninstall [package]&lt;/span&gt;
+pip uninstall &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;package&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+pip uninstall django&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;upgrading-a-package-using-pip&#34;&gt;upgrading a package using pip&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will upgrade [package] to latest version&lt;/span&gt;
+pip install --upgrade &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;package&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
+pip install --upgrade django&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;creating-list-of-all-packages-with-pip&#34;&gt;Creating list of all packages with pip&lt;/h3&gt;
+&lt;p&gt;It is one of most used and most useful feature of &lt;code&gt;pip&lt;/code&gt;. It allows you to make a list of all the dependencies of your project.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# it will output the file to current directory&lt;/span&gt;
+pip freeze &amp;gt; &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;file_name.txt&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;All these commands above will install the packages globally. But that&amp;rsquo;s not what is desired. &lt;code&gt;virtualenv&lt;/code&gt; comes to our rescue here.&lt;/p&gt;
+&lt;h2 id=&#34;virtualenv&#34;&gt;Virtualenv&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves a very particular problem; it allows multiple python projects that have different and often conflicting dependencies, to coexist on the same system.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;virtualenv&lt;/code&gt; solves this problem by creating different isolated development environments for your projects. An environment is a folder which contains everything; your project needs to work properly.&lt;/p&gt;
+&lt;h3 id=&#34;installing-virtualenv&#34;&gt;Installing virtualenv&lt;/h3&gt;
+&lt;p&gt;By default, if you install &lt;code&gt;virtualenv&lt;/code&gt; using &lt;code&gt;pip&lt;/code&gt;, it will use system&amp;rsquo;s default python to create virtual environments. To overcome this problem, we will install &lt;code&gt;virtualenv&lt;/code&gt; using ubuntu package manager.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt-get install python-virtualenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;installing-virtualenvwrapper&#34;&gt;Installing virtualenvwrapper&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; provides some set of commands which makes working with virtual environments much easier.&lt;/p&gt;
+&lt;p&gt;To install it -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo pip install virtualenvwrapper&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pip&lt;/code&gt;, &lt;code&gt;virtualenv&lt;/code&gt; and &lt;code&gt;virtualenvwrapper&lt;/code&gt; are the only packages which you will need to install globally. All other per project packages will be installed in respective virtual environments.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;virtualenvwrapper&lt;/code&gt; also places all your virtual environments in one place. It makes working with projects very easy.&lt;/p&gt;
+&lt;p&gt;Now open your &lt;code&gt;.bashrc&lt;/code&gt; and add these two lines to the end -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# All your projects will be saved in python-dev folder&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;PROJECT_HOME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~/python-dev
+
+&lt;span class=&#34;c1&#34;&gt;# ~/python-dev/virtualenvs will contains python interpreters for each project.&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;WORKON_HOME&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;~/python-dev/virtualenvs
+
+&lt;span class=&#34;c1&#34;&gt;# source the virtualenvwrapper script&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; /usr/local/bin/virtualenvwrapper.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;You can change &lt;code&gt;python-dev&lt;/code&gt; to any name you wish. Your virtual environments will be created at that location.&lt;/p&gt;
+&lt;p&gt;Now restart your terminal to source the &lt;code&gt;.bashrc&lt;/code&gt; or use -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; .bashrc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;h3 id=&#34;basic-usage&#34;&gt;Basic Usage&lt;/h3&gt;
+&lt;p&gt;Create a virtual environment -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mkvirtualenv myproject&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;It will create &lt;code&gt;myproject&lt;/code&gt; folder in the python-dev directory. To activate this project -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;workon myproject&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Alternatively you can create project using &lt;code&gt;mkproject&lt;/code&gt; command. It will create a virtual environment as well as a project directory in the &lt;code&gt;$PROJECT_HOME&lt;/code&gt;, which is &lt;code&gt;cd&lt;/code&gt;-ed into when you &lt;code&gt;workon&lt;/code&gt; myproject.&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t forget to deactivate current project when you switch between different projects.&lt;/p&gt;
+&lt;p&gt;To deactivate a project -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;deactivate&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;To delete a virtual environment -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;rmvirtualenv myproject&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;List all environments -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;lsvirtualenv&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;it will also list all virtual environments -
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;workon&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;Please refer to virtualenvwrapper documentation for &lt;a href=&#34;https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html&#34;&gt;full list of virtualenvwrapper commands&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;virtualenvwrapper also provides the tab-completion feature which is very handy when you have a lot of projects to work with.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it. Hope you liked the post. 😄&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/technical">Technical</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/pip">Pip</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/python">Python</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/virtual-environments">Virtual Environments</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2016/10/setting-up-python-development-environments/</guid>
+                <pubDate>Sun, 09 Oct 2016 00:00:00 +0000</pubDate>
+            </item>
+        
+    </channel>
+</rss>
+
+

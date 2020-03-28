@@ -1,36 +1,135 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Philosophy on /dev/yash/notes</title>
-    <link>https://yashagarwal.in/categories/philosophy/</link>
-    <description>Recent content in Philosophy on /dev/yash/notes</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <copyright>Creative Commons Attribution - NonCommercial - ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Tue, 30 Jan 2018 20:29:00 +0530</lastBuildDate>
-    
-	<atom:link href="https://yashagarwal.in/categories/philosophy/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Why a Sanskrit Shloka?</title>
-      <link>https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/</link>
-      <pubDate>Tue, 30 Jan 2018 20:29:00 +0530</pubDate>
-      
-      <guid>https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/</guid>
-      <description>श्रूयतां धर्मसर्वस्वं श्रुत्वा चाप्यवधार्यताम्।
-आत्मनः प्रतिकूलानि परेषां न समाचरेत्।। If the entire Dharma can be said in a few words, then it is — that which is unfavorable to us, do not do that to others.
-— Padmapuraana, shrushti 19/357–358
- So when you landed on this blog, the first thing you might have noticed is that the home page of this blog has a Sanskrit shloka. Many people ask me, why did I choose to display a Sanskrit shloka on my blog.</description>
-    </item>
-    
-    <item>
-      <title>Searching the goal</title>
-      <link>https://yashagarwal.in/posts/2016/04/searching-the-goal/</link>
-      <pubDate>Sun, 10 Apr 2016 00:33:16 +0000</pubDate>
-      
-      <guid>https://yashagarwal.in/posts/2016/04/searching-the-goal/</guid>
-      <description>A boy, probably of age 16, just cleared his 10th board exam. He saw people working on computers, and that fascinated him. So he had only one ambition. You got it, right? One fine day, suddenly his friend&amp;#8217;s mother asked, &amp;#8220; So what about the future? You are going to enter in class 11th. It is the right time to decide about your future. What do you want to become, a doctor or an engineer?</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>
+            
+                    Philosophy on
+                
+            
+            /dev/yash/notes</title>
+        <link>https://yashagarwal.in/categories/philosophy/</link>
+        <description>Recent content  in Philosophy
+            on /dev/yash/notes</description>
+        <language>en-us</language>
+        
+                <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 28 Mar 2020 08:04:50 +0000</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+            <atom:link href="https://yashagarwal.in/categories/philosophy/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>Why a Sanskrit Shloka?</title>
+                <link>https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/</link>
+                
+                
+                <description>&lt;blockquote&gt;
+&lt;p&gt;श्रूयतां धर्मसर्वस्वं श्रुत्वा चाप्यवधार्यताम् ।&lt;/p&gt;
+&lt;p&gt;आत्मनः प्रतिकूलानि परेषां न समाचरेत् ।।&lt;/p&gt;
+&lt;p&gt;If the entire Dharma can be said in a few words, then it is — that which is unfavorable to us, do not do that to others.&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;—  Padmapuraana, shrushti 19/357–358&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;So when you landed on this blog, the first thing you might have noticed is that the home page of this blog has a Sanskrit shloka. Many people ask me, why did I choose to display a Sanskrit shloka on my blog.&lt;/p&gt;
+&lt;p&gt;There is no one answer to this question. There have been several incidents in my undergraduate life, which have given me a lot of good and evil memories. This shloka summarizes all those experiences that I earned in NIT Calicut during my undergraduate course. It reminds me, how I should treat others to receive similar treatment.&lt;/p&gt;
+&lt;p&gt;It was my first time away from home and family when I got admission in NIT Calicut. I was very naive about judging people. I got to know many new people in NITC. That is when I learned that not everyone is helping you. People are here to exploit you, and they will do anything to achieve their goals and to get success, whether it comes at the price of someone else&amp;rsquo;s loss. It is the harsh truth of life, and the sooner one understands this, the better. I realized this in my second year, and that is when my life changed. Thankfully, I did not find other such people after my first year. However, life is very long, and I am bound to find such people at some point in my life again. I hope the experience that I earned in NITC will help me face that time.&lt;/p&gt;
+&lt;p&gt;Now, to the second part of the question, why Sanskrit? A quick Google search reveals that this shloka represents the concept of &lt;a href=&#34;https://en.wikipedia.org/wiki/Golden_Rule&#34;&gt;Golden Rule&lt;/a&gt;, which is common to most world religions, and Hinduism is no exception here. There is even a &lt;a href=&#34;https://hinduism.stackexchange.com/questions/21431/what-all-hindu-scriptures-advocate-the-golden-rule-and-what-is-the-oldest-hindu&#34;&gt;question&lt;/a&gt; about the relation of this shloka with Hinduism. I studied Sanskrit for six years till my 10&lt;!-- raw HTML omitted --&gt;th&lt;!-- raw HTML omitted --&gt; standard and feel a connection to it. Besides, Hindi is my mother tongue, so Sanskrit was the obvious choice given that there is not much Hinduism related literature available in Hindi.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Edit(23/03/2018)&lt;/strong&gt;: I have removed the shloka from the front page now. I am keeping this post for historical purpose.&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/philosophy">Philosophy</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/nitc">NITC</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/</guid>
+                <pubDate>Tue, 30 Jan 2018 20:29:00 +0530</pubDate>
+            </item>
+        
+            
+            <item>
+                <title>Searching the goal</title>
+                <link>https://yashagarwal.in/posts/2016/04/searching-the-goal/</link>
+                
+                
+                <description>&lt;p&gt;A boy, probably of age 16, just cleared his 10th board exam. He saw people working on computers, and that fascinated him. So he had only one ambition. You got it, right? One fine day, suddenly his friend&amp;rsquo;s mother asked, &amp;ldquo;So what about the future? You are going to enter in class 11th. It is the right time to decide about your future. What do you want to become, a doctor or an engineer?&amp;rdquo; The boy had no clue how big that question was. What the cost would have been. He simply nodded and said, &amp;ldquo;I like computers very much so I would go for engineering.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it. He decided his fate.&lt;/p&gt;
+&lt;p&gt;So here comes the day&lt;/p&gt;
+&lt;h2 id=&#34;an-accident&#34;&gt;An accident&lt;/h2&gt;
+&lt;p&gt;After that day, he got into a coaching institute which promised a good rank in JEE. He was told that he would have to study consistently and regularly. The boy, being a determined one, started studying day and night.&lt;/p&gt;
+&lt;p&gt;This continued for two years. Finally, after giving 12th board exams, he gave JEE. Unfortunately, he didn&amp;rsquo;t even get into extended merit list.&lt;/p&gt;
+&lt;p&gt;Devastated, he pledged not to give up. Oh, that stupid silly guy! He decided to try for one more year.&lt;/p&gt;
+&lt;p&gt;He joined another institute in his city. Again the same routine, studying day and night to fulfill &lt;em&gt;his&lt;/em&gt; dreams.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Result&lt;/em&gt;: Same, Fail!&lt;/p&gt;
+&lt;p&gt;But somehow he got a decent rank in JEE Mains thanks to his excellent performance in board exams.&lt;/p&gt;
+&lt;h2 id=&#34;a-disaster&#34;&gt;A disaster&lt;/h2&gt;
+&lt;p&gt;Now he had to face one more question. Which college and which branch? For him, the answer was simple. Go to any South Indian college thanks to the influence of his cousins on him (who were very successful in their lives, of course!). He chose Computer Science and Engineering because&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;He loved computers.&lt;/li&gt;
+&lt;li&gt;Everybody said, &amp;ldquo;Bahut scope hai is branch me.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Every top ranker of this country choose this branch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So the decision was clear. He packed his bag and left home for a NIT situated some 2200 kms far, the comp-sci branch.&lt;/p&gt;
+&lt;h2 id=&#34;the-coding-disaster&#34;&gt;The coding disaster&lt;/h2&gt;
+&lt;p&gt;He reached the college. He loved new people, new place, new environment, everything was new, right!. Studies started. He got good grades initially until the real coding and Computer Science related stuff started as courses. His grades fell drastically, his morale too. He got good marks enough to pass the courses. He tried giving his best, but all concepts seemed so alien to him as they wouldn&amp;rsquo;t stay inside his head.&lt;/p&gt;
+&lt;p&gt;That guy is now about to complete his 2nd year and just thinking what went wrong with him. He is still trying to keep his journey on the right track. Whether he will be able to finish it successfully or not, only time will tell.&lt;/p&gt;
+&lt;p&gt;At last one more year is coming, and it&amp;rsquo;s story will also come here next year.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.quora.com/What-were-you-once-that-youll-never-be-again/answer/Nishant-Kumar-187?srid=8MaF%EF%BF%BDshare=8df79cac&#34;&gt;Inspired by this Quora Post&lt;/a&gt;&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/philosophy">Philosophy</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/nitc">NITC</category>
+                                 
+                                    <category domain="https://yashagarwal.in/tags/cse">CSE</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2016/04/searching-the-goal/</guid>
+                <pubDate>Sun, 10 Apr 2016 00:33:16 +0000</pubDate>
+            </item>
+        
+    </channel>
 </rss>
+
+

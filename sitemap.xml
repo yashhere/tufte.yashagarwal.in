@@ -1,34 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://yashagarwal.in/</loc>
-    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/</loc>
-    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/categories/readings/</loc>
-    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/readings/</loc>
-    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/readings/2019-08-15-the-richest-man-in-babylon-review/</loc>
-    <lastmod>2019-08-15T07:28:01+05:30</lastmod>
+    <lastmod>2019-07-23T16:40:28+05:30</lastmod>
   </url>
   
   <url>
@@ -37,20 +13,38 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/categories/</loc>
+    <lastmod>2019-07-23T16:40:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/linux/</loc>
+    <lastmod>2019-07-23T16:40:28+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/</loc>
     <lastmod>2019-07-23T16:40:28+05:30</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/</loc>
+    <lastmod>2019-07-23T16:40:28+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/categories/technical/</loc>
     <lastmod>2019-07-23T16:40:28+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/posts/2019/07/setting-up-modsecurity-on-ubuntu/</loc>
     <lastmod>2019-07-01T18:20:18+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/hill-stations/</loc>
+    <lastmod>2019-06-29T06:10:03+05:30</lastmod>
   </url>
   
   <url>
@@ -61,11 +55,35 @@
   <url>
     <loc>https://yashagarwal.in/categories/travelouge/</loc>
     <lastmod>2019-06-29T06:10:03+05:30</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/trip/</loc>
+    <lastmod>2019-06-29T06:10:03+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/series/go-&#43;-grpc-&#43;-opa/</loc>
+    <lastmod>2019-02-18T06:47:15+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/posts/2019/02/go-grpc-opa-a-perfect-union-part-3/</loc>
+    <lastmod>2019-02-18T06:47:15+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/grpc/</loc>
+    <lastmod>2019-02-18T06:47:15+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/opa/</loc>
+    <lastmod>2019-02-18T06:47:15+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/series/</loc>
     <lastmod>2019-02-18T06:47:15+05:30</lastmod>
   </url>
   
@@ -85,38 +103,32 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/review/</loc>
+    <lastmod>2018-12-31T22:02:08+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/categories/write-ups/</loc>
     <lastmod>2018-12-31T22:02:08+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/readings/2018-12-17-the-millionaire-booklet-review/</loc>
-    <lastmod>2018-12-17T09:50:27+05:30</lastmod>
+    <loc>https://yashagarwal.in/tags/fiction/</loc>
+    <lastmod>2018-11-05T12:00:44+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/readings/2018-12-16-i-will-teach-you-to-be-rich-review/</loc>
-    <lastmod>2018-12-16T08:30:12+05:30</lastmod>
+    <loc>https://yashagarwal.in/categories/notes/</loc>
+    <lastmod>2018-11-05T12:00:44+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/readings/2018-12-15-the-code-book-review/</loc>
-    <lastmod>2018-12-15T19:04:38+05:30</lastmod>
+    <loc>https://yashagarwal.in/notes/</loc>
+    <lastmod>2018-11-05T12:00:44+05:30</lastmod>
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/readings/2018-11-24-7-secrets-of-vishnu-review/</loc>
-    <lastmod>2018-11-24T14:00:36+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/readings/2018-11-18-introducing-quantum-theory-review/</loc>
-    <lastmod>2018-11-18T20:31:06+05:30</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/readings/2018-11-05-book-review-the-rozabal-line/</loc>
+    <loc>https://yashagarwal.in/notes/2018-11-05-book-review-the-rozabal-line/</loc>
     <lastmod>2018-11-05T12:00:44+05:30</lastmod>
   </url>
   
@@ -126,8 +138,23 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/cse/</loc>
+    <lastmod>2018-06-14T17:59:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/nitc/</loc>
+    <lastmod>2018-06-14T17:59:28+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/06/the-good-and-bad-about-csed-of-nit-c/</loc>
     <lastmod>2018-06-14T17:59:28+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/arch-linux/</loc>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
   </url>
   
   <url>
@@ -138,7 +165,11 @@
   <url>
     <loc>https://yashagarwal.in/categories/hacks/</loc>
     <lastmod>2018-06-12T09:45:46+05:30</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/i3/</loc>
+    <lastmod>2018-06-12T09:45:46+05:30</lastmod>
   </url>
   
   <url>
@@ -147,8 +178,23 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/configuration/</loc>
+    <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/05/proxy-your-requests-to-the-backend-server-with-grunt/</loc>
     <lastmod>2018-05-15T17:14:13+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/android/</loc>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/drozer/</loc>
+    <lastmod>2018-05-13T17:10:13+05:30</lastmod>
   </url>
   
   <url>
@@ -157,8 +203,18 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/foss/</loc>
+    <lastmod>2018-03-28T20:58:26+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</loc>
     <lastmod>2018-03-28T20:58:26+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/fossmeet/</loc>
+    <lastmod>2018-03-26T11:57:14+05:30</lastmod>
   </url>
   
   <url>
@@ -177,6 +233,11 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/hugo/</loc>
+    <lastmod>2018-03-02T11:27:05+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/02/my-new-domain/</loc>
     <lastmod>2018-02-25T10:10:04+05:30</lastmod>
   </url>
@@ -189,12 +250,16 @@
   <url>
     <loc>https://yashagarwal.in/categories/philosophy/</loc>
     <lastmod>2018-01-30T20:29:00+05:30</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yashagarwal.in/posts/2018/01/why-a-sanskrit-shloka/</loc>
     <lastmod>2018-01-30T20:29:00+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/series/arch-linux-installation/</loc>
+    <lastmod>2018-01-26T15:45:27+05:30</lastmod>
   </url>
   
   <url>
@@ -208,7 +273,17 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/github/</loc>
+    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/</loc>
+    <lastmod>2018-01-21T11:23:23+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/python/</loc>
     <lastmod>2018-01-21T11:23:23+05:30</lastmod>
   </url>
   
@@ -220,6 +295,21 @@
   <url>
     <loc>https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/</loc>
     <lastmod>2017-12-27T20:21:09+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/ssh/</loc>
+    <lastmod>2017-12-27T20:21:09+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/docker/</loc>
+    <lastmod>2017-12-26T20:53:35+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/octane/</loc>
+    <lastmod>2017-12-26T20:53:35+05:30</lastmod>
   </url>
   
   <url>
@@ -238,8 +328,23 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/ntfs/</loc>
+    <lastmod>2017-03-14T10:30:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/polkit/</loc>
+    <lastmod>2017-03-14T10:30:36+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2017/03/fossmeet17/</loc>
     <lastmod>2017-03-13T21:03:16+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/gh-pages/</loc>
+    <lastmod>2017-02-22T13:37:56+05:30</lastmod>
   </url>
   
   <url>
@@ -248,12 +353,42 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/wercker/</loc>
+    <lastmod>2017-02-22T13:37:56+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/pip/</loc>
+    <lastmod>2016-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2016/10/setting-up-python-development-environments/</loc>
     <lastmod>2016-10-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/virtual-environments/</loc>
+    <lastmod>2016-10-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/</loc>
+    <lastmod>2016-06-09T10:20:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/openbox/</loc>
+    <lastmod>2016-06-09T10:20:36+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2016/04/a-good-sublime-text-setup/</loc>
+    <lastmod>2016-04-14T10:55:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yashagarwal.in/tags/sublime-text/</loc>
     <lastmod>2016-04-14T10:55:35+00:00</lastmod>
   </url>
   
@@ -263,21 +398,18 @@
   </url>
   
   <url>
+    <loc>https://yashagarwal.in/tags/sudo/</loc>
+    <lastmod>2016-04-03T12:20:36+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yashagarwal.in/posts/2016/04/wanna-get-insulted-by-sudo/</loc>
     <lastmod>2016-04-03T12:20:36+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://yashagarwal.in/posts/1/01/custom-arch-linux-setup-with-openbox/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/failures/</loc>
-  </url>
-  
-  <url>
-    <loc>https://yashagarwal.in/page/</loc>
-    <priority>0</priority>
+    <loc>https://yashagarwal.in/search/</loc>
+    <priority>0.1</priority>
   </url>
   
   <url>

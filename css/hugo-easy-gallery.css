@@ -17,7 +17,7 @@ Grid Layout Styles
     position: relative;
     /* Default: 1 tile wide */
     width: 100%;
-    padding-bottom: 100%; 
+    padding-bottom: 100%;
 }
 @media only screen and (min-width : 365px) {
     /* Tablet view: 2 tiles */
@@ -34,18 +34,18 @@ Grid Layout Styles
     }
 }
 @media only screen and (min-width : 9999px) {
-   /* Medium desktop: 4 tiles */
-   .box {
-      width: 25%;
-      padding-bottom: 25%;
-   }
+    /* Medium desktop: 4 tiles */
+    .box {
+        width: 25%;
+        padding-bottom: 25%;
+    }
 }
 
 /*
 Transition styles
 */
 .gallery.hover-transition figure,
-.gallery.hover-effect-zoom .img, 
+.gallery.hover-effect-zoom .img,
 .gallery:not(.caption-effect-appear) figcaption,
 .fancy-figure:not(.caption-effect-appear) figcaption {
     -webkit-transition: all 0.3s ease-in-out;
@@ -117,14 +117,13 @@ figcaption styles
     bottom: 0;
     left: 0;
     right: 0;
-    /* background: #000; */
+    background: #000;
     color: #FFF;
     text-align: center;
     font-size: 75%; /* change this if you want bigger text */
     background: rgba(0, 0, 0, 0.5);
     opacity: 1;
     cursor: pointer;
-    margin-bottom: 1%;
 }
 .gallery.caption-position-none figcaption,
 .fancy-figure.caption-position-none figcaption  {
@@ -157,4 +156,3 @@ figcaption styles
 figcaption p {
     margin: auto; /* override style in theme */
 }
-

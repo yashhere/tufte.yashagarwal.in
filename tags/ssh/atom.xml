@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator><title type="html"><![CDATA[SSH on /dev/yash/notes]]></title>
+    
+        <subtitle type="html"><![CDATA[The directory of my thoughts]]></subtitle>
+    
+    
+    
+            <link href="https://yashagarwal.in/tags/ssh/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://yashagarwal.in/tags/ssh/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+            <link href="https://yashagarwal.in/tags/ssh/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
+            <link href="https://yashagarwal.in/tags/ssh/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
+    <updated>2020-03-28T08:04:50+00:00</updated>
+    
+    
+    <author>
+            <name>Yash Agarwal</name>
+            
+                <email>yashagarwaljpr@gmail.com</email>
+            </author>
+    
+        <id>https://yashagarwal.in/tags/ssh/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Setting Up SSH Agent in i3]]></title>
+            <link href="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/?utm_source=atom_feed" rel="related" type="text/html" title="Setting up ALM Octane with Docker Compose" />
+                <link href="https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Fixing Hindi Fonts in Arch Linux" />
+                <link href="https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Mounting NTFS partitions on Arch Linux" />
+                <link href="https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/?utm_source=atom_feed" rel="related" type="text/html" title="Custom Arch Linux setup with Openbox" />
+            
+                <id>https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2017-12-27T20:21:09+05:30</published>
+            <updated>2017-12-27T20:21:09+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>In this post, I will write about the procedure to correctly setup SSH and GPG agents in the i3 window manager. To follow this post, you need to have ssh-keys and your private GPG keys ready. If you do not already have these keys with you, I will describe the process of creating the keys.</p>
+<h2 id="ssh">SSH</h2>
+<p>Generating an SSH key pair provides you with a public key and a private key. The private key should never be given to anyone and public key, well the name itself is self-explanatory.</p>
+<p>To create a new key pair, open a terminal and paste the text below.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;your_email_address&#34;</span></code></pre></div></p>
+<p>This command will create a new ssh key pair with the given email address as the label. Press Enter for any question asked. When it asks for the passphrase, type a strong passphrase, otherwise leave it blank to have no password.</p>
+<h2 id="gpg">GPG</h2>
+<p>You might need to download the GPG command line tools before following the below steps. Follow your distribution&rsquo;s documentation for more help.</p>
+<p>Once you have downloaded the tools, open a terminal, and type the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gpg --gen-key</code></pre></div>
+You will see something like this. Enter 1 to select the default key choice.</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+gpg: directory `/home/yash/.gnupg&#39; created
+gpg: new configuration file `/home/yash/.gnupg/gpg.conf&#39; created
+gpg: WARNING: options in `/home/yash/.gnupg/gpg.conf&#39; are not yet active during this run
+gpg: keyring `/home/yash/.gnupg/secring.gpg&#39; created
+gpg: keyring `/home/yash/.gnupg/pubring.gpg&#39; created
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection?</code></pre></div>
+<p>At the next prompt, enter the key size. It is recommended to use the maximum key size of 4096 bits.</p>
+<p>Enter the time duration for which the key should remain valid. Press Enter to specify the default selection, indicating that the key does not expire.</p>
+<p>After verifying the information, enter your user information and a strong passphrase. Afterward, GPG will start generating your key. You will see:
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse,
+utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.</code></pre></div></p>
+<p>You can now use the key (until it expires) to encrypt your data.</p>
+<h2 id="setting-up-ssh-agent">Setting up SSH Agent</h2>
+<h3 id="configuring-i3">Configuring i3</h3>
+<p><strong>Update (26/05/2018):</strong> <em>As pointed out by <a href="https://sakshamsharma.com/">Saksham</a> in the comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored.</em></p>
+<p>Open i3 configuration file and add an <code>exec_always</code> statement -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">exec_always ~/.config/i3/scripts/gnome-keyring.sh</code></pre></div></p>
+<p>Obviously, you will need to change the path according to your OS. Now make a new file in <code>~/.config/i3/scripts</code> with name <code>gnome-keyring.sh</code> and paste the below text in it.</p>
+<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>/usr/bin/gnome-keyring-daemon --start --components<span class="o">=</span>gpg,pkcs11,secrets,ssh<span class="k">)</span>
+<span class="nb">export</span> GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK</code></pre></div>
+(Assuming that you already have installed gnome-keyring)</p>
+<p>Now, reload the i3.</p>
+<h3 id="configuring-ssh">Configuring SSH</h3>
+<p><strong>Update (26/05/2018):</strong> <em>This step is also optional. Thanks to <a href="https://sakshamsharma.com/">Saksham</a> for pointing it out.</em></p>
+<p>Open <code>~/.ssh/config</code> file and add following content to it -</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Host *
+  AddKeysToAgent yes
+  IdentityFile /home/&lt;your username&gt;/.ssh/id_rsa</code></pre></div>
+<p>Replace &lt;your username&gt; accordingly.</p>
+<h3 id="setting-up-bashrc">Setting up .bashrc</h3>
+<p>I am not using a login shell, and I could not find any suitable method to source <code>~/.profile</code> or <code>~/.bash_profile</code> on login in i3. So I added my configuration to <code>~/.bashrc</code> file. I know it is a hack, but it works well for me without much headache.</p>
+<p>Open <code>~/.bashrc</code> file and add following lines to the end of the file.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> -f ~/.ssh/agent.env <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    . ~/.ssh/agent.env &gt; /dev/null
+    <span class="k">if</span> ! <span class="nb">kill</span> -0 <span class="nv">$SSH_AGENT_PID</span> &gt; /dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;Stale agent file found. Spawning a new agent. &#34;</span>
+        <span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span> tee ~/.ssh/agent.env<span class="sb">`</span>
+        ssh-add
+    <span class="k">fi</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Starting ssh-agent&#34;</span>
+    <span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span> tee ~/.ssh/agent.env<span class="sb">`</span>
+    ssh-add
+<span class="k">fi</span></code></pre></div></p>
+<p>It will automatically start an <code>ssh-agent</code> if it is not already running. Otherwise, it attaches to a previously running agent.</p>
+<p>Now log out and log in again to see if ssh-agent works. Open a terminal and run the command <code>ssh-add -l</code>. It will show you the hash value of your ssh-key, which is loaded by the ssh-agent.</p>
+<p>That is all for today. Thank you for reading!</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/i3" term="i3" label="i3" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/ssh" term="ssh" label="SSH" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

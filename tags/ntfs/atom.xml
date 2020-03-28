@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator><title type="html"><![CDATA[NTFS on /dev/yash/notes]]></title>
+    
+        <subtitle type="html"><![CDATA[The directory of my thoughts]]></subtitle>
+    
+    
+    
+            <link href="https://yashagarwal.in/tags/ntfs/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://yashagarwal.in/tags/ntfs/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+            <link href="https://yashagarwal.in/tags/ntfs/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
+            <link href="https://yashagarwal.in/tags/ntfs/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
+    <updated>2020-03-28T08:04:50+00:00</updated>
+    
+    
+    <author>
+            <name>Yash Agarwal</name>
+            
+                <email>yashagarwaljpr@gmail.com</email>
+            </author>
+    
+        <id>https://yashagarwal.in/tags/ntfs/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Mounting NTFS partitions on Arch Linux]]></title>
+            <link href="https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/?utm_source=atom_feed" rel="related" type="text/html" title="Custom Arch Linux setup with Openbox" />
+            
+                <id>https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2017-03-14T10:30:36+00:00</published>
+            <updated>2017-03-14T10:30:36+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Yesterday I installed Arch Linux once again. A clean, bloat-free desktop with Budgie Desktop environment with some must-have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don&rsquo;t know whether it is a bug in Budgie or just a wrong setting). I also faced the problem of mounting Windows NTFS volumes on the user&rsquo;s wish. Arch Linux wiki has details about how to automount partitions on start-up. Still, I had a tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu-like distribution on the mounting of NTFS drives. I got a hint from Arch Linux Wiki about the Polkit configuration setting, which can be used to allow a standard user to mount partitions. Here is a solution that I found after a long search on various Arch Linux Community pages.</p>
+<p>You will need to install <code>ntfs-3g</code>, <code>polkit</code> and <code>udisks2</code> to use this code. Please refer to <a href="https://wiki.archlinux.org/index.php/Udisks">Arch Wiki</a>.</p>
+<p>I think when using Gentoo, you will also need to compile the support for the NTFS file system in Kernel also. Please see <a href="https://wiki.gentoo.org/wiki/NTFS">here</a>.</p>
+<p>Add the following code to <code>/etc/polkit-1/rules.d/10-udisks2.rules</code> -</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Allow udisks2 to mount devices without authentication for users in the &#34;wheel&#34; group.
+</span><span class="c1"></span><span class="nx">polkit</span><span class="p">.</span><span class="nx">addRule</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="nx">subject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">((</span><span class="nx">action</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s2">&#34;org.freedesktop.udisks2.filesystem-mount-system&#34;</span> <span class="o">||</span>
+        <span class="nx">action</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s2">&#34;org.freedesktop.udisks2.filesystem-mount&#34;</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="nx">subject</span><span class="p">.</span><span class="nx">isInGroup</span><span class="p">(</span><span class="s2">&#34;wheel&#34;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">polkit</span><span class="p">.</span><span class="nx">Result</span><span class="p">.</span><span class="nx">YES</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="nx">polkit</span><span class="p">.</span><span class="nx">addRule</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="nx">subject</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">((</span><span class="nx">action</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s2">&#34;org.freedesktop.udisks.filesystem-mount-system-internal&#34;</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="nx">subject</span><span class="p">.</span><span class="nx">isInGroup</span><span class="p">(</span><span class="s2">&#34;wheel&#34;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">polkit</span><span class="p">.</span><span class="nx">Result</span><span class="p">.</span><span class="nx">YES</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>Now you will be able to mount NTFS partition without any problem. :)</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/polkit" term="polkit" label="Polkit" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/ntfs" term="ntfs" label="NTFS" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>

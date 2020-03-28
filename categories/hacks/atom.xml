@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us">
+    <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator><title type="html"><![CDATA[Hacks on /dev/yash/notes]]></title>
+    
+        <subtitle type="html"><![CDATA[The directory of my thoughts]]></subtitle>
+    
+    
+    
+            <link href="https://yashagarwal.in/categories/hacks/" rel="alternate" type="text/html" title="HTML" />
+            <link href="https://yashagarwal.in/categories/hacks/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
+            <link href="https://yashagarwal.in/categories/hacks/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
+            <link href="https://yashagarwal.in/categories/hacks/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
+    <updated>2020-03-28T08:04:50+00:00</updated>
+    
+    
+    <author>
+            <name>Yash Agarwal</name>
+            
+                <email>yashagarwaljpr@gmail.com</email>
+            </author>
+    
+        <id>https://yashagarwal.in/categories/hacks/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Battery Notifications in i3]]></title>
+            <link href="https://yashagarwal.in/posts/2018/06/battery-notifications-in-i3/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/?utm_source=atom_feed" rel="related" type="text/html" title="Arch Linux Installation Guide Part 2" />
+                <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/?utm_source=atom_feed" rel="related" type="text/html" title="Arch Linux Installation Guide Part 1" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/?utm_source=atom_feed" rel="related" type="text/html" title="Setting Up SSH Agent in i3" />
+                <link href="https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/?utm_source=atom_feed" rel="related" type="text/html" title="Syncing Time on Windows &amp; GNU/Linux Dual Boot Setups" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/?utm_source=atom_feed" rel="related" type="text/html" title="Setting up ALM Octane with Docker Compose" />
+            
+                <id>https://yashagarwal.in/posts/2018/06/battery-notifications-in-i3/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-06-12T09:45:46+05:30</published>
+            <updated>2018-06-12T09:45:46+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>I am using <em>i3</em> window manager for the last seven months, and it has been a pleasant and productive experience so far. There were a few hiccups here and there, but that is expected with such minimalistic setups. One thing that I never noticed was the lack of notifications on critical battery levels. For the last few months, my laptop battery was discharging to 0% all the time. Probably this proved to be too fatal for my battery. According to this <a href="https://lifehacker.com/5875162/how-often-should-i-charge-my-gadgets-battery-to-prolong-its-lifespan">article</a>, lithium-ion batteries are not expected to go from 100% to 0% frequently. I recently bought a new battery, and I did not want to reduce the lifespan of this battery too. So I decided to set up battery notifications for my i3 setup.</p>
+<p>I <a href="https://agorf.gr/2016/06/29/low-battery-notification-in-i3wm/">found</a> a bash script which shows a notification using <em>notify-send</em> when battery charge level reaches or drops below a configured threshold. However, I had to do some additional steps to make this script work on my system.</p>
+<p>The first issue was the <em>lockfile</em> program, which was not installed in my system. I installed it using the following command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt install procmail</code></pre></div>
+<p>The second issue was more difficult to solve. I planned to set up the script to run every minute using <em>cron</em>. However, it turns out that cron operates in a very <a href="http://askubuntu.com/a/23438/173003">minimalistic</a> environment and notify-send requires the presence of some special variables in the environment. These variables are <strong>DBUS_SESSION_BUS_ADDRESS</strong>, <strong>XAUTHORITY</strong> and <strong>DISPLAY</strong>. To provide the values of these variables to the cron environment, I modified the script and sourced a new file <code>.bat_envs</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
+</span><span class="cp"></span>
+. /home/yash/.bat_envs
+
+<span class="nv">THRESHOLD</span><span class="o">=</span><span class="m">15</span>
+
+<span class="nv">lock_path</span><span class="o">=</span><span class="s1">&#39;/tmp/battery.lock&#39;</span>
+
+lockfile -r <span class="m">0</span> <span class="nv">$lock_path</span> 2&gt;/dev/null <span class="o">||</span> <span class="nb">exit</span>
+
+<span class="nv">acpi_path</span><span class="o">=</span><span class="k">$(</span>find /sys/class/power_supply/ -name <span class="s1">&#39;BAT*&#39;</span> <span class="p">|</span> head -1<span class="k">)</span>
+<span class="nv">charge_now</span><span class="o">=</span><span class="k">$(</span>cat <span class="s2">&#34;</span><span class="nv">$acpi_path</span><span class="s2">/charge_now&#34;</span><span class="k">)</span>
+<span class="nv">charge_full</span><span class="o">=</span><span class="k">$(</span>cat <span class="s2">&#34;</span><span class="nv">$acpi_path</span><span class="s2">/charge_full&#34;</span><span class="k">)</span>
+<span class="nv">charge_status</span><span class="o">=</span><span class="k">$(</span>cat <span class="s2">&#34;</span><span class="nv">$acpi_path</span><span class="s2">/status&#34;</span><span class="k">)</span>
+<span class="nv">charge_percent</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> <span class="s1">&#39;%.0f&#39;</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$charge_now</span><span class="s2"> / </span><span class="nv">$charge_full</span><span class="s2"> * 100&#34;</span>
+ <span class="p">|</span> bc -l<span class="k">))</span>
+<span class="nv">message</span><span class="o">=</span><span class="s2">&#34;Battery running critically low at </span><span class="nv">$charge_percent</span><span class="s2">%!&#34;</span>
+
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$charge_status</span> <span class="o">==</span> <span class="s1">&#39;Discharging&#39;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="o">[[</span> <span class="nv">$charge_percent</span> -le <span class="nv">$THRE</span>
+SHOLD <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>
+  /usr/bin/notify-send -u critical <span class="s2">&#34;Low battery&#34;</span> <span class="s2">&#34;</span><span class="nv">$message</span><span class="s2">&#34;</span>
+
+  <span class="nv">current_date_time</span><span class="o">=</span><span class="s2">&#34;`date +%Y%m%d%H%M%S`&#34;</span><span class="p">;</span>
+  <span class="nb">echo</span> <span class="s2">&#34;[BATTERY LOG] = </span><span class="nv">$charge_percent</span><span class="s2">% on </span><span class="nv">$current_date_time</span><span class="s2">&#34;</span>
+<span class="k">fi</span>
+
+rm -f <span class="nv">$lock_path</span></code></pre></div>
+<p>Read this blog <a href="https://agorf.gr/2016/06/29/low-battery-notification-in-i3wm/">post</a> to understand how this script works.</p>
+<p>As the notify-send requires some special X session environmental variables, we will need a method to provide these variables to notify-send in cron environment. The safest way to get X session related environmental variables is to get them from the environment of a process of the user who is logged on to X. The following script will run every time a user logs in and stores these variables in a file <code>.bat_envs</code>.</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/usr/bin/env bash
+</span><span class="cp"></span>
+<span class="nv">env_path</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.bat_envs&#34;</span>
+
+rm -f <span class="s2">&#34;</span><span class="si">${</span><span class="nv">env_path</span><span class="si">}</span><span class="s2">&#34;</span>
+touch <span class="s2">&#34;</span><span class="si">${</span><span class="nv">env_path</span><span class="si">}</span><span class="s2">&#34;</span>
+
+<span class="nv">copy_envs</span><span class="o">=</span><span class="s2">&#34;XAUTHORITY DISPLAY DBUS_SESSION_BUS_ADDRESS&#34;</span>
+
+<span class="k">for</span> env_name in <span class="nv">$copy_envs</span>
+<span class="k">do</span>
+    env <span class="p">|</span> grep <span class="s2">&#34;</span><span class="si">${</span><span class="nv">env_name</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="si">${</span><span class="nv">env_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span>
+    <span class="nb">echo</span> <span class="s2">&#34;export </span><span class="si">${</span><span class="nv">env_name</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; <span class="s2">&#34;</span><span class="si">${</span><span class="nv">env_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span>
+<span class="k">done</span>
+
+chmod <span class="m">600</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">env_path</span><span class="si">}</span><span class="s2">&#34;</span></code></pre></div>
+<p>To run this script at startup, I added this file to the i3 config file with the following command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">exec</span> --no-startup-id <span class="s2">&#34;path to your script&#34;</span></code></pre></div>
+<p>Then at the end of cron file, I added a new entry for the battery monitoring script.</p>
+<p>To open cron file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">crontab -e</code></pre></div>
+<p>Now add the following line to the end of the file and save the file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">* * * * * bash <span class="s2">&#34;path to your script&#34;</span> &gt;&gt; <span class="s2">&#34;path to your log file&#34;</span></code></pre></div>
+<p>Replace the <em>path to your script</em> (with double quotes) with your script path and the <em>path to your log file</em> with a path where you want to save your log file.</p>
+<p>Now every minute, this script will be executed, and if your battery percent drops below the threshold value, you will be notified with a notification bubble.</p>
+<p>I tested this procedure on <em>Ubuntu 18.04 with i3</em>. It should work on Arch Linux and other non-Debian distributions also, but the steps might be slightly different due to various reasons. Please comment if you face any issues with the setup.</p>
+<p>Thank you for reading the article. Cheers 😄</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/i3" term="i3" label="i3" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Syncing Time on Windows & GNU/Linux Dual Boot Setups]]></title>
+            <link href="https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/?utm_source=atom_feed" rel="related" type="text/html" title="Arch Linux Installation Guide Part 2" />
+                <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/?utm_source=atom_feed" rel="related" type="text/html" title="Arch Linux Installation Guide Part 1" />
+                <link href="https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/?utm_source=atom_feed" rel="related" type="text/html" title="My Own Configuration Manager" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/?utm_source=atom_feed" rel="related" type="text/html" title="Setting Up SSH Agent in i3" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/?utm_source=atom_feed" rel="related" type="text/html" title="Setting up ALM Octane with Docker Compose" />
+            
+                <id>https://yashagarwal.in/posts/2018/02/syncing-time-on-windows-gnu/linux-dual-boot-setups/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-02-01T12:54:34+05:30</published>
+            <updated>2018-02-01T12:54:34+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>This post is going to be one of those that I have written for my reference. Whatever I am going to mention in this post is not new. Everything has already been said and written many times on many websites and Linux forums.</p>
+<p>So I will start by explaining the problem. When you try to dual boot your machine to run both GNU/Linux and Windows operating systems, you might have noticed that the time is not the same in both the operating systems. It is generally one operating system showing the correct time, and the other one showing the wrong time. It happens because Microsoft Windows thinks that the hardware clock (CMOS clock or BIOS clock) of the machine is using the local time (depends on your current time zone), and hence it doesn&rsquo;t do anything and shows you the same time. But most GNU/Linux operating systems (Ubuntu, Arch Linux, etc.) think that the hardware clock is set to track UTC. Hence the mismatch in the time happens. For example, assume that the current real-time is 10:22:51, and the hardware clock time is set to 10:22:51. Windows will interpret this time as local time and show 10:22:51, but Linux based systems will show 15:52:51 because they will understand this time as UTC. Of course, the above example is true if we assume time zone as India, which is +05:30 from UTC.</p>
+<p>This issue can be fixed either from Windows or from GNU/Linux OS. I prefer to adjust the behavior of Windows to use UTC. It is much more convenient to use when traveling between different time zones. Please note that this method might not work or cause instability with older versions of Windows OS. I have tried this fix on Windows 10, and it works without any issues.</p>
+<p>Open an Administrator Command Prompt by pressing <code>⊞ + x</code>, then type <code>a</code>. This method of opening the Administrator Command Prompt does not work on Windows 7.</p>
+<p>Now execute the following command:
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">reg add <span class="s2">&#34;HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation&#34;</span> /v RealTimeIsUniversal /d 1 /t REG_DWORD /f</code></pre></div></p>
+<p>Windows Time Service, which keeps the clock in Windows OS accurate, will still write the local time to the Real-time clock (RTC) regardless of the registry settings on shutdown. So I prefer to disable the Windows Time Service.
+<div class="highlight"><pre class="chroma"><code class="language-batch" data-lang="batch">sc config w32time start= disabled</code></pre></div></p>
+<p>Now you may need to change the time in your BIOS to UTC time, although that depends on whether your Windows OS was showing the correct time before applying the above modifications. If yes, then changing BIOS time to UTC will make sure that both Windows and GNU/Linux convert hardware clock to local time.</p>
+<hr>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://help.ubuntu.com/community/UbuntuTime#Multiple_Boot_Systems_Time_Conflicts">Multiple Boot Systems Time Conflicts</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Time#UTC_in_Windows">UTC in Windows</a></li>
+</ol>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/configuration" term="configuration" label="configuration" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Arch Linux Installation Guide Part 2]]></title>
+            <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/?utm_source=atom_feed" rel="related" type="text/html" title="Arch Linux Installation Guide Part 1" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/?utm_source=atom_feed" rel="related" type="text/html" title="Setting Up SSH Agent in i3" />
+                <link href="https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/?utm_source=atom_feed" rel="related" type="text/html" title="My Own Configuration Manager" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/?utm_source=atom_feed" rel="related" type="text/html" title="Setting up ALM Octane with Docker Compose" />
+                <link href="https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Fixing Hindi Fonts in Arch Linux" />
+            
+                <id>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-2/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-01-26T15:45:27+05:30</published>
+            <updated>2018-01-26T15:45:27+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>In this post, I will continue from my last <a href="https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/">post</a> and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current dotfile <a href="https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/">configuration</a> setup to work properly. The choice of applications is highly opinionated and your preferences might be different.</p>
+<div class="note">
+    <div></div>
+    
+If you had gone for installation via SSH option, then I would suggest you to edit your `sshd_config` file and disable `root` login. It can be a security risk otherwise.
+
+</div>
+<h3 id="install-a-terminal-based-browser">Install a terminal based browser</h3>
+<p>Terminal-based browsers are very handy in cases when you are required to login into a captive portal and you don&rsquo;t have access to a graphical browser. We will install two different browsers, <code>elinks</code> and <code>w3m</code>.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S elinks w3m</code></pre></div></p>
+<h3 id="install-x-server">Install X server.</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S xorg</code></pre></div>
+<p>This will install minimal X desktop environment with fonts, in case, you want to test your system before installing any desktop environment.</p>
+<h3 id="enable-multilib-repository-for-32-bit-package-support">Enable multilib repository for 32-bit package support</h3>
+<p>To enable multilib repository, uncomment the <code>[multilib]</code> section in <code>/etc/pacman.conf</code>.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>multilib<span class="o">]</span>
+<span class="nv">Include</span> <span class="o">=</span> /etc/pacman.d/mirrorlist</code></pre></div></p>
+<p>Now upgrade your system.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -Syyu</code></pre></div></p>
+<h3 id="install-video-and-touchpad-drivers">Install video and touchpad drivers</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S xf86-video-intel xf86-input-synaptics</code></pre></div>
+<h3 id="install-pacaur-to-fetch-and-install-packages-from-aur">Install pacaur to fetch and install packages from AUR</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S expac yajl --noconfirm
+<span class="nb">cd</span> /tmp
+gpg --recv-keys --keyserver hkp://pgp.mit.edu:80 1EB2638FF56C0C53
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h<span class="o">=</span>cower
+makepkg -i PKGBUILD --noconfirm
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h<span class="o">=</span>pacaur
+makepkg -i PKGBUILD --noconfirm
+cd</code></pre></div>
+<h3 id="install-graphical-browsers">Install graphical browsers</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S firefox chromium</code></pre></div>
+<h3 id="install-code-editors">Install code editors</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S sublime-text-dev atom-editor-git visual-studio-code-bin neovim neovim-drop-in leafpad</code></pre></div>
+<h3 id="setup-lamp-stack">Setup LAMP stack</h3>
+<h4 id="install-apache-server">Install Apache server</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S apache
+
+<span class="c1"># Make your user-directory available to apache server</span>
+mkdir ~/public_html
+chmod o+x ~
+chmod o+x ~/public_html
+chmod -R o+r ~/public_html</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># To enable virtualhosts, uncomment the following line in `/etc/httpd/conf/httpd.conf`</span>
+Include conf/extra/httpd-vhosts.conf</code></pre></div>
+<p>Add your virtualhost configuration in following file -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo vim /etc/httpd/conf/extra/httpd-vhosts.conf</code></pre></div></p>
+<p>To test the virtual hosts on you local machine, add the virtual names to your <code>/etc/hosts</code> file.</p>
+<h4 id="install-php">Install PHP:</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S php php-apache</code></pre></div>
+<p>To use PHP with apache, open <code>/etc/httpd/conf/httpd.conf</code> and uncomment following line -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">LoadModule mpm_prefork_module modules/mod_mpm_prefork.so</code></pre></div></p>
+<p>and comment out the following line -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># LoadModule mpm_event_module modules/mod_mpm_event.so</span></code></pre></div></p>
+<p>Now add these lines to <code>/etc/httpd/conf/httpd.conf</code>:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Add these at the end of `LoadModule` section.</span>
+LoadModule php7_module modules/libphp7.so
+AddHandler php7-script .php
+
+<span class="c1"># Place this at the end of the `Include` section:</span>
+Include conf/extra/php7_module.conf</code></pre></div></p>
+<h4 id="install-mysql-server">Install MySQL server</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S mariadb
+
+<span class="c1"># Initialize the MariaDB data directory prior to starting the service. To do so, run:</span>
+sudo mysql_install_db --user<span class="o">=</span>mysql --basedir<span class="o">=</span>/usr --datadir<span class="o">=</span>/var/lib/mysql
+
+<span class="c1"># Then issue the commands to start the database server</span>
+sudo systemctl <span class="nb">enable</span> mariadb.service
+sudo systemctl start mariadb.service
+
+<span class="c1"># To apply recommended security settings to your database, run</span>
+sudo mysql_secure_installation</code></pre></div>
+<h4 id="install-phpmyadmin">Install PHPMyAdmin</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S phpmyadmin php-mcrypt</code></pre></div>
+<p>Enable <code>mysqli</code>, <code>mcrypt</code>, <code>zip</code> and <code>bz2</code> extensions in <code>/etc/php/php.ini</code>.</p>
+<p>Create the apache configuration file <code>/etc/httpd/conf/extra/phpmyadmin.conf</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-ApacheConf" data-lang="ApacheConf"><span class="nb">Alias</span> <span class="sx">/phpmyadmin</span> <span class="s2">&#34;/usr/share/webapps/phpMyAdmin&#34;</span>
+<span class="nt">&lt;Directory</span> <span class="s">&#34;/usr/share/webapps/phpMyAdmin&#34;</span><span class="nt">&gt;</span>
+    <span class="nb">DirectoryIndex</span> index.php
+    <span class="nb">AllowOverride</span> <span class="k">All</span>
+    <span class="nb">Options</span> FollowSymlinks
+    <span class="nb">Require</span> <span class="k">all</span> granted
+<span class="nt">&lt;/Directory&gt;</span></code></pre></div>
+<p>Then include following in <code>/etc/httpd/conf/httpd.conf</code>
+<div class="highlight"><pre class="chroma"><code class="language-ApacheConf" data-lang="ApacheConf"><span class="c"># phpMyAdmin configuration</span>
+<span class="nb">Include</span> conf/extra/phpmyadmin.conf</code></pre></div></p>
+<p>Now restart <code>httpd</code> service to apply settings.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart httpd</code></pre></div>
+Once all these steps are done, your LAMP stack should be working.</p>
+<h3 id="setup-power-management">Setup power management</h3>
+<p>Install <code>tlp</code> and some of its optional dependencies
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S tlp tlp-rdw bash-completion ethtool lsb-release smartmontools</code></pre></div></p>
+<p>Then enable <code>tlp</code> services
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> tlp.service
+sudo systemctl <span class="nb">enable</span> tlp-sleep.service
+
+<span class="c1"># mask some services for tlp to work properly</span>
+sudo systemctl mask systemd-rfkill.service
+sudo systemctl mask systemd-rfkill.socket</code></pre></div></p>
+<h3 id="install-i3-and-other-tools">Install i3 and other tools</h3>
+<p>All these tools are part of my <code>i3</code> config with exception of the theme related packages. So installing them here will help me later while setting up the <code>i3</code> window manager.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacaur -S i3 rofi polybar xautolock powerline-fonts-git i3lock-fancy-git compton scrot feh dunst unclutter xfce4-power-manager numlockx lxappearance adapta-gtk-theme gtk-engine-murrine gnome-themes-standard termite</code></pre></div></p>
+<h3 id="fix-ugly-fonts-1">Fix Ugly Fonts <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></h3>
+<p>Fonts rendering is one area where Linux still lags behind Windows and OSX. It can be a nightmare for users to setup fonts properly in Linux. In Arch Linux, this is even worse. I found some tricks to improve the quality of font rendering on Arch Linux. Though this is far from perfect, it is manageable. Follow these <a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/">steps</a> on Reddit to fix font rendering. I use Noto Sans, Adobe Source Code Pro, and Microsoft fonts. My apologies, but I can&rsquo;t help here. Some websites still use Microsoft fonts.</p>
+<h3 id="setup-python-environment">Setup Python Environment</h3>
+<p>I use Python extensively and virtual environments are a must for my development setup. I use <code>pipenv</code> to manage my virtual environments. To install <code>pipenv</code>, you need to install <code>virtualenv</code> first. To install it, run the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S python-virtualenv</code></pre></div></p>
+<p>Now you are ready to install <code>pipenv</code>. Follow <a href="http://pipenv.readthedocs.io/en/latest/install/#fancy-installation-of-pipenv">these</a> instructions to install the tool.</p>
+<h3 id="install-some-other-common-tools">Install some other common tools</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S vlc openssh npm imagemagick git la-capitaine-icon-theme-git</code></pre></div>
+<p>Do not forget to <a href="https://stackoverflow.com/a/13021677">setup</a> <code>npm</code> to install packages globally without requiring <code>sudo</code>.</p>
+<p>That&rsquo;s all! Your system should be in working condition now. Do check out my <a href="https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/">dotfiles</a> if you want to set up your system like mine.</p>
+<p>Hope you enjoyed the article. Cheers 😄</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://www.reddit.com/r/archlinux/comments/5r5ep8/make_your_arch_fonts_beautiful_easily/">Make your Arch fonts beautiful easily!</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/series/arch-linux-installation" term="arch-linux-installation" label="Arch Linux Installation" />
+                            
+                        
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/configuration" term="configuration" label="configuration" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/i3" term="i3" label="i3" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Arch Linux Installation Guide Part 1]]></title>
+            <link href="https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/?utm_source=atom_feed" rel="related" type="text/html" title="Setting Up SSH Agent in i3" />
+                <link href="https://yashagarwal.in/posts/2018/01/my-own-configuration-manager/?utm_source=atom_feed" rel="related" type="text/html" title="My Own Configuration Manager" />
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/?utm_source=atom_feed" rel="related" type="text/html" title="Setting up ALM Octane with Docker Compose" />
+                <link href="https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Fixing Hindi Fonts in Arch Linux" />
+                <link href="https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Mounting NTFS partitions on Arch Linux" />
+            
+                <id>https://yashagarwal.in/posts/2018/01/arch-linux-installation-guide-part-1/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2018-01-24T21:49:05+05:30</published>
+            <updated>2018-01-24T21:49:05+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Arch Linux is a Linux distribution known for its not-so-beginner-friendly command line installer, no ready-to-use system after installation and requirement of above average knowledge of command line. However, Arch Linux allows me to set up a system in my desired state in shortest possible time with least effort. This is why I keep coming back to Arch Linux even after some of its annoyances.</p>
+<p>This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can&rsquo;t remember all the installation steps perfectly. Most of the steps have been taken from <a href="https://wiki.archlinux.org/index.php/installation_guide">Arch wiki</a> and should work on other setups also.</p>
+<div class="note">
+    <div></div>
+    
+All the commands are run in root shell unless otherwise specified.
+
+</div>
+<h2 id="0-check-your-network-connection">0. Check your network connection</h2>
+<p>If you are behind a captive portal, use <code>links</code> to open browser and login into your network. For WiFi connections, use <code>wifi-menu</code>. LAN connections should not require any setup. The boot environment should automatically detect any wired connections. After connecting, test your connection by pinging any website:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ping -c <span class="m">5</span> google.com</code></pre></div></p>
+<h2 id="1-setup-ssh">1. Setup SSH</h2>
+<p>This step is not mandatory, though I prefer to use this method to install Arch Linux, as it provides me the convenience of copying and pasting the commands directly from Arch wiki.</p>
+<p>By default the Arch Linux <code>root</code> account password is empty. We need to set up a password for <code>root</code> account, which is needed for an SSH connection.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div></p>
+<p>Now we need to change the setting to permit <code>root</code> login via SSH in <code>/etc/ssh/sshd_config</code>. Check that <code>PermitRootLogin yes</code> is uncommented in this file. If this line is not present there, add this to the end. Now start the <code>sshd.service</code> by issuing the command
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start sshd.service</code></pre></div></p>
+<p>Also, note the IP address of the target machine by inspecting the output of the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip addr</code></pre></div></p>
+<p><em>Pro tip:</em> One liner to get only the IP address
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ip -o -4 addr show <span class="p">|</span> awk -F <span class="s1">&#39;[ /]+&#39;</span> <span class="s1">&#39;/global/ {print $4}&#39;</span></code></pre></div></p>
+<p>Now on your host machine, connect to the target machine via SSH using the following command
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh root@ip-address-of-target</code></pre></div></p>
+<h2 id="2-partition-the-disks">2. Partition the disks</h2>
+<p>If Windows 8 or above is already installed on your machine, then your hard disk is probably using <code>GPT</code> partitioning scheme. In that case, use <code>gdisk</code> to partition your hard disk. <del>If you use <code>fdisk</code> on a GPT partitioned HDD, there is a possibility of data loss.</del> <code>fdisk</code> understands <code>GPT</code> partitioning scheme also.[1]</p>
+<p>My preferred setup is to have one root partition and one home partition and use <code>EFI</code> partition created by Windows to install boot-loader. The root and home partition will be formatted using <code>ext4</code> file-system and the <code>EFI</code> partition should be formatted using <code>FAT32</code> file-system.</p>
+<p>For this guide, I am assuming that the <code>EFI</code> partition is <code>sda1</code>, root partition is <code>sda9</code> and home partition is <code>sda10</code>.</p>
+<p>Now to format the partitions with <code>ext4</code> file-system:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/sda9
+mkfs.ext4 /dev/sda10</code></pre></div></p>
+<h2 id="3-mount-the-partitions">3. Mount the partitions</h2>
+<p>Now mount the root partition (<code>sda9</code> in this case) to <code>/mnt</code>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mount /dev/sda9 /mnt</code></pre></div></p>
+<p>If you have created any other partitions in previous steps, mount them at appropriate locations.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir /mnt/home
+mount /dev/sda10 /mnt/home
+
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot</code></pre></div></p>
+<h2 id="4-install-the-base-file-system">4. Install the base file-system</h2>
+<p>To install the base system and some development tools, issue the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pacstrap /mnt base base-devel</code></pre></div></p>
+<p>This will take a while to download and install. After it finishes, it will give you a bare-bone Arch Linux system with just the tools required to run a Linux distribution, no other software is installed.</p>
+<h2 id="5-generate-etcfstab">5. Generate /etc/fstab</h2>
+<p>The <code>/etc/fstab</code> file stores the information about file systems of partitions and how to mount the partitions on system boot up. To generate this file, issue the following command:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</code></pre></div>
+If you prefer to use partition labels (sda1, sda9 etc.) instead of UUID, then use <code>-L</code> flag in place of <code>-U</code>.</p>
+<h2 id="6-chroot-into-the-system">6. chroot into the system</h2>
+<p>From the <a href="https://wiki.archlinux.org/index.php/Change_root">Arch wiki</a>:</p>
+<blockquote>
+<p>Chroot is an operation that changes the apparent root directory for the current running process and their children. A program that is run in such a modified environment cannot access files and commands outside that environmental directory tree. This modified environment is called a chroot jail.</p>
+</blockquote>
+<p>At this step, we will go to the root of the newly installed system at <code>/mnt</code> and pretend as if we are logged into this system.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">arch-chroot /mnt</code></pre></div></p>
+<h2 id="7-setup-the-time-zone-locale-and-hostname">7. Setup the time zone, locale, and hostname</h2>
+<p>Browse the <code>/use/share/zoneinfo</code> directory to find your location entries. My location is India, so I will use this command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime</code></pre></div></p>
+<p>To set the hardware clock:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hwclock --systohc</code></pre></div></p>
+<p>To set the locale for your system, open the <code>/etc/locale.gen</code> file and uncomment your language. or run the following command for the default <code>en_US.UTF-8 UTF-8</code>.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LANG</span><span class="o">=</span>C perl -i -pe <span class="s1">&#39;s/#(en_US.UTF)/$1/&#39;</span> /etc/locale.gen</code></pre></div>
+Now generate the localization with
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">locale-gen</code></pre></div></p>
+<p>Then set the <code>LANG</code> variable in <code>/etc/locale.conf</code> accordingly, or run the following command:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">localectl set-locale <span class="nv">LANG</span><span class="o">=</span><span class="s2">&#34;en_US.UTF-8&#34;</span></code></pre></div></p>
+<p>To set the hostname for your machine:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">hostnamectl set-hostname your-host-name</code></pre></div></p>
+<p>To allow other machines to address the host by name, it is necessary to edit the <code>/etc/hosts</code> file to look like this:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">127.0.0.1    localhost.localdomain          localhost
+::1          localhost.localdomain          localhost
+127.0.1.1    your-host-name.localdomain     your-host-name</code></pre></div></p>
+<h2 id="8-create-user-account">8. Create user account</h2>
+<p>Before creating user account, set password for <code>root</code> account
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd</code></pre></div></p>
+<p>Now create a local account for your user
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">useradd -m -G wheel -s /bin/bash your-user-name</code></pre></div></p>
+<p>This will set up your user account, create a home directory for your user, set the default shell to <code>bash</code> and add your user to <code>wheel</code> group, which is necessary to gain <code>sudo</code> access in later steps.</p>
+<p>Set password for your user.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd your-user-name</code></pre></div></p>
+<h2 id="9-enable-sudo-access">9. Enable sudo access</h2>
+<p>This allows you to use root privileges without using the root account. To enable this, first open <code>/etc/sudoers</code> file
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">nano /etc/sudoers</code></pre></div></p>
+<p>Now uncomment the following line to enable <code>root</code> privilege for all the users inside <code>wheel</code> group:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># %wheel ALL=(ALL) ALL</span></code></pre></div></p>
+<p>Now you can safely disable root account
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">passwd -l root
+
+<span class="c1"># login into your user account</span>
+su your-user-name</code></pre></div></p>
+<p>From this point onwards, it is necessary to append <code>sudo</code> to any command that requires <code>root</code> privileges.</p>
+<h2 id="10-install-bootloader">10. Install bootloader</h2>
+<p>My preferred bootloader of choice is <code>grub</code>. To install <code>grub</code>, we need to install following packages.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S grub efibootmgr</code></pre></div></p>
+<p>Now install <code>grub</code> with the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-install --target<span class="o">=</span>x86_64-efi --efi-directory<span class="o">=</span>/boot --bootloader-id<span class="o">=</span>arch</code></pre></div></p>
+<p>Here <code>--efi-directory</code> is the folder where the <code>EFI</code> partition is mounted <a href="#step3">step 3</a> and <code>--bootloader-id</code> is the label that will appear in your UEFI boot menu entry.</p>
+<p>This particular step is specific to my machine&rsquo;s hardware, you might not need to run this step. I need to add <code>pci=nommconf</code> to my kernel boot parameters in <code>/etc/default/grub</code>, otherwise <code>tty</code> prints error messages continuously.</p>
+<p>Now run to generate grub configuration file.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></div></p>
+<p>If you encounter any errors related to <code>lvm</code> during installation of grub, then follow these steps.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># come out of chroot</span>
+<span class="nb">exit</span>
+mkdir /mnt/hostrun
+mount --bind /run /mnt/hostrun
+
+<span class="c1"># back to chroot</span>
+arch-chroot /mnt
+mkdir /run/lvm
+mount --bind /hostrun/lvm /run/lvm</code></pre></div></p>
+<p>Now you can install <code>grub</code> without any errors.</p>
+<h2 id="11-configure-the-network">11. Configure the network</h2>
+<p>By default, your current system cannot connect to the network in the current state. I prefer to use <a href="https://wiki.archlinux.org/index.php/NetworkManager">NetworkManager</a> for my network management, even when I am not using GNOME. For wireless networking, install the following additional packages.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo pacman -S iw wpa_supplicant dialog networkmanager network-manager-applet dhclient</code></pre></div></p>
+<p><code>NetworkManager</code> supports basic DHCP configuration. For full support, I have installed <code>dhclient</code>. <code>NetworkManager</code> also supports automatic wired connection detection and comes with curses based tool <code>nmtui</code> to setup wireless connection.</p>
+<p>To enable NetworkManager to start at system startup
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> NetworkManager.service</code></pre></div></p>
+<h2 id="12-reboot-now">12. Reboot now</h2>
+<p>If you had performed the <code>lvm</code> troubleshooting steps during <code>grub</code> install, then
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">umount /run/lvm</code></pre></div></p>
+<p>Now exit from <code>chroot</code> by typing <code>exit</code> in the shell. Unmount all the mounted partitions with:
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">umount -R /mnt</code></pre></div></p>
+<p>Finally, reboot your machine by typing <code>reboot</code> and remove the installation USB drive. If you are not able to boot into your system at this point, boot from the installation media again and attempt to fix the installation.</p>
+<p>If you can see a terminal with a prompt for your username, congratulations! You have completed the first step towards building your own system.</p>
+<p>I will be writing about making your system usable and stable in the <a href="/posts/2018/01/arch-linux-installation-guide-part-2/">second</a> part of this guide.</p>
+<p>Hope you enjoyed the post. Stay tuned :)</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/series/arch-linux-installation" term="arch-linux-installation" label="Arch Linux Installation" />
+                            
+                        
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/configuration" term="configuration" label="configuration" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/i3" term="i3" label="i3" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Setting Up SSH Agent in i3]]></title>
+            <link href="https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2017/12/setting-up-alm-octane-with-docker-compose/?utm_source=atom_feed" rel="related" type="text/html" title="Setting up ALM Octane with Docker Compose" />
+                <link href="https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Fixing Hindi Fonts in Arch Linux" />
+                <link href="https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Mounting NTFS partitions on Arch Linux" />
+                <link href="https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/?utm_source=atom_feed" rel="related" type="text/html" title="Custom Arch Linux setup with Openbox" />
+            
+                <id>https://yashagarwal.in/posts/2017/12/setting-up-ssh-agent-in-i3/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2017-12-27T20:21:09+05:30</published>
+            <updated>2017-12-27T20:21:09+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[<p>In this post, I will write about the procedure to correctly setup SSH and GPG agents in the i3 window manager. To follow this post, you need to have ssh-keys and your private GPG keys ready. If you do not already have these keys with you, I will describe the process of creating the keys.</p>
+<h2 id="ssh">SSH</h2>
+<p>Generating an SSH key pair provides you with a public key and a private key. The private key should never be given to anyone and public key, well the name itself is self-explanatory.</p>
+<p>To create a new key pair, open a terminal and paste the text below.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;your_email_address&#34;</span></code></pre></div></p>
+<p>This command will create a new ssh key pair with the given email address as the label. Press Enter for any question asked. When it asks for the passphrase, type a strong passphrase, otherwise leave it blank to have no password.</p>
+<h2 id="gpg">GPG</h2>
+<p>You might need to download the GPG command line tools before following the below steps. Follow your distribution&rsquo;s documentation for more help.</p>
+<p>Once you have downloaded the tools, open a terminal, and type the following command.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">gpg --gen-key</code></pre></div>
+You will see something like this. Enter 1 to select the default key choice.</p>
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">gpg (GnuPG) 1.4.20; Copyright (C) 2015 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+gpg: directory `/home/yash/.gnupg&#39; created
+gpg: new configuration file `/home/yash/.gnupg/gpg.conf&#39; created
+gpg: WARNING: options in `/home/yash/.gnupg/gpg.conf&#39; are not yet active during this run
+gpg: keyring `/home/yash/.gnupg/secring.gpg&#39; created
+gpg: keyring `/home/yash/.gnupg/pubring.gpg&#39; created
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection?</code></pre></div>
+<p>At the next prompt, enter the key size. It is recommended to use the maximum key size of 4096 bits.</p>
+<p>Enter the time duration for which the key should remain valid. Press Enter to specify the default selection, indicating that the key does not expire.</p>
+<p>After verifying the information, enter your user information and a strong passphrase. Afterward, GPG will start generating your key. You will see:
+<div class="highlight"><pre class="chroma"><code class="language-text" data-lang="text">We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse,
+utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.</code></pre></div></p>
+<p>You can now use the key (until it expires) to encrypt your data.</p>
+<h2 id="setting-up-ssh-agent">Setting up SSH Agent</h2>
+<h3 id="configuring-i3">Configuring i3</h3>
+<p><strong>Update (26/05/2018):</strong> <em>As pointed out by <a href="https://sakshamsharma.com/">Saksham</a> in the comments below, this step is not required for the setup of SSH in i3. This step can be safely ignored.</em></p>
+<p>Open i3 configuration file and add an <code>exec_always</code> statement -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">exec_always ~/.config/i3/scripts/gnome-keyring.sh</code></pre></div></p>
+<p>Obviously, you will need to change the path according to your OS. Now make a new file in <code>~/.config/i3/scripts</code> with name <code>gnome-keyring.sh</code> and paste the below text in it.</p>
+<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">eval</span> <span class="k">$(</span>/usr/bin/gnome-keyring-daemon --start --components<span class="o">=</span>gpg,pkcs11,secrets,ssh<span class="k">)</span>
+<span class="nb">export</span> GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK</code></pre></div>
+(Assuming that you already have installed gnome-keyring)</p>
+<p>Now, reload the i3.</p>
+<h3 id="configuring-ssh">Configuring SSH</h3>
+<p><strong>Update (26/05/2018):</strong> <em>This step is also optional. Thanks to <a href="https://sakshamsharma.com/">Saksham</a> for pointing it out.</em></p>
+<p>Open <code>~/.ssh/config</code> file and add following content to it -</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Host *
+  AddKeysToAgent yes
+  IdentityFile /home/&lt;your username&gt;/.ssh/id_rsa</code></pre></div>
+<p>Replace &lt;your username&gt; accordingly.</p>
+<h3 id="setting-up-bashrc">Setting up .bashrc</h3>
+<p>I am not using a login shell, and I could not find any suitable method to source <code>~/.profile</code> or <code>~/.bash_profile</code> on login in i3. So I added my configuration to <code>~/.bashrc</code> file. I know it is a hack, but it works well for me without much headache.</p>
+<p>Open <code>~/.bashrc</code> file and add following lines to the end of the file.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">if</span> <span class="o">[</span> -f ~/.ssh/agent.env <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    . ~/.ssh/agent.env &gt; /dev/null
+    <span class="k">if</span> ! <span class="nb">kill</span> -0 <span class="nv">$SSH_AGENT_PID</span> &gt; /dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&#34;Stale agent file found. Spawning a new agent. &#34;</span>
+        <span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span> tee ~/.ssh/agent.env<span class="sb">`</span>
+        ssh-add
+    <span class="k">fi</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Starting ssh-agent&#34;</span>
+    <span class="nb">eval</span> <span class="sb">`</span>ssh-agent <span class="p">|</span> tee ~/.ssh/agent.env<span class="sb">`</span>
+    ssh-add
+<span class="k">fi</span></code></pre></div></p>
+<p>It will automatically start an <code>ssh-agent</code> if it is not already running. Otherwise, it attaches to a previously running agent.</p>
+<p>Now log out and log in again to see if ssh-agent works. Open a terminal and run the command <code>ssh-add -l</code>. It will show you the hash value of your ssh-key, which is loaded by the ssh-agent.</p>
+<p>That is all for today. Thank you for reading!</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/i3" term="i3" label="i3" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/ssh" term="ssh" label="SSH" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Fixing Hindi Fonts in Arch Linux]]></title>
+            <link href="https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/?utm_source=atom_feed" rel="related" type="text/html" title="Mounting NTFS partitions on Arch Linux" />
+                <link href="https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/?utm_source=atom_feed" rel="related" type="text/html" title="Custom Arch Linux setup with Openbox" />
+            
+                <id>https://yashagarwal.in/posts/2017/10/fixing-hindi-fonts-in-arch-linux/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2017-10-17T21:55:53+05:30</published>
+            <updated>2017-10-17T21:55:53+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[
+
+
+
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet" href="/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css">
+
+    
+
+    
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        
+        <div class="pswp__bg"></div>
+        
+        <div class="pswp__scroll-wrap">
+            
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    
+                    
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<p>When viewing Hindi content in any browser in Arch Linux, the rendering looks weird.</p>
+
+
+
+    <link rel="stylesheet" href="/css/hugo-easy-gallery.css">
+    
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img">
+            <img itemprop="thumbnail" src="/images/2017-10-17/before.png" alt="before applying the fix"/>
+        </div>
+        <a href="/images/2017-10-17/before.png" itemprop="contentUrl"></a>
+            <figcaption>
+                    <p>before applying the fix</p>
+            </figcaption>
+    </figure>
+</div>
+
+<p>It doesn&rsquo;t look good, right! I&rsquo;ll try to fix this issue in this post. You might need to install the appropriate <a href="https://wiki.archlinux.org/index.php/fonts">font support</a> in Arch Linux before applying this fix. The suitable package for installing Indic Language support is <a href="https://www.archlinux.org/packages/extra/any/ttf-indic-otf/">ttf-indic-otf</a>.</p>
+<p>Now go to <code>/usr/share/fonts/TTF</code> and take the backup of two fonts <code>FreeSans.ttf</code> and <code>FreeSerif.ttf</code>. Now delete these two fonts from the directory. Restart the browser and see the difference.</p>
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img">
+            <img itemprop="thumbnail" src="/images/2017-10-17/after.png" alt="after applying the fix"/>
+        </div>
+        <a href="/images/2017-10-17/after.png" itemprop="contentUrl"></a>
+            <figcaption>
+                    <p>after applying the fix</p>
+            </figcaption>
+    </figure>
+</div>
+
+<p>This bug is reported in <a href="https://bugs.launchpad.net/ubuntu/+source/chromium-browser/+bug/856736">this</a> bug report in 2011. I don&rsquo;t know why nobody has fixed it yet. Or maybe I was not able to find the proper solution. This workaround is also given in the same bug report.</p>
+<p>I hope this helps. :)</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Mounting NTFS partitions on Arch Linux]]></title>
+            <link href="https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+                <link href="https://yashagarwal.in/posts/2016/06/custom-arch-linux-setup-with-openbox/?utm_source=atom_feed" rel="related" type="text/html" title="Custom Arch Linux setup with Openbox" />
+            
+                <id>https://yashagarwal.in/posts/2017/03/mounting-ntfs-partitions-on-arch-linux/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2017-03-14T10:30:36+00:00</published>
+            <updated>2017-03-14T10:30:36+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[<p>Yesterday I installed Arch Linux once again. A clean, bloat-free desktop with Budgie Desktop environment with some must-have open source tools. Everything worked fine except WiFi and some minor bugs in Budgie(I don&rsquo;t know whether it is a bug in Budgie or just a wrong setting). I also faced the problem of mounting Windows NTFS volumes on the user&rsquo;s wish. Arch Linux wiki has details about how to automount partitions on start-up. Still, I had a tough time to find out what exactly needs to be done to simulate the behavior of Ubuntu-like distribution on the mounting of NTFS drives. I got a hint from Arch Linux Wiki about the Polkit configuration setting, which can be used to allow a standard user to mount partitions. Here is a solution that I found after a long search on various Arch Linux Community pages.</p>
+<p>You will need to install <code>ntfs-3g</code>, <code>polkit</code> and <code>udisks2</code> to use this code. Please refer to <a href="https://wiki.archlinux.org/index.php/Udisks">Arch Wiki</a>.</p>
+<p>I think when using Gentoo, you will also need to compile the support for the NTFS file system in Kernel also. Please see <a href="https://wiki.gentoo.org/wiki/NTFS">here</a>.</p>
+<p>Add the following code to <code>/etc/polkit-1/rules.d/10-udisks2.rules</code> -</p>
+<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Allow udisks2 to mount devices without authentication for users in the &#34;wheel&#34; group.
+</span><span class="c1"></span><span class="nx">polkit</span><span class="p">.</span><span class="nx">addRule</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="nx">subject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">((</span><span class="nx">action</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s2">&#34;org.freedesktop.udisks2.filesystem-mount-system&#34;</span> <span class="o">||</span>
+        <span class="nx">action</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s2">&#34;org.freedesktop.udisks2.filesystem-mount&#34;</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="nx">subject</span><span class="p">.</span><span class="nx">isInGroup</span><span class="p">(</span><span class="s2">&#34;wheel&#34;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">polkit</span><span class="p">.</span><span class="nx">Result</span><span class="p">.</span><span class="nx">YES</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+
+<span class="nx">polkit</span><span class="p">.</span><span class="nx">addRule</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">action</span><span class="p">,</span> <span class="nx">subject</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">((</span><span class="nx">action</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="s2">&#34;org.freedesktop.udisks.filesystem-mount-system-internal&#34;</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+        <span class="nx">subject</span><span class="p">.</span><span class="nx">isInGroup</span><span class="p">(</span><span class="s2">&#34;wheel&#34;</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">polkit</span><span class="p">.</span><span class="nx">Result</span><span class="p">.</span><span class="nx">YES</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>Now you will be able to mount NTFS partition without any problem. :)</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/arch-linux" term="arch-linux" label="Arch Linux" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/polkit" term="polkit" label="Polkit" />
+                             
+                                <category scheme="https://yashagarwal.in/tags/ntfs" term="ntfs" label="NTFS" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[Wanna get insulted by sudo]]></title>
+            <link href="https://yashagarwal.in/posts/2016/04/wanna-get-insulted-by-sudo/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://yashagarwal.in/posts/2016/04/wanna-get-insulted-by-sudo/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2016-04-03T12:20:36+00:00</published>
+            <updated>2016-04-03T12:20:36+00:00</updated>
+            
+            
+            <content type="html"><![CDATA[
+
+
+
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet" href="/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css">
+
+    
+
+    
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        
+        <div class="pswp__bg"></div>
+        
+        <div class="pswp__scroll-wrap">
+            
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    
+                    
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<p>You might have tried many Linux easters eggs for fun, but you are going to love this hack which makes <code>sudo</code> insult you.</p>
+<p>Confused what I am talking about? Here, take a look at this gif to get an idea of how <code>sudo</code> can insult you for typing in the incorrect password.</p>
+
+
+
+    <link rel="stylesheet" href="/css/hugo-easy-gallery.css">
+    
+
+
+<div class="box fancy-figure caption-position-none"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img">
+            <img itemprop="thumbnail" src="/images/2016-04-03/insult.gif" alt="A terminal screen"/>
+        </div>
+        <a href="/images/2016-04-03/insult.gif" itemprop="contentUrl"></a>
+    </figure>
+</div>
+
+<p>Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with Linux, and anyway, this is way better than the plain &ldquo;You entered a wrong password&rdquo; error message. So let&rsquo;s learn how to do this.</p>
+<h2 id="enable-insults-in-sudo">Enable insults in sudo</h2>
+<p>You can enable the insults feature in <code>sudo</code> by modifying the <code>sudo</code> configuration file. To open the <code>sudo</code> configuration file, launch a terminal and type the following command.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo visudo</code></pre></div>
+<p>It will open <code>/etc/sudoers</code> configuration file in the terminal, in vim text editor if you have configured it as your default editor. In distros like Ubuntu, it will be opened in nano. Now you will have to find the section where the defaults are listed. Most probably you will find it at the top. Now find the line that starts with <code>Defaults</code> and append the word <code>insults</code> to the end of the line (any addition to the line is comma separated). If this line is not present then add the following line to the section</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Defaults insults</code></pre></div>
+<p>(Always use <code>visudo</code> as it has a self-check system which will save you from messing up things)</p>
+<p>Now save the file. If you are using vim, then use <code>Ctrl+X</code> to save the file and quit the editor and if you are using nano then use <code>Ctrl+X</code> to leave the editor. At the time of quitting, it will ask you if you want to save the changes. To keep the changes, press <code>Y</code>.</p>
+
+
+
+<div class="box fancy-figure caption-position-none"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img">
+            <img itemprop="thumbnail" src="/images/2016-04-03/sudoers.png" alt="Sample sudoers file"/>
+        </div>
+        <a href="/images/2016-04-03/sudoers.png" itemprop="contentUrl"></a>
+            <figcaption>
+                    <p>Sample sudoers file</p>
+            </figcaption>
+    </figure>
+</div>
+
+<p>Once you have saved the file, go to terminal and type the following command to clear the old password from <code>sudo</code>'s cache.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo -k</code></pre></div>
+<p>That&rsquo;s all. Use any command with <code>sudo</code>. Deliberately type a wrong password and enjoy abusing &hellip;</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/hacks" term="hacks" label="Hacks" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/sudo" term="sudo" label="sudo" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+</feed>
