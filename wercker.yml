@@ -11,8 +11,7 @@ build:
         code: |
           git submodule update --init --recursive
     - arjen/hugo-build:
-        version: latest
-        theme: refined
+        version: "0.68.3"
 
 deploy:
   steps:
