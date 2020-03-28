@@ -17,7 +17,7 @@ pages:
     - apt install -y imagemagick
   script:
     - hugo --gc --minify
-    - find public/ -not -path "*/static/*" \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' \) -print0 | xargs -0 -P8 -n2 mogrify -strip -thumbnail '1000>' -format jpg
+    - find ./public -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png \) -print0 | xargs -0 -P16 -n2 mogrify -compress JPEG -strip -quality 40
     - gzip -k -6 -r $(find public -type f)
   artifacts:
     paths:
