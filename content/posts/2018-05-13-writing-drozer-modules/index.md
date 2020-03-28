@@ -25,6 +25,7 @@ You can read more about the structure of a Drozer module [here](https://github.c
 I will explain all the critical parts of a Drozer module with the help of a sample module. I will be implementing a module to record and save the sound from the inbuilt mic of an Android device.
 
 I initialized a new module repository using the Drozer console using the following command.
+
 {{< highlight bash >}}
 dz> module repository create custom
 Initialised repository at custom.
@@ -35,6 +36,7 @@ You will see a new directory `custom` in your current directory after executing 
 To begin implementing our module, create a new file `record.py` in the module directory. Drozer has many different utility classes, which we can use to simplify our implementation. To use these utility classes ([mixins](https://github.com/mwrlabs/drozer/wiki/Using-mixins)), our module class must extend _mixins_ using Python's multiple inheritance feature.
 
 We first need to import all the required mixins. The mixins are stored in `modules.common` package in the Drozer source tree. After importing mixins and extending our class, the code will look like this. You can also import any other standard Python module here.
+
 {{< highlight python >}}
 from drozer.modules import common, Module
 import os, subprocess, time
@@ -49,6 +51,7 @@ The _path_ variable defined here is an array that contains the values for the na
 The _permissions_ array variable contains all the permissions that this module will require for proper functioning. For example, our module will need permission to record audio on the device to work correctly. So we define this permission in the permissions array. The agent app on the device is required to have this permission. Otherwise, our module will throw an error.
 
 The following snippet shows the metadata section of our module.
+
 {{< highlight python >}}
 name = "Record sound from the inbuilt mic of an Android device."
 description = "Record sound from the inbuilt mic of an Android device. The default save format is 3GPP. Relies on the agent having the RECORD_AUDIO permission."
@@ -73,6 +76,7 @@ Now we can start implementing the heart of our module, the `execute()` function.
 The implementation of `execute()` method is slightly tricky and requires an understanding of different classes and methods provided by the Android API. As we are writing a module to record sound, we will look into the documentation of [MediaRecorder](https://developer.android.com/guide/topics/media/mediarecorder.html) class. Before reading further, go through the documentation about the use of reflection API in Drozer [here](https://github.com/mwrlabs/drozer/wiki/Using-Reflection).
 
 The `execute()` function is given below.
+
 {{< highlight python >}}
 def execute(self, arguments):
     # unique file names
