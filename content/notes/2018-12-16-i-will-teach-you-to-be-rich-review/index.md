@@ -1,19 +1,18 @@
----
-
-date: "2018-12-16T08:30:12+05:30"
-title: "I Will Teach You to Be Rich - Review"
-categories:
-  - Readings
-tags:
-  - Personal Finance
----
++++
+title = "I Will Teach You to Be Rich - Review"
+author = ["Yash Agarwal"]
+date = 2018-12-16T08:30:12+05:30
+images = []
+tags = ["Personal Finance"]
+categories = ["Review"]
+draft = false
++++
 
 {{< load-photoswipe >}}
 
-<center>{{< figure src="https://images.gr-assets.com/books/1404581320l/4924862.jpg" caption-position="none">}}
+{{< figure src="https://images.gr-assets.com/books/1404581320l/4924862.jpg" caption-position="none">}}
 
-<span style="color:red">**Rating: 4 / 5**</span>
-</center>
+{{< rating 4 >}}
 
 It was my first book on the topic of personal finance. I am entirely new to managing money, so I thought it would be a
 good idea to gain some knowledge before trying anything crazy. I must say, this book has not disappointed me. I do not

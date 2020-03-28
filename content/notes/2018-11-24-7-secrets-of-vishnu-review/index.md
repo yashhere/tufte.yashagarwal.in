@@ -1,20 +1,19 @@
----
-
-date: "2018-11-24T14:00:36+05:30"
-title: "7 Secrets of Vishnu - Review"
-categories:
-  - Readings
-tags:
-  - Mythology
-  - Philosophy
----
++++
+title = "7 Secrets of Vishnu - Review"
+author = ["Yash Agarwal"]
+date = 2018-11-24T14:00:36+05:30
+images = []
+tags = ["Mythology", "Philosophy"]
+categories = ["Review"]
+draft = false
++++
 
 {{< load-photoswipe >}}
 
-<center>{{< figure src="https://images.gr-assets.com/books/1481423442l/33307121.jpg" caption-position="none">}}
+{{< figure src="https://images.gr-assets.com/books/1481423442l/33307121.jpg" caption-position="none">}}
 
-<span style="color:red">**Rating: 4.5 / 5**</span>
-</center>
+{{< rating 4.5 >}}
+
 
 
 For me, reading this book was to look at the things that I already knew, from a

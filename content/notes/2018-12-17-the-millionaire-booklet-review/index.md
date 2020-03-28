@@ -1,19 +1,18 @@
----
-
-date: "2018-12-17T09:50:27+05:30"
-title: "The Millionaire Booklet - Review"
-categories:
-  - Readings
-tags:
-  - Personal Finance
----
++++
+title = "The Millionaire Booklet - Review"
+author = ["Yash Agarwal"]
+date = 2018-12-17T09:50:27+05:30
+images = []
+tags = ["Personal Finance"]
+categories = ["Review"]
+draft = false
++++
 
 {{< load-photoswipe >}}
 
-<center>{{< figure src="https://images.gr-assets.com/books/1470978134l/31430654.jpg" caption-position="none">}}
+{{< figure src="https://images.gr-assets.com/books/1470978134l/31430654.jpg" caption-position="none">}}
 
-<span style="color:red">**Rating: 3.7 / 5**</span>
-</center>
+{{< rating 3.7 >}}
 
 A friend suggested me to read this book. It was my first audiobook, and my experience is a
 mixed one. I am not a very good retainer of information while listening to something when compared with my retention

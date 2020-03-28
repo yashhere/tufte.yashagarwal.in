@@ -3,8 +3,8 @@ title = "The Rozabal Line - Review"
 author = ["Yash Agarwal"]
 date = 2018-11-05T12:00:44+05:30
 images = []
-tags = ["fiction"]
-categories = ["Notes"]
+tags = ["Fiction"]
+categories = ["Review"]
 draft = false
 +++
 
@@ -12,6 +12,7 @@ draft = false
 
 {{< figure src="https://images.gr-assets.com/books/1348205204l/9471031.jpg" caption-position="none">}}
 
+{{< rating 3.8 >}}
 
 It was an exciting read for me. I must say the amount of research done by the author is really commendable. Given the topic of this work, the author comes very close to getting everything right, but eventually, he misses the mark.
 
