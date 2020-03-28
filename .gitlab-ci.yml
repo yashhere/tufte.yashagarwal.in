@@ -14,7 +14,7 @@ test:
 pages:
   before_script:
     - apt update
-    - apt install -y gzip imagemagick
+    - apt install -y imagemagick
   script:
     - hugo
     - find public/ -not -path "*/static/*" \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' \) -print0 | xargs -0 -P8 -n2 mogrify -strip -thumbnail '1000>' -format jpg
