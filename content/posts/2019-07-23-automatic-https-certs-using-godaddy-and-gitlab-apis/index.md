@@ -90,6 +90,7 @@ Once the `auth_hook.sh` script returns successfully, `certbot` will verify the D
 
 ### Step 4: Deploying the certificates to GitLab
 I use the following command to deploy the certificates to Gitlab pages where my website is hosted -
+
 {{< highlight bash >}}
 curl  -vvv \
       --request PUT \
@@ -99,6 +100,7 @@ curl  -vvv \
 {{< /highlight >}}
 
 where
+
 {{< highlight bash >}}
 key_dir="./generated/config/live/yashagarwal.in"
 {{< /highlight >}}
