@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+
+<link href="https://gmpg.org/xfn/11" rel="profile">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+
+<meta name="referrer" content="no-referrer">
+
+
+ 
+<meta property="og:title" content="The Code Book - Review" />
+<meta property="og:description"
+      content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yashagarwal.in/notes/2018-12-15-the-code-book-review/" />
+
+
+    
+        <meta property="article:published_time" content="2018-12-15T19:04:38&#43;05:30"/>
+    
+    
+        <meta property="article:modified_time" content="2018-12-15T19:04:38&#43;05:30"/>
+    
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+
+<!-- rel="me" links for IndieAuth -->
+
+<link href="https://github.com/yashhere/" rel="me">
+
+
+    
+    
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth" data-proofer-ignore>
+    
+    
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+
+
+
+
+ <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Code Book - Review"/>
+<meta name="twitter:description" content=""/>
+<meta name="twitter:site" content="@yash__here"/>
+    <meta name="twitter:creator" content="@yash__here"/>
+
+
+
+
+
+
+
+<meta name="hugo-build-date" content="2020-03-24T12:13:38Z"/>
+<meta name="hugo-commit-hash" content="157669a0"/>
+<meta name="generator" content="Hugo 0.68.3" />
+    <title>The Code Book - Review • /dev/yash/notes</title>
+    <link rel='canonical' href='https://yashagarwal.in/notes/2018-12-15-the-code-book-review/'>
+    
+
+    
+    <link rel='icon' href='/appicons/favicon.ico'>
+
+
+
+    
+        <link rel="preload" href="/fonts/libre-baskerville/2012/subset/LibreBaskerville-Regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/iosevka/1.14.1/subset/iosevka-ss08-regular.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/linux-libertine/5.3.0/subset/LinBiolinum_Rah.woff2" as="font" crossorigin>
+    
+        <link rel="preload" href="/fonts/source-sans-pro/2.020R-ro-1.075R-it/subset/SourceSansPro-Regular.woff2" as="font" crossorigin>
+    
+
+
+
+
+
+
+
+
+
+    <script>
+         
+        !function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+         
+        !function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+    </script>
+
+
+
+<style>
+    
+    
+    :root {
+        --theme-color: #6a9fb5;
+        --theme-color-light: rgba(106, 159, 181, 0.2);
+    }
+    
+    html {
+        line-height: 1.5;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/styles.min.15fd0b6e02e8ee12d83e881e2534f306dc69495d71be498824f554b1b13fbf54.css" integrity="sha256-Ff0LbgLo7hLYPogeJTTzBtxpSV1xvkmIJPVUsbE/v1Q=">
+
+
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.da6b5b4da09d91a8af30baf04214409c80aeae536efdd0622d169644a02f7e6d.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.58d47dcaa2ba2c5b650ea35c1155248de2aff6efe389ada218b0101b4a1f3fff.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.72101f3ce24cd49875bf0159cfd78e64dea181370d779f442bedef2023a1969b.png">
+    <link rel="manifest" href="/manifest.3d290f98d0c4ee23e14b3c829d3f492989299740875ba45a51549445fcd1874f.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.12bcf28d5986de6bb989d2e4a8c6b84e0c723dae4c62fa5f91d5c1f94d69b3be.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d" />
+    <meta name="theme-color" content="#ffffff" />
+
+
+
+
+<link rel="alternate" type="application/jf2post+json" href="https://yashagarwal.in/notes/2018-12-15-the-code-book-review/jf2post.json" title="Jf2post for /dev/yash/notes" />
+
+ 
+
+     
+
+
+
+
+     
+    
+    <meta name="DC.Creator" content="Yash Agarwal"/>
+    
+
+
+</head>
+
+<body lang="en">
+    <div class="border" id="home"></div>
+    <div class="wrapper">   
+        
+<nav id="nav" class="nav-collapse opened" aria-hidden="false">
+    <ul class="navbar">
+        <li><a class="" href="/">Home</a></li>
+        
+            
+                <li><a class="" href="https://yashagarwal.in/posts/">Posts</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/notes/">Notes</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/whoami/">Whoami</a></li>
+            
+        
+            
+                <li><a class="" href="https://yashagarwal.in/search/">Search</a></li>
+            
+        
+    </ul>
+</nav>
+
+
+<div class="container">
+    <header class="masthead">
+        <div class="masthead-title no-text-decoration">
+            <a href="/">/dev/yash/notes</a> <span class="blinking-cursor">❚</span>
+        </div>
+        <div class="masthead-tagline">
+            The directory of my thoughts
+        </div>
+    </header>
+
+
+        
+
+
+
+
+
+
+
+
+<article class="post h-entry notes">
+    <header>
+        <div class="center">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__readings__"
+                                
+                                
+                                title="See all 6 posts categorized in ‘Readings’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/readings/">Readings</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__science__"
+                                
+                                
+                                title="See all 2 posts tagged with ‘Science’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/science/">Science</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__computer-science__"
+                                
+                                
+                                title="This is the only post tagged with ‘Computer Science’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/computer-science/">Computer Science</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+</div>
+
+        <h1 class="post-title p-name">The Code Book - Review</h1>
+
+        
+        <data class="u-url" value="https://yashagarwal.in/notes/2018-12-15-the-code-book-review/"></data>
+
+        <div class="date-syndication">
+            
+
+
+    
+    
+    <div class="post-date">
+        
+        <time datetime="2018-12-15T19:04:38+0530" class="dt-published">Sat Dec 15, 2018</time>
+        
+        
+    </div>
+
+
+            
+
+
+
+
+        </div>
+         
+
+     
+
+
+
+
+    
+        
+        <span class="hide">
+            &mdash; <a href="https://yashagarwal.in/" class="u-author">Yash Agarwal</a>
+        </span>
+    
+
+
+    </header>
+
+    <div class="content">
+        
+
+
+        
+
+
+
+
+
+                       
+
+
+        <div class="e-content">
+            
+
+
+
+
+
+
+
+
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet" href="/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css">
+
+    
+
+    
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        
+        <div class="pswp__bg"></div>
+        
+        <div class="pswp__scroll-wrap">
+            
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    
+                    
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><strong>Rating: 5 / 5</strong><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p>I was interested in Cryptography and Number Theory during my undergraduate studies so reading the
+history of Cryptography in this book was intriguing for me. The author has done excellent work in making sure that even
+an uninitiated person in Cryptography can understand and appreciate the importance of work done in this field. The people
+unequipped with the necessary background knowledge will enjoy this book as much as the math nerds. The book
+contains very little mathematical stuff, but the author tries to explain the ciphers by taking appropriate examples.</p>
+<p>I enjoyed the story of the breaking of the Enigma Machine. It seems to be a perfect time to watch <em>The
+Imitation Game</em>. 😄 The book gets boring in the post RSA part. Probably one reason behind this was my lack of
+knowledge about Quantum Computing. Although a few days back, two of my colleagues were discussing an idea about Quantum
+Computing. I overheard their discussion, and surprisingly, I was able to understand everything they were talking, to
+some extent. So I
+guess that this book has at least initiated me to the field of Quantum Computing.</p>
+<p>It was a 5-star book for me, and it has reserved its place in my favorite books shelf. I will revisit this
+book in future when I get a chance to teach Cryptography to someone. Before that, I need to learn Cryptography,
+right! Anyone reading this review, if you have any recommendations for books on Cryptography and Number Theory, please do
+comment.</p>
+<p>Here are some of my favorite quotes from the book (not in any particular order):</p>
+<ol>
+<li>
+<p>It has been said that the First World War was the chemists’ war, because mustard gas and   chlorine were employed for
+the first time, and that the Second World War was the physicists’ war, because the atom bomb was detonated.
+Similarly, it has been argued that the Third World War would be the mathematicians’ war, because mathematicians will
+have control over the next great weapon of war — information.</p>
+</li>
+<li>
+<p>The only people who are in a position to point out my errors are also those who are not at liberty to reveal them.</p>
+</li>
+<li>
+<p>How to conceal a message within a hard-boiled egg by making an ink from a mixture of one ounce of alum and a pint of vinegar, and then using it to write on the shell. The solution penetrates the porous shell, and leaves a message on the surface of the hardened egg albumen, which can be read only when the shell is removed.</p>
+</li>
+<li>
+<p>The security of a cryptosystem must not depend on keeping secret the crypto-algorithm. The security depends only on
+keeping secret the key.</p>
+</li>
+<li>
+<p>A man is crazy who writes a secret in any other way than one which will conceal it from the vulgar.</p>
+</li>
+<li>
+<p>A code is defined as substitution at the level of words or phrases, whereas a cipher is defined as substitution at
+the level of letters. Hence the term encipher means to scramble a message using a cipher, while encode means to
+scramble a message using a code. Similarly, the term decipher applies to unscrambling an enciphered message, and
+decode to unscrambling an encoded message. The terms encrypt and decrypt are more general, and cover scrambling and
+unscrambling with respect to both codes and ciphers.</p>
+</li>
+<li>
+<p>I wish to God these calculations had been executed by steam! - Charles Babbage</p>
+</li>
+<li>
+<p>Nothing should be as favorably regarded as intelligence; nothing should be as generously rewarded as intelligence;
+nothing should be as confidential as the work of intelligence. - Sun Tzu</p>
+</li>
+<li>
+<p>Adversity is one of the foundations of successful codebreaking.</p>
+</li>
+<li>
+<p>The Polish success in breaking the Enigma cipher can be attributed to three factors: fear, mathematics and
+espionage.</p>
+</li>
+<li>
+<p>It’s about right and wrong. In general terms. It’s a technical paper in mathematical logic, but it’s also about the
+difficulty of telling right from wrong. People think—most people think—that in mathematics we always know what is
+right and what is wrong. Not so. Not any more.</p>
+</li>
+<li>
+<p><strong>The way to get to the top of the heap in terms of developing original research is to be a fool, because only fools
+keep trying. You have idea number 1, you get excited, and it flops. Then you have idea number 2, you get excited,
+and it flops. Then you have idea number 99, you get excited, and it flops. Only a fool would be excited by the 100th
+idea, but it might take 100 ideas before one really pays off. Unless you’re foolish enough to be continually
+excited, you won’t have the motivation, you won’t have the energy to carry it through. God rewards fools.</strong></p>
+</li>
+<li>
+<p>Mixing yellow and blue paint to make green paint is a one-way function because it is easy to mix the paint, but
+impossible to unmix it. Another one-way function is the cracking of an egg, because it is easy to crack an egg but
+impossible then to return the egg to its original condition. For this reason, one-way functions are sometimes called
+Humpty Dumpty functions.</p>
+</li>
+<li>
+<p>The easiest way to understand the concept of a two-way function is in terms of an everyday activity. The act of
+turning on a light switch is a function, because it turns an ordinary lightbulb into an illuminated lightbulb. This
+function is two-way because if a switch is turned on, it is easy enough to turn it off and return the light-bulb to
+its original state.</p>
+</li>
+<li>
+<p>An existence theorem shows that a particular concept is possible, but is not concerned with the details of the
+concept.</p>
+</li>
+<li>
+<p>We cannot know, as a matter of principle, the present in all its details.</p>
+</li>
+<li>
+<p>Propose to an Englishman any principle, or any instrument, however admirable, and you will observe that the whole
+effort of the English mind is directed to find a difficulty, a defect, or an impossibility in it. If you speak to
+him of a machine for peeling a potato, he will pronounce it impossible: if you peel a potato with it before his
+eyes, he will declare it useless, because it will not slice a pineapple. - Charles Babbage</p>
+</li>
+<li>
+<p>Cryptanalysis could not be invented until a civilization had reached a sufficiently sophisticated level of scholarship in several disciplines, including mathematics, statistics, and linguistics. The Muslim civilization provided an ideal cradle for cryptanalysis, because Islam demands justice in all spheres of human activity, and achieving this requires knowledge, or ilm. Every Muslim is obliged to pursue knowledge in all its forms, and the economic success of the Abbasid caliphate meant that scholars had the time, money, and materials required to fulfil their duty. They endeavoured to acquire knowledge of previous civilizations by obtaining Egyptian, Babylonian, Indian, Chinese, Farsi, Syriac, Armenian, Hebrew and Roman texts and translating them into Arabic. In 815, the Caliph of Ma&rsquo;mun established in Baghdad the Bait al-Hikmah (&lsquo;House of Wisdom&rsquo;), a library and centre for translation.</p>
+</li>
+</ol>
+<p>Cheers 😄</p>
+
+
+        </div>
+    </div>
+</article>
+
+
+
+        <footer>
+            
+
+
+
+
+<div class="no-text-decoration">
+    <div class="jump top"><a href="#" title="Top of this page">⮉</a></div>
+    <div class="jump bottom"><a href="#bottom" title="Bottom of this page">⮋</a></div>
+</div>
+
+
+ 
+    
+        <div class="hugotoc no-text-decoration">
+            <nav id="TableOfContents"></nav>
+            <a href="#" class="back-to-top">Back to top</a>
+        </div>
+    
+
+
+
+<div class="backtotop center no-text-decoration">
+    <a href="#">back to <span class="top">top</span></a>
+</div>
+
+
+<div class="right">
+    <div class="taxo no-text-decoration">
+         
+            
+                <ul class="no-bullets inline categories">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__readings__"
+                                
+                                
+                                title="See all 6 posts categorized in ‘Readings’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/categories/readings/">Readings</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+         
+            
+         
+            
+                <ul class="no-bullets inline tags">
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__science__"
+                                
+                                
+                                title="See all 2 posts tagged with ‘Science’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/science/">Science</a>
+                            </li>
+                        
+                    
+                        
+                        
+                        
+                            
+                            
+                            
+                            
+                            
+                            <li class="__computer-science__"
+                                
+                                
+                                title="This is the only post tagged with ‘Computer Science’"
+                                
+                            >
+                                <a class="p-category" href="https://yashagarwal.in/tags/computer-science/">Computer Science</a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        
+    </div>
+
+</div>
+<div class="clear-float"></div>
+
+
+
+<div class="prev-next-navigator clear-float">
+    
+        <span class="prev-post left no-text-decoration">
+            <a href="https://yashagarwal.in/notes/2018-12-16-i-will-teach-you-to-be-rich-review/" class="nobr">« I Will Teach You to Be Rich - Review</a>
+        </span>
+    
+    
+        <span class="next-post right no-text-decoration">
+            <a href="https://yashagarwal.in/notes/2018-11-24-7-secrets-of-vishnu-review/" class="nobr">7 Secrets of Vishnu - Review »</a>
+        </span>
+    
+</div>
+
+
+<a id="bottom"></a>
+
+
+
+
+
+
+
+
+
+                       
+
+
+
+
+    <div class="comments clear-float">
+        <hr />
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yashhere" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+
+     
+            <ul class="no-bullets feed right inline">
+    
+        
+        
+    
+</ul>
+<div class="clear-float"></div>
+
+            <div class='copyright'>
+    <p>
+    </p>
+</div>
+        </footer>
+        <hr />
+        </div> 
+    </div>
+    <footer> 
+        
+
+<ul class="social no-text-decoration">
+    
+        <li>
+            <a href="https://github.com/yashhere/" title="Github">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-github"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://gitlab.com/users/yashhere/projects" title="Gitlab">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-gitlab"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://twitter.com/yash__here/" title="Twitter">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-twitter"></i>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="https://keybase.io/yash2696" title="Keybase.io">
+                
+                
+                    
+                    
+                    
+                    <i class="fab fa-2x fa-keybase"></i>
+                
+            </a>
+        </li>
+    
+</ul>
+
+
+
+
+
+
+    
+    
+    
+        
+    
+    
+    
+        
+            
+            
+                
+            
+        
+    
+    
+    
+        
+            
+        
+    
+
+
+
+
+
+ 
+    
+    
+
+
+
+<p class="generated no-text-decoration">
+    Generated using <a href="https://github.com/yashhere/refined-mod"><code class="nobr">modified</code></a> <a href="https://gitlab.com/kaushalmodi/hugo-theme-refined"><code class="nobr">hugo-theme-refined</code></a> + <span class="nobr">Hugo <a href="https://github.com/gohugoio/hugo/commit/157669a0">0.68.3</a></span><br /><span class="nobr">&mdash; Markdown <a href="https://gitlab.com/yashhere/yashhere.gitlab.io/raw/source/content/notes/2018-12-15-the-code-book-review/index.md">source</a> of this page</span>.
+</p>
+
+<p>
+    
+</p>
+
+
+
+
+<div class="badges no-text-decoration">
+    
+    
+
+    
+        
+        
+        <a href="https://html5.validator.nu/?doc=https://yashagarwal.in/notes/2018-12-15-the-code-book-review/&amp;showsource=yes">
+            
+            <img src="/images/html5-css3-semantics-badge--scaled-optimized.0f343c79b5f793c32b308b8b872fccdc6f8f10dc328d12f3f8fba203ab3ccc6e.png"
+                 width="46" height="18" class="pixelated"
+                 alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+                 title="HTML5 Powered with CSS3 / Styling, and Semantics">
+        </a>
+    
+</div>
+
+
+
+
+
+
+
+
+    <div class="h-card">
+        
+            
+            <img class="u-photo" alt="Photo of Yash Agarwal"
+                 src="/author/yash.e3d59580e47f1217b0742aa49fa060981c576d4126c9ee24de57366ebe3d8dc4.jpg" width="400" height="400">
+        
+        
+        <a class="p-name u-url" href="https://yashagarwal.in/">Yash Agarwal</a>
+        
+            <p>
+                <a class="u-email" href="mailto:yashagarwaljpr@gmail.com" rel="me">yashagarwaljpr@gmail.com</a>
+            </p>
+        
+        
+    </div>
+
+
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    
+        
+        
+
+        
+        <link rel="preload" href="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" as="script" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU=">
+        <script defer src="/js/global.min.1c8008426616c8b99f14066c43c634f6b85dc268f119b1a69f2574e9fc739c75.js" integrity="sha256-HIAIQmYWyLmfFAZsQ8Y09rhdwmjxGbGmnyV06fxznHU="></script>
+    
+
+
+
+    <link rel="preload" href="/js/load-photoswipe.min.dd378cb6428bcab4fe1cf4d7367bf097aa87750b57800a8aa04736dc6a93dfb8.js" as="script" integrity="sha256-3TeMtkKLyrT&#43;HPTXNnvwl6qHdQtXgAqKoEc23GqT37g=">
+    <script defer src="/js/load-photoswipe.min.dd378cb6428bcab4fe1cf4d7367bf097aa87750b57800a8aa04736dc6a93dfb8.js" integrity="sha256-3TeMtkKLyrT&#43;HPTXNnvwl6qHdQtXgAqKoEc23GqT37g="></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
+
+
+
+<script integrity="sha256-FUxGS3zNAWzWj0bjXJCUw2BPYX6x9keSW5UpBqQXdaU=">function _httpsAlways(){if(location.protocol=='http:'&&(location.hostname!="127.0.0.1"&&location.hostname!="localhost"))
+location.href=location.href.replace("http","https");}
+function _notGitLab(domainTo=true){var x=location.hostname.search("gitlab.io")!=-1?true:false;if(x){location.href=domainTo;}}
+function _notGitHub(domainTo=true){var x=location.hostname.search("github.io")!=-1?true:false;if(x){location.href=domainTo;}}
+_notGitLab("https://yashagarwal.in");_notGitHub("https://yashagarwal.in");_httpsAlways();</script>
+
+
+
+<script>
+     
+     
+     window.addEventListener('DOMContentLoaded', function() {
+         var nav=responsiveNav("#nav");
+     });
+</script>
+</body>
+</html>
