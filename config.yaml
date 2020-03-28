@@ -83,8 +83,7 @@ Params:
     - about
     - search
   tagline: "The directory of my thoughts"
-  images:
-    - android-chrome-512x512.png
+
   favicons: true
   feedSections:
     - posts
@@ -110,6 +109,79 @@ Params:
     - name: Keybase.io
       link: "https://keybase.io/yash2696"
       icon: keybase
+
+#  csp:
+#    childsrc:
+#      - '''self'''
+#    fontsrc:
+#      - '''self'''
+#      - 'data:'
+#      - disqus.com
+#      - disquscdn.com
+#      - '*.disqus.com'
+#      - '*.disquscdn.com'
+#    formaction:
+#      - '''self'''
+#      - 'https://syndication.twitter.com/'
+#      - 'https://platform.twitter.com'
+#      - disqus.com
+#      - disquscdn.com
+#      - '*.disqus.com'
+#      - '*.disquscdn.com'
+#    framesrc:
+#      - '''self'''
+#      - www.youtube.com
+#      - www.youtube-nocookie.com
+#      - 'https://platform.twitter.com'
+#      - 'https://syndication.twitter.com'
+#      - www.instagram.com
+#      - disqus.com
+#      - disquscdn.com
+#      - '*.disqus.com'
+#      - '*.disquscdn.com'
+#    imgsrc:
+#      - '''self'''
+#      - 'https://platform.twitter.com'
+#      - '*.twimg.com'
+#      - 'https://syndication.twitter.com'
+#      - 'data:'
+#      - cdnjs.cloudflare.com
+#      - disqus.com
+#      - disquscdn.com
+#      - '*.disqus.com'
+#      - '*.disquscdn.com'
+#      - "*.twimg.com"
+#    objectsrc:
+#      - '''none'''
+#    stylesrc:
+#      - '''self'''
+#      - '''unsafe-inline'''
+#      - 'https://platform.twitter.com'
+#      - cdnjs.cloudflare.com
+#      - disqus.com
+#      - disquscdn.com
+#      - '*.disqus.com'
+#      - '*.disquscdn.com'
+#      - '*.githubassets.com'
+#      - "*.twimg.com"
+#    scriptsrc:
+#      - '''self'''
+#      - '''unsafe-inline'''
+#      - 'https://platform.twitter.com'
+#      - cdnjs.cloudflare.com
+#      - www.instagram.com
+#      - disqus.com
+#      - disquscdn.com
+#      - 'gist.github.com'
+#      - '*.disqus.com'
+#      - '*.disquscdn.com'
+#      - "https://cdn.syndication.twimg.com"
+#    prefetchsrc:
+#      - '''self'''
+#      - disqus.com
+#      - disquscdn.com
+#      - '*.disqus.com'
+#      - '*.disquscdn.com'
 
 privacy:
   disqus:
