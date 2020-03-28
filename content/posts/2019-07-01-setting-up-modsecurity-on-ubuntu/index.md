@@ -20,22 +20,26 @@ Now that you know, what a WAF is, let's proceed to install ModSecurity on Ubuntu
 ModSecurity requires some dependencies to work correctly. Let's install them -
 
 First, upgrade the Ubuntu system.
+
 {{< code bash >}}
 sudo apt-get -y update
 sudo apt-get -y upgrade
 {{< /code >}}
 
 Now install the dependencies.
+
 {{< highlight bash >}}
 sudo apt-get -y install git libtool dh-autoreconf pkgconf gawk libcurl4-gnutls-dev libexpat1-dev libpcre3-dev libssl-dev libxml2-dev libyajl-dev zlibc zlib1g-dev libxml2 libpcre++-dev libxml2-dev libgeoip-dev liblmdb-dev lua5.2-dev iputils-ping locales apache2 apache2-dev ca-certificates wget
 {{< /highlight >}}
 
 *Optional*: clean up the Ubuntu caches.
+
 {{< highlight bash >}}
 sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*
 {{< /highlight >}}
 
 Install `SSDeep` as well (as done [here](https://github.com/CRS-support/modsecurity-docker/blob/v3/apache-apache/Dockerfile))
+
 {{< highlight bash >}}
 cd ~
 git clone https://github.com/ssdeep-project/ssdeep
@@ -63,6 +67,7 @@ sudo make install
 
 ## Compiling ModSecurity-apache connector
 To configure it with Apache, we will require ModSecurity-apache connector. Let's install that as well.
+
 {{< highlight bash >}}
 cd ~
 git clone https://github.com/SpiderLabs/ModSecurity-apache
@@ -75,6 +80,7 @@ sudo make install
 
 ## Setting up CRS rules
 Now, let's download CRS rule set as well.
+
 {{< highlight bash >}}
 cd ~
 git clone -b v3.2/dev https://github.com/SpiderLabs/owasp-modsecurity-crs
@@ -82,6 +88,7 @@ sudo mv owasp-modsecurity-crs/ /usr/local/
 {{< /highlight >}}
 
 Rename CRS configuration file - 
+
 {{< highlight bash >}}
 sudo mv /usr/local/owasp-modsecurity-crs/crs-setup.conf.example /usr/local/owasp-modsecurity-crs/crs-setup.conf
 {{< /highlight >}}
@@ -98,11 +105,13 @@ modsecurity_rules_file '/etc/apache2/modsec/main.conf'
 {{< /highlight >}}
 
 As you can see, the last line in the above code block reference a file `main.conf` in a folder `modsec`. This folder will not be present by default. We need to create that.
+
 {{< highlight bash >}}
 sudo mkdir -p /etc/apache2/modsec
 {{< /highlight >}}
 
 Setup ModSecurity configuration file -
+
 {{< highlight bash >}}
 # enables Unicode support in ModSecurity
 sudo wget -P /etc/apache2/modsec/ https://raw.githubusercontent.com/SpiderLabs/ModSecurity/v3/master/unicode.mapping
@@ -112,16 +121,19 @@ sudo mv /etc/apache2/modsec/modsecurity.conf-recommended /etc/apache2/modsec/mod
 {{< /highlight >}}
 
 Change the SecRuleEngine directive in the configuration to change from the default "detection only" mode to actively dropping malicious traffic.
+
 {{< highlight bash >}}
 sudo sed -i 's/SecRuleEngine DetectionOnly/SecRuleEngine On/' /etc/apache2/modsec/modsecurity.conf
 {{< /highlight >}}
 
 Change the location of `modsec_audit.log` file to Apache log directory.
+
 {{< highlight bash >}}
 sudo sed -i 's/SecAuditLog \/var\/log\/modsec_audit.log/SecAuditLog \/var\/log\/apache2\/modsec_audit.log/' /etc/apache2/modsec/modsecurity.conf
 {{< /highlight >}}
 
 To configure ModSecurity to use CRS rule set, put the following text in `/etc/apache2/modsec/main.conf` file.
+
 {{< highlight bash >}}
 Include "/etc/apache2/modsec/modsecurity.conf"
 Include "/usr/local/owasp-modsecurity-crs/crs-setup.conf"
@@ -129,11 +141,13 @@ Include "/usr/local/owasp-modsecurity-crs/rules/*.conf"
 {{< /highlight >}}
 
 Also enable some Apache modules for better functioning of ModSecurity.
+
 {{< highlight bash >}}
 sudo a2enmod unique_id headers rewrite actions dav dav_fs
 {{< /highlight >}}
 
 Now restart the Apache server
+
 {{< highlight bash >}}
 sudo systemctl restart apache2
 {{< /highlight >}}
@@ -142,6 +156,7 @@ sudo systemctl restart apache2
 Sometimes, I had encountered errors when ModSecurity was not able to append logs to its log file. I figured out that ModSecurity did not have enough permissions to write that file. We can fix this issue quickly.
 
 First, test if you really have this issue or not.
+
 {{< highlight bash >}}
 curl 'http://localhost/?q="><script>alert(1)</script>'
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
@@ -156,12 +171,14 @@ curl 'http://localhost/?q="><script>alert(1)</script>'
 {{< /highlight >}}
 
 Now go to Apache log directory and check the contents of `modsec_audit.log` file.
+
 {{< highlight bash >}}
 cd /var/log/apache2
 tail modsec_audit.log
 {{< /highlight >}}
 
 You should see the following content -
+
 {{< highlight bash >}}
 ---0LzdyETA---A--
 [01/Jul/2019:14:42:41 +0000] 156199216179.666171 127.0.0.1 41824 ip-xxx-xx-xx-xx.ap-south-1.compute.internal 80
@@ -189,12 +206,14 @@ ModSecurity: Warning. detected XSS using libinjection. [file "/usr/local/owasp-m
 {{< /highlight >}}
 
 If you do not see the following content, and the file is empty or it does not exist, then ModSecurity was not able to open this file for writing. Use the following fix -
+
 {{< highlight bash >}}
 # find out the user, Apache is running as
 apache_user="$(ps -ef | egrep '(httpd|apache2|apache)' | grep -v `whoami` | grep -v root | head -n1 | awk '{print $1}')"
 {{< /highlight >}}
 
 Now, change the owner of Apache log directory to `apache_user`.
+
 {{< highlight bash >}}
 sudo chown -R $apache_user:$apache_user /var/log/apache2/*
 {{< /highlight >}}
@@ -208,12 +227,14 @@ Now, ModSecurity should be able to append logs to the file `modsec_audit.log`.
 Anyway, if you are like me, who do not like the default ModSecurity log format, ModSecurity provides an option to generate logs in JSON format as well. To enable JSON support, the YAJL library should be installed. We already installed this package when we were installing dependencies, so our ModSecurity setup is compiled with JSON support. Let us now configure ModSecurity to generate JSON logs.
 
 Open the `/etc/apache2/modsec/modsecurity.conf` file and find the following lines -
+
 {{< highlight bash >}}
 SecAuditLogType           Serial
 SecAuditLog               /var/log/modsec_audit.log
 {{< /highlight >}}
 
 Once you have found the following lines, replace these lines with the following lines
+
 {{< highlight bash >}}
 SecAuditLogFormat         JSON
 SecAuditLogType           Parallel
@@ -225,11 +246,13 @@ SecAuditLogDirMode        0755
 {{< /highlight >}}
 
 Restart Apache server
+
 {{< highlight bash >}}
 sudo systemctl restart apache2
 {{< /highlight >}}
 
 Now, go to `/var/log/apache2/` directory and create `audit` folder.
+
 {{< highlight bash >}}
 cd /var/log/apache2
 sudo mkdir audit
@@ -239,6 +262,7 @@ sudo chown -R $apache_user:$apache_user /var/log/apache2/audit
 {{< /highlight >}}
 
 Now, ModSecurity should be able to generate JSON logs in this directory. ModSecurity generates logs in the following format -
+
 {{< highlight conf>}}
 ubuntu@server:/var/log/apache2$ tree audit
 audit
