@@ -1,5 +1,5 @@
 +++
-title = "The Code Book - Review"
+title = "The Code Book"
 author = ["Yash Agarwal"]
 date = 2018-12-15T19:04:38+05:30
 images = []

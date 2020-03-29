@@ -1,5 +1,5 @@
 +++
-title = "The Rozabal Line - Review"
+title = "The Rozabal Line"
 author = ["Yash Agarwal"]
 date = 2018-11-05T12:00:44+05:30
 images = []

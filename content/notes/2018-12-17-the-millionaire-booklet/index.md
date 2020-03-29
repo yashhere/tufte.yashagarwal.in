@@ -1,5 +1,5 @@
 +++
-title = "The Millionaire Booklet - Review"
+title = "The Millionaire Booklet"
 author = ["Yash Agarwal"]
 date = 2018-12-17T09:50:27+05:30
 images = []

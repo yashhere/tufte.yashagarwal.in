@@ -1,5 +1,5 @@
 +++
-title = "Introducing Quantum Theory - Review"
+title = "Introducing Quantum Theory"
 author = ["Yash Agarwal"]
 date = 2018-11-18T20:31:06+05:30
 images = []
