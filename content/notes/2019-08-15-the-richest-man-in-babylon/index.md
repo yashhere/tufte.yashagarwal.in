@@ -1,5 +1,5 @@
 +++
-title = "The Richest Man in Babylon - Review"
+title = "The Richest Man in Babylon"
 author = ["Yash Agarwal"]
 date = 2019-08-15T07:28:01+05:30
 images = []

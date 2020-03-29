@@ -1,5 +1,5 @@
 +++
-title = "7 Secrets of Vishnu - Review"
+title = "7 Secrets of Vishnu"
 author = ["Yash Agarwal"]
 date = 2018-11-24T14:00:36+05:30
 images = []

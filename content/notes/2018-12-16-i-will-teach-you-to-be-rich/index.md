@@ -1,5 +1,5 @@
 +++
-title = "I Will Teach You to Be Rich - Review"
+title = "I Will Teach You to Be Rich"
 author = ["Yash Agarwal"]
 date = 2018-12-16T08:30:12+05:30
 images = []
