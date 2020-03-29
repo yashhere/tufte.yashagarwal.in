@@ -25,28 +25,28 @@ If I were to write the advice of this book in one sentence, it would be *save th
 Following are my detailed notes for each of these topics -
 
 1. Save money -
- - The basic idea here is to save at least one-tenth of your earnings.
- - Learn to live with less than you earn. Control your desires.
+    - The basic idea here is to save at least one-tenth of your earnings.
+    - Learn to live with less than you earn. Control your desires.
 2. Control the expenditures -
- - Our necessary expenses will always grow to equal our income unless we protest to the contrary.
- - If you want to control your urge to spend, budgeting is an excellent tool. Budget expenses required for your day to day living, to pay for all your enjoyments, and to gratify your worthwhile desires.
+    - Our necessary expenses will always grow to equal our income unless we protest to the contrary.
+    - If you want to control your urge to spend, budgeting is an excellent tool. Budget expenses required for your day to day living, to pay for all your enjoyments, and to gratify your worthwhile desires.
 3. Invest your savings -
- - The first rule of investment says that always save the principal from loss.
- - Ask those who are experts in handling money for advice to secure your savings from the risky venture.
- - Do not get misled by your romantic desires about making wealth rapidly.
+    - The first rule of investment says that always save the principal from loss.
+    - Ask those who are experts in handling money for advice to secure your savings from the risky venture.
+    - Do not get misled by your romantic desires about making wealth rapidly.
 4. Own your own house *(this is controversial)*
 5. Ensure a future income -
- - Think about the uncertain future and provide in advance for your old age and the needs of your family.
+    - Think about the uncertain future and provide in advance for your old age and the needs of your family.
 6. Increase your ability to earn -
- - Show more interest in your work, more concentration upon your task, and more persistence in your efforts.
- - The more one knows about his craft; more will be the reward.
+    - Show more interest in your work, more concentration upon your task, and more persistence in your efforts.
+    - The more one knows about his craft; more will be the reward.
 7. Seize the opportunities -
- - Do not procrastinate.
- - It is necessary to take advantage of opportunities to attract good luck.
- - Action will lead you to success.
+    - Do not procrastinate.
+    - It is necessary to take advantage of opportunities to attract good luck.
+    - Action will lead you to success.
 8. Better a little caution than a great regret -
- - If you desire to help a friend, do so in a way that will not bring your friend's burden upon you.
- - Safe loans are those where possessions are more than what is desired.
+    - If you desire to help a friend, do so in a way that will not bring your friend's burden upon you.
+    - Safe loans are those where possessions are more than what is desired.
 
 
 *Some of the quotes from the book which I liked -*
