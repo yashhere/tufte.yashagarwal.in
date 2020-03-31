@@ -1,9 +1,9 @@
 +++
 title = "2019 - Year in Review"
 author = ["Yash Agarwal"]
-date = 2020-03-30T15:39:47+05:30
-categories = []
-tags = []
+date = 2020-03-31T11:39:47+05:30
+tags = ["Review"]
+categories = ["Write-ups"]
 images = []
 draft = false
 +++
