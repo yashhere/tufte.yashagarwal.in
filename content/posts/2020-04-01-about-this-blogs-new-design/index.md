@@ -1,7 +1,7 @@
 +++
 title = "About this blog's new design"
 author = ["Yash Agarwal"]
-date = 2020-04-01T17:54:48+05:30
+date = 2020-04-01T10:54:48+05:30
 categories = ["Updates"]
 tags = ["theme"]
 images = []
