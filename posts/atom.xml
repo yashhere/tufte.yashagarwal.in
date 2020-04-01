@@ -10,7 +10,7 @@
             <link href="https://yashagarwal.in/posts/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
             <link href="https://yashagarwal.in/posts/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
             <link href="https://yashagarwal.in/posts/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
-    <updated>2020-04-01T06:11:39+00:00</updated>
+    <updated>2020-04-01T06:19:45+00:00</updated>
     
     
     <author>
@@ -20,6 +20,161 @@
             </author>
     
         <id>https://yashagarwal.in/posts/</id>
+    
+        
+        <entry>
+            <title type="html"><![CDATA[About this blog's new design]]></title>
+            <link href="https://yashagarwal.in/posts/2020/04/about-this-blogs-new-design/?utm_source=atom_feed" rel="alternate" type="text/html" />
+            
+            
+                <id>https://yashagarwal.in/posts/2020/04/about-this-blogs-new-design/</id>
+            
+            
+                    <author>
+                        <name>Yash Agarwal</name>
+                    </author>
+            <published>2020-04-01T10:54:48+05:30</published>
+            <updated>2020-04-01T10:54:48+05:30</updated>
+            
+            
+            <content type="html"><![CDATA[
+
+
+
+    
+
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet" href="/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css">
+
+    
+
+    
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        
+        <div class="pswp__bg"></div>
+        
+        <div class="pswp__scroll-wrap">
+            
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    
+                    
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<p>I was thinking about updating this blog&rsquo;s theme for quite some time. The only issue was that I was not willing to start working on a new theme from scratch. Frontend designing doesn&rsquo;t work <em>with</em> me anymore. None of the themes on the Hugo Themes <a href="https://themes.gohugo.io/">website</a> suited my taste. I liked themes (especially those based on <em>tufte-css</em>) on some of the blogs that I follow, but either the themes were made for Jekyll, or their source was not public. In the meanwhile, I lost my interest in writing also. I believe that disinterest has some roots in this delay in changing the look of this blog. Weird, I know.</p>
+<p>My requirements for a new theme were simplistic. The stylesheet should not be in SASS/SCSS, no NPM/Webpack/JS nonsense, the mobile version should be functioning with a <em>hamburger</em> icon for the menu, and the code should be open-source with a favorable license
+(I did not want to rewrite the theme completely).</p>
+<p>Then the Coronavirus lockdown happened in India. Thankfully, I had anticipated this quite early and arrived at my home in Jaipur a couple of days before the announcement when everything was still under control. It gave me an ample amount of free time (outside of work hours) suddenly. By the way, today is the 11th day of my somewhat self-quarantine. Hopefully, I will be alright. 😌</p>
+<p>I was looking for some themes, and then I found <a href="https://scripter.co/">this</a> website. This website fitted all my conditions with some extra goodies (the integration of <a href="https://www.w3.org/TR/webmention/">Webmentions</a> is one such feature). The only issue was that it came with its own share of problems. The author seems to have worked on this theme quite extensively, though I couldn&rsquo;t appreciate the code structure of the theme. It took me a couple of days to restructure the code, modified some CSS to my liking, and hurrah, everything was setup. The only issue is that the theme is broken on the Safari browser. I do not intend to fix that right now. I&rsquo;ll keep that for some future date.</p>
+<p>You can see the original theme <a href="https://gitlab.com/kaushalmodi/hugo-theme-refined">here</a>, and my modified version <a href="https://github.com/yashhere/refined-mod">here</a>. It is still work in progress, and a lot can be improved in the structure of code. But for now, this is working for me. I will fix issues as and when they appear.</p>
+<p>The Google page speed results are the best I have managed to get till now (although it is almost equivalent to the <a href="https://scripter.co/">original</a> website, so I haven&rsquo;t contributed much to these scores).</p>
+
+
+
+
+
+
+<div class="gallery caption-position-bottom caption-effect-slide hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+        
+  
+
+
+    <link rel="stylesheet" href="/css/hugo-easy-gallery.css">
+    
+
+
+<div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/2020-04-01/desktop.png');">
+            <img itemprop="thumbnail" src="/images/2020-04-01/desktop.png" alt="Desktop score"/>
+        </div>
+        <a href="/images/2020-04-01/desktop.png" itemprop="contentUrl"></a>
+    </figure>
+</div>
+
+  
+
+
+<div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
+    <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/2020-04-01/mobile.png');">
+            <img itemprop="thumbnail" src="/images/2020-04-01/mobile.png" alt="Mobile score"/>
+        </div>
+        <a href="/images/2020-04-01/mobile.png" itemprop="contentUrl"></a>
+    </figure>
+</div>
+
+
+</div>
+<p>I am trying to switch from <a href="https://disqus.com/">Disqus</a> to <a href="https://commento.io/">Commento</a>, but the pricing is an issue here. <a href="https://gitlab.com/commento/commento/">Self-hosting</a> Commento is an option, but I am not sure if I am ready to maintain my own servers. If I go with self-hosting, I have a lot of things to host. But the cost is a significant obstruction. But, it is also true that I will not get the convenience of privacy for free. I need to think about it carefully.</p>
+<p>One another trick that I found out was to enable <code>gzip</code> compression on pages served by Gitlab. The simple idea is to just gzip every page on the website in the same directory where the original HTML page is present. Gitlab will automatically pick the gzipped version and serve it to the client. You can see that in my <code>.gitlab-ci.yml</code> <a href="https://gitlab.com/yashhere/yashhere.gitlab.io/-/blob/source/.gitlab-ci.yml#L21">file</a>.</p>
+<p>I was trying to create a staging environment (a Gitlab site, staging.yashagarwal.in, based on a branch of my Git repo, the master branch would serve the root domain) where I could test any changes to this website before pushing it to the actual site. But it does not seem possible with current Gitlab features. I do not want to move to Netlify or such third party services to achieve this, so for now, I will just keep myself limited to local testing.</p>
+]]></content>
+            
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/categories/updates" term="updates" label="Updates" />
+                            
+                        
+                    
+                 
+                    
+                 
+                    
+                         
+                        
+                            
+                             
+                                <category scheme="https://yashagarwal.in/tags/theme" term="theme" label="theme" />
+                            
+                        
+                    
+                
+            
+        </entry>
     
         
         <entry>

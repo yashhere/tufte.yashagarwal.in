@@ -10,10 +10,159 @@
         <language>en-us</language>
         
                 <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
-                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Wed, 01 Apr 2020 06:11:39 +0000</lastBuildDate>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Wed, 01 Apr 2020 06:19:45 +0000</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
             <atom:link href="https://yashagarwal.in/index.xml" rel="self" type="application/rss&#43;xml" />
+        
+            
+            <item>
+                <title>About this blog&#39;s new design</title>
+                <link>https://yashagarwal.in/posts/2020/04/about-this-blogs-new-design/</link>
+                
+                
+                <description>
+
+
+
+    
+
+    
+    
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css&#34; integrity=&#34;sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css&#34; integrity=&#34;sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=&#34; crossorigin=&#34;anonymous&#34; /&gt;
+
+    
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css&#34;&gt;
+
+    
+
+    
+    &lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
+        
+        &lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
+        
+        &lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
+            
+            &lt;div class=&#34;pswp__container&#34;&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
+                &lt;div class=&#34;pswp__top-bar&#34;&gt;
+                    
+                    &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
+                    &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
+                    
+                    
+                    &lt;div class=&#34;pswp__preloader&#34;&gt;
+                        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
+                            &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
+                                &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
+                    &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
+                &lt;/button&gt;
+                &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
+                &lt;/button&gt;
+                &lt;div class=&#34;pswp__caption&#34;&gt;
+                    &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;p&gt;I was thinking about updating this blog&amp;rsquo;s theme for quite some time. The only issue was that I was not willing to start working on a new theme from scratch. Frontend designing doesn&amp;rsquo;t work &lt;em&gt;with&lt;/em&gt; me anymore. None of the themes on the Hugo Themes &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;website&lt;/a&gt; suited my taste. I liked themes (especially those based on &lt;em&gt;tufte-css&lt;/em&gt;) on some of the blogs that I follow, but either the themes were made for Jekyll, or their source was not public. In the meanwhile, I lost my interest in writing also. I believe that disinterest has some roots in this delay in changing the look of this blog. Weird, I know.&lt;/p&gt;
+&lt;p&gt;My requirements for a new theme were simplistic. The stylesheet should not be in SASS/SCSS, no NPM/Webpack/JS nonsense, the mobile version should be functioning with a &lt;em&gt;hamburger&lt;/em&gt; icon for the menu, and the code should be open-source with a favorable license
+(I did not want to rewrite the theme completely).&lt;/p&gt;
+&lt;p&gt;Then the Coronavirus lockdown happened in India. Thankfully, I had anticipated this quite early and arrived at my home in Jaipur a couple of days before the announcement when everything was still under control. It gave me an ample amount of free time (outside of work hours) suddenly. By the way, today is the 11th day of my somewhat self-quarantine. Hopefully, I will be alright. 😌&lt;/p&gt;
+&lt;p&gt;I was looking for some themes, and then I found &lt;a href=&#34;https://scripter.co/&#34;&gt;this&lt;/a&gt; website. This website fitted all my conditions with some extra goodies (the integration of &lt;a href=&#34;https://www.w3.org/TR/webmention/&#34;&gt;Webmentions&lt;/a&gt; is one such feature). The only issue was that it came with its own share of problems. The author seems to have worked on this theme quite extensively, though I couldn&amp;rsquo;t appreciate the code structure of the theme. It took me a couple of days to restructure the code, modified some CSS to my liking, and hurrah, everything was setup. The only issue is that the theme is broken on the Safari browser. I do not intend to fix that right now. I&amp;rsquo;ll keep that for some future date.&lt;/p&gt;
+&lt;p&gt;You can see the original theme &lt;a href=&#34;https://gitlab.com/kaushalmodi/hugo-theme-refined&#34;&gt;here&lt;/a&gt;, and my modified version &lt;a href=&#34;https://github.com/yashhere/refined-mod&#34;&gt;here&lt;/a&gt;. It is still work in progress, and a lot can be improved in the structure of code. But for now, this is working for me. I will fix issues as and when they appear.&lt;/p&gt;
+&lt;p&gt;The Google page speed results are the best I have managed to get till now (although it is almost equivalent to the &lt;a href=&#34;https://scripter.co/&#34;&gt;original&lt;/a&gt; website, so I haven&amp;rsquo;t contributed much to these scores).&lt;/p&gt;
+
+
+
+
+
+
+&lt;div class=&#34;gallery caption-position-bottom caption-effect-slide hover-effect-zoom hover-transition&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+        
+  
+
+
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/hugo-easy-gallery.css&#34;&gt;
+    
+
+
+&lt;div class=&#34;box&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;https://yashagarwal.in//images/2020-04-01/desktop.png&#39;);&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2020-04-01/desktop.png&#34; alt=&#34;Desktop score&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2020-04-01/desktop.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+  
+
+
+&lt;div class=&#34;box&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
+    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
+        &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;https://yashagarwal.in//images/2020-04-01/mobile.png&#39;);&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2020-04-01/mobile.png&#34; alt=&#34;Mobile score&#34;/&gt;
+        &lt;/div&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/2020-04-01/mobile.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;
+
+
+&lt;/div&gt;
+&lt;p&gt;I am trying to switch from &lt;a href=&#34;https://disqus.com/&#34;&gt;Disqus&lt;/a&gt; to &lt;a href=&#34;https://commento.io/&#34;&gt;Commento&lt;/a&gt;, but the pricing is an issue here. &lt;a href=&#34;https://gitlab.com/commento/commento/&#34;&gt;Self-hosting&lt;/a&gt; Commento is an option, but I am not sure if I am ready to maintain my own servers. If I go with self-hosting, I have a lot of things to host. But the cost is a significant obstruction. But, it is also true that I will not get the convenience of privacy for free. I need to think about it carefully.&lt;/p&gt;
+&lt;p&gt;One another trick that I found out was to enable &lt;code&gt;gzip&lt;/code&gt; compression on pages served by Gitlab. The simple idea is to just gzip every page on the website in the same directory where the original HTML page is present. Gitlab will automatically pick the gzipped version and serve it to the client. You can see that in my &lt;code&gt;.gitlab-ci.yml&lt;/code&gt; &lt;a href=&#34;https://gitlab.com/yashhere/yashhere.gitlab.io/-/blob/source/.gitlab-ci.yml#L21&#34;&gt;file&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I was trying to create a staging environment (a Gitlab site, staging.yashagarwal.in, based on a branch of my Git repo, the master branch would serve the root domain) where I could test any changes to this website before pushing it to the actual site. But it does not seem possible with current Gitlab features. I do not want to move to Netlify or such third party services to achieve this, so for now, I will just keep myself limited to local testing.&lt;/p&gt;
+</description>
+                
+                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
+                
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/categories/updates">Updates</category>
+                                
+                            
+                        
+                     
+                        
+                     
+                        
+                             
+                            
+                                
+                                 
+                                    <category domain="https://yashagarwal.in/tags/theme">theme</category>
+                                
+                            
+                        
+                    
+                
+                <guid>https://yashagarwal.in/posts/2020/04/about-this-blogs-new-design/</guid>
+                <pubDate>Wed, 01 Apr 2020 10:54:48 +0530</pubDate>
+            </item>
         
             
             <item>
@@ -2165,133 +2314,6 @@ Initialised repository at custom.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
                 
                 <guid>https://yashagarwal.in/posts/2018/05/writing-drozer-modules/</guid>
                 <pubDate>Sun, 13 May 2018 17:10:13 +0530</pubDate>
-            </item>
-        
-            
-            <item>
-                <title>So I Applied for GSoC</title>
-                <link>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</link>
-                
-                
-                <description>
-
-
-
-    
-
-    
-    
-
-    
-    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css&#34; integrity=&#34;sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=&#34; crossorigin=&#34;anonymous&#34; /&gt;
-    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css&#34; integrity=&#34;sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=&#34; crossorigin=&#34;anonymous&#34; /&gt;
-
-    
-    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/photoswipe.min.d780348a887d97b4d6cc664301a2941706e4a02aeb1533524fcce3b7b9b64b4f.css&#34;&gt;
-
-    
-
-    
-    &lt;div class=&#34;pswp&#34; tabindex=&#34;-1&#34; role=&#34;dialog&#34; aria-hidden=&#34;true&#34;&gt;
-        
-        &lt;div class=&#34;pswp__bg&#34;&gt;&lt;/div&gt;
-        
-        &lt;div class=&#34;pswp__scroll-wrap&#34;&gt;
-            
-            &lt;div class=&#34;pswp__container&#34;&gt;
-                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-                &lt;div class=&#34;pswp__item&#34;&gt;&lt;/div&gt;
-            &lt;/div&gt;
-            
-            &lt;div class=&#34;pswp__ui pswp__ui--hidden&#34;&gt;
-                &lt;div class=&#34;pswp__top-bar&#34;&gt;
-                    
-                    &lt;div class=&#34;pswp__counter&#34;&gt;&lt;/div&gt;
-                    &lt;button class=&#34;pswp__button pswp__button--close&#34; title=&#34;Close (Esc)&#34;&gt;&lt;/button&gt;
-                    &lt;button class=&#34;pswp__button pswp__button--share&#34; title=&#34;Share&#34;&gt;&lt;/button&gt;
-                    &lt;button class=&#34;pswp__button pswp__button--fs&#34; title=&#34;Toggle fullscreen&#34;&gt;&lt;/button&gt;
-                    &lt;button class=&#34;pswp__button pswp__button--zoom&#34; title=&#34;Zoom in/out&#34;&gt;&lt;/button&gt;
-                    
-                    
-                    &lt;div class=&#34;pswp__preloader&#34;&gt;
-                        &lt;div class=&#34;pswp__preloader__icn&#34;&gt;
-                            &lt;div class=&#34;pswp__preloader__cut&#34;&gt;
-                                &lt;div class=&#34;pswp__preloader__donut&#34;&gt;&lt;/div&gt;
-                            &lt;/div&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-                &lt;div class=&#34;pswp__share-modal pswp__share-modal--hidden pswp__single-tap&#34;&gt;
-                    &lt;div class=&#34;pswp__share-tooltip&#34;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-                &lt;button class=&#34;pswp__button pswp__button--arrow--left&#34; title=&#34;Previous (arrow left)&#34;&gt;
-                &lt;/button&gt;
-                &lt;button class=&#34;pswp__button pswp__button--arrow--right&#34; title=&#34;Next (arrow right)&#34;&gt;
-                &lt;/button&gt;
-                &lt;div class=&#34;pswp__caption&#34;&gt;
-                    &lt;div class=&#34;pswp__caption__center&#34;&gt;&lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-
-&lt;p&gt;I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities. Then last year (2017) again, I decided that I should try for GSoC one more time. I looked for the projects, started reading codebase of one project, but due to my lack of determination, I again did not apply.&lt;/p&gt;
-&lt;p&gt;In the summers of 2017, I got some time to think about it. I decided that for the next year, I will try everything to make sure that I apply for GSoC 2018. I started coding as much as possible and pushing my code to GitHub to build an impressive profile.&lt;/p&gt;
-&lt;p&gt;Now I can say that I am satisfied with my efforts to some extent. I did start some good &lt;a href=&#34;https://github.com/yashhere/BeautifyMP3&#34;&gt;open&lt;/a&gt; &lt;a href=&#34;https://github.com/yashhere/ConMan&#34;&gt;source&lt;/a&gt; &lt;a href=&#34;https://github.com/yashhere/Goofy&#34;&gt;projects&lt;/a&gt;. They are not very extraordinary, but something is better than nothing. I dived into Debian packaging also and volunteered for a FOSS event. Spreading awareness about FOSS is also contributing to FOSS. Isn&amp;rsquo;t it?&lt;/p&gt;
-&lt;p&gt;Coming back to GSoC, this year, I have successfully submitted a proposal to the Debian Project. It does not matter whether I get it or not. I overcame one of my biggest fears of doubting my capabilities. It is something that I was trying to do for the last two years. This moment is worth celebrating.&lt;/p&gt;
-&lt;p&gt;Read about my GSoC project on &lt;a href=&#34;https://wiki.debian.org/SummerOfCode2018/Projects#SummerOfCode2018.2FProjects.2FBootTorrent.Boot_many_machines_via_bittorrent&#34;&gt;Boot Many Machines via Bittorrent&lt;/a&gt;. It is related to something which I learned in &lt;a href=&#34;http://athena.nitc.ac.in/&#34;&gt;SSL&lt;/a&gt; as SSL admin.&lt;/p&gt;
-&lt;p&gt;Read my project proposal on &lt;a href=&#34;https://docs.google.com/document/d/1N7wcc6rwFuauTS-jH2JuLDnZIX0w79AzTPSvSJU3PtA/edit?usp=sharing&#34;&gt;Google Drive&lt;/a&gt; or &lt;a href=&#34;https://wiki.debian.org/YashAgarwal/GSoCProposal&#34;&gt;Debian Wiki&lt;/a&gt;.&lt;/p&gt;
-
-
-
-    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://yashagarwal.in/css/hugo-easy-gallery.css&#34;&gt;
-    
-
-
-&lt;div class=&#34;box&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
-    &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-        &lt;div class=&#34;img&#34;&gt;
-            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2018-03-28/gsoc-timeline.png#center&#34; alt=&#34;gsoc timeline&#34;/&gt;
-        &lt;/div&gt;
-        &lt;a href=&#34;https://yashagarwal.in/images/2018-03-28/gsoc-timeline.png#center&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
-    &lt;/figure&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Eagerly waiting for the results. 😄&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Update(24/04/2018)&lt;/strong&gt;: Finally, I did not get into GSoC this time too. No worries. I anticipated the results and prepared backup plans. Looking forward to a productive summer. :)&lt;/p&gt;
-</description>
-                
-                        <author>Yash.Agarwal@fakeEmailToMakeValidatorHappy.com (Yash Agarwal)</author>
-                
-                     
-                        
-                             
-                            
-                                
-                                 
-                                    <category domain="https://yashagarwal.in/categories/write-ups">Write-ups</category>
-                                
-                            
-                        
-                     
-                        
-                     
-                        
-                             
-                            
-                                
-                                 
-                                    <category domain="https://yashagarwal.in/tags/cse">CSE</category>
-                                 
-                                    <category domain="https://yashagarwal.in/tags/foss">FOSS</category>
-                                
-                            
-                        
-                    
-                
-                <guid>https://yashagarwal.in/posts/2018/03/so-i-applied-for-gsoc/</guid>
-                <pubDate>Wed, 28 Mar 2018 20:58:26 +0530</pubDate>
             </item>
         
     </channel>
