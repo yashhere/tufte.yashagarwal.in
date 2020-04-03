@@ -92,12 +92,12 @@ Params:
   source:
     url: "https://gitlab.com/yashhere/yashhere.gitlab.io"
     md_dir: content
-#  indieweb:
-#    domain: "https://scripter.co/"
-#    webring: "\U0001F3D4\U0001F434\U0001F391"
-#    webmention:
-#      endpoint: "https://webmention.io/"
-#      account: scripter.co
+  indieweb:
+    domain: "https://yashagarwal.in/"
+    webring: "\U00003297\U0000fe0f\U0001f34b\U0001f468\U0000200d\U0001f468\U0000200d\U0001f467\U0000200d\U0001f467"
+    webmention:
+      endpoint: "https://webmention.io/"
+      account: yashagarwal.in
   social:
     - name: Github
       link: "https://github.com/yashhere/"
