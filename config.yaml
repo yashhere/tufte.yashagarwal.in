@@ -98,17 +98,23 @@ Params:
     webmention:
       endpoint: "https://webmention.io/"
       account: yashagarwal.in
+    micropub:
+      url: "micropub"
+
   social:
     - name: Github
       link: "https://github.com/yashhere/"
       relme: true
     - name: Gitlab
       link: "https://gitlab.com/users/yashhere/projects"
+      relme: true
     - name: Twitter
       link: "https://twitter.com/yash__here/"
+      relme: true
     - name: Keybase.io
       link: "https://keybase.io/yash2696"
       icon: keybase
+      relme: true
     - name: MicroBlog
       link: https://micro.blog/yagr
       icon: microblog
