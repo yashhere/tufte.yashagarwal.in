@@ -109,6 +109,10 @@ Params:
     - name: Keybase.io
       link: "https://keybase.io/yash2696"
       icon: keybase
+    - name: MicroBlog
+      link: https://micro.blog/yagr
+      icon: microblog
+      relme: true
 
 #  csp:
 #    childsrc:
