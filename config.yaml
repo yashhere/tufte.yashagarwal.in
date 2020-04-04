@@ -30,10 +30,6 @@ Author:
     width: 400
     height: 400
 
-Social:
-  github: yashhere
-  twitter: yash__here
-
 Permalinks:
   posts: ":sections/:year/:month/:slug/"
   notes: ":sections/:filename/"
@@ -116,8 +112,8 @@ Params:
       icon: keybase
       relme: true
     - name: MicroBlog
-      link: https://micro.blog/yagr
-      icon: microblog
+      link: "https://micro.blog/yagr"
+      svg: microblog
       relme: true
 
 #  csp:
