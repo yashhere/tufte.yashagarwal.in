@@ -17,7 +17,7 @@ When I first installed Arch, I had several choices. I tried `xfce` and `gnome` a
 
 So I end up going the route of building something up from scratch using Openbox as a base. At this point, I have a fast, lightweight desktop that is exceptionally stable and is genuinely my desktop as I have built it from the ground up, choosing every application.
 
-{{< figure src="/images/2016-06-09/desktop.jpg" alt="Openbox on ArchLinux" caption="Openbox on ArchLinux" caption-position="none">}}
+{{< figure src="/images/posts/2016-06-09/desktop.jpg" alt="Openbox on ArchLinux" caption="Openbox on ArchLinux" caption-position="none">}}
 
 
 ## Window Manager

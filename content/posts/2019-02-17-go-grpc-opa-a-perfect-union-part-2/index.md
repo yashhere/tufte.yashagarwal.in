@@ -124,7 +124,7 @@ My implementation of the server stub is hosted
 [here](https://github.com/yashhere/go-library-service/blob/master/pkg/librarylib/server.go). A basic flow diagram of
 this implementation will look like this -
 
-{{< figure src="/images/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center" caption-position="bottom" alt="Architecture" caption-effect="appear" width="650px">}}
+{{< figure src="/images/posts/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center" caption-position="bottom" alt="Architecture" caption-effect="appear" width="650px">}}
 
 The gRPC server will listen on port `:50051`, and a REST HTTP server will listen on port `:8181`. The OPA server is
 running on port `:8182`. The REST server is

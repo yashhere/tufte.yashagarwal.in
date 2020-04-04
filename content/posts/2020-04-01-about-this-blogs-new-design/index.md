@@ -25,8 +25,8 @@ You can see the original theme [here](https://gitlab.com/kaushalmodi/hugo-theme-
 The Google page speed results are the best I have managed to get till now (although it is almost equivalent to the [original](https://scripter.co/) website, so I haven't contributed much to these scores).
 
 {{< gallery >}}
-  {{< figure link="/images/2020-04-01/desktop.png" src="/images/2020-04-01/desktop.png" alt="Desktop score">}}
-  {{< figure link="/images/2020-04-01/mobile.png" src="/images/2020-04-01/mobile.png" alt="Mobile score">}}
+  {{< figure link="/images/posts/2020-04-01/desktop.png" src="/images/posts/2020-04-01/desktop.png" alt="Desktop score">}}
+  {{< figure link="/images/posts/2020-04-01/mobile.png" src="/images/posts/2020-04-01/mobile.png" alt="Mobile score">}}
 {{< /gallery >}}
 
 I am trying to switch from [Disqus](https://disqus.com/) to [Commento](https://commento.io/), but the pricing is an issue here. [Self-hosting](https://gitlab.com/commento/commento/) Commento is an option, but I am not sure if I am ready to maintain my own servers. If I go with self-hosting, I have a lot of things to host. But the cost is a significant obstruction. But, it is also true that I will not get the convenience of privacy for free. I need to think about it carefully.

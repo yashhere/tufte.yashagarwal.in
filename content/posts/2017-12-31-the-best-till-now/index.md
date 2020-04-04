@@ -44,8 +44,8 @@ Recently I started working on Debian Packaging. [Praveen](http://civic.gnu.org.i
 
 
 {{< gallery >}}
-    {{< figure link="/images/2017-12-31/HackFest1.jpg" alt="Working on my first Debian package" caption="Working on my first Debian package" caption-position="bottom"  caption-effect="appear" >}}
-    {{< figure src="/images/2017-12-31/HackFest2.jpg" alt="Praveen sir and team" caption="Praveen sir and team" caption-position="bottom"  caption-effect="appear" >}}
+    {{< figure link="/images/posts/2017-12-31/HackFest1.jpg" alt="Working on my first Debian package" caption="Working on my first Debian package" caption-position="bottom"  caption-effect="appear" >}}
+    {{< figure src="/images/posts/2017-12-31/HackFest2.jpg" alt="Praveen sir and team" caption="Praveen sir and team" caption-position="bottom"  caption-effect="appear" >}}
 {{</ gallery >}}
 
 
@@ -55,7 +55,7 @@ I joined NIT Calicut due to many [reasons](http://dsanghi.blogspot.in/2011/05/my
 
 
 
-{{< figure src="/images/2017-12-31/placement.png#center" alt="A private post on FB, now public" caption="A private post on FB, now public" caption-position="bottom"  caption-effect="appear">}}
+{{< figure src="/images/posts/2017-12-31/placement.png#center" alt="A private post on FB, now public" caption="A private post on FB, now public" caption-position="bottom"  caption-effect="appear">}}
 
 
 
