@@ -8,10 +8,6 @@ images = []
 draft = false
 +++
 
-{{< disclaimer >}}
-If you find any grammatical errors in this post, please excuse me. I am not in a state to invest my mental strength fixing such issues right now. I will probably revisit this post sometime later to fix any problem.
-{{< /disclaimer >}}
-
 It has been three months since 2020 started. I was not able to keep up with my yearly habit of posting year reviews due to some reasons. One primary reason behind my negligence is my disinterest in writing on this blog. I felt that it was because the old layout of this blog had been too recurrent for me. So, I decided to fix that issue before thinking about writing.
 
 The year 2019 was not a great year for me on many fronts. It was a year that reminded me of my limitations and brought me out of the bubble, that self-help books created for me. In retrospection, I find that I started a lot of things, with the intention of learning, but couldn't achieve any of the targets.

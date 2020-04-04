@@ -75,6 +75,7 @@ Params:
   cache_busting: true
   mainSections:
     - posts
+    - readings
     - notes
     - about
     - search
@@ -93,7 +94,7 @@ Params:
     webring: "\U00003297\U0000fe0f\U0001f34b\U0001f468\U0000200d\U0001f468\U0000200d\U0001f467\U0000200d\U0001f467"
     webmention:
       endpoint: "https://webmention.io/"
-      account: yashagarwal.in
+      account: "https://yashagarwal.in"
     micropub:
       url: "micropub"
 
