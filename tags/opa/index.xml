@@ -12,7 +12,7 @@
         <language>en-us</language>
         
                 <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
-                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 04 Apr 2020 05:51:58 +0000</lastBuildDate>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 04 Apr 2020 09:45:14 +0000</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
             <atom:link href="https://yashagarwal.in/tags/opa/index.xml" rel="self" type="application/rss&#43;xml" />
@@ -295,9 +295,9 @@ this implementation will look like this -&lt;/p&gt;
 &lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34; style=&#34;max-width:650px&#34; itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
     &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
         &lt;div class=&#34;img&#34;&gt;
-            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center&#34; alt=&#34;Architecture&#34;/&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/posts/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center&#34; alt=&#34;Architecture&#34;/&gt;
         &lt;/div&gt;
-        &lt;a href=&#34;https://yashagarwal.in/images/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/posts/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
     &lt;/figure&gt;
 &lt;/div&gt;
 

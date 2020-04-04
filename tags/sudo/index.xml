@@ -12,7 +12,7 @@
         <language>en-us</language>
         
                 <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
-                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 04 Apr 2020 05:51:58 +0000</lastBuildDate>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 04 Apr 2020 09:45:14 +0000</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
             <atom:link href="https://yashagarwal.in/tags/sudo/index.xml" rel="self" type="application/rss&#43;xml" />
@@ -98,9 +98,9 @@
 &lt;div class=&#34;box fancy-figure caption-position-none&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
     &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
         &lt;div class=&#34;img&#34;&gt;
-            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2016-04-03/insult.gif&#34; alt=&#34;A terminal screen&#34;/&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/posts/2016-04-03/insult.gif&#34; alt=&#34;A terminal screen&#34;/&gt;
         &lt;/div&gt;
-        &lt;a href=&#34;https://yashagarwal.in/images/2016-04-03/insult.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/posts/2016-04-03/insult.gif&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
     &lt;/figure&gt;
 &lt;/div&gt;
 
@@ -118,9 +118,9 @@
 &lt;div class=&#34;box fancy-figure caption-position-none&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
     &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
         &lt;div class=&#34;img&#34;&gt;
-            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2016-04-03/sudoers.png&#34; alt=&#34;Sample sudoers file&#34;/&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/posts/2016-04-03/sudoers.png&#34; alt=&#34;Sample sudoers file&#34;/&gt;
         &lt;/div&gt;
-        &lt;a href=&#34;https://yashagarwal.in/images/2016-04-03/sudoers.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/posts/2016-04-03/sudoers.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
             &lt;figcaption&gt;
                     &lt;p&gt;Sample sudoers file&lt;/p&gt;
             &lt;/figcaption&gt;

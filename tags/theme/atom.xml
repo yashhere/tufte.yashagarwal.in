@@ -10,7 +10,7 @@
             <link href="https://yashagarwal.in/tags/theme/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
             <link href="https://yashagarwal.in/tags/theme/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
             <link href="https://yashagarwal.in/tags/theme/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
-    <updated>2020-04-04T05:51:58+00:00</updated>
+    <updated>2020-04-04T09:45:14+00:00</updated>
     
     
     <author>
@@ -124,10 +124,10 @@
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2020-04-01/desktop.png');">
-            <img itemprop="thumbnail" src="/images/2020-04-01/desktop.png" alt="Desktop score"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2020-04-01/desktop.png');">
+            <img itemprop="thumbnail" src="/images/posts/2020-04-01/desktop.png" alt="Desktop score"/>
         </div>
-        <a href="/images/2020-04-01/desktop.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2020-04-01/desktop.png" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -136,10 +136,10 @@
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2020-04-01/mobile.png');">
-            <img itemprop="thumbnail" src="/images/2020-04-01/mobile.png" alt="Mobile score"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2020-04-01/mobile.png');">
+            <img itemprop="thumbnail" src="/images/posts/2020-04-01/mobile.png" alt="Mobile score"/>
         </div>
-        <a href="/images/2020-04-01/mobile.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2020-04-01/mobile.png" itemprop="contentUrl"></a>
     </figure>
 </div>
 

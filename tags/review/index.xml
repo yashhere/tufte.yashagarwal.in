@@ -12,7 +12,7 @@
         <language>en-us</language>
         
                 <managingEditor>yashagarwaljpr@gmail.com (Yash Agarwal)</managingEditor>
-                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 04 Apr 2020 05:51:58 +0000</lastBuildDate>
+                <webMaster>yashagarwaljpr@gmail.com (Yash Agarwal)</webMaster><lastBuildDate>Sat, 04 Apr 2020 09:45:14 +0000</lastBuildDate>
         <generator>Hugo -- gohugo.io</generator>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
             <atom:link href="https://yashagarwal.in/tags/review/index.xml" rel="self" type="application/rss&#43;xml" />
@@ -23,13 +23,7 @@
                 <link>https://yashagarwal.in/posts/2020/03/2019-year-in-review/</link>
                 
                 
-                <description>&lt;div class=&#34;note&#34;&gt;
-    &lt;div&gt;&lt;/div&gt;
-    
-If you find any grammatical errors in this post, please excuse me. I am not in a state to invest my mental strength fixing such issues right now. I will probably revisit this post sometime later to fix any problem.
-
-&lt;/div&gt;
-&lt;p&gt;It has been three months since 2020 started. I was not able to keep up with my yearly habit of posting year reviews due to some reasons. One primary reason behind my negligence is my disinterest in writing on this blog. I felt that it was because the old layout of this blog had been too recurrent for me. So, I decided to fix that issue before thinking about writing.&lt;/p&gt;
+                <description>&lt;p&gt;It has been three months since 2020 started. I was not able to keep up with my yearly habit of posting year reviews due to some reasons. One primary reason behind my negligence is my disinterest in writing on this blog. I felt that it was because the old layout of this blog had been too recurrent for me. So, I decided to fix that issue before thinking about writing.&lt;/p&gt;
 &lt;p&gt;The year 2019 was not a great year for me on many fronts. It was a year that reminded me of my limitations and brought me out of the bubble, that self-help books created for me. In retrospection, I find that I started a lot of things, with the intention of learning, but couldn&amp;rsquo;t achieve any of the targets.&lt;/p&gt;
 &lt;p&gt;Like, I structure these posts every year, I have divided this post too in many sections. It makes it easier for me to focus on various aspects of my life in the past year. I will start with the best parts of my life.&lt;/p&gt;
 &lt;h2 id=&#34;reading&#34;&gt;Reading&lt;/h2&gt;
@@ -539,10 +533,10 @@ contributing to the progress of my India.&lt;/strong&gt; 😊&lt;/p&gt;
 
 &lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
     &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-        &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;https://yashagarwal.in//images/2017-12-31/HackFest1.jpg&#39;);&#34;&gt;
-            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2017-12-31/HackFest1.jpg&#34; alt=&#34;Working on my first Debian package&#34;/&gt;
+        &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;https://yashagarwal.in//images/posts/2017-12-31/HackFest1.jpg&#39;);&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/posts/2017-12-31/HackFest1.jpg&#34; alt=&#34;Working on my first Debian package&#34;/&gt;
         &lt;/div&gt;
-        &lt;a href=&#34;https://yashagarwal.in/images/2017-12-31/HackFest1.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/posts/2017-12-31/HackFest1.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
             &lt;figcaption&gt;
                     &lt;p&gt;Working on my first Debian package&lt;/p&gt;
             &lt;/figcaption&gt;
@@ -554,10 +548,10 @@ contributing to the progress of my India.&lt;/strong&gt; 😊&lt;/p&gt;
 
 &lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
     &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
-        &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;https://yashagarwal.in//images/2017-12-31/HackFest2.jpg&#39;);&#34;&gt;
-            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2017-12-31/HackFest2.jpg&#34; alt=&#34;Praveen sir and team&#34;/&gt;
+        &lt;div class=&#34;img&#34; style=&#34;background-image: url(&#39;https://yashagarwal.in//images/posts/2017-12-31/HackFest2.jpg&#39;);&#34;&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/posts/2017-12-31/HackFest2.jpg&#34; alt=&#34;Praveen sir and team&#34;/&gt;
         &lt;/div&gt;
-        &lt;a href=&#34;https://yashagarwal.in/images/2017-12-31/HackFest2.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/posts/2017-12-31/HackFest2.jpg&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
             &lt;figcaption&gt;
                     &lt;p&gt;Praveen sir and team&lt;/p&gt;
             &lt;/figcaption&gt;
@@ -574,9 +568,9 @@ contributing to the progress of my India.&lt;/strong&gt; 😊&lt;/p&gt;
 &lt;div class=&#34;box fancy-figure caption-position-bottom caption-effect-appear&#34;  itemscope itemtype=&#34;http://schema.org/ImageGallery&#34;&gt;
     &lt;figure  itemprop=&#34;associatedMedia&#34; itemscope itemtype=&#34;http://schema.org/ImageObject&#34;&gt;
         &lt;div class=&#34;img&#34;&gt;
-            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/2017-12-31/placement.png#center&#34; alt=&#34;A private post on FB, now public&#34;/&gt;
+            &lt;img itemprop=&#34;thumbnail&#34; src=&#34;https://yashagarwal.in/images/posts/2017-12-31/placement.png#center&#34; alt=&#34;A private post on FB, now public&#34;/&gt;
         &lt;/div&gt;
-        &lt;a href=&#34;https://yashagarwal.in/images/2017-12-31/placement.png#center&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+        &lt;a href=&#34;https://yashagarwal.in/images/posts/2017-12-31/placement.png#center&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
             &lt;figcaption&gt;
                     &lt;p&gt;A private post on FB, now public&lt;/p&gt;
             &lt;/figcaption&gt;

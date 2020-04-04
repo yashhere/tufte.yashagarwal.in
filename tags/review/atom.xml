@@ -10,7 +10,7 @@
             <link href="https://yashagarwal.in/tags/review/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
             <link href="https://yashagarwal.in/tags/review/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
             <link href="https://yashagarwal.in/tags/review/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
-    <updated>2020-04-04T05:51:58+00:00</updated>
+    <updated>2020-04-04T09:45:14+00:00</updated>
     
     
     <author>
@@ -38,13 +38,7 @@
             <updated>2020-03-31T11:39:47+05:30</updated>
             
             
-            <content type="html"><![CDATA[<div class="note">
-    <div></div>
-    
-If you find any grammatical errors in this post, please excuse me. I am not in a state to invest my mental strength fixing such issues right now. I will probably revisit this post sometime later to fix any problem.
-
-</div>
-<p>It has been three months since 2020 started. I was not able to keep up with my yearly habit of posting year reviews due to some reasons. One primary reason behind my negligence is my disinterest in writing on this blog. I felt that it was because the old layout of this blog had been too recurrent for me. So, I decided to fix that issue before thinking about writing.</p>
+            <content type="html"><![CDATA[<p>It has been three months since 2020 started. I was not able to keep up with my yearly habit of posting year reviews due to some reasons. One primary reason behind my negligence is my disinterest in writing on this blog. I felt that it was because the old layout of this blog had been too recurrent for me. So, I decided to fix that issue before thinking about writing.</p>
 <p>The year 2019 was not a great year for me on many fronts. It was a year that reminded me of my limitations and brought me out of the bubble, that self-help books created for me. In retrospection, I find that I started a lot of things, with the intention of learning, but couldn&rsquo;t achieve any of the targets.</p>
 <p>Like, I structure these posts every year, I have divided this post too in many sections. It makes it easier for me to focus on various aspects of my life in the past year. I will start with the best parts of my life.</p>
 <h2 id="reading">Reading</h2>
@@ -577,10 +571,10 @@ contributing to the progress of my India.</strong> 😊</p>
 
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2017-12-31/HackFest1.jpg');">
-            <img itemprop="thumbnail" src="/images/2017-12-31/HackFest1.jpg" alt="Working on my first Debian package"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2017-12-31/HackFest1.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2017-12-31/HackFest1.jpg" alt="Working on my first Debian package"/>
         </div>
-        <a href="/images/2017-12-31/HackFest1.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-12-31/HackFest1.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Working on my first Debian package</p>
             </figcaption>
@@ -592,10 +586,10 @@ contributing to the progress of my India.</strong> 😊</p>
 
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2017-12-31/HackFest2.jpg');">
-            <img itemprop="thumbnail" src="/images/2017-12-31/HackFest2.jpg" alt="Praveen sir and team"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2017-12-31/HackFest2.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2017-12-31/HackFest2.jpg" alt="Praveen sir and team"/>
         </div>
-        <a href="/images/2017-12-31/HackFest2.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-12-31/HackFest2.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Praveen sir and team</p>
             </figcaption>
@@ -612,9 +606,9 @@ contributing to the progress of my India.</strong> 😊</p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-12-31/placement.png#center" alt="A private post on FB, now public"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-12-31/placement.png#center" alt="A private post on FB, now public"/>
         </div>
-        <a href="/images/2017-12-31/placement.png#center" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-12-31/placement.png#center" itemprop="contentUrl"></a>
             <figcaption>
                     <p>A private post on FB, now public</p>
             </figcaption>

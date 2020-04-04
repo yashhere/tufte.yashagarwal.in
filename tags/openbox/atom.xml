@@ -10,7 +10,7 @@
             <link href="https://yashagarwal.in/tags/openbox/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
             <link href="https://yashagarwal.in/tags/openbox/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
             <link href="https://yashagarwal.in/tags/openbox/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
-    <updated>2020-04-04T05:51:58+00:00</updated>
+    <updated>2020-04-04T09:45:14+00:00</updated>
     
     
     <author>
@@ -113,9 +113,9 @@
 <div class="box fancy-figure caption-position-none"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2016-06-09/desktop.jpg" alt="Openbox on ArchLinux"/>
+            <img itemprop="thumbnail" src="/images/posts/2016-06-09/desktop.jpg" alt="Openbox on ArchLinux"/>
         </div>
-        <a href="/images/2016-06-09/desktop.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2016-06-09/desktop.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Openbox on ArchLinux</p>
             </figcaption>

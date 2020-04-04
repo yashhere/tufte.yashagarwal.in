@@ -10,7 +10,7 @@
             <link href="https://yashagarwal.in/tags/foss/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
             <link href="https://yashagarwal.in/tags/foss/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
             <link href="https://yashagarwal.in/tags/foss/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
-    <updated>2020-04-04T05:51:58+00:00</updated>
+    <updated>2020-04-04T09:45:14+00:00</updated>
     
     
     <author>
@@ -119,9 +119,9 @@
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2018-03-28/gsoc-timeline.png#center" alt="gsoc timeline"/>
+            <img itemprop="thumbnail" src="/images/posts/2018-03-28/gsoc-timeline.png#center" alt="gsoc timeline"/>
         </div>
-        <a href="/images/2018-03-28/gsoc-timeline.png#center" itemprop="contentUrl"></a>
+        <a href="/images/posts/2018-03-28/gsoc-timeline.png#center" itemprop="contentUrl"></a>
     </figure>
 </div>
 

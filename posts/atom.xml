@@ -10,7 +10,7 @@
             <link href="https://yashagarwal.in/posts/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
             <link href="https://yashagarwal.in/posts/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
             <link href="https://yashagarwal.in/posts/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
-    <updated>2020-04-04T05:51:58+00:00</updated>
+    <updated>2020-04-04T09:45:14+00:00</updated>
     
     
     <author>
@@ -124,10 +124,10 @@
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2020-04-01/desktop.png');">
-            <img itemprop="thumbnail" src="/images/2020-04-01/desktop.png" alt="Desktop score"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2020-04-01/desktop.png');">
+            <img itemprop="thumbnail" src="/images/posts/2020-04-01/desktop.png" alt="Desktop score"/>
         </div>
-        <a href="/images/2020-04-01/desktop.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2020-04-01/desktop.png" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -136,10 +136,10 @@
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2020-04-01/mobile.png');">
-            <img itemprop="thumbnail" src="/images/2020-04-01/mobile.png" alt="Mobile score"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2020-04-01/mobile.png');">
+            <img itemprop="thumbnail" src="/images/posts/2020-04-01/mobile.png" alt="Mobile score"/>
         </div>
-        <a href="/images/2020-04-01/mobile.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2020-04-01/mobile.png" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -193,13 +193,7 @@
             <updated>2020-03-31T11:39:47+05:30</updated>
             
             
-            <content type="html"><![CDATA[<div class="note">
-    <div></div>
-    
-If you find any grammatical errors in this post, please excuse me. I am not in a state to invest my mental strength fixing such issues right now. I will probably revisit this post sometime later to fix any problem.
-
-</div>
-<p>It has been three months since 2020 started. I was not able to keep up with my yearly habit of posting year reviews due to some reasons. One primary reason behind my negligence is my disinterest in writing on this blog. I felt that it was because the old layout of this blog had been too recurrent for me. So, I decided to fix that issue before thinking about writing.</p>
+            <content type="html"><![CDATA[<p>It has been three months since 2020 started. I was not able to keep up with my yearly habit of posting year reviews due to some reasons. One primary reason behind my negligence is my disinterest in writing on this blog. I felt that it was because the old layout of this blog had been too recurrent for me. So, I decided to fix that issue before thinking about writing.</p>
 <p>The year 2019 was not a great year for me on many fronts. It was a year that reminded me of my limitations and brought me out of the bubble, that self-help books created for me. In retrospection, I find that I started a lot of things, with the intention of learning, but couldn&rsquo;t achieve any of the targets.</p>
 <p>Like, I structure these posts every year, I have divided this post too in many sections. It makes it easier for me to focus on various aspects of my life in the past year. I will start with the best parts of my life.</p>
 <h2 id="reading">Reading</h2>
@@ -676,9 +670,9 @@ audit
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2019-06-29/bdiyaFI.jpg" alt="Somewhere on NH75"/>
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/bdiyaFI.jpg" alt="Somewhere on NH75"/>
         </div>
-        <a href="/images/2019-06-29/bdiyaFI.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/bdiyaFI.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Somewhere on NH75</p>
             </figcaption>
@@ -701,9 +695,9 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2019-06-29/V6AAfuv.jpg" alt="The Gopuram of Sri Chennakeshava Temple"/>
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/V6AAfuv.jpg" alt="The Gopuram of Sri Chennakeshava Temple"/>
         </div>
-        <a href="/images/2019-06-29/V6AAfuv.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/V6AAfuv.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>The Gopuram of Sri Chennakeshava Temple</p>
             </figcaption>
@@ -717,9 +711,9 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2019-06-29/OhzIghs.jpg" alt="Sri Chennakeshava Temple, from outside"/>
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/OhzIghs.jpg" alt="Sri Chennakeshava Temple, from outside"/>
         </div>
-        <a href="/images/2019-06-29/OhzIghs.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/OhzIghs.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Sri Chennakeshava Temple, from outside</p>
             </figcaption>
@@ -733,9 +727,9 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2019-06-29/jhqoSTE.jpg" alt="A pillar inside the temple"/>
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/jhqoSTE.jpg" alt="A pillar inside the temple"/>
         </div>
-        <a href="/images/2019-06-29/jhqoSTE.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/jhqoSTE.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>A pillar inside the temple</p>
             </figcaption>
@@ -749,9 +743,9 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2019-06-29/074g3uO.jpg" alt="The ceiling of the temple"/>
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/074g3uO.jpg" alt="The ceiling of the temple"/>
         </div>
-        <a href="/images/2019-06-29/074g3uO.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/074g3uO.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>The ceiling of the temple</p>
             </figcaption>
@@ -775,10 +769,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/KknscQQm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/KknscQQm.jpg" alt="A Ganesha statue"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/KknscQQm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/KknscQQm.jpg" alt="A Ganesha statue"/>
         </div>
-        <a href="/images/2019-06-29/KknscQQ.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/KknscQQ.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -787,10 +781,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/00jHoa8m.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/00jHoa8m.jpg" alt="Cravings on walls"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/00jHoa8m.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/00jHoa8m.jpg" alt="Cravings on walls"/>
         </div>
-        <a href="/images/2019-06-29/00jHoa8.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/00jHoa8.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -799,10 +793,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/jb3McxQm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/jb3McxQm.jpg" alt="Cravings on walls"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/jb3McxQm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/jb3McxQm.jpg" alt="Cravings on walls"/>
         </div>
-        <a href="/images/2019-06-29/jb3McxQ.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/jb3McxQ.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -811,10 +805,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/r1unZAgm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/r1unZAgm.jpg" alt="Ruin"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/r1unZAgm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/r1unZAgm.jpg" alt="Ruin"/>
         </div>
-        <a href="/images/2019-06-29/r1unZAg.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/r1unZAg.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -823,10 +817,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/BB759kWm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/BB759kWm.jpg" alt="A Hindu deity"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/BB759kWm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/BB759kWm.jpg" alt="A Hindu deity"/>
         </div>
-        <a href="/images/2019-06-29/BB759kW.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/BB759kW.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -835,10 +829,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/Tw9YP1Em.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/Tw9YP1Em.jpg" alt="A pillar in the center of temple"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/Tw9YP1Em.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/Tw9YP1Em.jpg" alt="A pillar in the center of temple"/>
         </div>
-        <a href="/images/2019-06-29/Tw9YP1E.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/Tw9YP1E.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -847,10 +841,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/8bLIIC5m.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/8bLIIC5m.jpg" alt="A Hindu deity"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/8bLIIC5m.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/8bLIIC5m.jpg" alt="A Hindu deity"/>
         </div>
-        <a href="/images/2019-06-29/8bLIIC5.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/8bLIIC5.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -859,10 +853,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/lPVAP1Hm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/lPVAP1Hm.jpg" alt="Cravings on walls"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/lPVAP1Hm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/lPVAP1Hm.jpg" alt="Cravings on walls"/>
         </div>
-        <a href="/images/2019-06-29/lPVAP1H.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/lPVAP1H.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -871,10 +865,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/WQGjwurm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/WQGjwurm.jpg" alt="Another temple"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/WQGjwurm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/WQGjwurm.jpg" alt="Another temple"/>
         </div>
-        <a href="/images/2019-06-29/WQGjwur.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/WQGjwur.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -883,10 +877,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/8JDPQZ7m.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/8JDPQZ7m.jpg" alt="Footprints"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/8JDPQZ7m.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/8JDPQZ7m.jpg" alt="Footprints"/>
         </div>
-        <a href="/images/2019-06-29/8JDPQZ7.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/8JDPQZ7.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -895,10 +889,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/jUYDuQdm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/jUYDuQdm.jpg" alt="Another temple"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/jUYDuQdm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/jUYDuQdm.jpg" alt="Another temple"/>
         </div>
-        <a href="/images/2019-06-29/jUYDuQd.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/jUYDuQd.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -911,9 +905,9 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2019-06-29/JUTwVEN.jpg" alt="The Silver Palm Retreat Homestay"/>
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/JUTwVEN.jpg" alt="The Silver Palm Retreat Homestay"/>
         </div>
-        <a href="/images/2019-06-29/JUTwVEN.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/JUTwVEN.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>The Silver Palm Retreat Homestay</p>
             </figcaption>
@@ -935,10 +929,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/CcvBJyEm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/CcvBJyEm.jpg" alt="nature"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/CcvBJyEm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/CcvBJyEm.jpg" alt="nature"/>
         </div>
-        <a href="/images/2019-06-29/CcvBJyE.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/CcvBJyE.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -947,10 +941,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/ttrEWMPm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/ttrEWMPm.jpg" alt="nature"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/ttrEWMPm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/ttrEWMPm.jpg" alt="nature"/>
         </div>
-        <a href="/images/2019-06-29/ttrEWMP.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/ttrEWMP.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -959,10 +953,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/c84g6tXm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/c84g6tXm.jpg" alt="nature"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/c84g6tXm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/c84g6tXm.jpg" alt="nature"/>
         </div>
-        <a href="/images/2019-06-29/c84g6tX.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/c84g6tX.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -990,10 +984,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/WSP3EE6m.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/WSP3EE6m.jpg" alt="An inscription"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/WSP3EE6m.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/WSP3EE6m.jpg" alt="An inscription"/>
         </div>
-        <a href="/images/2019-06-29/WSP3EE6.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/WSP3EE6.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -1002,10 +996,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/PwLILXbm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/PwLILXbm.jpg" alt="Ganesha statue on the highest peak"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/PwLILXbm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/PwLILXbm.jpg" alt="Ganesha statue on the highest peak"/>
         </div>
-        <a href="/images/2019-06-29/PwLILXb.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/PwLILXb.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -1014,10 +1008,10 @@ was amazed by the level of details on the sculptures engraved on the Gopuram. My
 
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2019-06-29/E6Vd1nXm.jpg');">
-            <img itemprop="thumbnail" src="/images/2019-06-29/E6Vd1nXm.jpg" alt="Temple on the peak"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2019-06-29/E6Vd1nXm.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2019-06-29/E6Vd1nXm.jpg" alt="Temple on the peak"/>
         </div>
-        <a href="/images/2019-06-29/E6Vd1nX.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-06-29/E6Vd1nX.jpg" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -1360,9 +1354,9 @@ this implementation will look like this -</p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear" style="max-width:650px" itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center" alt="Architecture"/>
+            <img itemprop="thumbnail" src="/images/posts/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center" alt="Architecture"/>
         </div>
-        <a href="/images/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center" itemprop="contentUrl"></a>
+        <a href="/images/posts/2019-02-17/OPA_Service_Flow_Diagram.jpeg#center" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -2534,9 +2528,9 @@ Initialised repository at custom.</code></pre></div>
 <div class="box"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2018-03-28/gsoc-timeline.png#center" alt="gsoc timeline"/>
+            <img itemprop="thumbnail" src="/images/posts/2018-03-28/gsoc-timeline.png#center" alt="gsoc timeline"/>
         </div>
-        <a href="/images/2018-03-28/gsoc-timeline.png#center" itemprop="contentUrl"></a>
+        <a href="/images/posts/2018-03-28/gsoc-timeline.png#center" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -3953,10 +3947,10 @@ mount --bind /hostrun/lvm /run/lvm</code></pre></div></p>
 
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2017-12-31/HackFest1.jpg');">
-            <img itemprop="thumbnail" src="/images/2017-12-31/HackFest1.jpg" alt="Working on my first Debian package"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2017-12-31/HackFest1.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2017-12-31/HackFest1.jpg" alt="Working on my first Debian package"/>
         </div>
-        <a href="/images/2017-12-31/HackFest1.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-12-31/HackFest1.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Working on my first Debian package</p>
             </figcaption>
@@ -3968,10 +3962,10 @@ mount --bind /hostrun/lvm /run/lvm</code></pre></div></p>
 
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-        <div class="img" style="background-image: url('https://yashagarwal.in//images/2017-12-31/HackFest2.jpg');">
-            <img itemprop="thumbnail" src="/images/2017-12-31/HackFest2.jpg" alt="Praveen sir and team"/>
+        <div class="img" style="background-image: url('https://yashagarwal.in//images/posts/2017-12-31/HackFest2.jpg');">
+            <img itemprop="thumbnail" src="/images/posts/2017-12-31/HackFest2.jpg" alt="Praveen sir and team"/>
         </div>
-        <a href="/images/2017-12-31/HackFest2.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-12-31/HackFest2.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Praveen sir and team</p>
             </figcaption>
@@ -3988,9 +3982,9 @@ mount --bind /hostrun/lvm /run/lvm</code></pre></div></p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-12-31/placement.png#center" alt="A private post on FB, now public"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-12-31/placement.png#center" alt="A private post on FB, now public"/>
         </div>
-        <a href="/images/2017-12-31/placement.png#center" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-12-31/placement.png#center" itemprop="contentUrl"></a>
             <figcaption>
                     <p>A private post on FB, now public</p>
             </figcaption>
@@ -4347,9 +4341,9 @@ utilize the disks) during the prime generation; this gives the random number gen
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-10-17/before.png" alt="before applying the fix"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-10-17/before.png" alt="before applying the fix"/>
         </div>
-        <a href="/images/2017-10-17/before.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-10-17/before.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>before applying the fix</p>
             </figcaption>
@@ -4364,9 +4358,9 @@ utilize the disks) during the prime generation; this gives the random number gen
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-10-17/after.png" alt="after applying the fix"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-10-17/after.png" alt="after applying the fix"/>
         </div>
-        <a href="/images/2017-10-17/after.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-10-17/after.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>after applying the fix</p>
             </figcaption>
@@ -4653,9 +4647,9 @@ git push origin master</code></pre></div></p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-02-22/wercker-steps.png" alt="Wercker → Registry → steps"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-02-22/wercker-steps.png" alt="Wercker → Registry → steps"/>
         </div>
-        <a href="/images/2017-02-22/wercker-steps.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-02-22/wercker-steps.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Wercker → Registry → steps</p>
             </figcaption>
@@ -4684,9 +4678,9 @@ git push origin master</code></pre></div></p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-02-22/wercker-pipeline.png" alt="Wercker Pipeline"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-02-22/wercker-pipeline.png" alt="Wercker Pipeline"/>
         </div>
-        <a href="/images/2017-02-22/wercker-pipeline.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-02-22/wercker-pipeline.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Wercker Pipeline</p>
             </figcaption>
@@ -4700,9 +4694,9 @@ git push origin master</code></pre></div></p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-02-22/wercker-access-token.png" alt="Github Access Token"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-02-22/wercker-access-token.png" alt="Github Access Token"/>
         </div>
-        <a href="/images/2017-02-22/wercker-access-token.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-02-22/wercker-access-token.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Github Access Token</p>
             </figcaption>
@@ -4716,9 +4710,9 @@ git push origin master</code></pre></div></p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-02-22/wercker-token.png" alt="Wercker Token"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-02-22/wercker-token.png" alt="Wercker Token"/>
         </div>
-        <a href="/images/2017-02-22/wercker-token.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-02-22/wercker-token.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Wercker Token</p>
             </figcaption>
@@ -4977,9 +4971,9 @@ pip freeze &gt; <span class="o">[</span>file_name.txt<span class="o">]</span></c
 <div class="box fancy-figure caption-position-none"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2016-06-09/desktop.jpg" alt="Openbox on ArchLinux"/>
+            <img itemprop="thumbnail" src="/images/posts/2016-06-09/desktop.jpg" alt="Openbox on ArchLinux"/>
         </div>
-        <a href="/images/2016-06-09/desktop.jpg" itemprop="contentUrl"></a>
+        <a href="/images/posts/2016-06-09/desktop.jpg" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Openbox on ArchLinux</p>
             </figcaption>
@@ -5296,9 +5290,9 @@ To start pcmanfm is the desktop mode, add the following to the autostart file.</
 <div class="box fancy-figure caption-position-none"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2016-04-03/insult.gif" alt="A terminal screen"/>
+            <img itemprop="thumbnail" src="/images/posts/2016-04-03/insult.gif" alt="A terminal screen"/>
         </div>
-        <a href="/images/2016-04-03/insult.gif" itemprop="contentUrl"></a>
+        <a href="/images/posts/2016-04-03/insult.gif" itemprop="contentUrl"></a>
     </figure>
 </div>
 
@@ -5316,9 +5310,9 @@ To start pcmanfm is the desktop mode, add the following to the autostart file.</
 <div class="box fancy-figure caption-position-none"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2016-04-03/sudoers.png" alt="Sample sudoers file"/>
+            <img itemprop="thumbnail" src="/images/posts/2016-04-03/sudoers.png" alt="Sample sudoers file"/>
         </div>
-        <a href="/images/2016-04-03/sudoers.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2016-04-03/sudoers.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Sample sudoers file</p>
             </figcaption>

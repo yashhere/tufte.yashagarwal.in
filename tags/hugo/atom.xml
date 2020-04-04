@@ -10,7 +10,7 @@
             <link href="https://yashagarwal.in/tags/hugo/index.xml" rel="alternate" type="application/rss+xml" title="RSS" />
             <link href="https://yashagarwal.in/tags/hugo/atom.xml" rel="self" type="application/atom+xml" title="Atom" />
             <link href="https://yashagarwal.in/tags/hugo/jf2feed.json" rel="alternate" type="application/jf2feed+json" title="jf2feed" />
-    <updated>2020-04-04T05:51:58+00:00</updated>
+    <updated>2020-04-04T09:45:14+00:00</updated>
     
     
     <author>
@@ -631,9 +631,9 @@ git push origin master</code></pre></div></p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-02-22/wercker-steps.png" alt="Wercker → Registry → steps"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-02-22/wercker-steps.png" alt="Wercker → Registry → steps"/>
         </div>
-        <a href="/images/2017-02-22/wercker-steps.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-02-22/wercker-steps.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Wercker → Registry → steps</p>
             </figcaption>
@@ -662,9 +662,9 @@ git push origin master</code></pre></div></p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-02-22/wercker-pipeline.png" alt="Wercker Pipeline"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-02-22/wercker-pipeline.png" alt="Wercker Pipeline"/>
         </div>
-        <a href="/images/2017-02-22/wercker-pipeline.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-02-22/wercker-pipeline.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Wercker Pipeline</p>
             </figcaption>
@@ -678,9 +678,9 @@ git push origin master</code></pre></div></p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-02-22/wercker-access-token.png" alt="Github Access Token"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-02-22/wercker-access-token.png" alt="Github Access Token"/>
         </div>
-        <a href="/images/2017-02-22/wercker-access-token.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-02-22/wercker-access-token.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Github Access Token</p>
             </figcaption>
@@ -694,9 +694,9 @@ git push origin master</code></pre></div></p>
 <div class="box fancy-figure caption-position-bottom caption-effect-appear"  itemscope itemtype="http://schema.org/ImageGallery">
     <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
         <div class="img">
-            <img itemprop="thumbnail" src="/images/2017-02-22/wercker-token.png" alt="Wercker Token"/>
+            <img itemprop="thumbnail" src="/images/posts/2017-02-22/wercker-token.png" alt="Wercker Token"/>
         </div>
-        <a href="/images/2017-02-22/wercker-token.png" itemprop="contentUrl"></a>
+        <a href="/images/posts/2017-02-22/wercker-token.png" itemprop="contentUrl"></a>
             <figcaption>
                     <p>Wercker Token</p>
             </figcaption>
