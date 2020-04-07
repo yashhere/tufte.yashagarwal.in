@@ -158,7 +158,18 @@ func main() {
     fmt.Println(err)
   }
 
-  err = ioutil.WriteFile("./data/goodreads.json", file, 0644)
+  dirName := "./data"
+  _, err = os.Stat(dirName)
+
+  if os.IsNotExist(err) {
+    errDir := os.MkdirAll(dirName, 0755)
+    if errDir != nil {
+      fmt.Errorf("%s", errDir)
+      os.Exit(1)
+    }
+  }
+
+  err = ioutil.WriteFile(dirName + "/goodreads.json", file, 0644)
   if err != nil {
     fmt.Println(err)
   }
