@@ -25,3 +25,6 @@ You can find me elsewhere on the Web; places like [Twitter](https://twitter.com/
 **I keep a [now](/now) page updated with my current projects, favorite tools, and a lot of other stuff.**
 
 [comment]: # (My resume is [here](/pdf/resume.pdf), but I am not looking for a new job right now.)
+
+[comment]: # (LEARNING
+              Before I realized that I have so little time to do things I wanted to do, I was used to learning everything new and interesting to me, which is a LOT. This is not the only problem caused by my insatiable curiosity, to make my life easier, I’ve learned to put down stuff, things I don’t need the most. I’m still not quite sure if that’s the right thing to do.)
