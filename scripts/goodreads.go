@@ -3,110 +3,60 @@ package main
 import (
   "encoding/json"
   "encoding/xml"
+  "net/url"
+  "path"
   "os"
   "fmt"
   "bytes"
   "mime/multipart"
   "net/http"
-  "net/url"
   "io/ioutil"
-  "path"
+  "strconv"
   "strings"
+  "time"
 )
 
-type GoodreadsResponse struct {
-  XMLName xml.Name `xml:"GoodreadsResponse"`
-  Text    string   `xml:",chardata"`
-  Request struct {
-    Text           string `xml:",chardata"`
-    Authentication string `xml:"authentication"`
-    Key            string `xml:"key"`
-    Method         string `xml:"method"`
-  } `xml:"Request"`
-  Books []struct {
-    Text        string `xml:",chardata"`
-    Start       string `xml:"start,attr"`
-    End         string `xml:"end,attr"`
-    Total       string `xml:"total,attr"`
-    Numpages    string `xml:"numpages,attr"`
-    Currentpage string `xml:"currentpage,attr"`
-    Book        []struct {
-      Text string `xml:",chardata"`
-      ID   struct {
-        Text string `xml:",chardata"`
-        Type string `xml:"type,attr"`
-      } `xml:"id"`
-      ISBN struct {
-        Text string `xml:",chardata"`
-        Nil  string `xml:"nil,attr"`
-      } `xml:"isbn"`
-      Isbn13 struct {
-        Text string `xml:",chardata"`
-        Nil  string `xml:"nil,attr"`
-      } `xml:"isbn13"`
-      TextReviewsCount struct {
-        Text string `xml:",chardata"`
-        Type string `xml:"type,attr"`
-      } `xml:"text_reviews_count"`
-      URI                string `xml:"uri"`
-      Title              string `xml:"title"`
-      TitleWithoutSeries string `xml:"title_without_series"`
-      ImageURL           string `xml:"image_url"`
-      SmallImageURL      string `xml:"small_image_url"`
-      LargeImageURL      string `xml:"large_image_url"`
-      Link               string `xml:"link"`
-      NumPages           string `xml:"num_pages"`
-      Format             string `xml:"format"`
-      EditionInformation string `xml:"edition_information"`
-      Publisher          string `xml:"publisher"`
-      PublicationDay     string `xml:"publication_day"`
-      PublicationYear    string `xml:"publication_year"`
-      PublicationMonth   string `xml:"publication_month"`
-      AverageRating      string `xml:"average_rating"`
-      RatingsCount       string `xml:"ratings_count"`
-      Description        string `xml:"description"`
-      Authors            struct {
-        Text   string `xml:",chardata"`
-        Author struct {
-          Text     string `xml:",chardata"`
-          ID       string `xml:"id"`
-          Name     string `xml:"name"`
-          Role     string `xml:"role"`
-          ImageURL struct {
-            Text    string `xml:",chardata"`
-            Nophoto string `xml:"nophoto,attr"`
-          } `xml:"image_url"`
-          SmallImageURL struct {
-            Text    string `xml:",chardata"`
-            Nophoto string `xml:"nophoto,attr"`
-          } `xml:"small_image_url"`
-          Link             string `xml:"link"`
-          AverageRating    string `xml:"average_rating"`
-          RatingsCount     string `xml:"ratings_count"`
-          TextReviewsCount string `xml:"text_reviews_count"`
-        } `xml:"author"`
-      } `xml:"authors"`
-      Published string `xml:"published"`
-      Work      struct {
-        Text string `xml:",chardata"`
-        ID   string `xml:"id"`
-        URI  string `xml:"uri"`
-      } `xml:"work"`
-    } `xml:"book"`
-  } `xml:"books"`
+type goodreadsData struct {
+  Title           string `json:"title"`
+  Author          string `json:"author"`
+  ImageUrl        string `json:"image_url"`
+  CurrentPage     int64 `json:"current_page"`
+  TotalPage       int64 `json:"total_page"`
+  UpdatedAt       string `json:"updated_at"`
+  FirstUpdatePage int64 `json:"first_update_location"`
+  Url             string `json:"book_url"`
+  PercentAtStart  int64 `json:"percent_start"`
+  PercentCurrent  int64 `json:"percent_current"`
 }
 
-type jsonStruct struct {
-  Title       string `json:"title"`
-  ImageUrl       string `json:"image_url"`
+func formatDateTime(s string) string {
+  t, err := time.Parse("2006-01-02T15:04:05-07:00", strings.TrimSpace(s))
+  if err != nil {
+    fmt.Println(err)
+    return ""
+  } else {
+    return t.Format("02/01/2006")
+  }
 }
 
-func main() {
-  key := os.Getenv("GOODREADS_KEY")
-  user_id := os.Getenv("GOODREADS_ID")
-  goodreads_url := fmt.Sprintf("https://www.goodreads.com/review/list/%s.xml?key=%s",user_id, key)
-  method := "GET"
+func createBookURL(bookTitle string) string {
+  baseUrl, err := url.Parse("https://www.goodreads.com/book/title")
+  if err != nil {
+    fmt.Println("Malformed URL: ", err.Error())
+    return ""
+  }
 
+  // Prepare Query Parameters
+  params := url.Values{}
+  params.Add("id", bookTitle)
+
+  // Add Query Parameters to the URL
+  baseUrl.RawQuery = params.Encode() // Escape Query Parameters
+
+  return baseUrl.String()
+}
+
+func callAPI(url, key, userID, method string) ([]byte, error) {
   payload := &bytes.Buffer{}
   writer := multipart.NewWriter(payload)
   _ = writer.WriteField("shelf", "currently-reading")
@@ -117,7 +67,7 @@ func main() {
 
   client := &http.Client {
   }
-  req, err := http.NewRequest(method, goodreads_url, payload)
+  req, err := http.NewRequest(method, url, payload)
 
   if err != nil {
     fmt.Println(err)
@@ -127,50 +77,128 @@ func main() {
   req.Header.Set("Content-Type", writer.FormDataContentType())
   res, err := client.Do(req)
   defer res.Body.Close()
-  body, err := ioutil.ReadAll(res.Body)
+
+  return ioutil.ReadAll(res.Body)
+}
+
+func strToInt(s string) int64 {
+  if i, err := strconv.ParseInt(s, 10, 64); err == nil {
+    return i
+  } else {
+    return -1
+  }
+}
+
+func getFirstUpdateOfMonth(id, key string) (int64) {
+  url := fmt.Sprintf("https://www.goodreads.com/user_status/show/%s.xml?key=%s", id, key)
+  body, err := callAPI(url, key, "", "GET")
+  if err != nil {
+    fmt.Errorf("%s", err)
+    return -1
+  }
+
+  var c ReadStatus
+  xml.Unmarshal(body, &c)
+
+  var page string
+  var index int = -1
+  for idx, status := range c.UserStatus.UserStatus {
+    t, _ := time.Parse("02/01/2006", formatDateTime(status.UpdatedAt))
+    if time.Now().Month() == t.Month() {
+      index = idx
+      page = status.Page
+      continue
+    } else {
+      break
+    }
+  }
+
+  if index != -1 {
+   return strToInt(page)
+  }
+
+  return -1
+}
+
+func main() {
+  key := os.Getenv("GOODREADS_KEY")
+  userID := os.Getenv("GOODREADS_ID")
+
+  user_url := fmt.Sprintf("https://www.goodreads.com/user/show/%s?key=%s",userID, key)
+  body, err := callAPI(user_url, key, userID, "GET")
 
   if err != nil {
     fmt.Errorf("%s", err)
   }
-  var c GoodreadsResponse
+  var c GoodreadsUser
   xml.Unmarshal(body, &c)
 
-  parsedJson := make([]*jsonStruct, 0)
-  for _, book := range c.Books {
-    for _, b := range book.Book {
-      j := new(jsonStruct)
+  parsedJson := make([]*goodreadsData, 0)
+  for _, book := range c.User.UserStatuses.UserStatus {
+    j := new(goodreadsData)
 
-      u, err := url.Parse(b.ImageURL)
-      if err != nil {
-        fmt.Println(err)
-      }
+    j.Title = book.Book.Title
 
-      j.Title = b.Title
-      j.ImageUrl = strings.Replace(b.ImageURL, path.Base(u.Path), b.ID.Text + ".jpg", -1)
+    authorList := book.Book.Authors.Author
 
-      parsedJson = append(parsedJson, j)
+    if len(authorList) == 1 {
+      j.Author = book.Book.Authors.Author[0].Name
+    } else {
+      j.Author = book.Book.Authors.Author[0].Name + " et al."
     }
+
+    j.UpdatedAt = formatDateTime(book.UpdatedAt.Text)
+    j.FirstUpdatePage = getFirstUpdateOfMonth(book.ID.Text, key)
+
+    if i, err := strconv.ParseInt(book.Page.Text, 10, 64); err == nil {
+      j.CurrentPage = i
+    }
+
+    j.CurrentPage = strToInt(book.Page.Text)
+    j.TotalPage = strToInt(book.Book.NumPages.Text)
+
+    u, err := url.Parse(book.Book.ImageURL)
+    if err != nil {
+      fmt.Println(err)
+    }
+    j.ImageUrl = strings.Replace(book.Book.ImageURL, path.Base(u.Path), book.Book.ID.Text + ".jpg", -1)
+    j.Url = createBookURL(j.Title)
+
+    if j.FirstUpdatePage == -1 {
+      j.FirstUpdatePage = j.CurrentPage
+    }
+    parsedJson = append(parsedJson, j)
+
+    j.PercentAtStart = int64(j.FirstUpdatePage*100/j.TotalPage)
+    j.PercentCurrent = int64(j.CurrentPage*100/j.TotalPage)
+
+    //b, err := json.Marshal(j)
+    //if err != nil {
+    //  fmt.Println(err)
+    //  return
+    //}
+    //fmt.Println(string(b))
   }
 
   var file []byte
   file, err = json.MarshalIndent(parsedJson, "", " ")
   if err != nil {
-    fmt.Println(err)
+  fmt.Println(err)
   }
 
   dirName := "./data"
   _, err = os.Stat(dirName)
 
   if os.IsNotExist(err) {
-    errDir := os.MkdirAll(dirName, 0755)
-    if errDir != nil {
-      fmt.Errorf("%s", errDir)
-      os.Exit(1)
-    }
+  errDir := os.MkdirAll(dirName, 0755)
+  if errDir != nil {
+    fmt.Errorf("%s", errDir)
+    os.Exit(1)
+  }
   }
 
   err = ioutil.WriteFile(dirName + "/goodreads.json", file, 0644)
   if err != nil {
-    fmt.Println(err)
+  fmt.Println(err)
   }
 }

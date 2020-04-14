@@ -16,7 +16,7 @@ pages:
     - apt update
     - apt install -y imagemagick
   script:
-    - go run scripts/goodreads.go
+    - go run scripts/goodreads.go scripts/goodReadsApi.go
     - go run scripts/letterboxd.go
     - hugo --gc --minify
     - find ./public -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png \) -print0 | xargs -0 -P16 -n2 mogrify -compress JPEG -strip -quality 40
