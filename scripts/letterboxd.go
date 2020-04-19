@@ -49,7 +49,7 @@ type Rss struct {
 	} `xml:"channel"`
 }
 
-type jsonStruct struct {
+type letterboxdData struct {
 	Title       	string `json:"title"`
 	Rating       	string `json:"rating"`
 	WatchedDate  	string `json:"watched_date"`
@@ -85,7 +85,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	var res []*jsonStruct
+	var res []*letterboxdData
 
 	var re = regexp.MustCompile(`(?m)src\s*=\s*"(.+?)"`)
 	for _, movie := range data.Channel.Item {
@@ -97,7 +97,7 @@ func main() {
 			imageUrl = strings.Replace(imageUrl, "src=", "", 1)			// removing "src="
 			imageUrl = imageUrl[1 : len(imageUrl)-1]
 
-			r := new(jsonStruct)
+			r := new(letterboxdData)
 			r.Title = movie.FilmTitle
 			r.WatchedDate = t.Format("02/01/2006")
 			r.Image = imageUrl

@@ -1,6 +1,6 @@
 BaseURL: "https://yashagarwal.in/"
 Title: /dev/yash/notes
-theme: refined
+theme: tufte
 
 contentdir: content
 layoutdir: layouts
@@ -70,13 +70,16 @@ caches:
     maxAge: 1m
 
 Params:
-  themecolorbase: "blue"
+  settings:
+    showReadingTime: true
+  copyright:
+    startyear: 2016
   css_lazy_load: true
   cache_busting: true
   mainSections:
     - posts
-    - readings
-    - notes
+    - updates
+    - books
     - about
     - search
   tagline: "The directory of my thoughts"
@@ -84,19 +87,17 @@ Params:
   favicons: true
   feedSections:
     - posts
-  html5_validator: true
+    - updates
 
   source:
     url: "https://gitlab.com/yashhere/yashhere.gitlab.io"
     md_dir: content
-  indieweb:
-    domain: "https://yashagarwal.in/"
-    webring: "\U00003297\U0000fe0f\U0001f34b\U0001f468\U0000200d\U0001f468\U0000200d\U0001f467\U0000200d\U0001f467"
-    webmention:
-      endpoint: "https://webmention.io/"
-      account: "https://yashagarwal.in"
-    micropub:
-      url: "micropub"
+#  indieweb:
+#    domain: "https://yashagarwal.in/"
+#    webring: "\U00003297\U0000fe0f\U0001f34b\U0001f468\U0000200d\U0001f468\U0000200d\U0001f467\U0000200d\U0001f467"
+#    webmention:
+#      endpoint: "https://webmention.io/"
+#      account: "https://yashagarwal.in"
 
   social:
     - name: Github
@@ -112,83 +113,6 @@ Params:
       link: "https://keybase.io/yash2696"
       icon: keybase
       relme: true
-    - name: MicroBlog
-      link: "https://micro.blog/yagr"
-      svg: microblog
-      relme: true
-
-#  csp:
-#    childsrc:
-#      - '''self'''
-#    fontsrc:
-#      - '''self'''
-#      - 'data:'
-#      - disqus.com
-#      - disquscdn.com
-#      - '*.disqus.com'
-#      - '*.disquscdn.com'
-#    formaction:
-#      - '''self'''
-#      - 'https://syndication.twitter.com/'
-#      - 'https://platform.twitter.com'
-#      - disqus.com
-#      - disquscdn.com
-#      - '*.disqus.com'
-#      - '*.disquscdn.com'
-#    framesrc:
-#      - '''self'''
-#      - www.youtube.com
-#      - www.youtube-nocookie.com
-#      - 'https://platform.twitter.com'
-#      - 'https://syndication.twitter.com'
-#      - www.instagram.com
-#      - disqus.com
-#      - disquscdn.com
-#      - '*.disqus.com'
-#      - '*.disquscdn.com'
-#    imgsrc:
-#      - '''self'''
-#      - 'https://platform.twitter.com'
-#      - '*.twimg.com'
-#      - 'https://syndication.twitter.com'
-#      - 'data:'
-#      - cdnjs.cloudflare.com
-#      - disqus.com
-#      - disquscdn.com
-#      - '*.disqus.com'
-#      - '*.disquscdn.com'
-#      - "*.twimg.com"
-#    objectsrc:
-#      - '''none'''
-#    stylesrc:
-#      - '''self'''
-#      - '''unsafe-inline'''
-#      - 'https://platform.twitter.com'
-#      - cdnjs.cloudflare.com
-#      - disqus.com
-#      - disquscdn.com
-#      - '*.disqus.com'
-#      - '*.disquscdn.com'
-#      - '*.githubassets.com'
-#      - "*.twimg.com"
-#    scriptsrc:
-#      - '''self'''
-#      - '''unsafe-inline'''
-#      - 'https://platform.twitter.com'
-#      - cdnjs.cloudflare.com
-#      - www.instagram.com
-#      - disqus.com
-#      - disquscdn.com
-#      - 'gist.github.com'
-#      - '*.disqus.com'
-#      - '*.disquscdn.com'
-#      - "https://cdn.syndication.twimg.com"
-#    prefetchsrc:
-#      - '''self'''
-#      - disqus.com
-#      - disquscdn.com
-#      - '*.disqus.com'
-#      - '*.disquscdn.com'
 
 privacy:
   disqus:

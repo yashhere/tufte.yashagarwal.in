@@ -18,6 +18,7 @@ pages:
   script:
     - go run scripts/goodreads.go scripts/goodReadsApi.go
     - go run scripts/letterboxd.go
+    - go run scripts/library/main.go
     - hugo --gc --minify
     - find ./public -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png \) -print0 | xargs -0 -P16 -n2 mogrify -compress JPEG -strip -quality 40
     - gzip -k -6 -r $(find public -type f)

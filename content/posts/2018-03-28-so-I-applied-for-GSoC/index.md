@@ -8,7 +8,7 @@ categories = ["Write-ups"]
 draft = false
 +++
 
-{{< load-photoswipe >}}
+
 
 I first heard about Google Summer of Code (GSoC) in my second year (2016). It was quite fascinating to know that such a program exists (possibly because of that super attractive amount of money, $5500 at that time). I researched about it and sent emails to some mentors. The replies were mostly encouraging, but I still could not gather the courage to apply as I used to doubt my capabilities. Then last year (2017) again, I decided that I should try for GSoC one more time. I looked for the projects, started reading codebase of one project, but due to my lack of determination, I again did not apply.
 
@@ -22,7 +22,7 @@ Read about my GSoC project on [Boot Many Machines via Bittorrent](https://wiki.d
 
 Read my project proposal on [Google Drive](https://docs.google.com/document/d/1N7wcc6rwFuauTS-jH2JuLDnZIX0w79AzTPSvSJU3PtA/edit?usp=sharing) or [Debian Wiki](https://wiki.debian.org/YashAgarwal/GSoCProposal).
 
-{{< figure src="/images/posts/2018-03-28/gsoc-timeline.png#center" alt="gsoc timeline">}}
+{{< figure type="normal" src="/images/posts/2018-03-28/gsoc-timeline.png" alt="gsoc timeline" caption="gsoc timeline" >}}
 
 Eagerly waiting for the results. :smile:
 

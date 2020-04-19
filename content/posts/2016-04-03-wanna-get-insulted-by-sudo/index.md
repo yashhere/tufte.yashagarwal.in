@@ -8,13 +8,11 @@ categories = ["Hacks"]
 draft = false
 +++
 
-{{< load-photoswipe >}}
-
   You might have tried many Linux easters eggs for fun, but you are going to love this hack which makes `sudo` insult you.
 
   Confused what I am talking about? Here, take a look at this gif to get an idea of how `sudo` can insult you for typing in the incorrect password.
 
-{{< figure src="/images/posts/2016-04-03/insult.gif" alt="A terminal screen" caption-position="none">}}
+{{< figure type="normal" src="/images/posts/2016-04-03/insult.gif" alt="A terminal screen" caption="Illustration of the insult" >}}
 
   Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with Linux, and anyway, this is way better than the plain "You entered a wrong password" error message. So let's learn how to do this.
 

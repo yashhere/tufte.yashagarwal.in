@@ -21,10 +21,10 @@ ModSecurity requires some dependencies to work correctly. Let's install them -
 
 First, upgrade the Ubuntu system.
 
-{{< code bash >}}
+{{< highlight bash >}}
 sudo apt-get -y update
 sudo apt-get -y upgrade
-{{< /code >}}
+{{< /highlight >}}
 
 Now install the dependencies.
 

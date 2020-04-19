@@ -3,8 +3,14 @@ title = "whoami"
 comments = false
 slug = "whoami"
 +++
-> Great minds discuss ideas; average minds discuss events; small minds discuss people.
->
+
+
+{{< figure type="margin" src="/author/yash.jpg">}}
+
+{{< blockquote cite="Eleanor Roosevelt" footer="Eleanor Roosevelt" >}}
+  Great minds discuss ideas; average minds discuss events; small minds discuss people.
+{{< /blockquote >}}
+
 Hi, I am Yash ([y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)) 🙏. 
 
 I am a computer programmer 👨‍💻 interested in network security 🛡, cryptography 🔐, and distributed systems 🌐. I completed my B.Tech in Computer Science and Engineering 🎓 at National Institute of Technology, Calicut in 2018.
@@ -22,7 +28,7 @@ I am a history and mythology buff. I believe it is imperative to read history so
 You can find me elsewhere on the Web; places like [Twitter](https://twitter.com/yash__here), [Github](https://github.com/yashhere) and [LinkedIn](https://www.linkedin.com/in/theyashagarwal). There is also my [email](mailto:yashagarwaljpr+blog@gmail.com) 📩.
 
 
-**I keep a [now](/now) page updated with my current projects, favorite tools, and a lot of other stuff.**
+**I maintain a [updates](/updates) page, where I write about my day to day life.**
 
 [comment]: # (My resume is [here](/pdf/resume.pdf), but I am not looking for a new job right now.)
 

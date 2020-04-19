@@ -8,9 +8,6 @@ categories = ["Technical"]
 draft = false
 +++
 
-{{< load-photoswipe >}}
-
-
 After my summer vacation started, I bought a new laptop, and the first thing I did was to install Arch Linux on it. After a standard arch installation procedure, I started putting together my desktop environment, beginning with ArchLinux and Openbox, and then piecing all pieces together to build a proper desktop environment. Building a desktop this way follows the Unix Methodology; have software that each does one thing well, and when you put them together, you get something amazing.
 
 When I first installed Arch, I had several choices. I tried `xfce` and `gnome` as my desktop environments. While both of them have their pros and cons, I ended up liking none. The sole reason was the dependencies; these two software bring with them. My only intention of installing Arch was to have something, which I control, not like Ubuntu, where you are forced to use the preinstalled software and when you try to uninstall something, you fear of breaking some other program.
@@ -102,7 +99,7 @@ You can get any panel like [xfce4-panel](https://www.archlinux.org/packages/extr
 
 ## File Manager
 
-Some file managers deeply integrate into desktop environments, and when installed with Openbox, they end up pulling multiple dependencies, which is certainly not desired. Our aim behind building an Openbox set up was to have minimum dependencies so that we can get a lightweight desktop. However, there are several file managers available that fit into the Openbox very well. In my choice, [pcmanfm](https://www.archlinux.org/packages/?name=pcmanfm) is the best choice here. pcmanfm is a lightweight and fast file manager with network and thrash support. pcmanfm can also manage desktop icons and wallpaper setting, although if you plan to use conky in your system, then you may not want pcmanfm to manage desktop for you. The reason is that pcmanfm treats desktop as a window, so when you switch to desktop, the conky hides behind the desktop window. To get the icons and wallpaper, you can use other standalone tools such as [`idesk`](https://www.archlinux.org/packages/community/x86_64/idesk/) and [`feh`](https://www.archlinux.org/packages/extra/x86_64/feh/) or [`nitrogen`](https://www.archlinux.org/packages/extra/x86_64/nitrogen/).
+Some file managers deeply integrate into desktop environments, and when installed with Openbox, they end up pulling multiple dependencies, which is certainly not desired. Our aim behind building an Openbox set up was to have minimum dependencies so that we can get a lightweight desktop. However, there are several file managers available that fit into the Openbox very well. In my choice, [pcmanfm](https://www.archlinux.org/packages/?name=pcmanfm) is the best choice here. pcmanfm is a lightweight and fast file manager with network and thrash support. pcmanfm can also manage desktop icons and wallpaper setting, although if you plan to use conky in your system, then you may not want pcmanfm to manage desktop for you. The reason is that pcmanfm treats desktop as a window, so when you switch to desktop, the conky hides behind the desktop window. To get the icons and wallpaper, you can use other standalone tools such as `idesk` and `feh` or `nitrogen`.
 To start pcmanfm is the desktop mode, add the following to the autostart file.
 
 {{< highlight bash >}}
@@ -115,12 +112,12 @@ and to stop it for managing desktop
 pcmanfm --desktop-off &
 {{< /highlight >}}
 
-Many functions present in modern file managers require the installation of a few additional programs. [`gvfs`](https://www.archlinux.org/packages/?name=gvfs) gives you the ability to mount volumes and have trash control. It is not mandatory to have, but it allows on-demand mounting completely from within the file manager, as opposed to having to drop down to the command line. A disk-volume manager such as [`udisks2`](https://www.archlinux.org/packages/?name=udisks2) will also be wanted, and for auto-mounting removable disks, [`udiskie`](https://www.archlinux.org/packages/community/any/udiskie/) works well with Openbox. udiskie can be added to Openbox's autostart file like any other application.
+Many functions present in modern file managers require the installation of a few additional programs. `gvfs` gives you the ability to mount volumes and have trash control. It is not mandatory to have, but it allows on-demand `mounting` completely from within the file manager, as opposed to having to drop down to the command line. A disk-volume manager such as `udisks2` will also be wanted, and for auto-mounting removable disks, `udiskie` works well with Openbox. udiskie can be added to Openbox's autostart file like any other application.
 
 
 ## Composition
 
-Openbox does not provide native support for composition, although having a compositor may prevent screen flickering and other distortion in applications like [`oblogout`](https://www.archlinux.org/packages/community/any/oblogout/). Some options work great with Openbox. The one which I am using and quite happy with is [`compton`](https://wiki.archlinux.org/index.php/Compton). It can be used with or without any initial configuration, although there are a lot of different configuration options if you decide to customize the setup. To start compton in background with shadows, use this in `autostart` file.
+Openbox does not provide native support for composition, although having a compositor may prevent screen flickering and other distortion in applications like `oblogout`. Some options work great with Openbox. The one which I am using and quite happy with is `compton`. It can be used with or without any initial configuration, although there are a lot of different configuration options if you decide to customize the setup. To start compton in background with shadows, use this in `autostart` file.
 
 {{< highlight bash >}}
 compton -b -c &

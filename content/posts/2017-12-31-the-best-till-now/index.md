@@ -8,7 +8,7 @@ categories = ["Write-ups"]
 draft = false
 +++
 
-{{< load-photoswipe >}}
+
 
 
 If I have to define 2017 in one word, that would be amazing. This year has been a life-changing year for me. I learned a lot of new things, had some excellent experience in the company of amazing people, had a great time in my academic life and SSL. 2017 has been a very significant year for me, and I want to record this memory by documenting some of the most amazing things that I learned and experienced this year.
@@ -41,12 +41,9 @@ It is one thing which I could never excel in my undergrad life. People say that 
 
 Recently I started working on Debian Packaging. [Praveen](http://civic.gnu.org.in/author/praveen) sir has always been very supportive of me and answered all my ludicrous questions very patiently. My conversation with him about free software philosophy has been very enlightening. Debian Packaging was a very satisfying experience to be able to give something back to the community. Now, I hold [one](https://qa.debian.org/developer.php?login=yashagarwaljpr@gmail.com) package in the unstable Debian repository and [two](https://qa.debian.org/developer.php?login=bansaly26@gmail.com) more packages in the pipeline for approval.
 
+{{< figure src="/images/posts/2017-12-31/HackFest1.jpg" alt="Working on my first Debian package" caption="Working on my first Debian package" >}}
 
-
-{{< gallery >}}
-    {{< figure link="/images/posts/2017-12-31/HackFest1.jpg" alt="Working on my first Debian package" caption="Working on my first Debian package" caption-position="bottom"  caption-effect="appear" >}}
-    {{< figure src="/images/posts/2017-12-31/HackFest2.jpg" alt="Praveen sir and team" caption="Praveen sir and team" caption-position="bottom"  caption-effect="appear" >}}
-{{</ gallery >}}
+{{< figure src="/images/posts/2017-12-31/HackFest2.jpg" alt="Praveen sir and team" caption="Praveen sir and team" caption-position="bottom"  caption-effect="appear" >}}
 
 
 ## Placement
@@ -55,7 +52,7 @@ I joined NIT Calicut due to many [reasons](http://dsanghi.blogspot.in/2011/05/my
 
 
 
-{{< figure src="/images/posts/2017-12-31/placement.png#center" alt="A private post on FB, now public" caption="A private post on FB, now public" caption-position="bottom"  caption-effect="appear">}}
+{{< figure src="/images/posts/2017-12-31/placement.png#center" alt="A private post on FB, now public" caption="A private post on FB, now public" >}}
 
 
 
@@ -83,7 +80,7 @@ I continued to feel bored in the company of people. It is somewhat strange that 
 
 
 
-I built good relations with some faculties in the [Department](http://cse.nitc.ac.in), my technical skills got me some admirers, who eventually became my *friends*. I made some new friends from MCA also this year. It has been a pleasant experience overall.
+I built good relations with some faculties in the [department](http://cse.nitc.ac.in), my technical skills got me some admirers, who eventually became my *friends*. I made some new friends from MCA also this year. It has been a pleasant experience overall.
 
 
 

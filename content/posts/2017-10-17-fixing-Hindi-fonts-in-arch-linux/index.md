@@ -8,7 +8,7 @@ categories = ["Hacks"]
 draft = false
 +++
 
-{{< load-photoswipe >}}
+
 
 When viewing Hindi content in any browser in Arch Linux, the rendering looks weird.
 

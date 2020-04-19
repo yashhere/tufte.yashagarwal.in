@@ -23,7 +23,7 @@ Let' take a close look at how a virus spreads. I'll explain it using a small sam
 Now, let's extend this analogy to a network. In a network, we have multiple nodes. These nodes are classified using the terms -- infected, susceptible, and removed. The infected nodes try to spread some information by periodically selecting some peer nodes from the network. If a node is susceptible, that is, it does not know the said information, then after the selection and transmission of information by an infected node, the susceptible node also gets infected and starts spreading the information. A node is said to be removed, if it already knows the said information, but is not spreading it because, for example, all its peers already know the information, so there is no need to keep spreading it -- the so-called herd immunity).
 
 ## Some theory
-The concept of the Gossip Protocol is not something new. The 1987 paper Epidemic algorithms for replicated database maintenance[^1] is considered seminal on this topic. The Gossip Protocols were initially used to maintain consistency in replicated databases for efficient data communication. Later, these protocols found their usage in other areas such as service discovery in a distributed environment and maintaining node memberships as well.
+The concept of the Gossip Protocol is not something new. The 1987 paper Epidemic algorithms for replicated database maintenance{{< sidenote src="https://dl.acm.org/doi/10.1145/41840.41841">}}Epidemic Algorithms For Replicated Database Maintenance{{< /sidenote >}} is considered seminal on this topic. The Gossip Protocols were initially used to maintain consistency in replicated databases for efficient data communication. Later, these protocols found their usage in other areas such as service discovery in a distributed environment and maintaining node memberships as well.
 
 Usually, these protocols work as follows -
 1. A node ($A$) in the network randomly selects another node with which it wants to share information. Here, the assumption is that each node in the network either maintains a list of all the other nodes or gets the information from a centralized server.
@@ -68,5 +68,3 @@ If you want to get started with this topic, here I recommend some papers that ar
 **P.S.** - This is my first attempt to read and summarize CS research papers. I have intentionally covered only a small part (first few pages) of the paper (first reference in the above list) here, as I am still figuring out the best way to read and summarise. I am confident that with time and practice, I will get better.
 
 If you find any scope of improvement in current content, please let me know through email or comment box below.
-
-[^1]: [Epidemic Algorithms For Replicated Database Maintenance](https://dl.acm.org/doi/10.1145/41840.41841)

@@ -9,7 +9,7 @@ series = ["Go + gRPC + OPA"]
 draft = false
 +++
 
-{{< load-photoswipe >}}
+
 
 In the last [post](/posts/2019/02/go-grpc-opa-a-perfect-union-part-1/), we discussed about the structure of our library
 application. In this post, we will define the data definitions using protobuf, and then we will use these definitions to
