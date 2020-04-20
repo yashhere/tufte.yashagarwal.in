@@ -13,7 +13,7 @@ type Library struct {
 	BookID                  int    `json:"book_id"`
 	Title                   string `json:"title"`
 	Author                  string `json:"author"`
-	ISBN                    string `json:"isbn"`
+	ISBN                    int 	`json:"isbn"`
 	ISBN13                  int64  `json:"isbn13"`
 	MyRating                int    `json:"my_rating"`
 	NumberOfPages           int    `json:"num_of_pages"`
@@ -24,21 +24,37 @@ type Library struct {
 }
 
 type GoodReadsData struct {
-	BookID                  int    `json:"Book Id"`
-	Title                   string `json:"Title"`
-	Author                  string `json:"Author"`
-	AuthorLF                string `json:"Author l-f"`
-	AdditionalAuthors       string `json:"Additional Authors"`
-	ISBN                    string `json:"ISBN"`
-	ISBN13                  int64  `json:"ISBN13"`
-	MyRating                int    `json:"My Rating"`
-	NumberOfPages           int    `json:"Number of Pages"`
-	YearPublished           int    `json:"Year Published"`
-	OriginalPublicationYear int    `json:"Original Publication Year"`
-	DateRead                string `json:"Date Read"`
-	DateAdded               string `json:"Date Added"`
-	Bookshelves             string `json:"Bookshelves"`
-	ExclusiveShelf          string `json:"Exclusive Shelf"`
+	BookID                   int     `json:"Book Id"`
+	Title                    string  `json:"Title"`
+	Author                   string  `json:"Author"`
+	AuthorLF                 string  `json:"Author l-f"`
+	AdditionalAuthors        string  `json:"Additional Authors"`
+	ISBN                     int     `json:"ISBN"`
+	ISBN13                   int64   `json:"ISBN13"`
+	MyRating                 int     `json:"My Rating"`
+	AverageRating            float64 `json:"Average Rating"`
+	Publisher                string  `json:"Publisher"`
+	Binding                  string  `json:"Binding"`
+	NumberOfPages            int     `json:"Number of Pages"`
+	YearPublished            int     `json:"Year Published"`
+	OriginalPublicationYear  int     `json:"Original Publication Year"`
+	DateRead                 string  `json:"Date Read"`
+	DateAdded                string  `json:"Date Added"`
+	Bookshelves              string  `json:"Bookshelves"`
+	BookshelvesWithPositions string  `json:"Bookshelves with positions"`
+	ExclusiveShelf           string  `json:"Exclusive Shelf"`
+	MyReview                 string  `json:"My Review"`
+	Spoiler                  string  `json:"Spoiler"`
+	PrivateNotes             string  `json:"Private Notes"`
+	ReadCount                int     `json:"Read Count"`
+	RecommendedFor           string  `json:"Recommended For"`
+	RecommendedBy            string  `json:"Recommended By"`
+	OwnedCopies              int     `json:"Owned Copies"`
+	OriginalPurchaseDate     string  `json:"Original Purchase Date"`
+	OriginalPurchaseLocation string  `json:"Original Purchase Location"`
+	Condition                string  `json:"Condition"`
+	ConditionDescription     string  `json:"Condition Description"`
+	BCID                     string  `json:"BCID"`
 }
 
 // https://stackoverflow.com/a/44359967/5042046
@@ -73,7 +89,7 @@ func formatDateTime(s string) string {
 }
 
 func main() {
-	file, err := ioutil.ReadFile("scripts/library/goodreads_data.json")
+	file, err := ioutil.ReadFile("scripts/library/goodreads.json")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -102,8 +118,15 @@ func main() {
 		book.DateAdded = formatDateTime(d.DateAdded)
 
 		readState := strings.Replace(d.ExclusiveShelf, "-", "_", -1)
-		book.Bookshelves = readState
 
+		t, err := time.Parse("02-01-2006", book.DateRead)
+		if err == nil {
+			if (time.Now().Month() - t.Month()) <= 1 && time.Now().Year() == t.Year() {
+				readState = "recently_finished"
+			}
+		}
+
+		book.Bookshelves = readState
 		library[readState] = append(library[readState], book)
 	}
 
