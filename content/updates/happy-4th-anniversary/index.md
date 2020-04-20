@@ -1,9 +1,7 @@
-
 +++
 title = "Happy 4th Anniversary!!"
 author = ["Yash Agarwal"]
 date = 2020-04-04T13:47:40+05:30
-images = []
 draft = false
 +++
 
