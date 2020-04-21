@@ -32,7 +32,9 @@ Author:
 
 Permalinks:
   posts: ":sections/:year/:month/:slug/"
-  notes: ":sections/:filename/"
+  updates: ":sections/:year/:month/:slug/"
+  books: ":sections/:year/:month/:slug/"
+
 
 Taxonomies:
   category: categories
