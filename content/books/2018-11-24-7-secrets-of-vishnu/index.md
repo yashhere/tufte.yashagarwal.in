@@ -8,7 +8,7 @@ categories = ["Review"]
 draft = false
 +++
 
-{{< figure type="margin" src="https://images.gr-assets.com/books/1481423442l/33307121.jpg" rating="4.5" title="7 Secrets of Vishnu">}}
+{{< figure type="margin" src="/images/books/7-secrets-of-vishnu.jpg" rating="4.5" title="7 Secrets of Vishnu">}}
 
 
 For me, reading this book was to look at the things that I already knew, from a

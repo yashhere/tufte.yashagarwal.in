@@ -8,7 +8,7 @@ categories = ["Review"]
 draft = false
 +++
 
-{{< figure type="margin" src="https://images.gr-assets.com/books/1470978134l/31430654.jpg" rating="3.7" title="The Millionaire Booklet">}}
+{{< figure type="margin" src="/images/books/the-millionaire-booklet.jpg" rating="3.7" title="The Millionaire Booklet">}}
 
 A friend suggested me to read this book. It was my first audiobook, and my experience is a
 mixed one. I am not a very good retainer of information while listening to something when compared with my retention

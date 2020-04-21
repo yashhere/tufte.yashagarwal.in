@@ -8,7 +8,7 @@ categories = ["Review"]
 draft = false
 +++
 
-{{< figure type="margin" src="https://images.gr-assets.com/books/1403181687l/17994.jpg" caption-position="none" rating="5" title="The Code Book">}}
+{{< figure type="margin" src="/images/books/the-code-book.jpg" caption-position="none" rating="5" title="The Code Book">}}
 
 
 I was interested in Cryptography and Number Theory during my undergraduate studies so reading the

@@ -8,7 +8,7 @@ categories = ["Review"]
 draft = false
 +++
 
-{{< figure type="margin" src="https://images.gr-assets.com/books/1404581320l/4924862.jpg"  rating="4" title="I Will Teach You to Be Rich">}}
+{{< figure type="margin" src="/images/books/i-will-teach-you-to-be-rich.jpg"  rating="4" title="I Will Teach You to Be Rich">}}
 
 It was my first book on the topic of personal finance. I am entirely new to managing money, so I thought it would be a
 good idea to gain some knowledge before trying anything crazy. I must say, this book has not disappointed me. I do not

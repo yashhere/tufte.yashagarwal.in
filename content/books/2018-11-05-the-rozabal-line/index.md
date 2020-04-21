@@ -8,7 +8,7 @@ categories = ["Review"]
 draft = false
 +++
 
-{{< figure type="margin" src="https://images.gr-assets.com/books/1348205204l/9471031.jpg" title="The Rozabal Line" rating="3.8">}}
+{{< figure type="margin" src="/images/books/the-rozabal-line.jpg" title="The Rozabal Line" rating="3.8">}}
 
 It was an exciting read for me. I must say the amount of research done by the author is really commendable. Given the topic of this work, the author comes very close to getting everything right, but eventually, he misses the mark.
 

@@ -8,7 +8,7 @@ categories = ["Review"]
 draft = false
 +++
 
-{{< figure type="margin" src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1535865613l/41592121._SY475_.jpg" rating="4" title="The Richest Man in Babylon">}}
+{{< figure type="margin" src="/images/books/the-richest-man-in-babylon.jpg" rating="4" title="The Richest Man in Babylon">}}
 
 
 I have read a few personal finance-related books until now. All of them preaches to save, not spend, and invest, and I will be rich. This book is no different, but it does provide a simple base upon which, more modern understanding of finance can be built.

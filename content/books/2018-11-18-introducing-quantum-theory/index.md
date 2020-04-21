@@ -8,7 +8,7 @@ categories = ["Review"]
 draft = false
 +++
 
-{{< figure type="margin" src="https://images.gr-assets.com/books/1483980422l/785820.jpg"  rating="4" title="Introducing Quantum Theory">}}
+{{< figure type="margin" src="/images/books/introducing-quantum-theory.jpg"  rating="4" title="Introducing Quantum Theory">}}
 
 There was a time when I used to despise Physics. I still do not know the exact reason behind this feeling because I was much interest in Physics in general. Perhaps the mathematical questions of JEE put me off.
 
