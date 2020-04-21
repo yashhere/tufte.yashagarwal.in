@@ -14,7 +14,7 @@ test:
 pages:
   before_script:
     - apt update
-    - apt install -y imagemagick
+    - apt install -y imagemagick jq
   script:
 #    - go run scripts/goodreads.go scripts/goodReadsApi.go
 #    - go run scripts/letterboxd.go

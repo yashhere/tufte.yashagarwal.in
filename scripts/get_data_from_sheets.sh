@@ -19,6 +19,8 @@ for val in "${sheets_to_fetch[@]}"; do
   fi
 done
 
-jq -s '[.[] | to_entries] | flatten | reduce .[] as $dot ({}; .[$dot.key] += $dot.value)' currently_reading.json queued.json recently_finished.json unread.json read.json | jq '.data' > data/library.json
+mkdir -p data
+
+jq -s '[.[] | to_entries] | flatten | reduce .[] as $dot ({}; .[$dot.key] += $dot.value)' currently_reading.json queued.json recently_finished.json unread.json read.json | jq '.data' | tee ./data/library.json
 
 rm currently_reading.json queued.json recently_finished.json unread.json read.json
