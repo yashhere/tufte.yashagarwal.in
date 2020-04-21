@@ -17,3 +17,4 @@
 [submodule "themes/tufte"]
 	path = themes/tufte
 	url = https://github.com/yashhere/hugo-theme-tufte
+	branch = master
