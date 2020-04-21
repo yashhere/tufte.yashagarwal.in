@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"regexp"
 	"strings"
 	"time"
 )
@@ -97,15 +98,17 @@ func main() {
 
 	_ = json.Unmarshal([]byte(file), &data)
 
-	library := make(map[string][]*Library)
+	space := regexp.MustCompile(`\s+`)
+
+	library := make([]*Library, 0)
 	for _, d := range data {
 		book := new(Library)
 		book.BookID = d.BookID
-		book.Title = d.Title
+		book.Title = space.ReplaceAllString(d.Title, " ")
 		if d.AdditionalAuthors == "" {
-			book.Author = d.Author
+			book.Author = space.ReplaceAllString(d.Author, " ")
 		} else {
-			book.Author = d.Author + " et al."
+			book.Author = space.ReplaceAllString(d.Author, " ") + " et al."
 		}
 
 		book.ISBN = d.ISBN
@@ -117,7 +120,7 @@ func main() {
 		book.DateRead = formatDateTime(d.DateRead)
 		book.DateAdded = formatDateTime(d.DateAdded)
 
-		readState := strings.Replace(d.ExclusiveShelf, "-", "_", -1)
+		readState := space.ReplaceAllString(strings.Replace(d.ExclusiveShelf, "-", "_", -1), " ")
 
 		t, err := time.Parse("02-01-2006", book.DateRead)
 		if err == nil {
@@ -127,7 +130,7 @@ func main() {
 		}
 
 		book.Bookshelves = readState
-		library[readState] = append(library[readState], book)
+		library = append(library, book)
 	}
 
 	d, _ := json.MarshalIndent(library, "", " ")
