@@ -15,6 +15,7 @@ pygmentsOptions:
   linenostart: 1
   linenos: table
 
+paginate: 5
 enableEmoji: true
 enableRobotsTXT: true
 LanguageCode: en-us
