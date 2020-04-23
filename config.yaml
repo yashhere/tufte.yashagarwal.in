@@ -103,23 +103,18 @@ Params:
 
   social:
     email:
-    - address: contact@example.com
-      relme: true
+    - address: yashagarwaljpr+blog@gmail.com
     github:
     - address: yashhere
       relme: true
     gitlab:
     - address: yashhere
-      relme: true
     instagram:
     - address: yum_yash
     linkedin:
     - address: theyashagarwal
     twitter:
     - address: yash__here
-    reply:
-    - address: dasa
-
 
 privacy:
   disqus:
