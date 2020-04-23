@@ -21,6 +21,6 @@ done
 
 mkdir -p data
 
-jq -s '[.[] | to_entries] | flatten | reduce .[] as $dot ({}; .[$dot.key] += $dot.value)' currently_reading.json queued.json recently_finished.json unread.json read.json | jq '.data' | tee ./data/library.json
+jq -s '[.[] | to_entries] | flatten | reduce .[] as $dot ({}; .[$dot.key] += $dot.value)' currently_reading.json queued.json recently_finished.json unread.json read.json | jq '.data' > ./data/library.json
 
 rm currently_reading.json queued.json recently_finished.json unread.json read.json
