@@ -1,18 +1,18 @@
 [submodule "themes/hugo-search-fuse-js"]
 	path = themes/hugo-search-fuse-js
-	url = https://github.com/kaushalmodi/hugo-search-fuse-js
+	url = https://github.com/yashhere/hugo-search-fuse-js
 	ignore = dirty
 [submodule "themes/hugo-jf2"]
 	path = themes/hugo-jf2
-	url = https://github.com/kaushalmodi/hugo-jf2
+	url = https://github.com/yashhere/hugo-jf2
 	ignore = dirty
 [submodule "themes/hugo-atom-feed"]
 	path = themes/hugo-atom-feed
-	url = https://github.com/kaushalmodi/hugo-atom-feed
+	url = https://github.com/yashhere/hugo-atom-feed
 	ignore = dirty
 [submodule "themes/hugo-debugprint"]
 	path = themes/hugo-debugprint
-	url = https://github.com/kaushalmodi/hugo-debugprint
+	url = https://github.com/yashhere/hugo-debugprint
 	ignore = dirty
 [submodule "themes/tufte"]
 	path = themes/tufte

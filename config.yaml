@@ -77,8 +77,6 @@ Params:
     showReadingTime: true
   copyright:
     startyear: 2016
-  css_lazy_load: true
-  cache_busting: true
   mainSections:
     - posts
     - updates
@@ -86,7 +84,6 @@ Params:
     - about
     - search
   tagline: "The directory of my thoughts"
-
   favicons: true
   feedSections:
     - posts
@@ -95,6 +92,8 @@ Params:
   source:
     url: "https://gitlab.com/yashhere/yashhere.gitlab.io"
     md_dir: content
+    branch: source
+
 #  indieweb:
 #    domain: "https://yashagarwal.in/"
 #    webring: "\U00003297\U0000fe0f\U0001f34b\U0001f468\U0000200d\U0001f468\U0000200d\U0001f467\U0000200d\U0001f467"
@@ -103,19 +102,24 @@ Params:
 #      account: "https://yashagarwal.in"
 
   social:
-    - name: Github
-      link: "https://github.com/yashhere/"
+    email:
+    - address: contact@example.com
       relme: true
-    - name: Gitlab
-      link: "https://gitlab.com/users/yashhere/projects"
+    github:
+    - address: yashhere
       relme: true
-    - name: Twitter
-      link: "https://twitter.com/yash__here/"
+    gitlab:
+    - address: yashhere
       relme: true
-    - name: Keybase.io
-      link: "https://keybase.io/yash2696"
-      icon: keybase
-      relme: true
+    instagram:
+    - address: yum_yash
+    linkedin:
+    - address: theyashagarwal
+    twitter:
+    - address: yash__here
+    reply:
+    - address: dasa
+
 
 privacy:
   disqus:
