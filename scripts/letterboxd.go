@@ -92,7 +92,7 @@ func main() {
 		t, _ := time.Parse("2006-01-02", strings.TrimSpace(movie.WatchedDate))
 		now := time.Now()
 
-		if t.Month() == now.Month() && t.Year() == now.Year() {
+		if t.Month() == 3 && t.Year() == now.Year() {
 			imageUrl := re.FindAllString(movie.Description, -1)[0]				// taking only first occurrence
 			imageUrl = strings.Replace(imageUrl, "src=", "", 1)			// removing "src="
 			imageUrl = imageUrl[1 : len(imageUrl)-1]

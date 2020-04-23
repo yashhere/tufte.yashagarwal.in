@@ -3,10 +3,14 @@ title = "Go + gRPC + OPA - A Perfect Union - Part 1"
 author = ["Yash Agarwal"]
 date = 2019-02-10T14:29:08+05:30
 images = []
-tags = ["GRPC", "OPA"]
+tags = ["grpc", "opa"]
 categories = ["Technical"]
 series = ["Go + gRPC + OPA"]
 draft = false
+description = "sample description"
+[versions]
+    plantuml = "1.2018.14"
+
 +++
 
 **TL;DR** -- In a series of blog posts, I will be implementing a simple library application supporting both gRPC and REST interfaces using Go, gRPC, and
