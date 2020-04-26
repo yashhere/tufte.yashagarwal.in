@@ -11,10 +11,10 @@ HUGO_FLAGS = --gc --minify
 # Redirect error output to a file, so we can show it in development mode.
 STDERR := /tmp/.$(PROJECTNAME)-stderr.txt
 
-.PHONY: all clean library public server watch .minifier .compress help
+.PHONY: all clean library public server watch .minifier help
 
 # Below are PHONY targets
-all: clean library public .minifier .compress
+all: clean library public .minifier
 
 help:
 	@echo "Usage: make <command>"
@@ -25,6 +25,7 @@ help:
 
 library:
 	mkdir -p data
+	@echo "Downloading library data"
 	cd scripts && go run main.go
 
 server: public
@@ -38,10 +39,9 @@ clean:
 	-rm -rf data
 
 public:
+	@echo "Generating blog"
 	$(HUGO) $(HUGO_FLAGS)
 
 .minifier:
+	@echo "minifying images now"
 	find ./public -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png \) -print0 | xargs -0 -P16 -n2 mogrify -compress JPEG -strip -quality 40
-
-.compress:
-	gzip -k -6 -r $(find public -type f)
