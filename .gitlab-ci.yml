@@ -12,9 +12,6 @@ test:
     - source
 
 pages:
-  before_script:
-    - apt update
-    - apt install -y imagemagick jq make
   script:
     - make
     - gzip -k -6 -r $(find public -type f)
