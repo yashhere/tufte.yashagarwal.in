@@ -48,3 +48,22 @@ func ConvertStringToNumber(s string) (int, error) {
 		return num, nil
 	}
 }
+
+// https://medium.com/@habibridho/here-is-why-no-one-write-generic-slice-filter-in-go-8b3d1063674e
+func FindString(array []string, item string) bool {
+	for _, i := range array {
+		if i == item {
+			return true
+		}
+	}
+	return false
+}
+
+func FindInt(array []int, item int) bool {
+	for _, i := range array {
+		if i == item {
+			return true
+		}
+	}
+	return false
+}

@@ -13,37 +13,37 @@ import (
 
 	api "scripts/api/library"
 	utils "scripts/pkg/utils"
+
+	"github.com/pkg/errors"
 )
 
-func FetchDataFromGsheets(destFile string) {
+func FetchDataFromGsheets(destFile string) error {
 	sheets := []string{"read", "unread", "currently_reading", "queued"}
 
 	gsheet_id, ok := os.LookupEnv("GSHEET_ID")
 	if ok != true {
-		fmt.Errorf("%s", "GSHEET_ID is not set.")
-		os.Exit(1)
+		return errors.New("GSHEET_ID is not set.")
 	}
 
 	baseUrl := fmt.Sprintf("https://docs.google.com/spreadsheets/d/%s/gviz/tq?tqx=out:csv&sheet=", gsheet_id)
 
 	books := make([]*api.Books, 0)
 	for _, sheet := range sheets {
-		sheetUrl := fmt.Sprintf(baseUrl + "%s", sheet)
+		sheetUrl := fmt.Sprintf(baseUrl+"%s", sheet)
 		resp, err := http.Get(sheetUrl)
 		if err != nil {
-			fmt.Errorf("Could not download %s", sheet)
-			continue
+			return err
 		}
 		defer resp.Body.Close()
 
 		responseData, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
-			fmt.Errorf("%s", err)
+			return err
 		}
 
 		r, err := csv.NewReader(bytes.NewReader(responseData)).ReadAll()
 		if err != nil {
-			continue
+			return err
 		}
 
 		for idx, record := range r {
@@ -107,13 +107,13 @@ func FetchDataFromGsheets(destFile string) {
 
 			if record[9] == "" {
 				fmt.Errorf("DateRead does not seem to be valid for %s\n", book.Title)
-			} else if book.DateRead != nil && book.DateRead.Year() == time.Now().Year() && (time.Now().Month() - book.DateRead.Month()) <= 1 {
+			} else if book.DateRead != nil && book.DateRead.Year() == time.Now().Year() && (time.Now().Month()-book.DateRead.Month()) <= 1 {
 				book.Bookshelves = "recently_finished"
 			} else {
 				book.Bookshelves = record[10]
 			}
 
-			if len(record) == 12  {
+			if len(record) == 12 {
 				book.BlogLink = record[11]
 			}
 
@@ -125,6 +125,8 @@ func FetchDataFromGsheets(destFile string) {
 
 	err := ioutil.WriteFile(destFile, file, 0644)
 	if err != nil {
-		fmt.Errorf("%s", err)
+		return err
 	}
+
+	return nil
 }
