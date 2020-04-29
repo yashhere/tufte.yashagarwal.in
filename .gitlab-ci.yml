@@ -14,7 +14,6 @@ test:
 pages:
   script:
     - make
-    -
     - gzip -k -6 -r $(find public -type f)
   artifacts:
     paths:
