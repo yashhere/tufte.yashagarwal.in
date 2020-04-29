@@ -14,7 +14,7 @@ STDERR := /tmp/.$(PROJECTNAME)-stderr.txt
 .PHONY: all clean go_scripts commit_data public server watch .minifier help
 
 # Below are PHONY targets
-all: clean go_scripts public .minifier
+all: clean go_scripts commit_data public .minifier
 
 help:
 	@echo "Usage: make <command>"
