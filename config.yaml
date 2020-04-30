@@ -80,6 +80,7 @@ Params:
   mainSections:
     - posts
     - updates
+    - links
     - books
     - about
     - search

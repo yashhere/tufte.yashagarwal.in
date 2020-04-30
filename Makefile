@@ -11,10 +11,10 @@ HUGO_FLAGS = --gc --minify
 # Redirect error output to a file, so we can show it in development mode.
 STDERR := /tmp/.$(PROJECTNAME)-stderr.txt
 
-.PHONY: all clean go_scripts commit_data public server watch .minifier help
+.PHONY: all clean go_scripts public server watch .minifier help
 
 # Below are PHONY targets
-all: clean go_scripts commit_data public .minifier
+all: clean go_scripts public .minifier
 
 help:
 	@echo "Usage: make <command>"
@@ -24,17 +24,9 @@ help:
 	@echo "  watch   Runs hugo in watch mode, waiting for changes"
 
 go_scripts:
-	mkdir -p data
+	mkdir -p static/data
 	@echo "Downloading data"
 	cd scripts && go run main.go
-
-commit_data:
-	- git config credential.helper envvar
-	- git config user.name $GITCREDENTIALUSERNAME
-	- git config user.email $GITCREDENTIALEMAIL
-	- git add data/
-	- git commit -m "Updating bookmarks [skip ci]" || echo "No changes to bookmarks"
-	- git push
 
 server: public
 	cd public && python -m SimpleHTTPServer 1313

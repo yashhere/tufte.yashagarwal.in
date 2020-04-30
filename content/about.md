@@ -1,5 +1,5 @@
 +++
-title = "whoami"
+title = "me"
 comments = false
 slug = "whoami"
 +++
