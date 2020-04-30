@@ -11,10 +11,10 @@ HUGO_FLAGS = --gc --minify
 # Redirect error output to a file, so we can show it in development mode.
 STDERR := /tmp/.$(PROJECTNAME)-stderr.txt
 
-.PHONY: all clean go_scripts public server watch .minifier help
+.PHONY: all clean go_scripts copy_data public server watch .minifier help
 
 # Below are PHONY targets
-all: clean go_scripts public .minifier
+all: clean go_scripts copy_data public .minifier
 
 help:
 	@echo "Usage: make <command>"
@@ -24,9 +24,13 @@ help:
 	@echo "  watch   Runs hugo in watch mode, waiting for changes"
 
 go_scripts:
-	mkdir -p static/data
+	mkdir -p data
 	@echo "Downloading data"
 	cd scripts && go run main.go
+
+copy_data:
+	@echo "Copying json files to static/data"
+	cp -r data static/
 
 server: public
 	cd public && python -m SimpleHTTPServer 1313
@@ -35,8 +39,9 @@ watch: clean
 	$(HUGO) server -w
 
 clean:
+	@echo "Cleaning folders"
 	-rm -rf public
-	-rm -rf data
+	-rm -rf data static/data
 
 public:
 	@echo "Generating blog"

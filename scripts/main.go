@@ -10,13 +10,13 @@ import (
 
 func main() {
 	var err error
-	destLibraryFile := "../static/data/library.json"
+	destLibraryFile := "../data/library.json"
 	err = library.FetchDataFromGsheets(destLibraryFile)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	destBookmarksFile := "../static/data/bookmarks.json"
+	destBookmarksFile := "../data/bookmarks.json"
 	err = links.CreateBookMarksFile(destBookmarksFile)
 	if err != nil {
 		fmt.Println(err)
