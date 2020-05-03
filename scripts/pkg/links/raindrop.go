@@ -81,7 +81,7 @@ func CreateBookMarksFile(destFile string) error {
 		return errors.New("Raindrop token is not set.")
 	}
 
-	perpage := 7
+	perpage := 50
 	var bookmarks []interface{}
 	for page := 0; ; page++ {
 		data, err := downloadBookmarks(raindropToken, page, perpage)

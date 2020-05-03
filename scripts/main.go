@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"scripts/pkg/library"
 	"scripts/pkg/links"
 )
 
