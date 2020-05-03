@@ -8,6 +8,7 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -30,7 +31,7 @@ type Collection struct {
 	Id   int    `json:"id,omitempty"`
 }
 
-func callApi(url string, method string, token string) ([]byte, error) {
+func callApi(url string, method string, token string, page int, perpage int) ([]byte, error) {
 	payload := &bytes.Buffer{}
 	writer := multipart.NewWriter(payload)
 	err := writer.Close()
@@ -45,9 +46,14 @@ func callApi(url string, method string, token string) ([]byte, error) {
 		return nil, err
 	}
 
-	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", token))
+	q := req.URL.Query()
+	q.Add("page", strconv.Itoa(page))
+	q.Add("perpage", strconv.Itoa(perpage))
+	req.URL.RawQuery = q.Encode()
 
+	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", token))
 	req.Header.Set("Content-Type", writer.FormDataContentType())
+
 	res, err := client.Do(req)
 	if err != nil {
 		return nil, err
@@ -62,48 +68,11 @@ func callApi(url string, method string, token string) ([]byte, error) {
 	return body, err
 }
 
-func getCollections(token string, collectionToOmit []string) ([]int, error) {
-	url := "https://api.raindrop.io/rest/v1/collections"
+func downloadBookmarks(token string, page int, perpage int) ([]byte, error) {
+	baseUrl := "https://api.raindrop.io/rest/v1/raindrops/0"
 	method := "GET"
 
-	body, err := callApi(url, method, token)
-	if err != nil {
-		return nil, err
-	}
-
-	// file, err := ioutil.ReadFile("pkg/links/collections.json")
-	// if err != nil {
-	// 	return nil, err
-	// }
-
-	var c map[string]interface{}
-
-	// err = json.Unmarshal([]byte(file), &c)
-	err = json.Unmarshal(body, &c)
-
-	if err != nil {
-		return nil, err
-	}
-
-	collections := make([]int, 0)
-	for _, entry := range c["items"].([]interface{}) {
-
-		// if the collectionName of entry == any of collectionToOmit, then don't include that id in collections
-		if utils.FindString(collectionToOmit, strings.ToLower(entry.(map[string]interface{})["title"].(string))) {
-			continue
-		}
-
-		collections = append(collections, int(entry.(map[string]interface{})["_id"].(float64)))
-	}
-
-	return collections, nil
-}
-
-func downloadBookmarks(token string) ([]byte, error) {
-	url := "https://api.raindrop.io/rest/v1/raindrops/0"
-	method := "GET"
-
-	return callApi(url, method, token)
+	return callApi(baseUrl, method, token, page, perpage)
 }
 
 func CreateBookMarksFile(destFile string) error {
@@ -112,35 +81,42 @@ func CreateBookMarksFile(destFile string) error {
 		return errors.New("Raindrop token is not set.")
 	}
 
-	bookmarksData, err := downloadBookmarks(raindropToken)
+	perpage := 7
+	var bookmarks []interface{}
+	for page := 0; ; page++ {
+		data, err := downloadBookmarks(raindropToken, page, perpage)
+		if err != nil {
+			return err
+		}
 
-	if err != nil {
-		return err
+		var bm map[string]interface{}
+		err = json.Unmarshal(data, &bm)
+		if err != nil {
+			return err
+		}
+
+		b := bm["items"].([]interface{})
+		bookmarks = append(bookmarks, b...)
+		if len(b) < perpage {
+			break
+		}
 	}
 
-	var bm map[string]interface{}
-	err = json.Unmarshal(bookmarksData, &bm)
-
-	// fmt.Println(utils.PrettyJson(bm))
-	// file, err := ioutil.ReadFile("pkg/links/bookmarks_data.json")
-	if err != nil {
-		return err
-	}
-
-	// var bm map[string]interface{}
-
-	// _ = json.Unmarshal([]byte(file), &bm)
-
-	collectionToOmit := []string{"unread", "to read later", "import"}
-	collections, err := getCollections(raindropToken, collectionToOmit)
-
-	if err != nil {
-		return err
+	tagsToOmit := []string{
+		"do-not-publish",
 	}
 
 	links := make([]*Link, 0)
-	for _, b := range bm["items"].([]interface{}) {
-		if !utils.FindInt(collections, int(b.(map[string]interface{})["collectionId"].(float64))) {
+	for _, b := range bookmarks {
+		omittedTagFound := false
+		for _, tag := range b.(map[string]interface{})["tags"].([]interface{}) {
+			if utils.FindString(tagsToOmit, tag.(string)) {
+				omittedTagFound = true
+				break
+			}
+		}
+
+		if omittedTagFound {
 			continue
 		}
 
@@ -167,7 +143,11 @@ func CreateBookMarksFile(destFile string) error {
 		links = append(links, link)
 	}
 
-	file, _ := json.MarshalIndent(links, "", " ")
+	fmt.Printf("Writing [%d] links to booksmarks.json file.", len(links))
+	file, err := json.MarshalIndent(links, "", " ")
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	err = ioutil.WriteFile(destFile, file, 0644)
 	if err != nil {

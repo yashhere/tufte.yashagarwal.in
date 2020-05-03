@@ -1,8 +1,6 @@
 package main
 
 import (
-	"scripts/pkg/library"
-
 	"fmt"
 
 	"scripts/pkg/links"
