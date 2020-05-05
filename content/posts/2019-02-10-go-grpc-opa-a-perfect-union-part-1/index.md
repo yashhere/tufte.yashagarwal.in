@@ -7,10 +7,6 @@ tags = ["grpc", "opa"]
 categories = ["Technical"]
 series = ["Go + gRPC + OPA"]
 draft = false
-description = "sample description"
-[versions]
-    plantuml = "1.2018.14"
-
 +++
 
 **TL;DR** -- In a series of blog posts, I will be implementing a simple library application supporting both gRPC and REST interfaces using Go, gRPC, and
