@@ -4,7 +4,7 @@ author = ["Yash Agarwal"]
 date = 2020-05-08T07:21:55+05:30
 categories = ["papers"]
 tags = ["cassandra", "distributed-systems", "notes"]
-draft = true
+draft = false
 mathjax = true
 +++
 
