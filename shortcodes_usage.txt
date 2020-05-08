@@ -1,0 +1,18 @@
+{{< epigraph pre="Author Writer, " cite="Math is Fun" >}}
+    When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+    $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+{{< /epigraph >}}
+
+{{< blockquote cite="www.shawnohare.com" footer="Shawn" >}}
+  There is nothing more beautiful than an elegant mathematical proof.
+{{< /blockquote >}}
+
+{{< newthought >}}
+A virus spread quickly and robustly. Our goal in a distributed system is to spread the information/updates as quickly as possible without burdening the network. The epidemic protocols try to bring these ideas from epidemiology to distributed systems.
+{{< /newthought >}}
+
+{{< sidenote >}}I'll explain it using a small sample of five people. We assume that, initially, none of these people is infected. Now, because of some external factors{{< /sidenote >}}
+
+{{< marginnote >}} by periodically selecting some peer nodes from the network. If a node is susceptible, that is, it does not know the said information, then after the selection and transmission of  information by an infected node, the susceptible node also gets infected and starts spreading the information.{{< /marginnote >}}
+
+{{< figure src="/images/posts/2019-06-29/bdiyaFI.jpg" type="full" label="mn-napoleonic-wars" title="Napoleonic wars" caption="Figure 4: akenly interpret confidence intervals as credibility intervals, while statisticians know that confidence intervals are  even though they interpret them in the same way." attr="Image attribution" attrlink="attribute link" alt="Napoleonic wars" link="/images/posts/2019-06-29/bdiyaFI.jpg" >}}
