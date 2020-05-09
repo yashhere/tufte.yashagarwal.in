@@ -8,8 +8,6 @@ draft = false
 mathjax = true
 +++
 
-Paper Link:- [Cassandra - A Decentralized Structured Storage System](http://www.cs.cornell.edu/Projects/ladis2009/papers/Lakshman-ladis2009.PDF)
-
 Cassandra is a distributed storage system that can spread over thousands of nodes and store terabytes of structured data. Cassandra was developed at Facebook to solve performance issues during searches in Facebook Inbox. Cassandra can provide a highly available service without a single point of failure.
 
 Cassandra borrows some of its architecture choices from Google's BigTable{{< sidenote >}}<a href="https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf" title="Bigtable">Bigtable: A Distributed Storage System for Structured Data</a>{{< /sidenote >}} and Amazon's Dynamo{{< sidenote >}}<a href="https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf" title="Dynamo: Amazon’s Highly Available Key-value Store">Dynamo: Amazon’s Highly Available Key-value Store</a>{{< /sidenote >}}. In some ways, Cassandra resembles the traditional databases, yet it does not support the relational data model completely.
@@ -61,3 +59,5 @@ Whenever a new node joins the system, its token is generated such that it falls 
 Cassandra uses a commit log as well as an in-memory data structure to store the data. Each write is first committed to the commit log. Only after successful write into the commit log, the data is saved in the in-memory data structure. When the in-memory data structure crosses a predefined threshold, it is dumped to the disk along with an index file for fast lookups. A merge process runs periodically to merge these disk files.
 
 A read operation first queries the in-memory store. If data is not found there, then a disk lookup is required. To avoid looking into multiple files, a bloom filter, summarizing the keys in the file, is also used. The bloom filter can also be used to check the key existence.
+
+Paper Link:- [Cassandra - A Decentralized Structured Storage System](http://www.cs.cornell.edu/Projects/ladis2009/papers/Lakshman-ladis2009.PDF)
