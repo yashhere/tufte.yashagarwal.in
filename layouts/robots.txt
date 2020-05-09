@@ -1,0 +1,3 @@
+Sitemap: https://yashagarwal.in/index.xml
+User-agent: *
+Disallow:
