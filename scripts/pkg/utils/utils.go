@@ -3,10 +3,11 @@ package utils
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"strconv"
 	"strings"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 )
 
 // https://stackoverflow.com/a/44359967/5042046
@@ -33,7 +34,7 @@ func FormatDateTime(s string) string {
 	}
 	t, err := time.Parse("2006/01/02", strings.TrimSpace(s))
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 		return ""
 	} else {
 		return t.Format("02-01-2006")

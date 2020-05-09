@@ -2,10 +2,9 @@ package main
 
 import (
 	"io"
+	"os"
 
 	log "github.com/sirupsen/logrus"
-
-	"os"
 
 	"scripts/pkg/library"
 	"scripts/pkg/links"

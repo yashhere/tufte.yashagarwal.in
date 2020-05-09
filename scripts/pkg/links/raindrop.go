@@ -8,12 +8,15 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
+	"path"
 	"strconv"
 	"strings"
 	"time"
 
+	"scripts/pkg/utils"
+
 	"github.com/pkg/errors"
-	utils "scripts/pkg/utils"
+	log "github.com/sirupsen/logrus"
 )
 
 type Link struct {
@@ -143,10 +146,10 @@ func CreateBookMarksFile(destFile string) error {
 		links = append(links, link)
 	}
 
-	fmt.Printf("Writing [%d] links to booksmarks.json file.", len(links))
+	log.Infof("Writing [%d] links to %s.", len(links), path.Base(destFile))
 	file, err := json.MarshalIndent(links, "", " ")
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
 
 	err = ioutil.WriteFile(destFile, file, 0644)

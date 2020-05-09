@@ -110,7 +110,6 @@ func FetchDataFromGsheets(destFile string) error {
 			if record[9] == "" {
 				log.Debugf("DateRead does not seem to be valid for %s\n", book.Title)
 			} else if book.DateRead != nil && book.DateRead.Year() == time.Now().Year() && (int(time.Now().Sub(*book.DateRead).Hours()/24) <= 30) {
-				fmt.Println(int(time.Now().Sub(*book.DateRead).Hours() / 24))
 				book.Bookshelves = "recently_finished"
 			} else {
 				book.Bookshelves = record[10]
