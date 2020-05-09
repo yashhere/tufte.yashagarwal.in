@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"path"
 	"strings"
 	"time"
 
@@ -15,6 +16,7 @@ import (
 	utils "scripts/pkg/utils"
 
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 )
 
 func FetchDataFromGsheets(destFile string) error {
@@ -66,48 +68,49 @@ func FetchDataFromGsheets(destFile string) error {
 			}
 
 			if record[5] == "" || record[5] == "0" {
-				fmt.Errorf("Rating does not seem to be valid for %s\n", book.Title)
+				log.Debugf("Rating does not seem to be valid for %s\n", book.Title)
 			} else if myRating, err := utils.ConvertStringToNumber(record[5]); err != nil {
-				fmt.Errorf("Rating does not seem to be valid for %s\n", book.Title)
+				log.Debugf("Rating does not seem to be valid for %s\n", book.Title)
 			} else {
 				book.MyRating = myRating
 			}
 
 			if record[6] == "" || record[6] == "0" {
-				fmt.Errorf("NumberOfPages does not seem to be valid for %s\n", book.Title)
+				log.Debugf("NumberOfPages does not seem to be valid for %s\n", book.Title)
 			} else if numberOfPages, err := utils.ConvertStringToNumber(record[6]); err != nil {
-				fmt.Errorf("NumberOfPages does not seem to be valid for %s\n", book.Title)
+				log.Debugf("NumberOfPages does not seem to be valid for %s\n", book.Title)
 			} else {
 				book.NumberOfPages = numberOfPages
 			}
 
 			if record[7] == "" || record[7] == "0" {
-				fmt.Errorf("YearPublished does not seem to be valid for %s\n", book.Title)
+				log.Debugf("YearPublished does not seem to be valid for %s\n", book.Title)
 			} else if yearPublished, err := utils.ConvertStringToNumber(record[7]); err != nil {
-				fmt.Errorf("YearPublished does not seem to be valid for %s\n", book.Title)
+				log.Debugf("YearPublished does not seem to be valid for %s\n", book.Title)
 			} else {
 				book.YearPublished = yearPublished
 			}
 
 			if record[8] == "" {
-				fmt.Errorf("DateRead does not seem to be valid for %s\n", book.Title)
+				log.Debugf("DateRead does not seem to be valid for %s\n", book.Title)
 			} else if dateRead, err := time.Parse("02/01/2006", strings.TrimSpace(record[8])); err != nil {
-				fmt.Errorf("error DateRead does not seem to be valid for %s\n", book.Title)
+				log.Debugf("error DateRead does not seem to be valid for %s\n", book.Title)
 			} else {
 				book.DateRead = &dateRead
 			}
 
 			if record[9] == "" {
-				fmt.Errorf("DateAdded does not seem to be valid for %s\n", book.Title)
+				log.Debugf("DateAdded does not seem to be valid for %s\n", book.Title)
 			} else if dateAdded, err := time.Parse("02/01/2006", strings.TrimSpace(record[9])); err != nil {
-				fmt.Errorf("DateAdded does not seem to be valid for %s\n", book.Title)
+				log.Debugf("DateAdded does not seem to be valid for %s\n", book.Title)
 			} else {
 				book.DateAdded = &dateAdded
 			}
 
 			if record[9] == "" {
-				fmt.Errorf("DateRead does not seem to be valid for %s\n", book.Title)
-			} else if book.DateRead != nil && book.DateRead.Year() == time.Now().Year() && (time.Now().Month()-book.DateRead.Month()) <= 1 {
+				log.Debugf("DateRead does not seem to be valid for %s\n", book.Title)
+			} else if book.DateRead != nil && book.DateRead.Year() == time.Now().Year() && (int(time.Now().Sub(*book.DateRead).Hours()/24) <= 30) {
+				fmt.Println(int(time.Now().Sub(*book.DateRead).Hours() / 24))
 				book.Bookshelves = "recently_finished"
 			} else {
 				book.Bookshelves = record[10]
@@ -121,6 +124,7 @@ func FetchDataFromGsheets(destFile string) error {
 		}
 	}
 
+	log.Infof("Writing [%d] books to %s.", len(books), path.Base(destFile))
 	file, _ := json.MarshalIndent(books, "", " ")
 
 	err := ioutil.WriteFile(destFile, file, 0644)

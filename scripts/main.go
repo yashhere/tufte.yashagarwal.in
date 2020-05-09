@@ -1,23 +1,41 @@
 package main
 
 import (
-	"fmt"
+	"io"
+
+	log "github.com/sirupsen/logrus"
+
+	"os"
 
 	"scripts/pkg/library"
 	"scripts/pkg/links"
 )
 
+func setupLogger() {
+	mw := io.Writer(os.Stdout)
+	log.SetOutput(mw)
+
+	log.SetFormatter(&log.TextFormatter{
+		FullTimestamp: true,
+		ForceColors:   true,
+	})
+
+	log.SetLevel(log.InfoLevel)
+}
+
 func main() {
+	setupLogger()
+
 	var err error
 	destLibraryFile := "../data/library.json"
 	err = library.FetchDataFromGsheets(destLibraryFile)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
 
 	destBookmarksFile := "../data/bookmarks.json"
 	err = links.CreateBookMarksFile(destBookmarksFile)
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 	}
 }
