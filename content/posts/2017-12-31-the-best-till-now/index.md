@@ -48,7 +48,7 @@ Recently I started working on Debian Packaging. [Praveen](http://civic.gnu.org.i
 
 ## Placement
 
-I joined NIT Calicut due to many [reasons](http://dsanghi.blogspot.in/2011/05/my-2011-list-of-recommended-csit.html). Placements were undoubtedly one of the most important of them. Fortunately, I was among first few students to get placed in my batch. That moment came with a great relief in my life.
+I joined NIT Calicut due to many [reasons](https://dsanghi.blogspot.com/2011/05/my-2011-list-of-recommended-csit.html). Placements were undoubtedly one of the most important of them. Fortunately, I was among first few students to get placed in my batch. That moment came with a great relief in my life.
 
 
 
@@ -80,7 +80,7 @@ I continued to feel bored in the company of people. It is somewhat strange that 
 
 
 
-I built good relations with some faculties in the [department](http://cse.nitc.ac.in), my technical skills got me some admirers, who eventually became my *friends*. I made some new friends from MCA also this year. It has been a pleasant experience overall.
+I built good relations with some faculties in the [department](http://cse.nitc.ac.in/), my technical skills got me some admirers, who eventually became my *friends*. I made some new friends from MCA also this year. It has been a pleasant experience overall.
 
 
 

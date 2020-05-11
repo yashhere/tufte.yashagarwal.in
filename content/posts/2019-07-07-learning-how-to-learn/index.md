@@ -37,7 +37,7 @@ The Pomodoro Technique is a effective technique to counter this problem. In Pomo
 
 Pomodoro technique consists of session lengths of 25 minutes with small breaks of 5 minutes afterward. During the break, you can do anything before starting the next 25-minute session. Don't forget to reward yourself for staying focused for 25 minutes. (web surfing, coffee, streching, music etc.)
 
-I tried this technique, and I can vouch for it. I am using [Goodtime](https://github.com/goodtime-productivity/Goodtime) app on Android. It is open source application. If you download it from [Play store](https://play.google.com/store/apps/details?id=com.apps.adrcotfas.goodtime), you will have to pay for premium features, so I downloaded it from [FDroid](https://f-droid.org/en/packages/com.apps.adrcotfas.goodtime), where its full version is available for free.
+I tried this technique, and I can vouch for it. I am using [Goodtime](https://github.com/adrcotfas/Goodtime) app on Android. It is open source application. If you download it from [Play store](https://play.google.com/store/apps/details?id=com.apps.adrcotfas.goodtime), you will have to pay for premium features, so I downloaded it from [FDroid](https://f-droid.org/en/packages/com.apps.adrcotfas.goodtime/), where its full version is available for free.
 
 You can't predict if you will be able to solve every problem that arises in a day, but you can control how much time and effort you put in. Pomodoro technique helps in making sure that you get enough focused time for fixing the issues.
 

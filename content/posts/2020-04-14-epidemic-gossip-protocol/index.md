@@ -62,7 +62,7 @@ If you want to get started with this topic, here I recommend some papers that ar
 3. [Randomized Rumor Spreading](http://archive.cone.informatik.uni-freiburg.de/pubs/rumor.pdf)
 4. [The Promise, and Limitations, of Gossip Protocols](https://research.cs.cornell.edu/projects/Quicksilver/public_pdfs/2007PromiseAndLimitations.pdf)
 5. [Gossip-based Protocols for Large-scale Distributed Systems](http://www.inf.u-szeged.hu/~jelasity/dr/doktori-mu.pdf) - Read the first chapter of this book to get a basic understanding of Gossip protocols)
-6. [A gossip protocol simulator](https://flopezluis.github.io/gossip-simulator)
+6. [A gossip protocol simulator](https://flopezluis.github.io/gossip-simulator/)
 ---
 
 **P.S.** - This is my first attempt to read and summarize CS research papers. I have intentionally covered only a small part (first few pages) of the paper (first reference in the above list) here, as I am still figuring out the best way to read and summarise. I am confident that with time and practice, I will get better.

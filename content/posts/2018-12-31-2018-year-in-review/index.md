@@ -65,11 +65,11 @@ Some of my favorite reads from this year (not in any particular order) -
   11. [Accidentally Turing-Complete](http://beza1e1.tuxen.de/articles/accidentally_turing_complete.html)
   <!-- 12. [You Can’t Sacrifice Partition Tolerance](https://codahale.com/you-cant-sacrifice-partition-tolerance/) -->
   13. [How Apple’s New Lineup and iPhone XR will Influence Android Trends, for Better and
-      Worse](https://www.xda-developers.com/apple-new-iphone-xr-influence-android-trends)
+Worse](https://www.xda-developers.com/apple-new-iphone-xr-influence-android-trends/)
   14. [Perfect Forward Secrecy - An Introduction](https://scotthelme.co.uk/perfect-forward-secrecy/)
   15. [zxcvbn: realistic password strength
-      estimation](https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/)
-  16. [How can I turn photos of paper documents into a scanned document?](https://askubuntu.com/q/638382)
+estimation](https://dropbox.tech/security/zxcvbn-realistic-password-strength-estimation)
+  16. [How can I turn photos of paper documents into a scanned document?](https://askubuntu.com/questions/638382/how-can-i-turn-photos-of-paper-documents-into-a-scanned-document)
   17. [Chatbots were the next big thing: what
       happened?](https://medium.com/swlh/chatbots-were-the-next-big-thing-what-happened-5fc49dd6fa61)
   18. [The AI revolution has spawned a new chips arms
@@ -81,7 +81,7 @@ Some of my favorite reads from this year (not in any particular order) -
   21. [What the hell is going on with Apple?](https://qz.com/1366350/what-the-hell-is-going-on-with-apple/)
   22. [Why Chinese Artificial Intelligence Will Run The
       World](https://interestingengineering.com/why-chinese-artificial-intelligence-will-run-the-world)
-  23. [Inside Europe’s quest to build an unhackable quantum internet](https://www.technologyreview.com/s/612327/europes-quest-for-an-unhackable-quantum-internet/)
+  23. [Inside Europe’s quest to build an unhackable quantum internet](https://www.technologyreview.com/2018/10/22/139629/europes-quest-for-an-unhackable-quantum-internet/)
   24. [The Case Against Quantum
       Computing](https://spectrum.ieee.org/computing/hardware/the-case-against-quantum-computing)
   
@@ -115,7 +115,7 @@ Some of my favorite reads from this year (not in any particular order) -
       capitalism](https://www.washingtonpost.com/outlook/five-myths/five-myths-about-capitalism/2018/09/27/3f0b72f6-c06f-11e8-90c9-23f963eea204_story.html)
   19. [How Amazon’s Retail Revolution Is Changing The Way We Shop](https://www.theverge.com/2018/10/23/17970466/amazon-prime-shopping-behavior-streaming-alexa-minimum-wage)
   20. [Why Wealth Is Determined More by Power Than
-      Productivity](http://evonomics.com/wealth-power-productivity-laurie-macfarlane/)
+Productivity](https://evonomics.com/wealth-power-productivity-laurie-macfarlane/)
   21. [Let's Talk About Startup Costs](https://justinjackson.ca/costs)
   22. [How Companies Get You to Pay More for the Same
       Product](https://www.bloomberg.com/news/articles/2018-11-16/how-companies-get-you-to-pay-more-for-the-same-product)
@@ -144,21 +144,21 @@ Some of my favorite reads from this year (not in any particular order) -
   9. [Being DK In The Age Of MSD](https://swarajyamag.com/ideas/being-dk-in-the-age-of-msd)
   10. [The growing legacy of Rahul Sharad Dravid](https://scroll.in/field/868038/post-retirement-rahul-dravid-is-now-getting-the-unconditional-love-he-always-deserved-as-under-19-world-cup-triumph-showed)
   11. [The Only Real Way to Acquire Wisdom](https://medium.com/@ztrana/the-only-real-way-to-acquire-wisdom-7489a10c8f8e)
-  12. [Personal Sprints: Applying Design Thinking to Your Life](https://praxis.fortelabs.co/personal-sprints-applying-design-thinking-to-your-life/)
+  12. [Personal Sprints: Applying Design Thinking to Your Life](https://fortelabs.co/blog/personal-sprints-applying-design-thinking-to-your-life/)
   13. [Smarter, Not Harder: How to Succeed at Work](https://fs.blog/2018/06/succeed-at-work/)
   14. [Real-Life Schrödinger’s Cats Probe the Boundary of the Quantum World](https://www.quantamagazine.org/real-life-schrodingers-cats-probe-the-boundary-of-the-quantum-world-20180625/)
   15. [Which traits predict graduates’ earnings?](https://www.economist.com/graphic-detail/2018/06/15/which-traits-predict-graduates-earnings)
   16. [The Power User Curve: The best way to understand your most engaged users](https://andrewchen.co/power-user-curve/)
-  17. [What if people were paid for their data?](https://www.economist.com/the-world-if/2018/07/07/what-if-people-were-paid-for-their-data)
+  17. [What if people were paid for their data?](https://www.economist.com/the-world-if/2018/07/07/data-workers-of-the-world-unite)
   18. [Graduate Student Solves Quantum Verification Problem](https://www.quantamagazine.org/graduate-student-solves-quantum-verification-problem-20181008/)
-  19. [It doesn’t matter how hard you work – just how busy you look](https://www.spectator.co.uk/2018/07/it-doesnt-matter-how-hard-you-work-just-how-busy-you-look/)
+  19. [It doesn’t matter how hard you work – just how busy you look](https://www.spectator.co.uk/article/the-price-of-looking-busy)
   20. [How to Do What You Love](http://www.paulgraham.com/love.html)
   21. [Finding It Hard to Focus? Maybe It’s Not Your Fault](https://www.nytimes.com/2018/08/14/style/how-can-i-focus-better.html)
   22. [First Mover Disadvantage](https://avc.com/2018/08/first-mover-disadvantage/)
   23. [The ShareChat Phenomenon](https://medium.com/@gettinadmin/the-sharechat-phenomenon-6dfff8244af1)
   24. [Atal Bihari Vajpayee and his Achilles heel: Excerpts from Vinod Mehta’s memoirs](https://scroll.in/article/890631/vinod-mehta-on-atal-behari-vajpayee-and-the-1998-nuclear-tests-how-a-tired-pm-became-a-bold-pm)
   25. [Work-life balance is an unhealthy myth](https://qz.com/work/1373353/work-life-balance-is-an-unhealthy-myth/)
-  26. [Who controls your data?](https://www.engadget.com/2018/09/04/who-controls-your-data/)
+  26. [Who controls your data?](https://www.engadget.com/2018-09-04-who-controls-your-data.html)
   27. [Your First Ninety Days in Hell](https://www.newyorker.com/humor/daily-shouts/your-first-ninety-days-in-hell)
   28. [The internet can’t handle functioning like a democracy](https://qz.com/1422925/the-public-internet-was-almost-a-democracy/)
   29. [How to Pick a Career (That Actually Fits You)](https://waitbutwhy.com/2018/04/picking-career.html)
@@ -252,7 +252,7 @@ finish all the tasks on my list. However, then I noticed one thing, I could not 
 once. For initial days, I felt encouraged to complete my tasks, but soon it began to appear as a
 burden, and I felt exhausted. So it seems that something in the middle will work for me. This year, I will continue
 using to-do lists (I use Google Keep for this) but for short durations of time. I will refrain from using it every day
-to avoid getting exhausted. I am considering a switch to [Notion](https://www.notion.so) to maintain my monthly and long-term goals.
+to avoid getting exhausted. I am considering a switch to [Notion](https://www.notion.so/) to maintain my monthly and long-term goals.
 Probably that will also help me in keeping track of my goals without feeling the heat.
 
 All of my friends love to travel. It seems a common habit in most of my friends. However, I am an exception. I'm not particularly eager to go on trips. I attribute it to my issues with motion sickness. For the whole year of 2018, I do not have a single

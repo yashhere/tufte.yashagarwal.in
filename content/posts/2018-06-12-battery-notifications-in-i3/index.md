@@ -8,7 +8,7 @@ categories = ["Hacks"]
 draft = false
 +++
 
-I am using *i3* window manager for the last seven months, and it has been a pleasant and productive experience so far. There were a few hiccups here and there, but that is expected with such minimalistic setups. One thing that I never noticed was the lack of notifications on critical battery levels. For the last few months, my laptop battery was discharging to 0% all the time. Probably this proved to be too fatal for my battery. According to this [article](https://lifehacker.com/5875162/how-often-should-i-charge-my-gadgets-battery-to-prolong-its-lifespan), lithium-ion batteries are not expected to go from 100% to 0% frequently. I recently bought a new battery, and I did not want to reduce the lifespan of this battery too. So I decided to set up battery notifications for my i3 setup.
+I am using *i3* window manager for the last seven months, and it has been a pleasant and productive experience so far. There were a few hiccups here and there, but that is expected with such minimalistic setups. One thing that I never noticed was the lack of notifications on critical battery levels. For the last few months, my laptop battery was discharging to 0% all the time. Probably this proved to be too fatal for my battery. According to this [article](https://lifehacker.com/how-often-should-i-charge-my-gadgets-battery-to-prolong-5875162), lithium-ion batteries are not expected to go from 100% to 0% frequently. I recently bought a new battery, and I did not want to reduce the lifespan of this battery too. So I decided to set up battery notifications for my i3 setup.
 
 I [found](https://agorf.gr/2016/06/29/low-battery-notification-in-i3wm/) a bash script which shows a notification using *notify-send* when battery charge level reaches or drops below a configured threshold. However, I had to do some additional steps to make this script work on my system.
 
@@ -18,7 +18,7 @@ The first issue was the *lockfile* program, which was not installed in my system
 sudo apt install procmail
 {{< /highlight >}}
 
-The second issue was more difficult to solve. I planned to set up the script to run every minute using *cron*. However, it turns out that cron operates in a very [minimalistic](http://askubuntu.com/a/23438/173003) environment and notify-send requires the presence of some special variables in the environment. These variables are **DBUS_SESSION_BUS_ADDRESS**, **XAUTHORITY** and **DISPLAY**. To provide the values of these variables to the cron environment, I modified the script and sourced a new file `.bat_envs`.
+The second issue was more difficult to solve. I planned to set up the script to run every minute using *cron*. However, it turns out that cron operates in a very [minimalistic](https://askubuntu.com/questions/23009/why-crontab-scripts-are-not-working/23438#23438) environment and notify-send requires the presence of some special variables in the environment. These variables are **DBUS_SESSION_BUS_ADDRESS**, **XAUTHORITY** and **DISPLAY**. To provide the values of these variables to the cron environment, I modified the script and sourced a new file `.bat_envs`.
 
 {{< highlight bash >}}
 #!/usr/bin/env bash

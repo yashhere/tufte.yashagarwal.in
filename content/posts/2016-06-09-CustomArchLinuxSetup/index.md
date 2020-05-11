@@ -55,7 +55,7 @@ These files can be edited by hand, although some graphical tools are also availa
 
 ## Themes and Appearance
 
-[obconf](https://www.archlinux.org/packages/community/x86_64/obconf) and [lxappearance-obconf](https://www.archlinux.org/packages/community/x86_64/lxappearance-obconf/) can be used to configure appearance and theme of openbox session. There are quite a few themes available in [openbox-themes](https://www.archlinux.org/packages/community/any/openbox-themes/) package. My personal favorite is [Numix-themes](https://www.archlinux.org/packages/community/any/numix-themes/) and [Numix-icon-theme-git (AUR)](https://aur.archlinux.org/packages/numix-icon-theme-git/).
+[obconf](https://www.archlinux.org/packages/community/x86_64/obconf/) and [lxappearance-obconf](https://www.archlinux.org/packages/community/x86_64/lxappearance-obconf/) can be used to configure appearance and theme of openbox session. There are quite a few themes available in [openbox-themes](https://www.archlinux.org/packages/community/any/openbox-themes/) package. My personal favorite is [Numix-themes](https://www.archlinux.org/packages/community/any/numix-themes/) and [Numix-icon-theme-git (AUR)](https://aur.archlinux.org/packages/numix-icon-theme-git/).
 
 To see changes after editing a configuration file, the Openbox needs to be refreshed. It can be done with the `reconfigure` command.
 

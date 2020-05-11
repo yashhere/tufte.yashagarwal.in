@@ -201,14 +201,14 @@ I use Python extensively and virtual environments are a must for my development 
 sudo pacman -S python-virtualenv
 {{< /highlight >}}
 
-Now you are ready to install `pipenv`. Follow [these](http://pipenv.readthedocs.io/en/latest/install/#fancy-installation-of-pipenv) instructions to install the tool.
+Now you are ready to install `pipenv`. Follow [these](https://pipenv.pypa.io/en/latest/install/) instructions to install the tool.
 
 ### Install some other common tools
 {{< highlight bash >}}
 sudo pacman -S vlc openssh npm imagemagick git la-capitaine-icon-theme-git
 {{< /highlight >}}
 
-Do not forget to [setup](https://stackoverflow.com/a/13021677) `npm` to install packages globally without requiring `sudo`.
+Do not forget to [setup](https://stackoverflow.com/questions/10081293/install-npm-into-home-directory-with-distribution-nodejs-package-ubuntu/13021677#13021677) `npm` to install packages globally without requiring `sudo`.
 
 That's all! Your system should be in working condition now. Do check out my [dotfiles](https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/) if you want to set up your system like mine.
 
