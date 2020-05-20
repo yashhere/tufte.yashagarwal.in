@@ -150,6 +150,11 @@ markup:
     noClasses: true
     tabWidth: 4
 
+  tableOfContents:
+    endLevel: 4
+    ordered: false
+    startLevel: 2
+
   goldmark:
     extensions:
       definitionList: true
