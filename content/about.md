@@ -1,5 +1,5 @@
 +++
-title = "me"
+title = "whoami"
 comments = false
 slug = "whoami"
 +++
@@ -11,7 +11,7 @@ slug = "whoami"
   Great minds discuss ideas; average minds discuss events; small minds discuss people.
 {{< /blockquote >}}
 
-Hi, I am Yash ([y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)) 🙏. 
+Hi, I am Yash ([y-uh-sh](https://www.youtube.com/watch?v=mzJVVcVVbA4)) 🙏.
 
 I am a computer programmer 👨‍💻 interested in network security 🛡, cryptography 🔐, and distributed systems 🌐. I completed my B.Tech in Computer Science and Engineering 🎓 at National Institute of Technology, Calicut in 2018.
 
@@ -21,14 +21,15 @@ I was always interested in learning Computer Science, even though I did not know
 
 In college, I was introduced to Linux and the fantastic world of the Internet. I believe I have utilized the opportunities given to me quite nicely. Although I was late to the game, I am catching up.
 
-I started reading books 📖 seriously in 2018. I feel I have become much better after starting this *ritual*. My thought process has become more streamlined. I think more clearly, and I have learned some good life lessons 👍. In books, I mostly like to read non-fiction, specifically books on economics, history, politics, and science. I read the self-help genre also, but I am somewhat disillusioned by this for some time now. In fiction, I like to read thriller-mythology and fantasy books. My favorite book is Harry Potter and the Prisoner of Azkaban. 
+I started reading books 📖 *seriously* in 2018. I feel I have become much better after starting this *almost* daily ritual. My thought process has become more streamlined. I think more clearly, and I have learned some good life lessons 👍. In books, I mostly like to read non-fiction, specifically books on economics, history, politics, and science. I read the self-help genre also, but I am somewhat disillusioned by this for some time now. In fiction, I like to read thriller-mythology and fantasy books. My favorite book is Harry Potter and the Prisoner of Azkaban.
 
-I am a history and mythology buff. I believe it is imperative to read history so that we do not repeat the same mistakes, people, before us did.
+I am a history and mythology buff. I think it is important to learn from the past so that we do not repeat the same mistakes, people, before us did. However, I also believe that one should not think so much about past that the present is forgotten.
 
-You can find me elsewhere on the Web; places like [Twitter](https://twitter.com/yash__here), [Github](https://github.com/yashhere) and [LinkedIn](https://www.linkedin.com/in/theyashagarwal). There is also my [email](mailto:yashagarwaljpr+blog@gmail.com) 📩.
+You can find me elsewhere on the Web; at places like [Twitter](https://twitter.com/yash__here), [Github](https://github.com/yashhere) and [LinkedIn](https://www.linkedin.com/in/theyashagarwal). There is also my [email](mailto:yashagarwaljpr+blog@gmail.com) 📩.
 
 
-**I maintain a [updates](/updates) page, where I write about my day to day life.**
+**I maintain a separate [website](https://highlights.yashagarwal.in/) for storing my Kindle Paperwhite Highlights. Check it out!!**
+
 
 [comment]: # (My resume is [here](/pdf/resume.pdf), but I am not looking for a new job right now.)
 

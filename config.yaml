@@ -36,7 +36,6 @@ Permalinks:
   updates: ":sections/:year/:month/:slug/"
   books: ":sections/:year/:month/:slug/"
 
-
 Taxonomies:
   category: categories
   tag: tags
@@ -80,8 +79,8 @@ Params:
   mainSections:
     - posts
     - updates
-    - links
-    - books
+    # - links
+    # - books
     - about
     - search
   tagline: "The directory of my thoughts"
@@ -95,27 +94,27 @@ Params:
     md_dir: content
     branch: source
 
-#  indieweb:
-#    domain: "https://yashagarwal.in/"
-#    webring: "\U00003297\U0000fe0f\U0001f34b\U0001f468\U0000200d\U0001f468\U0000200d\U0001f467\U0000200d\U0001f467"
-#    webmention:
-#      endpoint: "https://webmention.io/"
-#      account: "https://yashagarwal.in"
+  #  indieweb:
+  #    domain: "https://yashagarwal.in/"
+  #    webring: "\U00003297\U0000fe0f\U0001f34b\U0001f468\U0000200d\U0001f468\U0000200d\U0001f467\U0000200d\U0001f467"
+  #    webmention:
+  #      endpoint: "https://webmention.io/"
+  #      account: "https://yashagarwal.in"
 
   social:
     email:
-    - address: yashagarwaljpr+blog@gmail.com
+      - address: yashagarwaljpr+blog@gmail.com
     github:
-    - address: yashhere
-      relme: true
+      - address: yashhere
+        relme: true
     gitlab:
-    - address: yashhere
+      - address: yashhere
     instagram:
-    - address: yum_yash
+      - address: yum_yash
     linkedin:
-    - address: theyashagarwal
+      - address: theyashagarwal
     twitter:
-    - address: yash__here
+      - address: yash__here
 
 privacy:
   disqus:

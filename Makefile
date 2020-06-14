@@ -14,7 +14,7 @@ STDERR := /tmp/.$(PROJECTNAME)-stderr.txt
 .PHONY: all clean go_scripts copy_data public server watch .minifier help
 
 # Below are PHONY targets
-all: clean go_scripts copy_data public .minifier
+all: clean public .minifier
 
 help:
 	@echo "Usage: make <command>"
@@ -22,15 +22,6 @@ help:
 	@echo "  clean   Cleans all build files"
 	@echo "  server  Runs a webserver on port 1313 to test the final minified result"
 	@echo "  watch   Runs hugo in watch mode, waiting for changes"
-
-go_scripts:
-	mkdir -p data
-	@echo "Downloading data"
-	cd scripts && go run main.go
-
-copy_data:
-	@echo "Copying json files to static/data"
-	cp -r data static/
 
 server: public
 	cd public && python -m SimpleHTTPServer 1313
