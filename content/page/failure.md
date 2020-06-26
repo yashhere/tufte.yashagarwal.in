@@ -53,7 +53,6 @@ omits many things. Also, many things mentioned here are temporary and would chan
 
 - **Dance** - I cannot even dance in a [Baraat](https://en.wikipedia.org/wiki/Baraat). Enough said! However, somewhere deep in my heart, I have a desire to learn at least one form of dance. I think that this might help me with all my
   confidence issues.
-    <!-- <center>{{< tweet 928210848430022661 >}}</center> -->
 
 - Asking a girl out for a date.
 
