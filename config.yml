@@ -1,5 +1,4 @@
 Paginate: 7
-baseURL: https://yashagarwal.in
 canonifyurls: true
 MetaDataFormat: "yaml"
 archetypeDir: "archetypes"
