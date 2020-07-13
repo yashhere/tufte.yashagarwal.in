@@ -212,6 +212,12 @@ If you do not see the following content, and the file is empty or it does not ex
 apache_user="$(ps -ef | egrep '(httpd|apache2|apache)' | grep -v `whoami` | grep -v root | head -n1 | awk '{print $1}')"
 {{< /highlight >}}
 
+Add this user to `adm` group which owns the Apache logs directory in Ubuntu.
+
+{{< highlight bash >}}
+sudo usermod -G adm www-data
+{{< /highlight >}}
+
 Now, change the owner of Apache log directory to `apache_user`.
 
 {{< highlight bash >}}
@@ -223,6 +229,7 @@ Now, ModSecurity should be able to append logs to the file `modsec_audit.log`.
 ## *Bonus*: Enabling JSON logs
 **Note:** Honestly speaking, I was not able to make it work every time. I do not know what is the issue, but it works with some of the installations, and with some of the installations, it just doesn't log anything to the `audit` directory. If anyone has managed to make it work consistently, please let me know.
 
+**Edit (13/07/2020):** The JSON logging works fine. The issue was that ModSecurity did not have permission to create subdirectories in the Apache log directory. I suppose it is something related to SELinux. However, a simple solution is to add the user under which the Apache process runs to the `adm` group. It might not be the right solution security-wise. However, from a quick remediation point of view, it works. Please let me know if you identify any better solution to fix the problem.
 
 Anyway, if you are like me, who do not like the default ModSecurity log format, ModSecurity provides an option to generate logs in JSON format as well. To enable JSON support, the YAJL library should be installed. We already installed this package when we were installing dependencies, so our ModSecurity setup is compiled with JSON support. Let us now configure ModSecurity to generate JSON logs.
 
@@ -254,6 +261,8 @@ sudo systemctl restart apache2
 Now, go to `/var/log/apache2/` directory and create `audit` folder.
 
 {{< highlight bash >}}
+sudo usermod -G adm $apache_user
+
 cd /var/log/apache2
 sudo mkdir audit
 
