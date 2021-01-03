@@ -78,7 +78,7 @@ Params:
     startyear: 2016
   mainSections:
     - posts
-    - updates
+#    - updates
     # - links
     # - books
     - about
@@ -87,7 +87,7 @@ Params:
   favicons: true
   feedSections:
     - posts
-    - updates
+#    - updates
 
   source:
     url: "https://gitlab.com/yashhere/yashhere.gitlab.io"
