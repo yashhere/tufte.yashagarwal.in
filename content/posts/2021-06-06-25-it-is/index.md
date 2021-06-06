@@ -5,7 +5,7 @@ date = 2021-06-06
 categories = ["write-ups"]
 tags = ["Life", "Review", "Lessons"]
 images = ["/images/posts/2021-06-06/life-update-cover.jpg"]
-draft = true
+draft = false
 +++
 
 I turned 25 in the week gone by. I have been on the earth for a quarter of a century now, and the feelings are mixed. I love to write about myself, even at the risk of overexposing myself to the general world. This helps me in remembering my younger self. That, I think, is the best yardstick to judge myself against. Unfortunately, while I should write positive things, the tone of most of my personal experience articles tends to be negative. It is instinctive and something that I have not learned to control just yet. Nevertheless, I will consider myself successful when I look back at my life, and the memories make me smile. Some of my previous posts do make me smile.
