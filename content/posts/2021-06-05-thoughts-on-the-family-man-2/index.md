@@ -8,7 +8,7 @@ images = ["/images/posts/2021-06-05/the-family-man-2-cover.jpg"]
 draft = false
 +++
 
-{{< figure type="full" src="/images/posts/2021-06-05/the-family-man-2-cover.jpg" alt="The Family Man 2" caption="Cover of The Family Man 2" >}}
+{{< figure type="full" src="/images/posts/2021-06-05/the-family-man-2-cover.jpg" alt="The Family Man 2" >}}
 
 I binge-watched the second season of The Family Man (TFM) 2 last night.  I was eagerly waiting for this season of TFM for a long time, especially after the highly gripping season 1. And I am not disappointed. While I watch digital content very selectively (young-adult fantasy depicting a dark and mid-age Europe and Russia and spy-genre Indian shows for occasional patriotic doses), very few shows have such excellent cinematography. It is the plot of TFM2 that made me ask some questions myself. While I don’t have clear answers to them yet, I thought I will just list them down, along with some of my raw thoughts.
 
