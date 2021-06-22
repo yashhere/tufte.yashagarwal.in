@@ -83,7 +83,7 @@ Even if not entirely by choice, I am trying to embrace the slow-growth mindset, 
 
 While I keep whining about my future and past and try to piece together my present, this quote sums up the way forward succinctly —
 
-{{< blockquote cite= "The Count of Monte Cristo" footer= "Alexandre Dumas, The Count of Monte Cristo">}}
+{{< blockquote cite= "https://www.goodreads.com/quotes/94420-until-the-day-when-god-shall-deign-to-reveal-the" footer= "Alexandre Dumas, The Count of Monte Cristo">}}
   Until the day when God shall deign to reveal the future to man, all human wisdom is summed up in these two words — 'Wait and hope.'
 {{< /blockquote >}}
 
