@@ -1,7 +1,7 @@
 +++
 title = "Epidemic/Gossip Protocols"
 author = ["Yash Agarwal"]
-date = 2020-04-14T8:38:15+05:30
+date = 2020-04-14T08:38:15+05:30
 categories = ["papers"]
 tags = ["distributed system", "gossip"]
 images = []
