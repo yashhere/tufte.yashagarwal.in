@@ -35,8 +35,7 @@ It is one thing which I could never excel in my undergrad life. People say that 
 
 
 
-{{< tweet 873491081173897216 >}}
-
+{{< tweet user="yash__here" id="873491081173897216" >}}
 
 
 Recently I started working on Debian Packaging. [Praveen](http://civic.gnu.org.in/author/praveen) sir has always been very supportive of me and answered all my ludicrous questions very patiently. My conversation with him about free software philosophy has been very enlightening. Debian Packaging was a very satisfying experience to be able to give something back to the community. Now, I hold [one](https://qa.debian.org/developer.php?login=yashagarwaljpr@gmail.com) package in the unstable Debian repository and [two](https://qa.debian.org/developer.php?login=bansaly26@gmail.com) more packages in the pipeline for approval.
