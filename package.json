@@ -1,0 +1,71 @@
+{
+  "name": "yashagarwal.in",
+  "version": "1.0.0",
+  "description": "The directory of my thoughts",
+  "author": "Yash Agarwal",
+  "license": "MIT",
+  "homepage": "https://yashagarwal.in",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yashhere/yashhere.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yashhere/yashhere.github.io/issues"
+  },
+  "scripts": {
+    "init": "shx rm -rf .git && git init -b main",
+    "create": "exec-bin node_modules/.bin/hugo/hugo new",
+    "prestart": "yarn run clean",
+    "start": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender --baseURL=http://localhost",
+    "start:lan": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --baseURL=http://192.168.1.10 --port=1313",
+    "prebuild": "yarn run clean",
+    "build": "exec-bin node_modules/.bin/hugo/hugo --gc --minify",
+    "build:lan": "exec-bin node_modules/.bin/hugo/hugo --gc --minify --baseURL=http://192.168.1.10:8080",
+    "build:preview": "yarn run build -D -F",
+    "clean": "shx rm -rf public resources",
+    "clean:install": "shx rm -rf package-lock.json node_modules ",
+    "lint": "yarn run -s lint:scripts && yarn run -s lint:styles && yarn run -s lint:markdown",
+    "lint:scripts": "eslint assets/js config functions",
+    "lint:styles": "stylelint \"assets/scss/**/*.{css,sass,scss,sss,less}\"",
+    "lint:markdown": "markdownlint *.md content/**/*.md",
+    "server": "exec-bin node_modules/.bin/hugo/hugo server",
+    "test": "yarn run -s lint",
+    "env": "env",
+    "precheck": "yarn version",
+    "check": "exec-bin node_modules/.bin/hugo/hugo version",
+    "latest:hugo": "gh release view --repo gohugoio/hugo",
+    "latest:hyas": "gh release view --repo h-enk/hyas",
+    "copy:katex-fonts": "shx cp ./node_modules/katex/dist/fonts/* ./static/fonts/",
+    "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo",
+    "version": "auto-changelog -p && git add CHANGELOG.md"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16",
+    "@babel/core": "^7.16",
+    "@babel/preset-env": "^7.16",
+    "@fullhuman/postcss-purgecss": "^4.1",
+    "@popperjs/core": "^2.11",
+    "auto-changelog": "^2.3.0",
+    "autoprefixer": "^10.4",
+    "bootstrap": "^5.1",
+    "eslint": "^8.6",
+    "exec-bin": "^1.0.0",
+    "hugo-installer": "^3.1",
+    "lazysizes": "^5.3",
+    "markdownlint-cli": "^0.30",
+    "postcss": "^8.4",
+    "postcss-cli": "^9.1",
+    "purgecss-whitelister": "^2.4",
+    "quicklink": "^2.2.0",
+    "shx": "^0.3.3",
+    "stylelint": "^14.2",
+    "stylelint-config-standard-scss": "^3.0"
+  },
+  "otherDependencies": {
+    "hugo": "0.91.2"
+  }
+}
+

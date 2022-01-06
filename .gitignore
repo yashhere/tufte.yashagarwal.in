@@ -1,7 +1,7 @@
-public/
-list_of_tags_categories.txt
 .DS_Store
-.idea/
-static/data/
-public/
-data
+.idea
+node_modules
+public
+resources
+.netlify
+.hugo_build.lock
