@@ -1,10 +1,9 @@
-{{ $alternate_title := replace .Name "-" " " | humanize | title }}
 +++
-title = "{{ slicestr $alternate_title 11 }}"
+title = "{{ replace .Name "-" " " | title }}"
+description = ""
 author = ["Yash Agarwal"]
 date = {{ .Date }}
-categories = []
-tags = []
-images = []
+lastmod = {{ .Date }}
 draft = true
+images = []
 +++
