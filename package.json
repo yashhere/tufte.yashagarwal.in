@@ -22,8 +22,8 @@
     "start": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender --baseURL=http://localhost",
     "start:lan": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --baseURL=http://192.168.1.10 --port=1313",
     "prebuild": "yarn run clean",
-    "build": "exec-bin node_modules/.bin/hugo/hugo --gc --minify",
-    "build:lan": "exec-bin node_modules/.bin/hugo/hugo --gc --minify --baseURL=http://192.168.1.10:8080",
+    "build": "exec-bin node_modules/.bin/hugo/hugo --minify",
+    "build:lan": "exec-bin node_modules/.bin/hugo/hugo --minify --baseURL=http://192.168.1.10:8080",
     "build:preview": "yarn run build -D -F",
     "clean": "shx rm -rf public resources",
     "clean:install": "shx rm -rf package-lock.json node_modules ",
@@ -67,6 +67,7 @@
     "hugo": "0.91.2"
   }
 }
+
 
 
 
