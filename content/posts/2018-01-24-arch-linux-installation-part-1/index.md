@@ -14,22 +14,16 @@ Arch Linux is a Linux distribution known for its not-so-beginner-friendly comman
 
 This guide is written primarily for my reference, as someone who has installed Arch Linux several times, I still can't remember all the installation steps perfectly. Most of the steps have been taken from [Arch wiki](https://wiki.archlinux.org/index.php/installation_guide) and should work on other setups also.
 
-
-{{< disclaimer >}}
 All the commands are run in root shell unless otherwise specified.
-{{< /disclaimer >}}
 
-
-
-##   0. Check your network connection
+## 0. Check your network connection
 
 If you are behind a captive portal, use `links` to open browser and login into your network. For WiFi connections, use `wifi-menu`. LAN connections should not require any setup. The boot environment should automatically detect any wired connections. After connecting, test your connection by pinging any website:
 {{< highlight bash >}}
 ping -c 5 google.com
 {{< /highlight >}}
 
-
-##   1. Setup SSH
+## 1. Setup SSH
 
 This step is not mandatory, though I prefer to use this method to install Arch Linux, as it provides me the convenience of copying and pasting the commands directly from Arch wiki.
 

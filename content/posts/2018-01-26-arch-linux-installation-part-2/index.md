@@ -11,9 +11,7 @@ series = ["Arch Linux Installation"]
 
 In this post, I will continue from my last [post](https://yashhere.github.io/posts/2018/01/arch-linux-installation-guide-part-1/) and set up my newly installed Arch Linux for daily use. I am going to install some applications that I use on a day to day basis. Some of these applications are required for my current dotfile [configuration](https://yashhere.github.io/posts/2018/01/my-own-configuration-manager/) setup to work properly. The choice of applications is highly opinionated and your preferences might be different.
 
-{{< disclaimer >}}
 If you had gone for installation via SSH option, then I would suggest you to edit your `sshd_config` file and disable `root` login. It can be a security risk otherwise.
-{{< /disclaimer >}}
 
 ### Install a terminal based browser
 Terminal-based browsers are very handy in cases when you are required to login into a captive portal and you don't have access to a graphical browser. We will install two different browsers, `elinks` and `w3m`.
