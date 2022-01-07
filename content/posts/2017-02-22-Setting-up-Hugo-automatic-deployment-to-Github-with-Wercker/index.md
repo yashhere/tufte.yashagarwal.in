@@ -48,7 +48,7 @@ It is straightforward to build a Hugo site. Invoke `hugo` command under your roo
 
 What if a single push to `source` branch can trigger all the process for you automatically. Here the magic of continuous integration(CI) comes into the picture. A free Wercker account can be easily created and hooked to the Github account and a new application from a chosen repository. After setting up everything, a push to the development branch will automatically trigger the Wercker. One of the most significant advantages of using Wercker is its extensive collection of user-made and well documented "steps". In this post, I will use two steps, `build hugo` and `deploy to Github`.
 
-{{< figure src="/images/posts/2017-02-22/wercker-steps.png" alt="Wercker → Registry → steps" caption="Wercker → Registry → steps">}}
+![Wercker → Registry → steps](/images/posts/2017-02-22/wercker-steps.png "Wercker → Registry → steps")
 
 The first task is to create a `wercker.yml` file. It will tell Wercker which all actions, it should perform. Here is my [wercker.yml](https://raw.githubusercontent.com/yash2696/yash2696.github.io/source/wercker.yml) for reference. In this, I have used two pipelines, *build* and *deploy*. Please follow the official docs for the more detailed steps. I will list all the problems which I face while setting up things properly.
 
@@ -73,13 +73,13 @@ For new interface, even if you add a deploy stage in the `wercker.yml`, you will
 
 In `deploy` stage, I used this [step](https://app.wercker.com/applications/55af22c5f32b86a9290ec706/tab/details/) to deploy the built site to Github. Each pipeline starts from scratch, so for the deploy pipeline, the git package needs to be installed again. One also has to set up the environment variable `$GIT_TOKEN` to each pipeline, acquired from Github setting.
 
-{{< figure src="/images/posts/2017-02-22/wercker-pipeline.png" alt="Wercker Pipeline" caption="Wercker Pipeline">}}
+![Wercker Pipeline](/images/posts/2017-02-22/wercker-pipeline.png "Wercker Pipeline")
 
 You need to generate a new access token for your deploy stage from Github settings.
-{{< figure src="/images/posts/2017-02-22/wercker-access-token.png" alt="Github Access Token" caption="Github Access Token">}}
+![Github Access Token](/images/posts/2017-02-22/wercker-access-token.png "Github Access Token")
 
 After adding the deploy stage, add the token you obtained from the Github to Environmental Variables in deploy pipeline.
 
-{{< figure src="/images/posts/2017-02-22/wercker-token.png" alt="Wercker Token" caption="Wercker Token">}}
+![Wercker Token](/images/posts/2017-02-22/wercker-token.png "Wercker Token")
 
 On the next push to your development branch, Wercker will automatically build the site and deploy it on Github Pages.

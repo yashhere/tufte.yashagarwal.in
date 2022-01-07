@@ -4,9 +4,6 @@ comments = false
 slug = "whoami"
 +++
 
-
-<!-- {{< figure type="margin" src="/author/yash.jpg">}} -->
-
 {{< blockquote cite="Eleanor Roosevelt" footer="Eleanor Roosevelt" >}}
   Great minds discuss ideas; average minds discuss events; small minds discuss people.
 {{< /blockquote >}}

@@ -99,6 +99,18 @@ outputFormats:
     notAlternative: true
 
 Params:
+  image:
+    quality: 85
+    bgColor: '#fff'
+    landscapePhotoWidths:
+      - 900
+      - 800
+      - 500
+    portraitPhotoWidths:
+      - 800
+      - 500
+    lqipWidth: 20x
+    smallLimit: '320'
   settings:
     showReadingTime: true
   copyright:

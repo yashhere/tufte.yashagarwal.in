@@ -12,9 +12,9 @@ draft = false
 
   Confused what I am talking about? Here, take a look at this gif to get an idea of how `sudo` can insult you for typing in the incorrect password.
 
-{{< figure type="normal" src="/images/posts/2016-04-03/insult.gif" alt="A terminal screen" caption="Illustration of the insult" >}}
+![A terminal screen](/images/posts/2016-04-03/insult.gif "Illustration of the insult")
 
-  Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with Linux, and anyway, this is way better than the plain "You entered a wrong password" error message. So let's learn how to do this.
+Now you might be thinking, why would anyone want to take insult? Afterall, nobody likes being insulted. For me, it is just another way to have fun with Linux, and anyway, this is way better than the plain "You entered a wrong password" error message. So let's learn how to do this.
 
 ## Enable insults in sudo
 You can enable the insults feature in `sudo` by modifying the `sudo` configuration file. To open the `sudo` configuration file, launch a terminal and type the following command.
@@ -33,8 +33,7 @@ Defaults insults
 
 Now save the file. If you are using vim, then use `Ctrl+X` to save the file and quit the editor and if you are using nano then use `Ctrl+X` to leave the editor. At the time of quitting, it will ask you if you want to save the changes. To keep the changes, press `Y`.
 
-
-{{< figure src="/images/posts/2016-04-03/sudoers.png" alt="Sample sudoers file" caption="Sample sudoers file" caption-position="none">}}
+![Sample sudoers file](/images/posts/2016-04-03/sudoers.png "Sample sudoers file")
 
 Once you have saved the file, go to terminal and type the following command to clear the old password from `sudo`'s cache.
 

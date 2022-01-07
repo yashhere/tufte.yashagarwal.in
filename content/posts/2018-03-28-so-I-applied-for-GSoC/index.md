@@ -22,7 +22,7 @@ Read about my GSoC project on [Boot Many Machines via Bittorrent](https://wiki.d
 
 Read my project proposal on [Google Drive](https://docs.google.com/document/d/1N7wcc6rwFuauTS-jH2JuLDnZIX0w79AzTPSvSJU3PtA/edit?usp=sharing) or [Debian Wiki](https://wiki.debian.org/YashAgarwal/GSoCProposal).
 
-{{< figure type="normal" src="/images/posts/2018-03-28/gsoc-timeline.png" alt="gsoc timeline" caption="gsoc timeline" >}}
+![gsoc timeline](/images/posts/2018-03-28/gsoc-timeline.png "gsoc timeline")
 
 Eagerly waiting for the results. :smile:
 

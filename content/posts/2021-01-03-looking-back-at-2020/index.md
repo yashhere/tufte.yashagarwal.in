@@ -18,7 +18,7 @@ Like previous years, I have identified some critical areas of my life, where I a
 
 I should give part of the blame to my laziness. I had stopped all my learning activities in the mid-to-late year (perhaps I was exhausted). And that gave way to evil thoughts in my mind. As they say, "An idle mind is the devil's workshop!". Thankfully I got hold of the situation while it was still manageable.
 
-{{< figure type="margin" src="/images/posts/2021-01-03/sleep_hours.jpg" alt="Sleeping in 2020" caption="How much I slept in 2020?" >}}
+![Sleeping in 2020](/images/posts/2021-01-03/sleep_hours.jpg "How much I slept in 2020?")
 
 This graph shows how my sleeping times changed throughout the year. I lost track in the third quarter of the year. Anyway, in December, I seem to have come back to the correct path.
 
@@ -85,7 +85,7 @@ Facebook deserves a special mention here. I have been entirely out of touch with
 
 Coming to the media content consumed by me, these are the movies that I watched this year. I did a lousy job logging this stuff, so this data is not comprehensive. Of course, I watched a lot more movies than this.
 
-{{< figure type="normal" src="/images/posts/2021-01-03/movies_watched.jpg" alt="Movies in 2020" caption="Movies in 2020" >}}
+![Movies in 2020](/images/posts/2021-01-03/movies_watched.jpg "Movies in 2020")
 
 I watched many web series during the July-October period. I can recall a few right now - Sacred Games 1 and 2, She, Flesh, Bard of Blood, Mirzapur 1 and 2, The Witcher, Sex Education, and Paatal Lok. In short, I wasted a lot of time watching useless content. Sensory satisfaction, peer pressure, and the urge to run away from my boredom are to blame for this binge-watching time.
 

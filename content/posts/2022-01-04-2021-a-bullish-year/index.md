@@ -18,7 +18,7 @@ Nonetheless, this year I finally managed to work on it. Since September, I have 
 
 Another important aspect of health that I am working on is sleep. For some years now, I have been working on regulating my sleep timings and the time I spend sleeping at night. I have data about my sleep duration for the entire year. Using that, I produced the chart below, which shows that I have managed to sleep at least 8 hours on average (this also includes afternoon naps).
 
-{{< figure type="normal" src="/images/posts/2022-01-04/average_sleep_duration.png" alt="Sleeping in 2020" >}}
+![Sleeping in 2021](/images/posts/2022-01-04/average_sleep_duration.png "Sleeping in 2021")
 
 One of my last year's goals was -
 {{< blockquote >}}
@@ -57,7 +57,7 @@ I logged my sleep data, work schedules, perceived productivity levels, perceived
 
 Below are my media consumption habits from 2021 -
 
-{{< figure type="normal" src="/images/posts/2022-01-04/media_consumption_in_2021.png" alt="Media consumption in 2021" >}}
+![Media consumption in 2021](/images/posts/2022-01-04/media_consumption_in_2021.png "Media consumption in 2021")
 
 For some reason, I watched a lot of content in the last two months of 2021. Possible reasons may be my acceptance of the new job offer or my truce with the weather. For whatever reason, I consider this year a controlled one in the binge-watching department.
 
