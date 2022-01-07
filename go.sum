@@ -12,3 +12,5 @@ github.com/yashhere/hugo-search-fuse-js v0.0.0-20220107032203-ce7c9348e9de h1:sY
 github.com/yashhere/hugo-search-fuse-js v0.0.0-20220107032203-ce7c9348e9de/go.mod h1:NBpcLWbsIYSGgTx5rNA0o9bWqGiCL1pn24oa6jlfTq8=
 github.com/yashhere/hugo-theme-tufte v0.0.0-20220106163802-f575a037b616 h1:+NHDFBaHWu2l7LwQGQlqwj7Hg4BrEco5YTT7U02NDB8=
 github.com/yashhere/hugo-theme-tufte v0.0.0-20220106163802-f575a037b616/go.mod h1:BJLj0NQxts5EuoWEAVUl/tNlvlQIChogv7ExePxcy4k=
+github.com/yashhere/hugo-theme-tufte v0.0.0-20220107034814-c467d823672c h1:7eKi8vKYm1RAG8HHaN6RNTnu7K/F3YTPoSWYBEpS9AI=
+github.com/yashhere/hugo-theme-tufte v0.0.0-20220107034814-c467d823672c/go.mod h1:BJLj0NQxts5EuoWEAVUl/tNlvlQIChogv7ExePxcy4k=

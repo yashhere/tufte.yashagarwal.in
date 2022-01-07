@@ -17,8 +17,10 @@ pygmentsOptions:
 paginate: 5
 enableEmoji: true
 enableRobotsTXT: true
-LanguageCode: en-us
+languageCode: en-us
+enableGitInfo: false
 disableFastRender: true
+disableHugoGeneratorInject: true
 disqusShortname: yashhere
 
 Author:
@@ -32,13 +34,16 @@ Author:
 
 Permalinks:
   posts: ":sections/:year/:month/:slug/"
-  updates: ":sections/:year/:month/:slug/"
-  books: ":sections/:year/:month/:slug/"
 
 Taxonomies:
   category: categories
   tag: tags
   series: series
+
+sitemap:
+  changefreq: monthly
+  filename: sitemap.xml
+  priority: 0.5
 
 outputs:
   home:
@@ -46,6 +51,8 @@ outputs:
     - RSS
     - ATOM
     - JF2Feed
+    - HEADERS
+    - REDIRECTS
   section:
     - HTML
     - RSS
@@ -65,10 +72,31 @@ outputs:
 caches:
   getjson:
     dir: ":cacheDir/:project"
-    maxAge: 1m
+    maxAge: 10s
   getcsv:
     dir: ":cacheDir/:project"
-    maxAge: 1m
+    maxAge: 10s
+
+# remove .{ext} from text/netlify
+mediaTypes:
+  text/netlify:
+    suffixes:
+      - ''
+    delimiter: ''
+
+outputFormats:
+  # add output format for netlify _redirects
+  REDIRECTS:
+    mediatype: text/netlify
+    baseName: _redirects
+    isPlainText: true
+    notAlternative: true
+  # add output format for netlify _headers
+  HEADERS:
+    mediatype: text/netlify
+    baseName: _headers
+    isPlainText: true
+    notAlternative: true
 
 Params:
   settings:
@@ -119,19 +147,19 @@ privacy:
     disable: true
     respectDoNotTrack: true
     useSessionStorage: false
-  instagram:
-    disable: false
-    simple: false
+  # instagram:
+  #   disable: true
+  #   simple: false
   twitter:
     disable: false
     enableDNT: true
     simple: false
-  vimeo:
-    disable: false
-    simple: false
-  youtube:
-    disable: false
-    privacyEnhanced: true
+  # vimeo:
+  #   disable: true
+  #   simple: false
+  # youtube:
+  #   disable: true
+  #   privacyEnhanced: true
 
 markup:
   highlight:
@@ -166,6 +194,11 @@ markup:
       hardWraps: false
       unsafe: false
       xhtml: false
+
+minify:
+  tdewolff:
+    html:
+      keepWhitespace: false
 
 module:
   imports:
