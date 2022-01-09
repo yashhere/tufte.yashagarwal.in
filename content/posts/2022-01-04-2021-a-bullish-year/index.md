@@ -1,5 +1,5 @@
 +++
-title = "2021 - a bullish year"
+title = "2021 - A Bullish Year"
 author = ["Yash Agarwal"]
 date = 2022-01-04T22:25:24+05:30
 categories = ["Write-ups"]
