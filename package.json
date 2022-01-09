@@ -23,6 +23,7 @@
     "build": "exec-bin node_modules/.bin/hugo/hugo --minify",
     "build:lan": "exec-bin node_modules/.bin/hugo/hugo --minify --baseURL=http://192.168.1.10:8080",
     "build:preview": "yarn run build -D -F",
+    "clean": "shx rm -rf public resources",
     "clean:install": "shx rm -rf package-lock.json node_modules ",
     "lint": "yarn run -s lint:markdown",
     "lint:scripts": "eslint assets/js config functions",
@@ -65,4 +66,5 @@
     "hugo": "0.91.2"
   }
 }
+
 
