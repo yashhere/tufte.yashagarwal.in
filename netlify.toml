@@ -22,6 +22,12 @@
 [context.next.environment]
   HUGO_ENV = "next"
 
+[[plugins]]
+  package = "netlify-plugin-hugo-cache-resources"
+	[plugins.inputs]
+	debug = true
+
+
 [dev]
   framework = "#custom"
   command = "yarn run start"

@@ -18,14 +18,11 @@
   "scripts": {
     "init": "shx rm -rf .git && git init -b main",
     "create": "exec-bin node_modules/.bin/hugo/hugo new",
-    "prestart": "yarn run clean",
-    "start": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender --baseURL=http://localhost",
+    "start": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --disableFastRender --baseURL=http://localhost --forceSyncStatic --cleanDestinationDir --ignoreCache --templateMetrics --templateMetricsHints --buildFuture --buildDrafts",
     "start:lan": "exec-bin node_modules/.bin/hugo/hugo server --bind=0.0.0.0 --baseURL=http://192.168.1.10 --port=1313",
-    "prebuild": "yarn run clean",
     "build": "exec-bin node_modules/.bin/hugo/hugo --minify",
     "build:lan": "exec-bin node_modules/.bin/hugo/hugo --minify --baseURL=http://192.168.1.10:8080",
     "build:preview": "yarn run build -D -F",
-    "clean": "shx rm -rf public resources",
     "clean:install": "shx rm -rf package-lock.json node_modules ",
     "lint": "yarn run -s lint:markdown",
     "lint:scripts": "eslint assets/js config functions",
@@ -55,6 +52,7 @@
     "hugo-installer": "^3.1",
     "lazysizes": "^5.3",
     "markdownlint-cli": "^0.30",
+    "netlify-plugin-hugo-cache-resources": "^0.2.1",
     "postcss": "^8.4",
     "postcss-cli": "^9.1",
     "purgecss-whitelister": "^2.4",
@@ -67,7 +65,4 @@
     "hugo": "0.91.2"
   }
 }
-
-
-
 

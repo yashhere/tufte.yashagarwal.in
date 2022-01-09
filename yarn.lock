@@ -2684,6 +2684,13 @@ neo-async@^2.6.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+netlify-plugin-hugo-cache-resources@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/netlify-plugin-hugo-cache-resources/-/netlify-plugin-hugo-cache-resources-0.2.1.tgz#3546ada32e3c598dda518c846e99146698f3b4a7"
+  integrity sha512-G6x8egylbhpT4ROD6X2HoEO/EdTQNZUl/p7aMy6t1OsaarJRxAST/Q6vE2j8zZk+xmurYL8I3PQYsfk2eKfPZQ==
+  dependencies:
+    glob "^7.1.7"
+
 node-fetch@^2.6.0:
   version "2.6.6"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.6.tgz#1751a7c01834e8e1697758732e9efb6eeadfaf89"
