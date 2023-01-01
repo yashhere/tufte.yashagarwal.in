@@ -2,7 +2,5 @@ github.com/yashhere/hugo-atom-feed v0.0.0-20200225144521-5da913dc46d2/go.mod h1:
 github.com/yashhere/hugo-debugprint v0.0.0-20191209203742-5eb3e0698e5e/go.mod h1:z0/OSNVEI/jAWMziZ8R+roZeWUhHhSdrivotJ4axsJk=
 github.com/yashhere/hugo-jf2 v0.0.0-20200225144146-9ae92ab7ff12/go.mod h1:A4uGr0QKOriJQkp8alU36h5fAsfasluaTFSksYohoXg=
 github.com/yashhere/hugo-search-fuse-js v0.0.0-20220107032203-ce7c9348e9de/go.mod h1:NBpcLWbsIYSGgTx5rNA0o9bWqGiCL1pn24oa6jlfTq8=
-github.com/yashhere/hugo-theme-tufte v0.0.0-20220107095018-95a3dcfe9319 h1:Mas9zm93UUmIltQKw+fxenYaZwf9MxSUG9Y+mzI62L0=
-github.com/yashhere/hugo-theme-tufte v0.0.0-20220107095018-95a3dcfe9319/go.mod h1:xXK5gk0dP+r+CE1m0F7J8MtQ4AHXjpuoWVL58HKzotc=
-github.com/yashhere/hugo-theme-tufte v0.0.0-20230101043238-1f11f3c71ecb h1:VM1q65okD76Fo6AmH9bCMaPL1Uw4xs4N/eNdpDMNSes=
-github.com/yashhere/hugo-theme-tufte v0.0.0-20230101043238-1f11f3c71ecb/go.mod h1:xXK5gk0dP+r+CE1m0F7J8MtQ4AHXjpuoWVL58HKzotc=
+github.com/yashhere/hugo-theme-tufte v0.0.0-20230101044138-f411202746de h1:/jRM/sfAps3ZOLfCtcqCKv4de5fXesPURGeqTIrL2Ss=
+github.com/yashhere/hugo-theme-tufte v0.0.0-20230101044138-f411202746de/go.mod h1:xXK5gk0dP+r+CE1m0F7J8MtQ4AHXjpuoWVL58HKzotc=
