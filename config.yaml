@@ -160,11 +160,11 @@ privacy:
     disable: true
     respectDoNotTrack: true
     useSessionStorage: false
-  # instagram:
-  #   disable: true
-  #   simple: false
+  instagram:
+    disable: true
+    simple: false
   twitter:
-    disable: false
+    disable: true
     enableDNT: true
     simple: false
   # vimeo:
