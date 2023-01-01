@@ -22,8 +22,6 @@ I did not do exceptionally well in academics in the late half of the year. Partl
 
 It is one thing which I could never excel in my undergrad life. People say that coding is a skill and it requires practice. However, to continue doing that practice, one needs patience, that, unfortunately, I lack. This year continued to be the same as 2016. I could not overcome my fear of coding. I tried doing something different in the form of [#100daysofcode](https://twitter.com/_100DaysOfCode), but couldn't continue it after 20 days because of my preparations for campus placements. I have again started writing code on a regular basis in late December. Looking forward to code more frequently in 2018.
 
-{{< tweet user="yash__here" id="873491081173897216" >}}
-
 Recently I started working on Debian Packaging. [Praveen](http://civic.gnu.org.in/author/praveen) sir has always been very supportive of me and answered all my ludicrous questions very patiently. My conversation with him about free software philosophy has been very enlightening. Debian Packaging was a very satisfying experience to be able to give something back to the community. Now, I hold [one](https://qa.debian.org/developer.php?login=yashagarwaljpr@gmail.com) package in the unstable Debian repository and [two](https://qa.debian.org/developer.php?login=bansaly26@gmail.com) more packages in the pipeline for approval.
 
 ![Working on my first Debian package](/images/posts/2017-12-31/HackFest1.jpg "Working on my first Debian package")
