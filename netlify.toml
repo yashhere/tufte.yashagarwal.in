@@ -35,10 +35,6 @@
 [[plugins]]
   package = "netlify-plugin-debug-cache"
 
-# ATTENTION: this needs to be the last plugin
-[[plugins]]
-  package = "netlify-plugin-hashfiles"
-
 [dev]
   framework = "#custom"
   command = "yarn run start"
