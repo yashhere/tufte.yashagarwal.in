@@ -35,9 +35,6 @@
 [[plugins]]
   package = "netlify-plugin-debug-cache"
 
-[[plugins]]
-  package = "netlify-plugin-image-optim"
-
 # ATTENTION: this needs to be the last plugin
 [[plugins]]
   package = "netlify-plugin-hashfiles"
