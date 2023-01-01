@@ -40,4 +40,4 @@ public:
 
 .minifier:
 	@echo "minifying images now"
-	find ./public -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png \) -print0 | xargs -0 -P16 -n2 mogrify -compress JPEG -strip -quality 40
+	# find ./public -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png \) -print0 | xargs -0 -P16 -n2 mogrify -compress JPEG -strip -quality 40
