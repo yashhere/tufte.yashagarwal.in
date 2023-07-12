@@ -4,16 +4,16 @@
   "description": "The directory of my thoughts",
   "author": "Yash Agarwal",
   "license": "MIT",
-  "homepage": "https://tufte.yashagarwal.in",
+  "homepage": "https://yashagarwal.in",
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/yashhere/yashhere.github.io.git"
+    "url": "git+ssh://git@github.com/yashhere/tufte.yashagarwal.in.git"
   },
   "bugs": {
-    "url": "https://github.com/yashhere/yashhere.github.io/issues"
+    "url": "https://github.com/yashhere/tufte.yashagarwal.in/issues"
   },
   "engines": {
     "npm": "please-use-yarn",

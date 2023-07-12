@@ -86,7 +86,7 @@ The `auth_hook.sh` file calls the Go client with the abovementioned environment 
 Once all the DNS entries are added, the `auth_hook.sh` script will sleep for 10 minutes. It is to allow DNS changes to propagate throughout the Internet. It is a random duration as I could not find any GoDaddy support page mentioning the exact period used by them.
 
 ### Step 3: Generation of certificates
-Once the `auth_hook.sh` script returns successfully, `certbot` will verify the DNS records. If the verification is successful, `certbot` will generate the certificates in `./generated/config/live/{CERTBOT_DOMAIN}` directory. 
+Once the `auth_hook.sh` script returns successfully, `certbot` will verify the DNS records. If the verification is successful, `certbot` will generate the certificates in `./generated/config/live/{CERTBOT_DOMAIN}` directory.
 
 ### Step 4: Deploying the certificates to GitLab
 I use the following command to deploy the certificates to Gitlab pages where my website is hosted -

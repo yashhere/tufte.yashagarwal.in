@@ -15,7 +15,7 @@ In this post, I will list all the process which I used to set up automatic deplo
 
 [Hugo Docs](https://gohugo.io/getting-started/) already have a fantastic [documentation](https://gohugo.io/hosting-and-deployment/deployment-with-wercker/) for setting up Hugo with Wercker, but it is outdated. Other documentations available on-line is also obsolete. Wercker has changed many functionalities in its platform, which made it difficult for me to set up things correctly. But after hours of trial and error cycle, I was able to build and deploy my static files successfully.
 
-Here I would like to share the issues I encountered and the tweaks I’ve made. The source codes of this site can be found [here](https://github.com/yashhere/yashhere.github.io).
+Here I would like to share the issues I encountered and the tweaks I’ve made. The source codes of this site can be found [here](https://github.com/yashhere/tufte.yashagarwal.in).
 
 ## Project Pages or User Pages
 Two types of sites are supported on Github Pages, User Site, and Project Site. User Sites will serve the files stored in the master branch of the repository `https://github.com/user_name/user_name.github.io` at the address `https://user_name.github.io.` For the Project sites, everything under the gh-pages will be served at the address `https://repo_name.github.io`.
@@ -25,7 +25,7 @@ My site is a User site, so I wanted all the static files to be saved in the mast
 {{< highlight bash >}}
 git init                       #initialized git repository in site root
 git checkout -b source         #created new branch source
-git remote add origin [https://github.com/yash2696/yash2696.github.io](https://github.com/yashhere/yashhere.github.io)
+git remote add origin [https://github.com/yash2696/yash2696.github.io](https://github.com/yashhere/tufte.yashagarwal.in)
 git add .
 git commit -m "Initial Commit"
 git push origin source

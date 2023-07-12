@@ -1,8 +1,8 @@
-module github.com/yashhere/yashhere.github.io
+module github.com/yashhere/tufte.yashagarwal.in
 
 go 1.17
 
-// replace github.com/yashhere/hugo-theme-tufte => ./local_modules/hugo-theme-tufte
+// replace github.com/yashhere/hugo-theme-tufte => ../hugo-theme-tufte
 
 require (
 	github.com/yashhere/hugo-atom-feed v0.0.0-20200225144521-5da913dc46d2 // indirect

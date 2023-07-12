@@ -17,6 +17,6 @@ deploy:
   steps:
     - uetchy/gh-pages:
         token: $GIT_TOKEN
-        repo: yashhere/yashhere.github.io
+        repo: yashhere/tufte.yashagarwal.in
         path: public
         #        domain: yashagarwal.me

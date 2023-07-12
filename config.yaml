@@ -126,16 +126,16 @@ Params:
     - posts
 
   source:
-    url: "https://gitlab.com/yashhere/yashhere.gitlab.io"
+    url: "https://github.com/yashhere/tufte.yashagarwal.in"
     md_dir: content
     branch: source
 
   #  indieweb:
-  #    domain: "https://yashagarwal.in/"
+  #    domain: "https://tufte.yashagarwal.in/"
   #    webring: "\U00003297\U0000fe0f\U0001f34b\U0001f468\U0000200d\U0001f468\U0000200d\U0001f467\U0000200d\U0001f467"
   #    webmention:
   #      endpoint: "https://webmention.io/"
-  #      account: "https://yashagarwal.in"
+  #      account: "https://tufte.yashagarwal.in"
 
   social:
     email:
