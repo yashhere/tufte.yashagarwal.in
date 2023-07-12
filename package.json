@@ -1,10 +1,10 @@
 {
-  "name": "yashagarwal.in",
+  "name": "tufte.yashagarwal.in",
   "version": "1.0.0",
   "description": "The directory of my thoughts",
   "author": "Yash Agarwal",
   "license": "MIT",
-  "homepage": "https://yashagarwal.in",
+  "homepage": "https://tufte.yashagarwal.in",
   "publishConfig": {
     "access": "public"
   },

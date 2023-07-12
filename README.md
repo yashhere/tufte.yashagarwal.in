@@ -1,14 +1,15 @@
-# yashagarwal.in
+# tufte.yashagarwal.in
 
-This repository hosts the code for my blog. You can visit the website at [yashagarwal.in](https://yashagarwal.in/).
+This repository hosts the code for the design of my blog from April 2020 to July 2023. You can visit the website at [tufte.yashagarwal.in](https://tufte.yashagarwal.in/).
 
 ## Building
-I use a static site generator `Hugo` for building this blog. The design is a modified version of [tufte-css](https://github.com/edwardtufte/tufte-css), with some added features from my side.
+I used a static site generator `Hugo` for building this blog. The design is a modified version of [tufte-css](https://github.com/edwardtufte/tufte-css), with some added features from my side.
 To build the site, run the following commands -
 ```bash
-git clone --recursive https://github.com/yashhere/yashhere.github.io
-cd yashhere.github.io
-make
+git clone --recursive https://github.com/yashhere/yashagarwal.in-tufte
+cd yashagarwal.in-tufte
+yarn install
+yarn build
 ```
 
 After `make`, the site is available under the `public` directory.
@@ -28,4 +29,4 @@ I also host some of the older versions of my blog. The purpose is to make the pr
 
 One from 2016 can be seen at [jekyll.yashagarwal.in](https://jekyll.yashagarwal.in/), and the code is available at [Jekyll-Blog](https://github.com/yashhere/Jekyll-Blog).
 
-Another one is more recent ([2017](https://github.com/yashhere/yashhere.github.io/commit/42165108f3cc94cc9c60ae07c1981eb6d5d06751)-[2020](https://github.com/yashhere/yashhere.github.io/commit/bb7139ba1d4a96127b7a6c7718d5239d7eb35068)). It is live at [minimo.yashagarwal.in](https://minimo.yashagarwal.in/) and the code is hosted at [minimo](https://github.com/yashhere/yashhere.github.io/tree/minimo).
+Another one is more recent ([2017](https://github.com/yashhere/yashagarwal.in-tufte/commit/42165108f3cc94cc9c60ae07c1981eb6d5d06751)-[2020](https://github.com/yashhere/yashagarwal.in-tufte/commit/bb7139ba1d4a96127b7a6c7718d5239d7eb35068)). It is live at [minimo.yashagarwal.in](https://minimo.yashagarwal.in/) and the code is hosted at [minimo](https://github.com/yashhere/yashagarwal.in-tufte/tree/minimo).
